@@ -1,0 +1,92 @@
+{
+  "id": "phase_3",
+  "phase": 3,
+  "questionText": "请为每个页面状态选择一种你倾向的实现方式（默认已选最推荐项，可直接提交）",
+  "options": [
+    {
+      "id": "state_2::opt_a",
+      "label": "全屏半透明遮罩层+居中卡片：顶部有‘Preferences’标题，7个行业卡片横向滚动网格，底部固定‘确认’按钮",
+      "rationale": "视觉聚焦明确，符合‘全屏偏好选择’的任务目标，且与底Tab和状态栏共存自然",
+      "group": "state_2 · 全屏偏好面板",
+      "default": true
+    },
+    {
+      "id": "state_2::opt_b",
+      "label": "底部上滑抽屉：从Tab栏上方升起，高度占屏幕60%，含7个带勾选框的行业卡片和顶部操作栏",
+      "rationale": "手势操作更顺滑，返回成本低，但行业卡片展示密度略低",
+      "group": "state_2 · 全屏偏好面板",
+      "default": false
+    },
+    {
+      "id": "state_2::opt_c",
+      "label": "右侧侧滑面板：宽度320px，覆盖资讯页右侧，保留左侧内容可见性，支持左右滑动关闭",
+      "rationale": "保留上下文信息，适合快速浏览后决策，但小屏设备可能挤压阅读空间",
+      "group": "state_2 · 全屏偏好面板",
+      "default": false
+    },
+    {
+      "id": "state_3::opt_a",
+      "label": "轻量骨架屏：资讯页内容区域变灰白骨架，顶部保留‘全部’页签和Tab栏，持续1.2秒后跳转",
+      "rationale": "不打断用户当前视线，过渡自然，符合瞬时反馈定位",
+      "group": "state_3 · 加载中过渡态",
+      "default": true
+    },
+    {
+      "id": "state_3::opt_b",
+      "label": "顶部进度条：细长蓝色横条从左向右流动，出现在状态栏下方，跳转完成即消失",
+      "rationale": "占用空间极小，对内容无遮挡，但感知强度略弱于骨架屏",
+      "group": "state_3 · 加载中过渡态",
+      "default": false
+    },
+    {
+      "id": "state_4::opt_a",
+      "label": "标签页内嵌式Industry页：顶部固定标签栏（Industry/Topics/Notifications），下方6宫格图标+文字，等距排列",
+      "rationale": "与任务流描述完全一致，符合用户对‘默认显示Industry标签’的预期",
+      "group": "state_4 · Interests and Preferences页",
+      "default": true
+    },
+    {
+      "id": "state_4::opt_b",
+      "label": "独立页面+顶部导航栏：无标签切换，仅Industry内容，6个图标以瀑布流形式呈现，带下拉刷新提示",
+      "rationale": "更专注单一设置任务，减少认知负担，但后续扩展其他标签会需重构导航结构",
+      "group": "state_4 · Interests and Preferences页",
+      "default": false
+    },
+    {
+      "id": "state_5::opt_a",
+      "label": "点击遮罩层或返回键自动关闭：面板淡出，资讯页内容无缝恢复，无额外弹窗或确认",
+      "rationale": "操作直觉强，符合移动端主流交互习惯，用户不会误触保存",
+      "group": "state_5 · 取消偏好设置",
+      "default": true
+    },
+    {
+      "id": "state_5::opt_b",
+      "label": "关闭前二次确认弹窗：‘放弃更改？’+‘取消’‘确认放弃’两个按钮，居中显示",
+      "rationale": "防止误操作丢失已选内容，适合偏好选择较耗时的场景",
+      "group": "state_5 · 取消偏好设置",
+      "default": false
+    },
+    {
+      "id": "state_6::opt_a",
+      "label": "底部Toast提示：浅红底色+白色文字‘网络不可用，请检查连接’，2秒后自动消失",
+      "rationale": "轻量、不中断操作流，符合错误提示的克制原则",
+      "group": "state_6 · 网络失败提示",
+      "default": true
+    },
+    {
+      "id": "state_6::opt_b",
+      "label": "面板内嵌错误提示条：在7个行业卡片上方插入黄色横幅，含刷新图标和‘重试’按钮",
+      "rationale": "保持用户停留在当前任务上下文中，可一键重试，无需跳出面板",
+      "group": "state_6 · 网络失败提示",
+      "default": false
+    }
+  ],
+  "multiSelect": true,
+  "allowCustom": true,
+  "note": "我给每个页面列了几种实现方式，你可以保留默认选择直接提交；想换方案就在对应分组里换一个，或者在补充栏里写一句话描述你想要的实现。",
+  "sectionLabel": "任务流阶段 3/3",
+  "sectionProgress": {
+    "current": 3,
+    "total": 3
+  }
+}

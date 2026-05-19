@@ -1,0 +1,1 @@
+用户在视频详情页点击带有向下箭头图标的“Download”按钮后，若当前处于移动网络环境，系统立即弹出确认模态框，显示文案“You are downloading using the mobile network. Continue?”并提供“CANCEL”和“CONTINUE”两个操作按钮；点击“CANCEL”关闭弹窗，并在页面底部以Snackbar提示“Cancelled.”；点击“CONTINUE”则进入下载中状态，弹出含标题“Downloading”、实时更新的百分比数值、动态进度条、右上角“X”取消图标及“OK”按钮的模态框；下载失败时，Snackbar提示“Download fai

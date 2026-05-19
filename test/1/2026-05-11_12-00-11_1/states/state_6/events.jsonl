@@ -1,0 +1,7 @@
+{"event":"state-start","data":{"state_id":6,"state_name":"网络失败提示","last_state":2,"ts":1778501031058},"ts":"2026-05-11T12:03:51.060Z"}
+{"event":"state-log","data":{"state_id":6,"msg":"[dsl] HM_DSL_ENABLED=1 且匹配，尝试 DSL 路径","ts":1778501031058},"ts":"2026-05-11T12:03:51.060Z"}
+{"event":"state-log","data":{"state_id":6,"msg":"[dsl] 准备走 DSL 路径：网络失败提示","ts":1778501031058},"ts":"2026-05-11T12:03:51.060Z"}
+{"event":"state-log","data":{"state_id":6,"msg":"[dsl] prompt 3.0KB → callText…","ts":1778501031058},"ts":"2026-05-11T12:03:51.060Z"}
+{"event":"state-log","data":{"state_id":6,"msg":"[dsl] [dsl] compile ok · state=\"网络失败提示\" · 728B rendered","ts":1778501036527},"ts":"2026-05-11T12:03:56.528Z"}
+{"event":"state-log","data":{"state_id":6,"msg":"[dsl] 成功（html 106119B），跳过旧路径","ts":1778501036527},"ts":"2026-05-11T12:03:56.528Z"}
+{"event":"state-done","data":{"state_id":6,"state_name":"网络失败提示","file":"state_6.html","applied":1,"skipped":0,"review_ok":null,"review_applied":0,"review_issues":[],"elapsed_ms":5472,"hmExpansions":[],"hmMissing":[],"ts":1778501036530},"ts":"2026-05-11T12:03:56.531Z"}

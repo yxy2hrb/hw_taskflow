@@ -1,0 +1,106 @@
+.fill-lightcomp_background_emphasize-602_9414 {
+        background-color: rgba(10, 89, 247, 1)
+      }
+.fill-lightfont_primary-602_9446-paragraph {
+        color: rgba(0, 0, 0, 0.8980392217636108)
+      }
+.text-fontbody_mregular-602_9661 {
+        font-size: 12px;
+font-family: "Microsoft YaHei";
+font-weight: Regular
+      }
+
+.scroll-container-0_1 { position: relative !important; width: 100%; height: auto !important; overflow: visible !important; }
+
+.Pixso-canvas-0_1 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.Pixso-frame-3188_71 {
+  width: 328px;
+  height: 48px;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 0px 12px 0px;
+  border-radius: 8px 8px 8px 8px;
+}
+
+.Pixso-frame-3188_72 {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  flex-shrink: 0;
+  border-radius: 12px 12px 12px 12px;
+  mix-blend-mode: normal;
+}
+
+.Pixso-group-3188_73 {
+  width: 83.34%;
+  height: 83.34%;
+  position: absolute;
+  left: 8.33%;
+  right: 8.33%;
+  top: 8.33%;
+  bottom: 8.33%;
+  mix-blend-mode: normal;
+}
+
+.Pixso-rectangle-3188_74 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  border-radius: 10px 10px 10px 10px;
+  mix-blend-mode: normal;
+}
+
+.Pixso-vector-3188_75 {
+  position: absolute;
+  inset: -7.784489842294231% -79.02326975323847% -43.354833074372436% -77.6182271775651% ;
+  background-image: url(./image/Boolean_operation_3188_75.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.vector-wrapper-3188_75 {
+  position: absolute;
+  width: 7px;
+  height: 11.25px;
+  top: 14.38%;
+  left: 31.98%;
+  transform: undefined;
+}
+
+.Pixso-paragraph-3188_78 {
+  display: -webkit-box;
+  flex-direction: column;
+  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  width: 100%;
+  height: 16px;
+  position: relative;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.frame-3175_270{height:auto!important;min-height:162px!important;max-height:calc(100vh - 32px)!important;overflow:auto!important;}
+.frame-3175_281{height:auto!important;min-height:162px!important;}

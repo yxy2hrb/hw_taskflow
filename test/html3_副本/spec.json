@@ -1,0 +1,359 @@
+我将给你一段html代码和页面描述spec，你需要对html进行语义注释，对明确的div语义内容进行解释，解释尽量和spec内的描述一致 ，注意严禁修改原代码内容，只做注释
+html:
+<body>
+<div class="scroll-container-0_1">
+  <div id="0_1" class="canvas-0_1">
+    <div id="9_461066" class="frame-9_461066">
+      <div id="9_461067" class="frame-9_461067 fill-场景text-colorcolor-text-primary-9_247987">
+        <div id="9_461068" class="frame-9_461068 fill-场景text-colorcolor-text-primary-9_247987">
+          <div id="121_6888" class="rectangle-121_6888"></div>
+          <span id="121_6889" class="text-121_6889 fill-场景text-colorcolor-text-inverse-6_11394-text text-bodyfont-body-1-medium-6_11385">08:08</span>
+          <div id="121_6890" class="group-121_6890">
+            <div id="121_6891" class="group-121_6891">
+              <div id="121_6892" class="group-121_6892">
+                <div id="121_6893" class="group-121_6893">
+                  <div id="121_6894" class="group-121_6894">
+                    <div id="121_6895" class="vector-121_6895"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="121_6896" class="group-121_6896">
+              <div id="121_6897" class="group-121_6897">
+                <div id="121_6898" class="vector-121_6898"></div>
+              </div>
+              <span id="121_6899" class="text-121_6899 fill-场景text-colorcolor-text-inverse-6_11394-text stroke-场景text-colorcolor-text-inverse-6_11394-text">4G</span>
+              <div id="121_6900" class="group-121_6900">
+                <div id="121_6901" class="group-121_6901">
+                  <div id="121_6902" class="vector-121_6902"></div>
+                  <div id="121_6903" class="vector-121_6903"></div>
+                </div>
+              </div>
+            </div>
+            <div id="121_6904" class="group-121_6904">
+              <div id="121_6905" class="group-121_6905">
+                <div id="121_6906" class="vector-121_6906"></div>
+              </div>
+              <span id="121_6907" class="text-121_6907 fill-场景text-colorcolor-text-inverse-6_11394-text stroke-场景text-colorcolor-text-inverse-6_11394-text">4G</span>
+            </div>
+            <div id="121_6908" class="group-121_6908">
+              <div id="121_6909" class="vector-121_6909"></div>
+              <div id="121_6911" class="vector-121_6911"></div>
+            </div>
+          </div>
+          <span id="121_6912" class="text-121_6912 fill-场景text-colorcolor-text-inverse-6_11394-text">100</span>
+        </div>
+      </div>
+      <div id="9_461094" class="vector-9_461094"></div>
+      <div id="9_461098" class="vector-9_461098"></div>
+      <div id="9_461101" class="frame-9_461101">
+        <div id="9_461102" class="frame-9_461102">
+          <div id="9_461103" class="rectangle-9_461103 fill-场景background-colorcolor-bg-mask-9_247986"></div>
+        </div>
+      </div>
+      <div id="9_461104" class="frame-9_461104">
+        <div id="9_461105" class="group-9_461105">
+          <div id="9_461106" class="vector-9_461106"></div>
+          <div id="9_461107" class="vector-9_461107"></div>
+          <div id="9_461108" class="vector-9_461108"></div>
+          <div id="9_461109" class="vector-9_461109"></div>
+          <div id="9_461110" class="vector-9_461110"></div>
+          <div id="9_461111" class="vector-9_461111"></div>
+        </div>
+      </div>
+      <div id="9_461112" class="frame-9_461112">
+        <div id="9_461113" class="group-9_461113">
+          <div id="9_461114" class="vector-9_461114"></div>
+          <div id="9_461115" class="vector-9_461115"></div>
+          <div id="9_461116" class="vector-9_461116"></div>
+          <div id="9_461117" class="vector-9_461117"></div>
+          <div id="9_461118" class="vector-9_461118"></div>
+          <div id="9_461119" class="vector-9_461119"></div>
+        </div>
+      </div>
+      <div id="9_461120" class="frame-9_461120">
+        <div id="9_461121" class="frame-9_461121">
+          <div id="9_461122" class="frame-9_461122">
+            <div id="121_212556" class="frame-121_212556"></div>
+            <div id="121_214369" class="vector-121_214369"></div>
+          </div>
+        </div>
+        <div id="9_462944" class="frame-9_462944">
+          <span id="9_462945" class="text-9_462945 fill-场景text-colorcolor-text-primary-9_247987-text">标题</span>
+          <span id="9_462946" class="text-9_462946 fill-场景text-colorcolor-text-secondary-9_247992-text">子标题</span>
+        </div>
+      </div>
+      <div id="9_462947" class="frame-9_462947">
+        <div id="9_462948" class="frame-9_462948">
+          <div id="9_462949" class="frame-9_462949">
+            <div id="9_462950" class="frame-9_462950">
+              <div id="9_462951" class="frame-9_462951">
+                <div id="9_462952" class="frame-9_462952">
+                  <div id="9_462953" class="frame-9_462953">
+                    <span id="9_462954" class="text-9_462954 fill-场景text-colorcolor-text-primary-9_247987-text">Small Classroom No.1: Switch Development History Four-line header Four-line header Four-line header Four-line header Four-line header Four-lineheaderFour-line header</span>
+                    <span id="9_462955" class="text-9_462955 fill-场景text-colorcolor-text-secondary-9_247992-text text-bodyfont-body-1-regular-9_247988">Quick Configuration Class · 999 views · 22-02-2024</span>
+                  </div>
+                </div>
+              </div>
+              <div id="9_462956" class="frame-9_462956">
+                <div id="9_462957" class="frame-9_462957">
+                  <div id="9_462958" class="vector-9_462958"></div>
+                  <span id="9_462961" class="text-9_462961">Huawei government and enterprise</span>
+                  <div id="9_462962" class="frame-9_462962">
+                    <span id="121_24716" class="text-121_24716 text-bodyfont-body-1-medium-6_11385">Following</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="9_462964" class="frame-9_462964">
+              <div id="9_462965" class="frame-9_462965 fill-场景fill-colorcolor-fill-2-9_247989">
+                <div id="9_462966" class="frame-9_462966">
+                  <div id="9_462967" class="group-9_462967">
+                    <div id="9_462968" class="vector-9_462968"></div>
+                    <div id="9_462969" class="vector-9_462969"></div>
+                    <div id="9_462970" class="vector-9_462970"></div>
+                    <div id="9_462971" class="vector-9_462971"></div>
+                    <div id="9_462972" class="vector-9_462972"></div>
+                    <div id="9_462973" class="vector-9_462973"></div>
+                    <div id="9_462974" class="vector-9_462974"></div>
+                  </div>
+                </div>
+                <span id="9_462975" class="text-9_462975 fill-场景text-colorcolor-text-primary-9_247987-text">23</span>
+              </div>
+              <div id="9_462976" class="frame-9_462976 fill-场景fill-colorcolor-fill-2-9_247989">
+                <div id="9_462977" class="frame-9_462977">
+                  <div id="9_462978" class="frame-9_462978">
+                    <div id="121_6924" class="vector-121_6924"></div>
+                  </div>
+                </div>
+                <span id="9_462980" class="text-9_462980 fill-场景text-colorcolor-text-primary-9_247987-text text-bodyfont-body-1-medium-9_247991">12</span>
+              </div>
+              <div id="9_462981" class="frame-9_462981 fill-场景fill-colorcolor-fill-2-9_247989">
+                <div id="9_462982" class="frame-9_462982">
+                  <div id="9_462983" class="group-9_462983">
+                    <div id="9_462984" class="vector-9_462984"></div>
+                    <div id="9_462985" class="vector-9_462985"></div>
+                    <div id="9_462986" class="vector-9_462986"></div>
+                    <div id="9_462987" class="vector-9_462987"></div>
+                    <div id="9_462988" class="vector-9_462988"></div>
+                    <div id="9_462989" class="vector-9_462989"></div>
+                    <div id="9_462990" class="vector-9_462990"></div>
+                  </div>
+                </div>
+                <span id="9_462991" class="text-9_462991 fill-场景text-colorcolor-text-primary-9_247987-text">Download</span>
+              </div>
+              <div id="9_462992" class="frame-9_462992 fill-场景fill-colorcolor-fill-2-9_247989">
+                <div id="9_462993" class="frame-9_462993">
+                  <div id="9_462994" class="group-9_462994">
+                    <div id="9_462995" class="vector-9_462995"></div>
+                    <div id="9_462996" class="vector-9_462996"></div>
+                    <div id="9_462997" class="vector-9_462997"></div>
+                    <div id="9_462998" class="vector-9_462998"></div>
+                    <div id="9_462999" class="vector-9_462999"></div>
+                    <div id="9_463000" class="vector-9_463000"></div>
+                  </div>
+                  <div id="9_463001" class="group-9_463001">
+                    <div id="9_463002" class="group-9_463002">
+                      <div id="9_463003" class="vector-9_463003"></div>
+                      <div id="9_463004" class="vector-9_463004"></div>
+                    </div>
+                  </div>
+                </div>
+                <span id="9_463008" class="text-9_463008 fill-场景text-colorcolor-text-primary-9_247987-text">Share</span>
+              </div>
+            </div>
+          </div>
+          <div id="9_463009" class="frame-9_463009">
+            <div id="9_463010" class="frame-9_463010">
+              <span id="9_463011" class="text-9_463011">Details</span>
+              <span id="9_463012" class="text-9_463012">Do you know what the switch first looked like? How did it develop step by step to become so powerful?</span>
+            </div>
+          </div>
+        </div>
+        <div id="9_463013" class="frame-9_463013">
+          <span id="9_463014" class="text-9_463014 fill-场景text-colorcolor-text-primary-9_247987-text">Watch Next</span>
+          <div id="9_463015" class="frame-9_463015">
+            <div id="9_463016" class="group-9_463016">
+              <div id="9_463017" class="vector-9_463017"></div>
+              <div id="9_463020" class="frame-9_463020">
+                <div id="9_463021" class="group-9_463021">
+                  <div id="9_463022" class="rectangle-9_463022 fill-场景background-colorcolor-bg-mask-9_247993"></div>
+                  <div id="9_463023" class="group-9_463023">
+                    <div id="9_463024" class="group-9_463024">
+                      <div id="9_463025" class="rectangle-9_463025"></div>
+                      <div id="9_463026" class="group-9_463026">
+                        <div id="9_463027" class="group-9_463027">
+                          <div id="9_463028" class="group-9_463028">
+                            <div id="9_463029" class="vector-9_463029"></div>
+                            <div id="9_463032" class="vector-9_463032"></div>
+                            <div id="9_463033" class="vector-9_463033"></div>
+                          </div>
+                          <div id="9_463034" class="group-9_463034">
+                            <div id="9_463035" class="rectangle-9_463035"></div>
+                            <div id="9_463036" class="rectangle-9_463036"></div>
+                            <div id="9_463037" class="rectangle-9_463037"></div>
+                            <div id="9_463038" class="rectangle-9_463038"></div>
+                            <div id="9_463039" class="vector-9_463039"></div>
+                            <div id="9_463040" class="vector-9_463040"></div>
+                          </div>
+                          <div id="9_463041" class="group-9_463041">
+                            <div id="9_463042" class="vector-9_463042"></div>
+                            <div id="9_463043" class="vector-9_463043"></div>
+                            <div id="9_463044" class="vector-9_463044"></div>
+                            <div id="9_463045" class="vector-9_463045"></div>
+                          </div>
+                        </div>
+                        <div id="9_463046" class="rectangle-9_463046"></div>
+                        <div id="9_463047" class="vector-9_463047"></div>
+                      </div>
+                      <div id="9_463048" class="vector-9_463048"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="9_463053" class="frame-9_463053">
+                <span id="9_463054" class="text-9_463054 fill-场景text-colorcolor-text-inverse-9_247990-text">2:32</span>
+              </div>
+              <div id="9_463055" class="frame-9_463055">
+                <div id="9_463056" class="frame-9_463056">
+                  <div id="9_463057" class="frame-9_463057">
+                    <div id="9_463058" class="vector-9_463058"></div>
+                  </div>
+                  <div id="9_463062" class="frame-9_463062">
+                    <span id="9_463063" class="text-9_463063">Training on Best Practices of the Digital Robot Solution</span>
+                    <span id="9_463064" class="text-9_463064 fill-场景text-colorcolor-text-secondary-9_247992-text">Technology Sharing · Feb 23, 2024</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="9_463065" class="frame-9_463065">
+        <div id="9_463066" class="frame-9_463066">
+          <div id="9_463067" class="rectangle-9_463067 fill-场景background-colorcolor-bg-mask-9_247993"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+</script>
+
+</body>
+
+
+spec:
+
+{
+  "UI整体描述": {
+    "功能": "该UI为一个视频详情页面，用于展示视频内容、发布者信息、互动操作及推荐内容。",
+    "产品场景": "当前页面展示的是“Small Classroom No.1”系列课程中的一个视频，主题为‘Switch Development History’，属于‘Quick Configuration Class’播放列表的一部分。用户可通过该界面观看视频、查看详细信息、进行点赞、收藏、下载、分享等操作，并浏览推荐的下一个视频。整体产品场景为在线学习平台或企业内部知识分享系统，支持移动端流畅交互与内容推荐。"
+  },
+  "页面构成": [
+    "顶部状态栏",
+    "视频封面与标题区",
+    "发布者与互动区",
+    "视频详情区",
+    "推荐内容区（Watch Next）"
+  ],
+  "视觉风格": {
+    "调性": "简洁现代，以白色背景为主，突出文字和图像内容，强调信息层级与可读性。",
+    "色彩体系": "以白色为底色，黑色文字为主，关键操作按钮使用灰色圆角矩形，图标采用浅灰色或蓝色点缀，形成清晰的视觉引导。",
+    "设计风格": "符合主流内容展示类应用规范，注重信息密度与用户体验，采用卡片式布局与水平滚动推荐区域，提升内容浏览效率。"
+  },
+  "各个区域组件信息分述": [
+    {
+      "区域名称": "顶部状态栏",
+      "组件类型": "系统状态栏",
+      "承担的功能": "显示设备时间、网络连接状态、电池电量等系统信息",
+      "承载的信息": {
+        "时间": "08:08",
+        "网络状态": [
+          "Wi-Fi图标",
+          "蜂窝信号图标（满格）",
+          "蓝牙图标"
+        ],
+        "电池状态": {
+          "电量百分比": "100%",
+          "电池图标": "充满"
+        }
+      },
+      "组件的配色样式和布局": "背景为深色，文字和图标为白色，横向排列于屏幕最上方",
+      "组件所处的位置": "位于页面最上方，占据约1/20屏幕高度，横跨整个宽度"
+    },
+    {
+      "区域名称": "视频封面与标题区",
+      "组件类型": "视频封面图片与文本信息组合",
+      "承担的功能": "展示视频缩略图、标题、副标题、播放量、发布时间等核心信息",
+      "承载的信息": {
+        "视频封面": "一位身穿黑色西装、佩戴黑色领结的女性正面对镜头讲话，背景为室内环境，可见厨房柜体、微波炉及彩色包装袋",
+        "主标题": "Small Classroom No.1: Switch Development History",
+        "副标题": "Four-line header Four-line header Four-line header Four-line header Four-line header Four-line header Four-line header Four-lineheaderFour-line header",
+        "分类标签": "Quick Configuration Class",
+        "播放量": "999 views",
+        "发布时间": "22-02-2024"
+      },
+      "组件的配色样式和布局": "封面图为全宽矩形，下方为黑色文字标题，字体大小递减；分类标签为浅灰色小字，播放量与时间并列，均为浅灰色文字",
+      "组件所处的位置": "位于状态栏下方，占据约1/3屏幕高度，横跨整个宽度"
+    },
+    {
+      "区域名称": "发布者与互动区",
+      "组件类型": "发布者信息卡片与互动按钮组",
+      "承担的功能": "展示发布者身份、关注状态，并提供点赞、收藏、下载、分享等交互操作",
+      "承载的信息": {
+        "发布者头像": "圆形小图，内含红色背景与白色图案（疑似华为标志）",
+        "发布者名称": "Huawei government and ...（省略号表示名称未完全显示）",
+        "关注状态": "Following（灰色圆角矩形按钮，表示已关注）",
+        "互动按钮": [
+          {
+            "图标": "点赞图标",
+            "数量": "23"
+          },
+          {
+            "图标": "收藏星标图标",
+            "数量": "12"
+          },
+          {
+            "图标": "下载图标",
+            "文字": "Download"
+          },
+          {
+            "图标": "分享图标",
+            "文字": "Share"
+          }
+        ]
+      },
+      "组件的配色样式和布局": "头像为圆形，背景红色，图案白色；发布者名称为黑色文字，右侧为灰色圆角矩形按钮；互动按钮为浅灰色圆角矩形，图标为灰色，文字为黑色，水平排列",
+      "组件所处的位置": "位于视频封面下方，占据约1/10屏幕高度，横跨整个宽度，内容从左至右依次排列"
+    },
+    {
+      "区域名称": "视频详情区",
+      "组件类型": "文本内容区块",
+      "承担的功能": "展示视频的详细描述内容，增强用户对视频主题的理解",
+      "承载的信息": {
+        "标题": "Details",
+        "正文": "Do you know what the switch first looked like? How did it develop step by step to become so powerful?"
+      },
+      "组件的配色样式和布局": "标题为加粗黑色文字，正文为常规黑色文字，段落间距适中，背景为白色",
+      "组件所处的位置": "位于互动区下方，占据约1/8屏幕高度，横跨整个宽度"
+    },
+    {
+      "区域名称": "推荐内容区（Watch Next）",
+      "组件类型": "推荐视频卡片",
+      "承担的功能": "展示下一个推荐视频，引导用户继续观看相关内容",
+      "承载的信息": {
+        "标题": "Watch Next",
+        "视频封面": "一张包含电子元件、电路板、工具、蓝色线缆和黄色笔记本的桌面照片",
+        "视频时长": "2:32",
+        "播放按钮": "中央圆形播放按钮（三角形）"
+      },
+      "组件的配色样式和布局": "标题为黑色加粗文字，视频封面为矩形图片，右下角显示时长为白色文字，播放按钮为白色三角形置于半透明圆圈内",
+      "组件所处的位置": "位于详情区下方，占据约1/4屏幕高度，横跨整个宽度"
+    }
+  ]
+}
+

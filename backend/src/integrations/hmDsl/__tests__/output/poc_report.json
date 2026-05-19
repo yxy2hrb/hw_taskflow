@@ -1,0 +1,120 @@
+[
+  {
+    "state_id": 1,
+    "title": "行业资讯页带全部页签（base）",
+    "html_bytes": 93783,
+    "action": "use base",
+    "screenshot": "E:\\任务流\\任务流\\p2p\\backend\\src\\integrations\\hmDsl\\__tests__\\output\\state_1.compiled.png",
+    "dom": {
+      "dsl_exists": false,
+      "dsl_z": null,
+      "cards": 0,
+      "lists": 0,
+      "banner": false,
+      "spinner": false,
+      "overlay": false,
+      "badge": false,
+      "gridCols": null
+    }
+  },
+  {
+    "state_id": 2,
+    "title": "全屏偏好选择面板",
+    "last_state": 1,
+    "html_bytes": 101942,
+    "compile_ms": 1,
+    "warnings": [],
+    "screenshot": "E:\\任务流\\任务流\\p2p\\backend\\src\\integrations\\hmDsl\\__tests__\\output\\state_2.compiled.png",
+    "dom": {
+      "dsl_exists": true,
+      "dsl_z": "9999",
+      "cards": 0,
+      "lists": 7,
+      "banner": false,
+      "spinner": false,
+      "overlay": false,
+      "badge": false,
+      "gridCols": null
+    }
+  },
+  {
+    "state_id": 3,
+    "title": "空选择警告提示",
+    "last_state": 2,
+    "html_bytes": 109688,
+    "compile_ms": 0,
+    "warnings": [],
+    "screenshot": "E:\\任务流\\任务流\\p2p\\backend\\src\\integrations\\hmDsl\\__tests__\\output\\state_3.compiled.png",
+    "dom": {
+      "dsl_exists": true,
+      "dsl_z": "9999",
+      "cards": 0,
+      "lists": 14,
+      "banner": true,
+      "spinner": false,
+      "overlay": false,
+      "badge": false,
+      "gridCols": null
+    }
+  },
+  {
+    "state_id": 4,
+    "title": "偏好提交加载中",
+    "last_state": 2,
+    "html_bytes": 103011,
+    "compile_ms": 0,
+    "warnings": [],
+    "screenshot": "E:\\任务流\\任务流\\p2p\\backend\\src\\integrations\\hmDsl\\__tests__\\output\\state_4.compiled.png",
+    "dom": {
+      "dsl_exists": true,
+      "dsl_z": "9999",
+      "cards": 0,
+      "lists": 7,
+      "banner": false,
+      "spinner": true,
+      "overlay": true,
+      "badge": false,
+      "gridCols": null
+    }
+  },
+  {
+    "state_id": 5,
+    "title": "Interests and Preferences页",
+    "last_state": 1,
+    "html_bytes": 101602,
+    "compile_ms": 0,
+    "warnings": [],
+    "screenshot": "E:\\任务流\\任务流\\p2p\\backend\\src\\integrations\\hmDsl\\__tests__\\output\\state_5.compiled.png",
+    "dom": {
+      "dsl_exists": true,
+      "dsl_z": "9999",
+      "cards": 6,
+      "lists": 0,
+      "banner": false,
+      "spinner": false,
+      "overlay": false,
+      "badge": false,
+      "gridCols": "98.6562px 98.6719px 98.6562px"
+    }
+  },
+  {
+    "state_id": 6,
+    "title": "资讯页返回带红点提示",
+    "last_state": 1,
+    "html_bytes": 94019,
+    "compile_ms": 1,
+    "warnings": [],
+    "screenshot": "E:\\任务流\\任务流\\p2p\\backend\\src\\integrations\\hmDsl\\__tests__\\output\\state_6.compiled.png",
+    "dom": {
+      "dsl_exists": false,
+      "dsl_z": null,
+      "cards": 0,
+      "lists": 0,
+      "banner": false,
+      "spinner": false,
+      "overlay": false,
+      "badge": true,
+      "gridCols": null
+    }
+  }
+]

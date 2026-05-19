@@ -1,0 +1,7 @@
+{"event":"state-start","data":{"state_id":5,"state_name":"取消偏好设置","last_state":1,"ts":1778501027116},"ts":"2026-05-11T12:03:47.118Z"}
+{"event":"state-log","data":{"state_id":5,"msg":"[dsl] HM_DSL_ENABLED=1 且匹配，尝试 DSL 路径","ts":1778501027116},"ts":"2026-05-11T12:03:47.119Z"}
+{"event":"state-log","data":{"state_id":5,"msg":"[dsl] 准备走 DSL 路径：取消偏好设置","ts":1778501027116},"ts":"2026-05-11T12:03:47.119Z"}
+{"event":"state-log","data":{"state_id":5,"msg":"[dsl] prompt 2.9KB → callText…","ts":1778501027116},"ts":"2026-05-11T12:03:47.119Z"}
+{"event":"state-log","data":{"state_id":5,"msg":"[dsl] [dsl] compile ok · state=\"取消偏好设置\" · 338B rendered","ts":1778501031056},"ts":"2026-05-11T12:03:51.056Z"}
+{"event":"state-log","data":{"state_id":5,"msg":"[dsl] 成功（html 94374B），跳过旧路径","ts":1778501031056},"ts":"2026-05-11T12:03:51.057Z"}
+{"event":"state-done","data":{"state_id":5,"state_name":"取消偏好设置","file":"state_5.html","applied":1,"skipped":0,"review_ok":null,"review_applied":0,"review_issues":[],"elapsed_ms":3942,"hmExpansions":[],"hmMissing":[],"ts":1778501031058},"ts":"2026-05-11T12:03:51.060Z"}

@@ -1,0 +1,886 @@
+你是一个前端代码重构助手。
+
+你的任务是：基于“当前界面的静态 HTML（index.html）”和“修改需求”，输出代码替换块。
+**禁止输出任何自然语言解释。禁止使用 Markdown 代码块标记 (如 ```html)。**
+
+#############################################################################
+# 【组件库复用约束（高优先级）】
+# - 下方是从标准组件库中检索到的“组件 DOM 片段”（已去除 <style>）。
+# - 你必须优先复用这些 DOM 结构与 class 命名；禁止随意发明新 class。
+# - 在生成时检测，若有匹配到的对应标准组件，必须复用这些组件来生成，注意，必须严格准确匹配，若未能匹配，则不考虑标准组件，按原代码风格生成，要确保满足其他要求，且不要遗漏任何需要生成的内容。
+# - 如果只是改文字内容（如页面标题），须保持文字大小不变
+#############################################################################
+组件 DOM 参考：
+### COMPONENT 1
+- id: danger_button
+- name: 打开本地文件按钮
+- type: Button
+- root: <div id="3177_10710" class="frame-3177_10710">
+- usage: 复制整个 DOM 片段复用；保持内部 class/层级不变；允许改文案/替换图片资源/切换已有元素的显示状态；禁止新增随意发明的新 class（除非作为外层 wrapper 且命名明确）。【重要】若复用的组件是弹窗、面板或卡片容器，必须将 style 中的固定 height（如 162px）修改为 height: auto !important，并确保有 padding-bottom，以适应动态内容高度，防止溢出或留白。
+DOM:
+<div id="3177_10710" class="frame-3177_10710">
+      <div id="3177_10687" class="symbol-3177_10687 fill-lightcomp_background_tertiary-602_9420">
+        <div id="3177_10688" class="text-3177_10688 fill-lightwarning-602_9524-text text-fontbody_lmedium-602_9659">
+          <p id="3177_10688_0" class="paragraph-3177_10688_0">
+<span id="3177_10688_0_1" class="span-3177_10688_0_1 text-fontbody_lmedium-602_9659">BUTTON</span></p>
+        </div>
+      </div>
+    </div>
+
+
+注意，index.html有两种画布大小，手机端（宽度为360px,高度不定），desktop端（宽度为1920px），需要识别当前修改的页面大小。
+
+====================【全局静态页面约束】====================
+
+你只允许生成**纯静态页面结构**：
+- 允许调整排版结构、包裹容器、新增 div/span 等静态元素。
+
+即使修改需求中提到“交互”“点击”“弹窗”“筛选”“开关”等，也只能通过：
+- 静态文案
+- 图标 / 文本状态
+- 结构 / 排版
+- 样式（例如高亮、置灰）
+来表达“默认状态”或“视觉上像开启/关闭”，而**不实现真实的前端交互逻辑**。
+
+===========================================================
+### 任务说明
+接收：原始 HTML 和 修改需求。
+输出：严格格式的 [OLD]...[NEW]... 替换块。
+
+你当前拿到的是某个任务节点的静态页面快照（可能是 index.html，也可能是 index_state_0.html 等）。  
+你只需要根据本次 requirement，将页面修改成**本任务态状态**。
+
+当 requirement 里写“点击…显示…展开…”时，你直接生成**点击之后的 DOM 最终状态**（展开/显示/打开）。
+
+你不需要关心用户点击了什么按钮，或输入了内容，只关心 DOM 在该任务的最终可视状态。
+若修改要求需要用户输入文字，则模拟一些文字，并展示静态交互状态。
+当修改需求涉及”进入“一个新页面，则将其视为全屏弹窗，比如进入”文章预览器“或者“文档阅读器”。若原html是手机页面，则弹窗为手机大小，若原html是电脑页面，则弹窗为电脑大小。 这里的全屏弹窗不可以超过原始html的宽高。
+注意！全屏是指原html的全屏大小，而不是浏览器的全屏大小。需要按照原html的最大高度和宽度进行生成。
+若为“全屏播放”时：直接把播放器容器改成横向布局
+
+==============================================================================
+### 输入类任务的静态状态规则（通用且必须执行）
+
+当当前任务的语义（description 或 intent）中出现与“用户需要输入文本内容”相关的表达时（例如“输入…内容”“填写…信息”“描述…内容”“编辑…文字”等），你必须将对应的输入区域渲染为**已输入状态的静态界面**。
+
+通用要求：
+1. 将该输入区域展示为“内容已被填写”的状态，而不是空白状态。  
+   - 你可以根据任务语义生成一段合理的示例文本（保持简短）。  
+   - 文本内容必须符合任务主题，但不能偏离“静态示例文本”的用途。
+
+2. 同时更新所有与该输入内容直接相关的静态呈现组件。  
+   - 例如：若界面存在与输入内容相关的计数、标签、辅助信息、提示区域等，也应同步反映“已输入”状态。
+
+3. 若任务语义提到“输入行为会触发的关联区域”（如建议面板、辅助信息区、联动展示区、列表等），则在静态界面中应默认视为**已触发并展开**，显示若干示例性内容，以匹配“输入完成后的状态”。
+
+总结：只要当前任务的语义是“需要输入文本”的任务，则必须渲染输入行为完成后的静态最终界面（即用户已经填写了文本、且输入相关的联动区域已展开的状态）。
+===========================================================
+### 关键修改策略 (Critical Strategy)
+# 仅允许新增 BLOCK，禁止新增无关文字。
+注意！！输出[OLD]时，必须将html中的注释和代码同时输出，禁止删除注释。
+
+1. **新增 (ADD)** —— 必须使用“锚点扩展法”
+   机器无法在“空隙”中插入代码。你必须找到新增位置上方的现有代码作为**锚点 (Anchor)**。
+   - [OLD]
+     <锚点代码>
+   - [NEW]
+     <锚点代码>
+     <新增代码>
+   *警告：一定要在 [NEW] 中包含原来的锚点代码，否则原来的代码会被你删掉！*
+
+2. **删除 (DELETE)**
+   - [OLD]
+     <要删除的代码>
+   - [NEW]
+     （保持为空）
+
+3. **修改 / 包裹 (EDIT/WRAP)**
+   - [OLD]
+     <完整旧代码片段>
+   - [NEW]
+     <修改后的新代码片段>
+
+注意：
+- [OLD] 必须是原始 HTML 中完整拷贝出来的片段（内容和空格必须与原始文件一致）。
+- 你可以在 [NEW] 中修改缩进、空格和换行，但 [OLD] 部分不要做任何改动。
+- NEW 只修改你需要改变的内容。
+- 若需要多个修改，输出多个 BLOCK。
+- 如果是同一块 DOM / 同一个 span，不要在多个 patch 里反复出现。合并成一条更大的 [OLD] ... [NEW]，一次性改完。
+- 只生成修改块，禁止生成多余文字。
+- 只允许使用 `[OLD]` 和 `[NEW]` 这两个标记。
+- ❌ 绝对禁止输出 `[/OLD]` 或 `[/NEW]` 之类的标签。
+- 关于 [OLD]
+你只能从【输入的原始 HTML】中复制行并输出，允许删行/保留行/调整缩进，但禁止新增、改写、重排任何标签或属性。
+输出中的每一行都必须在原 HTML 中以完全一致的字符串出现过；不得引入任何原文不存在的标签。
+不要尝试“补全结构”,不要新增也不要省略对应的<div>
+
+### 策略优化：分而治之 (Divide and Conquer)
+如果需要修改/新增/删除的代码区域超过 50 行，或者包含多个独立的子区域，**严禁**生成一个巨大的 [OLD]...[NEW] 块。
+
+你必须将其拆分为多个小型的 [OLD]...[NEW] 块分别替换：
+
+**原则：**
+- 每个 [OLD] 块的长度尽量控制在 30 行以内。
+- 宁可输出 5 个小的替换块，也不要输出 1 个容易出错的大块。
+- 这种方式可以避免长文本导致的“幻觉”和“定位失败”。
+
+===========================================================
+### 注释与区域定位规则
+
+页面是从设计稿导出的静态 HTML，其中大量元素为 <div> / <span>，id 和 class 均为自动生成的。
+
+你必须严格遵守以下原则：
+- HTML 文件中包含大量注释（例如 <!-- 组件开始：参数配置组 -->）。
+  这些注释是锚点，补丁必须基于这些注释定位，不要删除，也不要更改注释内容。
+- 编辑时应优先通过注释定位修改区域，避免误伤其它部分。
+- 页面中大量区域通过中文注释标记（例如“区域开始”，“组件开始”等）。
+  当需求描述中提到某个区域，你必须先根据注释文本的语义，在 HTML 中找到最匹配的那个区域，再在该区域中进行修改。
+  不要在语义不匹配的区域里做修改。
+
+==============================================================================  
+### 注释锚点规则（静态任务流核心机制）
+
+. 所有和“任务”相关的新 UI，都必须带任务节点注释
+
+只要是和某个任务强相关的 UI（弹窗、面板、扩展区、工具栏重构等），都必须用下面的格式包起来：
+
+临时 UI（弹窗、面板、遮罩、展开区、弹出内容、全屏弹窗、文档阅读器、文章预览器等）
+<!-- 任务节点开始: 任务名【临时】 -->
+（本任务新增的 UI）
+<!-- 任务节点结束: 任务名【临时】 -->
+例如： <!-- 任务节点开始: 部署并选择可用模型【临时】 -->
+
+
+持久 UI（新增按钮、标签、提示文案、工具栏重构、轻量组件升级）
+例如： <!-- 任务节点开始: 图片上传【持久】 -->
+
+要求：
+
+“任务节点开始”与“任务节点结束”的任务名必须一致。
+
+状态只能使用这两类：
+
+【临时】：只在某一步中展开 / 需要在后续步骤收起的 UI
+
+【持久】：一旦新增，就会在之后所有步骤中一直保留的 UI（如按钮、标签、辅助文案、工具栏重构等）
+
+要求：
+- “任务节点开始”的任务名和“任务节点结束”的任务名必须一致。
+- 只使用【临时】和【持久】这两种标记。
+- 注意，上一次任务的临时已用display：none隐藏。
+- 弹窗均为临时任务！
+
+============================================================================== 
+
+### ID 与样式规则
+
+- 禁止修改已有 id，禁止为同一元素重复使用 id。
+- 若需要更语义化标记，请使用 data-* 属性或 class，例如：
+  data-role="preview-video-container"
+
+- 注意遵守修改需求中的：
+  - 数字改变
+  - 排版位置（左右 / 上下）
+  - 文案内容改变（例如“在某某下方新增某某”）
+
+===========================================================
+### 风格优先级规则
+
+你必须优先保持“源页面（当前 HTML）已有的设计语言与组件风格”，包括但不限于：
+- 字体、行高、圆角、阴影、边框粗细
+- 颜色体系（主色/辅色/灰阶）、按钮/标签/卡片的默认样式
+- 优先使用 inline style，禁止复用class名！
+- 现有布局系统（flex/grid）、spacing 规律
+- 需按照容器适当调整字号大小，防止视觉上溢出容器，或者被遮盖！
+- 弹窗在移动端视口下必须使用移动端字号体系，禁止沿用桌面端字体尺寸，避免内容在小屏上显得溢出或拥挤。
+
+- 尽量保持原始元素不变。
+  若新增内容，则按照修改需求新增，并保证结构与布局合理。
+
+
+===========================================================
+### 样式与布局规则（CSS / Layout Rules）
+
+- 如果设计需求要求“看起来和某个已有元素一样”，应当复用该元素的样式，使用inline style。禁止复用class名！
+- 当新增按钮、文本、图标时：确保新增节点不会破坏现有的 flex / grid 布局。
+- 允许通过新增外层容器 div、兄弟元素、占位元素等方式，调整整体排版使其更协调。
+- 替换内容时，需保证按钮，卡片等大小与原html一致。
+- 注意原始html的页面大小，可能是webpage （宽度为1920px）或者是手机端页面 （宽度为360px），样式需要根据原始html适应。比如说弹窗，不可以比手机端页面宽。组件大小需与原始html页面大小/画布大小进行对应调整，手机端内新增组件需要按手机端页面比例新增，webpage端同理。例如手机端的下拉菜单（Dropdown）必须小于手机页面画布宽度，仅attach在相应的按钮附近。
+- 新增浮动层或弹窗时需要适应当前层级或整体层级，不要被遮盖。
+- 当前任务描述的新增内容，确认父容器不是display:none 的状态，不然新增内容不可见。
+- 若背景为深色，则文字图标需要为浅色且可见。
+- 新增浮动层或弹窗时，必须保证在当前视口内完全可见：
+  - 禁止使用设计稿中的大绝对坐标（例如 `top: 900px`、`top: 1200px`、`top: 1020px` 等）来定位弹窗或操作面板。太大了！有时候会超出整个页面的大小！
+
+【样式生成强制规则（非常重要）】
+
+- 禁止通过新增或修改 class 名来改变颜色、透明度、字体粗细、禁用/激活等“状态型视觉效果”。
+- 所有“状态差异”（如高亮/置灰/激活/禁用/选中/未选中）必须通过以下方式之一表达：
+  1. 内联 style（如 style="color: #1677ff; opacity: 0.4;"）
+  2. 新增一层包裹容器并在该容器上使用 inline style
+- 若一个元素同时具有多个 class，且这些 class 可能定义同一 CSS 属性（如 color），视为**潜在冲突**，必须改用 inline style。
+
+你当前只看到 body（不提供 <style> / CSS），因此：
+
+1) 禁止“依赖 class 名来推断颜色/字号/间距/布局”。
+- 任何文本节点：
+   ❌ 禁止使用 class 属性控制样式（无论 class 名是什么）
+   ❌ 禁止复用任何已有 class
+   ❌ 禁止依赖 CSS 选择器、继承或优先级
+- 文本的所有视觉样式 **必须且只能** 通过 inline style 显式声明：
+
+===========================================================
+### 布局定位语义（通用版）
+
+当需求出现：
+- “放到……右侧 / 左侧”
+- “放到……上方 / 下方”
+- “包裹起来”
+- “新增一个容器把……框起来”
+- “让整体排版更协调”
+
+若该区域在 HTML 中由
+   <!-- 组件开始：XXX -->
+   ...
+   <!-- 组件结束：XXX -->
+   这样的注释包裹，
+   则“下方”可以理解为：
+   在“组件结束”注释之后追加新的 DOM 结构。
+
+===========================================================
+### 静态“交互状态”表达规则
+
+当修改需求中提到：
+- “开关打开 / 关闭”
+- “面板展开 / 收起”
+- “按钮激活 / 置灰”
+- “选中 / 未选中”
+
+你只能通过**静态方式**表达这些状态，例如：
+- 通过不同的文本（如“已启用”“未启用”）；
+- 通过不同的 style（如背景色、高亮、透明度）；
+- 通过结构上的显示 / 隐藏（保留或删除某些静态块）。
+
+注意：所有提及的激活状态必须显示呈现，比如说点开弹窗，点开开关，或者新增内容等。
+
+===========================================================
+### 新增 Section / 新 UI 区块规则
+
+当修改需求中出现 “新增一个 section / 增加一块新的内容区域 / add another section /
+add a new content block / generate another structured block / insert a new part” 等描述时，
+你必须严格遵守以下规则：
+
+1. 新区块（Section）的定义
+   新区块指一段独立的、包含多个相关元素的 UI 结构，例如：
+   - 一组元素组成的内容区（如一段文本区域、一组组件、一段说明、一块示例代码、一组条目）
+   - 一个上下文一致的 DOM 子树
+   - 一个与现有结构并列的 UI 区域  
+   新区块不是单个元素，而是一个有内部层次结构的“小模块”。
+
+2. 新区块的插入位置
+   新区块必须插入在当前页面结构同层级的**末尾位置**，
+   即在现有兄弟区域的“下方”，保证文档结构连续、稳定。
+   若页面中存在明确的内容分区（如组件开始 / 组件结束注释），
+   新区块必须追加在**最外层主要内容区的最后**。
+
+3. 新区块内容的结构化输出
+   若需求仅提供“内容类型”（如文本、按钮、标题、示例、列表等），
+   你必须根据语义生成合理、结构清晰的 DOM 层次。
+   示例：
+   - 若需求是“一个新说明区”，则包含标题 + 段落。
+   - 若需求是“一个新的功能区域”，则包含标题 + 子元素容器。
+   - 若需求是“新增一个编号元素列表”，则生成统一结构的若干条目。
+   总之：新增区块必须具备**内部结构一致、元素类型合理**的特征。
+
+4. 新区块的内容生成
+   若需求不提供具体内容（如文本内容、条目名称等），
+   你必须生成**合理的示例文本**或占位内容，使结构完整而不含空白元素。
+
+===========================================================
+
+### 重复元素场景下的唯一锚点规则
+
+页面中经常会有多个内容完全一样的元素，例如：
+- 多个 “Get Started” 按钮
+- 多个一样的价格标签
+- 多个相同文案的 badge 或链接
+
+在这种情况下，你在 [OLD] 中 **绝对禁止** 只写这一行元素本身。  
+否则补丁会错误地命中第一个位置。
+
+当存在多个相同元素时，你必须：
+
+1. 在 [OLD] 中额外包含能够唯一定位该元素的上下文：
+   - 同一卡片 / 区块的标题文本（例如 “Pro”）
+   - 或者包含该元素的父容器的一部分
+   - 或者与该元素同一区域内的其他文本
+
+2. [OLD] 必须至少包含 **多行代码**，而不是只有一个标签。
+   如果 [OLD] 只有一行且是高度通用的片段，则视为不符合规范。
+
+#### 错误示例（页面中有多个 “Get Started” 按钮时严禁这样写）：
+
+[OLD]
+    <button class="cta-button">Get Started</button>
+[NEW]
+    <button class="cta-button" style="...">Get Started</button>
+
+#### 正确示例 1（通过标题唯一定位 Pro 卡片）：
+
+[OLD]
+    <h3 class="plan-title">Pro</h3>
+    ...
+    <button class="cta-button">Get Started</button>
+[NEW]
+    <h3 class="plan-title">Pro</h3>
+    ...
+    <button class="cta-button" style="background: linear-gradient(to right, #e94ebd, #b74de5);">Get Started</button>
+
+===========================================================
+    
+当需要对代码进行缩进时，如果代码是通过普通文本元素（如 <p>）展示的，你必须同时修改样式，使其使用 white-space: pre 或 <pre> 标签来保留缩进。
+
+===========================================================
+
+
+当修改需求中提到 下拉面板 / 浮层 / 建议列表 / 弹出菜单 / tooltip / dropdown / popover 时：
+
+浮层必须作为 目标控件所在内容区域的共同父容器 的子元素出现，而不是挂在单个按钮的小容器上。
+
+这个父容器要设为 position: relative;，浮层使用 position: absolute; top: 100%; left: 0; margin-top: 8px;，宽度与该区域保持一致或略小（例如 width: 100%; max-width: 400px;）。
+
+禁止把浮层绝对定位到整个侧栏或页面的边缘，也禁止挂在仅包含图标按钮的狭窄容器上。
+
+浮层应完全可见，尽量避免被祖先容器的 overflow: hidden 裁剪；如有需要，可以将浮层放在一个 overflow: visible 的更外层容器中。
+
+
+===========================================================
+
+若需要图片占位，可在Pexels或者Pixabay寻找相关图片，挑选图片需专业，并符合html内容。禁止预留空白占位或无效占位。禁止凭空捏造图片名称，可以复用原始html中的图片。
+若需要使用图标，可使用Lucide Icons中的SVG图标，禁止使用空白或无效占位。
+若需要文字占位，需要自行生成占位文字，而不是使用placeholder。比如说，文档内需要文字和图片，则需要自行选择与原html相关的文字和图片。
+【按钮尺寸安全规则】
+当按钮宽度或高度被指定为固定值，禁止使用会导致内容宽度变成 0 的 padding 组合。
+   - 例如 width:32px 禁止与 padding:0 16px 或任意会造成内容宽度 < 图标宽度的组合同时出现。
+
+
+===========================================================
+
+### 如何正确处理结尾 (避免数错 div)
+
+【错误做法】 (❌ 禁止由一堆 div 开头/结尾):
+[OLD]
+    </div>
+  </div>
+</div>
+
+【正确做法】 (✅ 必须包含上方的注释或唯一标识):
+
+===========================================================
+
+【浮层定位强制规则（硬约束）】
+1. 所有弹窗/浮层/操作面板禁止出现任何top 大于 200px的样式；不得使用大 top 坐标（如 300/600/900/1020px）。
+2. 如果模型生成了 top > 200px，必须自动改写为合法写法，不允许保留原值。
+3. 覆盖层需使用z-index从而浮在最上层。
+
+自动检查！若弹窗使用了style=“top: 1020px; ”则为错误！任何 top不可以大于200px
+
+#### 错误代码示例（Bad Case）：
+<div style="position: absolute; top: 1020px; ...">
+
+===========================================================
+
+
+【弹窗 / 浮层 放置的唯一合法规则】
+
+任何 弹窗 / 浮层 / overlay / 结束卡片 / 弹出面板
+一律只允许 插入为 body 的 最后一个直接子元素
+新增到 body 末尾时，[OLD] 必须逐字包含 body 内现有的 <script>...</script>，新节点只能插在 <script> 之前，禁止省略或压缩原文结构。
+
+❌ 绝对禁止：
+- 绝对禁止插入到任何现有容器内部（包括视频区域、frame、group、card、任何 div）
+- 绝对禁止作为任何已有节点的子节点或兄弟节点
+- 绝对禁止插入到存在 overflow、transform、position: absolute 的容器中
+
+若需求语义为“局部弹窗 / 浮层 / 结束卡片”：
+- 仍然插在 body 末尾
+- 仅通过 尺寸（width / max-width / height / max-height） 和 内边距 表达“局部”
+- 不通过父容器限制范围
+
+所有弹窗根节点 必须：
+- position: fixed
+- inset: 0
+- z-index >= 9999
+- 内部再用一个子容器控制弹窗大小（而不是靠父节点裁切）
+
+如果模型生成的 overlay 不是 body 的最后一个子元素：
+- 视为错误输出
+- 必须在同一轮输出中修正
+
+===========================================================
+
+文档阅读器（Document Viewer）是一个全屏弹窗，若原html是手机页面，则弹窗为手机大小，若原html是电脑页面，则弹窗为电脑大小。不可以将原本html为手机大小的页面改成电脑大小的页面！
+
+
+===========================================================
+
+若当前页面已满足用户修改需求，则不需要新增/修改/删除。
+
+===========================================================
+【自检】
+若输出OLD中包含</body>，则检查</body>前是否省略了原文结构，比如是否省略了 <script></script>。必须补全原文内容！禁止省略！
+
+===========================================================
+
+【系统级 UI 的静态可视化规则（强制）】
+当任务描述或实现方法中出现以下类型的“用户可见但不属于当前页面 DOM 的 UI”时：
+- 系统键盘 / 软键盘
+- 系统选择器（日期 / 时间 / 地区 / 图片等）
+- 系统弹窗 / 权限提示
+- 系统面板（分享面板、更多操作等）
+- 系统 Toast / Snackbar / 系统提示
+
+你必须在页面中生成一个对应的“静态可视 UI 结构”，用于表达该任务态下用户看到的最终界面。
+该 UI 仅用于视觉呈现，不可交互。
+
+要求：
+- 不得省略该 UI；若任务语义中明确出现却未渲染，视为错误输出
+- 插入位置：必须作为 body 的最后一个直接子元素（在 <script>...</script> 之前）
+
+
+===========================================================
+需要使用与原始html相同的语言。若原始html中使用英文，则修改内容也需要使用英文。
+
+===========================================================
+需要使用原始颜色搭配。
+
+===========================================================
+### 任务流全量 requirements（上下文参考）
+[
+  {
+    "state_id": 1,
+    "state_name": "详情页初始/未下载状态",
+    "description": "页面展示文章详情及附件卡片。附件卡片显示文档类型图标、名称，提供“预览”和“下载”两个操作入口。",
+    "implementation_method": "卡片组件 (Card)：包含两个功能按钮，左侧为 'Preview' (眼睛图标)，右侧为 'Download' (下载图标)。"
+  },
+  {
+    "state_id": 2,
+    "state_name": "在线预览状态 (未下载)",
+    "description": "用户点击预览进入文档阅读器。由于文件未下载到本地，底部固底按钮显示为“下载”。",
+    "implementation_method": "文档查看器 (Document Viewer)：顶部导航栏显示文档标题，内容区域展示文档页，底部悬浮栏 (Fixed Footer) 显示红色的 'Download' 按钮。"
+  },
+  {
+    "state_id": 3,
+    "state_name": "下载成功反馈状态",
+    "description": "用户点击下载后，下载完成瞬间，系统给出成功提示，同时附件卡片上的按钮状态即时刷新。",
+    "implementation_method": "组合反馈：1. 轻量级提示 (Toast/Snackbar) 显示 'Download succeeded.'； 2. 附件卡片右侧按钮由 'Download' 变更为 'Open' (文件夹图标)。",
+    "last_state": 1
+  },
+  {
+    "state_id": 4,
+    "state_name": "已下载/本地文件状态",
+    "description": "下载提示消失后的稳定状态。附件卡片显示文件已存在，用户可再次预览或直接调用系统能力打开文件。",
+    "implementation_method": "卡片组件 (Card)：操作按钮保持为 'Preview' 和 'Open'。",
+    "last_state": 3
+  },
+  {
+    "state_id": 5,
+    "state_name": "本地预览状态 (已下载)",
+    "description": "用户在文件已下载的情况下进入预览模式（或在预览页点击下载成功后自动刷新），底部按钮功能变为打开本地文件。",
+    "implementation_method": "文档查看器 (Document Viewer)：界面布局与状态2一致，但底部悬浮栏 (Fixed Footer) 的红色按钮文本变更为 'Open'。",
+    "last_state": 2
+  }
+]
+
+===========================================================
+### 当前正在执行的 requirement（本次只实现这一条，严格以它为准）
+{
+  "image": "4",
+  "description": "用户在文件已下载的情况下进入预览模式（或在预览页点击下载成功后自动刷新），底部按钮功能变为打开本地文件。【该处匹配到标准组件\"danger_button\"，用\"danger_button\"标准组件生成】",
+  "raw_requirement": {
+    "state_id": 5,
+    "state_name": "本地预览状态 (已下载)",
+    "description": "用户在文件已下载的情况下进入预览模式（或在预览页点击下载成功后自动刷新），底部按钮功能变为打开本地文件。",
+    "implementation_method": "文档查看器 (Document Viewer)：界面布局与状态2一致，但底部悬浮栏 (Fixed Footer) 的红色按钮文本变更为 'Open'。",
+    "last_state": 2
+  },
+  "design_spec": [
+    {
+      "component_type": "Button",
+      "component_name": "打开本地文件按钮",
+      "matched_component_id": "danger_button",
+      "component_html": "<style>\n* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n\nol,ul,menu {\n  padding-inline-start: 0;\n  list-style: none;\n}\n\nol li {\n  list-style-position: inside;\n}\n\nol li::marker, ul li::before {\n  letter-spacing: 0;\n}\n\nhtml {\n  width: 100%;\n  height: 100%;\n}\n\nbody { \n  width: 100%;\n  height: 100%;\n  margin: 0;\n  background-color: white;\n}\n    \nspan {\n  word-break: break-word;\n}\n\n.fill-lightcomp_background_tertiary-602_9420 {\n        background-color: rgba(0, 0, 0, 0.0470588244497776)\n      }\n.fill-lightwarning-602_9524-text {\n        color: rgba(232, 64, 38, 1)\n      }\n.text-fontbody_lmedium-602_9659 {\n        font-size: 16px;\nfont-family: HarmonyHeiTi;\nline-height: 1px\n      }\n\n.scroll-container-0_1 { position: relative !important; width: 100%; height: auto !important; overflow: visible !important; }\n\n.canvas-0_1 { position: relative !important; width: auto !important; height: auto !important; flex-shrink: 0; }\n\n.frame-3177_10710 {\n  width: 120px;\n  height: 40px;\n  position: relative;\n  flex-shrink: 0;\n}\n\n.symbol-3177_10687 {\n  width: 120px;\n  height: 40px;\n  position: relative !important; left: auto !important; top: auto !important; transform: none !important; margin: 0 auto !important;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  padding: 9px 16px 9px 16px;\n  border-radius: 20px 20px 20px 20px;\n  mix-blend-mode: normal;\n}\n\n.text-3177_10688 {\n  text-align: center;\n  width: 88px;\n  height: auto;\n  position: relative;\n  flex-shrink: 0;\n  mix-blend-mode: normal;\n}\n\n.paragraph-3177_10688_0 {\n  line-height: 21.328001022338867px;\n  position: relative;\n  flex-shrink: 0;\n}\n\n.span-3177_10688_0_1 {\n  font-weight: 400;\n  color: rgba(232, 64, 38, 1);\n  position: relative;\n  flex-shrink: 0;\n  mix-blend-mode: normal;\n}\n\n.container {\n  width: 100%;\n  height: 100%;\n}\n</style>\n<div id=\"3177_10710\" class=\"frame-3177_10710\">\n      <div id=\"3177_10687\" class=\"symbol-3177_10687 fill-lightcomp_background_tertiary-602_9420\">\n        <div id=\"3177_10688\" class=\"text-3177_10688 fill-lightwarning-602_9524-text text-fontbody_lmedium-602_9659\">\n          <p id=\"3177_10688_0\" class=\"paragraph-3177_10688_0\">\n<span id=\"3177_10688_0_1\" class=\"span-3177_10688_0_1 text-fontbody_lmedium-602_9659\">BUTTON</span></p>\n        </div>\n      </div>\n    </div>"
+    }
+  ]
+}
+
+【当前 html 内容】：
+<body>
+<!-- 页面整体滚动容器：资讯详情页根容器 -->
+<div class="scroll-container-0_1">
+  <!-- 画布容器：承载整个移动端资讯详情页面 -->
+  <div id="0_1" class="canvas-0_1">
+    <!-- 页面主框架：从状态栏到内容、推荐区的整体竖向布局 -->
+    <div id="6_126325" class="frame-6_126325">
+      <!-- 顶部状态栏背景（深色） -->
+      <div id="6_126326" class="vector-6_126326"></div>
+      <!-- 顶部状态栏：显示时间、网络状态、电池电量等系统信息 -->
+      <div id="6_126329" class="frame-6_126329">
+        <!-- 状态栏背景矩形 -->
+        <div id="126_30935" class="rectangle-126_30935"></div>
+        <!-- 时间文案：08:08 -->
+        <span id="126_30936" class="text-126_30936 text-bodyfont-body-1-medium-6_11385">08:08</span>
+        <!-- 右侧系统状态图标区域（Wi-Fi / 信号 / 蓝牙 / 电池） -->
+        <div id="126_30937" class="group-126_30937">
+          <!-- 左侧网络状态图标（如 Wi-Fi 图标） -->
+          <div id="126_30938" class="group-126_30938">
+            <div id="126_30939" class="group-126_30939">
+              <div id="126_30940" class="group-126_30940">
+                <div id="126_30941" class="group-126_30941">
+                  <div id="126_30942" class="vector-126_30942"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 蜂窝网络信号 + “4G” 文案区域 -->
+          <div id="126_30943" class="group-126_30943">
+            <!-- 蜂窝信号图标（满格） -->
+            <div id="126_30944" class="group-126_30944">
+              <div id="126_30945" class="vector-126_30945"></div>
+            </div>
+            <!-- 网络制式文案：4G -->
+            <span id="126_30946" class="text-126_30946">4G</span>
+            <!-- 可能为蓝牙或其他连接状态图标 -->
+            <div id="126_30947" class="group-126_30947">
+              <div id="126_30948" class="group-126_30948">
+                <div id="126_30949" class="vector-126_30949"></div>
+                <div id="126_30950" class="vector-126_30950"></div>
+              </div>
+            </div>
+          </div>
+          <!-- 备用/次级网络状态 + “4G” 文案区域 -->
+          <div id="126_30951" class="group-126_30951">
+            <div id="126_30952" class="group-126_30952">
+              <div id="126_30953" class="vector-126_30953"></div>
+            </div>
+            <span id="126_30954" class="text-126_30954">4G</span>
+          </div>
+          <!-- 电池状态区域：电池图标 + 百分比“100%” -->
+          <div id="126_30955" class="group-126_30955">
+            <!-- 电池图标背景矩形，充满状态 -->
+            <div id="126_30956" class="rectangle-126_30956 fill-全局graygray-20-6_11386"></div>
+            <!-- 电量百分比文案（仅显示数值 100，对应 100%） -->
+            <span id="126_30957" class="text-126_30957">100</span>
+            <!-- 电池电量图标轮廓/端口 -->
+            <div id="126_30958" class="vector-126_30958"></div>
+          </div>
+        </div>
+      </div>
+      <!-- 状态栏与内容区之间的分割线或装饰向量 -->
+      <div id="6_126330" class="vector-6_126330"></div>
+      <!-- 导航栏背景容器（白色背景区域） -->
+      <div id="6_126344" class="frame-6_126344"></div>
+      <!-- 顶部导航与基础信息区：返回、分享、文章编号和创建时间 -->
+      <div id="6_126345" class="frame-6_126345">
+        <!-- 左侧返回按钮区域（矩形+箭头图标） -->
+        <div id="6_126346" class="group-6_126346">
+          <div id="6_126347" class="rectangle-6_126347"></div>
+          <div id="6_126348" class="vector-6_126348"></div>
+        </div>
+        <!-- 右侧分享/更多操作按钮区域 -->
+        <div id="6_126349" class="group-6_126349">
+          <div id="6_126350" class="rectangle-6_126350"></div>
+          <div id="6_126351" class="vector-6_126351"></div>
+        </div>
+        <!-- 文章/资讯编号：8783 -->
+        <span id="6_126355" class="text-6_126355">8783</span>
+        <!-- 文章创建时间或记录时间：2022 - 11 - 12 13:48:59 -->
+        <span id="6_126356" class="text-6_126356">2022 - 11 - 12 13:48:59</span>
+      </div>
+      <!-- 主内容区容器：包含导航标题区、文章内容区、附件下载区、推荐内容区 -->
+      <div id="6_126357" class="frame-6_126357">
+        <!-- 顶部导航与标题区整体容器 -->
+        <div id="6_126358" class="frame-6_126358">
+          <!-- 左侧：返回按钮 + 页面标题“Details” -->
+          <div id="6_126359" class="frame-6_126359">
+            <!-- 返回按钮图标（左箭头） -->
+            <div id="6_126360" class="frame-6_126360">
+              <div id="126_214377" class="frame-126_214377"></div>
+              <div id="126_216190" class="vector-126_216190"></div>
+            </div>
+            <!-- 页面标题：Details（导航与标题区的主标题） -->
+            <span id="6_126361" class="text-6_126361 fill-场景text-colorcolor-text-primary-6_126575-text text-headlinefont-headline-5-6_126580">Details</span>
+          </div>
+          <!-- 右侧工具区：分享等图标按钮组 -->
+          <div id="6_126362" class="frame-6_126362">
+            <!-- 第一组图标（如分享/转发图标的一部分） -->
+            <div id="6_126363" class="frame-6_126363">
+              <div id="126_340493" class="vector-126_340493"></div>
+              <div id="126_340494" class="frame-126_340494">
+                <div id="126_340495" class="frame-126_340495">
+                  <div id="126_340496" class="vector-126_340496"></div>
+                </div>
+              </div>
+            </div>
+            <!-- 连接线/分享手柄图标 -->
+            <div id="6_126364" class="group-6_126364">
+              <div id="6_126365" class="group-6_126365">
+                <div id="6_126366" class="vector-6_126366"></div>
+                <div id="6_126367" class="vector-6_126367"></div>
+              </div>
+            </div>
+            <!-- 其他辅助图标（如收藏/更多等） -->
+            <div id="6_126371" class="frame-6_126371">
+              <div id="126_340697" class="vector-126_340697"></div>
+              <div id="126_340698" class="frame-126_340698">
+                <div id="126_340699" class="frame-126_340699">
+                  <div id="126_340700" class="vector-126_340700"></div>
+                </div>
+              </div>
+            </div>
+            <!-- 其他工具图标容器 -->
+            <div id="6_126372" class="frame-6_126372">
+              <div id="126_212289" class="vector-126_212289"></div>
+              <div id="126_212290" class="frame-126_212290">
+                <div id="126_212291" class="frame-126_212291">
+                  <div id="126_212292" class="vector-126_212292"></div>
+                </div>
+              </div>
+            </div>
+            <!-- 末尾图标组（如更多菜单/分享的终端节点） -->
+            <div id="6_126373" class="frame-6_126373">
+              <div id="126_3769" class="vector-126_3769"></div>
+              <div id="126_3770" class="group-126_3770">
+                <div id="126_3771" class="vector-126_3771"></div>
+                <div id="126_3776" class="rectangle-126_3776"></div>
+              </div>
+            </div>
+          </div>
+          <!-- 页面内部的标题占位区（可用于栏目标题、子标题等辅助信息） -->
+          <div id="6_126374" class="frame-6_126374">
+            <!-- 标题占位文案 -->
+            <span id="6_126375" class="text-6_126375 fill-场景text-colorcolor-text-primary-6_126575-text text-headlinefont-headline-7-6_126582">标题</span>
+            <!-- 子标题占位文案 -->
+            <span id="6_126376" class="text-6_126376 fill-场景text-colorcolor-text-secondary-6_126577-text text-bodyfont-body-2-regular-6_126583">子标题</span>
+          </div>
+        </div>
+        <!-- 文章内容区 + 附件下载区 + 推荐内容区 -->
+        <div id="6_126377" class="frame-6_126377">
+          <!-- 文章内容整体容器 -->
+          <div id="6_126378" class="frame-6_126378">
+            <div id="6_126379" class="frame-6_126379">
+              <!-- 文章内容区：主标题 + 发布信息 -->
+              <div id="6_126380" class="frame-6_126380">
+                <!-- 主标题：Seven Star Products in the Datacom Business Market User Portraits and Product Portfolios -->
+                <span id="6_126381" class="text-6_126381 fill-场景text-colorcolor-text-primary-6_126575-text">Seven Star Products in the Datacom Business Market User Portraits and Product Portfolios</span>
+                <!-- 发布信息：栏目（Campus network）· 播放量（87 views）· 发布时间（11-04-2024） -->
+                <span id="6_126382" class="text-6_126382 fill-场景text-colorcolor-text-secondary-6_126577-text text-bodyfont-body-1-regular-6_126578">Campus network · 87 views · 11-04-2024</span>
+              </div>
+              <!-- 正文与附件下载区容器 -->
+              <div id="6_126383" class="frame-6_126383">
+                <!-- 正文内容：用户画像与产品设计相关说明 -->
+                <span id="6_126384" class="text-6_126384 fill-场景text-colorcolor-text-primary-6_126575-text text-bodyfont-body-2-regular-6_126584">User profiling is a way of product design and user research. As an effective tool to outline target users, connect user requirements and design direction, it has been widely used in various fields. When we discuss products, requirements, scenarios, and user experience, we often need to focus on a certain group of people. User portraits are an abstract method to represent a collection of target users.</span>
+                <!-- 文档下载区：文件附件卡片（图标 + 文件名 + 预览/下载按钮） -->
+                <div id="6_126385" class="frame-6_126385">
+                  <div id="6_126386" class="frame-6_126386">
+                    <div id="6_126387" class="frame-6_126387">
+                      <div id="6_126388" class="frame-6_126388">
+                        <div id="6_126389" class="frame-6_126389">
+                         <div id="6_126390" class="frame-6_126390">
+                          <div id="126_33429" class="group-126_33429">
+                            <div id="126_33430" class="vector-126_33430"></div>
+                            <div id="126_33431" class="vector-126_33431"></div>
+                            <div id="126_33432" class="vector-126_33432"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- 文件信息行：文件名 + 文件大小 -->
+                      <div id="6_126391" class="frame-6_126391">
+                        <div class="center-stroke-6_126391"></div>
+                        <!-- 左侧：文件名 -->
+                        <div id="6_126392" class="frame-6_126392">
+                          <span id="6_126393" class="text-6_126393">[Product Brochure]: Huawei CloudEngine Series Switches.word</span>
+                          <span id="6_126394" class="text-6_126394">2.5M</span>
+                        </div>
+                        <!-- 右侧：预览和下载操作按钮 -->
+                        <div id="6_126395" class="frame-6_126395">
+                          <!-- 文档预览按钮 -->
+                          <div id="6_126396" class="frame-6_126396 fill-场景fill-colorcolor-fill-2-6_126581">
+                            <div id="6_126397" class="frame-6_126397">
+                              <div id="6_126398" class="group-6_126398">
+                                <div id="6_126399" class="vector-6_126399"></div>
+                                <div id="6_126400" class="vector-6_126400"></div>
+                                <div id="6_126401" class="vector-6_126401"></div>
+                                <div id="6_126402" class="vector-6_126402"></div>
+                                <div id="6_126403" class="vector-6_126403"></div>
+                                <div id="6_126404" class="vector-6_126404"></div>
+                              </div>
+                            </div>
+                            <span id="6_126405" class="text-6_126405 fill-场景text-colorcolor-text-primary-6_126575-text text-bodyfont-body-1-medium-6_126579">Preview</span>
+                          </div>
+                          <!-- 文档下载按钮 -->
+                          <div id="6_126406" class="frame-6_126406 fill-场景fill-colorcolor-fill-2-6_126581">
+                            <div id="6_126407" class="frame-6_126407">
+                              <div id="6_126408" class="group-6_126408">
+                                <div id="6_126409" class="vector-6_126409"></div>
+                                <div id="6_126410" class="vector-6_126410"></div>
+                                <div id="6_126411" class="vector-6_126411"></div>
+                                <div id="6_126412" class="vector-6_126412"></div>
+                                <div id="6_126413" class="vector-6_126413"></div>
+                                <div id="6_126414" class="vector-6_126414"></div>
+                                <div id="6_126415" class="vector-6_126415"></div>
+                              </div>
+                            </div>
+                            <span id="6_126416" class="text-6_126416 fill-场景text-colorcolor-text-primary-6_126575-text">Download</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <!-- 推荐内容区：推荐文章卡片列表 -->
+          <div id="6_126417" class="frame-6_126417">
+            <!-- 推荐区标题：Recommendation -->
+            <div id="6_126418" class="frame-6_126418">
+              <span id="6_126419" class="text-6_126419 fill-场景text-colorcolor-text-primary-6_126575-text text-headlinefont-headline-5-6_126586">Recommendation</span>
+            </div>
+            <!-- 推荐文章列表容器 -->
+            <div id="6_126420" class="frame-6_126420">
+              <!-- 推荐文章卡片 1 -->
+              <div id="6_126421" class="frame-6_126421 stroke-场景border-colorcolor-border-separator-6_126576">
+                <!-- 封面图占位向量 -->
+                <div id="6_126422" class="vector-6_126422"></div>
+                <!-- 文本信息：标题 + 发布信息 -->
+                <div id="6_126426" class="frame-6_126426">
+                  <span id="6_126427" class="text-6_126427">Seven Star Products in the Datacom Business Market | Product Portfolio...informatization construction solution...Product Portfolio...Poster</span>
+                  <span id="6_126428" class="text-6_126428 fill-场景text-colorcolor-text-secondary-6_126577-text text-bodyfont-body-1-regular-6_126578">Campus network · Apr 11, 2024</span>
+                </div>
+              </div>
+              <!-- 推荐文章卡片 2 -->
+              <div id="6_126429" class="frame-6_126429 stroke-场景border-colorcolor-border-separator-6_126576">
+                <div id="6_126430" class="vector-6_126430"></div>
+                <div id="6_126435" class="frame-6_126435">
+                  <span id="6_126436" class="text-6_126436">High-level communication on shelter hospital informatization construction solution...Product Portfolio...Conferencing Endpoint Full Image</span>
+                  <span id="6_126437" class="text-6_126437 fill-场景text-colorcolor-text-secondary-6_126577-text text-bodyfont-body-1-regular-6_126578">IQ intelligent O&M · Jan 8, 2024</span>
+                </div>
+              </div>
+              <!-- 推荐文章卡片 3 -->
+              <div id="6_126438" class="frame-6_126438 stroke-场景border-colorcolor-border-separator-6_126576">
+                <div id="6_126439" class="vector-6_126439"></div>
+                <div id="6_126444" class="frame-6_126444">
+                  <span id="6_126445" class="text-6_126445">Huawei Black Technology Lab 1: Wi-Fi 6 Black Technology Product Portfolio...Conferencing Endpoint Full Image</span>
+                  <span id="6_126446" class="text-6_126446 fill-场景text-colorcolor-text-secondary-6_126577-text text-bodyfont-body-1-regular-6_126578">Campus network · Jan 8, 2024</span>
+                </div>
+              </div>
+              <!-- 推荐文章卡片 4 -->
+              <div id="6_126447" class="frame-6_126447 stroke-场景border-colorcolor-border-separator-6_126587">
+                <div id="6_126448" class="vector-6_126448"></div>
+                <div id="6_126453" class="frame-6_126453">
+                  <span id="6_126454" class="text-6_126454">Huawei participates in Handan, Chengde, Cangzhou and other ...Product Portfolio... 2023</span>
+                  <span id="6_126455" class="text-6_126455 fill-场景text-colorcolor-text-secondary-6_126577-text text-bodyfont-body-1-regular-6_126578">Policy interpretation · Feb 23, 2024</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 底部互动数据区：收藏数 + 点赞数 -->
+      <div id="6_126456" class="frame-6_126456">
+        <!-- 收藏数区域（图标 + 数字 256） -->
+        <div id="6_126457" class="frame-6_126457 stroke-场景border-colorcolor-border-separator-6_126587">
+          <div id="6_126458" class="frame-6_126458">
+            <div id="6_126459" class="frame-6_126459">
+              <div id="126_32072" class="vector-126_32072"></div>
+            </div>
+          </div>
+          <span id="6_126460" class="text-6_126460 fill-场景text-colorcolor-text-primary-6_126575-text text-bodyfont-body-1-medium-6_126579">256</span>
+        </div>
+        <!-- 点赞数区域（点赞图标 + 数字 3391） -->
+        <div id="6_126461" class="frame-6_126461">
+          <div id="6_126462" class="frame-6_126462">
+            <div id="6_126463" class="group-6_126463">
+              <div id="6_126464" class="vector-6_126464"></div>
+              <div id="6_126465" class="vector-6_126465"></div>
+              <div id="6_126466" class="vector-6_126466"></div>
+              <div id="6_126467" class="vector-6_126467"></div>
+              <div id="6_126468" class="vector-6_126468"></div>
+              <div id="6_126469" class="vector-6_126469"></div>
+              <div id="6_126470" class="vector-6_126470"></div>
+            </div>
+          </div>
+          <span id="6_126471" class="text-6_126471 fill-场景text-colorcolor-text-primary-6_126575-text text-bodyfont-body-1-medium-6_126579">3391</span>
+        </div>
+      </div>
+      <!-- 手机页面导航手势指示条 -->
+      <div id="6_126472" class="frame-6_126472">
+        <div id="6_126473" class="frame-6_126473">
+          <div id="6_126474" class="rectangle-6_126474 fill-场景background-colorcolor-bg-mask-6_126585"></div>
+        </div>
+      </div>
+      <!-- 底部“Next”推荐内容卡片（引导用户浏览下一篇文章） -->
+      <div id="6_126475" class="group-6_126475">
+        <!-- 推荐内容卡片背景/封面图占位矩形（例如人物封面图） -->
+        <div id="6_126476" class="rectangle-6_126476"></div>
+        <!-- “Next” 标签及其装饰 -->
+        <div id="6_126477" class="frame-6_126477">
+          <!-- 标签背景 + 箭头或图标 -->
+          <div id="6_126478" class="group-6_126478">
+            <div id="6_126479" class="rectangle-6_126479"></div>
+            <div id="6_126480" class="vector-6_126480"></div>
+          </div>
+          <!-- “Next” 文案标签：表示下一篇推荐内容 -->
+          <span id="6_126483" class="text-6_126483">Next</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 任务节点开始: 在线预览状态 (未下载)【临时】 -->
+<div data-temp-hide="1" style="display: none;">
+
+<div style="position: fixed; inset: 0; z-index: 9999; background-color: white; width: 360px; height: 100%;">
+  <!-- 顶部导航栏 -->
+  <div style="position: relative; width: 100%; height: 44px; background-color: #ffffff; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; box-sizing: border-box;">
+    <div style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </div>
+    <span style="font-size: 16px; font-family: HarmonyHeiTi; font-weight: 500; color: #000000; line-height: 21.328px; text-align: center;">[Product Brochure]: Huawei CloudEngine Series Switches.word</span>
+    <div style="width: 24px;"></div>
+  </div>
+
+  <!-- 文档内容区域（占位） -->
+  <div style="position: relative; width: 100%; height: calc(100% - 84px); overflow-y: auto; padding: 16px; box-sizing: border-box;">
+    <div style="width: 100%; height: 1000px; background-color: #f5f5f5; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+      <span style="font-size: 16px; font-family: HarmonyHeiTi; color: #666666; line-height: 21.328px;">Document preview content</span>
+    </div>
+  </div>
+
+  <!-- 底部固定下载按钮 -->
+  <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 40px; padding: 0 16px; box-sizing: border-box; display: flex; justify-content: center; align-items: center;">
+    <div id="3177_10710" class="frame-3177_10710">
+      <div id="3177_10687" class="symbol-3177_10687 fill-lightcomp_background_tertiary-602_9420" style="background-color: rgba(0, 0, 0, 0.0470588244497776);">
+        <div id="3177_10688" class="text-3177_10688 fill-lightwarning-602_9524-text text-fontbody_lmedium-602_9659" style="color: rgba(232, 64, 38, 1); font-size: 16px; font-family: HarmonyHeiTi; line-height: 1px; text-align: center; width: 88px; height: auto; position: relative; flex-shrink: 0; mix-blend-mode: normal;">
+          <p id="3177_10688_0" class="paragraph-3177_10688_0" style="line-height: 21.328001022338867px; position: relative; flex-shrink: 0;">
+            <span id="3177_10688_0_1" class="span-3177_10688_0_1 text-fontbody_lmedium-602_9659" style="font-weight: 400; color: rgba(232, 64, 38, 1); position: relative; flex-shrink: 0; mix-blend-mode: normal;">Download</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<!-- 任务节点结束: 在线预览状态 (未下载)【临时】 -->
+
+<script>
+
+</script>
+
+</body>

@@ -1,0 +1,2394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixso HTML</title>
+  <link rel="stylesheet" href="css/font.css">
+  <script src="js/animation.js"></script>
+  <style>
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body { 
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color: white;
+}
+    
+span {
+  word-break: break-word;
+}
+
+.fill-场景text-colorcolor-text-primary-9_247987 {
+        background-color: rgba(25, 25, 25, 1)
+      }
+.fill-场景text-colorcolor-text-inverse-6_11394-text {
+        color: rgba(255, 255, 255, 1)
+      }
+.text-bodyfont-body-1-medium-6_11385 {
+        font-size: 12px;
+font-family: HarmonyOS Sans SC;
+line-height: 20px
+      }
+.stroke-场景text-colorcolor-text-inverse-6_11394-text {
+        text-shadow: -1px -1px 0 rgba(255, 255, 255, 1),
+        1px -1px 0 rgba(255, 255, 255, 1),
+        -1px 1px 0 rgba(255, 255, 255, 1),
+        1px 1px 0 rgba(255, 255, 255, 1)
+      }
+.fill-场景background-colorcolor-bg-mask-9_247986 {
+        background-color: rgba(25, 25, 25, 0.30000001192092896)
+      }
+.fill-场景text-colorcolor-text-primary-9_247987-text {
+        color: rgba(25, 25, 25, 1)
+      }
+.fill-场景text-colorcolor-text-secondary-9_247992-text {
+        color: rgba(119, 119, 119, 1)
+      }
+.text-bodyfont-body-1-regular-9_247988 {
+        font-size: 12px;
+font-family: HarmonyOS Sans SC;
+line-height: 20px
+      }
+.fill-场景fill-colorcolor-fill-2-9_247989 {
+        background-color: rgba(25, 25, 25, 0.05000000074505806)
+      }
+.text-bodyfont-body-1-medium-9_247991 {
+        font-size: 12px;
+font-family: HarmonyOS Sans SC;
+line-height: 20px
+      }
+.fill-场景background-colorcolor-bg-mask-9_247993 {
+        background-color: rgba(25, 25, 25, 0.30000001192092896)
+      }
+.fill-场景text-colorcolor-text-inverse-9_247990-text {
+        color: rgba(255, 255, 255, 1)
+      }
+
+.scroll-container-0_1 {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+.canvas-0_1 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame-9_461066 {
+  width: 360px;
+  height: 780px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  background-color: rgba(243, 243, 243, 1);
+}
+
+.frame-9_461067 {
+  width: 360px;
+  height: auto;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 4px 0px 0px 0px;
+}
+
+.frame-9_461068 {
+  width: 360px;
+  height: 24px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.rectangle-121_6888 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  background-color: transparent;
+}
+
+.text-121_6889 {
+  font-weight: 400;
+  text-align: left;
+  letter-spacing: 0px;
+  font-feature-settings: "frac" 1;
+  text-decoration: none;
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: 20px;
+  top: 8.33%;
+  bottom: 8.33%;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.group-121_6890 {
+  width: 82.49365234375px;
+  height: 54.17%;
+  position: absolute;
+  right: 19.50634765625px;
+  top: 20.83%;
+  bottom: 25%;
+}
+
+.group-121_6891 {
+  width: 13px;
+  height: 80.77%;
+  position: absolute;
+  right: 69.49365234375px;
+  top: 7.69%;
+  bottom: 11.54%;
+}
+
+.group-121_6892 {
+  width: 13px;
+  height: 100%;
+  position: absolute;
+  right: 0px;
+  top: 0%;
+  bottom: 0%;
+}
+
+.group-121_6893 {
+  width: 13px;
+  height: 100%;
+  position: absolute;
+  right: 0px;
+  top: 0%;
+  bottom: 0%;
+}
+
+.group-121_6894 {
+  width: 13px;
+  height: 100%;
+  position: absolute;
+  right: 0px;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-121_6895 {
+  width: 13px;
+  height: 100%;
+  background-image: url(./image/Vector_121_6895.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 0px;
+  top: 0%;
+  bottom: 0%;
+}
+
+.group-121_6896 {
+  width: 16.499984741210938px;
+  height: 92.31%;
+  position: absolute;
+  right: 48.99365997314453px;
+  top: 0%;
+  bottom: 7.69%;
+}
+
+.group-121_6897 {
+  width: 11.5px;
+  height: 91.67%;
+  position: absolute;
+  right: 0px;
+  top: 8.33%;
+  bottom: 0%;
+}
+
+.vector-121_6898 {
+  width: 11.5px;
+  height: 100%;
+  background-image: url(./image/Vector_121_6898.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 0px;
+  top: 0%;
+  bottom: 0%;
+}
+
+.text-121_6899 {
+  font-size: 6.5px;
+  font-family: DIN Alternate;
+  font-weight: 400;
+  text-align: left;
+  letter-spacing: 0px;
+  line-height: 7px;
+  font-feature-settings: "frac" 1;
+  text-decoration: none;
+  width: 9px;
+  height: auto;
+  position: absolute;
+  right: 7.4999847412109375px;
+  top: 0%;
+  bottom: 41.67%;
+}
+
+.group-121_6900 {
+  width: 4.22725248336792px;
+  height: 25%;
+  position: absolute;
+  right: 12.272710800170898px;
+  top: 75%;
+  bottom: 0%;
+}
+
+.group-121_6901 {
+  width: 4.22725248336792px;
+  height: 100%;
+  position: absolute;
+  right: 0px;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-121_6902 {
+  width: 1.7385438680648804px;
+  height: 99.99%;
+  background-image: url(./image/Vector_121_6902.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 2.4887086153030396px;
+  top: 0%;
+  bottom: 0.01%;
+}
+
+.vector-121_6903 {
+  width: 1.7385438680648804px;
+  height: 99.99%;
+  background-image: url(./image/Vector_121_6903.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 1.1920928955078125e-7px;
+  top: 0.01%;
+  bottom: 0%;
+}
+
+.group-121_6904 {
+  width: 14.5px;
+  height: 92.31%;
+  position: absolute;
+  right: 29.99365234375px;
+  top: 0%;
+  bottom: 7.69%;
+}
+
+.group-121_6905 {
+  width: 11.5px;
+  height: 91.67%;
+  position: absolute;
+  right: 0px;
+  top: 8.33%;
+  bottom: 0%;
+}
+
+.vector-121_6906 {
+  width: 11.5px;
+  height: 100%;
+  background-image: url(./image/Vector_121_6906.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 0px;
+  top: 0%;
+  bottom: 0%;
+}
+
+.text-121_6907 {
+  font-size: 6.5px;
+  font-family: DIN Alternate;
+  font-weight: 400;
+  text-align: left;
+  letter-spacing: 0px;
+  line-height: 7px;
+  font-feature-settings: "frac" 1;
+  text-decoration: none;
+  width: 9px;
+  height: auto;
+  position: absolute;
+  right: 5.5px;
+  top: 0%;
+  bottom: 41.67%;
+}
+
+.group-121_6908 {
+  width: 24.49365234375px;
+  height: 100%;
+  position: absolute;
+  right: 0px;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-121_6909 {
+  width: 23px;
+  height: 13px;
+  background-image: url(./image/Boolean_operation_121_6909.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.vector-121_6911 {
+  width: 1px;
+  height: 26.92%;
+  background-image: url(./image/Vector_121_6911.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 0px;
+  top: 30.75%;
+  bottom: 42.33%;
+}
+
+.text-121_6912 {
+  font-size: 10px;
+  font-family: HarmonyOS Sans SC;
+  font-weight: 400;
+  text-align: left;
+  letter-spacing: 0px;
+  line-height: 20px;
+  font-feature-settings: "frac" 1;
+  text-decoration: none;
+  width: auto;
+  height: auto;
+  position: absolute;
+  right: 23px;
+  top: 8.33%;
+  bottom: 8.33%;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.vector-9_461094 {
+  width: 360px;
+  height: 202.5px;
+  background-image: url(./image/Group_9_461094.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0px;
+  top: 28px;
+  display: none;
+}
+
+.vector-9_461098 {
+  width: 360px;
+  height: 202.5px;
+  background-image: url(./image/Group_9_461098.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 50%;
+  top: 28px;
+  transform: translateX(calc(-50% + 0px));
+}
+
+.frame-9_461101 {
+  width: 360px;
+  height: auto;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.frame-9_461102 {
+  width: 360px;
+  height: 28px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  backdrop-filter: blur(6px);
+}
+
+.rectangle-9_461103 {
+  width: 108px;
+  height: 6px;
+  position: absolute;
+  left: 126px;
+  bottom: 11px;
+  border-radius: 3px 3px 3px 3px;
+}
+
+.frame-9_461104 {
+  width: 3.88%;
+  height: 1.8%;
+  overflow: hidden;
+  position: absolute;
+  left: 185.77%;
+  right: -89.65%;
+  top: 59.91%;
+  bottom: 38.29%;
+}
+
+.group-9_461105 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-9_461106 {
+  width: 93.74%;
+  height: 93.75%;
+  background-image: url(./image/Vector_9_461106.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 3.13%;
+  right: 3.13%;
+  top: 3.12%;
+  bottom: 3.13%;
+}
+
+.vector-9_461107 {
+  width: 93.74%;
+  height: 93.75%;
+  background-image: url(./image/Vector_9_461107.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 3.13%;
+  right: 3.13%;
+  top: 3.12%;
+  bottom: 3.13%;
+}
+
+.vector-9_461108 {
+  width: 100%;
+  height: 100%;
+  background-image: url(./image/Ellipse_9_461108.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-9_461109 {
+  width: 57.79%;
+  height: 52.58%;
+  background-image: url(./image/Vector_9_461109.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 18.75%;
+  right: 23.46%;
+  top: 28.49%;
+  bottom: 18.93%;
+}
+
+.vector-9_461110 {
+  width: 61.95%;
+  height: 56.74%;
+  background-image: url(./image/Vector_9_461110.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 18.75%;
+  right: 19.3%;
+  top: 22.91%;
+  bottom: 20.35%;
+}
+
+.vector-9_461111 {
+  width: 91.66%;
+  height: 81.25%;
+  background-image: url(./image/Vector_9_461111.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 4.17%;
+  right: 4.17%;
+  top: 9.37%;
+  bottom: 9.38%;
+}
+
+.frame-9_461112 {
+  width: 3.88%;
+  height: 1.8%;
+  overflow: hidden;
+  position: absolute;
+  left: 138.14%;
+  right: -42.02%;
+  top: 86.83%;
+  bottom: 11.37%;
+}
+
+.group-9_461113 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-9_461114 {
+  width: 93.74%;
+  height: 93.75%;
+  background-image: url(./image/Vector_9_461114.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 3.13%;
+  right: 3.13%;
+  top: 3.12%;
+  bottom: 3.13%;
+}
+
+.vector-9_461115 {
+  width: 93.74%;
+  height: 93.75%;
+  background-image: url(./image/Vector_9_461115.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 3.13%;
+  right: 3.13%;
+  top: 3.12%;
+  bottom: 3.13%;
+}
+
+.vector-9_461116 {
+  width: 100%;
+  height: 100%;
+  background-image: url(./image/Ellipse_9_461116.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-9_461117 {
+  width: 57.79%;
+  height: 52.58%;
+  background-image: url(./image/Vector_9_461117.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 18.75%;
+  right: 23.46%;
+  top: 28.49%;
+  bottom: 18.93%;
+}
+
+.vector-9_461118 {
+  width: 61.95%;
+  height: 56.74%;
+  background-image: url(./image/Vector_9_461118.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 18.75%;
+  right: 19.3%;
+  top: 22.91%;
+  bottom: 20.35%;
+}
+
+.vector-9_461119 {
+  width: 91.66%;
+  height: 81.25%;
+  background-image: url(./image/Vector_9_461119.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 4.17%;
+  right: 4.17%;
+  top: 9.37%;
+  bottom: 9.38%;
+}
+
+.frame-9_461120 {
+  width: 360px;
+  height: auto;
+  position: absolute;
+  left: 0px;
+  top: 28px;
+  display: none;
+  background-color: transparent;
+}
+
+.frame-9_461121 {
+  width: 24px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+}
+
+.frame-9_461122 {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame-121_212556 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-121_214369 {
+  width: 20.001502990722656px;
+  height: 17.999771118164062px;
+  background-image: url(./image/Group_121_214369.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 1.9985122680664062px;
+  top: 3.0000228881835938px;
+}
+
+.frame-9_462944 {
+  width: 328px;
+  height: 56px;
+  position: relative;
+  flex-shrink: 0;
+  display: none;
+  background-color: transparent;
+}
+
+.text-9_462945 {
+  font-size: 28px;
+  font-family: HarmonyOS Sans SC;
+  font-weight: 400;
+  line-height: 36px;
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-9_462946 {
+  font-size: 14px;
+  font-family: HarmonyOS Sans SC;
+  font-weight: 400;
+  line-height: 22px;
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: none;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-9_462947 {
+  width: 328px;
+  height: auto;
+  position: absolute;
+  left: 16px;
+  top: 246.5px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-9_462948 {
+  width: 328px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-9_462949 {
+  width: 328px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-9_462950 {
+  width: 328px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-9_462951 {
+  width: 328px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-9_462952 {
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-9_462953 {
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-grow: 1;
+  background-color: transparent;
+}
+
+.text-9_462954 {
+  font-size: 16px;
+  font-family: HarmonyOS Sans SC;
+  font-weight: 400;
+  line-height: 20px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  width: 100%;
+  height: 80px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.text-9_462955 {
+  font-weight: 400;
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-9_462956 {
+  width: 328px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-9_462957 {
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: center;
+  flex-grow: 1;
+  background-color: transparent;
+}
+
+.vector-9_462958 {
+  width: 24px;
+  height: 24px;
+  background-image: url(./image/Group_9_462958.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.text-9_462961 {
+  font-size: 12px;
+  font-family: HarmonyOS Sans SC;
+  font-weight: 400;
+  line-height: 16px;
+  color: rgba(0, 0, 0, 1);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: undefined;
+  overflow: hidden;
+  width: auto;
+  height: 16px;
+  position: relative;
+  flex-shrink: 1;
+  flex-grow: 1;
+}
+
+.frame-9_462962 {
+  width: 94px;
+  height: 28px;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px 8px 16px;
+  border-radius: 14px 14px 14px 14px;
+  background-color: rgba(25, 25, 25, 0.05000000074505806);
+}
+
+.text-121_24716 {
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0px;
+  font-feature-settings: "frac" 1;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 1);
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-9_462964 {
+  width: 325px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-9_462965 {
+  width: 60px;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 12px 4px 12px;
+  border-radius: 14px 14px 14px 14px;
+}
+
+.frame-9_462966 {
+  width: 14px;
+  height: 14px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.group-9_462967 {
+  width: 104.29%;
+  height: 104.28%;
+  position: absolute;
+  left: -4.29%;
+  right: 0%;
+  top: -2.14%;
+  bottom: -2.14%;
+}
+
+.vector-9_462968 {
+  width: 93.75%;
+  height: 93.75%;
+  background-image: url(./image/Vector_9_462968.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 3.12%;
+  right: 3.13%;
+  top: 3.12%;
+  bottom: 3.13%;
+}
+
+.vector-9_462969 {
+  width: 93.75%;
+  height: 93.75%;
+  background-image: url(./image/Vector_9_462969.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 3.12%;
+  right: 3.13%;
+  top: 3.12%;
+  bottom: 3.13%;
+}
+
+.vector-9_462970 {
+  width: 100%;
+  height: 100%;
+  background-image: url(./image/Ellipse_9_462970.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-9_462971 {
+  width: 100%;
+  height: 100%;
+  background-image: url(./image/Vector_9_462971.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-9_462972 {
+  width: 12.5%;
+  height: 47.92%;
+  background-image: url(./image/Vector_9_462972.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 11.46%;
+  right: 76.04%;
+  top: 43.75%;
+  bottom: 8.33%;
+}
+
+.vector-9_462973 {
+  width: 20.83%;
+  height: 47.92%;
+  background-image: url(./image/Vector_9_462973.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 11.46%;
+  right: 67.71%;
+  top: 43.75%;
+  bottom: 8.33%;
+}
+
+.vector-9_462974 {
+  width: 62.5%;
+  height: 83.34%;
+  background-image: url(./image/Vector_9_462974.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 32.29%;
+  right: 5.21%;
+  top: 8.33%;
+  bottom: 8.33%;
+}
+
+.text-9_462975 {
+  font-size: 12px;
+  font-family: HarmonyOS Sans SC;
+  font-weight: 400;
+  line-height: 20px;
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-9_462976 {
+  width: 60px;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 12px 4px 12px;
+  border-radius: 14px 14px 14px 14px;
+}
+
+.frame-9_462977 {
+  width: 14px;
+  height: 14px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame-9_462978 {
+  width: 153.89%;
+  height: 153.89%;
+  position: absolute;
+  left: -26.95%;
+  right: -26.94%;
+  top: -21.43%;
+  bottom: -32.46%;
+  display: flex;
+  flex-direction: row;
+  gap: 6.428571701049805px;
+  justify-content: center;
+  align-items: center;
+  padding: 6.428571701049805px 6.428571701049805px 6.428571701049805px 6.428571701049805px;
+  background-color: transparent;
+}
+
+.vector-121_6924 {
+  width: 15.428571701049805px;
+  height: 15.428571701049805px;
+  background-image: url(./image/Star_121_6924.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.text-9_462980 {
+  font-weight: 400;
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-9_462981 {
+  width: 103px;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 12px 4px 12px;
+  border-radius: 14px 14px 14px 14px;
+}
+
+.frame-9_462982 {
+  width: 14px;
+  height: 14px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.group-9_462983 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-9_462984 {
+  width: 93.74%;
+  height: 93.74%;
+  background-image: url(./image/Vector_9_462984.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 3.13%;
+  right: 3.13%;
+  top: 3.13%;
+  bottom: 3.13%;
+}
+
+.vector-9_462985 {
+  width: 93.74%;
+  height: 93.74%;
+  background-image: url(./image/Vector_9_462985.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 3.13%;
+  right: 3.13%;
+  top: 3.13%;
+  bottom: 3.13%;
+}
+
+.vector-9_462986 {
+  width: 100%;
+  height: 100%;
+  background-image: url(./image/Ellipse_9_462986.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-9_462987 {
+  width: 87.5%;
+  height: 25%;
+  background-image: url(./image/Vector_9_462987.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 6.25%;
+  right: 6.25%;
+  top: 68.75%;
+  bottom: 6.25%;
+}
+
+.vector-9_462988 {
+  width: 55.98%;
+  height: 66.67%;
+  background-image: url(./image/Vector_9_462988.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 22.01%;
+  right: 22.01%;
+  top: 6.25%;
+  bottom: 27.08%;
+}
+
+.vector-9_462989 {
+  width: 60.15%;
+  height: 70.84%;
+  background-image: url(./image/Vector_9_462989.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 19.92%;
+  right: 19.93%;
+  top: 4.16%;
+  bottom: 25%;
+}
+
+.vector-9_462990 {
+  width: 91.66%;
+  height: 29.17%;
+  background-image: url(./image/Vector_9_462990.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 4.17%;
+  right: 4.17%;
+  top: 66.66%;
+  bottom: 4.17%;
+}
+
+.text-9_462991 {
+  font-size: 12px;
+  font-family: HarmonyOS Sans SC;
+  font-weight: 400;
+  line-height: 20px;
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-9_462992 {
+  width: 78px;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 12px 4px 12px;
+  border-radius: 14px 14px 14px 14px;
+}
+
+.frame-9_462993 {
+  width: 14px;
+  height: 14px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.group-9_462994 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  display: none;
+}
+
+.vector-9_462995 {
+  width: 93.74%;
+  height: 93.74%;
+  background-image: url(./image/Vector_9_462995.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 3.13%;
+  right: 3.13%;
+  top: 3.13%;
+  bottom: 3.13%;
+}
+
+.vector-9_462996 {
+  width: 93.74%;
+  height: 93.74%;
+  background-image: url(./image/Vector_9_462996.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 3.13%;
+  right: 3.13%;
+  top: 3.13%;
+  bottom: 3.13%;
+}
+
+.vector-9_462997 {
+  width: 100%;
+  height: 100%;
+  background-image: url(./image/Ellipse_9_462997.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-9_462998 {
+  width: 57.79%;
+  height: 52.58%;
+  background-image: url(./image/Vector_9_462998.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 18.75%;
+  right: 23.46%;
+  top: 28.49%;
+  bottom: 18.93%;
+}
+
+.vector-9_462999 {
+  width: 61.95%;
+  height: 56.74%;
+  background-image: url(./image/Vector_9_462999.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 18.75%;
+  right: 19.3%;
+  top: 22.91%;
+  bottom: 20.35%;
+}
+
+.vector-9_463000 {
+  width: 91.66%;
+  height: 81.24%;
+  background-image: url(./image/Vector_9_463000.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 4.17%;
+  right: 4.17%;
+  top: 9.38%;
+  bottom: 9.38%;
+}
+
+.group-9_463001 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.group-9_463002 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-9_463003 {
+  width: 100%;
+  height: 100%;
+  background-image: url(./image/Vector_9_463003.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-9_463004 {
+  width: 87.5%;
+  height: 83.34%;
+  background-image: url(./image/Boolean_operation_9_463004.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 8.33%;
+  right: 4.17%;
+  top: 8.32%;
+  bottom: 8.34%;
+}
+
+.text-9_463008 {
+  font-size: 12px;
+  font-family: HarmonyOS Sans SC;
+  font-weight: 400;
+  line-height: 20px;
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-9_463009 {
+  width: 328px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-9_463010 {
+  width: 328px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.text-9_463011 {
+  font-size: 12px;
+  font-family: HarmonyOS Sans SC;
+  font-weight: 400;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 16px;
+  color: rgba(0, 0, 0, 1);
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.text-9_463012 {
+  font-size: 12px;
+  font-family: HarmonyOS Sans SC;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 18px;
+  color: rgba(0, 0, 0, 1);
+  width: 327px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.frame-9_463013 {
+  width: 328px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.text-9_463014 {
+  font-size: 18px;
+  font-family: HarmonyOS Sans SC;
+  font-weight: 400;
+  text-align: justify;
+  line-height: 26px;
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-9_463015 {
+  width: 328px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.group-9_463016 {
+  width: 328px;
+  height: 260.5px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.vector-9_463017 {
+  width: 100%;
+  height: 70.83%;
+  background-image: url(./image/Group_9_463017.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 29.17%;
+}
+
+.frame-9_463020 {
+  width: 8.54%;
+  height: 10.75%;
+  overflow: hidden;
+  position: absolute;
+  left: 3.05%;
+  right: 88.41%;
+  top: 56.33%;
+  bottom: 32.92%;
+  background-color: transparent;
+}
+
+.group-9_463021 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.rectangle-9_463022 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  border-radius: 28px 28px 28px 28px;
+}
+
+.group-9_463023 {
+  width: 60%;
+  height: 60%;
+  position: absolute;
+  left: 20%;
+  right: 20%;
+  top: 20%;
+  bottom: 20%;
+}
+
+.group-9_463024 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.rectangle-9_463025 {
+  width: 100%;
+  height: 99.99%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0.01%;
+  background-color: rgba(216, 216, 216, 1);
+  opacity: 0;
+}
+
+.group-9_463026 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  display: none;
+  opacity: 0.2457914799451828;
+}
+
+.group-9_463027 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.group-9_463028 {
+  width: 100%;
+  height: 99.99%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0.01%;
+  bottom: 0%;
+}
+
+.vector-9_463029 {
+  width: 100%;
+  height: 100%;
+  background-image: url(./image/Boolean_operation_9_463029.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-9_463032 {
+  width: 83.34%;
+  height: 83.33%;
+  background-image: url(./image/Vector_9_463032.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 8.33%;
+  right: 8.33%;
+  top: 8.33%;
+  bottom: 8.34%;
+}
+
+.vector-9_463033 {
+  width: 75%;
+  height: 75%;
+  background-image: url(./image/Vector_9_463033.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 12.5%;
+  right: 12.5%;
+  top: 12.49%;
+  bottom: 12.51%;
+}
+
+.group-9_463034 {
+  width: 91.67%;
+  height: 91.66%;
+  position: absolute;
+  left: 4.15%;
+  right: 4.18%;
+  top: 4.15%;
+  bottom: 4.19%;
+}
+
+.rectangle-9_463035 {
+  width: 90.91%;
+  height: 90.91%;
+  position: absolute;
+  left: 4.53%;
+  right: 4.56%;
+  top: 4.53%;
+  bottom: 4.56%;
+  border-radius: 4.199999809265137px 4.199999809265137px 4.199999809265137px 4.199999809265137px;
+  border-width: 0.699999988079071px 0.699999988079071px 0.699999988079071px 0.699999988079071px;
+  box-sizing: border-box;
+  border-style: solid;
+  border-color: rgba(255, 0, 84, 1);
+  background-color: transparent;
+  opacity: 0.800000011920929;
+}
+
+.rectangle-9_463036 {
+  width: 54.54%;
+  height: 54.54%;
+  position: absolute;
+  left: 22.73%;
+  right: 22.73%;
+  top: 22.73%;
+  bottom: 22.73%;
+  border-width: 0.699999988079071px 0.699999988079071px 0.699999988079071px 0.699999988079071px;
+  box-sizing: border-box;
+  border-style: solid;
+  border-color: rgba(255, 0, 84, 1);
+  background-color: transparent;
+  opacity: 0.800000011920929;
+}
+
+.rectangle-9_463037 {
+  width: 81.82%;
+  height: 100%;
+  position: absolute;
+  left: 9.06%;
+  right: 9.12%;
+  top: 0%;
+  bottom: 0%;
+  border-radius: 4.199999809265137px 4.199999809265137px 4.199999809265137px 4.199999809265137px;
+  border-width: 0.699999988079071px 0.699999988079071px 0.699999988079071px 0.699999988079071px;
+  box-sizing: border-box;
+  border-style: solid;
+  border-color: rgba(255, 0, 84, 1);
+  background-color: transparent;
+  opacity: 0.800000011920929;
+}
+
+.rectangle-9_463038 {
+  width: 100%;
+  height: 81.82%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 9.06%;
+  bottom: 9.12%;
+  border-radius: 4.199999809265137px 4.199999809265137px 4.199999809265137px 4.199999809265137px;
+  border-width: 0.699999988079071px 0.699999988079071px 0.699999988079071px 0.699999988079071px;
+  box-sizing: border-box;
+  border-style: solid;
+  border-color: rgba(255, 0, 84, 1);
+  background-color: transparent;
+  opacity: 0.800000011920929;
+}
+
+.vector-9_463039 {
+  width: 100%;
+  height: 100%;
+  background-image: url(./image/Ellipse_9_463039.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-9_463040 {
+  width: 63.64%;
+  height: 63.64%;
+  background-image: url(./image/Ellipse_9_463040.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 18.18%;
+  right: 18.18%;
+  top: 18.18%;
+  bottom: 18.18%;
+}
+
+.group-9_463041 {
+  width: 99.93%;
+  height: 99.92%;
+  position: absolute;
+  left: 0%;
+  right: 0.07%;
+  top: 0%;
+  bottom: 0.08%;
+}
+
+.vector-9_463042 {
+  width: 99.83%;
+  height: 4.17%;
+  background-image: url(./image/Vector_9_463042.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0.11%;
+  right: 0.06%;
+  top: 50.35%;
+  bottom: 45.48%;
+}
+
+.vector-9_463043 {
+  width: 99.84%;
+  height: 4.17%;
+  background-image: url(./image/Vector_9_463043.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0.1%;
+  right: 0.06%;
+  top: 50.03%;
+  bottom: 45.8%;
+}
+
+.vector-9_463044 {
+  width: 141.27%;
+  height: 4.17%;
+  background-image: url(./image/Vector_9_463044.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: -20.69%;
+  right: -20.58%;
+  top: 49.95%;
+  bottom: 45.88%;
+}
+
+.vector-9_463045 {
+  width: 141.27%;
+  height: 4.17%;
+  background-image: url(./image/Vector_9_463045.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: -22.67%;
+  right: -18.6%;
+  top: 47.97%;
+  bottom: 47.86%;
+}
+
+.rectangle-9_463046 {
+  width: 91.66%;
+  height: 91.67%;
+  position: absolute;
+  left: 4.17%;
+  right: 4.17%;
+  top: 4.16%;
+  bottom: 4.17%;
+  background-color: rgba(50, 197, 255, 1);
+  opacity: 0.448823481798172;
+}
+
+.vector-9_463047 {
+  width: 91.66%;
+  height: 91.67%;
+  background-image: url(./image/Ellipse_9_463047.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 4.17%;
+  right: 4.17%;
+  top: 4.16%;
+  bottom: 4.17%;
+}
+
+.vector-9_463048 {
+  width: 66.21%;
+  height: 73.58%;
+  background-image: url(./image/Boolean_operation_9_463048.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 21.06%;
+  right: 12.73%;
+  top: 13.22%;
+  bottom: 13.2%;
+}
+
+.frame-9_463053 {
+  width: 8.54%;
+  height: 5.38%;
+  position: absolute;
+  left: 88.41%;
+  right: 3.05%;
+  top: 61.61%;
+  bottom: 33.01%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 4px 0.5px 4px;
+  border-radius: 8px 8px 8px 8px;
+  background-color: rgba(25, 25, 25, 0.4000000059604645);
+}
+
+.text-9_463054 {
+  font-size: 10px;
+  font-family: HarmonyOS Sans SC;
+  font-weight: 400;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 10px;
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-9_463055 {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 75.43%;
+  bottom: 0%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-9_463056 {
+  width: 328px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-9_463057 {
+  width: 36px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 1px 0px 1px 0px;
+  background-color: transparent;
+}
+
+.vector-9_463058 {
+  width: 36px;
+  height: 36px;
+  background-image: url(./image/Group_9_463058.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame-9_463062 {
+  width: 276px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.text-9_463063 {
+  font-size: 16px;
+  font-family: HarmonyOS Sans SC;
+  font-weight: 400;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 1);
+  width: 276px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-9_463064 {
+  font-size: 12px;
+  font-family: HarmonyOS Sans SC;
+  font-weight: 400;
+  line-height: 20px;
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-9_463065 {
+  width: 360px;
+  height: auto;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.frame-9_463066 {
+  width: 360px;
+  height: 28px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  backdrop-filter: blur(6px);
+}
+
+.rectangle-9_463067 {
+  width: 108px;
+  height: 6px;
+  position: absolute;
+  left: 126px;
+  bottom: 11px;
+  border-radius: 3px 3px 3px 3px;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.container > * {
+  width: 100%;
+  height: 100%;
+}
+
+  </style>
+</head>
+<body>
+<!-- 整页滚动容器：承载视频详情页的整体内容，可在移动端上下滚动浏览 -->
+<div class="scroll-container-0_1">
+  <!-- 画布根节点：当前视频详情页面的主容器 -->
+  <div id="0_1" class="canvas-0_1">
+    <!-- 页面主框架：包含状态栏、视频封面区、发布者与互动区、详情区和推荐内容区 -->
+    <div id="9_461066" class="frame-9_461066">
+      <!-- 顶部状态栏容器：深色背景，承载时间、网络状态和电池电量信息 -->
+      <div id="9_461067" class="frame-9_461067 fill-场景text-colorcolor-text-primary-9_247987">
+        <!-- 状态栏内容：时间 + 网络图标 + 电池百分比 -->
+        <div id="9_461068" class="frame-9_461068 fill-场景text-colorcolor-text-primary-9_247987">
+          <!-- 状态栏背景矩形 -->
+          <div id="121_6888" class="rectangle-121_6888"></div>
+          <!-- 系统时间：08:08 -->
+          <span id="121_6889" class="text-121_6889 fill-场景text-colorcolor-text-inverse-6_11394-text text-bodyfont-body-1-medium-6_11385">08:08</span>
+          <!-- 网络与连接状态图标区域：Wi-Fi、蜂窝信号、蓝牙等图标组合 -->
+          <div id="121_6890" class="group-121_6890">
+            <!-- Wi-Fi 信号图标（满格） -->
+            <div id="121_6891" class="group-121_6891">
+              <div id="121_6892" class="group-121_6892">
+                <div id="121_6893" class="group-121_6893">
+                  <div id="121_6894" class="group-121_6894">
+                    <div id="121_6895" class="vector-121_6895"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 蜂窝网络信号图标 + “4G” 文本 -->
+            <div id="121_6896" class="group-121_6896">
+              <div id="121_6897" class="group-121_6897">
+                <div id="121_6898" class="vector-121_6898"></div>
+              </div>
+              <span id="121_6899" class="text-121_6899 fill-场景text-colorcolor-text-inverse-6_11394-text stroke-场景text-colorcolor-text-inverse-6_11394-text">4G</span>
+              <!-- 蜂窝信号柱状图标细节 -->
+              <div id="121_6900" class="group-121_6900">
+                <div id="121_6901" class="group-121_6901">
+                  <div id="121_6902" class="vector-121_6902"></div>
+                  <div id="121_6903" class="vector-121_6903"></div>
+                </div>
+              </div>
+            </div>
+            <!-- 备用/第二路蜂窝网络图标 + “4G” 文本 -->
+            <div id="121_6904" class="group-121_6904">
+              <div id="121_6905" class="group-121_6905">
+                <div id="121_6906" class="vector-121_6906"></div>
+              </div>
+              <span id="121_6907" class="text-121_6907 fill-场景text-colorcolor-text-inverse-6_11394-text stroke-场景text-colorcolor-text-inverse-6_11394-text">4G</span>
+            </div>
+            <!-- 蓝牙/其他系统图标区域 -->
+            <div id="121_6908" class="group-121_6908">
+              <div id="121_6909" class="vector-121_6909"></div>
+              <div id="121_6911" class="vector-121_6911"></div>
+            </div>
+          </div>
+          <!-- 电池电量百分比：100%（满电） -->
+          <span id="121_6912" class="text-121_6912 fill-场景text-colorcolor-text-inverse-6_11394-text">100</span>
+        </div>
+      </div>
+      <!-- 顶部装饰/分割线（用于将状态栏与内容区域分隔开） -->
+      <div id="9_461094" class="vector-9_461094"></div>
+      <!-- 视频封面区上方或下方的辅助装饰线/阴影 -->
+      <div id="9_461098" class="vector-9_461098"></div>
+      <!-- 视频封面区域容器：承载视频缩略图（具体图像通过背景或后续样式填充） -->
+      <div id="9_461101" class="frame-9_461101">
+        <div id="9_461102" class="frame-9_461102">
+          <!-- 视频封面占位矩形：显示视频缩略图，位于页面上部核心区域 -->
+          <div id="9_461103" class="rectangle-9_461103 fill-场景background-colorcolor-bg-mask-9_247986"></div>
+        </div>
+      </div>
+      <!-- 视频封面上的叠加图形/渐变装饰，用于强化视觉层次 -->
+      <div id="9_461104" class="frame-9_461104">
+        <div id="9_461105" class="group-9_461105">
+          <div id="9_461106" class="vector-9_461106"></div>
+          <div id="9_461107" class="vector-9_461107"></div>
+          <div id="9_461108" class="vector-9_461108"></div>
+          <div id="9_461109" class="vector-9_461109"></div>
+          <div id="9_461110" class="vector-9_461110"></div>
+          <div id="9_461111" class="vector-9_461111"></div>
+        </div>
+      </div>
+      <!-- 视频封面下方的装饰/高光区域，增强封面区的层次感 -->
+      <div id="9_461112" class="frame-9_461112">
+        <div id="9_461113" class="group-9_461113">
+          <div id="9_461114" class="vector-9_461114"></div>
+          <div id="9_461115" class="vector-9_461115"></div>
+          <div id="9_461116" class="vector-9_461116"></div>
+          <div id="9_461117" class="vector-9_461117"></div>
+          <div id="9_461118" class="vector-9_461118"></div>
+          <div id="9_461119" class="vector-9_461119"></div>
+        </div>
+      </div>
+      <!-- 标题区顶栏：左侧可能为装饰/图标，右侧为“标题/子标题”占位文本 -->
+      <div id="9_461120" class="frame-9_461120">
+        <!-- 标题前的装饰图标/小标签 -->
+        <div id="9_461121" class="frame-9_461121">
+          <div id="9_461122" class="frame-9_461122">
+            <div id="121_212556" class="frame-121_212556"></div>
+            <div id="121_214369" class="vector-121_214369"></div>
+          </div>
+        </div>
+        <!-- 标题与子标题文本：用于展示当前内容的大标题与简短副标题 -->
+        <div id="9_462944" class="frame-9_462944">
+          <span id="9_462945" class="text-9_462945 fill-场景text-colorcolor-text-primary-9_247987-text">标题</span>
+          <span id="9_462946" class="text-9_462946 fill-场景text-colorcolor-text-secondary-9_247992-text">子标题</span>
+        </div>
+      </div>
+      <!-- 主内容区：包含视频文案信息、发布者与互动区、视频详情区和推荐内容区 -->
+      <div id="9_462947" class="frame-9_462947">
+        <!-- 当前视频信息和互动区域整体容器 -->
+        <div id="9_462948" class="frame-9_462948">
+          <!-- 视频标题与基础信息区 + 发布者与互动按钮区的上半部分布局容器 -->
+          <div id="9_462949" class="frame-9_462949">
+            <!-- 视频标题与文案信息区 -->
+            <div id="9_462950" class="frame-9_462950">
+              <div id="9_462951" class="frame-9_462951">
+                <div id="9_462952" class="frame-9_462952">
+                  <!-- 文本信息容器：主标题 + 分类/播放量/发布时间 -->
+                  <div id="9_462953" class="frame-9_462953">
+                    <!-- 主标题：Small Classroom No.1 系列课程标题和多行头部描述 -->
+                    <span id="9_462954" class="text-9_462954 fill-场景text-colorcolor-text-primary-9_247987-text">Small Classroom No.1: Switch Development History Four-line header Four-line header Four-line header Four-line header Four-line header Four-lineheaderFour-line header</span>
+                    <!-- 分类标签 + 播放量 + 发布时间：Quick Configuration Class · 999 views · 22-02-2024 -->
+                    <span id="9_462955" class="text-9_462955 fill-场景text-colorcolor-text-secondary-9_247992-text text-bodyfont-body-1-regular-9_247988">Quick Configuration Class · 999 views · 22-02-2024</span>
+                  </div>
+                </div>
+              </div>
+              <!-- 发布者信息与关注状态区域 -->
+              <div id="9_462956" class="frame-9_462956">
+                <div id="9_462957" class="frame-9_462957">
+                  <!-- 发布者头像图标（圆形红底白标，样式通过向量绘制） -->
+                  <div id="9_462958" class="vector-9_462958"></div>
+                  <!-- 发布者名称：Huawei government and enterprise -->
+                  <span id="9_462961" class="text-9_462961">Huawei government and enterprise</span>
+                  <!-- 已关注按钮：灰色圆角矩形，显示 Following 状态 -->
+                  <div id="9_462962" class="frame-9_462962">
+                    <span id="121_24716" class="text-121_24716 text-bodyfont-body-1-medium-6_11385">Following</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 互动按钮区：点赞、收藏、下载、分享等操作按钮集合 -->
+            <div id="9_462964" class="frame-9_462964">
+              <!-- 点赞按钮：带有点赞图标和数量 23 的圆角矩形 -->
+              <div id="9_462965" class="frame-9_462965 fill-场景fill-colorcolor-fill-2-9_247989">
+                <div id="9_462966" class="frame-9_462966">
+                  <!-- 点赞图标（拇指向上），由多段向量组成 -->
+                  <div id="9_462967" class="group-9_462967">
+                    <div id="9_462968" class="vector-9_462968"></div>
+                    <div id="9_462969" class="vector-9_462969"></div>
+                    <div id="9_462970" class="vector-9_462970"></div>
+                    <div id="9_462971" class="vector-9_462971"></div>
+                    <div id="9_462972" class="vector-9_462972"></div>
+                    <div id="9_462973" class="vector-9_462973"></div>
+                    <div id="9_462974" class="vector-9_462974"></div>
+                  </div>
+                </div>
+                <!-- 点赞数量：23 -->
+                <span id="9_462975" class="text-9_462975 fill-场景text-colorcolor-text-primary-9_247987-text">23</span>
+              </div>
+              <!-- 收藏按钮：星标图标 + 数量 12 -->
+              <div id="9_462976" class="frame-9_462976 fill-场景fill-colorcolor-fill-2-9_247989">
+                <div id="9_462977" class="frame-9_462977">
+                  <div id="9_462978" class="frame-9_462978">
+                    <!-- 收藏星形图标 -->
+                    <div id="121_6924" class="vector-121_6924"></div>
+                  </div>
+                </div>
+                <!-- 收藏数量：12 -->
+                <span id="9_462980" class="text-9_462980 fill-场景text-colorcolor-text-primary-9_247987-text text-bodyfont-body-1-medium-9_247991">12</span>
+              </div>
+              <!-- 下载按钮：下载图标 + “Download” 文本 -->
+              <div id="9_462981" class="frame-9_462981 fill-场景fill-colorcolor-fill-2-9_247989">
+                <div id="9_462982" class="frame-9_462982">
+                  <!-- 下载图标（向下箭头及相关图形） -->
+                  <div id="9_462983" class="group-9_462983">
+                    <div id="9_462984" class="vector-9_462984"></div>
+                    <div id="9_462985" class="vector-9_462985"></div>
+                    <div id="9_462986" class="vector-9_462986"></div>
+                    <div id="9_462987" class="vector-9_462987"></div>
+                    <div id="9_462988" class="vector-9_462988"></div>
+                    <div id="9_462989" class="vector-9_462989"></div>
+                    <div id="9_462990" class="vector-9_462990"></div>
+                  </div>
+                </div>
+                <!-- 下载文字标签 -->
+                <span id="9_462991" class="text-9_462991 fill-场景text-colorcolor-text-primary-9_247987-text">Download</span>
+              </div>
+              <!-- 分享按钮：分享图标 + “Share” 文本 -->
+              <div id="9_462992" class="frame-9_462992 fill-场景fill-colorcolor-fill-2-9_247989">
+                <div id="9_462993" class="frame-9_462993">
+                  <!-- 分享图标（由多段向量组成的连接图形） -->
+                  <div id="9_462994" class="group-9_462994">
+                    <div id="9_462995" class="vector-9_462995"></div>
+                    <div id="9_462996" class="vector-9_462996"></div>
+                    <div id="9_462997" class="vector-9_462997"></div>
+                    <div id="9_462998" class="vector-9_462998"></div>
+                    <div id="9_462999" class="vector-9_462999"></div>
+                    <div id="9_463000" class="vector-9_463000"></div>
+                  </div>
+                  <!-- 分享图标中的箭头/连线细节 -->
+                  <div id="9_463001" class="group-9_463001">
+                    <div id="9_463002" class="group-9_463002">
+                      <div id="9_463003" class="vector-9_463003"></div>
+                      <div id="9_463004" class="vector-9_463004"></div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 分享文字标签 -->
+                <span id="9_463008" class="text-9_463008 fill-场景text-colorcolor-text-primary-9_247987-text">Share</span>
+              </div>
+            </div>
+          </div>
+          <!-- 视频详情区：展示视频的详细描述文案 -->
+          <div id="9_463009" class="frame-9_463009">
+            <div id="9_463010" class="frame-9_463010">
+              <!-- 详情区标题 -->
+              <span id="9_463011" class="text-9_463011">Details</span>
+              <!-- 详情正文：对视频内容的引导性说明 -->
+              <span id="9_463012" class="text-9_463012">Do you know what the switch first looked like? How did it develop step by step to become so powerful?</span>
+            </div>
+          </div>
+        </div>
+        <!-- 推荐内容区：“Watch Next” 推荐下一个视频 -->
+        <div id="9_463013" class="frame-9_463013">
+          <!-- 推荐区标题：Watch Next -->
+          <span id="9_463014" class="text-9_463014 fill-场景text-colorcolor-text-primary-9_247987-text">Watch Next</span>
+          <!-- 推荐视频卡片容器 -->
+          <div id="9_463015" class="frame-9_463015">
+            <div id="9_463016" class="group-9_463016">
+              <!-- 推荐视频封面图及遮罩图形（图片通过背景和向量组合体现） -->
+              <div id="9_463017" class="vector-9_463017"></div>
+              <div id="9_463020" class="frame-9_463020">
+                <div id="9_463021" class="group-9_463021">
+                  <!-- 推荐视频封面背景矩形 -->
+                  <div id="9_463022" class="rectangle-9_463022 fill-场景background-colorcolor-bg-mask-9_247993"></div>
+                  <!-- 封面内部的图形组合：桌面电子元件、电路板和工具等视觉元素 -->
+                  <div id="9_463023" class="group-9_463023">
+                    <div id="9_463024" class="group-9_463024">
+                      <div id="9_463025" class="rectangle-9_463025"></div>
+                      <div id="9_463026" class="group-9_463026">
+                        <div id="9_463027" class="group-9_463027">
+                          <div id="9_463028" class="group-9_463028">
+                            <div id="9_463029" class="vector-9_463029"></div>
+                            <div id="9_463032" class="vector-9_463032"></div>
+                            <div id="9_463033" class="vector-9_463033"></div>
+                          </div>
+                          <div id="9_463034" class="group-9_463034">
+                            <div id="9_463035" class="rectangle-9_463035"></div>
+                            <div id="9_463036" class="rectangle-9_463036"></div>
+                            <div id="9_463037" class="rectangle-9_463037"></div>
+                            <div id="9_463038" class="rectangle-9_463038"></div>
+                            <div id="9_463039" class="vector-9_463039"></div>
+                            <div id="9_463040" class="vector-9_463040"></div>
+                          </div>
+                          <div id="9_463041" class="group-9_463041">
+                            <div id="9_463042" class="vector-9_463042"></div>
+                            <div id="9_463043" class="vector-9_463043"></div>
+                            <div id="9_463044" class="vector-9_463044"></div>
+                            <div id="9_463045" class="vector-9_463045"></div>
+                          </div>
+                        </div>
+                        <div id="9_463046" class="rectangle-9_463046"></div>
+                        <div id="9_463047" class="vector-9_463047"></div>
+                      </div>
+                      <div id="9_463048" class="vector-9_463048"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- 推荐视频时长标签：2:32，通常显示在封面右下角 -->
+              <div id="9_463053" class="frame-9_463053">
+                <span id="9_463054" class="text-9_463054 fill-场景text-colorcolor-text-inverse-9_247990-text">2:32</span>
+              </div>
+              <!-- 推荐视频标题与来源信息 -->
+              <div id="9_463055" class="frame-9_463055">
+                <div id="9_463056" class="frame-9_463056">
+                  <!-- 推荐视频的小图标/播放入口图形 -->
+                  <div id="9_463057" class="frame-9_463057">
+                    <div id="9_463058" class="vector-9_463058"></div>
+                  </div>
+                  <!-- 推荐视频文案：标题 + 分类与时间 -->
+                  <div id="9_463062" class="frame-9_463062">
+                    <!-- 推荐视频标题 -->
+                    <span id="9_463063" class="text-9_463063">Training on Best Practices of the Digital Robot Solution</span>
+                    <!-- 推荐视频来源与日期：Technology Sharing · Feb 23, 2024 -->
+                    <span id="9_463064" class="text-9_463064 fill-场景text-colorcolor-text-secondary-9_247992-text">Technology Sharing · Feb 23, 2024</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 页面底部背景/留白区域：用于与下方系统条或其他内容过渡 -->
+      <div id="9_463065" class="frame-9_463065">
+        <div id="9_463066" class="frame-9_463066">
+          <!-- 底部填充矩形：浅色背景条，用于统一底部视觉 -->
+          <div id="9_463067" class="rectangle-9_463067 fill-场景background-colorcolor-bg-mask-9_247993"></div>
+        </div>
+      </div>
+      <!-- 任务节点开始: 取消下载反馈状态【临时】 -->
+      <div style="position: absolute; left: 0; right: 0; bottom: 16px; display: flex; justify-content: center; pointer-events: none;">
+        <div style="background-color: rgba(238, 243, 254, 1); color: rgba(25, 25, 25, 1); border-radius: 8px; padding: 12px 16px; font-size: 14px; font-family: HarmonyOS Sans SC; font-weight: 400; line-height: 1.2;">
+          Cancelled.
+        </div>
+      </div>
+      <!-- 任务节点结束: 取消下载反馈状态【临时】 -->
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+</script>
+
+</body>
+
+</html>

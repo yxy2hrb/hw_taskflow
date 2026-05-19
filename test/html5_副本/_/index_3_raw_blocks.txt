@@ -1,0 +1,29 @@
+[OLD]
+                        <!-- 文档下载按钮 -->
+                          <div id="3177_10711" class="frame-3177_10711">
+      <div id="3177_10662" class="symbol-3177_10662">
+        <div id="3177_10663" class="text-3177_10663 fill-lightfont_emphasize-602_9440-text text-fontbody_lmedium-602_9659">
+          <p id="3177_10663_0" class="paragraph-3177_10663_0">
+<span id="3177_10663_0_1" class="span-3177_10663_0_1 text-fontbody_lmedium-602_9659">Open</span></p>
+        </div>
+      </div>
+    </div>
+[NEW]
+                        <!-- 文档预览按钮 -->
+                          <div id="3177_10711" class="frame-3177_10711">
+      <div id="3177_10662" class="symbol-3177_10662">
+        <div id="3177_10663" class="text-3177_10663 fill-lightfont_emphasize-602_9440-text text-fontbody_lmedium-602_9659">
+          <p id="3177_10663_0" class="paragraph-3177_10663_0">
+<span id="3177_10663_0_1" class="span-3177_10663_0_1 text-fontbody_lmedium-602_9659">Preview</span></p>
+        </div>
+      </div>
+    </div>
+                        <!-- 文档下载按钮 -->
+                          <div id="3177_10711" class="frame-3177_10711">
+      <div id="3177_10662" class="symbol-3177_10662">
+        <div id="3177_10663" class="text-3177_10663 fill-lightfont_emphasize-602_9440-text text-fontbody_lmedium-602_9659">
+          <p id="3177_10663_0" class="paragraph-3177_10663_0">
+<span id="3177_10663_0_1" class="span-3177_10663_0_1 text-fontbody_lmedium-602_9659">Open</span></p>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,22 @@
+[
+    {
+      "state_id": 1,
+      "state_name": "已关注状态 (初始状态)",
+      "description": "页面显示作者信息，右侧按钮显示“Subscribed”，表明当前用户已关注该作者。",
+      "implementation_method": "按钮控件 (Button)：灰色背景，显示文本 'Subscribed'，表示激活/已完成状态。"
+    },
+    {
+      "state_id": 2,
+      "state_name": "取消关注确认状态",
+      "description": "用户点击“Subscribed”按钮后，页面背景变暗，弹出对话框询问用户是否确定取消关注。",
+      "implementation_method": "模态弹窗 (Modal/Dialog)：居中显示，主标题 'Are you sure you want to unfollow?'，底部提供 'CANCEL' (取消) 和 'YES' (确认) 两个操作按钮。",
+      "last_state": 1
+    },
+    {
+      "state_id": 3,
+      "state_name": "未关注/可关注状态 (结束状态)",
+      "description": "用户点击“YES”确认取消后，弹窗消失，按钮状态立即更新，恢复为未关注样式，引导用户再次关注。",
+      "implementation_method": "按钮控件 (Button)：黑色/深色背景，显示文本 'Follow'，表示可交互的初始状态。",
+      "last_state": 1
+    }
+  ]

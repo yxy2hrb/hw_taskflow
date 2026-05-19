@@ -1,0 +1,27 @@
+{
+  "state_name": "取消偏好设置",
+  "lifecycle": "temporary",
+  "injection": {
+    "mode": "overlay",
+    "z_index": 9999,
+    "top": 0,
+    "bottom": 0
+  },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "FullscreenPanel",
+    "props": {
+      "background": "rgba(0, 0, 0, 0.4)"
+    },
+    "children": [
+      {
+        "type": "OverlayMask",
+        "props": {
+          "opacity": 0.4,
+          "color": "#000",
+          "blur": 0
+        }
+      }
+    ]
+  }
+}

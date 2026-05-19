@@ -1,0 +1,45 @@
+
+     [
+    {
+      "state_id": 1,
+      "state_name": "详情页初始/待播放状态",
+      "description": "页面已加载，视频处于暂停或封面预览状态，显示标题、下载按钮及下方推荐列表。",
+      "implementation_method": "视频容器显示缩略图 (Thumbnail) 及播放按钮图标 (Play Button Icon)。"
+      
+    },
+    {
+      "state_id": 2,
+      "state_name": "流量风险提示状态（默认/未勾选）",
+      "description": "用户点击播放后，系统检测到非Wi-Fi环境，中断播放并弹出警示。复选框处于默认未选中状态。",
+      "implementation_method": "模态弹窗 (Modal/Dialog)：包含标题 'Friendly Reminder'，操作按钮 'CANCEL'/'CONTINUE'，以及未选中的复选框 (Checkbox Unchecked)。",
+      "last_state": 1
+    },
+    {
+      "state_id": 3,
+      "state_name": "流量风险提示状态（用户交互/已勾选）",
+      "description": "用户在弹窗中决定不再重复提醒，点击勾选了选项。",
+      "implementation_method": "模态弹窗 (Modal/Dialog)：复选框变更为选中状态 (Checkbox Checked)。",
+      "last_state": 2
+    },
+    {
+      "state_id": 4,
+      "state_name": "竖屏内嵌播放状态",
+      "description": "用户确认继续后，弹窗消失，视频在原页面位置开始加载并播放。",
+      "implementation_method": "视频播放器控件激活 (Video Player UI)：显示进度条、暂停按钮、当前时间及全屏切换按钮。",
+      "last_state": 1
+    },
+    {
+      "state_id": 5,
+      "state_name": "竖屏沉浸播放状态（纯净模式）",
+      "description": "视频背景变黑，屏蔽页面其他干扰元素（如推荐列表），进入专注观看模式。",
+      "implementation_method": "黑色全屏遮罩层 (Overlay)：视频居中显示，左上角提供关闭/退出悬浮按钮 (Close/X Button)。",
+      "last_state": 4
+    },
+    {
+      "state_id": 6,
+      "state_name": "横屏全屏播放状态",
+      "description": "视频切换至横屏模式，占满整个手机屏幕。",
+      "implementation_method": "屏幕方向旋转 (Landscape Mode)：播放器UI自适应横屏布局，顶部显示返回箭头，底部显示沉浸式进度控制栏。",
+      "last_state": 5
+    }
+  ]

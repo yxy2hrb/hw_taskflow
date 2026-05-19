@@ -1,0 +1,40 @@
+{
+  "state_name": "网络失败提示",
+  "lifecycle": "temporary",
+  "injection": {
+    "mode": "overlay",
+    "z_index": 9999,
+    "top": 0,
+    "bottom": 0
+  },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "OverlayMask",
+    "props": {
+      "opacity": 0,
+      "blur": 0,
+      "color": "transparent"
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "gap": 0,
+          "padding": "0 16px",
+          "align": "center",
+          "justify": "flex-end"
+        },
+        "children": [
+          {
+            "type": "Banner",
+            "props": {
+              "text": "Network unavailable. Please check your connection.",
+              "variant": "warning",
+              "closable": false
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

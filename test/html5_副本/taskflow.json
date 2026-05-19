@@ -1,0 +1,36 @@
+[
+    {
+      "state_id": 1,
+      "state_name": "详情页初始/未下载状态",
+      "description": "页面展示文章详情及附件卡片。附件卡片显示文档类型图标、名称，提供“预览”和“下载”两个操作入口。",
+      "implementation_method": "卡片组件 (Card)：包含两个功能按钮，左侧为 'Preview' (眼睛图标)，右侧为 'Download' (下载图标)。"
+    },
+    {
+      "state_id": 2,
+      "state_name": "在线预览状态 (未下载)",
+      "description": "用户点击预览进入文档阅读器。由于文件未下载到本地，底部固底按钮显示为“下载”。",
+      "implementation_method": "文档查看器 (Document Viewer)：顶部导航栏显示文档标题，内容区域展示文档页，底部悬浮栏 (Fixed Footer) 显示红色的 'Download' 按钮。"
+      
+    },
+    {
+      "state_id": 3,
+      "state_name": "下载成功反馈状态",
+      "description": "用户点击下载后，下载完成瞬间，系统给出成功提示，同时附件卡片上的按钮状态即时刷新。",
+      "implementation_method": "组合反馈：1. 轻量级提示 (Toast/Snackbar) 显示 'Download succeeded.'； 2. 附件卡片右侧按钮由 'Download' 变更为 'Open' (文件夹图标)。",
+      "last_state": 1
+    },
+    {
+      "state_id": 4,
+      "state_name": "已下载/本地文件状态",
+      "description": "下载提示消失后的稳定状态。附件卡片显示文件已存在，用户可再次预览或直接调用系统能力打开文件。",
+      "implementation_method": "卡片组件 (Card)：操作按钮保持为 'Preview' 和 'Open'。",
+      "last_state": 3
+    },
+    {
+      "state_id": 5,
+      "state_name": "本地预览状态 (已下载)",
+      "description": "用户在文件已下载的情况下进入预览模式（或在预览页点击下载成功后自动刷新），底部按钮功能变为打开本地文件。",
+      "implementation_method": "文档查看器 (Document Viewer)：界面布局与状态2一致，但底部悬浮栏 (Fixed Footer) 的红色按钮文本变更为 'Open'。",
+      "last_state": 2
+    }
+  ]

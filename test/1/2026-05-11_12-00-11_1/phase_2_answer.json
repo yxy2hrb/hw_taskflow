@@ -1,0 +1,42 @@
+{
+  "sessionId": "tf_3706404f9cf4",
+  "phase": 2,
+  "picked": [
+    {
+      "id": "state_1",
+      "group": null,
+      "label": "行业资讯页 · 顶部有‘全部’页签，底部有Tab栏，内容为资讯卡片流",
+      "default": false
+    },
+    {
+      "id": "state_2",
+      "group": null,
+      "label": "全屏偏好面板 · 覆盖资讯页但保留状态栏与底Tab，7个行业卡片可多选",
+      "default": false
+    },
+    {
+      "id": "state_3",
+      "group": null,
+      "label": "加载中过渡态 · 点击Preferences后、跳转前的瞬时反馈（如转圈/骨架屏）",
+      "default": false
+    },
+    {
+      "id": "state_4",
+      "group": null,
+      "label": "Interests and Preferences页 · 默认打开Industry标签，网格显示6个行业图标",
+      "default": false
+    },
+    {
+      "id": "state_5",
+      "group": null,
+      "label": "取消偏好设置 · 用户点返回/遮罩层关闭面板，回到资讯页且不保存选择",
+      "default": false
+    },
+    {
+      "id": "state_6",
+      "group": null,
+      "label": "网络失败提示 · 提交偏好时断网，弹出轻量Toast并保持面板开放",
+      "default": false
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+用户在视频详情页点“Download”→移动网络时出确认框→点“CANCEL”关框并底提示“Cancelled.”→点“CONTINUE”出含标题、进度条、百分比、取消图标和“OK”按钮的下载模态框→下载失败时底提示“Download failed.”→保留状态栏与底Tab。

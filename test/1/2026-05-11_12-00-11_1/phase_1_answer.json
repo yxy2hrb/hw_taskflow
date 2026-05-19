@@ -1,0 +1,30 @@
+{
+  "sessionId": "tf_3706404f9cf4",
+  "phase": 1,
+  "picked": [
+    {
+      "id": "opt_a1",
+      "group": "① Actor · 主角",
+      "label": "已登录的普通资讯读者",
+      "default": true
+    },
+    {
+      "id": "opt_t1",
+      "group": "② Trigger · 触发点",
+      "label": "在行业资讯页点击‘全部’页签",
+      "default": true
+    },
+    {
+      "id": "opt_g1",
+      "group": "③ Goal & Happy Path · 核心目标与理想路径",
+      "label": "选定感兴趣的行业 → 系统暂存多选结果 → 点击顶部‘Preferences’跳转至完整设置页",
+      "default": true
+    },
+    {
+      "id": "opt_s1",
+      "group": "④ Success Criteria · 成功判定",
+      "label": "成功跳转至‘Interests and Preferences’页，且Industry标签处于激活态、网格显示6个行业图标",
+      "default": true
+    }
+  ]
+}

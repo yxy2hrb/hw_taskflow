@@ -1,0 +1,8 @@
+{
+  "startedAt": "2026-05-11T12:00:11.827Z",
+  "sourceDir": "e:\\任务流\\任务流\\p2p\\test\\1\\html 19",
+  "htmlPath": "e:\\任务流\\任务流\\p2p\\test\\1\\html 19\\Index.html",
+  "htmlBytes": 93783,
+  "briefFile": "e:\\任务流\\任务流\\p2p\\test\\1\\input.txt",
+  "brief": "用户在行业资讯页点“全部”页签→出全屏偏好选择面板，保留状态栏与底Tab→面板以卡片展示7个行业选项并支持多选→点顶部“Preferences”→跳转至“Interests and Preferences”页，默认显示Industry标签，网格呈现6个行业图标。"
+}

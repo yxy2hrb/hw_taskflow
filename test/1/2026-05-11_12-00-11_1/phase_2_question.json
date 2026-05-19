@@ -1,0 +1,57 @@
+{
+  "id": "phase_2",
+  "phase": 2,
+  "questionText": "这个任务流中，哪些页面或状态是真实需要独立呈现的？请勾选所有你认为必要的。",
+  "options": [
+    {
+      "id": "state_1",
+      "label": "行业资讯页 · 顶部有‘全部’页签，底部有Tab栏，内容为资讯卡片流",
+      "rationale": "这是用户出发的起点，必须保留原上下文（状态栏+底Tab），不能跳失焦",
+      "group": "",
+      "default": false
+    },
+    {
+      "id": "state_2",
+      "label": "全屏偏好面板 · 覆盖资讯页但保留状态栏与底Tab，7个行业卡片可多选",
+      "rationale": "不是新页面而是模态层，但视觉和交互完全独立，需单独定义状态",
+      "group": "",
+      "default": false
+    },
+    {
+      "id": "state_3",
+      "label": "加载中过渡态 · 点击Preferences后、跳转前的瞬时反馈（如转圈/骨架屏）",
+      "rationale": "避免白屏或卡顿感，用户需要感知系统正在响应",
+      "group": "",
+      "default": false
+    },
+    {
+      "id": "state_4",
+      "label": "Interests and Preferences页 · 默认打开Industry标签，网格显示6个行业图标",
+      "rationale": "目标终态，且含默认激活逻辑和布局约束，必须显式声明",
+      "group": "",
+      "default": false
+    },
+    {
+      "id": "state_5",
+      "label": "取消偏好设置 · 用户点返回/遮罩层关闭面板，回到资讯页且不保存选择",
+      "rationale": "常见操作路径，涉及状态回滚，影响数据一致性",
+      "group": "",
+      "default": false
+    },
+    {
+      "id": "state_6",
+      "label": "网络失败提示 · 提交偏好时断网，弹出轻量Toast并保持面板开放",
+      "rationale": "失败场景需保留在当前流程上下文中，不能直接退到首页",
+      "group": "",
+      "default": false
+    }
+  ],
+  "multiSelect": true,
+  "allowCustom": true,
+  "note": "默认全部勾选即可；如果觉得某个状态没必要，取消它；如需补充其它状态请在补充栏写。",
+  "sectionLabel": "任务流阶段 2/3",
+  "sectionProgress": {
+    "current": 2,
+    "total": 3
+  }
+}

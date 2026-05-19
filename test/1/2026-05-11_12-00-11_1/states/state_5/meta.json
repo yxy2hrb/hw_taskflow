@@ -1,0 +1,12 @@
+{
+  "state_id": 5,
+  "state_name": "取消偏好设置",
+  "description": "用户点击面板遮罩层或手机返回键，全屏偏好面板以淡出动画（300ms）关闭，遮罩层同步消失，资讯主页内容无缝恢复（卡片流位置/滚动位置/页签激活态均不变），状态栏与底部Tab栏全程可见且未发生任何位移或重绘。",
+  "implementation_method": "模态关闭交互 (Modal Dismissal)：点击遮罩层或系统返回键触发面板淡出（opacity从1→0，300ms ease-out）；遮罩层同步消失；资讯主页DOM结构与样式完全复原，无新增节点、无重排，页签仍为‘全部’激活态，卡片流滚动位置冻结并还原。",
+  "last_state": 1,
+  "applied": 1,
+  "skipped": 0,
+  "elapsed_ms": 3942,
+  "failed": false,
+  "error": null
+}

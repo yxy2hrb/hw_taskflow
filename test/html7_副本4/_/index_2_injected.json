@@ -1,0 +1,24 @@
+{
+  "taskflow_description": "Structured requirement for 2",
+  "ui_analysis": [
+    {
+      "image": "2",
+      "description": "用户正在输入新名称（李飞），软键盘弹出，输入框获得焦点，右侧出现“清除”图标。",
+      "raw_requirement": {
+        "state_id": 3,
+        "state_name": "编辑页-输入中状态",
+        "last_state": 2,
+        "description": "用户正在输入新名称（李飞），软键盘弹出，输入框获得焦点，右侧出现“清除”图标。",
+        "implementation_method": "输入框 (Input Field) 处于激活态，显示光标及清除按钮 (Clear/X Icon)；底部弹出系统键盘。【输入框 (Input Field) 处于激活态，显示光标及清除按钮 (Clear/X Icon) 匹配到标准组件\"text_input_active\"，用\"text_input_active\"标准组件生成，仅替换内容/文案】"
+      },
+      "design_spec": [
+        {
+          "component_type": "Input",
+          "component_name": "文本输入框的激活/聚焦状态",
+          "matched_component_id": "text_input_active",
+          "component_html": "<style>\n* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n\nol,ul,menu {\n  padding-inline-start: 0;\n  list-style: none;\n}\n\nol li {\n  list-style-position: inside;\n}\n\nol li::marker, ul li::before {\n  letter-spacing: 0;\n}\n\nhtml {\n  width: 100%;\n  height: 100%;\n}\n\nbody { \n  width: 100%;\n  height: 100%;\n  margin: 0;\n  background-color: white;\n}\n    \nspan {\n  word-break: break-word;\n}\n\n.fill-lightcomp_background_list_card-602_9416 {\n        background-color: rgba(255, 255, 255, 1)\n      }\n.fill-lightfont_emphasize-602_9440 {\n        background-color: rgba(10, 89, 247, 1)\n      }\n.fill-lightfont_secondary-602_9447-paragraph {\n        color: rgba(0, 0, 0, 0.6000000238418579)\n      }\n.text-fontbody_lregular-602_9658 {\n        font-size: 16px;\nfont-family: \"HarmonyHeiTi\";\nfont-weight: Regular\n      }\n.fill-lighticon_primary-602_9459-paragraph {\n        color: rgba(0, 0, 0, 0.8980392217636108)\n      }\n\n.scroll-container-0_1 { position: relative !important; width: 100%; height: auto !important; overflow: visible !important; }\n\n.Pixso-canvas-0_1 {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  left: 0px;\n  top: 0px;\n}\n\n.Pixso-frame-3193_18 {\n  width: 250px;\n  height: 40px;\n  position: relative;\n  flex-shrink: 0;\n  display: flex;\n  flex-direction: row;\n  gap: 8px;\n  justify-content: center;\n  align-items: center;\n  padding: 8px 4px 8px 16px;\n  border-radius: 24px 24px 24px 24px;\n}\n\n.Pixso-frame-3193_19 {\n  width: 100%;\n  height: auto;\n  position: relative;\n  flex-shrink: 1;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  flex-grow: 1;\n  flex-basis: 0;\n}\n\n.Pixso-rectangle-3193_20 {\n  width: 1.5px;\n  height: 24px;\n  position: relative;\n  flex-shrink: 0;\n  border-radius: 1px 1px 1px 1px;\n}\n\n.Pixso-paragraph-3193_21 {\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 1;\n  overflow: hidden;\n  width: 100%;\n  height: 21px;\n  position: relative;\n  flex-shrink: 1;\n  flex-grow: 1;\n  flex-basis: 0;\n}\n\n.Pixso-frame-3193_22 {\n  width: 32px;\n  height: 32px;\n  position: relative;\n  flex-shrink: 0;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  border-radius: 16px 16px 16px 16px;\n  mix-blend-mode: normal;\n}\n\n.Pixso-frame-3193_23 {\n  width: 20px;\n  height: 20px;\n  position: relative;\n  flex-shrink: 0;\n  mix-blend-mode: normal;\n}\n\n.Pixso-paragraph-3193_24 {\n  font-size: 20px;\n  font-family: \"HM Symbol\";\n  font-weight: Regular;\n  text-align: center;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  letter-spacing: 0px;\n  text-decoration: none;\n  width: auto;\n  height: auto;\n  position: relative !important; left: auto !important; top: auto !important; transform: none !important; margin: 0 auto !important;\n  white-space: pre;\n  flex-grow: 0;\n  mix-blend-mode: normal;\n}\n\n.container {\n  width: 100%;\n  height: 100%;\n}\n</style>\n<div id=\"3193_18\" class=\"Pixso-frame-3193_18 fill-lightcomp_background_list_card-602_9416\">\n      <div id=\"3193_19\" class=\"Pixso-frame-3193_19\">\n        <div id=\"3193_20\" class=\"Pixso-rectangle-3193_20 fill-lightfont_emphasize-602_9440\"></div>\n        <p id=\"3193_21\" class=\"Pixso-paragraph-3193_21 fill-lightfont_secondary-602_9447-paragraph text-fontbody_lregular-602_9658\">Hint</p>\n      </div>\n      <div id=\"3193_22\" class=\"Pixso-frame-3193_22\">\n        <div id=\"3193_23\" class=\"Pixso-frame-3193_23\">\n          <p id=\"3193_24\" class=\"Pixso-paragraph-3193_24 fill-lighticon_primary-602_9459-paragraph\">󰄠</p>\n        </div>\n      </div>\n    </div>"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "_comment": "test/1 state_3 - 空选警告提示。在 state_2 面板顶部叠加红色 Banner。",
+  "state_name": "空选择警告提示",
+  "lifecycle": "temporary",
+  "injection": { "mode": "overlay", "z_index": 9999, "top": 32, "bottom": 56 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "FullscreenPanel",
+    "props": { "background": "#FFFFFF" },
+    "children": [
+      { "type": "NavBar", "props": { "title": "Preferences", "leftIcon": null, "align": "center" } },
+      { "type": "Banner", "props": { "text": "⚠ 请至少选择一个行业 · Please select at least one industry", "variant": "warning", "closable": true } },
+      { "type": "Column", "props": { "padding": 0 }, "children": [
+        { "type": "ListItem", "props": { "title": "Finance",         "leftIcon": "account_balance"   }, "children": [{ "type": "Checkbox", "props": { "checked": false } }] },
+        { "type": "ListItem", "props": { "title": "Healthcare",      "leftIcon": "health_and_safety" }, "children": [{ "type": "Checkbox", "props": { "checked": false } }] },
+        { "type": "ListItem", "props": { "title": "Education",       "leftIcon": "school"            }, "children": [{ "type": "Checkbox", "props": { "checked": false } }] },
+        { "type": "ListItem", "props": { "title": "Real Estate",     "leftIcon": "home_work"         }, "children": [{ "type": "Checkbox", "props": { "checked": false } }] },
+        { "type": "ListItem", "props": { "title": "Enterprise",      "leftIcon": "business"          }, "children": [{ "type": "Checkbox", "props": { "checked": false } }] },
+        { "type": "ListItem", "props": { "title": "Digital Government", "leftIcon": "public"         }, "children": [{ "type": "Checkbox", "props": { "checked": false } }] },
+        { "type": "ListItem", "props": { "title": "Technology",      "leftIcon": "memory", "divider": false }, "children": [{ "type": "Checkbox", "props": { "checked": false } }] }
+      ]}
+    ]
+  }
+}

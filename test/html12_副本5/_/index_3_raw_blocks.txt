@@ -1,0 +1,309 @@
+[OLD]
+<!-- 顶部导航栏：标题“查看权限”区域（居中显示） -->
+<div class="group-11_280428" id="11_280428">
+<div class="frame-11_280429" id="11_280429">
+<div class="rectangle-11_280430" id="11_280430"></div>
+</div>
+<div class="frame-11_280431" id="11_280431">
+<div class="frame-11_280432" id="11_280432">
+<div class="vector-11_280433" id="11_280433"></div>
+</div>
+</div>
+<span class="text-11_280434" id="11_280434" style="font-size: 18px; font-weight: 500; color: #000000;">权限管理</span>
+</div>
+[NEW]
+<!-- 顶部导航栏：标题“查看权限”区域（居中显示） -->
+<div class="group-11_280428" id="11_280428">
+<div class="frame-11_280429" id="11_280429">
+<div class="rectangle-11_280430" id="11_280430"></div>
+</div>
+<div class="frame-11_280431" id="11_280431">
+<div class="frame-11_280432" id="11_280432">
+<div class="vector-11_280433" id="11_280433"></div>
+</div>
+</div>
+<span class="text-11_280434" id="11_280434" style="font-size: 18px; font-weight: 500; color: #000000;">查看权限</span>
+</div>
+
+[OLD]
+<!-- 权限配置详情内容区 -->
+<div class="frame-permission-detail" style="padding: 20px; display: flex; flex-direction: column; gap: 24px;">
+  <!-- 设置权限有效期限到日期 -->
+  <div class="field-expiry" style="display: flex; flex-direction: column; gap: 8px;">
+    <div class="label" style="font-size: 16px; font-weight: 500; color: #000000;">设置权限有效期限到日期</div>
+    <div class="value" style="font-size: 16px; color: #1677ff; cursor: pointer;">2023-05-12</div>
+  </div>
+
+  <!-- 已有角色 -->
+  <div class="field-roles" style="display: flex; flex-direction: column; gap: 8px;">
+    <div class="label" style="font-size: 16px; font-weight: 500; color: #000000;">已有角色</div>
+    <div class="role-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
+<!-- 任务节点开始: 权限配置详情 - 编辑态【持久】 -->
+<div id="3188_71" class="Pixso-frame-3188_71">
+      <div id="3188_72" class="Pixso-frame-3188_72">
+        <div id="3188_73" class="Pixso-group-3188_73">
+          <div id="3188_74" class="Pixso-rectangle-3188_74 fill-lightcomp_background_emphasize-602_9414"></div>
+          <div id="3188_75" class="vector-wrapper-3188_75">
+            <div id="3188_75" class="Pixso-vector-3188_75"></div>
+          </div>
+        </div>
+      </div>
+      <p id="3188_78" class="Pixso-paragraph-3188_78 fill-lightfont_primary-602_9446-paragraph text-fontbody_mregular-602_9661">报价人员</p>
+    </div>
+<div id="3188_71" class="Pixso-frame-3188_71">
+      <div id="3188_72" class="Pixso-frame-3188_72">
+        <div id="3188_73" class="Pixso-group-3188_73">
+          <div id="3188_74" class="Pixso-rectangle-3188_74 fill-lightcomp_background_emphasize-602_9414"></div>
+          <div id="3188_75" class="vector-wrapper-3188_75">
+            <div id="3188_75" class="Pixso-vector-3188_75"></div>
+          </div>
+        </div>
+      </div>
+      <p id="3188_78" class="Pixso-paragraph-3188_78 fill-lightfont_primary-602_9446-paragraph text-fontbody_mregular-602_9661">产品经理</p>
+    </div>
+<div id="3188_71" class="Pixso-frame-3188_71">
+      <div id="3188_72" class="Pixso-frame-3188_72">
+        <div id="3188_73" class="Pixso-group-3188_73">
+          <div id="3188_74" class="Pixso-rectangle-3188_74 fill-lightcomp_background_emphasize-602_9414"></div>
+          <div id="3188_75" class="vector-wrapper-3188_75">
+            <div id="3188_75" class="Pixso-vector-3188_75"></div>
+          </div>
+        </div>
+      </div>
+      <p id="3188_78" class="Pixso-paragraph-3188_78 fill-lightfont_primary-602_9446-paragraph text-fontbody_mregular-602_9661">商务人员</p>
+    </div>
+<div id="3188_71" class="Pixso-frame-3188_71">
+      <div id="3188_72" class="Pixso-frame-3188_72">
+        <div id="3188_73" class="Pixso-group-3188_73">
+          <div id="3188_74" class="Pixso-rectangle-3188_74"></div>
+          <div id="3188_75" class="vector-wrapper-3188_75">
+            <div id="3188_75" class="Pixso-vector-3188_75"></div>
+          </div>
+        </div>
+      </div>
+      <p id="3188_78" class="Pixso-paragraph-3188_78 fill-lightfont_primary-602_9446-paragraph text-fontbody_mregular-602_9661">经销商Demo管理员</p>
+    </div>
+<div id="3188_71" class="Pixso-frame-3188_71">
+      <div id="3188_72" class="Pixso-frame-3188_72">
+        <div id="3188_73" class="Pixso-group-3188_73">
+          <div id="3188_74" class="Pixso-rectangle-3188_74 fill-lightcomp_background_emphasize-602_9414"></div>
+          <div id="3188_75" class="vector-wrapper-3188_75">
+            <div id="3188_75" class="Pixso-vector-3188_75"></div>
+          </div>
+        </div>
+      </div>
+      <p id="3188_78" class="Pixso-paragraph-3188_78 fill-lightfont_primary-602_9446-paragraph text-fontbody_mregular-602_9661">销售人员</p>
+    </div>
+<div id="3188_71" class="Pixso-frame-3188_71">
+      <div id="3188_72" class="Pixso-frame-3188_72">
+        <div id="3188_73" class="Pixso-group-3188_73">
+          <div id="3188_74" class="Pixso-rectangle-3188_74"></div>
+          <div id="3188_75" class="vector-wrapper-3188_75">
+            <div id="3188_75" class="Pixso-vector-3188_75"></div>
+          </div>
+        </div>
+      </div>
+      <p id="3188_78" class="Pixso-paragraph-3188_78 fill-lightfont_primary-602_9446-paragraph text-fontbody_mregular-602_9661">LICENSE管理员</p>
+    </div>
+<div id="3188_71" class="Pixso-frame-3188_71">
+      <div id="3188_72" class="Pixso-frame-3188_72">
+        <div id="3188_73" class="Pixso-group-3188_73">
+          <div id="3188_74" class="Pixso-rectangle-3188_74"></div>
+          <div id="3188_75" class="vector-wrapper-3188_75">
+            <div id="3188_75" class="Pixso-vector-3188_75"></div>
+          </div>
+        </div>
+      </div>
+      <p id="3188_78" class="Pixso-paragraph-3188_78 fill-lightfont_primary-602_9446-paragraph text-fontbody_mregular-602_9661">专项激励申报人员</p>
+    </div>
+<div id="3188_71" class="Pixso-frame-3188_71">
+      <div id="3188_72" class="Pixso-frame-3188_72">
+        <div id="3188_73" class="Pixso-group-3188_73">
+          <div id="3188_74" class="Pixso-rectangle-3188_74"></div>
+          <div id="3188_75" class="vector-wrapper-3188_75">
+            <div id="3188_75" class="Pixso-vector-3188_75"></div>
+          </div>
+        </div>
+      </div>
+      <p id="3188_78" class="Pixso-paragraph-3188_78 fill-lightfont_primary-602_9446-paragraph text-fontbody_mregular-602_9661">数字化运营经理</p>
+    </div>
+<div id="3188_71" class="Pixso-frame-3188_71">
+      <div id="3188_72" class="Pixso-frame-3188_72">
+        <div id="3188_73" class="Pixso-group-3188_73">
+          <div id="3188_74" class="Pixso-rectangle-3188_74"></div>
+          <div id="3188_75" class="vector-wrapper-3188_75">
+            <div id="3188_75" class="Pixso-vector-3188_75"></div>
+          </div>
+        </div>
+      </div>
+      <p id="3188_78" class="Pixso-paragraph-3188_78 fill-lightfont_primary-602_9446-paragraph text-fontbody_mregular-602_9661">伙伴HR招聘专员</p>
+    </div>
+<div id="3188_71" class="Pixso-frame-3188_71">
+      <div id="3188_72" class="Pixso-frame-3188_72">
+        <div id="3188_73" class="Pixso-group-3188_73">
+          <div id="3188_74" class="Pixso-rectangle-3188_74"></div>
+          <div id="3188_75" class="vector-wrapper-3188_75">
+            <div id="3188_75" class="Pixso-vector-3188_75"></div>
+          </div>
+        </div>
+      </div>
+      <p id="3188_78" class="Pixso-paragraph-3188_78 fill-lightfont_primary-602_9446-paragraph text-fontbody_mregular-602_9661">伙伴人员信息管理员</p>
+    </div>
+<div id="3188_71" class="Pixso-frame-3188_71">
+      <div id="3188_72" class="Pixso-frame-3188_72">
+        <div id="3188_73" class="Pixso-group-3188_73">
+          <div id="3188_74" class="Pixso-rectangle-3188_74"></div>
+          <div id="3188_75" class="vector-wrapper-3188_75">
+            <div id="3188_75" class="Pixso-vector-3188_75"></div>
+          </div>
+        </div>
+      </div>
+      <p id="3188_78" class="Pixso-paragraph-3188_78 fill-lightfont_primary-602_9446-paragraph text-fontbody_mregular-602_9661">MDB管理员</p>
+    </div>
+<div id="3188_71" class="Pixso-frame-3188_71">
+      <div id="3188_72" class="Pixso-frame-3188_72">
+        <div id="3188_73" class="Pixso-group-3188_73">
+          <div id="3188_74" class="Pixso-rectangle-3188_74"></div>
+          <div id="3188_75" class="vector-wrapper-3188_75">
+            <div id="3188_75" class="Pixso-vector-3188_75"></div>
+          </div>
+        </div>
+      </div>
+      <p id="3188_78" class="Pixso-paragraph-3188_78 fill-lightfont_primary-602_9446-paragraph text-fontbody_mregular-602_9661">MDB申请人</p>
+    </div>
+<div id="3188_71" class="Pixso-frame-3188_71">
+      <div id="3188_72" class="Pixso-frame-3188_72">
+        <div id="3188_73" class="Pixso-group-3188_73">
+          <div id="3188_74" class="Pixso-rectangle-3188_74"></div>
+          <div id="3188_75" class="vector-wrapper-3188_75">
+            <div id="3188_75" class="Pixso-vector-3188_75"></div>
+          </div>
+        </div>
+      </div>
+      <p id="3188_78" class="Pixso-paragraph-3188_78 fill-lightfont_primary-602_9446-paragraph text-fontbody_mregular-602_9661">MBO考核接口人</p>
+    </div>
+<div id="3188_71" class="Pixso-frame-3188_71">
+      <div id="3188_72" class="Pixso-frame-3188_72">
+        <div id="3188_73" class="Pixso-group-3188_73">
+          <div id="3188_74" class="Pixso-rectangle-3188_74"></div>
+          <div id="3188_75" class="vector-wrapper-3188_75">
+            <div id="3188_75" class="Pixso-vector-3188_75"></div>
+          </div>
+        </div>
+      </div>
+      <p id="3188_78" class="Pixso-paragraph-3188_78 fill-lightfont_primary-602_9446-paragraph text-fontbody_mregular-602_9661">季度考核接口人</p>
+    </div>
+<div id="3188_71" class="Pixso-frame-3188_71">
+      <div id="3188_72" class="Pixso-frame-3188_72">
+        <div id="3188_73" class="Pixso-group-3188_73">
+          <div id="3188_74" class="Pixso-rectangle-3188_74"></div>
+          <div id="3188_75" class="vector-wrapper-3188_75">
+            <div id="3188_75" class="Pixso-vector-3188_75"></div>
+          </div>
+        </div>
+      </div>
+      <p id="3188_78" class="Pixso-paragraph-3188_78 fill-lightfont_primary-602_9446-paragraph text-fontbody_mregular-602_9661">财经</p>
+    </div>
+<div id="3188_71" class="Pixso-frame-3188_71">
+      <div id="3188_72" class="Pixso-frame-3188_72">
+        <div id="3188_73" class="Pixso-group-3188_73">
+          <div id="3188_74" class="Pixso-rectangle-3188_74"></div>
+          <div id="3188_75" class="vector-wrapper-3188_75">
+            <div id="3188_75" class="Pixso-vector-3188_75"></div>
+          </div>
+        </div>
+      </div>
+      <p id="3188_78" class="Pixso-paragraph-3188_78 fill-lightfont_primary-602_9446-paragraph text-fontbody_mregular-602_9661">总代风控管理人员</p>
+    </div>
+<div id="3188_71" class="Pixso-frame-3188_71">
+      <div id="3188_72" class="Pixso-frame-3188_72">
+        <div id="3188_73" class="Pixso-group-3188_73">
+          <div id="3188_74" class="Pixso-rectangle-3188_74"></div>
+          <div id="3188_75" class="vector-wrapper-3188_75">
+            <div id="3188_75" class="Pixso-vector-3188_75"></div>
+          </div>
+        </div>
+      </div>
+      <p id="3188_78" class="Pixso-paragraph-3188_78 fill-lightfont_primary-602_9446-paragraph text-fontbody_mregular-602_9661">借口订阅管理人员</p>
+    </div>
+<!-- 任务节点结束: 权限配置详情 - 编辑态【持久】 -->
+    </div>
+  </div>
+</div>
+[NEW]
+<!-- 权限配置详情内容区 -->
+<div class="frame-permission-detail" style="padding: 20px; display: flex; flex-direction: column; gap: 24px;">
+  <!-- 设置权限有效期限到日期 -->
+  <div class="field-expiry" style="display: flex; flex-direction: column; gap: 8px;">
+    <div class="label" style="font-size: 16px; font-weight: 500; color: #000000;">设置权限有效期限到日期</div>
+    <div class="value" style="font-size: 16px; color: #000000;">2023-05-12</div>
+  </div>
+
+  <!-- 已有角色 -->
+  <div class="field-roles" style="display: flex; flex-direction: column; gap: 8px;">
+    <div class="label" style="font-size: 16px; font-weight: 500; color: #000000;">已有角色</div>
+    <div class="role-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
+      <div style="font-size: 14px; color: #000000;">已选 5 种</div>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px;">
+        <div style="padding: 4px 8px; background-color: #e6f4ff; border-radius: 4px; font-size: 14px; color: #1677ff;">商务人员</div>
+        <div style="padding: 4px 8px; background-color: #e6f4ff; border-radius: 4px; font-size: 14px; color: #1677ff;">销售人员</div>
+        <div style="padding: 4px 8px; background-color: #e6f4ff; border-radius: 4px; font-size: 14px; color: #1677ff;">报价人员</div>
+        <div style="padding: 4px 8px; background-color: #e6f4ff; border-radius: 4px; font-size: 14px; color: #1677ff;">产品经理</div>
+        <div style="padding: 4px 8px; background-color: #e6f4ff; border-radius: 4px; font-size: 14px; color: #1677ff;">经销商Demo管理员</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+[OLD]
+<!-- 任务节点开始: 权限配置详情 - 编辑态【持久】 -->
+<!-- 底部固定操作按钮 -->
+<div style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: calc(100% - 40px); max-width: 320px;">
+  <div id="3177_10712" class="frame-3177_10712">
+    <div id="3177_10458" class="symbol-3177_10458" style="background-color: #d9d9d9;">
+      <div id="3177_10459" class="text-3177_10459" style="color: #ffffff; font-size: 16px; font-family: HarmonyHeiTi; font-weight: 500;">
+        <p id="3177_10459_0" class="paragraph-3177_10459_0">
+          <span id="3177_10459_0_1" class="span-3177_10459_0_1">确定</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 任务节点结束: 权限配置详情 - 编辑态【持久】 -->
+[NEW]
+<!-- 底部固定操作按钮 -->
+<div style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: calc(100% - 40px); max-width: 320px;">
+  <div id="3177_10712" class="frame-3177_10712">
+    <div id="3177_10458" class="symbol-3177_10458" style="background-color: #1677ff;">
+      <div id="3177_10459" class="text-3177_10459" style="color: #ffffff; font-size: 16px; font-family: HarmonyHeiTi; font-weight: 500;">
+        <p id="3177_10459_0" class="paragraph-3177_10459_0">
+          <span id="3177_10459_0_1" class="span-3177_10459_0_1">权限管理</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+[OLD]
+</div>
+</div>
+</div>
+<script>
+</script>
+</body>
+[NEW]
+</div>
+</div>
+</div>
+<!-- 任务节点开始: 权限配置详情 - 保存成功【临时】 -->
+<div style="position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center;">
+<div style="width: 120px; height: 36px; box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.20); border-radius: 18px;">
+    <div style="width: 120px; height: 36px; padding-left: 16px; padding-right: 16px; padding-top: 8px; padding-bottom: 8px; background-color: rgba(255, 255, 255, 0.90); border-radius: 18px; display: flex; flex-direction: row; align-items: center; justify-content: center;">
+        <p style="width: 88px; height: 20px; font-size: 12px; line-height: 100%; text-align: center; color: rgba(0, 0, 0, 0.90);">保存成功</p>
+    </div>
+</div>
+</div>
+<!-- 任务节点结束: 权限配置详情 - 保存成功【临时】 -->
+<script>
+</script>
+</body>

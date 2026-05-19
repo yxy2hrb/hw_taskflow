@@ -1,0 +1,52 @@
+[OLD]
+              <!-- 下载按钮区域：允许用户下载当前视频内容 -->
+              <div id="6_117561" class="frame-6_117561">
+                <!-- 浅灰色圆角矩形按钮，带向下箭头图标和“Download”文本 -->
+                <div id="6_117562" class="frame-6_117562 fill-场景fill-colorcolor-fill-2-6_117662">
+                  <div id="6_117563" class="frame-6_117563">
+                    <!-- 按钮左侧向下箭头图标（下载符号） -->
+                    <div id="6_117564" class="group-6_117564">
+                      <div id="6_117565" class="vector-6_117565"></div>
+                      <div id="6_117566" class="vector-6_117566"></div>
+                      <div id="6_117567" class="vector-6_117567"></div>
+                      <div id="6_117568" class="vector-6_117568"></div>
+                      <div id="6_117569" class="vector-6_117569"></div>
+                      <div id="6_117570" class="vector-6_117570"></div>
+                      <div id="6_117571" class="vector-6_117571"></div>
+                    </div>
+                  </div>
+                  <!-- 下载按钮文本：Download -->
+                  <span id="6_117572" class="text-6_117572 fill-场景text-colorcolor-text-primary-6_117656-text">Download</span>
+                </div>
+              </div>
+[NEW]
+              <!-- 下载按钮区域：允许用户下载当前视频内容 -->
+              <div id="6_117561" class="frame-6_117561">
+                <!-- 已下载状态按钮（禁用/次级样式） -->
+                <div id="6_117562" class="frame-6_117562" style="background-color: rgba(0, 0, 0, 0.0470588244497776); border-radius: 20px; padding: 9px 16px; display: flex; flex-direction: row; align-items: center; gap: 8px;">
+                  <!-- 对勾图标（使用 SVG 内联） -->
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(10, 89, 247, 1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <!-- 下载按钮文本：Downloaded -->
+                  <span id="6_117572" class="text-6_117572" style="font-size: 16px; font-family: HarmonyHeiTi; color: rgba(10, 89, 247, 1); text-align: center;">Downloaded</span>
+                </div>
+              </div>
+
+[OLD]
+<script>
+
+</script>
+[NEW]
+<!-- 任务节点开始: 下载成功/已下载状态【临时】 -->
+<div style="position: fixed; inset: 0; z-index: 9999; pointer-events: none; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 24px;">
+  <div style="width: 120px; height: 36px; box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.20); border-radius: 18px;">
+    <div style="width: 120px; height: 36px; padding-left: 16px; padding-right: 16px; padding-top: 8px; padding-bottom: 8px; background-color: rgba(255, 255, 255, 0.90); border-radius: 18px; display: flex; flex-direction: row; align-items: center; justify-content: center;">
+      <p style="width: 88px; height: 20px; font-size: 12px; line-height: 100%; text-align: center; color: rgba(0, 0, 0, 0.90);">Saved to the album.</p>
+    </div>
+  </div>
+</div>
+<!-- 任务节点结束: 下载成功/已下载状态【临时】 -->
+<script>
+
+</script>

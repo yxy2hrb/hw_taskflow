@@ -1,0 +1,43 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "行业资讯主页",
+    "description": "用户位于资讯流首页，顶部导航栏含‘全部’页签（当前激活），底部Tab栏可见（含Home/News/Profile等图标），页面主体为垂直排列的资讯卡片，每张卡片含标题、副标题（如‘Smart Meeting Room’）、浏览量与发布时间。",
+    "implementation_method": "原始 HTML 初始快照，不做改造"
+  },
+  {
+    "state_id": 2,
+    "state_name": "全屏偏好选择面板",
+    "description": "用户点击‘全部’页签后，页面叠加一层半透明黑色遮罩（opacity=0.3），状态栏与底部Tab栏保持可见且未被遮挡；居中弹出宽高适配的白色卡片容器，顶部固定‘Preferences’标题（20px Medium字体），下方为7个横向可滚动行业卡片（每个含图标+中文名+勾选框），底部固定蓝色‘确认’按钮（文字‘Confirm’）。",
+    "implementation_method": "底部抽屉 (Bottom Sheet)：半透明遮罩层（rgba(25,25,25,0.3)）覆盖全屏但留出状态栏与底Tab；白色卡片容器（圆角8px，阴影柔和）内含顶部标题‘Preferences’（中文‘偏好设置’）、7个行业卡片（横向滚动网格，每项含SVG图标+‘金融科技’等中文名+右侧复选框）；底部按钮‘Confirm’（中文‘确认’，#1985FF背景，白色文字，高度48px，居中固定）。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "加载中过渡态",
+    "description": "用户点击面板顶部‘Preferences’按钮后，资讯主页内容区域立即变为灰白骨架屏（保留顶部‘全部’页签与底部Tab栏），骨架由3条等高灰色矩形块组成（模拟资讯卡片），持续1.2秒后自动跳转，期间状态栏4G/WiFi图标与Tab栏图标均保持原状。",
+    "implementation_method": "轻量骨架屏 (Skeleton Screen)：资讯流主区域替换为3段等高灰色矩形（#F3F3F3背景，高度120px，圆角4px，间距12px）；顶部页签栏（含‘全部’）与底部Tab栏完全保留、无任何变化；无动画延迟，跳转前持续1.2秒。",
+    "last_state": 1
+  },
+  {
+    "state_id": 4,
+    "state_name": "Interests和Preferences页",
+    "description": "用户完成跳转后进入新页面，顶部为固定标签栏（Industry/Topics/Notifications），‘Industry’标签处于激活态（下划线+深色文字）；下方为6宫格行业图标网格（3×2等距排列），每个图标含SVG图形+中文行业名（如‘人工智能’），所有元素居中对齐，页面无滚动条，状态栏与底部Tab栏均不显示（全屏新页）。",
+    "implementation_method": "标签页内嵌式Industry页 (Tabbed Page)：顶部固定标签栏（三标签，‘Industry’激活态：深色文字+底部蓝色细线；其余标签浅灰色）；下方6宫格网格（3行×2列，间距24px，每项含圆形SVG图标+12px中文字体行业名，如‘人工智能’/‘AI’）；全屏独立页面，无状态栏与底Tab。",
+    "last_state": 1
+  },
+  {
+    "state_id": 5,
+    "state_name": "取消偏好设置",
+    "description": "用户点击面板遮罩层或手机返回键，全屏偏好面板以淡出动画（300ms）关闭，遮罩层同步消失，资讯主页内容无缝恢复（卡片流位置/滚动位置/页签激活态均不变），状态栏与底部Tab栏全程可见且未发生任何位移或重绘。",
+    "implementation_method": "模态关闭交互 (Modal Dismissal)：点击遮罩层或系统返回键触发面板淡出（opacity从1→0，300ms ease-out）；遮罩层同步消失；资讯主页DOM结构与样式完全复原，无新增节点、无重排，页签仍为‘全部’激活态，卡片流滚动位置冻结并还原。",
+    "last_state": 1
+  },
+  {
+    "state_id": 6,
+    "state_name": "网络失败提示",
+    "description": "用户在偏好面板中点击‘Preferences’时设备处于离线状态，页面底部浮出Toast提示（浅红底色#F44336，白色文字，圆角4px，2秒后自动消失），文字为‘网络不可用，请检查连接’（英文‘Network unavailable. Please check your connection.’），面板本身保持打开且可继续操作。",
+    "implementation_method": "轻量级提示 (Toast/Snackbar)：浅红色背景#F44336 + 白色12px文字，圆角4px，宽度适配内容；文本‘网络不可用，请检查连接’ / ‘Network unavailable. Please check your connection.’；居中底部浮出，距底边24px；2秒后自动淡出（opacity 1→0，300ms）；面板与遮罩层保持原状。",
+    "last_state": 2
+  }
+]

@@ -1,0 +1,372 @@
+我将给你一段html代码和页面描述spec，你需要对html进行语义注释，对明确的div语义内容进行解释，解释尽量和spec内的描述一致 ，注意严禁修改原代码内容，只做注释
+html:
+<body>
+<div class="scroll-container-0_1">
+  <div id="0_1" class="canvas-0_1">
+    <div id="6_126325" class="frame-6_126325">
+      <div id="6_126326" class="vector-6_126326"></div>
+      <div id="6_126329" class="frame-6_126329">
+        <div id="126_30935" class="rectangle-126_30935"></div>
+        <span id="126_30936" class="text-126_30936 text-bodyfont-body-1-medium-6_11385">08:08</span>
+        <div id="126_30937" class="group-126_30937">
+          <div id="126_30938" class="group-126_30938">
+            <div id="126_30939" class="group-126_30939">
+              <div id="126_30940" class="group-126_30940">
+                <div id="126_30941" class="group-126_30941">
+                  <div id="126_30942" class="vector-126_30942"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="126_30943" class="group-126_30943">
+            <div id="126_30944" class="group-126_30944">
+              <div id="126_30945" class="vector-126_30945"></div>
+            </div>
+            <span id="126_30946" class="text-126_30946">4G</span>
+            <div id="126_30947" class="group-126_30947">
+              <div id="126_30948" class="group-126_30948">
+                <div id="126_30949" class="vector-126_30949"></div>
+                <div id="126_30950" class="vector-126_30950"></div>
+              </div>
+            </div>
+          </div>
+          <div id="126_30951" class="group-126_30951">
+            <div id="126_30952" class="group-126_30952">
+              <div id="126_30953" class="vector-126_30953"></div>
+            </div>
+            <span id="126_30954" class="text-126_30954">4G</span>
+          </div>
+          <div id="126_30955" class="group-126_30955">
+            <div id="126_30956" class="rectangle-126_30956 fill-全局graygray-20-6_11386"></div>
+            <span id="126_30957" class="text-126_30957">100</span>
+            <div id="126_30958" class="vector-126_30958"></div>
+          </div>
+        </div>
+      </div>
+      <div id="6_126330" class="vector-6_126330"></div>
+      <div id="6_126344" class="frame-6_126344"></div>
+      <div id="6_126345" class="frame-6_126345">
+        <div id="6_126346" class="group-6_126346">
+          <div id="6_126347" class="rectangle-6_126347"></div>
+          <div id="6_126348" class="vector-6_126348"></div>
+        </div>
+        <div id="6_126349" class="group-6_126349">
+          <div id="6_126350" class="rectangle-6_126350"></div>
+          <div id="6_126351" class="vector-6_126351"></div>
+        </div>
+        <span id="6_126355" class="text-6_126355">8783</span>
+        <span id="6_126356" class="text-6_126356">2022 - 11 - 12 13:48:59</span>
+      </div>
+      <div id="6_126357" class="frame-6_126357">
+        <div id="6_126358" class="frame-6_126358">
+          <div id="6_126359" class="frame-6_126359">
+            <div id="6_126360" class="frame-6_126360">
+              <div id="126_214377" class="frame-126_214377"></div>
+              <div id="126_216190" class="vector-126_216190"></div>
+            </div>
+            <span id="6_126361" class="text-6_126361 fill-场景text-colorcolor-text-primary-6_126575-text text-headlinefont-headline-5-6_126580">Details</span>
+          </div>
+          <div id="6_126362" class="frame-6_126362">
+            <div id="6_126363" class="frame-6_126363">
+              <div id="126_340493" class="vector-126_340493"></div>
+              <div id="126_340494" class="frame-126_340494">
+                <div id="126_340495" class="frame-126_340495">
+                  <div id="126_340496" class="vector-126_340496"></div>
+                </div>
+              </div>
+            </div>
+            <div id="6_126364" class="group-6_126364">
+              <div id="6_126365" class="group-6_126365">
+                <div id="6_126366" class="vector-6_126366"></div>
+                <div id="6_126367" class="vector-6_126367"></div>
+              </div>
+            </div>
+            <div id="6_126371" class="frame-6_126371">
+              <div id="126_340697" class="vector-126_340697"></div>
+              <div id="126_340698" class="frame-126_340698">
+                <div id="126_340699" class="frame-126_340699">
+                  <div id="126_340700" class="vector-126_340700"></div>
+                </div>
+              </div>
+            </div>
+            <div id="6_126372" class="frame-6_126372">
+              <div id="126_212289" class="vector-126_212289"></div>
+              <div id="126_212290" class="frame-126_212290">
+                <div id="126_212291" class="frame-126_212291">
+                  <div id="126_212292" class="vector-126_212292"></div>
+                </div>
+              </div>
+            </div>
+            <div id="6_126373" class="frame-6_126373">
+              <div id="126_3769" class="vector-126_3769"></div>
+              <div id="126_3770" class="group-126_3770">
+                <div id="126_3771" class="vector-126_3771"></div>
+                <div id="126_3776" class="rectangle-126_3776"></div>
+              </div>
+            </div>
+          </div>
+          <div id="6_126374" class="frame-6_126374">
+            <span id="6_126375" class="text-6_126375 fill-场景text-colorcolor-text-primary-6_126575-text text-headlinefont-headline-7-6_126582">标题</span>
+            <span id="6_126376" class="text-6_126376 fill-场景text-colorcolor-text-secondary-6_126577-text text-bodyfont-body-2-regular-6_126583">子标题</span>
+          </div>
+        </div>
+        <div id="6_126377" class="frame-6_126377">
+          <div id="6_126378" class="frame-6_126378">
+            <div id="6_126379" class="frame-6_126379">
+              <div id="6_126380" class="frame-6_126380">
+                <span id="6_126381" class="text-6_126381 fill-场景text-colorcolor-text-primary-6_126575-text">Seven Star Products in the Datacom Business Market User Portraits and Product Portfolios</span>
+                <span id="6_126382" class="text-6_126382 fill-场景text-colorcolor-text-secondary-6_126577-text text-bodyfont-body-1-regular-6_126578">Campus network · 87 views · 11-04-2024</span>
+              </div>
+              <div id="6_126383" class="frame-6_126383">
+                <span id="6_126384" class="text-6_126384 fill-场景text-colorcolor-text-primary-6_126575-text text-bodyfont-body-2-regular-6_126584">User profiling is a way of product design and user research. As an effective tool to outline target users, connect user requirements and design direction, it has been widely used in various fields. When we discuss products, requirements, scenarios, and user experience, we often need to focus on a certain group of people. User portraits are an abstract method to represent a collection of target users.</span>
+                <div id="6_126385" class="frame-6_126385">
+                  <div id="6_126386" class="frame-6_126386">
+                    <div id="6_126387" class="frame-6_126387">
+                      <div id="6_126388" class="frame-6_126388">
+                        <div id="6_126389" class="frame-6_126389">
+                          <div id="6_126390" class="frame-6_126390">
+                            <div id="126_33429" class="group-126_33429">
+                              <div id="126_33430" class="vector-126_33430"></div>
+                              <div id="126_33431" class="vector-126_33431"></div>
+                              <div id="126_33432" class="vector-126_33432"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div id="6_126391" class="frame-6_126391">
+                          <div class="center-stroke-6_126391"></div>
+                          <div id="6_126392" class="frame-6_126392">
+                            <span id="6_126393" class="text-6_126393">[Product Brochure]: Huawei CloudEngine Series Switches.word</span>
+                            <span id="6_126394" class="text-6_126394">2.5M</span>
+                          </div>
+                          <div id="6_126395" class="frame-6_126395">
+                            <div id="6_126396" class="frame-6_126396 fill-场景fill-colorcolor-fill-2-6_126581">
+                              <div id="6_126397" class="frame-6_126397">
+                                <div id="6_126398" class="group-6_126398">
+                                  <div id="6_126399" class="vector-6_126399"></div>
+                                  <div id="6_126400" class="vector-6_126400"></div>
+                                  <div id="6_126401" class="vector-6_126401"></div>
+                                  <div id="6_126402" class="vector-6_126402"></div>
+                                  <div id="6_126403" class="vector-6_126403"></div>
+                                  <div id="6_126404" class="vector-6_126404"></div>
+                                </div>
+                              </div>
+                              <span id="6_126405" class="text-6_126405 fill-场景text-colorcolor-text-primary-6_126575-text text-bodyfont-body-1-medium-6_126579">Preview</span>
+                            </div>
+                            <div id="6_126406" class="frame-6_126406 fill-场景fill-colorcolor-fill-2-6_126581">
+                              <div id="6_126407" class="frame-6_126407">
+                                <div id="6_126408" class="group-6_126408">
+                                  <div id="6_126409" class="vector-6_126409"></div>
+                                  <div id="6_126410" class="vector-6_126410"></div>
+                                  <div id="6_126411" class="vector-6_126411"></div>
+                                  <div id="6_126412" class="vector-6_126412"></div>
+                                  <div id="6_126413" class="vector-6_126413"></div>
+                                  <div id="6_126414" class="vector-6_126414"></div>
+                                  <div id="6_126415" class="vector-6_126415"></div>
+                                </div>
+                              </div>
+                              <span id="6_126416" class="text-6_126416 fill-场景text-colorcolor-text-primary-6_126575-text">Download</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="6_126417" class="frame-6_126417">
+            <div id="6_126418" class="frame-6_126418">
+              <span id="6_126419" class="text-6_126419 fill-场景text-colorcolor-text-primary-6_126575-text text-headlinefont-headline-5-6_126586">Recommendation</span>
+            </div>
+            <div id="6_126420" class="frame-6_126420">
+              <div id="6_126421" class="frame-6_126421 stroke-场景border-colorcolor-border-separator-6_126576">
+                <div id="6_126422" class="vector-6_126422"></div>
+                <div id="6_126426" class="frame-6_126426">
+                  <span id="6_126427" class="text-6_126427">Seven Star Products in the Datacom Business Market | Product Portfolio...informatization construction solution...Product Portfolio...Poster</span>
+                  <span id="6_126428" class="text-6_126428 fill-场景text-colorcolor-text-secondary-6_126577-text text-bodyfont-body-1-regular-6_126578">Campus network · Apr 11, 2024</span>
+                </div>
+              </div>
+              <div id="6_126429" class="frame-6_126429 stroke-场景border-colorcolor-border-separator-6_126576">
+                <div id="6_126430" class="vector-6_126430"></div>
+                <div id="6_126435" class="frame-6_126435">
+                  <span id="6_126436" class="text-6_126436">High-level communication on shelter hospital informatization construction solution...Product Portfolio...Conferencing Endpoint Full Image</span>
+                  <span id="6_126437" class="text-6_126437 fill-场景text-colorcolor-text-secondary-6_126577-text text-bodyfont-body-1-regular-6_126578">IQ intelligent O&M · Jan 8, 2024</span>
+                </div>
+              </div>
+              <div id="6_126438" class="frame-6_126438 stroke-场景border-colorcolor-border-separator-6_126576">
+                <div id="6_126439" class="vector-6_126439"></div>
+                <div id="6_126444" class="frame-6_126444">
+                  <span id="6_126445" class="text-6_126445">Huawei Black Technology Lab 1: Wi-Fi 6 Black Technology Product Portfolio...Conferencing Endpoint Full Image</span>
+                  <span id="6_126446" class="text-6_126446 fill-场景text-colorcolor-text-secondary-6_126577-text text-bodyfont-body-1-regular-6_126578">Campus network · Jan 8, 2024</span>
+                </div>
+              </div>
+              <div id="6_126447" class="frame-6_126447 stroke-场景border-colorcolor-border-separator-6_126587">
+                <div id="6_126448" class="vector-6_126448"></div>
+                <div id="6_126453" class="frame-6_126453">
+                  <span id="6_126454" class="text-6_126454">Huawei participates in Handan, Chengde, Cangzhou and other ...Product Portfolio... 2023</span>
+                  <span id="6_126455" class="text-6_126455 fill-场景text-colorcolor-text-secondary-6_126577-text text-bodyfont-body-1-regular-6_126578">Policy interpretation · Feb 23, 2024</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="6_126456" class="frame-6_126456">
+        <div id="6_126457" class="frame-6_126457 stroke-场景border-colorcolor-border-separator-6_126587">
+          <div id="6_126458" class="frame-6_126458">
+            <div id="6_126459" class="frame-6_126459">
+              <div id="126_32072" class="vector-126_32072"></div>
+            </div>
+          </div>
+          <span id="6_126460" class="text-6_126460 fill-场景text-colorcolor-text-primary-6_126575-text text-bodyfont-body-1-medium-6_126579">256</span>
+        </div>
+        <div id="6_126461" class="frame-6_126461">
+          <div id="6_126462" class="frame-6_126462">
+            <div id="6_126463" class="group-6_126463">
+              <div id="6_126464" class="vector-6_126464"></div>
+              <div id="6_126465" class="vector-6_126465"></div>
+              <div id="6_126466" class="vector-6_126466"></div>
+              <div id="6_126467" class="vector-6_126467"></div>
+              <div id="6_126468" class="vector-6_126468"></div>
+              <div id="6_126469" class="vector-6_126469"></div>
+              <div id="6_126470" class="vector-6_126470"></div>
+            </div>
+          </div>
+          <span id="6_126471" class="text-6_126471 fill-场景text-colorcolor-text-primary-6_126575-text text-bodyfont-body-1-medium-6_126579">3391</span>
+        </div>
+      </div>
+      <div id="6_126472" class="frame-6_126472">
+        <div id="6_126473" class="frame-6_126473">
+          <div id="6_126474" class="rectangle-6_126474 fill-场景background-colorcolor-bg-mask-6_126585"></div>
+        </div>
+      </div>
+      <div id="6_126475" class="group-6_126475">
+        <div id="6_126476" class="rectangle-6_126476"></div>
+        <div id="6_126477" class="frame-6_126477">
+          <div id="6_126478" class="group-6_126478">
+            <div id="6_126479" class="rectangle-6_126479"></div>
+            <div id="6_126480" class="vector-6_126480"></div>
+          </div>
+          <span id="6_126483" class="text-6_126483">Next</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+</script>
+
+</body>
+
+
+spec:
+
+
+{
+  "UI整体描述": {
+    "功能": "该UI为一个资讯详情页面，用于展示行业资讯类文章内容，包含标题、发布信息、正文、附件下载功能以及推荐内容。",
+    "产品场景": "当前页面展示的是关于‘Datacom业务市场中的七星级产品用户画像与产品组合’的资讯文章，属于‘Campus network’栏目。用户可通过该界面阅读详细内容、下载相关产品手册，并浏览推荐的下一篇文章。整体产品场景为企业级知识分享平台或行业资讯门户，支持移动端内容消费与资源获取。"
+  },
+  "页面构成": [
+    "顶部状态栏",
+    "导航与标题区",
+    "文章内容区",
+    "附件下载区",
+    "推荐内容区"
+  ],
+  "视觉风格": {
+    "调性": "简洁专业，以白色背景为主，突出文字内容与关键操作元素，强调可读性与信息层级。",
+    "色彩体系": "以白色为底色，黑色文字为主，标题使用加粗字体，按钮和图标采用浅灰色或蓝色点缀，形成清晰的视觉引导。",
+    "设计风格": "符合主流资讯阅读应用规范，采用卡片式布局与分段排版，提升阅读体验与交互效率。"
+  },
+  "各个区域组件信息分述": [
+    {
+      "区域名称": "顶部状态栏",
+      "组件类型": "系统状态栏",
+      "承担的功能": "显示设备时间、网络连接状态、电池电量等系统信息",
+      "承载的信息": {
+        "时间": "08:08",
+        "网络状态": [
+          "Wi-Fi图标",
+          "蜂窝信号图标（满格）",
+          "蓝牙图标"
+        ],
+        "电池状态": {
+          "电量百分比": "100%",
+          "电池图标": "充满"
+        }
+      },
+      "组件的配色样式和布局": "背景为深色，文字和图标为白色，横向排列于屏幕最上方",
+      "组件所处的位置": "位于页面最上方，占据约1/20屏幕高度，横跨整个宽度"
+    },
+    {
+      "区域名称": "导航与标题区",
+      "组件类型": "导航栏与页面标题组合",
+      "承担的功能": "提供返回上一级页面的导航功能，并展示当前页面标题",
+      "承载的信息": {
+        "返回按钮": "左箭头“←”表示返回",
+        "页面标题": "Details",
+        "分享图标": "右上角分享图标（两个相连的圆圈）"
+      },
+      "组件的配色样式和布局": "背景为白色，文字为黑色，返回箭头和分享图标为黑色，标题居中显示，左右两侧分别放置导航与分享图标",
+      "组件所处的位置": "位于状态栏下方，占据约1/15屏幕高度，横跨整个宽度"
+    },
+    {
+      "区域名称": "文章内容区",
+      "组件类型": "文本内容区块",
+      "承担的功能": "展示资讯文章的标题、发布信息及正文内容",
+      "承载的信息": {
+        "主标题": "Seven Star Products in the Datacom Business Market User Portraits and Product Portfolios",
+        "发布信息": {
+          "栏目": "Campus network",
+          "播放量": "87 views",
+          "发布时间": "11-04-2024"
+        },
+        "正文": "User profiling is a way of product design and user research. As an effective tool to outline target users, connect user requirements and design direction, it has been widely used in various fields. When we discuss products, requirements, scenarios, and user experience, we often need to focus on a certain group of people. User portraits are an abstract method to represent a collection of target users."
+      },
+      "组件的配色样式和布局": "主标题为大号加粗黑色文字，发布信息为浅灰色小字，正文为常规黑色文字，段落间距适中，背景为白色",
+      "组件所处的位置": "位于导航栏下方，占据约1/3屏幕高度，横跨整个宽度"
+    },
+    {
+      "区域名称": "附件下载区",
+      "组件类型": "文件附件卡片",
+      "承担的功能": "展示相关文档附件，并提供预览与下载功能",
+      "承载的信息": {
+        "文件图标": "蓝色文件图标，内含白色文档符号",
+        "文件名": "[Product Brochure]: Huawei CloudEngine Series Switches.word",
+        "操作按钮": [
+          {
+            "图标": "眼睛图标",
+            "文字": "Preview"
+          },
+          {
+            "图标": "向下箭头图标",
+            "文字": "Download"
+          }
+        ]
+      },
+      "组件的配色样式和布局": "卡片背景为浅灰色，文件图标为蓝色，文件名为黑色文字；操作按钮为浅灰色圆角矩形，图标为黑色，文字为黑色，水平排列",
+      "组件所处的位置": "位于文章内容区下方，占据约1/8屏幕高度，横跨整个宽度"
+    },
+    {
+      "区域名称": "推荐内容区",
+      "组件类型": "推荐文章卡片",
+      "承担的功能": "展示推荐的下一篇文章，引导用户继续阅读相关内容",
+      "承载的信息": {
+        "标题": "Seven Star Products: Datacom Business M...",
+        "封面图": "一张穿着白大褂的人物照片，背景为浅蓝色",
+        "标签": "Next",
+        "互动数据": {
+          "收藏数": "256",
+          "点赞数": "3391"
+        }
+      },
+      "组件的配色样式和布局": "标题为黑色文字，封面图为矩形图片，标签为绿色文字，收藏与点赞图标为灰色，数字为黑色，水平排列于卡片底部",
+      "组件所处的位置": "位于附件下载区下方，占据约1/5屏幕高度，横跨整个宽度"
+    }
+  ]
+}

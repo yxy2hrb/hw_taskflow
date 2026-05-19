@@ -1,0 +1,65 @@
+[OLD]
+<!-- 资讯卡片列表 -->
+      <div id="6_7881" class="Pixso-group-6_7881">
+        <div id="6_7882" class="Pixso-frame-6_7882">
+          <div class="frame-content-6_7882">
+            <div id="6_7883" class="stroke-wrapper-6_7883">
+              <div class="Pixso-frame-6_7883">
+                <div class="frame-content-6_7883">
+                  <div id="6_7884" class="Pixso-group-6_7884">
+                    <div id="6_7886" class="Pixso-rectangle-6_7886"></div>
+                  </div>
+                  <div id="6_7887" class="Pixso-frame-6_7887">
+                    <div class="frame-content-6_7887">
+                      <p id="6_7888" class="Pixso-paragraph-6_7888">Classes are starting! Storage Partner Pioneer Special Training Camp </p>
+                      <p id="6_7889" class="Pixso-paragraph-6_7889 fill-场景text-colorcolor-text-secondary-6_11382-paragraph text-bodyfont-body-1-regular-6_11383">Campus network · 11-04-2024</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="stroke-6_7883 stroke-场景border-colorcolor-border-separator-6_11381"></div>
+            </div>
+            <div id="6_7890" class="stroke-wrapper-6_7890">
+              <div class="Pixso-frame-6_7890">
+                <div class="frame-content-6_7890">
+                  <div id="6_7891" class="Pixso-group-6_7891">
+                    <div id="6_7893" class="Pixso-rectangle-6_7893"></div>
+                  </div>
+                  <div id="6_7894" class="Pixso-frame-6_7894">
+                    <div class="frame-content-6_7894">
+                      <p id="6_7895" class="Pixso-paragraph-6_7895">Camera 100-HW 4K 30 fps Intelligent UHD Camera Poster</p>
+                      <p id="6_7896" class="Pixso-paragraph-6_7896 fill-场景text-colorcolor-text-secondary-6_11382-paragraph text-bodyfont-body-1-regular-6_11383">Campus network · 11-04-2024</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="stroke-6_7890 stroke-场景border-colorcolor-border-separator-6_11381"></div>
+            </div>
+            <div id="6_7897" class="stroke-wrapper-6_7897">
+              <div class="Pixso-frame-6_7897">
+                <div class="frame-content-6_7897">
+                  <div id="6_7898" class="Pixso-group-6_7898">
+                    <div id="6_7900" class="Pixso-rectangle-6_7900"></div>
+                  </div>
+                  <div id="6_7901" class="Pixso-frame-6_7901">
+                    <div class="frame-content-6_7901">
+                      <p id="6_7902" class="Pixso-paragraph-6_7902">HUAWEI CloudLink Bar 310 Integrated Ultra-HD Video Conferencing Endpoint Full Image</p>
+                      <p id="6_7903" class="Pixso-paragraph-6_7903 fill-场景text-colorcolor-text-secondary-6_11382-paragraph text-bodyfont-body-1-regular-6_11383">IQ intelligent O&M · Jan 8, 2023</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="stroke-6_7897 stroke-场景border-colorcolor-border-separator-6_11381"></div>
+[NEW]
+<!-- 资讯卡片列表 -->
+      <div id="6_7881" class="Pixso-group-6_7881">
+        <div id="6_7882" class="Pixso-frame-6_7882">
+          <div class="frame-content-6_7882">
+            <div style="display:flex; flex-direction:column; gap:12px; padding:0 16px;">
+              <div style="width:100%; height:120px; background:#F3F3F3; border-radius:4px;"></div>
+              <div style="width:100%; height:120px; background:#F3F3F3; border-radius:4px;"></div>
+              <div style="width:100%; height:120px; background:#F3F3F3; border-radius:4px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>

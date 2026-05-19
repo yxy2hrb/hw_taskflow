@@ -1,0 +1,89 @@
+{
+  "state_name": "Interests和Preferences页",
+  "lifecycle": "persistent",
+  "injection": {
+    "mode": "overlay",
+    "z_index": 9999,
+    "top": 0,
+    "bottom": 0
+  },
+  "inherit_skeleton": false,
+  "tree": {
+    "type": "Page",
+    "props": {},
+    "children": [
+      {
+        "type": "StatusBar",
+        "props": {}
+      },
+      {
+        "type": "NavBar",
+        "props": {
+          "title": "兴趣与偏好",
+          "leftIcon": "arrow_back",
+          "align": "center"
+        }
+      },
+      {
+        "type": "SegmentedTabs",
+        "props": {
+          "items": ["Industry", "Topics", "Notifications"],
+          "active": 0,
+          "variant": "underline"
+        }
+      },
+      {
+        "type": "Grid",
+        "props": {
+          "columns": 2,
+          "gap": 24,
+          "padding": 24
+        },
+        "children": [
+          {
+            "type": "IconCard",
+            "props": {
+              "icon": "smart_toy",
+              "label": "人工智能"
+            }
+          },
+          {
+            "type": "IconCard",
+            "props": {
+              "icon": "business",
+              "label": "金融科技"
+            }
+          },
+          {
+            "type": "IconCard",
+            "props": {
+              "icon": "science",
+              "label": "生物医药"
+            }
+          },
+          {
+            "type": "IconCard",
+            "props": {
+              "icon": "cloud",
+              "label": "云计算"
+            }
+          },
+          {
+            "type": "IconCard",
+            "props": {
+              "icon": "electric_car",
+              "label": "智能汽车"
+            }
+          },
+          {
+            "type": "IconCard",
+            "props": {
+              "icon": "language",
+              "label": "AI大模型"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "taskflow_description": "Structured requirement for 4",
+  "ui_analysis": [
+    {
+      "image": "4",
+      "description": "用户在文件已下载的情况下进入预览模式（或在预览页点击下载成功后自动刷新），底部按钮功能变为打开本地文件。【该处匹配到标准组件\"danger_button\"，用\"danger_button\"标准组件生成】",
+      "raw_requirement": {
+        "state_id": 5,
+        "state_name": "本地预览状态 (已下载)",
+        "description": "用户在文件已下载的情况下进入预览模式（或在预览页点击下载成功后自动刷新），底部按钮功能变为打开本地文件。",
+        "implementation_method": "文档查看器 (Document Viewer)：界面布局与状态2一致，但底部悬浮栏 (Fixed Footer) 的红色按钮文本变更为 'Open'。",
+        "last_state": 2
+      },
+      "design_spec": [
+        {
+          "component_type": "Button",
+          "component_name": "打开本地文件按钮",
+          "matched_component_id": "danger_button",
+          "component_html": "<style>\n* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n\nol,ul,menu {\n  padding-inline-start: 0;\n  list-style: none;\n}\n\nol li {\n  list-style-position: inside;\n}\n\nol li::marker, ul li::before {\n  letter-spacing: 0;\n}\n\nhtml {\n  width: 100%;\n  height: 100%;\n}\n\nbody { \n  width: 100%;\n  height: 100%;\n  margin: 0;\n  background-color: white;\n}\n    \nspan {\n  word-break: break-word;\n}\n\n.fill-lightcomp_background_tertiary-602_9420 {\n        background-color: rgba(0, 0, 0, 0.0470588244497776)\n      }\n.fill-lightwarning-602_9524-text {\n        color: rgba(232, 64, 38, 1)\n      }\n.text-fontbody_lmedium-602_9659 {\n        font-size: 16px;\nfont-family: HarmonyHeiTi;\nline-height: 1px\n      }\n\n.scroll-container-0_1 { position: relative !important; width: 100%; height: auto !important; overflow: visible !important; }\n\n.canvas-0_1 { position: relative !important; width: auto !important; height: auto !important; flex-shrink: 0; }\n\n.frame-3177_10710 {\n  width: 120px;\n  height: 40px;\n  position: relative;\n  flex-shrink: 0;\n}\n\n.symbol-3177_10687 {\n  width: 120px;\n  height: 40px;\n  position: relative !important; left: auto !important; top: auto !important; transform: none !important; margin: 0 auto !important;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  padding: 9px 16px 9px 16px;\n  border-radius: 20px 20px 20px 20px;\n  mix-blend-mode: normal;\n}\n\n.text-3177_10688 {\n  text-align: center;\n  width: 88px;\n  height: auto;\n  position: relative;\n  flex-shrink: 0;\n  mix-blend-mode: normal;\n}\n\n.paragraph-3177_10688_0 {\n  line-height: 21.328001022338867px;\n  position: relative;\n  flex-shrink: 0;\n}\n\n.span-3177_10688_0_1 {\n  font-weight: 400;\n  color: rgba(232, 64, 38, 1);\n  position: relative;\n  flex-shrink: 0;\n  mix-blend-mode: normal;\n}\n\n.container {\n  width: 100%;\n  height: 100%;\n}\n</style>\n<div id=\"3177_10710\" class=\"frame-3177_10710\">\n      <div id=\"3177_10687\" class=\"symbol-3177_10687 fill-lightcomp_background_tertiary-602_9420\">\n        <div id=\"3177_10688\" class=\"text-3177_10688 fill-lightwarning-602_9524-text text-fontbody_lmedium-602_9659\">\n          <p id=\"3177_10688_0\" class=\"paragraph-3177_10688_0\">\n<span id=\"3177_10688_0_1\" class=\"span-3177_10688_0_1 text-fontbody_lmedium-602_9659\">BUTTON</span></p>\n        </div>\n      </div>\n    </div>"
+        }
+      ]
+    }
+  ]
+}

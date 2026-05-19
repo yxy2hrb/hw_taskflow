@@ -1,0 +1,14 @@
+{"event":"state-start","data":{"state_id":3,"state_name":"加载中过渡态","last_state":1,"ts":1778500971447},"ts":"2026-05-11T12:02:51.449Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[dsl] HM_DSL_ENABLED=1 且匹配，尝试 DSL 路径","ts":1778500971447},"ts":"2026-05-11T12:02:51.450Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[dsl] 准备走 DSL 路径：加载中过渡态","ts":1778500971447},"ts":"2026-05-11T12:02:51.450Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[dsl] prompt 2.9KB → callText…","ts":1778500971447},"ts":"2026-05-11T12:02:51.450Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[dsl] 失败 (replace anchor \"#content-area\" 未命中 base)，回落到 [OLD]/[NEW] 字符串路径","ts":1778500977567},"ts":"2026-05-11T12:02:57.574Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"prompt 长度 47.8KB，调用模型…","ts":1778500977571},"ts":"2026-05-11T12:02:57.574Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"解析到 1 个 [OLD]/[NEW] 替换块","ts":1778501007754},"ts":"2026-05-11T12:03:27.756Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"✔ 替换 @ 12749","ts":1778501007754},"ts":"2026-05-11T12:03:27.756Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[review] 渲染截图…","ts":1778501007754},"ts":"2026-05-11T12:03:27.756Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[review] 截图 289412 字节, H=780px, 1625ms","ts":1778501009382},"ts":"2026-05-11T12:03:29.389Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[review] 调用 vision 评审模型（lang=en）","ts":1778501009383},"ts":"2026-05-11T12:03:29.389Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[review] ok=true issues=0 (6955ms)","ts":1778501016338},"ts":"2026-05-11T12:03:36.340Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[loading] 检测到加载态但无可见 loading 图标，已注入兜底 spinner","ts":1778501016338},"ts":"2026-05-11T12:03:36.340Z"}
+{"event":"state-done","data":{"state_id":3,"state_name":"加载中过渡态","file":"state_3.html","applied":1,"skipped":0,"review_ok":true,"review_applied":0,"review_issues":[],"elapsed_ms":44895,"hmExpansions":[],"hmMissing":[],"ts":1778501016342},"ts":"2026-05-11T12:03:36.344Z"}

@@ -1,4 +1,0 @@
-[OLD]
-<p id="146_139389" class="Pixso-paragraph-146_139389 fill-text文本色图标色color_text_primary-14_290523-paragraph">体验运维流程</p>
-[NEW]
-<p id="146_139389" class="Pixso-paragraph-146_139389 fill-text文本色图标色color_text_primary-14_290523-paragraph" style="display:flex;align-items:center;gap:4px;">体验运维流程<span style="width:16px;height:16px;border:2px solid rgba(70,177,227,0.8);border-top-color:#0A59F7;border-radius:50%;animation:spin 1s linear infinite;"></span></p>

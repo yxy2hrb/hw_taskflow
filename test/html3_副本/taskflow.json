@@ -1,0 +1,44 @@
+[
+    {
+      "state_id": 1,
+      "state_name": "详情页初始/待下载状态",
+      "description": "页面显示视频详情，操作栏显示“Download”按钮及下载图标，表明当前视频尚未下载。",
+      "implementation_method": "按钮控件 (Button)：显示 'Download' 文本及向下的箭头图标。"
+    },
+    {
+      "state_id": 2,
+      "state_name": "流量下载风险提示状态",
+      "description": "用户点击下载后，系统检测到使用移动数据网络，弹出确认框询问是否继续。",
+      "implementation_method": "模态弹窗 (Modal/Dialog)：显示文本 'You are downloading using the mobile network. Continue?'，提供 'CANCEL' 和 'CONTINUE' 按钮。"
+    },
+    {
+      "state_id": 3,
+      "state_name": "取消下载反馈状态",
+      "description": "用户在流量提示弹窗中点击 'CANCEL' 后，弹窗关闭，页面底部出现提示告知操作已取消。",
+      "implementation_method": "轻量级提示 (Toast/Snackbar)：页面底部黑色胶囊状背景，显示文本 'Cancelled.'。"
+    },
+    {
+      "state_id": 4,
+      "state_name": "下载进行中状态",
+      "description": "用户确认下载后，显示下载进度弹窗，包含百分比和进度条。",
+      "implementation_method": "模态弹窗 (Modal/Dialog)：显示标题 'Downloading'，百分比数值 (e.g., 40%)，可视化进度条 (Progress Bar)，以及关闭/取消图标 (X icon) 和 'OK' 按钮（可能用于后台下载）。"
+    },
+    {
+      "state_id": 5,
+      "state_name": "下载失败反馈状态",
+      "description": "下载过程中出现错误（如网络中断），系统提示下载失败。",
+      "implementation_method": "轻量级提示 (Toast/Snackbar)：页面底部显示文本 'Download failed. Try again later.'。"
+    },
+    {
+      "state_id": 6,
+      "state_name": "下载成功/已下载状态",
+      "description": "下载完成后，系统提示已保存，且下载按钮状态发生变更，显示已下载。",
+      "implementation_method": "组合反馈：1. 轻量级提示 (Toast) 显示 'Saved to the album.'； 2. 按钮状态更新为灰色或禁用样式，图标变为对勾，文本变为 'Downloaded'。"
+    },
+    {
+      "state_id": 7,
+      "state_name": "文件已存在/覆盖确认状态",
+      "description": "用户点击已下载的文件或再次尝试下载同一文件时，系统检测到文件重复，询问是否覆盖。",
+      "implementation_method": "模态弹窗 (Modal/Dialog)：显示文本 'The file already exists. Overwrite it?'，提供 'CANCEL' 和 'OK' 按钮。"
+    }
+  ]

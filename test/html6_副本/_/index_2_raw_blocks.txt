@@ -1,0 +1,12 @@
+[OLD]
+              <!-- 已关注按钮：灰色圆角矩形，显示 Following 状态 -->
+              <div id="9_462962" class="frame-9_462962">
+                <span id="121_24716" class="text-121_24716 text-bodyfont-body-1-medium-6_11385">Following</span>
+              </div>
+[NEW]
+              <!-- 任务节点开始: 未关注/可关注状态 (结束状态)【持久】 -->
+              <!-- 未关注按钮：黑色背景，显示 Follow 状态 -->
+              <div id="9_462962" class="frame-9_462962 fill-场景text-colorcolor-text-primary-9_247987">
+                <span id="121_24716" class="text-121_24716 fill-场景text-colorcolor-text-inverse-9_247990-text text-bodyfont-body-1-medium-6_11385">Follow</span>
+              </div>
+              <!-- 任务节点结束: 未关注/可关注状态 (结束状态)【持久】 -->

@@ -1,0 +1,24 @@
+{
+  "taskflow_description": "Structured requirement for 1",
+  "ui_analysis": [
+    {
+      "image": "1",
+      "description": "用户从个人中心点击'权限管理'入口后，进入权限配置详情页的查看态。展示当前权限有效期截止日期、已选角色列表（只读），底部有'权限管理'按钮用于切换至编辑态。",
+      "raw_requirement": {
+        "state_id": 2,
+        "state_name": "权限配置详情 - 查看态",
+        "last_state": 1,
+        "description": "用户从个人中心点击'权限管理'入口后，进入权限配置详情页的查看态。展示当前权限有效期截止日期、已选角色列表（只读），底部有'权限管理'按钮用于切换至编辑态。",
+        "implementation_method": "[变更] 页面标题变为'查看权限'；[新增] 主体内容包含两个字段：1) '设置权限有效期限到日期'，显示当前截止日期（如'2023-05-12'），不可编辑；2) '已有角色'，显示'已选 X 种'计数，并以只读列表形式展示当前拥有的角色名称（如'商务人员'、'销售人员'等，仅限用户当前拥有的子集）；[新增] 底部固定操作按钮，文案为'权限管理'，高亮可点击【该处匹配到标准组件\"emphasize_button\"，用\"emphasize_button\"标准组件生成，仅替换内容/文案】；[删除] 个人中心的所有功能入口组件。"
+      },
+      "design_spec": [
+        {
+          "component_type": "Button",
+          "component_name": "权限管理按钮",
+          "matched_component_id": "emphasize_button",
+          "component_html": "<style>\n* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n\nol,ul,menu {\n  padding-inline-start: 0;\n  list-style: none;\n}\n\nol li {\n  list-style-position: inside;\n}\n\nol li::marker, ul li::before {\n  letter-spacing: 0;\n}\n\nhtml {\n  width: 100%;\n  height: 100%;\n}\n\nbody { \n  width: 100%;\n  height: 100%;\n  margin: 0;\n  background-color: white;\n}\n    \nspan {\n  word-break: break-word;\n}\n\n.fill-lightcomp_background_emphasize-602_9414 {\n        background-color: rgba(10, 89, 247, 1)\n      }\n.fill-lightfont_on_primary-602_9443-text {\n        color: rgba(255, 255, 255, 1)\n      }\n.text-fontbody_lmedium-602_9659 {\n        font-size: 16px;\nfont-family: HarmonyHeiTi;\nline-height: 1px\n      }\n\n.scroll-container-0_1 { position: relative !important; width: 100%; height: auto !important; overflow: visible !important; }\n\n.canvas-0_1 { position: relative !important; width: auto !important; height: auto !important; flex-shrink: 0; }\n\n.frame-3177_10712 {\n  width: 120px;\n  height: 40px;\n  position: relative;\n  flex-shrink: 0;\n}\n\n.symbol-3177_10458 {\n  width: 120px;\n  height: 40px;\n  position: relative !important; left: auto !important; top: auto !important; transform: none !important; margin: 0 auto !important;\n  display: flex;\n  flex-direction: row;\n  gap: 8px;\n  justify-content: center;\n  align-items: center;\n  padding: 9px 16px 9px 16px;\n  border-radius: 20px 20px 20px 20px;\n  mix-blend-mode: normal;\n}\n\n.text-3177_10459 {\n  text-align: center;\n  width: 88px;\n  height: auto;\n  position: relative;\n  flex-shrink: 0;\n  mix-blend-mode: normal;\n}\n\n.paragraph-3177_10459_0 {\n  line-height: 21.328001022338867px;\n  position: relative;\n  flex-shrink: 0;\n}\n\n.span-3177_10459_0_1 {\n  font-weight: 400;\n  color: rgba(255, 255, 255, 1);\n  position: relative;\n  flex-shrink: 0;\n  mix-blend-mode: normal;\n}\n\n.container {\n  width: 100%;\n  height: 100%;\n}\n</style>\n<div id=\"3177_10712\" class=\"frame-3177_10712\">\n      <div id=\"3177_10458\" class=\"symbol-3177_10458 fill-lightcomp_background_emphasize-602_9414\">\n        <div id=\"3177_10459\" class=\"text-3177_10459 fill-lightfont_on_primary-602_9443-text text-fontbody_lmedium-602_9659\">\n          <p id=\"3177_10459_0\" class=\"paragraph-3177_10459_0\">\n<span id=\"3177_10459_0_1\" class=\"span-3177_10459_0_1 text-fontbody_lmedium-602_9659\">BUTTON</span></p>\n        </div>\n      </div>\n    </div>"
+        }
+      ]
+    }
+  ]
+}

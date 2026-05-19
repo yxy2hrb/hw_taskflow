@@ -1,0 +1,84 @@
+[OLD]
+              <!-- 视频预览图区域 + 时长标签 + 播放按钮（复合组件） -->
+              <div id="6_117523" class="frame-6_117523">
+                <div id="6_117524" class="group-6_117524">
+                  <!-- 视频预览图背景矩形：显示视频缩略图（工厂车间女性工人处理红色水果场景） -->
+                  <div id="6_117525" class="rectangle-6_117525"></div>
+                  <!-- 右下角视频时长标签：12:32 -->
+                  <div id="6_117526" class="frame-6_117526">
+                    <span id="6_117527" class="text-6_117527 fill-场景text-colorcolor-text-inverse-6_117668-text">12:32</span>
+                  </div>
+                  <!-- 居中的播放按钮：白色三角形覆盖在缩略图中央 -->
+                  <div id="6_117528" class="frame-6_117528">
+                    <div id="6_117529" class="group-6_117529">
+                      <!-- 播放按钮遮罩背景（圆形或蒙层，用于与图片区分） -->
+                      <div id="6_117530" class="rectangle-6_117530 fill-场景background-colorcolor-bg-mask-6_117665"></div>
+                      <!-- 播放图标主体 -->
+                      <div id="6_117531" class="group-6_117531">
+                        <div id="6_117532" class="group-6_117532">
+                          <div id="6_117533" class="rectangle-6_117533"></div>
+                          <div id="6_117534" class="group-6_117534">
+                            <div id="6_117535" class="group-6_117535">
+                              <div id="6_117536" class="group-6_117536">
+                                <!-- 播放按钮内的多个向量，用于构成三角形与圆形边界 -->
+                                <div id="6_117537" class="vector-6_117537"></div>
+                                <div id="6_117540" class="vector-6_117540"></div>
+                                <div id="6_117541" class="vector-6_117541"></div>
+                              </div>
+                              <div id="6_117542" class="group-6_117542">
+                                <div id="6_117543" class="rectangle-6_117543"></div>
+                                <div id="6_117544" class="rectangle-6_117544"></div>
+                                <div id="6_117545" class="rectangle-6_117545"></div>
+                                <div id="6_117546" class="rectangle-6_117546"></div>
+                                <div id="6_117547" class="vector-6_117547"></div>
+                                <div id="6_117548" class="vector-6_117548"></div>
+                              </div>
+                              <div id="6_117549" class="group-6_117549">
+                                <div id="6_117550" class="vector-6_117550"></div>
+                                <div id="6_117551" class="vector-6_117551"></div>
+                                <div id="6_117552" class="vector-6_117552"></div>
+                                <div id="6_117553" class="vector-6_117553"></div>
+                              </div>
+                            </div>
+                            <div id="6_117554" class="rectangle-6_117554"></div>
+                            <div id="6_117555" class="vector-6_117555"></div>
+                          </div>
+                          <div id="6_117556" class="vector-6_117556"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+[NEW]
+              <!-- 任务节点开始: 竖屏内嵌播放状态【持久】 -->
+              <!-- 视频播放器控件激活 (Video Player UI)：显示进度条、暂停按钮、当前时间及全屏切换按钮 -->
+              <div id="6_117523" class="frame-6_117523" style="position: relative;">
+                <div id="6_117524" class="group-6_117524">
+                  <!-- 视频预览图背景矩形：显示视频缩略图（工厂车间女性工人处理红色水果场景） -->
+                  <div id="6_117525" class="rectangle-6_117525" style="background-color: #000;"></div>
+                  <!-- 右下角视频时长标签：12:32 -->
+                  <div id="6_117526" class="frame-6_117526" style="position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.6); padding: 2px 6px; border-radius: 4px;">
+                    <span id="6_117527" class="text-6_117527" style="color: #fff; font-size: 12px; font-family: Arial, sans-serif;">02:15 / 12:32</span>
+                  </div>
+                  <!-- 播放控制栏：暂停按钮、进度条、全屏按钮 -->
+                  <div id="video-controls" style="position: absolute; bottom: 32px; left: 0; right: 0; padding: 0 8px; display: flex; flex-direction: column; gap: 6px;">
+                    <!-- 进度条容器 -->
+                    <div style="height: 4px; background: rgba(255,255,255,0.3); border-radius: 2px; position: relative;">
+                      <div style="position: absolute; top: 0; left: 0; height: 100%; width: 17.5%; background: #0a59f7; border-radius: 2px;"></div>
+                    </div>
+                    <!-- 控制按钮行 -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 4px;">
+                      <!-- 暂停按钮（使用组件库样式） -->
+                      <div class="frame-3177_10712" style="width: 32px; height: 32px; display: flex; justify-content: center; align-items: center;">
+                        <div class="symbol-3177_10458 fill-lightcomp_background_emphasize-602_9414" style="width: 24px; height: 24px; border-radius: 50%; display: flex; justify-content: center; align-items: center; padding: 0;">
+                          <div class="text-3177_10459 fill-lightfont_on_primary-602_9443-text text-fontbody_lmedium-602_9659" style="font-size: 12px; line-height: 1; color: white;">⏸</div>
+                        </div>
+                      </div>
+                      <!-- 全屏按钮 -->
+                      <div style="width: 32px; height: 32px; display: flex; justify-content: center; align-items: center; color: white; font-size: 16px;">⛶</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- 任务节点结束: 竖屏内嵌播放状态【持久】 -->

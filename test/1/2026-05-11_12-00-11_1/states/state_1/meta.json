@@ -1,0 +1,11 @@
+{
+  "state_id": 1,
+  "state_name": "行业资讯主页",
+  "description": "用户位于资讯流首页，顶部导航栏含‘全部’页签（当前激活），底部Tab栏可见（含Home/News/Profile等图标），页面主体为垂直排列的资讯卡片，每张卡片含标题、副标题（如‘Smart Meeting Room’）、浏览量与发布时间。",
+  "implementation_method": "原始 HTML 初始快照，不做改造",
+  "last_state": null,
+  "applied": 0,
+  "skipped": 0,
+  "failed": false,
+  "error": null
+}

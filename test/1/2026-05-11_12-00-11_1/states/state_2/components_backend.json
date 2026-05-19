@@ -1,0 +1,133 @@
+{
+  "state_id": 2,
+  "state_name": "全屏偏好选择面板",
+  "components": [
+    {
+      "tag": "Checkbox",
+      "attrs": {
+        "state": "on"
+      },
+      "instance": 1,
+      "component": {
+        "group": "CheckBox-Phone",
+        "variant": "Selected=OFF,状态=Enabled",
+        "node_id": "1:10061",
+        "page": "5. Selection 选择类",
+        "component_key": "875ba8e679e85efd679335426632fbbdd68c3dc2"
+      }
+    },
+    {
+      "tag": "Checkbox",
+      "attrs": {
+        "state": "off"
+      },
+      "instance": 2,
+      "component": {
+        "group": "CheckBox-Phone",
+        "variant": "Selected=OFF,状态=Enabled",
+        "node_id": "1:10061",
+        "page": "5. Selection 选择类",
+        "component_key": "875ba8e679e85efd679335426632fbbdd68c3dc2"
+      }
+    },
+    {
+      "tag": "Checkbox",
+      "attrs": {
+        "state": "off"
+      },
+      "instance": 3,
+      "component": {
+        "group": "CheckBox-Phone",
+        "variant": "Selected=OFF,状态=Enabled",
+        "node_id": "1:10061",
+        "page": "5. Selection 选择类",
+        "component_key": "875ba8e679e85efd679335426632fbbdd68c3dc2"
+      }
+    },
+    {
+      "tag": "Checkbox",
+      "attrs": {
+        "state": "off"
+      },
+      "instance": 4,
+      "component": {
+        "group": "CheckBox-Phone",
+        "variant": "Selected=OFF,状态=Enabled",
+        "node_id": "1:10061",
+        "page": "5. Selection 选择类",
+        "component_key": "875ba8e679e85efd679335426632fbbdd68c3dc2"
+      }
+    },
+    {
+      "tag": "Checkbox",
+      "attrs": {
+        "state": "off"
+      },
+      "instance": 5,
+      "component": {
+        "group": "CheckBox-Phone",
+        "variant": "Selected=OFF,状态=Enabled",
+        "node_id": "1:10061",
+        "page": "5. Selection 选择类",
+        "component_key": "875ba8e679e85efd679335426632fbbdd68c3dc2"
+      }
+    },
+    {
+      "tag": "Checkbox",
+      "attrs": {
+        "state": "off"
+      },
+      "instance": 6,
+      "component": {
+        "group": "CheckBox-Phone",
+        "variant": "Selected=OFF,状态=Enabled",
+        "node_id": "1:10061",
+        "page": "5. Selection 选择类",
+        "component_key": "875ba8e679e85efd679335426632fbbdd68c3dc2"
+      }
+    },
+    {
+      "tag": "Checkbox",
+      "attrs": {
+        "state": "off"
+      },
+      "instance": 7,
+      "component": {
+        "group": "CheckBox-Phone",
+        "variant": "Selected=OFF,状态=Enabled",
+        "node_id": "1:10061",
+        "page": "5. Selection 选择类",
+        "component_key": "875ba8e679e85efd679335426632fbbdd68c3dc2"
+      }
+    },
+    {
+      "tag": "Button",
+      "attrs": {
+        "label": "Confirm",
+        "variant": "primary"
+      },
+      "instance": 1,
+      "component": {
+        "group": "Button-Phone",
+        "variant": "尺寸=Medium,类型=Emphasized,状态=Enabled",
+        "node_id": "1:9168",
+        "page": "2. Controls 操作类",
+        "component_key": "938b12c82f10e57073b3fde899a73a462b8536a0"
+      }
+    }
+  ],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "语言一致性：主语言为英文（en），但弹窗中的标题'Preferences'和按钮'Confirm'虽正确，行业卡片标签如'Finance'、'Education'等应保持英文，而截图中未见中文，符合要求；但需确认所有新生成文案是否均为英文，当前未发现中文，此项通过。",
+      "元素溢出：弹窗宽度360px，但内部横向滚动区域包含7个80px宽的卡片，总宽560px，理论上会超出容器，但在截图中仅显示前三个，未见裁剪，实际可能因滚动机制正常。然而，底部按钮'Confirm'在截图中显示完整，无溢出问题。",
+      "可见性：description要求弹出一个半透明遮罩层覆盖全屏，状态栏与底Tab栏保持可见。截图中确实有灰色遮罩，且状态栏与底部导航栏可见，符合预期。弹窗内容也完全可见，包括标题、图标、文字、复选框和按钮，满足可见性要求。",
+      "位置合理性：弹窗居中显示，遮罩层覆盖全屏但保留状态栏和底部Tab栏，符合设计规范。弹窗本身位于屏幕中央，位置合理。",
+      "基础样式：弹窗背景为白色，圆角8px，阴影柔和，符合鸿蒙规范。标题使用20px Medium字体，颜色为深灰，符合规范。行业卡片图标清晰，文字大小12px，颜色适中。按钮为蓝色背景，白色文字，高度48px，居中固定，符合规范。"
+    ],
+    "fixedBlocks": "",
+    "reviewMs": 16207,
+    "screenshot": 152811
+  }
+}

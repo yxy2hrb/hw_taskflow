@@ -1,0 +1,294 @@
+[OLD]
+<div class="scroll-container-0_1">
+<div class="canvas-0_1" id="0_1">
+<div class="frame-11_280419 fill-背景色页面-11_281018" id="11_280419">
+<span class="text-11_280420" id="11_280420">攻略</span>
+<div class="rectangle-11_280421" id="11_280421"></div>
+
+<!-- 顶部导航栏：包含返回按钮与页面标题“个人中心”，用于导航 -->
+<div class="frame-11_280422" id="11_280422">
+<!-- 顶部导航栏 / 返回按钮：左向箭头图标，点击返回上一级页面 -->
+<div class="vector-11_280423" id="11_280423"></div>
+</div>
+
+<!-- 顶部导航栏：标题“个人中心”区域（居中显示） -->
+<div class="group-11_280428" id="11_280428">
+<div class="frame-11_280429" id="11_280429">
+<div class="rectangle-11_280430" id="11_280430"></div>
+</div>
+<div class="frame-11_280431" id="11_280431">
+<div class="frame-11_280432" id="11_280432">
+<div class="vector-11_280433" id="11_280433"></div>
+</div>
+</div>
+<span class="text-11_280434" id="11_280434">个人中心</span>
+</div>
+
+<!-- 用户身份区：展示当前登录用户的姓名与视觉标识（用户名+首字母头像） -->
+<div class="frame-11_280435" id="11_280435">
+<div class="rectangle-11_280436" id="11_280436"></div>
+<div class="frame-11_280437" id="11_280437">
+<div class="frame-11_280438" id="11_280438">
+<div class="vector-11_280439" id="11_280439"></div>
+</div>
+<span class="text-11_280446" id="11_280446">过去我们靠贴心的服务赢得了客户的满意…</span>
+</div>
+<div class="group-11_280447" id="11_280447">
+<div class="rectangle-11_280448" id="11_280448"></div>
+</div>
+
+<!-- 用户身份区 / 用户头像标识：首字母头像（淡蓝背景的圆角矩形） -->
+<div class="frame-11_280449" id="11_280449">
+<div class="rectangle-11_280450" id="11_280450"></div>
+<span class="text-11_280451" id="11_280451">华</span>
+</div>
+
+<div class="text-11_280452" id="11_280452">c00443345</div>
+
+<!-- 用户身份区 / 用户名文本：显示当前用户姓名“李华” -->
+<div class="frame-11_280453" id="11_280453">
+<div class="rectangle-11_280454" id="11_280454"></div>
+<span class="text-11_280455" id="11_280455">李华</span>
+<div class="frame-11_280456" id="11_280456">
+<div class="rectangle-11_280457" id="11_280457"></div>
+<div class="vector-11_280458" id="11_280458"></div>
+<div class="vector-11_280479" id="11_280479"></div>
+</div>
+</div>
+</div>
+
+<!-- 我的功能区：高频个人功能入口（两行四列网格中的“我的”区块） -->
+<div class="group-11_280486" id="11_280486">
+<div class="frame-11_280487" id="11_280487">
+<div class="group-11_280488" id="11_280488">
+<div class="rectangle-11_280489" id="11_280489"></div>
+
+<!-- 我的功能区 / 区块标题：我的 -->
+<div class="frame-11_280490" id="11_280490">
+<div class="rectangle-11_280491" id="11_280491"></div>
+<div class="rectangle-11_280492" id="11_280492"></div>
+<div class="frame-11_280493" id="11_280493">
+<span class="text-11_280494" id="11_280494">我的</span>
+</div>
+</div>
+
+<!-- 我的功能区 / 第一行：我的名片、名片夹、学习空间、积分兑换 -->
+<div class="frame-11_280495" id="11_280495">
+<!-- 功能入口图标按钮：我的名片（跳转至名片管理页面） -->
+<div class="frame-11_280496" id="11_280496">
+<span class="text-11_280497" id="11_280497">我的名片</span>
+<div class="frame-11_280498" id="11_280498">
+<div class="vector-11_280499" id="11_280499"></div>
+<div class="vector-11_280500" id="11_280500"></div>
+</div>
+</div>
+
+<!-- 功能入口图标按钮：名片夹（跳转至名片夹管理页面） -->
+<div class="frame-11_280507" id="11_280507">
+<span class="text-11_280508" id="11_280508">名片夹</span>
+<div class="frame-11_280509" id="11_280509">
+<div class="vector-11_280510" id="11_280510"></div>
+<div class="vector-11_280511" id="11_280511"></div>
+</div>
+</div>
+
+<!-- 功能入口图标按钮：学习空间（跳转至学习空间模块） -->
+<div class="frame-11_280516" id="11_280516">
+<span class="text-11_280517" id="11_280517">学习空间</span>
+<div class="frame-11_280518" id="11_280518">
+<div class="vector-11_280519" id="11_280519"></div>
+<div class="group-11_280520" id="11_280520">
+<div class="vector-11_280521" id="11_280521"></div>
+<div class="vector-11_280522" id="11_280522"></div>
+<div class="group-11_280523" id="11_280523">
+<div class="vector-11_280524" id="11_280524"></div>
+<div class="vector-11_280525" id="11_280525"></div>
+<div class="vector-11_280528" id="11_280528"></div>
+<div class="vector-11_280529" id="11_280529"></div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 功能入口图标按钮：积分兑换（跳转至积分兑换商城） -->
+<div class="frame-11_280532" id="11_280532">
+<span class="text-11_280533" id="11_280533">积分兑换</span>
+<div class="frame-11_280534" id="11_280534">
+<div class="vector-11_280535" id="11_280535"></div>
+<div class="vector-11_280536" id="11_280536"></div>
+<div class="vector-11_280537" id="11_280537"></div>
+</div>
+</div>
+</div>
+
+<!-- 我的功能区 / 第二行：收藏、建议反馈、成员管理 -->
+<div class="frame-11_280538" id="11_280538">
+<!-- 功能入口图标按钮：收藏（跳转至收藏列表页面） -->
+<div class="frame-11_280539" id="11_280539">
+<div class="frame-11_280540" id="11_280540">
+<div class="rectangle-11_280541" id="11_280541"></div>
+<div class="vector-11_280542" id="11_280542"></div>
+</div>
+<span class="text-11_280543" id="11_280543">收藏</span>
+</div>
+
+<!-- 功能入口图标按钮：建议反馈（跳转至建议反馈提交页面） -->
+<div class="frame-11_280544" id="11_280544">
+<span class="text-11_280545" id="11_280545">建议反馈</span>
+<div class="frame-11_280546" id="11_280546">
+<div class="vector-11_280547" id="11_280547"></div>
+<div class="vector-11_280548" id="11_280548"></div>
+</div>
+</div>
+
+<!-- 功能入口图标按钮：成员管理（跳转至成员管理页面） -->
+<div class="frame-11_280549" id="11_280549">
+<span class="text-11_280550" id="11_280550">成员管理</span>
+<div class="frame-11_280551" id="11_280551">
+<div class="rectangle-11_280552" id="11_280552"></div>
+<div class="vector-11_280553" id="11_280553"></div>
+<div class="vector-11_280554" id="11_280554"></div>
+<div class="vector-11_280555" id="11_280555"></div>
+<div class="vector-11_280556" id="11_280556"></div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 高级设置区：进阶系统级设置功能入口（个人信息/关联公司/权限管理/占位） -->
+<div class="group-11_280559" id="11_280559">
+<div class="rectangle-11_280560" id="11_280560"></div>
+
+<!-- 高级设置区 / 功能入口网格：一行四列 -->
+<div class="frame-11_280561" id="11_280561">
+<!-- 功能入口图标按钮：个人信息（跳转至个人信息编辑页面） -->
+<div class="frame-11_280562" id="11_280562">
+<span class="text-11_280563" id="11_280563">个人信息</span>
+<div class="frame-11_280564" id="11_280564">
+<div class="group-11_280565" id="11_280565">
+<div class="vector-11_280566" id="11_280566"></div>
+<div class="group-11_280567" id="11_280567">
+<div class="vector-11_280568" id="11_280568"></div>
+<div class="vector-11_280569" id="11_280569"></div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 功能入口图标按钮：关联公司（跳转至关联公司管理页面） -->
+<div class="frame-11_280574" id="11_280574">
+<span class="text-11_280575" id="11_280575">关联公司</span>
+<div class="frame-11_280576" id="11_280576">
+<div class="vector-11_280577" id="11_280577"></div>
+<div class="group-11_280578" id="11_280578">
+<div class="group-11_280579" id="11_280579">
+<div class="vector-11_280580" id="11_280580"></div>
+<div class="group-11_280581" id="11_280581">
+<div class="vector-11_280582" id="11_280582"></div>
+<div class="vector-11_280583" id="11_280583"></div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 功能入口图标按钮：权限管理（跳转至权限管理页面） -->
+<div class="frame-11_280584" id="11_280584">
+<span class="text-11_280585" id="11_280585">权限管理</span>
+<div class="frame-11_280586" id="11_280586">
+<div class="group-11_280587" id="11_280587">
+<div class="vector-11_280588" id="11_280588"></div>
+<div class="group-11_280589" id="11_280589">
+<div class="vector-11_280590" id="11_280590"></div>
+<div class="vector-11_280591" id="11_280591"></div>
+</div>
+</div>
+</div>
+
+<!-- 高级设置区 / 额外入口：系统设置（系统设置入口） -->
+<div class="frame-11_280592" id="11_280592">
+<span class="text-11_280593" id="11_280593">设置</span>
+<div class="frame-11_280594" id="11_280594">
+<div class="vector-11_280595" id="11_280595"></div>
+</div>
+</div>
+</div>
+
+<!-- 高级设置区 / 区块标题：高级设置 -->
+<div class="frame-11_280596" id="11_280596">
+<div class="rectangle-131_36030" id="131_36030"></div>
+<span class="text-131_36031" id="131_36031"> </span>
+<div class="frame-131_36032" id="131_36032">
+<span class="text-131_36033" id="131_36033">高级设置</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+[NEW]
+<div class="scroll-container-0_1">
+<div class="canvas-0_1" id="0_1">
+<div class="frame-11_280419 fill-背景色页面-11_281018" id="11_280419">
+<span class="text-11_280420" id="11_280420">攻略</span>
+<div class="rectangle-11_280421" id="11_280421"></div>
+
+<!-- 顶部导航栏：包含返回按钮与页面标题“查看权限”，用于导航 -->
+<div class="frame-11_280422" id="11_280422">
+<!-- 顶部导航栏 / 返回按钮：左向箭头图标，点击返回上一级页面 -->
+<div class="vector-11_280423" id="11_280423"></div>
+</div>
+
+<!-- 顶部导航栏：标题“查看权限”区域（居中显示） -->
+<div class="group-11_280428" id="11_280428">
+<div class="frame-11_280429" id="11_280429">
+<div class="rectangle-11_280430" id="11_280430"></div>
+</div>
+<div class="frame-11_280431" id="11_280431">
+<div class="frame-11_280432" id="11_280432">
+<div class="vector-11_280433" id="11_280433"></div>
+</div>
+</div>
+<span class="text-11_280434" id="11_280434" style="font-size: 18px; font-weight: 500; color: #000000;">查看权限</span>
+</div>
+
+<!-- 权限配置详情内容区 -->
+<div class="frame-permission-detail" style="padding: 20px; display: flex; flex-direction: column; gap: 24px;">
+  <!-- 设置权限有效期限到日期 -->
+  <div class="field-expiry" style="display: flex; flex-direction: column; gap: 8px;">
+    <div class="label" style="font-size: 16px; font-weight: 500; color: #000000;">设置权限有效期限到日期</div>
+    <div class="value" style="font-size: 16px; color: #666666;">2023-05-12</div>
+  </div>
+
+  <!-- 已有角色 -->
+  <div class="field-roles" style="display: flex; flex-direction: column; gap: 8px;">
+    <div class="label" style="font-size: 16px; font-weight: 500; color: #000000;">已有角色</div>
+    <div class="count" style="font-size: 14px; color: #999999;">已选 2 种</div>
+    <div class="role-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
+      <div class="role-item" style="padding: 8px 12px; background-color: #f5f5f5; border-radius: 8px; font-size: 14px; color: #333333;">商务人员</div>
+      <div class="role-item" style="padding: 8px 12px; background-color: #f5f5f5; border-radius: 8px; font-size: 14px; color: #333333;">销售人员</div>
+    </div>
+  </div>
+</div>
+
+<!-- 任务节点开始: 权限配置详情 - 查看态【持久】 -->
+<!-- 底部固定操作按钮 -->
+<div style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: calc(100% - 40px); max-width: 320px;">
+  <div id="3177_10712" class="frame-3177_10712">
+    <div id="3177_10458" class="symbol-3177_10458 fill-lightcomp_background_emphasize-602_9414">
+      <div id="3177_10459" class="text-3177_10459 fill-lightfont_on_primary-602_9443-text text-fontbody_lmedium-602_9659">
+        <p id="3177_10459_0" class="paragraph-3177_10459_0">
+          <span id="3177_10459_0_1" class="span-3177_10459_0_1 text-fontbody_lmedium-602_9659">权限管理</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 任务节点结束: 权限配置详情 - 查看态【持久】 -->
+</div>
+</div>
+</div>

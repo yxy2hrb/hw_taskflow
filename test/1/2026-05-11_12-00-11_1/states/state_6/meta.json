@@ -1,0 +1,12 @@
+{
+  "state_id": 6,
+  "state_name": "网络失败提示",
+  "description": "用户在偏好面板中点击‘Preferences’时设备处于离线状态，页面底部浮出Toast提示（浅红底色#F44336，白色文字，圆角4px，2秒后自动消失），文字为‘网络不可用，请检查连接’（英文‘Network unavailable. Please check your connection.’），面板本身保持打开且可继续操作。",
+  "implementation_method": "轻量级提示 (Toast/Snackbar)：浅红色背景#F44336 + 白色12px文字，圆角4px，宽度适配内容；文本‘网络不可用，请检查连接’ / ‘Network unavailable. Please check your connection.’；居中底部浮出，距底边24px；2秒后自动淡出（opacity 1→0，300ms）；面板与遮罩层保持原状。",
+  "last_state": 2,
+  "applied": 1,
+  "skipped": 0,
+  "elapsed_ms": 5472,
+  "failed": false,
+  "error": null
+}

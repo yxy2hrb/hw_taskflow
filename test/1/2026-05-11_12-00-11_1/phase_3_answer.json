@@ -1,0 +1,36 @@
+{
+  "sessionId": "tf_3706404f9cf4",
+  "phase": 3,
+  "picked": [
+    {
+      "id": "state_2::opt_a",
+      "group": "state_2 · 全屏偏好面板",
+      "label": "全屏半透明遮罩层+居中卡片：顶部有‘Preferences’标题，7个行业卡片横向滚动网格，底部固定‘确认’按钮",
+      "default": true
+    },
+    {
+      "id": "state_3::opt_a",
+      "group": "state_3 · 加载中过渡态",
+      "label": "轻量骨架屏：资讯页内容区域变灰白骨架，顶部保留‘全部’页签和Tab栏，持续1.2秒后跳转",
+      "default": true
+    },
+    {
+      "id": "state_4::opt_a",
+      "group": "state_4 · Interests and Preferences页",
+      "label": "标签页内嵌式Industry页：顶部固定标签栏（Industry/Topics/Notifications），下方6宫格图标+文字，等距排列",
+      "default": true
+    },
+    {
+      "id": "state_5::opt_a",
+      "group": "state_5 · 取消偏好设置",
+      "label": "点击遮罩层或返回键自动关闭：面板淡出，资讯页内容无缝恢复，无额外弹窗或确认",
+      "default": true
+    },
+    {
+      "id": "state_6::opt_a",
+      "group": "state_6 · 网络失败提示",
+      "label": "底部Toast提示：浅红底色+白色文字‘网络不可用，请检查连接’，2秒后自动消失",
+      "default": true
+    }
+  ]
+}

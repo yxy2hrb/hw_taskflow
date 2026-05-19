@@ -1,0 +1,791 @@
+.text-fontbody_mregular-602_9661 {
+        font-size: 12px;
+font-family: "Microsoft YaHei";
+font-weight: Regular
+      }
+.fill-lightfont_primary-602_9446-paragraph {
+        color: rgba(0, 0, 0, 0.8980392217636108)
+      }
+.text-fontbody_lregular-602_9658 {
+        font-size: 16px;
+font-family: "HarmonyHeiTi";
+font-weight: Regular
+      }
+.stroke-lighticon_fourth-602_9454 {
+        border-color: rgba(0, 0, 0, 0.20000000298023224)
+      }
+.fill-lightfont_emphasize-602_9440-paragraph {
+        color: rgba(10, 89, 247, 1)
+      }
+.text-fonttitle_smedium-602_9701 {
+        font-size: 20px;
+font-family: "HarmonyHeiTi";
+font-weight: Medium
+      }
+
+.scroll-container-0_1 { position: relative !important; width: 100%; height: auto !important; overflow: visible !important; }
+
+.Pixso-canvas-0_1 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.Pixso-frame-3188_247 {
+  width: 280px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.Pixso-frame-3188_248 {
+  width: 120px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-3188_249 {
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 8.5px 8px 8.5px 8px;
+  background-color: transparent;
+  mix-blend-mode: normal;
+}
+
+.Pixso-paragraph-3188_250 {
+  text-align: center;
+  letter-spacing: 0px;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.8980392217636108);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  width: 100%;
+  height: 16px;
+  position: relative;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 0;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-3188_251 {
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 7.5px 8px 7.5px 8px;
+  background-color: transparent;
+  mix-blend-mode: normal;
+}
+
+.Pixso-paragraph-3188_252 {
+  text-align: center;
+  letter-spacing: 0px;
+  text-decoration: none;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  width: 100%;
+  height: 21px;
+  position: relative;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 0;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-3188_253 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 14.5px 8px 14.5px 8px;
+  mix-blend-mode: normal;
+}
+
+.stroke-wrapper-3188_253 {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-shrink: 0;
+}
+
+.stroke-3188_253 {
+  position: absolute;
+  inset: 0px;
+  border-radius: 0px 0px 0px 0px;
+  border-width: 0.25px 0px 0.25px 0px;
+  border-style: solid;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.Pixso-paragraph-3188_254 {
+  text-align: center;
+  letter-spacing: 0px;
+  text-decoration: none;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  width: 100%;
+  height: 27px;
+  position: relative;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 0;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-3188_255 {
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 7.5px 8px 7.5px 8px;
+  background-color: transparent;
+  mix-blend-mode: normal;
+}
+
+.Pixso-paragraph-3188_256 {
+  text-align: center;
+  letter-spacing: 0px;
+  text-decoration: none;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  width: 100%;
+  height: 21px;
+  position: relative;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 0;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-3188_257 {
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 8.5px 8px 8.5px 8px;
+  background-color: transparent;
+  mix-blend-mode: normal;
+}
+
+.Pixso-paragraph-3188_258 {
+  text-align: center;
+  letter-spacing: 0px;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.8980392217636108);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  width: 100%;
+  height: 16px;
+  position: relative;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 0;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-3188_259 {
+  width: 80px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-3188_260 {
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 8.5px 8px 8.5px 8px;
+  background-color: transparent;
+  mix-blend-mode: normal;
+}
+
+.Pixso-paragraph-3188_261 {
+  text-align: center;
+  letter-spacing: 0px;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.8980392217636108);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  width: 100%;
+  height: 16px;
+  position: relative;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 0;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-3188_262 {
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 7.5px 8px 7.5px 8px;
+  background-color: transparent;
+  mix-blend-mode: normal;
+}
+
+.Pixso-paragraph-3188_263 {
+  text-align: center;
+  letter-spacing: 0px;
+  text-decoration: none;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  width: 100%;
+  height: 21px;
+  position: relative;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 0;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-3188_264 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 14.5px 8px 14.5px 8px;
+  mix-blend-mode: normal;
+}
+
+.stroke-wrapper-3188_264 {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-shrink: 0;
+}
+
+.stroke-3188_264 {
+  position: absolute;
+  inset: 0px;
+  border-radius: 0px 0px 0px 0px;
+  border-width: 0.25px 0px 0.25px 0px;
+  border-style: solid;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.Pixso-paragraph-3188_265 {
+  text-align: center;
+  letter-spacing: 0px;
+  text-decoration: none;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  width: 100%;
+  height: 27px;
+  position: relative;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 0;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-3188_266 {
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 7.5px 8px 7.5px 8px;
+  background-color: transparent;
+  mix-blend-mode: normal;
+}
+
+.Pixso-paragraph-3188_267 {
+  text-align: center;
+  letter-spacing: 0px;
+  text-decoration: none;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  width: 100%;
+  height: 21px;
+  position: relative;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 0;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-3188_268 {
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 8.5px 8px 8.5px 8px;
+  background-color: transparent;
+  mix-blend-mode: normal;
+}
+
+.Pixso-paragraph-3188_269 {
+  text-align: center;
+  letter-spacing: 0px;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.8980392217636108);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  width: 100%;
+  height: 16px;
+  position: relative;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 0;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-3188_270 {
+  width: 80px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-3188_271 {
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 8.5px 8px 8.5px 8px;
+  background-color: transparent;
+  mix-blend-mode: normal;
+}
+
+.Pixso-paragraph-3188_272 {
+  text-align: center;
+  letter-spacing: 0px;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.8980392217636108);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  width: 100%;
+  height: 16px;
+  position: relative;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 0;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-3188_273 {
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 7.5px 8px 7.5px 8px;
+  background-color: transparent;
+  mix-blend-mode: normal;
+}
+
+.Pixso-paragraph-3188_274 {
+  text-align: center;
+  letter-spacing: 0px;
+  text-decoration: none;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  width: 100%;
+  height: 21px;
+  position: relative;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 0;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-3188_275 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 14.5px 8px 14.5px 8px;
+  mix-blend-mode: normal;
+}
+
+.stroke-wrapper-3188_275 {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-shrink: 0;
+}
+
+.stroke-3188_275 {
+  position: absolute;
+  inset: 0px;
+  border-radius: 0px 0px 0px 0px;
+  border-width: 0.25px 0px 0.25px 0px;
+  border-style: solid;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.Pixso-paragraph-3188_276 {
+  text-align: center;
+  letter-spacing: 0px;
+  text-decoration: none;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  width: 100%;
+  height: 27px;
+  position: relative;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 0;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-3188_277 {
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 7.5px 8px 7.5px 8px;
+  background-color: transparent;
+  mix-blend-mode: normal;
+}
+
+.Pixso-paragraph-3188_278 {
+  text-align: center;
+  letter-spacing: 0px;
+  text-decoration: none;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  width: 100%;
+  height: 21px;
+  position: relative;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 0;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-3188_279 {
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 8.5px 8px 8.5px 8px;
+  background-color: transparent;
+  mix-blend-mode: normal;
+}
+
+.Pixso-paragraph-3188_280 {
+  text-align: center;
+  letter-spacing: 0px;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.8980392217636108);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  width: 100%;
+  height: 16px;
+  position: relative;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 0;
+  mix-blend-mode: normal;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.fill-lightcomp_background_emphasize-602_9414 {
+        background-color: rgba(10, 89, 247, 1)
+      }
+.fill-lightfont_primary-602_9446-paragraph {
+        color: rgba(0, 0, 0, 0.8980392217636108)
+      }
+.text-fontbody_mregular-602_9661 {
+        font-size: 12px;
+font-family: "Microsoft YaHei";
+font-weight: Regular
+      }
+
+.scroll-container-0_1 { position: relative !important; width: 100%; height: auto !important; overflow: visible !important; }
+
+.Pixso-canvas-0_1 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.Pixso-frame-3188_71 {
+  width: 328px;
+  height: 48px;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 0px 12px 0px;
+  border-radius: 8px 8px 8px 8px;
+}
+
+.Pixso-frame-3188_72 {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  flex-shrink: 0;
+  border-radius: 12px 12px 12px 12px;
+  mix-blend-mode: normal;
+}
+
+.Pixso-group-3188_73 {
+  width: 83.34%;
+  height: 83.34%;
+  position: absolute;
+  left: 8.33%;
+  right: 8.33%;
+  top: 8.33%;
+  bottom: 8.33%;
+  mix-blend-mode: normal;
+}
+
+.Pixso-rectangle-3188_74 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  border-radius: 10px 10px 10px 10px;
+  mix-blend-mode: normal;
+}
+
+.Pixso-vector-3188_75 {
+  position: absolute;
+  inset: -7.784489842294231% -79.02326975323847% -43.354833074372436% -77.6182271775651% ;
+  background-image: url(./image/Boolean_operation_3188_75.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.vector-wrapper-3188_75 {
+  position: absolute;
+  width: 7px;
+  height: 11.25px;
+  top: 14.38%;
+  left: 31.98%;
+  transform: undefined;
+}
+
+.Pixso-paragraph-3188_78 {
+  display: -webkit-box;
+  flex-direction: column;
+  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  width: 100%;
+  height: 16px;
+  position: relative;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.fill-lightcomp_background_emphasize-602_9414 {
+        background-color: rgba(10, 89, 247, 1)
+      }
+.fill-lightfont_on_primary-602_9443-text {
+        color: rgba(255, 255, 255, 1)
+      }
+.text-fontbody_lmedium-602_9659 {
+        font-size: 16px;
+font-family: HarmonyHeiTi;
+line-height: 1px
+      }
+
+.scroll-container-0_1 { position: relative !important; width: 100%; height: auto !important; overflow: visible !important; }
+
+.canvas-0_1 { position: relative !important; width: auto !important; height: auto !important; flex-shrink: 0; }
+
+.frame-3177_10712 {
+  width: 120px;
+  height: 40px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.symbol-3177_10458 {
+  width: 120px;
+  height: 40px;
+  position: relative !important; left: auto !important; top: auto !important; transform: none !important; margin: 0 auto !important;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  padding: 9px 16px 9px 16px;
+  border-radius: 20px 20px 20px 20px;
+  mix-blend-mode: normal;
+}
+
+.text-3177_10459 {
+  text-align: center;
+  width: 88px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  mix-blend-mode: normal;
+}
+
+.paragraph-3177_10459_0 {
+  line-height: 21.328001022338867px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.span-3177_10459_0_1 {
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  position: relative;
+  flex-shrink: 0;
+  mix-blend-mode: normal;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}

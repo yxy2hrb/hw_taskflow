@@ -1,0 +1,12 @@
+{
+  "state_id": 2,
+  "state_name": "全屏偏好选择面板",
+  "description": "用户点击‘全部’页签后，页面叠加一层半透明黑色遮罩（opacity=0.3），状态栏与底部Tab栏保持可见且未被遮挡；居中弹出宽高适配的白色卡片容器，顶部固定‘Preferences’标题（20px Medium字体），下方为7个横向可滚动行业卡片（每个含图标+中文名+勾选框），底部固定蓝色‘确认’按钮（文字‘Confirm’）。",
+  "implementation_method": "底部抽屉 (Bottom Sheet)：半透明遮罩层（rgba(25,25,25,0.3)）覆盖全屏但留出状态栏与底Tab；白色卡片容器（圆角8px，阴影柔和）内含顶部标题‘Preferences’（中文‘偏好设置’）、7个行业卡片（横向滚动网格，每项含SVG图标+‘金融科技’等中文名+右侧复选框）；底部按钮‘Confirm’（中文‘确认’，#1985FF背景，白色文字，高度48px，居中固定）。",
+  "last_state": 1,
+  "applied": 1,
+  "skipped": 0,
+  "elapsed_ms": 69931,
+  "failed": false,
+  "error": null
+}

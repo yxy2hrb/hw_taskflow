@@ -1,0 +1,120 @@
+{
+  "state_id": 2,
+  "state_name": "全屏偏好选择面板",
+  "components": [
+    {
+      "tag": "Checkbox",
+      "attrs": {
+        "state": "on"
+      },
+      "instance": 1,
+      "component": {
+        "group": "CheckBox-Phone",
+        "variant": "Selected=OFF,状态=Enabled",
+        "node_id": "1:10061",
+        "page": "5. Selection 选择类",
+        "component_key": "875ba8e679e85efd679335426632fbbdd68c3dc2"
+      }
+    },
+    {
+      "tag": "Checkbox",
+      "attrs": {
+        "state": "off"
+      },
+      "instance": 2,
+      "component": {
+        "group": "CheckBox-Phone",
+        "variant": "Selected=OFF,状态=Enabled",
+        "node_id": "1:10061",
+        "page": "5. Selection 选择类",
+        "component_key": "875ba8e679e85efd679335426632fbbdd68c3dc2"
+      }
+    },
+    {
+      "tag": "Checkbox",
+      "attrs": {
+        "state": "off"
+      },
+      "instance": 3,
+      "component": {
+        "group": "CheckBox-Phone",
+        "variant": "Selected=OFF,状态=Enabled",
+        "node_id": "1:10061",
+        "page": "5. Selection 选择类",
+        "component_key": "875ba8e679e85efd679335426632fbbdd68c3dc2"
+      }
+    },
+    {
+      "tag": "Checkbox",
+      "attrs": {
+        "state": "off"
+      },
+      "instance": 4,
+      "component": {
+        "group": "CheckBox-Phone",
+        "variant": "Selected=OFF,状态=Enabled",
+        "node_id": "1:10061",
+        "page": "5. Selection 选择类",
+        "component_key": "875ba8e679e85efd679335426632fbbdd68c3dc2"
+      }
+    },
+    {
+      "tag": "Checkbox",
+      "attrs": {
+        "state": "off"
+      },
+      "instance": 5,
+      "component": {
+        "group": "CheckBox-Phone",
+        "variant": "Selected=OFF,状态=Enabled",
+        "node_id": "1:10061",
+        "page": "5. Selection 选择类",
+        "component_key": "875ba8e679e85efd679335426632fbbdd68c3dc2"
+      }
+    },
+    {
+      "tag": "Checkbox",
+      "attrs": {
+        "state": "off"
+      },
+      "instance": 6,
+      "component": {
+        "group": "CheckBox-Phone",
+        "variant": "Selected=OFF,状态=Enabled",
+        "node_id": "1:10061",
+        "page": "5. Selection 选择类",
+        "component_key": "875ba8e679e85efd679335426632fbbdd68c3dc2"
+      }
+    },
+    {
+      "tag": "Checkbox",
+      "attrs": {
+        "state": "off"
+      },
+      "instance": 7,
+      "component": {
+        "group": "CheckBox-Phone",
+        "variant": "Selected=OFF,状态=Enabled",
+        "node_id": "1:10061",
+        "page": "5. Selection 选择类",
+        "component_key": "875ba8e679e85efd679335426632fbbdd68c3dc2"
+      }
+    },
+    {
+      "tag": "Button",
+      "attrs": {
+        "label": "Confirm",
+        "variant": "primary"
+      },
+      "instance": 1,
+      "component": {
+        "group": "Button-Phone",
+        "variant": "尺寸=Medium,类型=Emphasized,状态=Enabled",
+        "node_id": "1:9168",
+        "page": "2. Controls 操作类",
+        "component_key": "938b12c82f10e57073b3fde899a73a462b8536a0"
+      }
+    }
+  ],
+  "missing": []
+}

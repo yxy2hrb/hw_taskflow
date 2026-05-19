@@ -1,0 +1,24 @@
+{
+  "taskflow_description": "Structured requirement for 2",
+  "ui_analysis": [
+    {
+      "image": "2",
+      "description": "用户点击“YES”确认取消后，弹窗消失，按钮状态立即更新，恢复为未关注样式，引导用户再次关注。",
+      "raw_requirement": {
+        "state_id": 3,
+        "state_name": "未关注/可关注状态 (结束状态)",
+        "description": "用户点击“YES”确认取消后，弹窗消失，按钮状态立即更新，恢复为未关注样式，引导用户再次关注。",
+        "implementation_method": "按钮控件 (Button)：黑色/深色背景，显示文本 'Follow'，表示可交互的初始状态。",
+        "last_state": 1
+      },
+      "design_spec": [
+        {
+          "component_type": "Button",
+          "component_name": "未关注状态下的关注按钮",
+          "matched_component_id": "normal_button",
+          "component_html": "<style>\n* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n\nol,ul,menu {\n  padding-inline-start: 0;\n  list-style: none;\n}\n\nol li {\n  list-style-position: inside;\n}\n\nol li::marker, ul li::before {\n  letter-spacing: 0;\n}\n\nhtml {\n  width: 100%;\n  height: 100%;\n}\n\nbody { \n  width: 100%;\n  height: 100%;\n  margin: 0;\n  background-color: white;\n}\n    \nspan {\n  word-break: break-word;\n}\n\n.fill-lightcomp_background_tertiary-602_9420 {\n        background-color: rgba(0, 0, 0, 0.0470588244497776)\n      }\n.fill-lightfont_emphasize-602_9440-text {\n        color: rgba(10, 89, 247, 1)\n      }\n.text-fontbody_lmedium-602_9659 {\n        font-size: 16px;\nfont-family: HarmonyHeiTi;\nline-height: 1px\n      }\n\n.scroll-container-0_1 {\n  height: 100%;\n  width: 100%;\n  overflow: auto;\n}\n\n.canvas-0_1 {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  left: 0px;\n  top: 0px;\n}\n\n.frame-3177_10709 {\n  width: 120px;\n  height: 40px;\n  position: relative;\n  flex-shrink: 0;\n}\n\n.symbol-3177_10575 {\n  width: 120px;\n  height: 40px;\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translateX(calc(-50% + 0px)) translateY(calc(-50% + 0px));\n  display: flex;\n  flex-direction: row;\n  gap: 8px;\n  justify-content: center;\n  align-items: center;\n  padding: 9px 16px 9px 16px;\n  border-radius: 20px 20px 20px 20px;\n  mix-blend-mode: normal;\n}\n\n.text-3177_10576 {\n  text-align: center;\n  width: 88px;\n  height: auto;\n  position: relative;\n  flex-shrink: 0;\n  mix-blend-mode: normal;\n}\n\n.paragraph-3177_10576_0 {\n  line-height: 21.328001022338867px;\n  position: relative;\n  flex-shrink: 0;\n}\n\n.span-3177_10576_0_1 {\n  font-weight: 400;\n  color: rgba(10, 89, 247, 1);\n  position: relative;\n  flex-shrink: 0;\n  mix-blend-mode: normal;\n}\n\n.container {\n  width: 100%;\n  height: 100%;\n}\n</style>\n<div class=\"scroll-container-0_1\">\n  <div id=\"0_1\" class=\"canvas-0_1\">\n    <div id=\"3177_10709\" class=\"frame-3177_10709\">\n      <div id=\"3177_10575\" class=\"symbol-3177_10575 fill-lightcomp_background_tertiary-602_9420\">\n        <div id=\"3177_10576\" class=\"text-3177_10576 fill-lightfont_emphasize-602_9440-text text-fontbody_lmedium-602_9659\">\n          <p id=\"3177_10576_0\" class=\"paragraph-3177_10576_0\">\n<span id=\"3177_10576_0_1\" class=\"span-3177_10576_0_1 text-fontbody_lmedium-602_9659\">BUTTON</span></p>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n\n"
+        }
+      ]
+    }
+  ]
+}

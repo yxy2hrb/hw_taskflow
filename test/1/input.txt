@@ -1,0 +1,1 @@
+用户在行业资讯页点“全部”页签→出全屏偏好选择面板，保留状态栏与底Tab→面板以卡片展示7个行业选项并支持多选→点顶部“Preferences”→跳转至“Interests and Preferences”页，默认显示Industry标签，网格呈现6个行业图标。

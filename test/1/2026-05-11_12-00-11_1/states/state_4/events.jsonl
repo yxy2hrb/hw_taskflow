@@ -1,0 +1,7 @@
+{"event":"state-start","data":{"state_id":4,"state_name":"Interests和Preferences页","last_state":1,"ts":1778501016342},"ts":"2026-05-11T12:03:36.344Z"}
+{"event":"state-log","data":{"state_id":4,"msg":"[dsl] HM_DSL_ENABLED=1 且匹配，尝试 DSL 路径","ts":1778501016342},"ts":"2026-05-11T12:03:36.344Z"}
+{"event":"state-log","data":{"state_id":4,"msg":"[dsl] 准备走 DSL 路径：Interests和Preferences页","ts":1778501016342},"ts":"2026-05-11T12:03:36.345Z"}
+{"event":"state-log","data":{"state_id":4,"msg":"[dsl] prompt 3.0KB → callText…","ts":1778501016342},"ts":"2026-05-11T12:03:36.345Z"}
+{"event":"state-log","data":{"state_id":4,"msg":"[dsl] [dsl] compile ok · state=\"Interests和Preferences页\" · 6690B rendered","ts":1778501027114},"ts":"2026-05-11T12:03:47.115Z"}
+{"event":"state-log","data":{"state_id":4,"msg":"[dsl] 成功（html 101523B），跳过旧路径","ts":1778501027114},"ts":"2026-05-11T12:03:47.115Z"}
+{"event":"state-done","data":{"state_id":4,"state_name":"Interests和Preferences页","file":"state_4.html","applied":1,"skipped":0,"review_ok":null,"review_applied":0,"review_issues":[],"elapsed_ms":10774,"hmExpansions":[],"hmMissing":[],"ts":1778501027116},"ts":"2026-05-11T12:03:47.118Z"}

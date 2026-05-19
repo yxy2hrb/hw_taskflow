@@ -1,0 +1,14 @@
+{
+  "_comment": "test/1 state_4 - 偏好提交加载中。在 state_2 上叠加 OverlayMask + Spinner + 'Saving…' 文案。",
+  "state_name": "偏好提交加载中",
+  "lifecycle": "temporary",
+  "injection": { "mode": "overlay", "z_index": 10000, "top": 32, "bottom": 56 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "OverlayMask",
+    "props": { "opacity": 0.3, "color": "#000" },
+    "children": [
+      { "type": "Spinner", "props": { "size": 42, "color": "#165DFF", "text": "Saving…" } }
+    ]
+  }
+}

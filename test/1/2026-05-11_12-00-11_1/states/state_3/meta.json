@@ -1,0 +1,12 @@
+{
+  "state_id": 3,
+  "state_name": "加载中过渡态",
+  "description": "用户点击面板顶部‘Preferences’按钮后，资讯主页内容区域立即变为灰白骨架屏（保留顶部‘全部’页签与底部Tab栏），骨架由3条等高灰色矩形块组成（模拟资讯卡片），持续1.2秒后自动跳转，期间状态栏4G/WiFi图标与Tab栏图标均保持原状。",
+  "implementation_method": "轻量骨架屏 (Skeleton Screen)：资讯流主区域替换为3段等高灰色矩形（#F3F3F3背景，高度120px，圆角4px，间距12px）；顶部页签栏（含‘全部’）与底部Tab栏完全保留、无任何变化；无动画延迟，跳转前持续1.2秒。",
+  "last_state": 1,
+  "applied": 1,
+  "skipped": 0,
+  "elapsed_ms": 44895,
+  "failed": false,
+  "error": null
+}

@@ -1,0 +1,171 @@
+.fill-lightcomp_background_list_card-602_9416 {
+        background-color: rgba(255, 255, 255, 1)
+      }
+.fill-lightfont_secondary-602_9447-paragraph {
+        color: rgba(0, 0, 0, 0.6000000238418579)
+      }
+.text-fontbody_lregular-602_9658 {
+        font-size: 16px;
+font-family: "HarmonyHeiTi";
+font-weight: Regular
+      }
+.fill-lighticon_primary-602_9459-paragraph {
+        color: rgba(0, 0, 0, 0.8980392217636108)
+      }
+
+.scroll-container-0_1 { position: relative !important; width: 100%; height: auto !important; overflow: visible !important; }
+
+.Pixso-canvas-0_1 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.Pixso-frame-3193_13 {
+  width: 250px;
+  height: 40px;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 4px 8px 16px;
+  border-radius: 24px 24px 24px 24px;
+}
+
+.Pixso-paragraph-3193_14 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  width: 100%;
+  height: 21px;
+  position: relative;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.Pixso-frame-3193_15 {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px 16px 16px 16px;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-3193_16 {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  flex-shrink: 0;
+  mix-blend-mode: normal;
+}
+
+.Pixso-paragraph-3193_17 {
+  font-size: 20px;
+  font-family: "HM Symbol";
+  font-weight: Regular;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  letter-spacing: 0px;
+  text-decoration: none;
+  width: auto;
+  height: auto;
+  position: relative !important; left: auto !important; top: auto !important; transform: none !important; margin: 0 auto !important;
+  white-space: pre;
+  flex-grow: 0;
+  mix-blend-mode: normal;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+/* =========================================
+       组件样式开始 (已做隔离处理)
+       所有样式都以 .pixso-btn-component 开头
+       ========================================= */
+
+    /* 1. 这是一个"壳子"，确保组件以行内块显示，方便你在页面中排版 */
+    .pixso-btn-component {
+      display: inline-block;
+      position: relative;
+      /* 如果组件有固定宽高，可以在这里限制，或者由内容撑开 */
+      width: 120px; 
+      height: 40px;
+      vertical-align: middle;
+    }
+
+    /* 2. 只重置这个组件内部的盒模型，不影响外部 */
+    .pixso-btn-component /* 3. 原始样式迁移 - 注意前面都加了 .pixso-btn-component */
+    
+    .pixso-btn-component .fill-lightcomp_background_emphasize-602_9414 {
+      background-color: rgba(10, 89, 247, 1);
+    }
+    
+    .pixso-btn-component .fill-lightfont_on_primary-602_9443-text {
+      color: rgba(255, 255, 255, 1);
+    }
+    
+    .pixso-btn-component .text-fontbody_lmedium-602_9659 {
+      font-size: 16px;
+      font-family: HarmonyHeiTi, sans-serif; /* 加个备选字体防止报错 */
+      line-height: 1px;
+    }
+
+    /* 删除了 .scroll-container 和 .canvas 的绝对定位，
+       改为让它们填满我们的"壳子" */
+    .pixso-btn-component .frame-3177_10712 {
+      width: 120px;
+      height: 40px;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .pixso-btn-component .symbol-3177_10458 {
+      width: 100%; /* 填满壳子 */
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      /* 原本的居中逻辑保留 */
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      justify-content: center;
+      align-items: center;
+      padding: 9px 16px;
+      border-radius: 20px;
+      mix-blend-mode: normal;
+      cursor: pointer; /* 加个手型，像个按钮 */
+    }
+
+    .pixso-btn-component .text-3177_10459 {
+      text-align: center;
+      width: auto; /* 让文字宽度自适应，或者保持 88px */
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .pixso-btn-component .paragraph-3177_10459_0 {
+      line-height: 21.328px;
+      position: relative;
+    }
+
+    .pixso-btn-component .span-3177_10459_0_1 {
+      font-weight: 400;
+      color: rgba(255, 255, 255, 1);
+    }

@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixso HTML</title>
+  <link rel="stylesheet" href="css/font.css">
+  <script src="js/animation.js"></script>
+  <style>
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body { 
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color: white;
+}
+    
+span {
+  word-break: break-word;
+}
+
+.fill-背景色页面-11_281018 {
+        background-color: rgba(245, 246, 248, 1)
+      }
+
+.scroll-container-0_1 {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+.canvas-0_1 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame-11_280419 {
+  width: 360px;
+  height: 850px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.text-11_280420 {
+  font-size: 12px;
+  font-family: HarmonyHeiTi;
+  font-weight: 400;
+  text-align: center;
+  line-height: 14px;
+  color: rgba(51, 51, 51, 1);
+  width: 26px;
+  height: auto;
+  position: absolute;
+  left: 293px;
+  top: 478px;
+  display: none;
+}
+
+.rectangle-11_280421 {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 286px;
+  top: 434px;
+  display: none;
+  border-radius: 12px 12px 12px 12px;
+  background-color: rgba(255, 243, 233, 1);
+}
+
+.frame-11_280422 {
+  width: 21.999988555908203px;
+  height: 18.000009536743164px;
+  position: absolute;
+  left: 295px;
+  top: 445px;
+  display: none;
+}
+
+.vector-11_280423 {
+  width: 22.000011444091797px;
+  height: 17.999345779418945px;
+  background-image: url(./image/Boolean_operation_11_280423.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: -0.00001239776611328125px;
+  top: -0.0003223419189453125px;
+}
+
+.group-11_280428 {
+  width: 360px;
+  height: 44px;
+  position: absolute;
+  left: 0px;
+  top: 44px;
+}
+
+.frame-11_280429 {
+  width: 360px;
+  height: 44px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.rectangle-11_280430 {
+  width: 360px;
+  height: 44px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background-color: rgba(255, 254.74501037597656, 254.74501037597656, 1);
+}
+
+.frame-11_280431 {
+  width: 11px;
+  height: 20px;
+  position: absolute;
+  left: 16px;
+  top: 12px;
+}
+
+.frame-11_280432 {
+  width: 11px;
+  height: 20px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.vector-11_280433 {
+  width: 11px;
+  height: 20px;
+  background-image: url(./image/Vector_11_280433.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.text-11_280434 {
+  font-size: 17px;
+  font-family: HarmonyHeiTi;
+  font-weight: 400;
+  text-align: center;
+  line-height: 20px;
+  color: rgba(51, 51, 51, 1);
+  width: 70px;
+  height: auto;
+  position: absolute;
+  left: 145px;
+  top: 12px;
+}
+
+.frame-11_280435 {
+  width: 360px;
+  height: 138px;
+  position: absolute;
+  left: 0px;
+  top: 88px;
+}
+
+.rectangle-11_280436 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.frame-11_280437 {
+  width: 303.3345031738281px;
+  height: 20px;
+  position: absolute;
+  left: 24px;
+  top: 128px;
+  display: none;
+}
+
+.frame-11_280438 {
+  width: 13.334508895874023px;
+  height: 13.33131217956543px;
+  position: absolute;
+  left: 290px;
+  top: 3.34765625px;
+}
+
+.vector-11_280439 {
+  width: 13.335165023803711px;
+  height: 13.331313133239746px;
+  background-image: url(./image/Boolean_operation_11_280439.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: -0.0000057220458984375px;
+  top: -0.0035265684127807617px;
+}
+
+.text-11_280446 {
+  font-size: 14px;
+  font-family: HarmonyHeiTi;
+  font-weight: 400;
+  line-height: 17px;
+  color: rgba(102, 102, 102, 1);
+  width: 88.35%;
+  height: auto;
+  position: absolute;
+  left: -0.33%;
+  right: 11.98%;
+  top: 50%;
+  transform: translateY(calc(-50% + -1.5px));
+}
+
+.group-11_280447 {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  left: 248px;
+  top: 24px;
+}
+
+.rectangle-11_280448 {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  border-radius: 24px 24px 24px 24px;
+  border-width: 0.7142857313156128px 0.7142857313156128px 0.7142857313156128px 0.7142857313156128px;
+  box-sizing: border-box;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.05098039284348488);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(./image/b5bbc9b1178cb607f64c661157643c114d238cde.png);
+}
+
+.frame-11_280449 {
+  width: 22.22%;
+  height: 57.97%;
+  position: absolute;
+  left: 68.89%;
+  right: 8.89%;
+  top: 17.39%;
+  bottom: 24.64%;
+}
+
+.rectangle-11_280450 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  border-radius: 16px 16px 16px 16px;
+  background-color: rgba(234, 240, 254, 1);
+}
+
+.text-11_280451 {
+  font-size: 35.999996185302734px;
+  font-family: HarmonyHeiTi;
+  font-weight: 400;
+  text-align: center;
+  color: rgba(56, 114, 250, 1);
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: 27.5%;
+  right: 27.5%;
+  top: 20%;
+  bottom: 20%;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.text-11_280452 {
+  font-size: 16px;
+  font-family: HarmonyHeiTi;
+  font-weight: 400;
+  line-height: 19px;
+  color: rgba(51, 51, 51, 1);
+  width: 162px;
+  height: auto;
+  position: absolute;
+  left: 23px;
+  top: 50%;
+  transform: translateY(calc(-50% + -16.5px));
+  display: none;
+}
+
+.frame-11_280453 {
+  width: 128px;
+  height: 24px;
+  position: absolute;
+  left: 24px;
+  top: 24px;
+}
+
+.rectangle-11_280454 {
+  width: 128px;
+  height: 24px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.text-11_280455 {
+  font-size: 20px;
+  font-family: HarmonyHeiTi;
+  font-weight: 400;
+  line-height: 24px;
+  color: rgba(51, 51, 51, 1);
+  width: 62px;
+  height: auto;
+  position: absolute;
+  left: -1px;
+  top: 50%;
+  transform: translateY(calc(-50% + 0px));
+}
+
+.frame-11_280456 {
+  width: 44px;
+  height: 24px;
+  position: absolute;
+  left: 84px;
+  top: 0px;
+  display: none;
+}
+
+.rectangle-11_280457 {
+  width: 44px;
+  height: 24px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.vector-11_280458 {
+  width: 24px;
+  height: 24px;
+  background-image: url(./image/Frame_11_280458.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.vector-11_280479 {
+  width: 16px;
+  height: 16px;
+  background-image: url(./image/Frame_11_280479.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 28px;
+  top: 4px;
+}
+
+.group-11_280486 {
+  width: 384px;
+  height: 404px;
+  position: absolute;
+  left: 0px;
+  top: 234px;
+}
+
+.frame-11_280487 {
+  width: 384px;
+  height: auto;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.group-11_280488 {
+  width: 360px;
+  height: 198px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.rectangle-11_280489 {
+  width: 360px;
+  height: 198px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.frame-11_280490 {
+  width: 360px;
+  height: 40px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.rectangle-11_280491 {
+  width: 360px;
+  height: 40px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.rectangle-11_280492 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.frame-11_280493 {
+  width: 28px;
+  height: 20px;
+  position: absolute;
+  left: 12px;
+  top: 10px;
+}
+
+.text-11_280494 {
+  font-size: 14px;
+  font-family: HarmonyHeiTi;
+  font-weight: 400;
+  line-height: 20px;
+  color: rgba(51, 51, 51, 1);
+  width: 30px;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(calc(-50% + 0px)) translateY(calc(-50% + 0px));
+}
+
+.frame-11_280495 {
+  width: 292px;
+  height: auto;
+  position: absolute;
+  left: 34px;
+  top: 48px;
+  display: flex;
+  flex-direction: row;
+  gap: 44px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-11_280496 {
+  width: 40px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+}
+
+.text-11_280497 {
+  font-size: 12px;
+  font-family: HarmonyHeiTi;
+  font-weight: 400;
+  text-align: center;
+  line-height: 14px;
+  color: rgba(51, 51, 51, 1);
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: -4px;
+  top: 44px;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-11_280498 {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.vector-11_280499 {
+  width: 40px;
+  height: 40px;
+  background-image: url(./image/Vector_11_280499.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.vector-11_280500 {
+  width: 23.75px;
+  height: 17.1875px;
+  background-image: url(./image/Boolean_operation_11_280500.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 8.125px;
+  top: 11.5625px;
+}
+
+.frame-11_280507 {
+  width: 40px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+}
+
+.text-11_280508 {
+  font-size: 12px;
+  font-family: HarmonyHeiTi;
+  font-weight: 400;
+  text-align: center;
+  line-height: 14px;
+  color: rgba(51, 51, 51, 1);
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: 2px;
+  top: 44px;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-11_280509 {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.vector-11_280510 {
+  width: 40px;
+  height: 40px;
+  background-image: url(./image/Vector_11_280510.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.vector-11_280511 {
+  width: 23.125px;
+  height: 18.125001907348633px;
+  background-image: url(./image/Boolean_operation_11_280511.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 8.437433242797852px;
+  top: 10.937499046325684px;
+}
+
+.frame-11_280516 {
+  width: 40px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+}
+
+.text-11_280517 {
+  font-size: 12px;
+  font-family: HarmonyHeiTi;
+  font-weight: 400;
+  text-align: center;
+  line-height: 14px;
+  color: rgba(51, 51, 51, 1);
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: -4px;
+  top: 44px;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-11_280518 {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.vector-11_280519 {
+  width: 40px;
+  height: 40px;
+  background-image: url(./image/Vector_11_280519.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.group-11_280520 {
+  width: 21.25px;
+  height: 20.9375px;
+  position: absolute;
+  left: 9.375px;
+  top: 9.6875px;
+}
+
+.vector-11_280521 {
+  width: 8.75px;
+  height: 20.9375px;
+  background-image: url(./image/Vector_11_280521.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.vector-11_280522 {
+  width: 8.75px;
+  height: 20.9375px;
+  background-image: url(./image/Vector_11_280522.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 12.500000000000004px;
+  top: 0px;
+}
+
+.group-11_280523 {
+  width: 10.3125px;
+  height: 11.249950408935547px;
+  position: absolute;
+  left: 5.625px;
+  top: 6.562549591064453px;
+}
+
+.vector-11_280524 {
+  width: 7.8125px;
+  height: 8.75px;
+  background-image: url(./image/Vector_11_280524.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 1.25px;
+  top: 1.2499499320983887px;
+}
+
+.vector-11_280525 {
+  width: 10.3125px;
+  height: 11.24994945526123px;
+  background-image: url(./image/Boolean_operation_11_280525.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.vector-11_280528 {
+  width: 4.687500953674316px;
+  height: 3.75px;
+  background-image: url(./image/Vector_11_280528.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 2.812499523162842px;
+  top: 4.374949932098389px;
+}
+
+.vector-11_280529 {
+  width: 4.995418548583984px;
+  height: 4.0607218742370605px;
+  background-image: url(./image/Boolean_operation_11_280529.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 2.65922212600708px;
+  top: 4.2204179763793945px;
+}
+
+.frame-11_280532 {
+  width: 40px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+}
+
+.text-11_280533 {
+  font-size: 12px;
+  font-family: HarmonyHeiTi;
+  font-weight: 400;
+  text-align: center;
+  line-height: 14px;
+  color: rgba(51, 51, 51, 1);
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: -4px;
+  top: 44px;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-11_280534 {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.vector-11_280535 {
+  width: 100%;
+  height: 100%;
+  background-image: url(./image/Vector_11_280535.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-11_280536 {
+  width: 57.03%;
+  height: 26.56%;
+  background-image: url(./image/Vector_11_280536.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 21.88%;
+  right: 21.09%;
+  top: 24.22%;
+  bottom: 49.22%;
+}
+
+.vector-11_280537 {
+  width: 54.68%;
+  height: 15.62%;
+  background-image: url(./image/Vector_11_280537.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 22.66%;
+  right: 22.66%;
+  top: 61.72%;
+  bottom: 22.66%;
+}
+
+.frame-11_280538 {
+  width: 292px;
+  height: auto;
+  position: absolute;
+  left: 34px;
+  top: 120px;
+  display: flex;
+  flex-direction: row;
+  gap: 44px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-11_280539 {
+  width: 40px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+}
+
+.frame-11_280540 {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.rectangle-11_280541 {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  border-radius: 12px 12px 12px 12px;
+  background-color: rgba(255, 235, 235, 1);
+}
+
+.vector-11_280542 {
+  width: 20px;
+  height: 18px;
+  background-image: url(./image/Vector_11_280542.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 10px;
+  top: 11px;
+}
+
+.text-11_280543 {
+  font-size: 12px;
+  font-family: HarmonyHeiTi;
+  font-weight: 400;
+  text-align: center;
+  line-height: 14px;
+  color: rgba(51, 51, 51, 1);
+  width: 26px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.frame-11_280544 {
+  width: 40px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+}
+
+.text-11_280545 {
+  font-size: 12px;
+  font-family: HarmonyHeiTi;
+  font-weight: 400;
+  text-align: center;
+  line-height: 14px;
+  color: rgba(51, 51, 51, 1);
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: -4px;
+  top: 44px;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-11_280546 {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.vector-11_280547 {
+  width: 40px;
+  height: 40px;
+  background-image: url(./image/Vector_11_280547.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.vector-11_280548 {
+  width: 42.96%;
+  height: 50.78%;
+  background-image: url(./image/Vector_11_280548.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 28.91%;
+  right: 28.13%;
+  top: 25%;
+  bottom: 24.22%;
+}
+
+.frame-11_280549 {
+  width: 40px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+}
+
+.text-11_280550 {
+  font-size: 12px;
+  font-family: HarmonyHeiTi;
+  font-weight: 400;
+  text-align: center;
+  line-height: 14px;
+  color: rgba(51, 51, 51, 1);
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: -4px;
+  top: 44px;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-11_280551 {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  flex-shrink: 0;
+  background-color: transparent;
+}
+
+.rectangle-11_280552 {
+  width: calc(100% - 0px);
+  height: calc(100% - 0px);
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  border-radius: 12px 12px 12px 12px;
+  background-color: rgba(239, 234, 255, 1);
+}
+
+.vector-11_280553 {
+  width: calc(100% - 20.444421768188477px);
+  height: calc(100% - 18.999998092651367px);
+  background-image: url(./image/Vector_11_280553.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 10.33331298828125px;
+  right: 10.111108779907227px;
+  top: 9px;
+  bottom: 9.999998092651367px;
+  display: none;
+}
+
+.vector-11_280554 {
+  width: 21.000001907348633px;
+  height: 21.000001907348633px;
+  background-image: url(./image/Vector_11_280554.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 9px;
+  top: 9px;
+  display: none;
+}
+
+.vector-11_280555 {
+  width: 15.3900146484375px;
+  height: 13.339966773986816px;
+  background-image: url(./image/Vector_11_280555.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 18.6099853515625px;
+  top: 18.54296875px;
+}
+
+.vector-11_280556 {
+  width: 12.841851234436035px;
+  height: 19.79926300048828px;
+  background-image: url(./image/Boolean_operation_11_280556.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 10.801704406738281px;
+  top: 10.100595474243164px;
+}
+
+.group-11_280559 {
+  width: 384px;
+  height: 198px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.rectangle-11_280560 {
+  width: 360px;
+  height: 198px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.frame-11_280561 {
+  width: 292px;
+  height: auto;
+  position: absolute;
+  left: 34px;
+  top: 48px;
+  display: flex;
+  flex-direction: row;
+  gap: 44px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-11_280562 {
+  width: 40px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+}
+
+.text-11_280563 {
+  font-size: 12px;
+  font-family: HarmonyHeiTi;
+  font-weight: 400;
+  text-align: center;
+  line-height: 14px;
+  color: rgba(51, 51, 51, 1);
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: -4px;
+  top: 44px;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-11_280564 {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  flex-shrink: 0;
+  background-color: transparent;
+}
+
+.group-11_280565 {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.vector-11_280566 {
+  width: 40px;
+  height: 40px;
+  background-image: url(./image/Vector_11_280566.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.group-11_280567 {
+  width: 21.25px;
+  height: 21.25px;
+  position: absolute;
+  left: 9.375px;
+  top: 9.375px;
+}
+
+.vector-11_280568 {
+  width: 20.731704711914062px;
+  height: 20.731704711914062px;
+  background-image: url(./image/Ellipse_11_280568.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0.2591552734375px;
+  top: 0.25927734375px;
+}
+
+.vector-11_280569 {
+  width: 21.25px;
+  height: 21.25px;
+  background-image: url(./image/Group_11_280569.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.frame-11_280574 {
+  width: 40px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+}
+
+.text-11_280575 {
+  font-size: 12px;
+  font-family: HarmonyHeiTi;
+  font-weight: 400;
+  text-align: center;
+  line-height: 14px;
+  color: rgba(51, 51, 51, 1);
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: -4px;
+  top: 44px;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-11_280576 {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.vector-11_280577 {
+  width: 40px;
+  height: 40px;
+  background-image: url(./image/Vector_11_280577.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.group-11_280578 {
+  width: 23.31082534790039px;
+  height: 20.561676025390625px;
+  position: absolute;
+  left: 9.6875px;
+  top: 9.0625px;
+}
+
+.group-11_280579 {
+  width: 23.31082534790039px;
+  height: 20.561676025390625px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.vector-11_280580 {
+  width: 86.96%;
+  height: 100%;
+  background-image: url(./image/Vector_11_280580.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0%;
+  right: 13.04%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.group-11_280581 {
+  width: 7.601351737976074px;
+  height: 7.615387439727783px;
+  position: absolute;
+  left: 15.70947265625px;
+  top: 12.9462890625px;
+}
+
+.vector-11_280582 {
+  width: 7.601351737976074px;
+  height: 7.615387439727783px;
+  background-image: url(./image/Ellipse_11_280582.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.vector-11_280583 {
+  width: 56.67%;
+  height: 60%;
+  background-image: url(./image/Vector_11_280583.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 23.33%;
+  right: 20%;
+  top: 20%;
+  bottom: 20%;
+}
+
+.frame-11_280584 {
+  width: 40px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+}
+
+.text-11_280585 {
+  font-size: 12px;
+  font-family: HarmonyHeiTi;
+  font-weight: 400;
+  text-align: center;
+  line-height: 14px;
+  color: rgba(51, 51, 51, 1);
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: -4px;
+  top: 44px;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-11_280586 {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  flex-shrink: 0;
+  background-color: transparent;
+}
+
+.group-11_280587 {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.vector-11_280588 {
+  width: 40px;
+  height: 40px;
+  background-image: url(./image/Vector_11_280588.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.group-11_280589 {
+  width: 47.5%;
+  height: 47.5%;
+  position: absolute;
+  left: 26.25%;
+  right: 26.25%;
+  top: 26.25%;
+  bottom: 26.25%;
+}
+
+.vector-11_280590 {
+  width: 72.22%;
+  height: 100%;
+  background-image: url(./image/Vector_11_280590.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0%;
+  right: 27.78%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-11_280591 {
+  width: 44.44%;
+  height: 55.57%;
+  background-image: url(./image/Vector_11_280591.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 55.56%;
+  right: 0%;
+  top: 44.43%;
+  bottom: 0%;
+}
+
+.frame-11_280592 {
+  width: 40px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+}
+
+.text-11_280593 {
+  font-size: 12px;
+  font-family: HarmonyHeiTi;
+  font-weight: 400;
+  text-align: center;
+  line-height: 14px;
+  color: rgba(51, 51, 51, 1);
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: 8px;
+  top: 44px;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-11_280594 {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.vector-11_280595 {
+  width: 100%;
+  height: 100%;
+  background-image: url(./image/Vector_11_280595.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.frame-11_280596 {
+  width: 360px;
+  height: 40px;
+  position: absolute;
+  left: 24px;
+  top: 0px;
+}
+
+.rectangle-131_36030 {
+  width: calc(100% - 0px);
+  height: calc(100% - 0px);
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.text-131_36031 {
+  font-size: 14px;
+  font-family: HarmonyHeiTi;
+  font-weight: 400;
+  text-align: right;
+  letter-spacing: 0px;
+  line-height: 17px;
+  font-feature-settings: "frac" 1;
+  text-decoration: none;
+  color: rgba(204, 204, 204, 1);
+  width: 58px;
+  height: auto;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(calc(-50% + -1.5px));
+}
+
+.frame-131_36032 {
+  width: 56px;
+  height: 20px;
+  position: absolute;
+  left: 12px;
+  top: 10px;
+}
+
+.text-131_36033 {
+  font-size: 14px;
+  font-family: HarmonyHeiTi;
+  font-weight: 400;
+  text-align: left;
+  letter-spacing: 0px;
+  line-height: 17px;
+  font-feature-settings: "frac" 1;
+  text-decoration: none;
+  color: rgba(51, 51, 51, 1);
+  width: 58px;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(calc(-50% + 0px)) translateY(calc(-50% + -1.5px));
+}
+
+.frame-11_280597 {
+  width: 360px;
+  height: 44px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.frame-131_11386 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.rectangle-131_11387 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  background-color: transparent;
+}
+
+.group-131_11388 {
+  width: 24.32803726196289px;
+  height: 11.333333015441895px;
+  position: absolute;
+  right: 14.67196273803711px;
+  top: 17.33333396911621px;
+}
+
+.rectangle-131_11389 {
+  width: 22px;
+  height: 11.333333015441895px;
+  position: absolute;
+  right: 2.3280372619628906px;
+  top: 0px;
+  border-radius: 2.6666667461395264px 2.6666667461395264px 2.6666667461395264px 2.6666667461395264px;
+  border-width: 1px 1px 1px 1px;
+  box-sizing: border-box;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 1);
+  opacity: 0.3499999940395355;
+}
+
+.vector-131_11390 {
+  width: 1.328037977218628px;
+  height: 4px;
+  background-image: url(./image/Vector_131_11390.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: -7.152557373046875e-7px;
+  top: 3.666666030883789px;
+}
+
+.rectangle-131_11391 {
+  width: 18px;
+  height: 7.333333492279053px;
+  position: absolute;
+  right: 4.328037261962891px;
+  top: 2px;
+  border-radius: 1.3333333730697632px 1.3333333730697632px 1.3333333730697632px 1.3333333730697632px;
+  background-color: rgba(0, 0, 0, 1);
+}
+
+.vector-131_11392 {
+  width: 15.27237606048584px;
+  height: 10.964584350585938px;
+  background-image: url(./image/Boolean_operation_131_11392.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 44.03713321685791px;
+  top: 17.331392288208008px;
+}
+
+.vector-131_11396 {
+  width: 17px;
+  height: 10.6689453125px;
+  background-image: url(./image/Boolean_operation_131_11396.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 64.3330078125px;
+  top: 17.66568946838379px;
+}
+
+.vector-131_11401 {
+  width: 7.87%;
+  height: 25.26%;
+  background-image: url(./image/Boolean_operation_131_11401.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 7.45%;
+  right: 84.68%;
+  top: 41.27%;
+  bottom: 33.47%;
+}
+
+.vector-131_11409 {
+  width: 50.13%;
+  height: 85.31%;
+  background-image: url(./image/Boolean_operation_131_11409.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0%;
+  right: 49.87%;
+  top: 0%;
+  bottom: 14.69%;
+}
+
+.vector-131_11414 {
+  width: 50.13%;
+  height: 85.31%;
+  background-image: url(./image/Boolean_operation_131_11414.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 49.87%;
+  right: 0%;
+  top: 0%;
+  bottom: 14.69%;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.container > * {
+  width: 100%;
+  height: 100%;
+}
+
+  </style>
+</head>
+<body>
+<div class="scroll-container-0_1">
+<div class="canvas-0_1" id="0_1">
+<div class="frame-11_280419 fill-背景色页面-11_281018" id="11_280419">
+<span class="text-11_280420" id="11_280420">攻略</span>
+<div class="rectangle-11_280421" id="11_280421"></div>
+
+<!-- 顶部导航栏：包含返回按钮与页面标题“个人中心”，用于导航 -->
+<div class="frame-11_280422" id="11_280422">
+<!-- 顶部导航栏 / 返回按钮：左向箭头图标，点击返回上一级页面 -->
+<div class="vector-11_280423" id="11_280423"></div>
+</div>
+
+<!-- 顶部导航栏：标题“查看权限”区域（居中显示） -->
+<div class="group-11_280428" id="11_280428">
+<div class="frame-11_280429" id="11_280429">
+<div class="rectangle-11_280430" id="11_280430"></div>
+</div>
+<div class="frame-11_280431" id="11_280431">
+<div class="frame-11_280432" id="11_280432">
+<div class="vector-11_280433" id="11_280433"></div>
+</div>
+</div>
+<span class="text-11_280434" id="11_280434" style="font-size: 17px; font-family: HarmonyHeiTi; font-weight: 400; text-align: center; line-height: 20px; color: rgba(51, 51, 51, 1); width: 70px; height: auto; position: absolute; left: 145px; top: 12px;">查看权限</span>
+</div>
+
+<!-- 任务节点开始: 权限配置详情 - 查看态【持久】 -->
+<div class="frame-11_280435" id="11_280435" style="position: absolute; left: 0px; top: 88px; width: 360px; height: auto; background-color: rgba(255, 255, 255, 1); padding: 24px 24px 0 24px; display: flex; flex-direction: column; gap: 24px;">
+  <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; width: 100%; height: 40px;">
+    <span style="font-size: 14px; font-family: HarmonyHeiTi; font-weight: 400; line-height: 17px; color: rgba(102, 102, 102, 1);">设置权限有效期限到日期</span>
+    <span style="font-size: 14px; font-family: HarmonyHeiTi; font-weight: 400; line-height: 17px; color: rgba(51, 51, 51, 1);">2023-05-12</span>
+  </div>
+  <div style="display: flex; flex-direction: column; width: 100%;">
+    <div style="display: flex; flex-direction: row; align-items: center; margin-bottom: 12px;">
+      <span style="font-size: 14px; font-family: HarmonyHeiTi; font-weight: 400; line-height: 17px; color: rgba(102, 102, 102, 1);">已有角色</span>
+      <span style="font-size: 14px; font-family: HarmonyHeiTi; font-weight: 400; line-height: 17px; color: rgba(102, 102, 102, 1); margin-left: 8px;">已选 3 种</span>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <div style="display: flex; flex-direction: row; align-items: center; gap: 8px; width: 100%;">
+        <span style="font-size: 14px; font-family: HarmonyHeiTi; font-weight: 400; line-height: 17px; color: rgba(51, 51, 51, 1);">商务人员</span>
+      </div>
+      <div style="display: flex; flex-direction: row; align-items: center; gap: 8px; width: 100%;">
+        <span style="font-size: 14px; font-family: HarmonyHeiTi; font-weight: 400; line-height: 17px; color: rgba(51, 51, 51, 1);">销售人员</span>
+      </div>
+      <div style="display: flex; flex-direction: row; align-items: center; gap: 8px; width: 100%;">
+        <span style="font-size: 14px; font-family: HarmonyHeiTi; font-weight: 400; line-height: 17px; color: rgba(51, 51, 51, 1);">报价人员</span>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 任务节点结束: 权限配置详情 - 查看态【持久】 --><!-- 任务节点开始: 权限配置权限管理按钮【持久】 -->
+<div class="pixso-btn-component" style="position: absolute; left: 20px; bottom: 20px; width: 320px; height: 40px;">
+  <div class="frame-3177_10712" style="width: 320px; height: 40px; position: relative;">
+    <div class="symbol-3177_10458" style="width: 100%; height: 100%; position: absolute; left: 0; top: 0; display: flex; flex-direction: row; gap: 8px; justify-content: center; align-items: center; padding: 9px 16px; border-radius: 20px; background-color: rgba(56, 114, 250, 1);">
+      <div class="text-3177_10459 text-fontbody_lmedium-602_9659" style="text-align: center; width: auto; position: relative; flex-shrink: 0;">
+        <p class="paragraph-3177_10459_0" style="line-height: 21.328px; position: relative; margin: 0;">
+          <span class="span-3177_10459_0_1 text-fontbody_lmedium-602_9659" style="font-size: 16px; font-family: HarmonyHeiTi, sans-serif; font-weight: 400; color: rgba(255, 255, 255, 1);">权限管理</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 任务节点结束: 权限配置权限管理按钮【持久】 -->
+<div class="frame-11_280597" id="11_280597">
+<div class="frame-131_11386" id="131_11386">
+<div class="rectangle-131_11387" id="131_11387"></div>
+<div class="group-131_11388" id="131_11388">
+<div class="rectangle-131_11389" id="131_11389"></div>
+<div class="vector-131_11390" id="131_11390"></div>
+<div class="rectangle-131_11391" id="131_11391"></div>
+</div>
+<div class="vector-131_11392" id="131_11392"></div>
+<div class="vector-131_11396" id="131_11396"></div>
+<div class="vector-131_11401" id="131_11401"></div>
+</div>
+<div class="vector-131_11409" id="131_11409"></div>
+<div class="vector-131_11414" id="131_11414"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- 任务节点开始: 保存成功Toast提示【临时】 -->
+<div style="position: fixed; inset: 0; z-index: 9999; display: flex; justify-content: center; align-items: center; pointer-events: none;">
+  <div style="width: 120px; height: 36px; position: relative; flex-shrink: 0; display: flex; flex-direction: row; gap: 10px; align-items: flex-start;">
+    <div style="width: 120px; height: auto; position: relative; flex-shrink: 0; display: flex; flex-direction: row; justify-content: center; align-items: center; padding: 8px 16px 8px 16px; border-radius: 18px 18px 18px 18px; background-color: rgba(255, 255, 255, 0.8999999761581421); backdrop-filter: blur(26.666666666666668px);">
+      <p style="text-align: center; width: 88px; height: 20px; position: relative; flex-shrink: 0; mix-blend-mode: normal; font-size: 12px; font-family: 'Microsoft YaHei-Regular'; font-weight: Regular; color: rgba(0, 0, 0, 0.8980392217636108);">保存成功</p>
+    </div>
+  </div>
+</div>
+<!-- 任务节点结束: 保存成功Toast提示【临时】 -->
+<script>
+</script>
+</body>
+
+</html>

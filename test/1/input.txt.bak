@@ -1,0 +1,1 @@
+用户在行业资讯页点击“全部”页签后，系统弹出全屏内嵌偏好选择面板，背景维持原资讯页内容不变，面板以卡片形式展示Enterprise、Real Estate、Education、Healthcare、Finance、Digital Government、Smart Manufacturing共7个行业选项，支持多选；若用户点击面板顶部“Preferences”区域，则跳转至独立的“Interests and Preferences”全屏页面，顶部导航栏标题即为该名称，含Industry与Domain两个标签页，默认显示Industry页，其下方以网格布局呈现6个带行业名称及3D建筑图示的图标卡片

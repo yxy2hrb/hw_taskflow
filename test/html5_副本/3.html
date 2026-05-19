@@ -1,0 +1,2500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixso HTML</title>
+  <link rel="stylesheet" href="css/font.css">
+  <script src="js/animation.js"></script>
+  <style>
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body { 
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color: white;
+}
+    
+span {
+  word-break: break-word;
+}
+
+.text-bodyfont-body-1-medium-6_11385 {
+        font-size: 12px;
+font-family: HarmonyOS Sans SC;
+line-height: 20px
+      }
+.fill-全局graygray-20-6_11386 {
+        background-color: rgba(201, 201, 201, 1)
+      }
+.fill-场景text-colorcolor-text-primary-6_126575-text {
+        color: rgba(25, 25, 25, 1)
+      }
+.text-headlinefont-headline-5-6_126580 {
+        font-size: 20px;
+font-family: HarmonyOS Sans SC;
+line-height: 28px
+      }
+.text-headlinefont-headline-7-6_126582 {
+        font-size: 28px;
+font-family: HarmonyOS Sans SC;
+line-height: 36px
+      }
+.fill-场景text-colorcolor-text-secondary-6_126577-text {
+        color: rgba(119, 119, 119, 1)
+      }
+.text-bodyfont-body-2-regular-6_126583 {
+        font-size: 14px;
+font-family: HarmonyOS Sans SC;
+line-height: 22px
+      }
+.text-bodyfont-body-1-regular-6_126578 {
+        font-size: 12px;
+font-family: HarmonyOS Sans SC;
+line-height: 20px
+      }
+.text-bodyfont-body-2-regular-6_126584 {
+        font-size: 14px;
+font-family: HarmonyOS Sans SC;
+line-height: 22px
+      }
+.fill-场景fill-colorcolor-fill-2-6_126581 {
+        background-color: rgba(25, 25, 25, 0.05000000074505806)
+      }
+.text-bodyfont-body-1-medium-6_126579 {
+        font-size: 12px;
+font-family: HarmonyOS Sans SC;
+line-height: 20px
+      }
+.text-headlinefont-headline-5-6_126586 {
+        font-size: 20px;
+font-family: HarmonyOS Sans SC;
+line-height: 28px
+      }
+.stroke-场景border-colorcolor-border-separator-6_126576 {
+        border-width: 0px;
+box-sizing: border-box;
+border-style: solid;
+border-color: rgba(223, 223, 223, 1)
+      }
+.stroke-场景border-colorcolor-border-separator-6_126587 {
+        border-width: 0px;
+box-sizing: border-box;
+border-style: solid;
+border-color: rgba(223, 223, 223, 1)
+      }
+.fill-场景background-colorcolor-bg-mask-6_126585 {
+        background-color: rgba(25, 25, 25, 0.30000001192092896)
+      }
+
+.scroll-container-0_1 {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+.canvas-0_1 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame-6_126325 {
+  width: 360px;
+  height: 780px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  background-color: rgba(243, 243, 243, 1);
+}
+
+.vector-6_126326 {
+  width: 360px;
+  height: 318.9403381347656px;
+  background-image: url(./image/Group_6_126326.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  display: none;
+}
+
+.frame-6_126329 {
+  width: 100%;
+  height: 24px;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 4px;
+  background-color: transparent;
+}
+
+.rectangle-126_30935 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  background-color: transparent;
+}
+
+.text-126_30936 {
+  font-weight: 400;
+  text-align: left;
+  letter-spacing: 0px;
+  font-feature-settings: "frac" 1;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 1);
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: 20px;
+  top: 8.33%;
+  bottom: 8.33%;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.group-126_30937 {
+  width: 82.49365234375px;
+  height: 83.34%;
+  position: absolute;
+  right: 19.50634765625px;
+  top: 8.33%;
+  bottom: 8.33%;
+}
+
+.group-126_30938 {
+  width: 13px;
+  height: 52.5%;
+  position: absolute;
+  right: 69.49365234375px;
+  top: 20%;
+  bottom: 27.5%;
+}
+
+.group-126_30939 {
+  width: 13px;
+  height: 100%;
+  position: absolute;
+  right: 0px;
+  top: 0%;
+  bottom: 0%;
+}
+
+.group-126_30940 {
+  width: 13px;
+  height: 100%;
+  position: absolute;
+  right: 0px;
+  top: 0%;
+  bottom: 0%;
+}
+
+.group-126_30941 {
+  width: 13px;
+  height: 100%;
+  position: absolute;
+  right: 0px;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-126_30942 {
+  width: 13px;
+  height: 100%;
+  background-image: url(./image/Vector_126_30942.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 0px;
+  top: 0%;
+  bottom: 0%;
+}
+
+.group-126_30943 {
+  width: 16.50000762939453px;
+  height: 60%;
+  position: absolute;
+  right: 48.993656158447266px;
+  top: 15%;
+  bottom: 25%;
+}
+
+.group-126_30944 {
+  width: 11.5px;
+  height: 91.67%;
+  position: absolute;
+  right: 9.5367431640625e-7px;
+  top: 8.33%;
+  bottom: 0%;
+}
+
+.vector-126_30945 {
+  width: 11.5px;
+  height: 100%;
+  background-image: url(./image/Vector_126_30945.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 0px;
+  top: 0%;
+  bottom: 0%;
+}
+
+.text-126_30946 {
+  font-size: 6.5px;
+  font-family: DIN Alternate;
+  font-weight: 400;
+  text-align: left;
+  letter-spacing: 0px;
+  line-height: 7px;
+  font-feature-settings: "frac" 1;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 1);
+  width: 9px;
+  height: auto;
+  position: absolute;
+  right: 7.500007629394531px;
+  top: 0%;
+  bottom: 41.67%;
+  text-shadow: -0.10000000149011612px -0.10000000149011612px 0 rgba(0, 0, 0, 1),
+        0.10000000149011612px -0.10000000149011612px 0 rgba(0, 0, 0, 1),
+        -0.10000000149011612px 0.10000000149011612px 0 rgba(0, 0, 0, 1),
+        0.10000000149011612px 0.10000000149011612px 0 rgba(0, 0, 0, 1);
+}
+
+.group-126_30947 {
+  width: 4.227252006530762px;
+  height: 25%;
+  position: absolute;
+  right: 12.272710800170898px;
+  top: 75%;
+  bottom: 0%;
+}
+
+.group-126_30948 {
+  width: 4.227252006530762px;
+  height: 100%;
+  position: absolute;
+  right: 0px;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-126_30949 {
+  width: 1.7385438680648804px;
+  height: 99.99%;
+  background-image: url(./image/Vector_126_30949.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 2.4887081384658813px;
+  top: 0%;
+  bottom: 0.01%;
+}
+
+.vector-126_30950 {
+  width: 1.7385438680648804px;
+  height: 99.99%;
+  background-image: url(./image/Vector_126_30950.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: -3.5762786865234375e-7px;
+  top: 0.01%;
+  bottom: 0%;
+}
+
+.group-126_30951 {
+  width: 14.5px;
+  height: 60%;
+  position: absolute;
+  right: 29.99365234375px;
+  top: 15%;
+  bottom: 25%;
+}
+
+.group-126_30952 {
+  width: 11.5px;
+  height: 91.67%;
+  position: absolute;
+  right: 0px;
+  top: 8.33%;
+  bottom: 0%;
+}
+
+.vector-126_30953 {
+  width: 11.5px;
+  height: 100%;
+  background-image: url(./image/Vector_126_30953.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 0px;
+  top: 0%;
+  bottom: 0%;
+}
+
+.text-126_30954 {
+  font-size: 6.5px;
+  font-family: DIN Alternate;
+  font-weight: 400;
+  text-align: left;
+  letter-spacing: 0px;
+  line-height: 7px;
+  font-feature-settings: "frac" 1;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 1);
+  width: 9px;
+  height: auto;
+  position: absolute;
+  right: 5.5px;
+  top: 0%;
+  bottom: 41.67%;
+  text-shadow: -0.10000000149011612px -0.10000000149011612px 0 rgba(0, 0, 0, 1),
+        0.10000000149011612px -0.10000000149011612px 0 rgba(0, 0, 0, 1),
+        -0.10000000149011612px 0.10000000149011612px 0 rgba(0, 0, 0, 1),
+        0.10000000149011612px 0.10000000149011612px 0 rgba(0, 0, 0, 1);
+}
+
+.group-126_30955 {
+  width: 24.49365234375px;
+  height: 100%;
+  position: absolute;
+  right: 0px;
+  top: 0%;
+  bottom: 0%;
+}
+
+.rectangle-126_30956 {
+  width: 23px;
+  height: 65%;
+  position: absolute;
+  right: 1.49365234375px;
+  top: 15%;
+  bottom: 20%;
+  border-radius: 4px 4px 4px 4px;
+  border-width: 1px 1px 1px 1px;
+  box-sizing: border-box;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 1);
+}
+
+.text-126_30957 {
+  font-size: 10px;
+  font-family: HarmonyOS Sans SC;
+  font-weight: 400;
+  text-align: left;
+  letter-spacing: 0px;
+  line-height: 20px;
+  font-feature-settings: "frac" 1;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 1);
+  width: auto;
+  height: auto;
+  position: absolute;
+  right: 3.49365234375px;
+  top: 0%;
+  bottom: 0%;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.vector-126_30958 {
+  width: 1px;
+  height: 17.5%;
+  background-image: url(./image/Vector_126_30958.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 0px;
+  top: 34.99%;
+  bottom: 47.51%;
+}
+
+.vector-6_126330 {
+  width: 28.89%;
+  height: 11.58%;
+  background-image: url(./image/Frame_6_126330.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 4.44%;
+  right: 66.67%;
+  top: 24.31%;
+  bottom: 64.11%;
+  display: none;
+}
+
+.frame-6_126344 {
+  width: 15.55%;
+  height: 16px;
+  position: absolute;
+  left: 5.56%;
+  right: 78.89%;
+  top: 156px;
+}
+
+.frame-6_126345 {
+  width: 58.33%;
+  height: 1.82%;
+  position: absolute;
+  left: 5.56%;
+  right: 36.11%;
+  top: 18.17%;
+  bottom: 80.01%;
+  display: none;
+}
+
+.group-6_126346 {
+  width: 7.62%;
+  height: 100%;
+  position: absolute;
+  left: 31.9%;
+  right: 60.48%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.rectangle-6_126347 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  background-color: rgba(216, 216, 216, 1);
+  opacity: 0;
+}
+
+.vector-6_126348 {
+  width: 83.33%;
+  height: 83.08%;
+  background-image: url(./image/Vector_6_126348.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 8.34%;
+  right: 8.33%;
+  top: 8.46%;
+  bottom: 8.46%;
+}
+
+.group-6_126349 {
+  width: 7.62%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 92.38%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.rectangle-6_126350 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  background-color: rgba(216, 216, 216, 1);
+  opacity: 0;
+}
+
+.vector-6_126351 {
+  width: 89.58%;
+  height: 60.82%;
+  background-image: url(./image/Boolean_operation_6_126351.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 5.22%;
+  right: 5.2%;
+  top: 19.59%;
+  bottom: 19.59%;
+}
+
+.text-6_126355 {
+  font-size: 12px;
+  font-family: HarmonyOS Sans SC;
+  font-weight: 400;
+  text-align: right;
+  line-height: 14px;
+  color: rgba(0, 0, 0, 1);
+  width: auto;
+  height: auto;
+  position: absolute;
+  right: 158px;
+  top: 1px;
+  white-space: pre;
+  flex-grow: 0;
+  opacity: 0.6000000238418579;
+}
+
+.text-6_126356 {
+  font-size: 12px;
+  font-family: HarmonyOS Sans SC;
+  font-weight: 400;
+  text-align: right;
+  line-height: 14px;
+  color: rgba(0, 0, 0, 1);
+  width: auto;
+  height: auto;
+  position: absolute;
+  right: -7px;
+  top: 1px;
+  white-space: pre;
+  flex-grow: 0;
+  opacity: 0.6899999976158142;
+}
+
+.frame-6_126357 {
+  width: 360px;
+  height: auto;
+  position: absolute;
+  left: 0px;
+  top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-6_126358 {
+  width: 360px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 16px 0px 16px;
+  background-color: transparent;
+}
+
+.frame-6_126359 {
+  width: 102px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+}
+
+.frame-6_126360 {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame-126_214377 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-126_216190 {
+  width: 20.001502990722656px;
+  height: 17.999893188476562px;
+  background-image: url(./image/Group_126_216190.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 1.9985504150390625px;
+  top: 2.999969482421875px;
+}
+
+.text-6_126361 {
+  font-weight: 400;
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-6_126362 {
+  width: 120px;
+  height: 56px;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 8px 0px 8px 0px;
+  background-color: transparent;
+}
+
+.frame-6_126363 {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  flex-shrink: 0;
+  display: none;
+  background-color: transparent;
+}
+
+.vector-126_340493 {
+  width: 100%;
+  height: 100%;
+  background-image: url(./image/Ellipse_126_340493.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.frame-126_340494 {
+  width: 50%;
+  height: auto;
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  top: 25%;
+  bottom: 25%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-126_340495 {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.vector-126_340496 {
+  width: 92.94%;
+  height: 92.94%;
+  background-image: url(./image/Vector_126_340496.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 4.58%;
+  right: 2.48%;
+  top: 4.58%;
+  bottom: 2.48%;
+}
+
+.group-6_126364 {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.group-6_126365 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-6_126366 {
+  width: 100%;
+  height: 100%;
+  background-image: url(./image/Vector_6_126366.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-6_126367 {
+  width: 87.5%;
+  height: 83.34%;
+  background-image: url(./image/Boolean_operation_6_126367.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 8.33%;
+  right: 4.17%;
+  top: 8.33%;
+  bottom: 8.33%;
+}
+
+.frame-6_126371 {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  flex-shrink: 0;
+  display: none;
+  background-color: transparent;
+}
+
+.vector-126_340697 {
+  width: 100%;
+  height: 100%;
+  background-image: url(./image/Ellipse_126_340697.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.frame-126_340698 {
+  width: 50%;
+  height: auto;
+  overflow: hidden;
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  top: 25%;
+  bottom: 25%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.frame-126_340699 {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.vector-126_340700 {
+  width: 18.5px;
+  height: 18.5px;
+  background-image: url(./image/Vector_126_340700.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0.75px;
+  top: 0.75px;
+}
+
+.frame-6_126372 {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  flex-shrink: 0;
+  display: none;
+  background-color: transparent;
+}
+
+.vector-126_212289 {
+  width: 100%;
+  height: 100%;
+  background-image: url(./image/Ellipse_126_212289.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.frame-126_212290 {
+  width: 50%;
+  height: auto;
+  overflow: hidden;
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  top: 25%;
+  bottom: 25%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-126_212291 {
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.vector-126_212292 {
+  width: 19px;
+  height: 19px;
+  background-image: url(./image/Vector_126_212292.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0.5px;
+  top: 0.5px;
+}
+
+.frame-6_126373 {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  flex-shrink: 0;
+  display: none;
+}
+
+.vector-126_3769 {
+  width: 24px;
+  height: 24px;
+  background-image: url(./image/Vector_126_3769.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.group-126_3770 {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+}
+
+.vector-126_3771 {
+  width: 20px;
+  height: 20px;
+  background-image: url(./image/Boolean_operation_126_3771.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.rectangle-126_3776 {
+  width: 10px;
+  height: 1.5px;
+  position: absolute;
+  left: 5px;
+  top: 9.25px;
+  border-radius: 1px 1px 1px 1px;
+  background-color: rgba(25, 25, 25, 1);
+}
+
+.frame-6_126374 {
+  width: 328px;
+  height: 56px;
+  position: relative;
+  flex-shrink: 0;
+  display: none;
+  background-color: transparent;
+}
+
+.text-6_126375 {
+  font-weight: 400;
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-6_126376 {
+  font-weight: 400;
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: none;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-6_126377 {
+  width: 360px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-6_126378 {
+  width: 360px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 16px 0px 16px;
+  background-color: transparent;
+}
+
+.frame-6_126379 {
+  width: 328px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-6_126380 {
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.text-6_126381 {
+  font-size: 24px;
+  font-family: HarmonyOS Sans SC;
+  font-weight: 400;
+  line-height: 30px;
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-6_126382 {
+  font-weight: 400;
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-6_126383 {
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.text-6_126384 {
+  font-weight: 400;
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.frame-6_126385 {
+  width: 328px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-6_126386 {
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 16px 0px 16px;
+  border-radius: 16px 16px 16px 16px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.frame-6_126387 {
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-grow: 1;
+  background-color: transparent;
+}
+
+.frame-6_126388 {
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.frame-6_126389 {
+  width: 32px;
+  height: 112px;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 22px 0px 22px 0px;
+  background-color: transparent;
+}
+
+.frame-6_126390 {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  flex-shrink: 0;
+  background-color: transparent;
+}
+
+.group-126_33429 {
+  width: 83.34%;
+  height: 100%;
+  position: absolute;
+  left: 8.33%;
+  right: 8.33%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-126_33430 {
+  width: 100%;
+  height: 100%;
+  background-image: url(./image/Vector_126_33430.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-126_33431 {
+  width: 33.3%;
+  height: 27.08%;
+  background-image: url(./image/Vector_126_33431.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 66.7%;
+  right: 0%;
+  top: 0%;
+  bottom: 72.92%;
+}
+
+.vector-126_33432 {
+  width: 52.5%;
+  height: 39.58%;
+  background-image: url(./image/Boolean_operation_126_33432.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 23.75%;
+  right: 23.75%;
+  top: 35.16%;
+  bottom: 25.26%;
+}
+
+.frame-6_126391 {
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 16px 0px 16px 0px;
+  flex-grow: 1;
+}
+
+.center-stroke-6_126391 {
+  z-index: 99;
+  position: absolute;
+  inset: 0px;
+  border-radius: 0px 0px 0px 0px;
+  border-width: 0px 0px 0.5px 0px;
+  border-style: solid;
+  border-color: rgba(223, 223, 223, 1);
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.frame-6_126392 {
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.text-6_126393 {
+  font-size: 14px;
+  font-family: HarmonyHeiTi;
+  font-weight: 400;
+  line-height: 22px;
+  color: rgba(25, 25, 25, 1);
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-6_126394 {
+  font-size: 12px;
+  font-family: HarmonyHeiTi;
+  font-weight: 400;
+  line-height: 20px;
+  color: rgba(119, 119, 119, 1);
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: none;
+  flex-grow: 0;
+}
+
+.frame-6_126395 {
+  width: 205px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-6_126396 {
+  width: 90px;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 12px 4px 12px;
+  border-radius: 14px 14px 14px 14px;
+}
+
+.frame-6_126397 {
+  width: 14px;
+  height: 14px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.group-6_126398 {
+  width: 99.41%;
+  height: 99.41%;
+  position: absolute;
+  left: 0%;
+  right: 0.59%;
+  top: 0%;
+  bottom: 0.59%;
+}
+
+.vector-6_126399 {
+  width: 93.75%;
+  height: 93.75%;
+  background-image: url(./image/Vector_6_126399.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 3.12%;
+  right: 3.13%;
+  top: 3.12%;
+  bottom: 3.13%;
+}
+
+.vector-6_126400 {
+  width: 93.75%;
+  height: 93.75%;
+  background-image: url(./image/Vector_6_126400.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 3.12%;
+  right: 3.13%;
+  top: 3.12%;
+  bottom: 3.13%;
+}
+
+.vector-6_126401 {
+  width: 100%;
+  height: 100%;
+  background-image: url(./image/Ellipse_6_126401.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-6_126402 {
+  width: 91.66%;
+  height: 60.42%;
+  background-image: url(./image/Vector_6_126402.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 4.17%;
+  right: 4.17%;
+  top: 19.79%;
+  bottom: 19.79%;
+}
+
+.vector-6_126403 {
+  width: 90.04%;
+  height: 60.42%;
+  background-image: url(./image/Vector_6_126403.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 4.98%;
+  right: 4.98%;
+  top: 19.79%;
+  bottom: 19.79%;
+}
+
+.vector-6_126404 {
+  width: 31.25%;
+  height: 31.25%;
+  background-image: url(./image/Ellipse_6_126404.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 34.38%;
+  right: 34.37%;
+  top: 34.37%;
+  bottom: 34.38%;
+}
+
+.text-6_126405 {
+  font-weight: 400;
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-6_126406 {
+  width: 103px;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 12px 4px 12px;
+  border-radius: 14px 14px 14px 14px;
+}
+
+.frame-6_126407 {
+  width: 14px;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 1px 1px 1px 1px;
+}
+
+.group-6_126408 {
+  width: 12px;
+  height: 12px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.vector-6_126409 {
+  width: 93.74%;
+  height: 93.74%;
+  background-image: url(./image/Vector_6_126409.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 3.13%;
+  right: 3.13%;
+  top: 3.13%;
+  bottom: 3.13%;
+}
+
+.vector-6_126410 {
+  width: 93.74%;
+  height: 93.74%;
+  background-image: url(./image/Vector_6_126410.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 3.13%;
+  right: 3.13%;
+  top: 3.13%;
+  bottom: 3.13%;
+}
+
+.vector-6_126411 {
+  width: 100%;
+  height: 100%;
+  background-image: url(./image/Ellipse_6_126411.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-6_126412 {
+  width: 87.5%;
+  height: 25%;
+  background-image: url(./image/Vector_6_126412.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 6.25%;
+  right: 6.25%;
+  top: 68.75%;
+  bottom: 6.25%;
+}
+
+.vector-6_126413 {
+  width: 55.97%;
+  height: 66.67%;
+  background-image: url(./image/Vector_6_126413.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 22.01%;
+  right: 22.02%;
+  top: 6.25%;
+  bottom: 27.08%;
+}
+
+.vector-6_126414 {
+  width: 60.15%;
+  height: 70.83%;
+  background-image: url(./image/Vector_6_126414.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 19.92%;
+  right: 19.93%;
+  top: 4.17%;
+  bottom: 25%;
+}
+
+.vector-6_126415 {
+  width: 91.66%;
+  height: 29.16%;
+  background-image: url(./image/Vector_6_126415.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 4.17%;
+  right: 4.17%;
+  top: 66.67%;
+  bottom: 4.17%;
+}
+
+.text-6_126416 {
+  font-size: 12px;
+  font-family: HarmonyOS Sans SC;
+  font-weight: 400;
+  line-height: 20px;
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-6_126417 {
+  width: 360px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+}
+
+.frame-6_126418 {
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 16px 0px 16px;
+}
+
+.text-6_126419 {
+  font-weight: 400;
+  text-align: justify;
+  width: 277px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame-6_126420 {
+  width: 328px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-6_126421 {
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 0px 16px 0px;
+  background-color: transparent;
+}
+
+.vector-6_126422 {
+  width: 120.13333129882812px;
+  height: 68px;
+  background-image: url(./image/Group_6_126422.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame-6_126426 {
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-grow: 1;
+  background-color: transparent;
+}
+
+.text-6_126427 {
+  font-size: 14px;
+  font-family: HarmonyOS Sans SC;
+  font-weight: 400;
+  line-height: 18px;
+  color: rgba(0, 0, 0, 1);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-6_126428 {
+  font-weight: 400;
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-6_126429 {
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 0px 16px 0px;
+  background-color: transparent;
+}
+
+.vector-6_126430 {
+  width: 120.13333129882812px;
+  height: 68px;
+  background-image: url(./image/Group_6_126430.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame-6_126435 {
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-grow: 1;
+  background-color: transparent;
+}
+
+.text-6_126436 {
+  font-size: 14px;
+  font-family: HarmonyOS Sans SC;
+  font-weight: 400;
+  line-height: 18px;
+  color: rgba(0, 0, 0, 1);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-6_126437 {
+  font-weight: 400;
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-6_126438 {
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 0px 16px 0px;
+  background-color: transparent;
+}
+
+.vector-6_126439 {
+  width: 120.13333129882812px;
+  height: 68px;
+  background-image: url(./image/Group_6_126439.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame-6_126444 {
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-grow: 1;
+  background-color: transparent;
+}
+
+.text-6_126445 {
+  font-size: 14px;
+  font-family: HarmonyOS Sans SC;
+  font-weight: 400;
+  line-height: 18px;
+  color: rgba(0, 0, 0, 1);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-6_126446 {
+  font-weight: 400;
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-6_126447 {
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 0px 16px 0px;
+}
+
+.vector-6_126448 {
+  width: 120.13333129882812px;
+  height: 68px;
+  background-image: url(./image/Group_6_126448.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame-6_126453 {
+  width: auto;
+  height: 68px;
+  position: relative;
+  flex-shrink: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-grow: 1;
+  background-color: transparent;
+}
+
+.text-6_126454 {
+  font-size: 14px;
+  font-family: HarmonyOS Sans SC;
+  font-weight: 400;
+  line-height: 18px;
+  color: rgba(0, 0, 0, 1);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-6_126455 {
+  font-weight: 400;
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-6_126456 {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 700px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 16px 16px 16px 16px;
+  background-color: rgba(243, 243, 243, 1);
+}
+
+.frame-6_126457 {
+  width: 164px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.frame-6_126458 {
+  width: 14px;
+  height: 14px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame-6_126459 {
+  width: 153.89%;
+  height: 153.89%;
+  position: absolute;
+  left: -26.95%;
+  right: -26.94%;
+  top: -21.43%;
+  bottom: -32.46%;
+  display: flex;
+  flex-direction: row;
+  gap: 6.428571701049805px;
+  justify-content: center;
+  align-items: center;
+  padding: 6.428571701049805px 6.428571701049805px 6.428571701049805px 6.428571701049805px;
+  background-color: transparent;
+}
+
+.vector-126_32072 {
+  width: 15.428571701049805px;
+  height: 15.428571701049805px;
+  background-image: url(./image/Star_126_32072.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.text-6_126460 {
+  font-weight: 400;
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-6_126461 {
+  width: 164px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.frame-6_126462 {
+  width: 14px;
+  height: 14px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.group-6_126463 {
+  width: 104.28%;
+  height: 104.28%;
+  position: absolute;
+  left: -4.28%;
+  right: 0%;
+  top: -2.14%;
+  bottom: -2.14%;
+}
+
+.vector-6_126464 {
+  width: 93.75%;
+  height: 93.75%;
+  background-image: url(./image/Vector_6_126464.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 3.12%;
+  right: 3.13%;
+  top: 3.13%;
+  bottom: 3.12%;
+}
+
+.vector-6_126465 {
+  width: 93.75%;
+  height: 93.75%;
+  background-image: url(./image/Vector_6_126465.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 3.12%;
+  right: 3.13%;
+  top: 3.13%;
+  bottom: 3.12%;
+}
+
+.vector-6_126466 {
+  width: 100%;
+  height: 100%;
+  background-image: url(./image/Ellipse_6_126466.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-6_126467 {
+  width: 100%;
+  height: 100%;
+  background-image: url(./image/Vector_6_126467.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-6_126468 {
+  width: 12.5%;
+  height: 47.92%;
+  background-image: url(./image/Vector_6_126468.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 11.45%;
+  right: 76.05%;
+  top: 43.75%;
+  bottom: 8.33%;
+}
+
+.vector-6_126469 {
+  width: 20.83%;
+  height: 47.92%;
+  background-image: url(./image/Vector_6_126469.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 11.45%;
+  right: 67.72%;
+  top: 43.75%;
+  bottom: 8.33%;
+}
+
+.vector-6_126470 {
+  width: 62.5%;
+  height: 83.34%;
+  background-image: url(./image/Vector_6_126470.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 32.29%;
+  right: 5.21%;
+  top: 8.33%;
+  bottom: 8.33%;
+}
+
+.text-6_126471 {
+  font-weight: 400;
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-6_126472 {
+  width: 360px;
+  height: auto;
+  position: absolute;
+  left: 0px;
+  top: 752px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: rgba(243, 243, 243, 1);
+}
+
+.frame-6_126473 {
+  width: 360px;
+  height: 28px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  backdrop-filter: blur(6px);
+}
+
+.rectangle-6_126474 {
+  width: 108px;
+  height: 6px;
+  position: absolute;
+  left: 126px;
+  bottom: 11px;
+  border-radius: 3px 3px 3px 3px;
+}
+
+.group-6_126475 {
+  width: 18.62%;
+  height: 4.1%;
+  position: absolute;
+  left: 76.94%;
+  right: 4.44%;
+  top: 83.59%;
+  bottom: 12.31%;
+}
+
+.rectangle-6_126476 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  border-radius: 20px 20px 20px 20px;
+  box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.2) ;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.frame-6_126477 {
+  width: 67px;
+  height: auto;
+  position: absolute;
+  left: 0px;
+  top: 0.000244140625px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 12px 8px 12px;
+  border-radius: 20px 20px 20px 20px;
+  box-shadow: 0px 2px 10px -2px rgba(0, 0, 0, 0.2) ;
+  background-color: transparent;
+}
+
+.group-6_126478 {
+  width: 12px;
+  height: 12px;
+  position: relative;
+  flex-shrink: 0;
+  transform:  rotate(-90deg);
+}
+
+.rectangle-6_126479 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  background-color: rgba(216, 216, 216, 1);
+  opacity: 0;
+}
+
+.vector-6_126480 {
+  width: 66.66%;
+  height: 83.33%;
+  background-image: url(./image/Boolean_operation_6_126480.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 8.33%;
+  right: 25.01%;
+  top: 8.32%;
+  bottom: 8.35%;
+}
+
+.text-6_126483 {
+  font-size: 12px;
+  font-family: HarmonyHeiTi;
+  font-weight: 400;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 16px;
+  color: rgba(0, 0, 0, 1);
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.container > * {
+  width: 100%;
+  height: 100%;
+}
+
+  </style>
+</head>
+<body>
+<!-- 页面整体滚动容器：资讯详情页根容器 -->
+<div class="scroll-container-0_1">
+  <!-- 画布容器：承载整个移动端资讯详情页面 -->
+  <div id="0_1" class="canvas-0_1">
+    <!-- 页面主框架：从状态栏到内容、推荐区的整体竖向布局 -->
+    <div id="6_126325" class="frame-6_126325">
+      <!-- 顶部状态栏背景（深色） -->
+      <div id="6_126326" class="vector-6_126326"></div>
+      <!-- 顶部状态栏：显示时间、网络状态、电池电量等系统信息 -->
+      <div id="6_126329" class="frame-6_126329">
+        <!-- 状态栏背景矩形 -->
+        <div id="126_30935" class="rectangle-126_30935"></div>
+        <!-- 时间文案：08:08 -->
+        <span id="126_30936" class="text-126_30936 text-bodyfont-body-1-medium-6_11385">08:08</span>
+        <!-- 右侧系统状态图标区域（Wi-Fi / 信号 / 蓝牙 / 电池） -->
+        <div id="126_30937" class="group-126_30937">
+          <!-- 左侧网络状态图标（如 Wi-Fi 图标） -->
+          <div id="126_30938" class="group-126_30938">
+            <div id="126_30939" class="group-126_30939">
+              <div id="126_30940" class="group-126_30940">
+                <div id="126_30941" class="group-126_30941">
+                  <div id="126_30942" class="vector-126_30942"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 蜂窝网络信号 + “4G” 文案区域 -->
+          <div id="126_30943" class="group-126_30943">
+            <!-- 蜂窝信号图标（满格） -->
+            <div id="126_30944" class="group-126_30944">
+              <div id="126_30945" class="vector-126_30945"></div>
+            </div>
+            <!-- 网络制式文案：4G -->
+            <span id="126_30946" class="text-126_30946">4G</span>
+            <!-- 可能为蓝牙或其他连接状态图标 -->
+            <div id="126_30947" class="group-126_30947">
+              <div id="126_30948" class="group-126_30948">
+                <div id="126_30949" class="vector-126_30949"></div>
+                <div id="126_30950" class="vector-126_30950"></div>
+              </div>
+            </div>
+          </div>
+          <!-- 备用/次级网络状态 + “4G” 文案区域 -->
+          <div id="126_30951" class="group-126_30951">
+            <div id="126_30952" class="group-126_30952">
+              <div id="126_30953" class="vector-126_30953"></div>
+            </div>
+            <span id="126_30954" class="text-126_30954">4G</span>
+          </div>
+          <!-- 电池状态区域：电池图标 + 百分比“100%” -->
+          <div id="126_30955" class="group-126_30955">
+            <!-- 电池图标背景矩形，充满状态 -->
+            <div id="126_30956" class="rectangle-126_30956 fill-全局graygray-20-6_11386"></div>
+            <!-- 电量百分比文案（仅显示数值 100，对应 100%） -->
+            <span id="126_30957" class="text-126_30957">100</span>
+            <!-- 电池电量图标轮廓/端口 -->
+            <div id="126_30958" class="vector-126_30958"></div>
+          </div>
+        </div>
+      </div>
+      <!-- 状态栏与内容区之间的分割线或装饰向量 -->
+      <div id="6_126330" class="vector-6_126330"></div>
+      <!-- 导航栏背景容器（白色背景区域） -->
+      <div id="6_126344" class="frame-6_126344"></div>
+      <!-- 顶部导航与基础信息区：返回、分享、文章编号和创建时间 -->
+      <div id="6_126345" class="frame-6_126345">
+        <!-- 左侧返回按钮区域（矩形+箭头图标） -->
+        <div id="6_126346" class="group-6_126346">
+          <div id="6_126347" class="rectangle-6_126347"></div>
+          <div id="6_126348" class="vector-6_126348"></div>
+        </div>
+        <!-- 右侧分享/更多操作按钮区域 -->
+        <div id="6_126349" class="group-6_126349">
+          <div id="6_126350" class="rectangle-6_126350"></div>
+          <div id="6_126351" class="vector-6_126351"></div>
+        </div>
+        <!-- 文章/资讯编号：8783 -->
+        <span id="6_126355" class="text-6_126355">8783</span>
+        <!-- 文章创建时间或记录时间：2022 - 11 - 12 13:48:59 -->
+        <span id="6_126356" class="text-6_126356">2022 - 11 - 12 13:48:59</span>
+      </div>
+      <!-- 主内容区容器：包含导航标题区、文章内容区、附件下载区、推荐内容区 -->
+      <div id="6_126357" class="frame-6_126357">
+        <!-- 顶部导航与标题区整体容器 -->
+        <div id="6_126358" class="frame-6_126358">
+          <!-- 左侧：返回按钮 + 页面标题“Details” -->
+          <div id="6_126359" class="frame-6_126359">
+            <!-- 返回按钮图标（左箭头） -->
+            <div id="6_126360" class="frame-6_126360">
+              <div id="126_214377" class="frame-126_214377"></div>
+              <div id="126_216190" class="vector-126_216190"></div>
+            </div>
+            <!-- 页面标题：Details（导航与标题区的主标题） -->
+            <span id="6_126361" class="text-6_126361 fill-场景text-colorcolor-text-primary-6_126575-text text-headlinefont-headline-5-6_126580">Details</span>
+          </div>
+          <!-- 右侧工具区：分享等图标按钮组 -->
+          <div id="6_126362" class="frame-6_126362">
+            <!-- 第一组图标（如分享/转发图标的一部分） -->
+            <div id="6_126363" class="frame-6_126363">
+              <div id="126_340493" class="vector-126_340493"></div>
+              <div id="126_340494" class="frame-126_340494">
+                <div id="126_340495" class="frame-126_340495">
+                  <div id="126_340496" class="vector-126_340496"></div>
+                </div>
+              </div>
+            </div>
+            <!-- 连接线/分享手柄图标 -->
+            <div id="6_126364" class="group-6_126364">
+              <div id="6_126365" class="group-6_126365">
+                <div id="6_126366" class="vector-6_126366"></div>
+                <div id="6_126367" class="vector-6_126367"></div>
+              </div>
+            </div>
+            <!-- 其他辅助图标（如收藏/更多等） -->
+            <div id="6_126371" class="frame-6_126371">
+              <div id="126_340697" class="vector-126_340697"></div>
+              <div id="126_340698" class="frame-126_340698">
+                <div id="126_340699" class="frame-126_340699">
+                  <div id="126_340700" class="vector-126_340700"></div>
+                </div>
+              </div>
+            </div>
+            <!-- 其他工具图标容器 -->
+            <div id="6_126372" class="frame-6_126372">
+              <div id="126_212289" class="vector-126_212289"></div>
+              <div id="126_212290" class="frame-126_212290">
+                <div id="126_212291" class="frame-126_212291">
+                  <div id="126_212292" class="vector-126_212292"></div>
+                </div>
+              </div>
+            </div>
+            <!-- 末尾图标组（如更多菜单/分享的终端节点） -->
+            <div id="6_126373" class="frame-6_126373">
+              <div id="126_3769" class="vector-126_3769"></div>
+              <div id="126_3770" class="group-126_3770">
+                <div id="126_3771" class="vector-126_3771"></div>
+                <div id="126_3776" class="rectangle-126_3776"></div>
+              </div>
+            </div>
+          </div>
+          <!-- 页面内部的标题占位区（可用于栏目标题、子标题等辅助信息） -->
+          <div id="6_126374" class="frame-6_126374">
+            <!-- 标题占位文案 -->
+            <span id="6_126375" class="text-6_126375 fill-场景text-colorcolor-text-primary-6_126575-text text-headlinefont-headline-7-6_126582">标题</span>
+            <!-- 子标题占位文案 -->
+            <span id="6_126376" class="text-6_126376 fill-场景text-colorcolor-text-secondary-6_126577-text text-bodyfont-body-2-regular-6_126583">子标题</span>
+          </div>
+        </div>
+        <!-- 文章内容区 + 附件下载区 + 推荐内容区 -->
+        <div id="6_126377" class="frame-6_126377">
+          <!-- 文章内容整体容器 -->
+          <div id="6_126378" class="frame-6_126378">
+            <div id="6_126379" class="frame-6_126379">
+              <!-- 文章内容区：主标题 + 发布信息 -->
+              <div id="6_126380" class="frame-6_126380">
+                <!-- 主标题：Seven Star Products in the Datacom Business Market User Portraits and Product Portfolios -->
+                <span id="6_126381" class="text-6_126381 fill-场景text-colorcolor-text-primary-6_126575-text">Seven Star Products in the Datacom Business Market User Portraits and Product Portfolios</span>
+                <!-- 发布信息：栏目（Campus network）· 播放量（87 views）· 发布时间（11-04-2024） -->
+                <span id="6_126382" class="text-6_126382 fill-场景text-colorcolor-text-secondary-6_126577-text text-bodyfont-body-1-regular-6_126578">Campus network · 87 views · 11-04-2024</span>
+              </div>
+              <!-- 正文与附件下载区容器 -->
+              <div id="6_126383" class="frame-6_126383">
+                <!-- 正文内容：用户画像与产品设计相关说明 -->
+                <span id="6_126384" class="text-6_126384 fill-场景text-colorcolor-text-primary-6_126575-text text-bodyfont-body-2-regular-6_126584">User profiling is a way of product design and user research. As an effective tool to outline target users, connect user requirements and design direction, it has been widely used in various fields. When we discuss products, requirements, scenarios, and user experience, we often need to focus on a certain group of people. User portraits are an abstract method to represent a collection of target users.</span>
+                <!-- 文档下载区：文件附件卡片（图标 + 文件名 + 预览/下载按钮） -->
+                <div id="6_126385" class="frame-6_126385">
+                  <div id="6_126386" class="frame-6_126386">
+                    <div id="6_126387" class="frame-6_126387">
+                      <div id="6_126388" class="frame-6_126388">
+                        <div id="6_126389" class="frame-6_126389">
+                         <div id="6_126390" class="frame-6_126390">
+                          <div id="126_33429" class="group-126_33429">
+                            <div id="126_33430" class="vector-126_33430"></div>
+                            <div id="126_33431" class="vector-126_33431"></div>
+                            <div id="126_33432" class="vector-126_33432"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- 文件信息行：文件名 + 文件大小 -->
+                      <div id="6_126391" class="frame-6_126391">
+                        <div class="center-stroke-6_126391"></div>
+                        <!-- 左侧：文件名 -->
+                        <div id="6_126392" class="frame-6_126392">
+                          <span id="6_126393" class="text-6_126393">[Product Brochure]: Huawei CloudEngine Series Switches.word</span>
+                          <span id="6_126394" class="text-6_126394">2.5M</span>
+                        </div>
+                        <!-- 右侧：预览和下载操作按钮 -->
+                        <div id="6_126395" class="frame-6_126395">
+                          <!-- 文档预览按钮 -->
+                          <div id="6_126396" class="frame-6_126396 fill-场景fill-colorcolor-fill-2-6_126581">
+                            <div id="6_126397" class="frame-6_126397">
+                              <div id="6_126398" class="group-6_126398">
+                                <div id="6_126399" class="vector-6_126399"></div>
+                                <div id="6_126400" class="vector-6_126400"></div>
+                                <div id="6_126401" class="vector-6_126401"></div>
+                                <div id="6_126402" class="vector-6_126402"></div>
+                                <div id="6_126403" class="vector-6_126403"></div>
+                                <div id="6_126404" class="vector-6_126404"></div>
+                              </div>
+                            </div>
+                            <span id="6_126405" class="text-6_126405 fill-场景text-colorcolor-text-primary-6_126575-text text-bodyfont-body-1-medium-6_126579">Preview</span>
+                          </div>
+                          <!-- 文档下载按钮 -->
+                          <div id="6_126406" class="frame-6_126406 fill-场景fill-colorcolor-fill-2-6_126581">
+                            <div id="6_126407" class="frame-6_126407">
+                              <div id="6_126408" class="group-6_126408">
+                                <div id="6_126409" class="vector-6_126409"></div>
+                                <div id="6_126410" class="vector-6_126410"></div>
+                                <div id="6_126411" class="vector-6_126411"></div>
+                                <div id="6_126412" class="vector-6_126412"></div>
+                                <div id="6_126413" class="vector-6_126413"></div>
+                                <div id="6_126414" class="vector-6_126414"></div>
+                                <div id="6_126415" class="vector-6_126415"></div>
+                              </div>
+                            </div>
+                            <span id="6_126416" class="text-6_126416 fill-场景text-colorcolor-text-primary-6_126575-text">Open</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <!-- 推荐内容区：推荐文章卡片列表 -->
+          <div id="6_126417" class="frame-6_126417">
+            <!-- 推荐区标题：Recommendation -->
+            <div id="6_126418" class="frame-6_126418">
+              <span id="6_126419" class="text-6_126419 fill-场景text-colorcolor-text-primary-6_126575-text text-headlinefont-headline-5-6_126586">Recommendation</span>
+            </div>
+            <!-- 推荐文章列表容器 -->
+            <div id="6_126420" class="frame-6_126420">
+              <!-- 推荐文章卡片 1 -->
+              <div id="6_126421" class="frame-6_126421 stroke-场景border-colorcolor-border-separator-6_126576">
+                <!-- 封面图占位向量 -->
+                <div id="6_126422" class="vector-6_126422"></div>
+                <!-- 文本信息：标题 + 发布信息 -->
+                <div id="6_126426" class="frame-6_126426">
+                  <span id="6_126427" class="text-6_126427">Seven Star Products in the Datacom Business Market | Product Portfolio...informatization construction solution...Product Portfolio...Poster</span>
+                  <span id="6_126428" class="text-6_126428 fill-场景text-colorcolor-text-secondary-6_126577-text text-bodyfont-body-1-regular-6_126578">Campus network · Apr 11, 2024</span>
+                </div>
+              </div>
+              <!-- 推荐文章卡片 2 -->
+              <div id="6_126429" class="frame-6_126429 stroke-场景border-colorcolor-border-separator-6_126576">
+                <div id="6_126430" class="vector-6_126430"></div>
+                <div id="6_126435" class="frame-6_126435">
+                  <span id="6_126436" class="text-6_126436">High-level communication on shelter hospital informatization construction solution...Product Portfolio...Conferencing Endpoint Full Image</span>
+                  <span id="6_126437" class="text-6_126437 fill-场景text-colorcolor-text-secondary-6_126577-text text-bodyfont-body-1-regular-6_126578">IQ intelligent O&M · Jan 8, 2024</span>
+                </div>
+              </div>
+              <!-- 推荐文章卡片 3 -->
+              <div id="6_126438" class="frame-6_126438 stroke-场景border-colorcolor-border-separator-6_126576">
+                <div id="6_126439" class="vector-6_126439"></div>
+                <div id="6_126444" class="frame-6_126444">
+                  <span id="6_126445" class="text-6_126445">Huawei Black Technology Lab 1: Wi-Fi 6 Black Technology Product Portfolio...Conferencing Endpoint Full Image</span>
+                  <span id="6_126446" class="text-6_126446 fill-场景text-colorcolor-text-secondary-6_126577-text text-bodyfont-body-1-regular-6_126578">Campus network · Jan 8, 2024</span>
+                </div>
+              </div>
+              <!-- 推荐文章卡片 4 -->
+              <div id="6_126447" class="frame-6_126447 stroke-场景border-colorcolor-border-separator-6_126587">
+                <div id="6_126448" class="vector-6_126448"></div>
+                <div id="6_126453" class="frame-6_126453">
+                  <span id="6_126454" class="text-6_126454">Huawei participates in Handan, Chengde, Cangzhou and other ...Product Portfolio... 2023</span>
+                  <span id="6_126455" class="text-6_126455 fill-场景text-colorcolor-text-secondary-6_126577-text text-bodyfont-body-1-regular-6_126578">Policy interpretation · Feb 23, 2024</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 底部互动数据区：收藏数 + 点赞数 -->
+      <div id="6_126456" class="frame-6_126456">
+        <!-- 收藏数区域（图标 + 数字 256） -->
+        <div id="6_126457" class="frame-6_126457 stroke-场景border-colorcolor-border-separator-6_126587">
+          <div id="6_126458" class="frame-6_126458">
+            <div id="6_126459" class="frame-6_126459">
+              <div id="126_32072" class="vector-126_32072"></div>
+            </div>
+          </div>
+          <span id="6_126460" class="text-6_126460 fill-场景text-colorcolor-text-primary-6_126575-text text-bodyfont-body-1-medium-6_126579">256</span>
+        </div>
+        <!-- 点赞数区域（点赞图标 + 数字 3391） -->
+        <div id="6_126461" class="frame-6_126461">
+          <div id="6_126462" class="frame-6_126462">
+            <div id="6_126463" class="group-6_126463">
+              <div id="6_126464" class="vector-6_126464"></div>
+              <div id="6_126465" class="vector-6_126465"></div>
+              <div id="6_126466" class="vector-6_126466"></div>
+              <div id="6_126467" class="vector-6_126467"></div>
+              <div id="6_126468" class="vector-6_126468"></div>
+              <div id="6_126469" class="vector-6_126469"></div>
+              <div id="6_126470" class="vector-6_126470"></div>
+            </div>
+          </div>
+          <span id="6_126471" class="text-6_126471 fill-场景text-colorcolor-text-primary-6_126575-text text-bodyfont-body-1-medium-6_126579">3391</span>
+        </div>
+      </div>
+      <!-- 手机页面导航手势指示条 -->
+      <div id="6_126472" class="frame-6_126472">
+        <div id="6_126473" class="frame-6_126473">
+          <div id="6_126474" class="rectangle-6_126474 fill-场景background-colorcolor-bg-mask-6_126585"></div>
+        </div>
+      </div>
+      <!-- 底部“Next”推荐内容卡片（引导用户浏览下一篇文章） -->
+      <div id="6_126475" class="group-6_126475">
+        <!-- 推荐内容卡片背景/封面图占位矩形（例如人物封面图） -->
+        <div id="6_126476" class="rectangle-6_126476"></div>
+        <!-- “Next” 标签及其装饰 -->
+        <div id="6_126477" class="frame-6_126477">
+          <!-- 标签背景 + 箭头或图标 -->
+          <div id="6_126478" class="group-6_126478">
+            <div id="6_126479" class="rectangle-6_126479"></div>
+            <div id="6_126480" class="vector-6_126480"></div>
+          </div>
+          <!-- “Next” 文案标签：表示下一篇推荐内容 -->
+          <span id="6_126483" class="text-6_126483">Next</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 任务节点开始: 下载成功反馈状态【临时】 -->
+<div data-temp-hide="1" style="display: none;">
+
+<div style="position: fixed; inset: 0; z-index: 9999; pointer-events: none;">
+  <div style="position: absolute; left: 50%; top: 20px; transform: translateX(-50%); width: 120px; height: 36px; display: flex; flex-direction: row; gap: 10px; align-items: flex-start; pointer-events: auto;">
+    <div style="width: 120px; height: auto; position: relative; flex-shrink: 0; display: flex; flex-direction: row; justify-content: center; align-items: center; padding: 8px 16px 8px 16px; border-radius: 18px 18px 18px 18px; background-color: rgba(255, 255, 255, 0.8999999761581421); backdrop-filter: blur(26.666666666666668px);">
+      <p style="text-align: center; width: 88px; height: 20px; position: relative; flex-shrink: 0; mix-blend-mode: normal; color: rgba(0, 0, 0, 0.8980392217636108); font-size: 12px; font-family: 'Microsoft YaHei-Regular'; font-weight: Regular;">Download succeeded.</p>
+    </div>
+  </div>
+</div>
+
+</div>
+<!-- 任务节点结束: 下载成功反馈状态【临时】 -->
+
+<script>
+
+</script>
+
+</body>
+</html>

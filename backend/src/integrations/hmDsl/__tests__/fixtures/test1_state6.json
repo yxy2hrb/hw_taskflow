@@ -1,0 +1,11 @@
+{
+  "_comment": "test/1 state_6 - 资讯页返回带红点。在 base 的 '全部' (All) 页签元素之后 append 一个 Badge。",
+  "state_name": "资讯页返回带红点提示",
+  "lifecycle": "persistent",
+  "injection": { "mode": "append", "anchor": "#136_433328", "z_index": 9999 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "Badge",
+    "props": { "size": 10, "offsetTop": -2, "offsetRight": -10 }
+  }
+}

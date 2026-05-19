@@ -1,0 +1,55 @@
+[OLD]
+                          <!-- 文档下载按钮 -->
+                          <div id="6_126406" class="frame-6_126406 fill-场景fill-colorcolor-fill-2-6_126581">
+                            <div id="6_126407" class="frame-6_126407">
+                              <div id="6_126408" class="group-6_126408">
+                                <div id="6_126409" class="vector-6_126409"></div>
+                                <div id="6_126410" class="vector-6_126410"></div>
+                                <div id="6_126411" class="vector-6_126411"></div>
+                                <div id="6_126412" class="vector-6_126412"></div>
+                                <div id="6_126413" class="vector-6_126413"></div>
+                                <div id="6_126414" class="vector-6_126414"></div>
+                                <div id="6_126415" class="vector-6_126415"></div>
+                              </div>
+                            </div>
+                            <span id="6_126416" class="text-6_126416 fill-场景text-colorcolor-text-primary-6_126575-text">Download</span>
+                          </div>
+[NEW]
+                          <!-- 文档下载按钮 -->
+                          <div id="3177_10711" class="frame-3177_10711">
+      <div id="3177_10662" class="symbol-3177_10662">
+        <div id="3177_10663" class="text-3177_10663 fill-lightfont_emphasize-602_9440-text text-fontbody_lmedium-602_9659">
+          <p id="3177_10663_0" class="paragraph-3177_10663_0">
+<span id="3177_10663_0_1" class="span-3177_10663_0_1 text-fontbody_lmedium-602_9659">Open</span></p>
+        </div>
+      </div>
+    </div>
+
+[OLD]
+</div>
+
+
+<script>
+
+</script>
+
+</body>
+[NEW]
+<!-- 任务节点开始: 下载成功反馈状态【临时】 -->
+<div style="position: fixed; inset: 0; z-index: 9999; pointer-events: none;">
+  <div style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 120px; height: 36px; box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.20); border-radius: 18px;">
+    <div style="width: 120px; height: 36px; padding-left: 16px; padding-right: 16px; padding-top: 8px; padding-bottom: 8px; background-color: rgba(255, 255, 255, 0.90); border-radius: 18px; display: flex; flex-direction: row; align-items: center; justify-content: center;">
+        <p style="width: 88px; height: 20px; font-size: 12px; line-height: 100%; text-align: center; color: rgba(0, 0, 0, 0.90);">Download succeeded.</p>
+    </div>
+  </div>
+</div>
+<!-- 任务节点结束: 下载成功反馈状态【临时】 -->
+
+</div>
+
+
+<script>
+
+</script>
+
+</body>

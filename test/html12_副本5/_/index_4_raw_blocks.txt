@@ -1,0 +1,84 @@
+[OLD]
+</div>
+</div>
+</div>
+</div>
+<script>
+</script>
+</body>
+[NEW]
+<!-- 任务节点开始: 权限配置详情 - 日期选择弹窗【临时】 -->
+<div style="position: fixed; inset: 0; z-index: 9999; background-color: rgba(0, 0, 0, 0.4); display: flex; justify-content: center; align-items: flex-end;">
+  <div style="width: 100%; max-width: 360px; background-color: white; padding: 20px; box-sizing: border-box;">
+    <div id="3188_247" class="Pixso-frame-3188_247">
+      <div id="3188_248" class="Pixso-frame-3188_248">
+        <div id="3188_249" class="Pixso-frame-3188_249">
+          <p id="3188_250" class="Pixso-paragraph-3188_250 text-fontbody_mregular-602_9661">2021</p>
+        </div>
+        <div id="3188_251" class="Pixso-frame-3188_251">
+          <p id="3188_252" class="Pixso-paragraph-3188_252 fill-lightfont_primary-602_9446-paragraph text-fontbody_lregular-602_9658">2022</p>
+        </div>
+        <div id="3188_253" class="stroke-wrapper-3188_253">
+          <div class="Pixso-frame-3188_253 stroke-lighticon_fourth-602_9454">
+            <p id="3188_254" class="Pixso-paragraph-3188_254 fill-lightfont_emphasize-602_9440-paragraph text-fonttitle_smedium-602_9701">2023</p>
+          </div>
+          <div class="stroke-3188_253 stroke-lighticon_fourth-602_9454"></div>
+        </div>
+        <div id="3188_255" class="Pixso-frame-3188_255">
+          <p id="3188_256" class="Pixso-paragraph-3188_256 fill-lightfont_primary-602_9446-paragraph text-fontbody_lregular-602_9658">2024</p>
+        </div>
+        <div id="3188_257" class="Pixso-frame-3188_257">
+          <p id="3188_258" class="Pixso-paragraph-3188_258 text-fontbody_mregular-602_9661">2025</p>
+        </div>
+      </div>
+      <div id="3188_259" class="Pixso-frame-3188_259">
+        <div id="3188_260" class="Pixso-frame-3188_260">
+          <p id="3188_261" class="Pixso-paragraph-3188_261 text-fontbody_mregular-602_9661">Sep</p>
+        </div>
+        <div id="3188_262" class="Pixso-frame-3188_262">
+          <p id="3188_263" class="Pixso-paragraph-3188_263 fill-lightfont_primary-602_9446-paragraph text-fontbody_lregular-602_9658">Oct</p>
+        </div>
+        <div id="3188_264" class="stroke-wrapper-3188_264">
+          <div class="Pixso-frame-3188_264 stroke-lighticon_fourth-602_9454">
+            <p id="3188_265" class="Pixso-paragraph-3188_265 fill-lightfont_emphasize-602_9440-paragraph text-fonttitle_smedium-602_9701">Nov</p>
+          </div>
+          <div class="stroke-3188_264 stroke-lighticon_fourth-602_9454"></div>
+        </div>
+        <div id="3188_266" class="Pixso-frame-3188_266">
+          <p id="3188_267" class="Pixso-paragraph-3188_267 fill-lightfont_primary-602_9446-paragraph text-fontbody_lregular-602_9658">Dec</p>
+        </div>
+        <div id="3188_268" class="Pixso-frame-3188_268">
+          <p id="3188_269" class="Pixso-paragraph-3188_269 text-fontbody_mregular-602_9661">Jan</p>
+        </div>
+      </div>
+      <div id="3188_270" class="Pixso-frame-3188_270">
+        <div id="3188_271" class="Pixso-frame-3188_271">
+          <p id="3188_272" class="Pixso-paragraph-3188_272 text-fontbody_mregular-602_9661">15</p>
+        </div>
+        <div id="3188_273" class="Pixso-frame-3188_273">
+          <p id="3188_274" class="Pixso-paragraph-3188_274 fill-lightfont_primary-602_9446-paragraph text-fontbody_lregular-602_9658">16</p>
+        </div>
+        <div id="3188_275" class="stroke-wrapper-3188_275">
+          <div class="Pixso-frame-3188_275 stroke-lighticon_fourth-602_9454">
+            <p id="3188_276" class="Pixso-paragraph-3188_276 fill-lightfont_emphasize-602_9440-paragraph text-fonttitle_smedium-602_9701">17</p>
+          </div>
+          <div class="stroke-3188_275 stroke-lighticon_fourth-602_9454"></div>
+        </div>
+        <div id="3188_277" class="Pixso-frame-3188_277">
+          <p id="3188_278" class="Pixso-paragraph-3188_278 fill-lightfont_primary-602_9446-paragraph text-fontbody_lregular-602_9658">18</p>
+        </div>
+        <div id="3188_279" class="Pixso-frame-3188_279">
+          <p id="3188_280" class="Pixso-paragraph-3188_280 text-fontbody_mregular-602_9661">19</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 任务节点结束: 权限配置详情 - 日期选择弹窗【临时】 -->
+</div>
+</div>
+</div>
+</div>
+<script>
+</script>
+</body>

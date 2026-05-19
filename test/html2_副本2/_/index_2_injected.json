@@ -1,0 +1,24 @@
+{
+  "taskflow_description": "Structured requirement for 2",
+  "ui_analysis": [
+    {
+      "image": "2",
+      "description": "用户在流量提示弹窗中点击 'CANCEL' 后，弹窗关闭，页面底部出现提示告知操作已取消。",
+      "raw_requirement": {
+        "state_id": 3,
+        "state_name": "取消下载反馈状态",
+        "description": "用户在流量提示弹窗中点击 'CANCEL' 后，弹窗关闭，页面底部出现提示告知操作已取消。",
+        "implementation_method": "轻量级提示 (Toast/Snackbar)：显示文本 'Cancelled.'。",
+        "last_state": 1
+      },
+      "design_spec": [
+        {
+          "component_type": "Feedback",
+          "component_name": "轻量提示（Toast/Snackbar）",
+          "matched_component_id": "instant_feedback",
+          "component_html": "<style>\n* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n\nol,ul,menu {\n  padding-inline-start: 0;\n  list-style: none;\n}\n\nol li {\n  list-style-position: inside;\n}\n\nol li::marker, ul li::before {\n  letter-spacing: 0;\n}\n\nhtml {\n  width: 100%;\n  height: 100%;\n}\n\nbody { \n  width: 100%;\n  height: 100%;\n  margin: 0;\n  background-color: white;\n}\n    \nspan {\n  word-break: break-word;\n}\n\n.scroll-container-0_1 {\n  height: 100%;\n  width: 100%;\n  overflow: auto;\n}\n\n.canvas-0_1 {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  left: 0px;\n  top: 0px;\n}\n\n.frame-3175_269 {\n  width: 120px;\n  height: 36px;\n  position: relative;\n  flex-shrink: 0;\n}\n\n.vector-3175_266 {\n  width: 240px;\n  height: 156px;\n  background-image: url(./image/Frame_3175_266.png);\n  background-size: 100% 100%;\n  background-repeat: no-repeat;\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translateX(calc(-50% + 60px)) translateY(calc(-50% + 60px));\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n\n.container {\n  width: 100%;\n  height: 100%;\n}\n</style>\n<div style=\"width: 120px; height: 36px; box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.20); border-radius: 18px;\">\n    <div style=\"width: 120px; height: 36px; padding-left: 16px; padding-right: 16px; padding-top: 8px; padding-bottom: 8px; background-color: rgba(255, 255, 255, 0.90); border-radius: 18px; display: flex; flex-direction: row; align-items: center; justify-content: center;\">\n        <p style=\"width: 88px; height: 20px; font-size: 12px; line-height: 100%; text-align: center; color: rgba(0, 0, 0, 0.90);\">Toast content</p>\n    </div>\n</div>\n\n\n"
+        }
+      ]
+    }
+  ]
+}
