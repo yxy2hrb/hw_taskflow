@@ -1,0 +1,26 @@
+{
+  "state_name": "创建项目集全屏页初始态",
+  "lifecycle": "persistent",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "Page",
+    "props": { "background": "#F3F3F3" },
+    "children": [
+      { "type": "StatusBar" },
+      { "type": "NavBar", "props": { "title": "创建项目集", "leftIcon": "arrow_back", "align": "center" } },
+      { "type": "Column", "props": { "gap": 24, "padding": 16, "align": "center", "justify": "flex-start" }, "children": [
+        { "type": "Column", "props": { "background": "#FFFFFF", "borderRadius": 8, "shadow": "0 2px 12px rgba(0,0,0,0.05)", "padding": 24, "width": "100%", "maxWidth": 343 }, "children": [
+          { "type": "FormField", "props": { "label": "项目集名称", "placeholder": "请输入项目集名称", "required": false } },
+          { "type": "Text", "props": { "text": "归属类型", "variant": "subtitle", "weight": "medium", "color": "#191919" } },
+          { "type": "Row", "props": { "gap": 16, "padding": "12px 0" }, "children": [
+            { "type": "Button", "props": { "label": "公司", "variant": "secondary", "size": "compact" } },
+            { "type": "Button", "props": { "label": "个人", "variant": "secondary", "size": "compact" } }
+          ]},
+          { "type": "Text", "props": { "text": "+ 添加项目", "color": "#BFBFBF", "size": 14 } },
+          { "type": "Button", "props": { "label": "确认", "variant": "warning", "size": "regular", "block": true, "height": 48 } }
+        ]}
+      ]}
+    ]
+  }
+}

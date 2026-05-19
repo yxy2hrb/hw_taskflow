@@ -1,0 +1,30 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "管理应用页初始状态",
+    "description": "用户从营销工作台首页点击‘管理应用’进入，页面顶部导航栏左侧显示返回箭头、中间为‘管理应用’标题、右侧有‘排序’按钮；底部Tab栏全程保留且当前‘营销’Tab高亮；列表展示已接入应用（含开关控件）及固定‘新增’入口。",
+    "implementation_method": "原始 HTML 初始快照，不做改造",
+    "last_state": null
+  },
+  {
+    "state_id": 2,
+    "state_name": "添加方式全屏弹窗状态",
+    "description": "用户点击任一应用右侧开关或‘新增’入口后触发，页面被半透明黑色遮罩覆盖（opacity=0.6），居中弹出全屏尺寸模态卡片；顶部固定标题栏显示‘请选择添加方式’，下方横向平铺四个带图标选项：快捷入口、小卡片、中卡片、大卡片，每个均配1行说明文字。",
+    "implementation_method": "模态弹窗 (Modal/Dialog)：背景层 rgba(0, 0, 0, 0.6) 全屏覆盖；内容区白色圆角矩形（16px 圆角），垂直居中；顶部标题栏高度48px，文字‘请选择添加方式’（'Please select an add method'）；下方4个横向等宽卡片（各宽80px），每张含顶部SVG图标（尺寸24×24）、中部文字标签（如‘快捷入口’/‘Quick Access’）、底部说明文字（如‘一键配置常用模板’/‘One-click setup for common templates’）；无按钮，点击任意卡片即确认。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "添加成功反馈状态",
+    "description": "用户点击任一添加方式卡片后，弹窗瞬间关闭，原管理应用页恢复可见；对应应用右侧开关由关闭态切换为开启态（蓝色主色填充+对勾图标）；页面右上角距屏幕右/上各16px处浮现黑色圆角Toast，内含文字‘添加成功’（'Added successfully'），持续3秒后自动淡出；应用总数统计数字实时+1。",
+    "implementation_method": "轻量级提示 (Toast/Snackbar)：黑色圆角矩形（背景#191919，圆角8px，内边距12px 16px），位置固定于视口右上角（right: 16px; top: 16px）；文字‘添加成功’（'Added successfully'），白色14px HarmonyHeiTi-Regular，居中显示；伴随轻微向上位移动画（transform: translateY(-4px) → translateY(0)）；3秒后 opacity: 1 → 0 + transform: translateY(0) → translateY(-8px)，完成后DOM移除；同时开关控件更新为开启态（fill-color: #C7000B，叠加✓ SVG图标）；顶部标题旁‘共X个应用’数字同步+1。",
+    "last_state": 1
+  },
+  {
+    "state_id": 4,
+    "state_name": "取消添加静默回退状态",
+    "description": "用户点击弹窗区域外空白处或系统返回键关闭添加方式弹窗；弹窗消失后，管理应用页完全恢复初始状态：所有开关保持原状、无Toast、无计数变化、底部Tab与导航栏样式与state_1完全一致。",
+    "implementation_method": "原始 HTML 初始快照，不做改造",
+    "last_state": 1
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "state_id": 3,
+  "state_name": "添加成功终态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "语言一致性：主语言为zh，但弹窗文案'添加成功'未使用HarmonyHeiTi-Regular字体，且样式中未明确指定字体，存在潜在不一致风险。",
+      "元素溢出：弹窗宽度280px，超出360px画布边界，导致右边缘被裁切，视觉上不完整。",
+      "位置合理性：Toast弹窗未居中于页面右上角安全区（距离右边缘16px、上边缘88px），而是覆盖在快捷入口按钮上方，位置不合理。",
+      "基础样式：弹窗背景颜色为#000000，opacity:0.9，但未设置border-radius:6px，与需求描述不符；同时未设置box-shadow，缺少轻微阴影效果。"
+    ],
+    "fixedBlocks": "[OLD]\n<div style=\"position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;\">\n  <div style=\"position:relative;width:280px;padding:16px;box-sizing:border-box;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;\">\n    <div style=\"background:#000000;opacity:0.9;border-radius:6px;padding:10px 16px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.06);\">\n      <span style=\"font-size:14px;font-weight:400;color:#FFFFFF;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;\">添加成功</span>\n    </div>\n  </div>\n</div>\n[NEW]\n<div style=\"position:fixed;right:16px;top:88px;z-index:9999;background:rgba(0,0,0,0.9);border-radius:6px;padding:10px 16px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.06);width:240px;max-width:240px;\">\n  <span style=\"font-size:14px;font-weight:400;color:#FFFFFF;font-family:'HarmonyHeiTi-Regular';\">添加成功</span>\n</div>",
+    "reviewMs": 76359,
+    "screenshot": 117787,
+    "fixedBlocksParsed": 1
+  }
+}

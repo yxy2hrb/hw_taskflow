@@ -1,0 +1,14 @@
+[OLD]
+<script>
+
+</script>
+[NEW]
+<script>
+
+</script>
+<!-- 任务节点开始: 加载失败错误提示【临时】 -->
+<div style="position:fixed; bottom:16px; left:16px; right:16px; height:44px; background:#333333; border-radius:8px; display:flex; align-items:center; justify-content:space-between; padding:0 16px; box-sizing:border-box; z-index:9999; font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;">
+  <span style="font-size:14px; color:#FFFFFF; word-break:break-word; overflow-wrap:anywhere; line-height:1.5;">网络连接失败，请检查网络后重试</span>
+  <button type="button" style="padding:0 12px; background:transparent; border:none; color:#0A59F7; font-size:14px; font-weight:500; line-height:1.5; white-space:nowrap;">重试</button>
+</div>
+<!-- 任务节点结束: 加载失败错误提示【临时】 -->

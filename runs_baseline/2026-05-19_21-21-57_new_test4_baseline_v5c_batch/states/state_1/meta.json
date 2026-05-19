@@ -1,0 +1,11 @@
+{
+  "state_id": 1,
+  "state_name": "我的工作台首页",
+  "description": "页面为移动端全屏布局，顶部状态栏显示时间、信号与电量图标，底部 Tab 栏高 56px，当前‘我的工作台’Tab 高亮（深蓝底+白字），中部区域居中排列两个功能卡片：左为‘体验开局流程’，右为‘体验运维流程’按钮（蓝色填充、圆角矩形、14px Medium 字体、白色文字），其余区域为纯白背景。",
+  "implementation_method": "原始 HTML 初始快照，不做改造",
+  "last_state": null,
+  "applied": 0,
+  "skipped": 0,
+  "failed": false,
+  "error": null
+}

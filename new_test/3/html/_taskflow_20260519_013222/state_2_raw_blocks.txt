@@ -1,0 +1,304 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": ["#14_884283", "#14_884284", "#14_884285", "#14_884368"],
+      "replace_at": "#14_884368",
+      "instruction": "把'虚拟体验项目区块'整段替换为白色圆角卡片列表（320×120px，圆角8px，box-shadow: 0 2px 8px rgba(0,0,0,0.06)），共3张卡片，每张含：项目名称（16px加粗黑字左对齐，如'项目A'）、创建时间（12px灰色右上角，如'2024-05-20 14:32'）、设备信息（12px深灰居中行，如'AP×3 / 终端×12'）、状态标签（绿色小圆点+文字'运行中'）、右侧操作按钮'查看详情'（12px #46B1E3）；所有文本使用 HarmonyHeiTi-Regular 字体；保留顶部状态栏、顶部导航栏、底部 Tab 栏；无遮罩层；列表垂直居中，上下留白。",
+      "components_needed": ["Card", "Button"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "gap": 16,
+      "padding": 16,
+      "align": "stretch",
+      "justify": "center"
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "borderRadius": 8,
+          "padding": 16,
+          "shadow": "0 2px 8px rgba(0,0,0,0.06)",
+          "gap": 8,
+          "width": "320px",
+          "height": "120px"
+        },
+        "children": [
+          {
+            "type": "Row",
+            "props": {
+              "justify": "space-between",
+              "align": "start"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "size": 16,
+                  "weight": 700,
+                  "color": "rgba(0,0,0,0.90)",
+                  "style": "font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif;"
+                },
+                "children": "项目A"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "caption",
+                  "size": 12,
+                  "color": "rgba(0,0,0,0.40)",
+                  "style": "font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif;"
+                },
+                "children": "2024-05-20 14:32"
+              }
+            ]
+          },
+          {
+            "type": "Text",
+            "props": {
+              "variant": "caption",
+              "size": 12,
+              "color": "rgba(0,0,0,0.60)",
+              "align": "center",
+              "style": "font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif;"
+            },
+            "children": "AP×3 / 终端×12"
+          },
+          {
+            "type": "Row",
+            "props": {
+              "align": "center",
+              "gap": 6
+            },
+            "children": [
+              {
+                "type": "Icon",
+                "props": {
+                  "name": "fiber_manual_record",
+                  "size": 8,
+                  "color": "#64BB5C"
+                }
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "caption",
+                  "size": 12,
+                  "color": "rgba(0,0,0,0.60)",
+                  "style": "font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif;"
+                },
+                "children": "运行中"
+              }
+            ]
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "查看详情",
+              "variant": "text",
+              "size": "compact",
+              "color": "#46B1E3",
+              "style": "font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif; font-size: 12px;"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "borderRadius": 8,
+          "padding": 16,
+          "shadow": "0 2px 8px rgba(0,0,0,0.06)",
+          "gap": 8,
+          "width": "320px",
+          "height": "120px"
+        },
+        "children": [
+          {
+            "type": "Row",
+            "props": {
+              "justify": "space-between",
+              "align": "start"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "size": 16,
+                  "weight": 700,
+                  "color": "rgba(0,0,0,0.90)",
+                  "style": "font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif;"
+                },
+                "children": "项目B"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "caption",
+                  "size": 12,
+                  "color": "rgba(0,0,0,0.40)",
+                  "style": "font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif;"
+                },
+                "children": "2024-05-19 09:15"
+              }
+            ]
+          },
+          {
+            "type": "Text",
+            "props": {
+              "variant": "caption",
+              "size": 12,
+              "color": "rgba(0,0,0,0.60)",
+              "align": "center",
+              "style": "font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif;"
+            },
+            "children": "AP×2 / 终端×8"
+          },
+          {
+            "type": "Row",
+            "props": {
+              "align": "center",
+              "gap": 6
+            },
+            "children": [
+              {
+                "type": "Icon",
+                "props": {
+                  "name": "fiber_manual_record",
+                  "size": 8,
+                  "color": "#64BB5C"
+                }
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "caption",
+                  "size": 12,
+                  "color": "rgba(0,0,0,0.60)",
+                  "style": "font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif;"
+                },
+                "children": "运行中"
+              }
+            ]
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "查看详情",
+              "variant": "text",
+              "size": "compact",
+              "color": "#46B1E3",
+              "style": "font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif; font-size: 12px;"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "borderRadius": 8,
+          "padding": 16,
+          "shadow": "0 2px 8px rgba(0,0,0,0.06)",
+          "gap": 8,
+          "width": "320px",
+          "height": "120px"
+        },
+        "children": [
+          {
+            "type": "Row",
+            "props": {
+              "justify": "space-between",
+              "align": "start"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "size": 16,
+                  "weight": 700,
+                  "color": "rgba(0,0,0,0.90)",
+                  "style": "font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif;"
+                },
+                "children": "项目C"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "caption",
+                  "size": 12,
+                  "color": "rgba(0,0,0,0.40)",
+                  "style": "font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif;"
+                },
+                "children": "2024-05-18 16:47"
+              }
+            ]
+          },
+          {
+            "type": "Text",
+            "props": {
+              "variant": "caption",
+              "size": 12,
+              "color": "rgba(0,0,0,0.60)",
+              "align": "center",
+              "style": "font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif;"
+            },
+            "children": "AP×4 / 终端×15"
+          },
+          {
+            "type": "Row",
+            "props": {
+              "align": "center",
+              "gap": 6
+            },
+            "children": [
+              {
+                "type": "Icon",
+                "props": {
+                  "name": "fiber_manual_record",
+                  "size": 8,
+                  "color": "#64BB5C"
+                }
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "caption",
+                  "size": 12,
+                  "color": "rgba(0,0,0,0.60)",
+                  "style": "font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif;"
+                },
+                "children": "运行中"
+              }
+            ]
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "查看详情",
+              "variant": "text",
+              "size": "compact",
+              "color": "#46B1E3",
+              "style": "font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif; font-size: 12px;"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

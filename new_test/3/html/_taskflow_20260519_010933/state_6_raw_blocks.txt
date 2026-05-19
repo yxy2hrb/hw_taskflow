@@ -1,0 +1,114 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "<!-- 任务节点开始: 虚拟体验项目详情页【持久】 -->\n<div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:24px;width:100%;box-sizing:border-box\"><img data-hm=\"Image\" src=\"https://picsum.photos/seed/topology/480/320\" alt=\"\" loading=\"lazy\" style=\"display:block;width:100%;height:50vh;border-radius:0px;object-fit:cover;background:#FFFFFF;box-sizing:border-box\" /><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:4px;padding:16px 24px;background:#4CAF50;width:328px;min-height:80px;border-radius:16px;box-sizing:border-box\"><div data-hm=\"Row\" style=\"display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:8px;width:100%;box-sizing:border-box\"><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:32px;font-weight:700;color:#FFFFFF;text-align:left;line-height:1.4;\">89</span><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:500;color:#FFFFFF;text-align:right;line-height:1.4;\">分</span></div><div data-hm=\"Row\" style=\"display:flex;flex-direction:row;align-items:center;justify-content:flex-end;gap:8px;width:100%;box-sizing:border-box\"><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:4px 12px;background:#2E7D32;width:100%;border-radius:12px;box-sizing:border-box\"><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:12px;font-weight:500;color:#FFFFFF;text-align:left;line-height:1.4;\">优秀</span></div></div></div><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:400;color:rgba(0,0,0,0.60);text-align:center;line-height:1.4;\">已运行 3天12小时</span><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:12px;padding:16px 24px;background:#FFFFFF;width:328px;min-height:104px;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,0.12);box-sizing:border-box\"><div data-hm=\"Row\" style=\"display:flex;flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;width:100%;box-sizing:border-box\"><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:4px;width:100%;box-sizing:border-box\"><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:12px;font-weight:400;color:rgba(0,0,0,0.40);text-align:left;line-height:1.4;\">设备数</span><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:500;color:rgba(0,0,0,0.90);text-align:left;line-height:1.4;\">12台</span></div><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:4px;width:100%;box-sizing:border-box\"><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:12px;font-weight:400;color:rgba(0,0,0,0.40);text-align:left;line-height:1.4;\">终端数</span><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:500;color:rgba(0,0,0,0.90);text-align:left;line-height:1.4;\">47个</span></div></div></div></div>\n<!-- 任务节点结束: 虚拟体验项目详情页【持久】 -->",
+      "instruction": "把外层注释名改为 网络请求失败页【临时】，并替换为全白背景中央错误页：顶部导航栏保留（含左向箭头、标题‘虚拟体验项目’、右侧搜索/通知/加号图标），中央64px红底感叹号图标（#F44336，SVG风格，白感叹号），图标上方16px Medium黑字标题‘加载失败’，图标下方14px灰字说明‘网络连接异常，请检查后重试’，底部水平排列两个按钮：左按钮‘重试’（蓝底#2196F3，白字，圆角8px，宽120px，高40px），右按钮‘返回工作台’（无背景，14px蓝字#2196F3，无边框无圆角）",
+      "components_needed": ["Button", "Icon"],
+      "icons_needed": ["error"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "gap": 24,
+      "padding": "16px 24px",
+      "align": "center",
+      "justify": "flex-start",
+      "background": "#FFFFFF",
+      "width": "100%",
+      "borderRadius": 0
+    },
+    "children": [
+      {
+        "type": "NavBar",
+        "props": {
+          "title": "虚拟体验项目",
+          "leftIcon": "arrow_back",
+          "rightIcon": "more_vert"
+        }
+      },
+      {
+        "type": "Column",
+        "props": {
+          "gap": 16,
+          "align": "center",
+          "justify": "center"
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "variant": "title",
+              "size": 16,
+              "weight": 500,
+              "color": "rgba(0,0,0,0.90)",
+              "align": "center"
+            },
+            "children": "加载失败"
+          },
+          {
+            "type": "Icon",
+            "props": {
+              "name": "error",
+              "size": 64,
+              "color": "#FFFFFF"
+            }
+          },
+          {
+            "type": "Text",
+            "props": {
+              "variant": "body",
+              "size": 14,
+              "weight": 400,
+              "color": "rgba(0,0,0,0.60)",
+              "align": "center"
+            },
+            "children": "网络连接异常，请检查后重试"
+          }
+        ]
+      },
+      {
+        "type": "Row",
+        "props": {
+          "gap": 12,
+          "justify": "center"
+        },
+        "children": [
+          {
+            "type": "Button",
+            "props": {
+              "label": "重试",
+              "variant": "primary",
+              "size": "regular",
+              "block": false,
+              "width": 120,
+              "height": 40,
+              "borderRadius": 8,
+              "background": "#2196F3",
+              "color": "#FFFFFF"
+            }
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "返回工作台",
+              "variant": "text",
+              "size": "compact",
+              "block": false,
+              "color": "#2196F3",
+              "weight": 500,
+              "size": 14
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

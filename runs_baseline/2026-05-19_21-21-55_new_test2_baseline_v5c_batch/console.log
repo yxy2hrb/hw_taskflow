@@ -1,0 +1,59 @@
+▶ run dir: runs_baseline\2026-05-19_21-21-55_new_test2_baseline_v5c_batch
+  source: new_test/2/html
+  brief : new_test/2/input.txt
+  blueprint: runs_baseline/2026-05-19_18-38-55_new_test2_baseline_v3/blueprint.json
+  api   : http://localhost:3001/api
+  /health → 404
+
+▶ POST /oneclick/start  brief="用户在“我的工作台”页面点击“创建项目集”按钮→进入全屏页，保留状态栏与底Tab→填写项目集名称、单选“公司”或“个人”…"  htmlBytes=31237
+  sessionId=tf_63b85eb0bbb8  sourceDir(echo)=
+
+▶ POST /oneclick/blueprint  使用固定蓝图
+   title: 创建项目集任务流
+   user_story: 已登录的企业协作者 | 在‘我的工作台’页面点击‘创建项目集’按钮 | 填写名称并选定归属属性 → 系统校验所选项目是否匹配该属性 → 用户点击确认后生成项目集 | 顶部弹出‘创建成功’Toast，且页面自动返回工作台首页
+   states: 6
+     state_1 ← null  我的工作台首页
+     state_2 ← 1  创建项目集全屏页初始态
+     state_3 ← 2  创建项目集校验失败态
+     state_4 ← 2  创建项目集中过渡态
+     state_5 ← 2  创建项目集成功终态
+     state_6 ← 1  自动返回工作台
+
+▶ SSE /oneclick/generate/stream
+  [state-done ] state_1 我的工作台首页  applied=0 skipped=0 undefinedms
+               components: (无)
+  [state-start] state_2 创建项目集全屏页初始态
+  [state-done ] state_2 创建项目集全屏页初始态  applied=1 skipped=0 68510ms
+               components: (无)
+  [state-start] state_3 创建项目集校验失败态
+  [state-done ] state_3 创建项目集校验失败态  applied=1 skipped=0 78768ms
+               components: (无)
+  [state-start] state_4 创建项目集中过渡态
+  [state-done ] state_4 创建项目集中过渡态  applied=1 skipped=0 72502ms
+               components: (无)
+  [state-start] state_5 创建项目集成功终态
+  [state-done ] state_5 创建项目集成功终态  applied=1 skipped=0 80201ms
+               components: (无)
+  [state-start] state_6 自动返回工作台
+  [state-done ] state_6 自动返回工作台  applied=1 skipped=0 73444ms
+               components: (无)
+
+  [done] outDir=E:\任务流\任务流\p2p\saved-taskflow\20260520_052218_create-project-set-flow savedInSource=false
+
+▶ 归档后端产物 from E:\任务流\任务流\p2p\saved-taskflow\20260520_052218_create-project-set-flow
+
+▶ Playwright 截图 6 个 state（视口 360×780, fullPage）
+  ✓ state_1  1400ms  H=780px  54.4KB
+  ✓ state_2  1411ms  H=780px  39.8KB
+  ✓ state_3  1426ms  H=780px  51.2KB
+  ✓ state_4  1403ms  H=780px  41.2KB
+  ✓ state_5  1446ms  H=780px  40.4KB
+  ✓ state_6  1520ms  H=780px  50.2KB
+
+✅ 全部归档到 runs_baseline\2026-05-19_21-21-55_new_test2_baseline_v5c_batch
+   关键文件：
+   - 00_input.json / blueprint.json
+   - phase_{1,2,3}_{question,answer,response}.json
+   - sse_events.jsonl
+   - states/state_<id>/{meta.json, components.json, raw_blocks.txt, output.html, events.jsonl}
+   - summary.md

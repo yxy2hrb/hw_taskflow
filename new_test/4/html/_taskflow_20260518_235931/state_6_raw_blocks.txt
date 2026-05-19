@@ -1,0 +1,55 @@
+{
+  "state_name": "网络异常提示态",
+  "lifecycle": "temporary",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "FullscreenPanel",
+    "props": { "background": "rgba(0,0,0,0.4)" },
+    "children": [
+      {
+        "type": "OverlayMask",
+        "props": { "opacity": 0.4, "color": "#000" },
+        "children": [
+          {
+            "type": "Column",
+            "props": {
+              "width": 320,
+              "height": 160,
+              "background": "#FFFFFF",
+              "borderRadius": 12,
+              "shadow": "0 4px 12px rgba(0,0,0,0.1)",
+              "align": "center",
+              "justify": "center",
+              "gap": 12
+            },
+            "children": [
+              {
+                "type": "Icon",
+                "props": { "name": "signal_wifi_off", "size": 24, "color": "#FF5A5F" }
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "text": "连接中断，请检查网络",
+                  "size": 14,
+                  "color": "#191919",
+                  "align": "center"
+                }
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "重试",
+                  "size": "compact",
+                  "variant": "text",
+                  "color": "#46B1E3"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

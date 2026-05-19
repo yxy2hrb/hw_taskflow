@@ -1,0 +1,7 @@
+{"event":"state-start","data":{"state_id":6,"state_name":"项目不存在或已失效页","last_state":3,"ts":1779226100183},"ts":"2026-05-19T21:28:20.189Z"}
+{"event":"state-log","data":{"state_id":6,"msg":"[baseline] HM_BASELINE_ENABLED=1，走 baseline 一锤子路径（跳过 twoPhase / DSL / legacy）","ts":1779226100183},"ts":"2026-05-19T21:28:20.189Z"}
+{"event":"state-log","data":{"state_id":6,"msg":"[baseline] 启动 state_6 「项目不存在或已失效页」","ts":1779226100183},"ts":"2026-05-19T21:28:20.189Z"}
+{"event":"state-log","data":{"state_id":6,"msg":"[baseline] prompt 14.4KB lang=zh prevHtml=79.5KB->stripped 8.0KB","ts":1779226100183},"ts":"2026-05-19T21:28:20.189Z"}
+{"event":"state-log","data":{"state_id":6,"msg":"[baseline] 生成 HTML 81.0KB（其中 LLM body=9.1KB）","ts":1779226181800},"ts":"2026-05-19T21:29:41.801Z"}
+{"event":"state-log","data":{"state_id":6,"msg":"[baseline] 成功（html 82907B applied=1）","ts":1779226181800},"ts":"2026-05-19T21:29:41.801Z"}
+{"event":"state-done","data":{"state_id":6,"state_name":"项目不存在或已失效页","file":"state_6.html","applied":1,"skipped":0,"review_ok":null,"review_applied":0,"review_issues":[],"elapsed_ms":81641,"hmExpansions":[],"hmMissing":[],"ts":1779226181824},"ts":"2026-05-19T21:29:41.825Z"}

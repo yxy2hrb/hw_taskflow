@@ -1,0 +1,191 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "<!-- 任务节点开始: 创建项目集全屏页初始态【持久】 -->\n<div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:24px;padding:24px;background:#FFFFFF;width:360px;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,0.12);box-sizing:border-box;backdrop-filter: blur(54.3656005859375px)\"><div data-hm=\"FormField\" style=\"display:flex;flex-direction:column;width:100%;\">\n      <div style=\"display:flex;align-items:center;gap:12px;\">\n        <div style=\"width:80px;flex-shrink:0;\"><div data-hm=\"FormFieldLabel\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:12px;color:rgba(0,0,0,0.60);line-height:1.4;\"><span style=\"color:#E84026;margin-right:2px;\">*</span>项目集名称</div></div>\n        <div style=\"flex:1;min-width:0;\"><div data-hm=\"TextInput\" style=\"display:flex;align-items:center;height:40px;padding:0 16px;background:#F7F8FA;border:1px solid rgba(0,0,0,0.08);border-radius:8px;width:100%;box-sizing:border-box;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;\">\n  \n  <input type=\"text\" value=\"\" placeholder=\"请输入名称\"  style=\"flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:inherit;font-size:14px;color:rgba(0,0,0,0.90);line-height:1;\">\n  \n</div></div>\n      </div>\n      \n    </div><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:12px;width:100%;box-sizing:border-box\"><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:500;color:rgba(0,0,0,0.90);text-align:left;line-height:1.4;\">公司</span><div data-hm=\"Row\" style=\"display:flex;flex-direction:row;align-items:center;justify-content:flex-start;flex-wrap:wrap;gap:24px;width:100%;box-sizing:border-box\"><div data-hm=\"Row\" style=\"display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:8px;width:100%;box-sizing:border-box\"><span data-hm=\"Checkbox\" style=\"display:inline-block;width:22px;height:22px;border:2px solid rgba(0,0,0,0.08);border-radius:4px;background:#fff;box-sizing:border-box;\"></span><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:400;color:rgba(0,0,0,0.90);text-align:left;line-height:1.4;\">公司</span></div><div data-hm=\"Row\" style=\"display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:8px;width:100%;box-sizing:border-box\"><span data-hm=\"Checkbox\" style=\"display:inline-block;width:22px;height:22px;border:2px solid rgba(0,0,0,0.08);border-radius:4px;background:#fff;box-sizing:border-box;\"></span><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:400;color:rgba(0,0,0,0.90);text-align:left;line-height:1.4;\">个人</span></div></div></div><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;background:transparent;width:100%;border-radius:8px;border:1px dashed #999999;box-sizing:border-box\"><div data-hm=\"Row\" style=\"display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:8px;width:100%;box-sizing:border-box\"><span class=\"mi hm-icon\" style=\"font-size:24px;color:#999999;line-height:1;\">󰀬</span><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:400;color:#666666;text-align:left;line-height:1.4;\">点击添加项目</span></div></div><button data-hm=\"Button\"  style=\"display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 32px;background:#E62429;color:#FFFFFF;border:1px solid transparent;border-radius:9999px;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:500;line-height:1;cursor:pointer;opacity:1;width:100%;box-sizing:border-box;outline:none;\">确认</button></div>\n<!-- 任务节点结束: 创建项目集全屏页初始态【持久】 -->",
+      "instruction": "将整个项目集卡片区域替换为校验失败态：在名称输入框下方插入红色提示文字‘请输入项目集名称’（14px，#E62429，font-family: HarmonyHeiTi-Medium）；在单选按钮组右侧插入红色叹号图标（16×16px，#E62429，使用Material Icons Round的warning图标）；将项目添加区域整体置灰（opacity:0.4），并在其中央插入灰色提示文字‘请先选择归属类型’（14px，#999999，居中）；底部‘确认’按钮保持原样式不变。",
+      "components_needed": ["TextInput", "Radio", "Button"],
+      "icons_needed": ["warning"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "gap": 24,
+      "padding": 24,
+      "background": "#FFFFFF",
+      "borderRadius": 16,
+      "width": "360px",
+      "shadow": true,
+      "align": "stretch"
+    },
+    "children": [
+      {
+        "type": "FormField",
+        "props": {
+          "label": "项目集名称",
+          "required": true,
+          "error": "请输入项目集名称",
+          "placeholder": "请输入名称",
+          "value": ""
+        }
+      },
+      {
+        "type": "Column",
+        "props": {
+          "gap": 12,
+          "width": "100%"
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "variant": "subtitle",
+              "size": 16,
+              "weight": 500,
+              "color": "rgba(0,0,0,0.90)",
+              "align": "left"
+            },
+            "children": "公司"
+          },
+          {
+            "type": "Row",
+            "props": {
+              "gap": 24,
+              "wrap": true,
+              "width": "100%"
+            },
+            "children": [
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 8,
+                  "align": "center",
+                  "width": "100%"
+                },
+                "children": [
+                  {
+                    "type": "Checkbox",
+                    "props": {
+                      "checked": false,
+                      "size": 22
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "body",
+                      "size": 14,
+                      "weight": 400,
+                      "color": "rgba(0,0,0,0.90)",
+                      "align": "left"
+                    },
+                    "children": "公司"
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 8,
+                  "align": "center",
+                  "width": "100%"
+                },
+                "children": [
+                  {
+                    "type": "Checkbox",
+                    "props": {
+                      "checked": false,
+                      "size": 22
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "body",
+                      "size": 14,
+                      "weight": 400,
+                      "color": "rgba(0,0,0,0.90)",
+                      "align": "left"
+                    },
+                    "children": "个人"
+                  }
+                ]
+              },
+              {
+                "type": "Icon",
+                "props": {
+                  "name": "warning",
+                  "size": 16,
+                  "color": "#E62429"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "gap": 8,
+          "padding": 16,
+          "background": "transparent",
+          "borderRadius": 8,
+          "width": "100%",
+          "border": "1px dashed #999999",
+          "opacity": 0.4,
+          "align": "center",
+          "justify": "center"
+        },
+        "children": [
+          {
+            "type": "Row",
+            "props": {
+              "gap": 8,
+              "align": "center",
+              "width": "100%"
+            },
+            "children": [
+              {
+                "type": "Icon",
+                "props": {
+                  "name": "add_circle_outline",
+                  "size": 24,
+                  "color": "#999999"
+                }
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "size": 14,
+                  "weight": 400,
+                  "color": "#999999",
+                  "align": "left"
+                },
+                "children": "请先选择归属类型"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Button",
+        "props": {
+          "label": "确认",
+          "variant": "primary",
+          "size": "regular",
+          "block": true,
+          "background": "#E62429",
+          "color": "#FFFFFF"
+        }
+      }
+    ]
+  }
+}

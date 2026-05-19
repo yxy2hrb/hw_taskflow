@@ -1,0 +1,174 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#146_161533",
+      "instruction": "在名称输入框下方添加红色提示文字‘请输入项目集名称’，12px Regular，#E62A2A，左对齐，距输入框下边缘8px；保持原白色圆角卡片结构不变",
+      "components_needed": ["TextInput"]
+    },
+    {
+      "id": "e2",
+      "type": "state-toggle",
+      "anchor": "#146_161534",
+      "instruction": "将公司/个人单选按钮组容器外框整体加红色描边（2px solid #E62A2A），圆角保持不变；保持按钮内容与布局不变",
+      "components_needed": ["Button"]
+    },
+    {
+      "id": "e3",
+      "type": "state-toggle",
+      "anchor": "#146_161584",
+      "instruction": "在项目添加入口卡片上方添加红色说明文字‘所选项目类型与归属不一致’，12px Regular，#E62A2A，居中，距卡片上边缘8px；保持原卡片结构与图标不变",
+      "components_needed": ["Card"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "gap": 8,
+      "padding": 16,
+      "background": "#FFFFFF",
+      "borderRadius": 16,
+      "shadow": true
+    },
+    "children": [
+      {
+        "type": "FormField",
+        "props": {
+          "label": "项目集名称",
+          "required": true,
+          "error": "请输入项目集名称",
+          "placeholder": "请输入项目集名称",
+          "labelWidth": 80
+        }
+      }
+    ]
+  }
+}
+[NEXT]
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "border": "2px solid #E62A2A",
+      "borderRadius": 16,
+      "padding": 16,
+      "gap": 12,
+      "background": "#FFFFFF",
+      "shadow": "0 8px 24px rgba(0,0,0,0.08)"
+    },
+    "children": [
+      {
+        "type": "Row",
+        "props": { "gap": 12, "align": "center" },
+        "children": [
+          { "type": "Checkbox", "props": { "checked": true, "size": 22 } },
+          { "type": "Text", "props": { "variant": "body" }, "children": "公司" }
+        ]
+      },
+      {
+        "type": "Row",
+        "props": { "gap": 12, "align": "center" },
+        "children": [
+          { "type": "Checkbox", "props": { "checked": false, "size": 22 } },
+          { "type": "Text", "props": { "variant": "body" }, "children": "个人" }
+        ]
+      }
+    ]
+  }
+}
+[NEXT]
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "gap": 8,
+      "align": "center"
+    },
+    "children": [
+      {
+        "type": "Text",
+        "props": {
+          "size": 12,
+          "weight": "500",
+          "color": "#E62A2A",
+          "align": "center"
+        },
+        "children": "所选项目类型与归属不一致"
+      },
+      {
+        "type": "Column",
+        "props": {
+          "gap": 16,
+          "padding": 16,
+          "background": "#FFFFFF",
+          "borderRadius": 16,
+          "shadow": true,
+          "width": "100%"
+        },
+        "children": [
+          {
+            "type": "Row",
+            "props": {
+              "gap": 12,
+              "align": "center"
+            },
+            "children": [
+              {
+                "type": "Icon",
+                "props": {
+                  "name": "folder_open",
+                  "size": 24,
+                  "color": "#0A59F7"
+                }
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 4,
+                  "align": "start"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "title",
+                      "size": 16,
+                      "weight": "700",
+                      "color": "rgba(0,0,0,0.90)"
+                    },
+                    "children": "添加项目"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "body",
+                      "size": 14,
+                      "weight": "500",
+                      "color": "rgba(0,0,0,0.60)"
+                    },
+                    "children": "创建新项目或从模板导入"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "开始添加",
+              "variant": "primary",
+              "size": "regular",
+              "block": true
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

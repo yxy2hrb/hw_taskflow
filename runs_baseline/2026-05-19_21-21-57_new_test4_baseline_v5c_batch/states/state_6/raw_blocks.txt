@@ -1,0 +1,141 @@
+<!-- BASELINE_BODY_START -->
+<body>
+<!-- 顶部状态栏（保留 base 原始 DOM 结构，不可删减/简化） -->
+<div class="scroll-container">
+  <div id="0_1" class="Pixso-canvas-0_1">
+    <div id="14_884713" class="Pixso-frame-14_884713 fill-场景background-colorcolor-bg-1-14_886006">
+      <div id="14_884714" class="Pixso-frame-14_884714">
+        <div id="14_884715" class="Pixso-vector-14_884715"></div>
+        <div id="14_884716" class="Pixso-vector-14_884716"></div>
+        <div id="14_884717" class="Pixso-vector-14_884717"></div>
+        <div id="14_884718" class="Pixso-vector-14_884718"></div>
+        
+      </div>
+      <div id="14_884727" class="Pixso-rectangle-14_884727"></div>
+      <div id="14_884728" class="Pixso-frame-14_884728">
+        <div id="14_884729" class="Pixso-frame-14_884729">
+          <div class="frame-content-14_884729">
+            <div id="146_168653" class="Pixso-frame-146_168653">
+              <div id="146_168654" class="Pixso-frame-146_168654">
+                <div class="frame-content-146_168654">
+                  <p id="146_168655" class="Pixso-paragraph-146_168655">08:08</p>
+                  <div id="146_168656" class="Pixso-frame-146_168656">
+                    <div id="146_168657" class="Pixso-vector-146_168657"></div>
+                    <div id="146_168669" class="Pixso-vector-146_168669"></div>
+                    <div id="146_168676" class="Pixso-vector-146_168676"></div>
+                    <div id="146_168703" class="Pixso-vector-146_168703"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 顶部导航栏：全宽标题栏，已按要求替换 -->
+            <div id="146_168713" class="Pixso-frame-146_168713">
+              <div class="frame-content-146_168713">
+                <div id="146_168714" class="Pixso-frame-146_168714">
+                  <div id="146_168715" class="Pixso-frame-146_168715">
+                    <div id="146_168720" class="Pixso-frame-146_168720">
+                      <div id="146_168721" class="Pixso-frame-146_168721">
+                        <div id="146_168722" class="Pixso-frame-146_168722">
+                          <div class="frame-content-146_168722">
+                            <div id="hm-title-bar" style="width:100%; height:44px; display:flex; align-items:center; padding:0 16px; background:#FFFFFF; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif;">
+                              <p id="hm-title-text" style="font-size:16px; font-weight:500; color:#1A1A1A; margin:0;">运维流程全屏页</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 【删除】上一态全部业务区块（已无残留） -->
+        <!-- 【新增】全屏主容器：固定定位，覆盖状态栏下方至 Tab 栏上方 -->
+        <div id="hm-main-container" style="position:fixed; top:44px; bottom:66px; left:0; right:0; z-index:50; background:#FFFFFF;">
+          <div id="hm-split-layout" style="display:flex; width:100%; height:100%;">
+            <!-- 左侧表单区：40% 宽，浅灰背景 -->
+            <div id="hm-form-panel" style="width:40%; background:#F3F3F3; padding:24px 16px; overflow-y:auto;">
+              <div id="hm-scene-select" style="margin-bottom:16px;">
+                <label for="scene-select" style="display:block; font-family:'HarmonyHeiTi-Regular'; font-size:14px; color:#333333; margin-bottom:8px;">项目场景</label>
+                <div id="hm-scene-select-wrapper" style="position:relative;">
+                  <select id="scene-select" name="scene" style="width:100%; height:44px; padding:12px 16px 12px 12px; border:1px solid #E0E0E0; border-radius:8px; font-family:'HarmonyHeiTi-Regular'; font-size:14px; color:#333333; background:#FFFFFF; appearance:none; -webkit-appearance:none; background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23666'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E\"); background-repeat:no-repeat; background-position:right 12px center;">
+                    <option value="">请选择项目场景</option>
+                    <option value="datacenter">数据中心</option>
+                    <option value="enterprise">企业园区</option>
+                    <option value="soho">SOHO 小型办公</option>
+                  </select>
+                </div>
+                <!-- 任务节点开始: 字段校验失败【临时】 -->
+                <p id="hm-scene-error" style="margin-top:4px; font-family:'HarmonyHeiTi-Regular'; font-size:12px; line-height:16px; color:#F44336;">请选择项目场景</p>
+                <!-- 任务节点结束: 字段校验失败【临时】 -->
+              </div>
+              <div id="hm-project-name-input" style="margin-bottom:24px;">
+                <label for="project-name" style="display:block; font-family:'HarmonyHeiTi-Regular'; font-size:14px; color:#333333; margin-bottom:8px;">项目名称</label>
+                <input id="project-name" name="projectName" type="text" placeholder="请输入项目名称" style="width:100%; height:44px; padding:12px; border:1px solid #E0E0E0; border-radius:8px; font-family:'HarmonyHeiTi-Regular'; font-size:14px; color:#333333; background:#FFFFFF;">
+                <!-- 任务节点开始: 字段校验失败【临时】 -->
+                <p id="hm-name-error" style="margin-top:4px; font-family:'HarmonyHeiTi-Regular'; font-size:12px; line-height:16px; color:#F44336;">请输入有效项目名称</p>
+                <!-- 任务节点结束: 字段校验失败【临时】 -->
+              </div>
+              <div id="hm-submit-btn" style="width:100%;">
+                <button id="hm-submit-button" style="width:100%; height:44px; background:#2196F3; border:none; border-radius:8px; font-family:'HarmonyHeiTi-Medium'; font-size:14px; font-weight:500; color:#FFFFFF; cursor:pointer;">确定</button>
+              </div>
+            </div>
+            <!-- 右侧模型区：60% 宽，纯白背景，中央居中设备线框图 -->
+            <div id="hm-model-panel" style="width:60%; background:#FFFFFF; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+              <!-- 设备模型线框图占位（SVG 线框图，无文字、无遮罩、无加载指示） -->
+              <svg id="hm-device-wireframe" width="240" height="240" viewBox="0 0 240 240" style="max-width:100%; max-height:100%;">
+                <!-- 外框 -->
+                <rect x="20" y="20" width="200" height="200" fill="none" stroke="#BDBDBD" stroke-width="1.5"/>
+                <!-- 主体结构 -->
+                <rect x="60" y="60" width="120" height="120" fill="none" stroke="#9E9E9E" stroke-width="1.2"/>
+                <!-- 底座 -->
+                <rect x="80" y="180" width="80" height="12" fill="none" stroke="#9E9E9E" stroke-width="1.2"/>
+                <!-- 顶部天线 -->
+                <line x1="120" y1="40" x2="120" y2="20" stroke="#9E9E9E" stroke-width="1.2"/>
+                <circle cx="120" cy="20" r="3" fill="#9E9E9E"/>
+                <!-- 侧面接口 -->
+                <rect x="40" y="100" width="12" height="40" fill="none" stroke="#9E9E9E" stroke-width="1.2"/>
+                <rect x="188" y="100" width="12" height="40" fill="none" stroke="#9E9E9E" stroke-width="1.2"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 底部导航栏（保留 base 原始 DOM 结构，不可删减/简化） -->
+      <div id="14_884840" class="Pixso-frame-14_884840">
+        <div id="14_884841" class="Pixso-rectangle-14_884841"></div>
+        <p id="14_884842" class="Pixso-paragraph-14_884842">我的</p>
+        <p id="14_884843" class="Pixso-paragraph-14_884843">服务</p>
+        <p id="14_884844" class="Pixso-paragraph-14_884844">工作台</p>
+        <p id="14_884845" class="Pixso-paragraph-14_884845">商城</p>
+        <p id="14_884846" class="Pixso-paragraph-14_884846">首页</p>
+        <div id="14_884847" class="Pixso-group-14_884847">
+          <div id="14_884848" class="Pixso-vector-14_884848"></div>
+          <div id="14_884849" class="Pixso-group-14_884849">
+            <div id="14_884850" class="Pixso-vector-14_884850"></div>
+            <div id="14_884851" class="stroke-wrapper-14_884851">
+              <div class="Pixso-rectangle-14_884851"></div>
+              <div class="stroke-14_884851"></div>
+            </div>
+          </div>
+        </div>
+        <div id="14_884852" class="Pixso-vector-14_884852"></div>
+        <div id="14_884856" class="Pixso-vector-14_884856"></div>
+        <div id="14_884869" class="Pixso-group-14_884869">
+          <div id="14_884870" class="Pixso-vector-14_884870"></div>
+          <div id="14_884871" class="Pixso-vector-14_884871"></div>
+        </div>
+        <div id="14_884874" class="Pixso-group-14_884874">
+          <div id="14_884875" class="Pixso-vector-14_884875"></div>
+          <div id="14_884876" class="Pixso-group-14_884876">
+            <div id="14_884877" class="Pixso-vector-14_884877"></div>
+            <div id="14_884880" class="Pixso-vector-14_884880"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<!-- BASELINE_BODY_END -->

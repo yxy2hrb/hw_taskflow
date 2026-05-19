@@ -1,0 +1,212 @@
+<!-- BASELINE_BODY_START -->
+<body>
+<!-- 顶部状态栏 -->
+<div id="0_1" class="Pixso-canvas-0_1">
+  <div id="14_619629" class="Pixso-frame-14_619629 fill-场景background-colorcolor-bg-1-6_11380">
+    <div id="146_394409" class="Pixso-frame-146_394409">
+      <div id="146_394410" class="Pixso-vector-146_394410"></div>
+      <div id="146_394411" class="Pixso-vector-146_394411"></div>
+      <div id="146_394412" class="Pixso-vector-146_394412"></div>
+      <div id="146_394413" class="Pixso-vector-146_394413"></div>
+    </div>
+    <div id="146_394422" class="Pixso-rectangle-146_394422"></div>
+    <div id="146_394423" class="Pixso-frame-146_394423">
+      <div id="146_394424" class="Pixso-frame-146_394424 fill-场景background-colorcolor-bg-1-6_11380">
+        <div class="frame-content-146_394424">
+          <div id="146_394425" class="Pixso-rectangle-146_394425 fill-场景fill-colorcolor-fill-disabled-subtle-14_536315"></div>
+          <div id="146_394426" class="Pixso-rectangle-146_394426 fill-场景fill-colorcolor-fill-disabled-14_365678"></div>
+          <div id="146_394427" class="Pixso-rectangle-146_394427 fill-场景fill-colorcolor-fill-disabled-subtle-14_536315"></div>
+          <div id="146_394428" class="Pixso-rectangle-146_394428 fill-场景fill-colorcolor-fill-disabled-subtle-14_536315"></div>
+          <div id="146_394429" class="Pixso-rectangle-146_394429 fill-场景fill-colorcolor-fill-disabled-subtle-14_536315"></div>
+        </div>
+      </div>
+    </div>
+    <div id="146_394432" class="Pixso-frame-146_394432">
+      <div id="146_394433" class="Pixso-frame-146_394433">
+        <div id="146_394434" class="Pixso-frame-146_394434">
+          <div id="146_394435" class="Pixso-frame-146_394435">
+            <div class="frame-content-146_394435">
+              <p id="146_394436" class="Pixso-paragraph-146_394436">08:08</p>
+              <div id="146_394437" class="Pixso-frame-146_394437">
+                <div id="146_394438" class="Pixso-vector-146_394438"></div>
+                <div id="146_394450" class="Pixso-vector-146_394450"></div>
+                <div id="146_394457" class="Pixso-vector-146_394457"></div>
+                <div id="146_394484" class="Pixso-vector-146_394484"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="146_394494" class="Pixso-frame-146_394494">
+          <div class="frame-content-146_394494">
+            <div id="146_394495" class="Pixso-frame-146_394495">
+              <div id="146_394496" class="Pixso-frame-146_394496">
+                <div id="146_394501" class="Pixso-frame-146_394501">
+                  <div id="146_394502" class="Pixso-frame-146_394502">
+                    <div class="frame-content-146_394502">
+                      <div id="146_394503" class="Pixso-frame-146_394503">
+                        <p id="146_394504" class="Pixso-paragraph-146_394504 fill-场景text-colorcolor-text-primary-6_11379-paragraph">营销</p>
+                        <div id="146_394505" class="Pixso-frame-146_394505">
+                          <div class="frame-content-146_394505">
+                            <div id="146_394506" class="Pixso-rectangle-146_394506"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <p id="146_394508" class="Pixso-paragraph-146_394508 fill-场景text-colorcolor-text-primary-6_11379-paragraph">工作台</p>
+                    </div>
+                  </div>
+                  <div id="146_394509" class="Pixso-frame-146_394509">
+                    <div class="frame-content-146_394509">
+                      <div id="146_394510" class="Pixso-group-146_394510">
+                        <div id="146_394511" class="Pixso-vector-146_394511"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 【持久】管理应用页添加成功态：全新主容器（固定定位，覆盖原内容） -->
+      <div id="hm-management-page" style="position: fixed; top: 44px; bottom: 66px; left: 0; right: 0; z-index: 50; background: #FFFFFF;">
+        <!-- 顶部标题栏 -->
+        <div id="hm-header-bar" style="width: 100%; height: 44px; display: flex; align-items: center; padding: 0 16px; background: #FFFFFF; border-bottom: 1px solid #F0F0F0;">
+          <!-- 返回箭头 -->
+          <div id="hm-back-btn" style="width: 24px; height: 24px; margin-right: 12px;">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%; fill: #000000;">
+              <path d="M15.41 16.58L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.58Z"/>
+            </svg>
+          </div>
+          <!-- 标题文字 -->
+          <div id="hm-header-title" style="flex: 1; text-align: center; font-family: 'HarmonyHeiTi-Medium', 'HarmonyOS Sans', sans-serif; font-size: 14px; font-weight: 500; color: #191919; line-height: 20px;">管理应用</div>
+          <!-- 右侧占位（空） -->
+          <div style="width: 24px;"></div>
+        </div>
+
+        <!-- 已添加计数行（已更新为 +1） -->
+        <div id="hm-app-count" class="text-ohos_id_text_size_body2regular-6_250025" style="height: 20px; padding: 0 16px; margin-top: 8px; font-family: 'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif; font-size: 14px; font-weight: 400; color: #AEAEAE; line-height: 20px;">已添加4个</div>
+
+        <!-- 应用列表容器（可滚动） -->
+        <div id="hm-app-list" class="scroll-container" style="position: absolute; top: 72px; left: 0; right: 0; bottom: 0; overflow-y: auto; -webkit-overflow-scrolling: touch;">
+          <!-- 应用项 1：保持关闭态 -->
+          <div id="hm-app-item-1" class="hm-app-item" style="display: flex; align-items: center; padding: 12px 16px; border-bottom: 1px solid #F5F5F5;">
+            <div class="icon-wrapper" style="width: 40px; height: 40px; border-radius: 50%; background: #F3F3F3; display: flex; align-items: center; justify-content: center; margin-right: 12px;">
+              <div style="width: 24px; height: 24px; background: #C7000B; border-radius: 4px;"></div>
+            </div>
+            <div class="app-name" style="flex: 1; font-family: 'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif; font-size: 14px; font-weight: 400; color: #191919; line-height: 20px;">客户画像分析</div>
+            <div class="switch-wrapper" id="hm-switch-1" style="width: 44px; height: 24px; background: #DFDFDF; border-radius: 12px; position: relative; cursor: pointer;">
+              <div style="position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; background: #8C8C8C; border-radius: 50%; transition: left 0.2s ease;"></div>
+            </div>
+          </div>
+
+          <!-- 应用项 2：✅ 已开启（原已开启，保持不变） -->
+          <div id="hm-app-item-2" class="hm-app-item" style="display: flex; align-items: center; padding: 12px 16px; border-bottom: 1px solid #F5F5F5;">
+            <div class="icon-wrapper" style="width: 40px; height: 40px; border-radius: 50%; background: #F3F3F3; display: flex; align-items: center; justify-content: center; margin-right: 12px;">
+              <div style="width: 24px; height: 24px; background: #007AFF; border-radius: 4px;"></div>
+            </div>
+            <div class="app-name" style="flex: 1; font-family: 'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif; font-size: 14px; font-weight: 400; color: #191919; line-height: 20px;">线索智能分发</div>
+            <div class="switch-wrapper" id="hm-switch-2" style="width: 44px; height: 24px; background: #C7000B; border-radius: 12px; position: relative; cursor: pointer;">
+              <div style="position: absolute; top: 2px; left: 22px; width: 20px; height: 20px; background: #FFFFFF; border-radius: 50%; transition: left 0.2s ease;"></div>
+            </div>
+          </div>
+
+          <!-- 应用项 3：✅ 新增开启（原关闭 → 现开启） -->
+          <div id="hm-app-item-3" class="hm-app-item" style="display: flex; align-items: center; padding: 12px 16px; border-bottom: 1px solid #F5F5F5;">
+            <div class="icon-wrapper" style="width: 40px; height: 40px; border-radius: 50%; background: #F3F3F3; display: flex; align-items: center; justify-content: center; margin-right: 12px;">
+              <div style="width: 24px; height: 24px; background: #FF9500; border-radius: 4px;"></div>
+            </div>
+            <div class="app-name" style="flex: 1; font-family: 'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif; font-size: 14px; font-weight: 400; color: #191919; line-height: 20px;">营销活动中心</div>
+            <div class="switch-wrapper" id="hm-switch-3" style="width: 44px; height: 24px; background: #C7000B; border-radius: 12px; position: relative; cursor: pointer;">
+              <div style="position: absolute; top: 2px; left: 22px; width: 20px; height: 20px; background: #FFFFFF; border-radius: 50%; transition: left 0.2s ease;"></div>
+            </div>
+          </div>
+
+          <!-- 应用项 4：✅ 已开启（原已开启，保持不变） -->
+          <div id="hm-app-item-4" class="hm-app-item" style="display: flex; align-items: center; padding: 12px 16px; border-bottom: 1px solid #F5F5F5;">
+            <div class="icon-wrapper" style="width: 40px; height: 40px; border-radius: 50%; background: #F3F3F3; display: flex; align-items: center; justify-content: center; margin-right: 12px;">
+              <div style="width: 24px; height: 24px; background: #34C759; border-radius: 4px;"></div>
+            </div>
+            <div class="app-name" style="flex: 1; font-family: 'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif; font-size: 14px; font-weight: 400; color: #191919; line-height: 20px;">数据看板</div>
+            <div class="switch-wrapper" id="hm-switch-4" style="width: 44px; height: 24px; background: #C7000B; border-radius: 12px; position: relative; cursor: pointer;">
+              <div style="position: absolute; top: 2px; left: 22px; width: 20px; height: 20px; background: #FFFFFF; border-radius: 50%; transition: left 0.2s ease;"></div>
+            </div>
+          </div>
+
+          <!-- 应用项 5：保持关闭态 -->
+          <div id="hm-app-item-5" class="hm-app-item" style="display: flex; align-items: center; padding: 12px 16px;">
+            <div class="icon-wrapper" style="width: 40px; height: 40px; border-radius: 50%; background: #F3F3F3; display: flex; align-items: center; justify-content: center; margin-right: 12px;">
+              <div style="width: 24px; height: 24px; background: #5856D6; border-radius: 4px;"></div>
+            </div>
+            <div class="app-name" style="flex: 1; font-family: 'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif; font-size: 14px; font-weight: 400; color: #191919; line-height: 20px;">AI内容生成</div>
+            <div class="switch-wrapper" id="hm-switch-5" style="width: 44px; height: 24px; background: #DFDFDF; border-radius: 12px; position: relative; cursor: pointer;">
+              <div style="position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; background: #8C8C8C; border-radius: 50%; transition: left 0.2s ease;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 底部 Tab 导航栏（完整保留，不修改） -->
+    <div id="146_395667" class="Pixso-frame-146_395667 fill-component控件背景色comp_tab_bg-14_468137">
+      <div class="frame-content-146_395667">
+        <div id="146_395668" class="Pixso-frame-146_395668">
+          <div class="frame-content-146_395668">
+            <div id="146_395669" class="Pixso-frame-146_395669">
+              <div class="frame-content-146_395669">
+                <div id="146_395670" class="Pixso-vector-146_395670"></div>
+              </div>
+            </div>
+            <p id="146_395674" class="Pixso-paragraph-146_395674 fill-font文本色图标色font_primary-14_365583-paragraph">首页</p>
+          </div>
+        </div>
+        <div id="146_395675" class="Pixso-frame-146_395675">
+          <div class="frame-content-146_395675">
+            <div id="146_395676" class="Pixso-frame-146_395676">
+              <div class="frame-content-146_395676">
+                <div id="146_395677" class="vector-wrapper-146_395677">
+                  <div id="146_395677" class="Pixso-vector-146_395677"></div>
+                </div>
+              </div>
+            </div>
+            <p id="146_395681" class="Pixso-paragraph-146_395681 fill-font文本色图标色font_primary-14_365583-paragraph">商城</p>
+          </div>
+        </div>
+        <div id="146_395682" class="Pixso-frame-146_395682">
+          <div class="frame-content-146_395682">
+            <div id="146_395683" class="Pixso-frame-146_395683">
+              <div class="frame-content-146_395683">
+                <div id="146_395684" class="Pixso-vector-146_395684"></div>
+              </div>
+            </div>
+            <p id="146_395690" class="Pixso-paragraph-146_395690 fill-brand主色brand_normal-14_468127-paragraph">营销</p>
+          </div>
+        </div>
+        <div id="146_395691" class="Pixso-frame-146_395691">
+          <div class="frame-content-146_395691">
+            <div id="146_395692" class="Pixso-frame-146_395692">
+              <div class="frame-content-146_395692">
+                <div id="146_395693" class="Pixso-vector-146_395693"></div>
+              </div>
+            </div>
+            <p id="146_395697" class="Pixso-paragraph-146_395697 fill-font文本色图标色font_primary-14_365583-paragraph">服务</p>
+          </div>
+        </div>
+        <div id="146_395698" class="Pixso-frame-146_395698">
+          <div class="frame-content-146_395698">
+            <div id="146_395699" class="Pixso-frame-146_395699">
+              <div class="frame-content-146_395699">
+                <div id="146_395700" class="Pixso-vector-146_395700"></div>
+              </div>
+            </div>
+            <p id="146_395704" class="Pixso-paragraph-146_395704 fill-font文本色图标色font_primary-14_365583-paragraph">我的</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 【临时】Toast 提示：添加成功 -->
+<div id="hm-toast-success" style="position: fixed; top: 88px; left: 50%; transform: translateX(-50%); width: 280px; height: 44px; background: #000000; border-radius: 4px; display: flex; align-items: center; justify-content: center; z-index: 1001;">
+  <span style="font-family: 'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif; font-size: 14px; font-weight: 400; color: #FFFFFF;">添加成功</span>
+</div>
+</body>
+<!-- BASELINE_BODY_END -->

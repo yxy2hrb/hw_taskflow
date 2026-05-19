@@ -1,0 +1,80 @@
+{
+  "state_name": "体验项目列表弹窗态",
+  "lifecycle": "temporary",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "FullscreenPanel",
+    "props": { "background": "transparent" },
+    "children": [
+      {
+        "type": "OverlayMask",
+        "props": { "opacity": 0.5, "color": "#000", "blur": 0 },
+        "children": [
+          {
+            "type": "Column",
+            "props": { "gap": 0, "padding": "8px 16px 24px", "align": "stretch" },
+            "children": [
+              {
+                "type": "NavBar",
+                "props": {
+                  "title": "我的体验项目",
+                  "rightIcon": "close",
+                  "align": "center"
+                }
+              },
+              {
+                "type": "Column",
+                "props": { "gap": 16 },
+                "children": [
+                  {
+                    "type": "ListItem",
+                    "props": {
+                      "title": "XX园区虚拟体验",
+                      "subtitle": "2024-03-15 创建",
+                      "leftIcon": "play_circle_filled"
+                    },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": { "text": "运行中", "variant": "caption", "color": "#1877F2" }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ListItem",
+                    "props": {
+                      "title": "YY科技馆沉浸式导览",
+                      "subtitle": "2024-02-28 创建",
+                      "leftIcon": "play_circle_filled"
+                    },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": { "text": "运行中", "variant": "caption", "color": "#1877F2" }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ListItem",
+                    "props": {
+                      "title": "ZZ生态园AR探索",
+                      "subtitle": "2024-01-10 创建",
+                      "leftIcon": "play_circle_filled"
+                    },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": { "text": "已暂停", "variant": "caption", "color": "#666" }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

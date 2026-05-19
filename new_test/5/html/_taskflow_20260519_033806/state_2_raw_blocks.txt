@@ -1,0 +1,197 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "new-overlay",
+      "anchor": "#14_884324",
+      "instruction": "在 body 末尾、底部导航栏之后新增一个全屏半透明遮罩层（rgba(0,0,0,0.3)）和居中白色圆角卡片（宽340px、高500px、border-radius:12px、background:#FFFFFF），卡片顶部居中显示标题'我的体验项目'（16px Medium, #191919），卡片内部为垂直滚动列表，含N行项目卡片，每行含24×24 SVG图标、项目名（14px Regular, #191919）、更新时间（12px Regular, #666666）；卡片底部距离底部Tab栏上边缘8px；无遮罩层时页面其他元素（状态栏、顶部导航栏、底部Tab栏、所有内容区块）保持不变且完全可见。",
+      "components_needed": ["OverlayMask", "Card", "List", "Icon"],
+      "icons_needed": []
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "OverlayMask",
+    "props": {
+      "opacity": 0.3,
+      "color": "#000000"
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "borderRadius": 12,
+          "width": "auto",
+          "maxWidth": 340,
+          "height": 500,
+          "padding": 24,
+          "shadow": true,
+          "gap": 16,
+          "align": "stretch",
+          "overflowY": "scroll"
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "variant": "subtitle",
+              "size": 16,
+              "weight": 500,
+              "color": "#191919",
+              "align": "center"
+            },
+            "children": "我的体验项目"
+          },
+          {
+            "type": "Column",
+            "props": {
+              "gap": 16
+            },
+            "children": [
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 12,
+                  "align": "center"
+                },
+                "children": [
+                  {
+                    "type": "Icon",
+                    "props": {
+                      "name": "folder",
+                      "size": 24,
+                      "color": "#191919"
+                    }
+                  },
+                  {
+                    "type": "Column",
+                    "props": {
+                      "gap": 4
+                    },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "body",
+                          "size": 14,
+                          "weight": 500,
+                          "color": "#191919"
+                        },
+                        "children": "设备健康监测系统"
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "caption",
+                          "size": 12,
+                          "weight": 400,
+                          "color": "#666666"
+                        },
+                        "children": "2024-06-12 14:30"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 12,
+                  "align": "center"
+                },
+                "children": [
+                  {
+                    "type": "Icon",
+                    "props": {
+                      "name": "settings",
+                      "size": 24,
+                      "color": "#191919"
+                    }
+                  },
+                  {
+                    "type": "Column",
+                    "props": {
+                      "gap": 4
+                    },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "body",
+                          "size": 14,
+                          "weight": 500,
+                          "color": "#191919"
+                        },
+                        "children": "HarmonyOS 应用性能分析工具"
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "caption",
+                          "size": 12,
+                          "weight": 400,
+                          "color": "#666666"
+                        },
+                        "children": "2024-06-10 09:15"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 12,
+                  "align": "center"
+                },
+                "children": [
+                  {
+                    "type": "Icon",
+                    "props": {
+                      "name": "code",
+                      "size": 24,
+                      "color": "#191919"
+                    }
+                  },
+                  {
+                    "type": "Column",
+                    "props": {
+                      "gap": 4
+                    },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "body",
+                          "size": 14,
+                          "weight": 500,
+                          "color": "#191919"
+                        },
+                        "children": "分布式任务调度 SDK"
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "caption",
+                          "size": 12,
+                          "weight": 400,
+                          "color": "#666666"
+                        },
+                        "children": "2024-06-08 16:42"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

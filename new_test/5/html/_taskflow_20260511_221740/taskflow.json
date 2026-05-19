@@ -1,0 +1,43 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "工作台首页初始态",
+    "description": "用户位于‘我的工作台’主页面，底部Tab栏完整可见（含工作台、项目、报表、我四个图标），页面中央清晰展示‘我的体验项目’功能入口卡片，状态栏显示时间/信号/电量，无任何弹窗或遮罩。",
+    "implementation_method": "原始 HTML 初始快照，不做改造"
+  },
+  {
+    "state_id": 2,
+    "state_name": "体验项目列表弹窗态",
+    "description": "用户点击‘我的体验项目’入口后，从页面底部上滑约60%高度的固定高度浮层弹窗，背景为50%透明黑色蒙层，状态栏与底部Tab栏保持完全可见且交互正常；弹窗顶部有‘我的体验项目’标题和右对齐关闭X图标，内部为可滚动项目卡片列表，每张卡片含项目名、创建时间、状态标签。",
+    "implementation_method": "底部抽屉 (Bottom Sheet)：半透黑色蒙层（opacity: 0.5）+ 白色圆角弹窗容器（padding: 16px 16px 24px）；标题 '我的体验项目'（'My Experience Projects'）、关闭图标（X icon, 20×20px, #999）；每张卡片含主文案 'XX园区虚拟体验'（'XX Park Virtual Experience'）、副文案 '2024-03-15 创建'（'Created on Mar 15, 2024'）、状态标签 '运行中'（'Running'，蓝色底白字）；弹窗顶部距状态栏下沿8px，底部距Tab栏上沿8px。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "项目详情全屏加载态",
+    "description": "用户点击任一项目卡片后，原弹窗淡出销毁，页面无缝过渡至全屏项目页：顶部导航栏固定显示左向返回箭头、居中标题‘虚拟体验项目’、右侧三个图标（搜索放大镜、通知铃铛、加号）；拓扑图区域显示脉冲式加载动画（中心旋转环+‘加载中’文字），其余模块（Wi-Fi评分、运行时长、设备统计等）均以灰色占位框呈现，底部Tab栏持续可见且高亮‘项目’Tab。",
+    "implementation_method": "全屏沉浸页 (Full-Screen Page)：顶部导航栏（高度48px，#FFFFFF背景，1px bottom border #F3F3F3）；返回箭头（← icon, 24×24px, #191919）；标题 '虚拟体验项目'（'Virtual Experience Project'）；右三图标：搜索 '🔍'（'Search'）、通知 '🔔'（'Notifications'）、加号 '+'（'Add'），均为24×24px，#191919；拓扑图区域（宽100%，高240px）内嵌脉冲动画：浅灰圆角容器（#F3F3F3）+ 居中旋转环（#46B1E3, 32px）+ 下方文字 '加载中'（'Loading...'，14px，#666）；其余模块均使用同宽同高灰色占位框（#F3F3F3，高度88px）。",
+    "last_state": 1
+  },
+  {
+    "state_id": 4,
+    "state_name": "项目详情成功终态",
+    "description": "加载完成后，拓扑图区域渲染SVG设备拓扑图（含AP、网关、终端节点，异常节点红框高亮），上方显示Wi-Fi评分（如‘87分’+星级图标）与运行时长（如‘已运行 3天12小时’），下方依次为设备统计卡片（‘在线设备 12台’）、终端统计卡片（‘活跃终端 47个’）、业务网管理模块（含‘添加子网’按钮）、访问控制模块（含‘策略列表’入口），顶部导航与底部Tab栏全程保持固定。",
+    "implementation_method": "全屏沉浸页 (Full-Screen Page)：复用 state_3 的导航栏结构；拓扑图区域替换为响应式SVG容器（viewBox='0 0 800 400'），含3类节点：AP节点（蓝色圆点+‘AP-01’文本）、网关节点（绿色矩形+‘GW-01’）、终端节点（灰色小圆+‘T-23’），异常节点外加2px红色描边；Wi-Fi评分模块：左对齐星级图标（★☆☆☆☆）+ ‘87分’（16px bold）；运行时长：‘已运行 3天12小时’（14px，#666）；设备统计卡片：标题‘在线设备’（14px medium）、数值‘12台’（20px bold，#191919）；终端统计卡片同构；业务网管理模块含‘添加子网’按钮（#46B1E3底色，白色文字，14px）；访问控制模块含‘策略列表’链接（#46B1E3，underline）。",
+    "last_state": 3
+  },
+  {
+    "state_id": 5,
+    "state_name": "项目数据缺失错误态",
+    "description": "若后端返回空数据或超时，拓扑图区域及所有统计模块被替换为居中卡片式错误提示：浅灰底卡片（#F9F9F9，圆角8px，宽320px）包含感叹号图标（⚠️，24px，#FF6B35）、主文案‘暂无数据’（‘No Data Available’）、次文案‘当前项目暂未采集到设备信息’（‘No device data collected yet.’）、底部‘重试’按钮（#46B1E3底色，白色文字，14px medium），卡片上下留白各48px，顶部导航与底部Tab栏保持不变。",
+    "implementation_method": "居中卡片式错误页 (Centered Card Error Page)：浅灰卡片容器（#F9F9F9，width: 320px，padding: 24px 20px，border-radius: 8px，margin: 0 auto）；顶部感叹号图标 ‘⚠️’（24px，#FF6B35）；主标题 ‘暂无数据’（'No Data Available'，16px bold，#191919，text-align: center）；副文案 ‘当前项目暂未采集到设备信息’（'No device data collected yet.'，14px，#666，text-align: center，line-height: 20px）；底部按钮 ‘重试’（'Retry'，14px medium，#FFFFFF，background: #46B1E3，height: 40px，border-radius: 4px，display: flex，justify-content: center，align-items: center）；卡片垂直居中（margin-top: 48px，margin-bottom: 48px）。",
+    "last_state": 3
+  },
+  {
+    "state_id": 6,
+    "state_name": "弹窗取消回退态",
+    "description": "用户点击弹窗关闭X或点击蒙层背景，弹窗无声淡出（opacity 1→0，300ms ease-out），同时工作台首页内容同步淡入（opacity 0→1），底部Tab栏‘工作台’Tab保持高亮，状态栏无变化，无新路由跳转，整个过程无页面刷新或白屏。",
+    "implementation_method": "无声销毁+无缝回退 (Silent Dismissal + Seamless Return)：弹窗DOM元素移除前执行CSS transition（opacity → 0，300ms ease-out）；工作台主内容区（.Pixso-frame-14_884197）同步应用 opacity 0→1 过渡；Tab栏状态通过class切换（如 .tab-active → .tab-inactive）实现视觉复原；无JavaScript路由跳转，不触发history.pushState。",
+    "last_state": 1
+  }
+]

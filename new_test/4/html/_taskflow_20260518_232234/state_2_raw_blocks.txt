@@ -1,0 +1,34 @@
+{
+  "state_name": "运维流程全屏页初始态",
+  "lifecycle": "persistent",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "FullscreenPanel",
+    "props": { "background": "#FFFFFF" },
+    "children": [
+      { "type": "StatusBar" },
+      {
+        "type": "Row",
+        "props": { "gap": 0, "width": "100%" },
+        "children": [
+          {
+            "type": "Column",
+            "props": { "width": 360, "padding": 16, "gap": 12 },
+            "children": [
+              { "type": "Text", "props": { "text": "项目场景", "variant": "body", "size": 14, "color": "rgba(0,0,0,0.89)" } },
+              { "type": "Text", "props": { "text": "项目名称", "variant": "body", "size": 14, "color": "rgba(0,0,0,0.89)" } }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": { "flex": 1, "background": "#F3F3F3", "align": "center", "justify": "center" },
+            "children": [
+              { "type": "Icon", "props": { "name": "device_unknown", "size": 64, "color": "#4A86E8" } }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

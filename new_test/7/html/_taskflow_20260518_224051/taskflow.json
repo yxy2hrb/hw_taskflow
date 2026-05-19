@@ -1,0 +1,50 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "工作台主页",
+    "description": "页面顶部为状态栏（显示时间、信号、电池图标），中部为营销工作台内容区，底部 Tab 栏完整显示：首页、商城、营销（当前高亮）、服务、我的；'营销'Tab 图标为红色主色，文字加粗；页面中央可见'管理应用'按钮（蓝色填充、白色文字、圆角矩形、居中对齐）。",
+    "implementation_method": "原始 HTML 初始快照，不做改造"
+  },
+  {
+    "state_id": 2,
+    "state_name": "管理应用页列表",
+    "description": "顶部固定导航栏含左上角返回箭头（黑色实心三角形图标）、居中标题'管理应用'（14px Medium 字体、深灰 #191919）、右上角无操作按钮；下方滚动区域展示已安装应用列表，每项含左侧圆形图标（32×32px）、应用名称（14px Regular、深灰 #191919）、右侧开关控件（默认关闭态：灰色轨道+浅灰滑块）；顶部计数栏位于导航栏正下方，显示'已添加X个'（14px Medium、深灰 #191919、背景白）；底部 Tab 栏完整保留，'营销'仍高亮。",
+    "implementation_method": "页面容器 (Page Container)：顶部导航栏固定定位；列表项 (List Item)：每行高度 64px，左右内边距 16px，图标与文字垂直居中；开关控件 (Switch)：轨道宽 40px、高 24px、背景色 rgba(223,223,223,1)，滑块直径 16px、背景色 rgba(255,255,255,1)；计数栏 (Badge Bar)：高度 36px、背景白、文字居中；底部 Tab 栏 (Tab Bar)：5 项等宽分布，'营销'项文字为 rgba(199,0,11,1)、其余为 rgba(0,0,0,0.899)。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "添加方式弹窗",
+    "description": "全屏深灰遮罩层（rgba(0,0,0,0.6)）覆盖整个管理应用页；正中悬浮白色圆角卡片（宽度 320px、高度 360px、圆角 12px、阴影 0 4px 12px rgba(0,0,0,0.1)）；卡片内纵向排列四个等距图标选项，每个含上方图标（48×48px 占位图）、下方文字标签（14px Regular、深灰 #191919）：'快捷入口'、'小卡片'、'中卡片'、'大卡片'；卡片底部居中显示'取消'按钮（14px Medium、红色 #C7000B、无背景）；无其他浮层或动效。",
+    "implementation_method": "模态弹窗 (Modal/Dialog)：全屏遮罩 rgba(0,0,0,0.6)；卡片容器 background-color:white; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1)；四图标项均采用 flex-column 布局，图标区域 height:48px；文字标签 'Quick Access'/'Small Card'/'Medium Card'/'Large Card'；底部按钮 'Cancel'（英文文案必须出现）。",
+    "last_state": 2
+  },
+  {
+    "state_id": 4,
+    "state_name": "加载中过渡态",
+    "description": "全屏白色蒙层（rgba(255,255,255,0.95)）覆盖管理应用页；中央显示灰色环形加载图标（32px 直径、stroke #191919、stroke-width 2.5px、CSS animation:hmspin 1s linear infinite）；顶部状态栏、底部 Tab 栏均被蒙层完全遮盖，不可见；无文字说明、无按钮、无任何其他元素。",
+    "implementation_method": "全屏蒙层 (Overlay)：background-color:rgba(255,255,255,0.95)；加载图标 (Spinner)：svg circle 或 border-based spinner，stroke:#191919，stroke-width:2.5px，animation:hmspin 1s linear infinite；无文本、无按钮、无交互元素。",
+    "last_state": 2
+  },
+  {
+    "state_id": 5,
+    "state_name": "管理应用页添加成功",
+    "description": "顶部固定导航栏含返回箭头、标题'管理应用'、右上角无按钮；下方列表中某一行的应用开关已切换为开启态（轨道变为蓝色 #C7000B、滑块右移至轨道最右端）；顶部计数栏显示'已添加X+1个'（数字实时更新，字体与原一致）；底部黑底白字 Toast 紧贴屏幕底边居中显示，Toast 高度 44px、圆角 8px、背景 rgba(0,0,0,0.8)、文字'添加成功'（14px Medium、white、居中）；底部 Tab 栏完整可见且未被遮挡。",
+    "implementation_method": "开关控件 (Switch)：轨道 background-color:rgba(199,0,11,0.12)；滑块 background-color:#C7000B；计数栏 (Badge Bar)：文本更新为 'Added X+1 apps'；轻量级提示 (Toast/Snackbar)：position:fixed; bottom:0; left:50%; transform:translateX(-50%); height:44px; background:rgba(0,0,0,0.8); border-radius:8px; text-align:center; line-height:44px; color:white; font-size:14px; font-weight:500; content:'Added successfully'。",
+    "last_state": 2
+  },
+  {
+    "state_id": 6,
+    "state_name": "取消添加流程",
+    "description": "画面与 last_state（state_2）完全一致；base 已是关闭后的样子，无需任何 DOM 改造。",
+    "implementation_method": "画面与 last_state（state_2）完全一致；base 已是关闭后的样子，无需任何 DOM 改造。",
+    "last_state": 2
+  },
+  {
+    "state_id": 7,
+    "state_name": "添加冲突提示",
+    "description": "全屏深灰遮罩层（rgba(0,0,0,0.6)）覆盖管理应用页；正中悬浮白色圆角卡片（320×360px、圆角 12px、阴影同 state_3）；卡片内四图标选项布局与 state_3 完全一致；卡片底部新增红色小字提示（12px Regular、#C7000B、居中）：'该组件已启用' / 'This component is already enabled'；无取消按钮、无其他按钮、无图标变化。",
+    "implementation_method": "模态弹窗 (Modal/Dialog)：遮罩与卡片结构同 state_3；底部新增提示文本 'This component is already enabled'（中英双语，中文在上、英文在下，间距 4px）；文字颜色 #C7000B；无按钮、无交互元素。",
+    "last_state": 2
+  }
+]

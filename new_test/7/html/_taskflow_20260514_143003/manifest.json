@@ -1,0 +1,63 @@
+{
+  "title": "管理应用添加流程",
+  "slug": "manage-app-add-flow",
+  "pipeline": "antdOneShot",
+  "createdAt": "2026-05-14T06:32:47.826Z",
+  "meta": {
+    "title": "管理应用添加流程",
+    "slug": "manage-app-add-flow",
+    "user_story": "店铺运营人员在营销页点击管理应用进入，添加营销组件选择规格实时刷新，列表总数加一开关变亮顶部提示。",
+    "platform": "mobile"
+  },
+  "happy_path": [
+    {
+      "state_id": 1,
+      "state_name": "管理应用初始列表页状态"
+    },
+    {
+      "state_id": 3,
+      "state_name": "添加组件加载处理状态"
+    }
+  ],
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "管理应用初始列表页状态",
+      "description": "页面顶部为状态栏与导航标题“管理应用”，底部为固定Tab栏（营销高亮）。主体区域为应用列表，每项含应用图标、名称及右侧灰色关闭开关。右上角显示“已添加应用总数”及“新增”入口按钮。",
+      "implementation_method": "原始 HTML 初始快照，不做改造。",
+      "last_state": null,
+      "file": "state_1.html"
+    },
+    {
+      "state_id": 3,
+      "state_name": "添加组件加载处理状态",
+      "description": "底层列表页覆盖浅灰色半透明遮罩，屏幕正中央显示白色圆形加载图标，下方配“正在添加中”文字。底层列表内容可见但处于不可操作状态，底部Tab与顶部状态栏保持可见。",
+      "implementation_method": "模态加载层 (Modal Loading Overlay)：浅灰色半透明背景 rgba(0,0,0,0.3) 覆盖列表区；加载指示器 (Loading Indicator)：中央 48px 圆形 Spinner，下方文本 '正在添加中' (Adding in progress)。",
+      "last_state": 1,
+      "file": "state_3.html"
+    }
+  ],
+  "interactive": "interactive.html",
+  "apply_meta": [
+    {
+      "state_id": 1,
+      "edits": 1,
+      "applied": 1,
+      "skipped": 0,
+      "fallback": false,
+      "logs": [
+        "✔ 替换 @ 322481"
+      ]
+    },
+    {
+      "state_id": 3,
+      "edits": 1,
+      "applied": 1,
+      "skipped": 0,
+      "fallback": false,
+      "logs": [
+        "✔ 替换 @ 322703"
+      ]
+    }
+  ]
+}

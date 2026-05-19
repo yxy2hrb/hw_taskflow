@@ -1,0 +1,33 @@
+{
+  "state_name": "创建项目集校验失败态",
+  "lifecycle": "persistent",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": false,
+  "tree": {
+    "type": "Page",
+    "props": { "background": "#FFFFFF" },
+    "children": [
+      { "type": "StatusBar" },
+      { "type": "NavBar", "props": { "title": "创建项目集", "leftIcon": "arrow_back" } },
+      { "type": "Column", "props": { "gap": 16, "padding": 16 }, "children": [
+        { "type": "FormField", "props": { "label": "项目集名称", "required": true, "placeholder": "请输入项目集名称", "error": "请输入项目集名称" } },
+        { "type": "Column", "props": { "gap": 8 }, "children": [
+          { "type": "Text", "props": { "text": "公司/个人", "variant": "subtitle" } },
+          { "type": "Row", "props": { "gap": 24, "align": "center" }, "children": [
+            { "type": "Checkbox", "props": { "checked": false, "size": 22 } },
+            { "type": "Text", "props": { "text": "公司", "variant": "body" } },
+            { "type": "Checkbox", "props": { "checked": false, "size": 22 } },
+            { "type": "Text", "props": { "text": "个人", "variant": "body" } }
+          ]},
+          { "type": "Icon", "props": { "name": "error", "size": 16, "color": "#D32F2F" } }
+        ]},
+        { "type": "Column", "props": { "background": "#F5F5F5", "borderRadius": 8, "padding": 16, "opacity": 0.4 }, "children": [
+          { "type": "OverlayMask", "props": { "opacity": 0.1, "color": "#000000", "blur": 0 }, "children": [
+            { "type": "Text", "props": { "text": "请先选择归属类型", "size": 14, "color": "#9E9E9E", "align": "center" } }
+          ]}
+        ]},
+        { "type": "Button", "props": { "label": "确认", "variant": "warning", "block": true } }
+      ]}
+    ]
+  }
+}

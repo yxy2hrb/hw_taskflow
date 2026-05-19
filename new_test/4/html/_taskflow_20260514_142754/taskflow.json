@@ -1,0 +1,43 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "工作台体验按钮待点击态",
+    "description": "页面显示“我的工作台”标题，内容区居中放置“体验运维流程”按钮，顶部状态栏与底部导航Tab正常可见，按钮为蓝色高亮可点击状态。",
+    "implementation_method": "原始 HTML 初始快照，不做改造。"
+  },
+  {
+    "state_id": 2,
+    "state_name": "全屏填单与模型预览态",
+    "description": "页面切换为全屏布局，顶部状态栏与底部Tab保留。左侧为垂直滚动的表单卡片，包含“项目场景”和“项目名称”输入框；右侧为等宽比例的3D模型渲染区。底部固定悬浮蓝色“确定”按钮。",
+    "implementation_method": "全屏容器 (Full-screen Container)：覆盖原工作台内容，左侧 50% 区域为白色表单卡片，内含标题“项目信息 / Project Info”、输入框“项目场景 / Project Scenario”与“项目名称 / Project Name”；右侧 50% 区域为灰色 3D 模型渲染区；底部固定悬浮蓝色按钮，文案“确定 / Confirm”。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "表单必填项校验拦截态",
+    "description": "画面保持全屏填单布局，左侧表单中未填写的字段边框变为红色，字段正下方显示一行红色提示文字，页面保持当前滚动位置，底部“确定”按钮仍为蓝色可点击状态。",
+    "implementation_method": "表单控件样式修改 (Form Field Style Update)：在 state_2 基础上，将未填输入框的 border-color 改为红色 (#FF4D4F)，并在下方插入红色文字提示 “该项为必填 / Required”；页面其余布局与 state_2 完全一致。",
+    "last_state": 2
+  },
+  {
+    "state_id": 4,
+    "state_name": "表单提交处理中过渡态",
+    "description": "页面中央覆盖半透明灰色遮罩，正中显示圆形加载图标与“提交中…”文字。原表单区域变暗不可交互，底部“确定”按钮置灰，顶部状态栏与底部Tab保持可见。",
+    "implementation_method": "模态遮罩 (Modal Overlay)：在 state_2 画面上叠加半透明灰色背景层 (rgba(0,0,0,0.4))，中央放置白色圆角卡片，内含加载图标和文本 “提交中… / Submitting…”；底层表单 opacity 设为 0.6 并禁用交互，顶部状态栏与底部 Tab 保持可见。",
+    "last_state": 2
+  },
+  {
+    "state_id": 5,
+    "state_name": "运维单创建成功提示态",
+    "description": "屏幕中央显示白色圆角弹窗，内含绿色对勾图标与“创建成功”文字，下方带有蓝色“返回列表”按钮。背景为半透明灰色遮罩，底层表单隐约可见。",
+    "implementation_method": "模态弹窗 (Modal/Dialog)：在 state_2 画面上叠加半透明遮罩，中央显示白色卡片。卡片顶部为绿色勾选图标，中部文本 “创建成功 / Created Successfully”，底部为单个蓝色按钮 “返回列表 / Back to List”。",
+    "last_state": 2
+  },
+  {
+    "state_id": 6,
+    "state_name": "运维单创建失败提示态",
+    "description": "屏幕中央显示白色圆角弹窗，内含红色警告图标与“创建失败，请重试”文字，底部并列放置“重新提交”和“返回修改”按钮。背景为半透明灰色遮罩。",
+    "implementation_method": "模态弹窗 (Modal/Dialog)：在 state_2 画面上叠加半透明遮罩，中央显示白色卡片。卡片顶部为红色警告图标，中部文本 “创建失败，请重试 / Failed, Please Retry”，底部并列两个按钮：“重新提交 / Resubmit”（蓝色主色）与“返回修改 / Edit”（灰色描边）。",
+    "last_state": 2
+  }
+]

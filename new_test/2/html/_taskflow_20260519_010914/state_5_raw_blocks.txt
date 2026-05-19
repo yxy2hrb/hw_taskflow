@@ -1,0 +1,26 @@
+{
+  "state_name": "创建项目集成功态",
+  "lifecycle": "temporary",
+  "injection": { "mode": "overlay", "z_index": 9998 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "FullscreenPanel",
+    "props": { "background": "transparent" },
+    "children": [
+      {
+        "type": "Row",
+        "props": {
+          "background": "#4CAF50",
+          "height": 44,
+          "align": "center",
+          "justify": "center",
+          "padding": "0 16"
+        },
+        "children": [
+          { "type": "Icon", "props": { "name": "check", "size": 20, "color": "#FFFFFF" } },
+          { "type": "Text", "props": { "text": "创建成功", "size": 16, "weight": "bold", "color": "#FFFFFF", "align": "center" } }
+        ]
+      }
+    ]
+  }
+}

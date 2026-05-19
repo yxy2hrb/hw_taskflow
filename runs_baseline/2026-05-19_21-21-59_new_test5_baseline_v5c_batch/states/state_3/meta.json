@@ -1,0 +1,12 @@
+{
+  "state_id": 3,
+  "state_name": "虚拟体验项目加载中",
+  "description": "全屏页面，顶部导航栏已切换为‘虚拟体验项目’标题（16px HarmonyHeiTi-Medium，#191919），左侧返回箭头（黑色，24px）、右侧依次为搜索图标（24px 灰色）、通知图标（24px 灰色）、加号图标（24px 灰色）；导航栏下方为纯灰底（#F3F3F3）空白区域，无任何内容模块；状态栏与底部 TabBar 全部正常可见且未被遮挡。",
+  "implementation_method": "全屏空白页 (Full-Screen Placeholder)：顶部导航栏完整渲染为‘虚拟体验项目’（16px HarmonyHeiTi-Medium，#191919），左侧返回图标（<，24px，#000），右侧搜索（🔍）、通知（🔔）、加号（+）三图标（均为 24px，#000，opacity:0.89）；导航栏下方至 TabBar 上沿区域为纯灰底 #F3F3F3，无文字、无图表、无占位符；状态栏与底部 TabBar 完整保留，无遮挡。",
+  "last_state": 1,
+  "applied": 1,
+  "skipped": 0,
+  "elapsed_ms": 70117,
+  "failed": false,
+  "error": null
+}

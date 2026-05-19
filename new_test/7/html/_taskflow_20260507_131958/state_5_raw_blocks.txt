@@ -1,0 +1,15 @@
+[OLD]
+<script>
+
+</script>
+[NEW]
+<script>
+
+</script>
+<!-- 任务节点开始: 网络失败终态【临时】 -->
+<div style="position:fixed;inset:0;z-index:9999;display:flex;align-items:flex-end;justify-content:flex-end;padding:48px 24px 16px;pointer-events:none;">
+  <div style="width:260px;height:44px;background:#C7000B;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:center;box-sizing:border-box;font-family:HarmonyHeiTi,&quot;HarmonyOS Sans&quot;,sans-serif;word-break:break-word;overflow-wrap:anywhere;">
+    <span style="font-size:14px;font-weight:400;color:#FFFFFF;">添加失败，请重试</span>
+  </div>
+</div>
+<!-- 任务节点结束: 网络失败终态【临时】 -->

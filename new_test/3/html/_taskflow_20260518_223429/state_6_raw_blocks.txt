@@ -1,0 +1,20 @@
+{
+  "state_name": "网络加载失败页",
+  "lifecycle": "persistent",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": false,
+  "tree": {
+    "type": "Page",
+    "props": { "background": "#FFFFFF" },
+    "children": [
+      { "type": "StatusBar" },
+      { "type": "NavBar", "props": { "title": "虚拟体验项目", "leftIcon": "arrow_back", "rightIcon": "more_vert", "align": "center" } },
+      { "type": "Column", "props": { "gap": 24, "padding": 32, "align": "center", "justify": "center", "height": "100%" }, "children": [
+        { "type": "Icon", "props": { "name": "error", "size": 48, "color": "#e53935" } },
+        { "type": "Text", "props": { "text": "网络连接失败", "variant": "subtitle", "size": 16, "weight": "medium", "color": "#e53935", "align": "center" } },
+        { "type": "Text", "props": { "text": "请检查网络后重试", "variant": "body", "size": 14, "weight": "regular", "color": "#666", "align": "center" } },
+        { "type": "Button", "props": { "label": "重试", "variant": "primary", "size": "regular", "block": true, "color": "#46b1e3" } }
+      ]}
+    ]
+  }
+}

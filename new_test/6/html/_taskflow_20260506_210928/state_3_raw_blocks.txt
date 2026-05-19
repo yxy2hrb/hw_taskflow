@@ -1,0 +1,91 @@
+[OLD]
+      <div style="height:52px; padding:0 16px; display:flex; align-items:center; justify-content:space-between; background:#FFFFFF; border:1px solid rgba(0,0,0,0.08); border-radius:8px;">
+        <span style="font-size:14px; color:rgba(0,0,0,0.9); font-weight:500;">AR303W</span>
+        <span style="font-size:14px; color:#46B1E3; font-weight:500;">查看</span>
+      </div>
+[NEW]
+      <div style="height:52px; padding:0 16px; display:flex; align-items:center; justify-content:space-between; background:#FFFFFF; border:1px solid rgba(0,0,0,0.08); border-radius:8px;">
+        <span style="font-size:14px; color:rgba(0,0,0,0.9); font-weight:500;">AR303W</span>
+        <div style="display:flex; align-items:center; gap:4px;">
+          <span class="mi hm-icon" style="font-size:16px; color:#46B1E3; animation:hmspin 1s linear infinite;">󰑖</span>
+          <span style="font-size:12px; color:#666; font-weight:400;">加载中…</span>
+        </div>
+      </div>
+[OLD]
+      <div style="height:52px; padding:0 16px; display:flex; align-items:center; justify-content:space-between; background:#FFFFFF; border:1px solid rgba(0,0,0,0.08); border-radius:8px;">
+        <span style="font-size:14px; color:rgba(0,0,0,0.9); font-weight:500;">S380-S8T2T</span>
+        <span style="font-size:14px; color:#46B1E3; font-weight:500;">查看</span>
+      </div>
+[NEW]
+      <div style="height:52px; padding:0 16px; display:flex; align-items:center; justify-content:space-between; background:#FFFFFF; border:1px solid rgba(0,0,0,0.08); border-radius:8px;">
+        <span style="font-size:14px; color:rgba(0,0,0,0.9); font-weight:500;">S380-S8T2T</span>
+        <div style="display:flex; align-items:center; gap:4px;">
+          <span class="mi hm-icon" style="font-size:16px; color:#46B1E3; animation:hmspin 1s linear infinite;">󰑖</span>
+          <span style="font-size:12px; color:#666; font-weight:400;">加载中…</span>
+        </div>
+      </div>
+[OLD]
+      <div style="height:52px; padding:0 16px; display:flex; align-items:center; justify-content:space-between; background:#FFFFFF; border:1px solid rgba(0,0,0,0.08); border-radius:8px;">
+        <span style="font-size:14px; color:rgba(0,0,0,0.9); font-weight:500;">S5735-L24P4S-A</span>
+        <span style="font-size:14px; color:#46B1E3; font-weight:500;">查看</span>
+      </div>
+[NEW]
+      <div style="height:52px; padding:0 16px; display:flex; align-items:center; justify-content:space-between; background:#FFFFFF; border:1px solid rgba(0,0,0,0.08); border-radius:8px;">
+        <span style="font-size:14px; color:rgba(0,0,0,0.9); font-weight:500;">S5735-L24P4S-A</span>
+        <div style="display:flex; align-items:center; gap:4px;">
+          <span class="mi hm-icon" style="font-size:16px; color:#46B1E3; animation:hmspin 1s linear infinite;">󰑖</span>
+          <span style="font-size:12px; color:#666; font-weight:400;">加载中…</span>
+        </div>
+      </div>
+[OLD]
+      <div style="height:52px; padding:0 16px; display:flex; align-items:center; justify-content:space-between; background:#FFFFFF; border:1px solid rgba(0,0,0,0.08); border-radius:8px;">
+        <span style="font-size:14px; color:rgba(0,0,0,0.9); font-weight:500;">AP4050DN-E</span>
+        <span style="font-size:14px; color:#46B1E3; font-weight:500;">查看</span>
+      </div>
+[NEW]
+      <div style="height:52px; padding:0 16px; display:flex; align-items:center; justify-content:space-between; background:#FFFFFF; border:1px solid rgba(0,0,0,0.08); border-radius:8px;">
+        <span style="font-size:14px; color:rgba(0,0,0,0.9); font-weight:500;">AP4050DN-E</span>
+        <div style="display:flex; align-items:center; gap:4px;">
+          <span class="mi hm-icon" style="font-size:16px; color:#46B1E3; animation:hmspin 1s linear infinite;">󰑖</span>
+          <span style="font-size:12px; color:#666; font-weight:400;">加载中…</span>
+        </div>
+      </div>
+[OLD]
+      <div style="height:52px; padding:0 16px; display:flex; align-items:center; justify-content:space-between; background:#FFFFFF; border:1px solid rgba(0,0,0,0.08); border-radius:8px;">
+        <span style="font-size:14px; color:rgba(0,0,0,0.9); font-weight:500;">USG6500E-1</span>
+        <span style="font-size:14px; color:#46B1E3; font-weight:500;">查看</span>
+      </div>
+[NEW]
+      <div style="height:52px; padding:0 16px; display:flex; align-items:center; justify-content:space-between; background:#FFFFFF; border:1px solid rgba(0,0,0,0.08); border-radius:8px;">
+        <span style="font-size:14px; color:rgba(0,0,0,0.9); font-weight:500;">USG6500E-1</span>
+        <div style="display:flex; align-items:center; gap:4px;">
+          <span class="mi hm-icon" style="font-size:16px; color:#46B1E3; animation:hmspin 1s linear infinite;">󰑖</span>
+          <span style="font-size:12px; color:#666; font-weight:400;">加载中…</span>
+        </div>
+      </div>
+[OLD]
+      <div style="height:52px; padding:0 16px; display:flex; align-items:center; justify-content:space-between; background:#FFFFFF; border:1px solid rgba(0,0,0,0.08); border-radius:8px;">
+        <span style="font-size:14px; color:rgba(0,0,0,0.9); font-weight:500;">NE20E-S4</span>
+        <span style="font-size:14px; color:#46B1E3; font-weight:500;">查看</span>
+      </div>
+[NEW]
+      <div style="height:52px; padding:0 16px; display:flex; align-items:center; justify-content:space-between; background:#FFFFFF; border:1px solid rgba(0,0,0,0.08); border-radius:8px;">
+        <span style="font-size:14px; color:rgba(0,0,0,0.9); font-weight:500;">NE20E-S4</span>
+        <div style="display:flex; align-items:center; gap:4px;">
+          <span class="mi hm-icon" style="font-size:16px; color:#46B1E3; animation:hmspin 1s linear infinite;">󰑖</span>
+          <span style="font-size:12px; color:#666; font-weight:400;">加载中…</span>
+        </div>
+      </div>
+[OLD]
+      <div style="height:52px; padding:0 16px; display:flex; align-items:center; justify-content:space-between; background:#FFFFFF; border:1px solid rgba(0,0,0,0.08); border-radius:8px;">
+        <span style="font-size:14px; color:rgba(0,0,0,0.9); font-weight:500;">CloudEngine S12700E</span>
+        <span style="font-size:14px; color:#46B1E3; font-weight:500;">查看</span>
+      </div>
+[NEW]
+      <div style="height:52px; padding:0 16px; display:flex; align-items:center; justify-content:space-between; background:#FFFFFF; border:1px solid rgba(0,0,0,0.08); border-radius:8px;">
+        <span style="font-size:14px; color:rgba(0,0,0,0.9); font-weight:500;">CloudEngine S12700E</span>
+        <div style="display:flex; align-items:center; gap:4px;">
+          <span class="mi hm-icon" style="font-size:16px; color:#46B1E3; animation:hmspin 1s linear infinite;">󰑖</span>
+          <span style="font-size:12px; color:#666; font-weight:400;">加载中…</span>
+        </div>
+      </div>

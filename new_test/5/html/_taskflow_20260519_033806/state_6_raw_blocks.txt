@@ -1,0 +1,75 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#14_884368",
+      "instruction": "把虚拟体验项目区块整段替换为权限不足提示页：纯白背景；中央区域显示蓝色锁形图标（48×48，fill:#46B1E3）、大字'暂无访问权限'（20px Medium, #191919）、小字'您当前账号未被授权查看该项目'（14px Regular, #666666）；底部居中一个宽140px、高40px、圆角20px、背景#F3F3F3、文字'返回工作台'（14px Medium, #191919）的按钮；无导航栏、无拓扑图、无评分、无统计模块。",
+      "components_needed": ["IconButton", "Button"],
+      "icons_needed": ["lock"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "background": "#FFFFFF",
+      "width": "100%",
+      "align": "center",
+      "justify": "center",
+      "gap": 24,
+      "padding": 32
+    },
+    "children": [
+      {
+        "type": "Icon",
+        "props": {
+          "name": "lock",
+          "size": 48,
+          "color": "#46B1E3"
+        }
+      },
+      {
+        "type": "Text",
+        "props": {
+          "variant": "title",
+          "size": 20,
+          "weight": "500",
+          "color": "#191919",
+          "align": "center"
+        },
+        "children": "暂无访问权限"
+      },
+      {
+        "type": "Text",
+        "props": {
+          "variant": "body",
+          "size": 14,
+          "weight": "400",
+          "color": "#666666",
+          "align": "center"
+        },
+        "children": "您当前账号未被授权查看该项目"
+      },
+      {
+        "type": "Button",
+        "props": {
+          "label": "返回工作台",
+          "size": "regular",
+          "width": 140,
+          "height": 40,
+          "borderRadius": 20,
+          "background": "#F3F3F3",
+          "color": "#191919",
+          "weight": "500",
+          "size": 14,
+          "variant": "secondary"
+        }
+      }
+    ]
+  }
+}

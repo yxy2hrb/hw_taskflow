@@ -1,0 +1,61 @@
+{
+  "title": "虚拟体验项目查看流程",
+  "slug": "virtual-experience-project-view-flow",
+  "createdAt": "2026-05-18T16:10:27.416Z",
+  "meta": {
+    "title": "虚拟体验项目查看流程",
+    "slug": "virtual-experience-project-view-flow",
+    "user_story": "已登录的企业网络管理员在‘我的工作台’点击‘我的体验项目’入口，快速查看指定体验项目的拓扑与运行健康度，系统加载对应项目实时数据并渲染可视化图，用户滑动浏览设备统计与网管模块，全屏页顶部导航显示‘虚拟体验项目’且返回图标可点击，页面完整呈现设备拓扑图、Wi-Fi评分、运行时长、设备及终端统计、业务网管理与访问控制模块",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "工作台首页含入口按钮",
+      "description": "白色背景，顶部状态栏显示时间、信号强度与4G图标，底部Tab栏包含‘首页’‘工作台’‘消息’‘我的’四个图标，当前高亮‘工作台’；页面中部清晰可见‘我的体验项目’文字按钮（深灰#191919，16px Medium字体），按钮右侧带向右箭头图标，无遮罩、无弹窗、无加载指示。",
+      "implementation_method": "原始 HTML 初始快照，不做改造",
+      "last_state": null,
+      "file": "state_1.html"
+    },
+    {
+      "state_id": 2,
+      "state_name": "内嵌项目列表弹窗",
+      "description": "白色背景的工作台页面上叠加半透明黑色遮罩（rgba(0,0,0,0.4)），遮罩中央悬浮圆角矩形卡片（宽360px，高228px，白底，阴影柔和），卡片顶部居中显示‘我的体验项目’标题（16px Medium，深灰#191919），卡片内纵向排列3个项目卡片（每张含设备图标、项目名、状态标签），卡片底部紧贴底部Tab栏上沿，Tab栏与状态栏全程可见未遮挡。",
+      "implementation_method": "模态浮层 (Modal Overlay)：半透明黑色遮罩 rgba(0,0,0,0.4) 覆盖全屏；中央悬浮圆角白卡（宽360px/高228px，border-radius:12px，box-shadow:0 4px 12px rgba(0,0,0,0.08)）；顶部标题 '我的体验项目'（font-size:16px; font-weight:Medium; color:#191919）；3个项目卡片（每张含左侧设备图标、中间项目名如'上海园区体验项目'、右侧状态标签'运行中'，均使用14px Regular字体）；底部Tab栏与顶部状态栏完全可见，未被裁剪。",
+      "last_state": 1,
+      "file": "state_2.html"
+    },
+    {
+      "state_id": 3,
+      "state_name": "项目详情加载中状态",
+      "description": "全屏白色背景，顶部状态栏保持原样（时间+信号+4G图标），底部Tab栏正常显示且未隐藏；顶部导航栏固定显示‘虚拟体验项目’标题（16px Medium，深灰#191919）、左侧返回图标（纯黑#000000，24px×24px，左对齐），无搜索框、无通知图标、无加号图标；下方为骨架屏：设备拓扑图区域呈3条横向浅灰椭圆占位块（rgba(0,0,0,0.08)），Wi-Fi评分与运行时长横幅为1条宽100%高48px浅灰矩形，设备及终端统计为2组并排浅灰圆角矩形（各宽152px高80px），业务网管理模块为1条宽100%高120px浅灰矩形。",
+      "implementation_method": "全屏骨架屏 (Skeleton Screen)：顶部导航栏含左向返回图标（<svg viewBox='0 0 24 24'><path d='M15.41 7.41L14 6l-6 6 6-6zM10 6v12h4V6h-4z' fill='#000000'/></svg>）、标题 '虚拟体验项目'（font-size:16px; font-weight:Medium; color:#191919）；下方内容区：拓扑图占位块为3个横向椭圆（w:120px h:60px, fill:rgba(0,0,0,0.08)）；Wi-Fi评分横幅为1条 w:100% h:48px 矩形（fill:rgba(0,0,0,0.08)）；设备统计为2个并排圆角矩形（w:152px h:80px r:8px, fill:rgba(0,0,0,0.08)）；业务网模块为1条 w:100% h:120px 矩形（fill:rgba(0,0,0,0.08)）；顶部状态栏与底部Tab栏全程可见。",
+      "last_state": 1,
+      "file": "state_3.html"
+    },
+    {
+      "state_id": 4,
+      "state_name": "虚拟体验项目全屏页",
+      "description": "全屏白色背景，顶部状态栏显示时间、信号强度与4G图标，底部Tab栏正常显示；顶部导航栏固定显示‘虚拟体验项目’标题（16px Medium，深灰#191919）、左侧返回图标（纯黑#000000，24px×24px）、右侧依次为搜索图标（24px×24px，灰色#666）、通知图标（24px×24px，灰色#666）、加号图标（24px×24px，蓝色#46B1E3）；下方依次为：设备拓扑图（SVG矢量渲染，含3类节点：中心AP图标+周边终端图标+连接线）、Wi-Fi评分横幅（蓝底白字‘Wi-Fi评分：92分’+绿色进度条）、运行时长提示（‘已运行 7天12小时’，14px Regular，深灰#191919）、设备及终端统计卡片组（2张并排卡片：左卡‘设备总数 12台’，右卡‘终端接入 86人’）、业务网管理与访问控制模块（标题‘业务网管理’+开关控件+‘访问控制策略’+下拉选择器）。",
+      "implementation_method": "单页布局 (Single Page Layout)：顶部导航栏含左向返回图标（<svg viewBox='0 0 24 24'><path d='M15.41 7.41L14 6l-6 6 6-6zM10 6v12h4V6h-4z' fill='#000000'/></svg>）、标题 '虚拟体验项目'（font-size:16px; font-weight:Medium; color:#191919）、搜索图标（<svg viewBox='0 0 24 24'><path d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.36 12.64 2 8.5 2S1 5.36 1 9.5 1.63 12.53 2.71 13.61l-.27.28v.79l5 4.99L10.5 19l4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z' fill='#666'/></svg>）、通知图标（<svg viewBox='0 0 24 24'><path d='M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v1.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z' fill='#666'/></svg>）、加号图标（<svg viewBox='0 0 24 24'><path d='M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z' fill='#46B1E3'/></svg>）；拓扑图区域为SVG容器（含3类节点：中心AP图标、周边终端图标、贝塞尔连接线）；Wi-Fi评分横幅背景色#46B1E3，文字'Wi-Fi评分：92分'（white, 14px Regular），绿色进度条（height:4px, fill:#4CAF50）；运行时长文字'已运行 7天12小时'（#191919, 14px Regular）；设备统计卡片：左卡文字'设备总数 12台'（#191919, 14px Regular），右卡文字'终端接入 86人'（#191919, 14px Regular）；业务网模块标题'业务网管理'（#191919, 16px Medium），下方为开关控件（on/off toggle）、'访问控制策略'标题（#191919, 14px Regular）、下拉选择器（placeholder='请选择策略'）。",
+      "last_state": 1,
+      "file": "state_4.html"
+    },
+    {
+      "state_id": 5,
+      "state_name": "网络异常提示页",
+      "description": "全屏白色背景，顶部状态栏显示时间、信号强度与4G图标，底部Tab栏正常显示；页面中央垂直居中显示锁形图标（24px×24px，蓝色#46B1E3），图标下方大标题‘网络连接异常’（16px Medium，深灰#191919），再下方两行说明文字：第一行‘请检查您的网络连接’（14px Regular，深灰#191919），第二行‘或稍后重试’（14px Regular，深灰#191919）；页面底部居中一个蓝色填充按钮‘重试’（14px Medium，white，宽120px高40px，圆角8px，背景色#46B1E3），按钮上下留白充足，无其他浮层或遮罩。",
+      "implementation_method": "全屏错误页 (Error Page)：白色背景；中央锁形图标（<svg viewBox='0 0 24 24'><path d='M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z' fill='#46B1E3'/></svg>）；标题 '网络连接异常'（font-size:16px; font-weight:Medium; color:#191919）；说明文字一 '请检查您的网络连接'（font-size:14px; color:#191919）；说明文字二 '或稍后重试'（font-size:14px; color:#191919）；底部按钮 '重试'（width:120px; height:40px; border-radius:8px; background-color:#46B1E3; color:white; font-size:14px; font-weight:Medium）；顶部状态栏与底部Tab栏全程可见。",
+      "last_state": 1,
+      "file": "state_5.html"
+    },
+    {
+      "state_id": 6,
+      "state_name": "权限不足提示页",
+      "description": "全屏白色背景，顶部状态栏显示时间、信号强度与4G图标，底部Tab栏正常显示；页面中央垂直居中显示锁形图标（24px×24px，蓝色#46B1E3），图标下方大标题‘暂无访问权限’（16px Medium，深灰#191919），再下方一行说明文字‘您当前账号不具备该项目的查看权限’（14px Regular，深灰#191919）；页面底部居中一个白色描边按钮‘返回’（14px Medium，蓝色#46B1E3，宽120px高40px，圆角8px，border:1px solid #46B1E3，background:transparent），按钮上下留白充足，无其他浮层或遮罩。",
+      "implementation_method": "全屏权限提示页 (Permission Denied Page)：白色背景；中央锁形图标（<svg viewBox='0 0 24 24'><path d='M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z' fill='#46B1E3'/></svg>）；标题 '暂无访问权限'（font-size:16px; font-weight:Medium; color:#191919）；说明文字 '您当前账号不具备该项目的查看权限'（font-size:14px; color:#191919）；底部按钮 '返回'（width:120px; height:40px; border-radius:8px; border:1px solid #46B1E3; color:#46B1E3; font-size:14px; font-weight:Medium; background:transparent）；顶部状态栏与底部Tab栏全程可见。",
+      "last_state": 1,
+      "file": "state_6.html"
+    }
+  ]
+}

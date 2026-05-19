@@ -1,0 +1,61 @@
+{
+  "title": "进入虚拟体验项目",
+  "slug": "enter-virtual-experience-project",
+  "createdAt": "2026-05-18T15:30:00.781Z",
+  "meta": {
+    "title": "进入虚拟体验项目",
+    "slug": "enter-virtual-experience-project",
+    "user_story": "已登录的企业网络管理员在‘我的工作台’点击‘我的体验项目’入口，快速进入指定体验项目 → 系统加载完整拓扑与实时指标 → 用户浏览设备分布、Wi-Fi评分、终端统计及访问策略 → 页面顶部导航显示‘虚拟体验项目’且返回/搜索/通知/加号图标就位，所有模块数据可见并可交互",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "工作台首页含体验项目入口",
+      "description": "页面为移动端全屏布局，顶部状态栏显示时间/信号/电量，底部固定Tab栏含‘工作台’‘监控’‘告警’‘我’四图标；主内容区中央位置有一个卡片式入口，标题为‘我的体验项目’，文字色 rgba(25, 25, 25, 1)，背景色 rgba(243, 243, 243, 1)，无弹窗、无遮罩、无骨架屏。",
+      "implementation_method": "原始 HTML 初始快照，不做改造",
+      "last_state": null,
+      "file": "state_1.html"
+    },
+    {
+      "state_id": 2,
+      "state_name": "内嵌体验项目列表弹窗",
+      "description": "工作台首页主体内容区上半部被覆盖：一层半透明浅灰遮罩（rgba(0,0,0,0.15)），其上叠加圆角矩形弹窗（宽360px，高228px，背景白，带轻微高斯模糊背景，阴影柔和）；弹窗内垂直排列若干项目卡片，每张卡片含图标、项目名称、最后更新时间；顶部状态栏与底部Tab栏完全可见且未被遮挡。",
+      "implementation_method": "内嵌半透明弹窗 (Overlay + Modal)：遮罩层 rgba(0,0,0,0.15) 覆盖主内容区上半部；弹窗容器宽360px、高228px、圆角12px、白底、轻微高斯模糊背景（filter: blur(4px)）、投影 box-shadow: 0px 4px 12px rgba(0,0,0,0.08)；每张卡片含左侧SVG图标、标题文字'XX体验项目'、副标题'更新于 2024-06-12 14:30'；状态栏与底Tab保持原样不参与任何修改。",
+      "last_state": 1,
+      "file": "state_2.html"
+    },
+    {
+      "state_id": 3,
+      "state_name": "项目详情加载中状态",
+      "description": "全屏白色背景，顶部导航栏已完整渲染：左对齐返回箭头图标（黑#000000，opacity 0.9）、居中标题‘虚拟体验项目’（16px HarmonyHeiTi-Medium，#191919）、右侧依次为搜索图标（黑#000000，opacity 0.9）、通知图标（黑#000000，opacity 0.9）、加号图标（黑#000000，opacity 0.9）；导航栏下方为三段灰色脉冲骨架条：第一段宽100%高120px（模拟拓扑图SVG容器），第二段宽100%高80px（模拟Wi-Fi评分与运行时长卡片），第三段宽100%高200px（模拟统计与策略模块横表+折叠面板）；所有骨架条填充 rgba(0,0,0,0.08)，无文字、无图标、无交互元素。",
+      "implementation_method": "全屏白色骨架屏 (Skeleton Screen)：顶部导航栏固定显示，含返回箭头（<svg> path fill='#000000' opacity='0.9'）、标题'虚拟体验项目'（font-size:16px; font-family:'HarmonyHeiTi-Medium'; color:#191919）、搜索图标（<svg> fill='#000000' opacity='0.9'）、通知图标（<svg> fill='#000000' opacity='0.9'）、加号图标（<svg> fill='#000000' opacity='0.9'）；下方三段灰色脉冲条（width:100%; height:120px/80px/200px; background-color:rgba(0,0,0,0.08)）；无其他DOM节点；base来自state_1，需清空主内容区并插入上述结构。",
+      "last_state": 1,
+      "file": "state_3.html"
+    },
+    {
+      "state_id": 4,
+      "state_name": "虚拟体验项目详情页",
+      "description": "全屏白色背景，顶部固定导航栏：左对齐黑色返回箭头图标、居中标题‘虚拟体验项目’（16px HarmonyHeiTi-Medium，#191919）、右侧从左到右依次为搜索图标（黑#000000，opacity 0.9）、通知图标（黑#000000，opacity 0.9）、加号图标（黑#000000，opacity 0.9）；导航栏下方为滚动内容区：首区块为SVG格式设备拓扑图（宽100%，高240px，含多节点连线）；第二区块为Wi-Fi评分卡片（蓝底#46B1E3，白字，含‘Wi-Fi评分’标题、大号数字‘87’、‘运行时长：2d 14h 32m’副标题）；第三区块为设备及终端统计横表（两列：设备数‘24台’、终端数‘156个’，文字色#191919）；第四区块为业务网管理与访问控制模块（可折叠面板标题‘业务网管理’+向下箭头图标，展开后含开关控件与策略规则列表）。",
+      "implementation_method": "单页长滚动布局 (Scrollable Page Layout)：顶部导航栏固定（同state_3样式）；内容区依次为：① SVG容器（id='topology-svg'，width:100%; height:240px；含<g>节点组与<path>连线）；② Wi-Fi评分卡片（background-color:#46B1E3; padding:12px; border-radius:8px；内含标题'Wi-Fi评分'（14px，white）、主分'87'（28px，white，HarmonyHeiTi-Bold）、副标'运行时长：2d 14h 32m'（12px，rgba(255,255,255,0.9)）；③ 统计横表（flex-row；'设备数' label + '24台' value；'终端数' label + '156个' value；文字色#191919，14px）；④ 可折叠面板（标题'业务网管理' + <svg>向下箭头；展开后含开关控件（<input type='checkbox'> + '启用访问控制' label）与规则列表（每行含策略名、生效状态、操作按钮））。",
+      "last_state": 3,
+      "file": "state_4.html"
+    },
+    {
+      "state_id": 5,
+      "state_name": "网络异常提示页",
+      "description": "全屏纯白背景，中央位置一个红色感叹号图标（SVG，fill:#FF5252，尺寸48×48），图标上方为标题‘网络连接失败’（16px HarmonyHeiTi-Medium，#191919，居中），图标下方为两行说明文字：第一行‘当前无法获取设备拓扑与实时指标’（14px，#191919），第二行‘请检查网络连接后重试’（14px，#666666）；页面底部居中一个蓝色填充按钮‘重试’（14px white，#1A73E8，高度40px，圆角8px，宽120px）；无状态栏遮挡、无Tab栏隐藏、无其他浮层。",
+      "implementation_method": "全屏红色警示页 (Error Page)：纯白背景；中央SVG感叹号图标（<svg viewBox='0 0 48 48'><path fill='#FF5252' d='M24 2...'/></svg>）；上方标题'网络连接失败'（font-size:16px; font-family:'HarmonyHeiTi-Medium'; color:#191919）；下方两行文本：'当前无法获取设备拓扑与实时指标'（color:#191919）、'请检查网络连接后重试'（color:#666666）；底部按钮'重试'（background-color:#1A73E8; color:white; font-size:14px; width:120px; height:40px; border-radius:8px；居中定位）；base来自state_1，需清空主内容区并插入上述结构。",
+      "last_state": 1,
+      "file": "state_5.html"
+    },
+    {
+      "state_id": 6,
+      "state_name": "权限不足提示页",
+      "description": "全屏纯白背景，中央位置一个黑色锁形图标（SVG，fill:#000000，尺寸48×48），图标上方为标题‘暂无访问权限’（16px HarmonyHeiTi-Medium，#191919，居中），图标下方为副标题‘请联系管理员开通虚拟体验项目查看权限’（14px，#666666）；页面底部横向排列两个按钮：左按钮‘联系管理员’（14px #1A73E8，border:1px solid #1A73E8，height:40px，width:120px，圆角8px），右按钮‘返回工作台’（14px white，#1A73E8，height:40px，width:120px，圆角8px）；无状态栏遮挡、无Tab栏隐藏、无其他浮层。",
+      "implementation_method": "全屏权限提示页 (Permission Denied Page)：纯白背景；中央SVG锁形图标（<svg viewBox='0 0 48 48'><path fill='#000000' d='M24 12...' /></svg>）；上方标题'暂无访问权限'（font-size:16px; font-family:'HarmonyHeiTi-Medium'; color:#191919）；下方副标题'请联系管理员开通虚拟体验项目查看权限'（font-size:14px; color:#666666）；底部两个按钮：'联系管理员'（border:1px solid #1A73E8; color:#1A73E8; font-size:14px; width:120px; height:40px; border-radius:8px）、'返回工作台'（background-color:#1A73E8; color:white; font-size:14px; width:120px; height:40px; border-radius:8px）；base来自state_1，需清空主内容区并插入上述结构。",
+      "last_state": 1,
+      "file": "state_6.html"
+    }
+  ]
+}

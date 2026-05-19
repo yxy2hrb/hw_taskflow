@@ -1,0 +1,216 @@
+<!-- BASELINE_BODY_START -->
+<body>
+<!-- 顶部状态栏 -->
+<div class="scroll-container">
+  <div id="0_1" class="Pixso-canvas-0_1">
+    <div id="14_884197" class="Pixso-frame-14_884197 fill-场景background-colorcolor-bg-1-14_886006">
+      <div id="14_884198" class="Pixso-frame-14_884198">
+        <div id="14_884199" class="Pixso-vector-14_884199"></div>
+        <div id="14_884200" class="Pixso-vector-14_884200"></div>
+        <div id="14_884201" class="Pixso-vector-14_884201"></div>
+        <div id="14_884202" class="Pixso-vector-14_884202"></div>
+        
+      </div>
+      <div id="14_884211" class="Pixso-rectangle-14_884211"></div>
+      <div id="14_884212" class="Pixso-frame-14_884212">
+        <div id="14_884213" class="Pixso-frame-14_884213">
+          <div class="frame-content-14_884213">
+            <div id="146_170564" class="Pixso-frame-146_170564">
+              <div id="146_170565" class="Pixso-frame-146_170565">
+                <div class="frame-content-146_170565">
+                  <p id="146_170566" class="Pixso-paragraph-146_170566">08:08</p>
+                  <div id="146_170567" class="Pixso-frame-146_170567">
+                    <div id="146_170568" class="Pixso-vector-146_170568"></div>
+                    <div id="146_170580" class="Pixso-vector-146_170580"></div>
+                    <div id="146_170587" class="Pixso-vector-146_170587"></div>
+                    <div id="146_170614" class="Pixso-vector-146_170614"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="146_170624" class="Pixso-frame-146_170624">
+              <div class="frame-content-146_170624">
+                <div id="146_170625" class="Pixso-frame-146_170625">
+                  <div id="146_170626" class="Pixso-frame-146_170626">
+                    <div id="146_170631" class="Pixso-frame-146_170631">
+                      <div id="146_170632" class="Pixso-frame-146_170632">
+                        <div id="146_170633" class="Pixso-frame-146_170633">
+                          <!-- 【已清除】旧标题残影（“我的工作台”）已彻底移除，此处为空 -->
+                        </div>
+                        <div id="146_170640" class="Pixso-frame-146_170640">
+                          <div class="frame-content-146_170640">
+                            <div id="146_170641" class="Pixso-group-146_170641">
+                              <div id="146_170642" class="Pixso-vector-146_170642"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 【持久】虚拟体验项目就绪页：全宽导航栏（复用 state_3 结构，保留原 id 和样式） -->
+        <div id="14_884214" class="Pixso-frame-14_884214">
+          <div id="14_884281" class="Pixso-frame-14_884281">
+            <div id="14_884282" class="Pixso-frame-14_884282">
+              <div class="frame-content-14_884282">
+                <!-- 导航栏容器：全宽，固定高度，纯白背景 -->
+                <div id="hm-nav-bar" style="position: relative; width: 100%; height: 44px; background-color: #FFFFFF; display: flex; align-items: center; padding: 0 16px; box-sizing: border-box;">
+                  <!-- 左侧返回箭头 -->
+                  <div id="hm-nav-back" style="width: 24px; height: 24px; margin-right: 12px; color: #000; font-size: 24px; line-height: 24px; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-weight: normal; opacity: 1;">
+                    &lt;
+                  </div>
+                  <!-- 中间标题 -->
+                  <div id="hm-nav-title" style="flex: 1; text-align: center; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-size: 16px; font-weight: 500; color: #191919; line-height: 22px;">
+                    虚拟体验项目
+                  </div>
+                  <!-- 右侧图标组 -->
+                  <div id="hm-nav-icons" style="display: flex; gap: 16px;">
+                    <!-- 搜索图标 -->
+                    <div id="hm-nav-search" style="width: 24px; height: 24px; color: #000; font-size: 24px; line-height: 24px; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-weight: normal; opacity: 0.89;">
+                      🔍
+                    </div>
+                    <!-- 通知图标 -->
+                    <div id="hm-nav-notify" style="width: 24px; height: 24px; color: #000; font-size: 24px; line-height: 24px; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-weight: normal; opacity: 0.89;">
+                      🔔
+                    </div>
+                    <!-- 加号图标 -->
+                    <div id="hm-nav-add" style="width: 24px; height: 24px; color: #000; font-size: 24px; line-height: 24px; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-weight: normal; opacity: 0.89;">
+                      +
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 【持久】虚拟体验项目就绪页：主内容区（fixed 容器，不透明白底） -->
+        <!-- ✅ 严格满足：top=44px, bottom=66px, left/right=0, z-index=50, background=#FFFFFF -->
+        <div id="hm-main-container" style="position: fixed; top: 44px; bottom: 66px; left: 0; right: 0; z-index: 50; background-color: #FFFFFF; overflow-y: auto;">
+          <!-- ① 设备拓扑图区域 -->
+          <div id="hm-topology-section" style="padding: 16px 16px 0; width: 100%;">
+            <div id="hm-topology-svg-container" style="width: 100%; height: 228px; position: relative; background-color: #F9FAFB; border-radius: 12px; overflow: hidden;">
+              <!-- SVG 内容示意（实际由前端渲染，此处仅占位结构） -->
+              <svg viewBox="0 0 375 228" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%; display: block;">
+                <!-- 网关中心节点（深蓝圆） -->
+                <circle cx="187.5" cy="114" r="24" fill="#191919" />
+                <!-- 辐射连接线（5条） -->
+                <line x1="187.5" y1="114" x2="120" y2="60" stroke="#C0C0C0" stroke-width="1.5" />
+                <line x1="187.5" y1="114" x2="255" y2="60" stroke="#C0C0C0" stroke-width="1.5" />
+                <line x1="187.5" y1="114" x2="120" y2="168" stroke="#C0C0C0" stroke-width="1.5" />
+                <line x1="187.5" y1="114" x2="255" y2="168" stroke="#C0C0C0" stroke-width="1.5" />
+                <line x1="187.5" y1="114" x2="187.5" y2="40" stroke="#C0C0C0" stroke-width="1.5" />
+                <!-- 5个设备椭圆（使用指定资源路径示意） -->
+                <image href="./image/Ellipse_14_884199.png" x="80" y="30" width="48" height="48" />
+                <image href="./image/Ellipse_14_884199.png" x="230" y="30" width="48" height="48" />
+                <image href="./image/Ellipse_14_884199.png" x="80" y="140" width="48" height="48" />
+                <image href="./image/Ellipse_14_884199.png" x="230" y="140" width="48" height="48" />
+                <image href="./image/Ellipse_14_884199.png" x="163.5" y="10" width="48" height="48" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- ② Wi-Fi评分与运行时长卡片 -->
+          <div id="hm-wifi-card" style="margin: 16px; border-radius: 12px; background-color: #46B1E3; padding: 16px; color: #FFFFFF; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif;">
+            <p id="hm-wifi-score" style="font-size: 14px; font-weight: 500; line-height: 20px; margin: 0;">Wi-Fi评分：87分</p>
+            <p id="hm-runtime" style="font-size: 14px; font-weight: 500; line-height: 20px; margin: 8px 0 0 0;">运行时长：12天5小时</p>
+          </div>
+
+          <!-- ③ 设备及终端统计图表 -->
+          <div id="hm-chart-section" style="padding: 0 16px 16px;">
+            <h3 id="hm-chart-title" style="font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-size: 14px; font-weight: 500; color: #191919; margin: 0 0 12px 0;">设备及终端统计</h3>
+            <div id="hm-chart-container" style="width: 100%; height: 160px; background-color: #F9FAFB; border-radius: 12px; position: relative; overflow: hidden;">
+              <!-- 模拟双柱状图 + 折线（CSS 绘制示意，实际由图表库渲染） -->
+              <svg viewBox="0 0 343 160" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%; display: block;">
+                <!-- X轴刻度线与文字 -->
+                <text x="30" y="150" font-size="12" fill="#666" text-anchor="middle" font-family="HarmonyHeiTi, 'HarmonyOS Sans', sans-serif">7月1日</text>
+                <text x="90" y="150" font-size="12" fill="#666" text-anchor="middle" font-family="HarmonyHeiTi, 'HarmonyOS Sans', sans-serif">7月2日</text>
+                <text x="150" y="150" font-size="12" fill="#666" text-anchor="middle" font-family="HarmonyHeiTi, 'HarmonyOS Sans', sans-serif">7月3日</text>
+                <text x="210" y="150" font-size="12" fill="#666" text-anchor="middle" font-family="HarmonyHeiTi, 'HarmonyOS Sans', sans-serif">7月4日</text>
+                <text x="270" y="150" font-size="12" fill="#666" text-anchor="middle" font-family="HarmonyHeiTi, 'HarmonyOS Sans', sans-serif">7月5日</text>
+                <text x="330" y="150" font-size="12" fill="#666" text-anchor="middle" font-family="HarmonyHeiTi, 'HarmonyOS Sans', sans-serif">7月6日</text>
+                <!-- Y轴文字 -->
+                <text x="10" y="20" font-size="12" fill="#666" text-anchor="end" font-family="HarmonyHeiTi, 'HarmonyOS Sans', sans-serif">数量</text>
+                <!-- 柱状图（蓝+灰） -->
+                <rect x="20" y="80" width="20" height="70" fill="#46B1E3" rx="4" />
+                <rect x="80" y="90" width="20" height="60" fill="#46B1E3" rx="4" />
+                <rect x="140" y="70" width="20" height="80" fill="#46B1E3" rx="4" />
+                <rect x="200" y="100" width="20" height="50" fill="#46B1E3" rx="4" />
+                <rect x="260" y="85" width="20" height="65" fill="#46B1E3" rx="4" />
+                <rect x="320" y="95" width="20" height="55" fill="#A0A0A0" rx="4" />
+                <!-- 折线（浅蓝） -->
+                <polyline points="20,80 80,90 140,70 200,100 260,85 320,95" fill="none" stroke="#80D4FF" stroke-width="2" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- ④ 业务网管理与访问控制模块（两列卡片） -->
+          <div id="hm-modules-section" style="padding: 0 16px 16px;">
+            <h3 id="hm-modules-title" style="font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-size: 14px; font-weight: 500; color: #191919; margin: 0 0 12px 0;">网络与安全</h3>
+            <div id="hm-modules-grid" style="display: flex; gap: 12px;">
+              <!-- 左列：业务网管理 -->
+              <div id="hm-business-net-card" style="flex: 1; background-color: #FFFFFF; border-radius: 12px; padding: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);">
+                <h4 id="hm-business-net-title" style="font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-size: 14px; font-weight: 500; color: #191919; margin: 0 0 12px 0;">业务网管理</h4>
+                <button id="hm-create-subnet-btn" type="button" style="width: 100%; height: 36px; background-color: #46B1E3; border: none; border-radius: 8px; color: #FFFFFF; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-size: 14px; font-weight: 500; line-height: 20px; cursor: pointer;">
+                  新建子网
+                </button>
+              </div>
+              <!-- 右列：访问控制 -->
+              <div id="hm-access-control-card" style="flex: 1; background-color: #FFFFFF; border-radius: 12px; padding: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);">
+                <h4 id="hm-access-control-title" style="font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-size: 14px; font-weight: 500; color: #191919; margin: 0 0 12px 0;">访问控制</h4>
+                <button id="hm-policy-config-btn" type="button" style="width: 100%; height: 36px; background-color: #46B1E3; border: none; border-radius: 8px; color: #FFFFFF; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-size: 14px; font-weight: 500; line-height: 20px; cursor: pointer;">
+                  策略配置
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 底部导航栏 -->
+      <div id="14_884324" class="Pixso-frame-14_884324">
+        <div id="14_884325" class="Pixso-rectangle-14_884325"></div>
+        <p id="14_884326" class="Pixso-paragraph-14_884326">我的</p>
+        <p id="14_884327" class="Pixso-paragraph-14_884327">服务</p>
+        <p id="14_884328" class="Pixso-paragraph-14_884328">工作台</p>
+        <p id="14_884329" class="Pixso-paragraph-14_884329">商城</p>
+        <p id="14_884330" class="Pixso-paragraph-14_884330">首页</p>
+        <div id="14_884331" class="Pixso-group-14_884331">
+          <div id="14_884332" class="Pixso-vector-14_884332"></div>
+          <div id="14_884333" class="Pixso-group-14_884333">
+            <div id="14_884334" class="Pixso-vector-14_884334"></div>
+            <div id="14_884335" class="stroke-wrapper-14_884335">
+              <div class="Pixso-rectangle-14_884335"></div>
+              <div class="stroke-14_884335"></div>
+            </div>
+          </div>
+        </div>
+        <div id="14_884336" class="Pixso-vector-14_884336"></div>
+        <div id="14_884340" class="Pixso-vector-14_884340"></div>
+        <div id="14_884353" class="Pixso-group-14_884353">
+          <div id="14_884354" class="Pixso-vector-14_884354"></div>
+          <div id="14_884355" class="Pixso-vector-14_884355"></div>
+        </div>
+        <div id="14_884358" class="Pixso-group-14_884358">
+          <div id="14_884359" class="Pixso-vector-14_884359"></div>
+          <div id="14_884360" class="Pixso-group-14_884360">
+            <div id="14_884361" class="Pixso-vector-14_884361"></div>
+            <div id="14_884364" class="Pixso-vector-14_884364"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 【删除】上一态遗留的「虚拟体验项目」卡片区块（id=14_884368）及所有子节点 -->
+      <!-- 【删除】上一态遗留的「我要办会」「营销物料」「分享获客」等所有中部内容区块 -->
+      <!-- 【删除】顶部装饰背景层（如 id=14_884211 等非状态栏/导航栏/TabBar 的装饰性元素） -->
+      <!-- 【删除】所有旧标题残影（如“我的工作台”文字块）已通过清空 frame-content-146_170633 确保清除 -->
+
+    </div>
+  </div>
+</div>
+
+
+</body>
+<!-- BASELINE_BODY_END -->

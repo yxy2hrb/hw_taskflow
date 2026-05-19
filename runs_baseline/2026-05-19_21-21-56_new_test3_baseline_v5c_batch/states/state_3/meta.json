@@ -1,0 +1,12 @@
+{
+  "state_id": 3,
+  "state_name": "项目详情全屏页面",
+  "description": "全屏白色页面，顶部导航栏含左向返回箭头（24px SVG）、居中标题‘虚拟体验项目’（16px Medium）、右侧三个等距图标：搜索（20px SVG）、通知（20px SVG）、加号（20px SVG）；主体区顶部为网络拓扑图（宽100%，高228px，含多个椭圆节点与连线），下方依次为Wi-Fi评分（14px Regular，‘Wi-Fi评分：89分’）、运行时长（14px Regular，‘运行时长：2天14小时’）、设备统计（14px Regular，‘设备：7台’）、终端统计（14px Regular，‘终端：23个’）。",
+  "implementation_method": "全屏页面 (Full-page View)：白色背景覆盖整个屏幕；顶部导航栏：左向返回箭头（Pixso-vector-146_139225）、标题‘虚拟体验项目’（HarmonyHeiTi-Medium 16px）、右侧三图标（Pixso-vector-146_139248 / Pixso-vector-146_139258 / Pixso-vector-146_139268）；主体区：网络拓扑图区域（Pixso-frame-14_884198 + 子节点椭圆图层）、Wi-Fi评分文本‘Wi-Fi评分：89分’（HarmonyHeiTi-Regular 14px）、运行时长文本‘运行时长：2天14小时’（HarmonyHeiTi-Regular 14px）、设备统计文本‘设备：7台’（HarmonyHeiTi-Regular 14px）、终端统计文本‘终端：23个’（HarmonyHeiTi-Regular 14px）。",
+  "last_state": 1,
+  "applied": 1,
+  "skipped": 0,
+  "elapsed_ms": 73014,
+  "failed": false,
+  "error": null
+}

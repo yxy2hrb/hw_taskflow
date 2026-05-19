@@ -1,0 +1,20 @@
+{
+  "state_id": 5,
+  "state_name": "加载失败错误提示",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "语言一致性：主语言为中文，但提示条中的按钮文字‘重试’未使用标准中文标签，应统一为‘重试’（当前已正确）；然而截图中提示条背景色为深灰#333333，符合规范，但文字颜色在截图中显示为白色，需确认是否因对比度问题导致可读性下降。",
+      "元素溢出：提示条右侧的‘重试’按钮文字未被裁切，但整体宽度接近容器边界，存在轻微右边缘挤压风险，尤其在窄屏设备上可能触发水平滚动或布局错乱。",
+      "可见性：description要求显示‘网络连接失败，请检查网络后重试’及‘重试’按钮，截图中均可见，满足条件。",
+      "位置合理性：提示条位于页面底部安全区上方，左右边距16px，高度44px，符合需求描述的位置要求，无明显偏移。",
+      "基础样式：提示条背景色#333333、文字白色、按钮蓝色，符合鸿蒙设计规范；但按钮字体未加粗，与原页面其他按钮风格不一致，建议保持500字重以增强辨识度。"
+    ],
+    "fixedBlocks": "[OLD]\n<button type=\"button\" style=\"padding:0 12px; background:transparent; border:none; color:#0A59F7; font-size:14px; font-weight:500; line-height:1.5; white-space:nowrap;\">重试</button>\n[NEW]\n<button type=\"button\" style=\"padding:0 12px; background:transparent; border:none; color:#0A59F7; font-size:14px; font-weight:500; line-height:1.5; white-space:nowrap; margin-left:8px;\">重试</button>",
+    "reviewMs": 20652,
+    "screenshot": 75521,
+    "fixedBlocksParsed": 1
+  }
+}

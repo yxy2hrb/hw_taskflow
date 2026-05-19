@@ -1,0 +1,235 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#146_395655",
+      "instruction": "把管理应用按钮区域替换为顶部导航栏：左对齐返回箭头图标（24px，黑色），居中'管理应用'标题（14px HarmonyHeiTi-Medium，深灰#191919），右侧无内容；背景色保持原状；所有字体声明 HarmonyHeiTi, 'HarmonyOS Sans', sans-serif；图标用 <span class=\"mi\" style=\"font-size:24px;color:#000000;\">arrow_back</span>；返回箭头需加 margin-left:12px；标题需加 margin:0 16px；整体高度适配原按钮区域。",
+      "components_needed": ["IconButton"]
+    },
+    {
+      "id": "e2",
+      "type": "text-edit",
+      "anchor": "<p id=\"146_394612\" class=\"Pixso-paragraph-146_394612\">我的线索</p>",
+      "instruction": "更新为 '已添加X个'（X 为具体数字，保留原字体大小16px、颜色#000000、行高20px、HarmonyHeiTi-Medium 字重、居中对齐）；文字颜色改为 #AEAEAE；字体声明 HarmonyHeiTi, 'HarmonyOS Sans', sans-serif；inline style 需显式设置 color:#AEAEAE；文字必须居中显示。"
+    },
+    {
+      "id": "e3",
+      "type": "state-toggle",
+      "anchor": "#146_394679",
+      "instruction": "把我的线索卡片区域替换为垂直滚动列表：每项含左对齐圆形应用图标（40×40px）、应用名称（14px HarmonyHeiTi-Regular，#191919）、右对齐开关控件（28×16px滑块，关闭态背景#DFDFDF，白色圆点）；列表项使用 flex 布局，图标区域 width:40px，名称区域 flex:1，开关区域 width:28px；所有字体声明 HarmonyHeiTi, 'HarmonyOS Sans', sans-serif；开关控件用 <span class=\"mi\" style=\"font-size:16px;color:#FFFFFF;\">fiber_manual_record</span> 表示白色圆点；背景色保持原状；高度适配原卡片区域。",
+      "components_needed": ["Switch"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Row",
+    "props": {
+      "background": "transparent",
+      "height": "56px",
+      "padding": "0 16px",
+      "align": "center",
+      "justify": "space-between"
+    },
+    "children": [
+      {
+        "type": "Icon",
+        "props": {
+          "name": "arrow_back",
+          "size": 24,
+          "color": "#000000"
+        }
+      },
+      {
+        "type": "Text",
+        "props": {
+          "text": "管理应用",
+          "variant": "subtitle",
+          "size": 14,
+          "weight": 500,
+          "color": "#191919",
+          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+        }
+      },
+      { "type": "Text", "children": "" }
+    ]
+  }
+}
+[NEXT]
+[OLD]
+<p id="146_394612" class="Pixso-paragraph-146_394612">我的线索</p>
+[NEW]
+<p id="146_394612" class="Pixso-paragraph-146_394612" style="font-size: 16px; color: #AEAEAE; line-height: 20px; font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif; text-align: center;">已添加X个</p>
+[NEXT]
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "gap": 8,
+      "padding": 0,
+      "align": "stretch"
+    },
+    "children": [
+      {
+        "type": "Row",
+        "props": {
+          "gap": 12,
+          "align": "center",
+          "height": 48
+        },
+        "children": [
+          {
+            "type": "Icon",
+            "props": {
+              "name": "apps",
+              "size": 40,
+              "color": "#191919"
+            }
+          },
+          {
+            "type": "Text",
+            "props": {
+              "variant": "body",
+              "size": 14,
+              "weight": "normal",
+              "color": "#191919",
+              "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+            },
+            "children": "应用市场"
+          },
+          {
+            "type": "Row",
+            "props": {
+              "width": 28,
+              "height": 16,
+              "background": "#DFDFDF",
+              "borderRadius": 8,
+              "align": "center",
+              "justify": "flex-start",
+              "paddingLeft": 2,
+              "paddingRight": 2
+            },
+            "children": [
+              {
+                "type": "Icon",
+                "props": {
+                  "name": "fiber_manual_record",
+                  "size": 16,
+                  "color": "#FFFFFF"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Row",
+        "props": {
+          "gap": 12,
+          "align": "center",
+          "height": 48
+        },
+        "children": [
+          {
+            "type": "Icon",
+            "props": {
+              "name": "settings",
+              "size": 40,
+              "color": "#191919"
+            }
+          },
+          {
+            "type": "Text",
+            "props": {
+              "variant": "body",
+              "size": 14,
+              "weight": "normal",
+              "color": "#191919",
+              "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+            },
+            "children": "设置"
+          },
+          {
+            "type": "Row",
+            "props": {
+              "width": 28,
+              "height": 16,
+              "background": "#DFDFDF",
+              "borderRadius": 8,
+              "align": "center",
+              "justify": "flex-start",
+              "paddingLeft": 2,
+              "paddingRight": 2
+            },
+            "children": [
+              {
+                "type": "Icon",
+                "props": {
+                  "name": "fiber_manual_record",
+                  "size": 16,
+                  "color": "#FFFFFF"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Row",
+        "props": {
+          "gap": 12,
+          "align": "center",
+          "height": 48
+        },
+        "children": [
+          {
+            "type": "Icon",
+            "props": {
+              "name": "mail",
+              "size": 40,
+              "color": "#191919"
+            }
+          },
+          {
+            "type": "Text",
+            "props": {
+              "variant": "body",
+              "size": 14,
+              "weight": "normal",
+              "color": "#191919",
+              "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+            },
+            "children": "邮件"
+          },
+          {
+            "type": "Row",
+            "props": {
+              "width": 28,
+              "height": 16,
+              "background": "#DFDFDF",
+              "borderRadius": 8,
+              "align": "center",
+              "justify": "flex-start",
+              "paddingLeft": 2,
+              "paddingRight": 2
+            },
+            "children": [
+              {
+                "type": "Icon",
+                "props": {
+                  "name": "fiber_manual_record",
+                  "size": 16,
+                  "color": "#FFFFFF"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

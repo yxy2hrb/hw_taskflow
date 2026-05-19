@@ -1,0 +1,141 @@
+<!-- BASELINE_BODY_START -->
+<body>
+<!-- 顶部状态栏 -->
+<div class="scroll-container">
+  <div id="0_1" class="Pixso-canvas-0_1">
+    <div id="14_1030938" class="Pixso-frame-14_1030938 fill-场景background-colorcolor-bg-1-14_1031725">
+      <div id="14_1030939" class="Pixso-frame-14_1030939">
+        <div id="14_1030940" class="Pixso-vector-14_1030940"></div>
+        <div id="14_1030941" class="Pixso-vector-14_1030941"></div>
+        <div id="14_1030942" class="Pixso-vector-14_1030942"></div>
+        <div id="14_1030943" class="Pixso-vector-14_1030943"></div>
+        
+      </div>
+      <div id="14_1030952" class="Pixso-rectangle-14_1030952"></div>
+      <div id="14_1030953" class="Pixso-frame-14_1030953">
+        <div id="14_1030954" class="Pixso-frame-14_1030954">
+          <div class="frame-content-14_1030954">
+            <div id="146_171005" class="Pixso-frame-146_171005">
+              <div id="146_171006" class="Pixso-frame-146_171006">
+                <div class="frame-content-146_171006">
+                  <p id="146_171007" class="Pixso-paragraph-146_171007">08:08</p>
+                  <div id="146_171008" class="Pixso-frame-146_171008">
+                    <div id="146_171009" class="Pixso-vector-146_171009"></div>
+                    <div id="146_171021" class="Pixso-vector-146_171021"></div>
+                    <div id="146_171028" class="Pixso-vector-146_171028"></div>
+                    <div id="146_171055" class="Pixso-vector-146_171055"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 【删除】上一态所有临时层：快速入门浮层遮罩、主容器及全部子元素 -->
+            <!-- 【删除】原工作台卡片流区域（已由 base 隐含覆盖，此处不保留任何残留） -->
+            <!-- 【删除】顶部装饰背景层（彩色椭圆/渐变圆块等）——base 中无显式 DOM，无需额外移除 -->
+          </div>
+        </div>
+        <!-- 【保留】底部 Tab 栏（完整 DOM，不可简化） -->
+        <div id="14_1031065" class="Pixso-frame-14_1031065">
+          <div id="14_1031066" class="Pixso-rectangle-14_1031066"></div>
+          <p id="14_1031067" class="Pixso-paragraph-14_1031067">我的</p>
+          <p id="14_1031068" class="Pixso-paragraph-14_1031068">服务</p>
+          <p id="14_1031069" class="Pixso-paragraph-14_1031069">工作台</p>
+          <p id="14_1031070" class="Pixso-paragraph-14_1031070">商城</p>
+          <p id="14_1031071" class="Pixso-paragraph-14_1031071">首页</p>
+          <div id="14_1031072" class="Pixso-group-14_1031072">
+            <div id="14_1031073" class="Pixso-vector-14_1031073"></div>
+            <div id="14_1031074" class="Pixso-group-14_1031074">
+              <div id="14_1031075" class="Pixso-vector-14_1031075"></div>
+              <div id="14_1031076" class="stroke-wrapper-14_1031076">
+                <div class="Pixso-rectangle-14_1031076"></div>
+                <div class="stroke-14_1031076"></div>
+              </div>
+            </div>
+          </div>
+          <div id="14_1031077" class="Pixso-vector-14_1031077"></div>
+          <div id="14_1031081" class="Pixso-vector-14_1031081"></div>
+          <div id="14_1031094" class="Pixso-group-14_1031094">
+            <div id="14_1031095" class="Pixso-vector-14_1031095"></div>
+            <div id="14_1031096" class="Pixso-vector-14_1031096"></div>
+          </div>
+          <div id="14_1031099" class="Pixso-group-14_1031099">
+            <div id="14_1031100" class="Pixso-vector-14_1031100"></div>
+            <div id="14_1031101" class="Pixso-group-14_1031101">
+              <div id="14_1031102" class="Pixso-vector-14_1031102"></div>
+              <div id="14_1031105" class="Pixso-vector-14_1031105"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 【新增】文档详情页【持久】 -->
+      <!-- 主容器：固定定位，避开状态栏（top:44px）与底Tab（bottom:66px），不透明白底 -->
+      <div id="hm-doc-page" style="position: fixed; top: 44px; bottom: 66px; left: 0; right: 0; background: #FFFFFF; z-index: 50; overflow-y: auto;">
+        <!-- 顶部导航栏：全宽，100%，含返回箭头 + 标题 -->
+        <div id="hm-doc-header" style="height: 48px; padding: 0 16px; display: flex; align-items: center; border-bottom: 1px solid #F5F5F5; background: #FFFFFF;">
+          <button id="hm-back-btn" type="button" aria-label="返回" style="width: 24px; height: 24px; padding: 0; margin-right: 12px; background: none; border: none; outline: none; cursor: pointer;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.41 16.58L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.58Z" fill="#46B1E3"/>
+            </svg>
+          </button>
+          <h1 id="hm-doc-title" style="margin: 0; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-size: 16px; font-weight: 500; color: #191919; line-height: 1.4;">华为云Stack部署指南</h1>
+        </div>
+        <!-- 正文内容区 -->
+        <div id="hm-doc-content" class="content" style="padding: 16px; background: #FFFFFF;">
+          <p style="margin: 0 0 16px 0; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-size: 14px; font-weight: 400; color: #191919; line-height: 20px;">
+            华为云Stack是面向政企客户的全栈专属云解决方案，支持混合云统一管理、本地化部署与自主可控。本指南适用于初次部署华为云Stack的系统工程师与交付团队。
+          </p>
+
+          <h2 style="margin: 24px 0 12px 0; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-size: 16px; font-weight: 500; color: #191919; line-height: 1.4;">部署前准备</h2>
+          <p style="margin: 0 0 16px 0; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-size: 14px; font-weight: 400; color: #191919; line-height: 20px;">
+            请确保满足以下基础环境要求：
+          </p>
+
+          <ol class="step-list" style="margin: 0 0 16px 16px; padding: 0; list-style-type: decimal; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-size: 14px; font-weight: 400; color: #191919; line-height: 20px;">
+            <li>服务器硬件配置：≥64核CPU、≥256GB内存、≥4TB NVMe存储（推荐双机高可用架构）</li>
+            <li>网络规划：需划分Management、Storage、Service三个独立VLAN，各网段互不通信</li>
+            <li>软件依赖：CentOS 7.9 或 EulerOS 22.03 SP1，内核版本 ≥ 4.19.90</li>
+            <li>License文件：已从华为云官网下载并校验SHA256签名</li>
+          </ol>
+
+          <h2 style="margin: 24px 0 12px 0; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-size: 16px; font-weight: 500; color: #191919; line-height: 1.4;">安装步骤</h2>
+          <p style="margin: 0 0 16px 0; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-size: 14px; font-weight: 400; color: #191919; line-height: 20px;">
+            按照以下顺序执行安装操作：
+          </p>
+
+          <ol class="step-list" style="margin: 0 0 16px 16px; padding: 0; list-style-type: decimal; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-size: 14px; font-weight: 400; color: #191919; line-height: 20px;">
+            <li>上传安装包至主控节点：<code style="font-family: monospace; font-size: 13px; background: #F5F5F5; padding: 2px 6px; border-radius: 4px;">huaweicloudstack-installer-v6.5.0.tar.gz</code></li>
+            <li>解压并进入目录：<code style="font-family: monospace; font-size: 13px; background: #F5F5F5; padding: 2px 6px; border-radius: 4px;">tar -xzf huaweicloudstack-installer-v6.5.0.tar.gz &amp;&amp; cd installer</code></li>
+            <li>运行预检脚本：<code style="font-family: monospace; font-size: 13px; background: #F5F5F5; padding: 2px 6px; border-radius: 4px;">./precheck.sh --mode=full</code></li>
+            <li>生成部署配置：<code style="font-family: monospace; font-size: 13px; background: #F5F5F5; padding: 2px 6px; border-radius: 4px;">./config-generator.sh -t allinone -n cloud1</code></li>
+            <li>启动静默安装：<code style="font-family: monospace; font-size: 13px; background: #F5F5F5; padding: 2px 6px; border-radius: 4px;">nohup ./install.sh &gt; install.log 2&gt;&amp;1 &amp;</code></li>
+          </ol>
+
+          <pre class="code-block" style="margin: 0 0 16px 0; background: #F5F5F5; padding: 12px; border-radius: 8px; overflow-x: auto; font-family: monospace; font-size: 13px; color: #333; line-height: 1.5; white-space: pre-wrap;">
+# 查看安装进度
+tail -f install.log | grep -E "(PROGRESS|SUCCESS|FAILED)"
+# 预期输出示例：
+[PROGRESS]  Step 3/12: Initializing database...
+[SUCCESS]  Step 5/12: Deploying control plane services.
+          </pre>
+
+          <p style="margin: 0 0 16px 0; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-size: 14px; font-weight: 400; color: #191919; line-height: 20px;">
+            安装完成后，可通过浏览器访问 <strong>https://cloud1.hwc.local:31100</strong> 登录控制台，默认账号：<code style="font-family: monospace; font-size: 13px; background: #F5F5F5; padding: 2px 6px; border-radius: 4px;">admin</code>，密码见 <code style="font-family: monospace; font-size: 13px; background: #F5F5F5; padding: 2px 6px; border-radius: 4px;">/opt/huaweicloudstack/installer/output/passwords.txt</code>。
+          </p>
+
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='180' viewBox='0 0 320 180'%3E%3Crect width='320' height='180' fill='%23F9FAFB'/%3E%3Ccircle cx='160' cy='90' r='40' fill='%2346B1E3' opacity='0.15'/%3E%3Ctext x='160' y='95' font-family='sans-serif' font-size='14' fill='%23999' text-anchor='middle'%3E部署拓扑图%3C/text%3E%3C/svg%3E" alt="华为云Stack部署拓扑示意" style="max-width: 100%; height: auto; margin: 0 0 16px 0; border-radius: 8px;">
+
+          <p style="margin: 0 0 16px 0; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-size: 14px; font-weight: 400; color: #191919; line-height: 20px;">
+            ⚠️ 注意：首次登录后请立即修改默认密码，并在「安全中心」中启用双因素认证（2FA）。
+          </p>
+        </div>
+      </div>
+      <!-- 【结束】文档详情页【持久】 -->
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+</script>
+</body>
+<!-- BASELINE_BODY_END -->

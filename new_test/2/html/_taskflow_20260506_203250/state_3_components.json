@@ -1,0 +1,13 @@
+{
+  "state_id": 3,
+  "state_name": "校验失败反馈态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": true,
+    "issues": [],
+    "fixedBlocks": "",
+    "reviewMs": 6676,
+    "screenshot": 66298
+  }
+}

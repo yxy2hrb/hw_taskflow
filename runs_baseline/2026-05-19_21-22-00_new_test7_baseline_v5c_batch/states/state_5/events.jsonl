@@ -1,0 +1,7 @@
+{"event":"state-start","data":{"state_id":5,"state_name":"弹窗取消态","last_state":2,"ts":1779226119044},"ts":"2026-05-19T21:28:39.057Z"}
+{"event":"state-log","data":{"state_id":5,"msg":"[baseline] HM_BASELINE_ENABLED=1，走 baseline 一锤子路径（跳过 twoPhase / DSL / legacy）","ts":1779226119044},"ts":"2026-05-19T21:28:39.057Z"}
+{"event":"state-log","data":{"state_id":5,"msg":"[baseline] 启动 state_5 「弹窗取消态」","ts":1779226119044},"ts":"2026-05-19T21:28:39.057Z"}
+{"event":"state-log","data":{"state_id":5,"msg":"[baseline] prompt 19.6KB lang=zh prevHtml=228.6KB->stripped 13.7KB","ts":1779226119054},"ts":"2026-05-19T21:28:39.058Z"}
+{"event":"state-log","data":{"state_id":5,"msg":"[baseline] 生成 HTML 228.6KB（其中 LLM body=13.3KB）","ts":1779226237897},"ts":"2026-05-19T21:30:37.897Z"}
+{"event":"state-log","data":{"state_id":5,"msg":"[baseline] 成功（html 234108B applied=1）","ts":1779226237897},"ts":"2026-05-19T21:30:37.897Z"}
+{"event":"state-done","data":{"state_id":5,"state_name":"弹窗取消态","file":"state_5.html","applied":1,"skipped":0,"review_ok":null,"review_applied":0,"review_issues":[],"elapsed_ms":118862,"hmExpansions":[],"hmMissing":[],"ts":1779226237906},"ts":"2026-05-19T21:30:37.925Z"}

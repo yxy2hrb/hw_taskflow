@@ -1,0 +1,27 @@
+{
+  "state_name": "网络失败页",
+  "lifecycle": "persistent",
+  "injection": { "mode": "overlay", "z_index": 1001 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "FullscreenPanel",
+    "props": { "background": "rgba(0, 0, 0, 0.3)" },
+    "children": [
+      {
+        "type": "Row",
+        "props": {
+          "height": 64,
+          "background": "#FF6B35",
+          "align": "center",
+          "padding": "0 16px",
+          "gap": 8
+        },
+        "children": [
+          { "type": "Icon", "props": { "name": "error", "size": 20, "color": "#FFFFFF" } },
+          { "type": "Text", "props": { "text": "网络异常，请检查后重试", "size": 14, "color": "#FFFFFF" } },
+          { "type": "Button", "props": { "label": "重试", "size": "compact", "variant": "text", "color": "#FFFFFF", "borderRadius": 4 } }
+        ]
+      }
+    ]
+  }
+}

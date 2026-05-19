@@ -1,0 +1,61 @@
+{
+  "title": "体验项目查看与详情",
+  "slug": "experience-project-view-flow",
+  "createdAt": "2026-05-18T19:40:12.456Z",
+  "meta": {
+    "title": "体验项目查看与详情",
+    "slug": "experience-project-view-flow",
+    "user_story": "已登录的企业管理员在‘我的工作台’点击‘我的体验项目’入口，快速查看项目概览 → 系统按设备类型与数量自动聚合展示 → 用户点击卡片进入详情页 → 全屏页面完整渲染网络拓扑图、Wi-Fi评分、运行时长及设备终端统计，且返回键可正常回退",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "工作台首页",
+      "description": "屏幕顶部显示状态栏（含时间、信号、电量图标），中部为‘我的工作台’标题，下方排列功能卡片；其中一张卡片明确标注‘我的体验项目’文字与右侧箭头图标；底部固定 Tab 栏含‘首页’‘工作台’‘消息’‘我’四个标签，当前‘工作台’高亮选中。",
+      "implementation_method": "原始 HTML 初始快照，不做改造",
+      "last_state": null,
+      "file": "state_1.html"
+    },
+    {
+      "state_id": 2,
+      "state_name": "内嵌弹窗列表",
+      "description": "弹窗顶部与状态栏下沿齐平，底部与 Tab 栏上沿齐平；内部为垂直滚动卡片列表；每张卡片宽 100%、高 88px，背景白，带 1px 浅灰底边；左起依次为项目名称（16px 加粗黑字）、创建时间（12px 灰字）、设备类型与数量（如‘AP×3, 终端×12’，12px 灰字）、状态标签（圆角矩形，蓝底白字‘运行中’或灰底白字‘已停止’）；右侧为操作按钮图标（三个点竖排图标，深灰，居中对齐）。",
+      "implementation_method": "内嵌浮层 (Overlay/Sheet)：覆盖于工作台首页之上，无遮罩；弹窗区域尺寸严格匹配状态栏下沿至 Tab 栏上沿；卡片列表使用 flex-column 布局；每张卡片内元素水平左对齐、垂直居中；状态标签使用 fill-info信息色info_1-14_365554-paragraph 类；操作图标使用 Pixso-vector-146_139248 类。",
+      "last_state": 1,
+      "file": "state_2.html"
+    },
+    {
+      "state_id": 3,
+      "state_name": "项目详情页全屏",
+      "description": "顶部导航栏高 56px，左侧为左向返回箭头图标（深灰，24px），居中显示‘虚拟体验项目’标题（16px Medium 黑字），右侧并排三个图标：搜索（24px 深灰放大镜）、通知（24px 深灰铃铛）、加号（24px 深灰圆圈+）；主体区域从导航栏下方开始：上方为宽高比 16:9 的网络拓扑图占位区（浅灰底，含示意连线与设备节点图标）；下方三栏等宽卡片横向排列，分别显示 Wi-Fi评分（标题‘Wi-Fi评分’+数值如‘87分’+绿色进度条）、运行时长（标题‘运行时长’+‘3天12小时’+时钟图标）、设备与终端统计（标题‘设备与终端’+‘AP×3 / 终端×12’+设备图标）；所有文本使用 text-ohos_id_text_size_body2regular-14_886008 类。",
+      "implementation_method": "全屏页面 (Page/View)：基于 state_1 的 HTML，移除底部 Tab 栏容器（class='Pixso-frame-146_139278' 及其父级），插入新导航栏结构（含返回箭头、标题、三图标）；主体区域插入拓扑图占位 div（class='topology-placeholder'）及三列统计卡片容器（flex-row，gap 12px）；每张统计卡片含图标、标题、数值、辅助图标；所有文案中文内容已固化，英文仅用于图标 tooltip（如 search icon tooltip='Search'）。",
+      "last_state": 1,
+      "file": "state_3.html"
+    },
+    {
+      "state_id": 4,
+      "state_name": "详情页加载中过渡态",
+      "description": "顶部导航栏保持不变（返回箭头、‘虚拟体验项目’标题、搜索/通知/加号图标均可见）；拓扑图占位区替换为灰色块（宽100%、高160px、背景 rgba(243,243,243,1)、圆角8px）；下方三列统计卡片区域各被一个灰色块占据（高 64px、宽 33.33%、背景 rgba(243,243,243,1)、圆角8px、垂直间距16px）；所有灰色块无边框、无文字、无图标；状态栏与导航栏之间无遮罩。",
+      "implementation_method": "骨架屏 (Skeleton Screen)：在 state_3 的 HTML 基础上，将拓扑图容器 innerHTML 替换为空 div 并添加 class 'skeleton-topology'；将三张统计卡片容器 innerHTML 替换为三段 <div class='skeleton-card'></div>；所有 skeleton 元素应用统一 style：background-color: rgba(243,243,243,1); border-radius: 8px; margin-bottom: 16px;",
+      "last_state": 3,
+      "file": "state_4.html"
+    },
+    {
+      "state_id": 5,
+      "state_name": "内嵌弹窗空状态",
+      "description": "弹窗顶部与状态栏下沿齐平，底部与 Tab 栏上沿齐平；中央区域为浅灰底色卡片（宽 320px、高 160px、背景 rgba(243,243,243,1)、圆角12px、居中显示）；卡片内含‘暂无体验项目’图标（128px×128px，浅灰占位图）、主文案‘暂无体验项目’（14px 灰字，居中）、下方‘去创建’文字按钮（14px 蓝字，下划线样式，无背景，居中）；其余区域（弹窗外）为工作台首页背景，可见但不可交互。",
+      "implementation_method": "轻量提示卡片 (Empty State Card)：在 state_2 的 HTML 基础上，清空卡片列表容器全部子节点；插入新 div 卡片容器，内含 img 元素（src='./image/empty_project.png'）、p 元素（text '暂无体验项目'）、button 元素（text '去创建'，class='link-button'，style='text-decoration: underline;'）；卡片使用 margin: 0 auto; padding: 24px; width: 320px; height: 160px;",
+      "last_state": 2,
+      "file": "state_5.html"
+    },
+    {
+      "state_id": 6,
+      "state_name": "拓扑图加载失败态",
+      "description": "顶部导航栏保持不变（返回箭头、‘虚拟体验项目’标题、搜索/通知/加号图标均可见）；原拓扑图占位区替换为错误图标（48px×48px 深灰感叹号）、‘加载失败’文字（14px 灰字，居中）、‘重试’按钮（14px 蓝字，圆角4px 白底，1px 浅灰边框，居中）；三列统计卡片区域完全保留（Wi-Fi评分、运行时长、设备与终端统计均正常显示）；状态栏与导航栏之间无遮罩。",
+      "implementation_method": "错误提示区块 (Error Block)：在 state_3 的 HTML 基础上，将拓扑图容器 innerHTML 替换为 div 包裹 img（src='./image/error_icon.png'）、p（text '加载失败'）、button（text '重试'，class='retry-button'，style='background: white; border: 1px solid #e0e0e0; border-radius: 4px; padding: 6px 12px;'）；按钮位置居中，上下间距 12px；其余主体区域 DOM 结构与 state_3 完全一致。",
+      "last_state": 3,
+      "file": "state_6.html"
+    }
+  ]
+}

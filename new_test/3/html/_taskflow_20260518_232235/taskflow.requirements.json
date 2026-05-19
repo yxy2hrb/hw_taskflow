@@ -1,0 +1,44 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "工作台首页含入口",
+    "description": "页面为移动端竖屏布局，顶部状态栏显示时间/信号/电量，底部Tab栏可见（含‘首页’‘工作台’‘报表’‘我的’四个标签），‘我的工作台’区域中清晰显示‘我的体验项目’文字按钮或卡片式入口，背景为浅灰#f3f3f3，主字体为HarmonyHeiTi-Regular 14px，文字颜色#191919。",
+    "implementation_method": "原始 HTML 初始快照，不做改造",
+    "last_state": null
+  },
+  {
+    "state_id": 2,
+    "state_name": "体验项目弹窗列表",
+    "description": "在工作台首页基础上，顶部状态栏与底部Tab栏保持完全可见且未被遮挡；页面中部覆盖一层白色内嵌浮层（宽360px，高自适应，圆角8px，阴影0 2px 12px rgba(0,0,0,0.08)），内部为垂直滚动列表，每张卡片高72px，含左对齐项目名称（16px加粗）、右对齐创建时间（12px灰色#666）、下方设备类型与数量（如‘AP×3，终端×12’，12px深灰）、右侧状态标签（圆角矩形，蓝底白字‘运行中’或灰底白字‘已停止’）及右侧三点操作图标；无蒙层遮盖背景。",
+    "implementation_method": "内嵌浮层 (Inline Overlay)：白色容器（#FFFFFF，圆角8px，阴影0 2px 12px rgba(0,0,0,0.08)）叠加于工作台首页之上；卡片内文本：项目名‘XX园区体验项目’、时间‘2024-05-22 14:30’、设备信息‘AP×3，终端×12’、状态标签‘运行中’（背景#46B1E3，文字#FFFFFF）；操作图标为三圆点SVG（16×16px，#666）；所有文字使用HarmonyHeiTi-Regular/Medium，字号严格为16px/12px/12px。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "项目详情全屏页",
+    "description": "全屏新页面，顶部固定导航栏高56px，左侧为蓝色左向箭头图标（24×24px，#46B1E3），居中显示黑体大号文字‘虚拟体验项目’（16px，#191919），右侧并排三个图标：搜索放大镜（20×20px，#666）、铃铛通知（20×20px，#666）、加号（20×20px，#46B1E3）；主体区域从导航栏下方开始，顶部为网络拓扑图SVG（宽100%，高240px，含AP/终端节点与连线）；其下方依次为Wi-Fi评分卡片（蓝底白字‘Wi-Fi评分：92分’，14px）、运行时长条（灰色底+蓝色进度条+文字‘已运行 3天12小时’，14px）、设备统计（‘设备总数：15台’）、终端统计（‘在线终端：12个’），全部左对齐，行高20px，字体HarmonyHeiTi-Regular。",
+    "implementation_method": "全屏页面 (Fullscreen Page)：导航栏固定定位（height:56px，background:#FFFFFF，border-bottom:1px solid #F3F3F3）；图标均使用SVG内联，尺寸与颜色严格匹配；Wi-Fi评分卡片背景#46B1E3，文字‘Wi-Fi评分：92分’；运行时长条含灰色底（#F3F3F3）、蓝色进度（#46B1E3，高度8px）、文字‘已运行 3天12小时’；设备与终端统计文字均为14px #191919，无图标。",
+    "last_state": 1
+  },
+  {
+    "state_id": 4,
+    "state_name": "加载中过渡态",
+    "description": "全屏页面骨架与state_3一致：顶部导航栏（左箭头、居中标题、右三图标）完整可见；主体区域中，原网络拓扑图位置替换为32px深灰圆环spinner（stroke:#191919，stroke-width:2，CSS animation:hmspin 1s linear infinite），Wi-Fi评分、运行时长、设备与终端统计模块均以灰阶占位（文字为#999，无图标，高度与state_3相同），背景色与state_3一致为#FFFFFF，无遮罩，无其他浮动元素。",
+    "implementation_method": "全屏灰色骨架屏 (Skeleton Screen)：基于state_3全屏页面，仅修改主体区域——拓扑图区域替换为32px圆环spinner（stroke:#191919，stroke-width:2，animation:hmspin 1s linear infinite）；Wi-Fi评分占位文字‘Wi-Fi评分：--分’、运行时长占位‘已运行 --’、设备统计‘设备总数：--台’、终端统计‘在线终端：--个’，全部14px #999，行高20px；其余导航栏与布局结构与state_3完全一致。",
+    "last_state": 3
+  },
+  {
+    "state_id": 5,
+    "state_name": "拓扑图加载失败页",
+    "description": "全屏页面骨架与state_3一致：顶部导航栏（左箭头、居中标题、右三图标）完整可见；主体区域中，原网络拓扑图位置显示一张白色卡片（宽100%，高120px，圆角8px，阴影0 2px 12px rgba(0,0,0,0.08)），卡片内含红色感叹号图标（24×24px，#FF5A5F）、文字‘加载失败，请重试’（14px #FF5A5F，加粗）、蓝色‘重试’按钮（宽100px，高32px，圆角16px，背景#46B1E3，文字‘重试’14px #FFFFFF）；Wi-Fi评分、运行时长、设备与终端统计模块仍以灰阶占位（文字#999，无图标，高度同state_3）。",
+    "implementation_method": "卡片内嵌错误提示 (Inline Error Card)：基于state_3全屏页面，在拓扑图区域插入白色卡片（#FFFFFF，圆角8px，阴影0 2px 12px rgba(0,0,0,0.08)）；卡片内含SVG红色感叹号（#FF5A5F）、文字‘加载失败，请重试’（14px Bold #FF5A5F）、按钮‘重试’（100×32px，#46B1E3，14px #FFFFFF，圆角16px）；其余统计模块保留state_3灰阶占位样式（文字#999，14px）。",
+    "last_state": 3
+  },
+  {
+    "state_id": 6,
+    "state_name": "无项目空状态",
+    "description": "在体验项目弹窗列表（state_2）的白色浮层内，无任何项目卡片；中央显示灰色插画图标（SVG，宽80px，高80px，#CCCCCC），下方为文字‘暂无体验项目’（14px #666，HarmonyHeiTi-Regular），再下方为两按钮：左‘新建’（120×32px，#46B1E3，14px #FFFFFF，圆角16px）、右‘查看教程’（120×32px，#F3F3F3，14px #46B1E3，圆角16px）；顶部状态栏与底部Tab栏保持完全可见，浮层背景、圆角、阴影与state_2一致。",
+    "implementation_method": "弹窗列表空状态 (Empty State in Overlay)：基于state_2内嵌浮层，清空所有卡片；插入SVG插画（80×80px，#CCCCCC）；文字‘暂无体验项目’（14px #666）；按钮‘新建’（120×32px，#46B1E3，#FFFFFF，圆角16px）与‘查看教程’（120×32px，#F3F3F3，#46B1E3，圆角16px）水平并列居中；其余浮层样式（圆角8px、阴影0 2px 12px rgba(0,0,0,0.08)、白色背景）与state_2完全一致。",
+    "last_state": 2
+  }
+]

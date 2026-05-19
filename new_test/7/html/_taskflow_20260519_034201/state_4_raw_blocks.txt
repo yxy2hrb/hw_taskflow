@@ -1,0 +1,159 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "text-edit",
+      "anchor": "<p id=\"146_394504\" class=\"Pixso-paragraph-146_394504 fill-场景text-colorcolor-text-primary-6_11379-paragraph\">营销</p>",
+      "instruction": "更新为 '管理应用'"
+    },
+    {
+      "id": "e2",
+      "type": "text-edit",
+      "anchor": "<p id=\"146_394508\" class=\"Pixso-paragraph-146_394508 fill-场景text-colorcolor-text-primary-6_11379-paragraph\">工作台</p>",
+      "instruction": "更新为 '管理应用'"
+    },
+    {
+      "id": "e3",
+      "type": "text-edit",
+      "anchor": "<div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:16px;padding:16px;background:#FFFFFF;width:100%;border-radius:0px;box-sizing:border-box\"><div data-hm=\"ListItem\" style=\"min-height:64px;padding:12px 16px;display:flex;align-items:center;gap:12px;background:#FFFFFF;border-bottom:1px solid rgba(0,0,0,0.05);box-sizing:border-box;\">",
+      "instruction": "将计数条文字更新为'已添加11个'（原页面含10项，新增1项后总数为11）"
+    },
+    {
+      "id": "e4",
+      "type": "state-toggle",
+      "anchor": "#146_394494",
+      "instruction": "将标题栏右侧的图标按钮替换为深红色左向箭头图标（mi icon_name='arrow_back'，font-size:24px，color:#C7000B），保持原有布局和间距"
+    },
+    {
+      "id": "e5",
+      "type": "state-toggle",
+      "anchor": "<button data-hm=\"Button\"  style=\"display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;background:#DFDFDF;color:#FFFFFF;border:1px solid #0A59F7;border-radius:12px;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:12px;font-weight:500;line-height:1;cursor:pointer;opacity:1;width:40px;box-sizing:border-box;outline:none;\"><span class=\"mi\" style=\"font-size:16px;color:#FFFFFF;margin-right:4px;display:inline-block;\">toggle_off</span></button>",
+      "instruction": "将第1项（企业微信）的开关控件状态切换为开启：背景色改为#C7000B，图标改为'toggle_on'，颜色#FFFFFF"
+    },
+    {
+      "id": "e6",
+      "type": "new-overlay",
+      "anchor": "#146_395667",
+      "instruction": "在页面底部绝对定位插入成功 Toast：背景#64BB5C，文字'添加成功'，14px HarmonyHeiTi-Regular，#FFFFFF，圆角8px，左右padding 16px，上下padding 10px，无遮罩，不覆盖状态栏和底部 Tab；位置：bottom: 24px，left: 50%，transform: translateX(-50%)，width: fit-content，box-shadow: 0 4px 12px rgba(0,0,0,0.06)"
+    }
+  ]
+}
+
+--- skill2 outputs ---
+[OLD]
+<p id="146_394504" class="Pixso-paragraph-146_394504 fill-场景text-colorcolor-text-primary-6_11379-paragraph">营销</p>
+[NEW]
+<p id="146_394504" class="Pixso-paragraph-146_394504 fill-场景text-colorcolor-text-primary-6_11379-paragraph">管理应用</p>
+[NEXT]
+[OLD]
+<p id="146_394508" class="Pixso-paragraph-146_394508 fill-场景text-colorcolor-text-primary-6_11379-paragraph">工作台</p>
+[NEW]
+<p id="146_394508" class="Pixso-paragraph-146_394508 fill-场景text-colorcolor-text-primary-6_11379-paragraph">管理应用</p>
+[NEXT]
+[OLD]
+<div data-hm="Column" style="display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:16px;padding:16px;background:#FFFFFF;width:100%;border-radius:0px;box-sizing:border-box"><div data-hm="ListItem" style="min-height:64px;padding:12px 16px;display:flex;align-items:center;gap:12px;background:#FFFFFF;border-bottom:1px solid rgba(0,0,0,0.05);box-sizing:border-box;">
+[NEW]
+<div data-hm="Column" style="display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:16px;padding:16px;background:#FFFFFF;width:100%;border-radius:0px;box-sizing:border-box"><div data-hm="ListItem" style="min-height:64px;padding:12px 16px;display:flex;align-items:center;gap:12px;background:#FFFFFF;border-bottom:1px solid rgba(0,0,0,0.05);box-sizing:border-box;">已添加11个</div></div><div data-hm="Toast" style="position:fixed;top:24px;left:50%;transform:translateX(-50%);width:fit-content;min-width:140px;background:#64BB5C;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.06);padding:10px 16px;display:flex;align-items:center;gap:8px;z-index:1000;">已添加11个</div>
+[NEXT]
+{
+  "tree": {
+    "type": "Row",
+    "props": {
+      "background": "#64BB5C",
+      "borderRadius": 8,
+      "padding": [10, 16],
+      "gap": 8,
+      "align": "center",
+      "justify": "center",
+      "width": "fit-content",
+      "minWidth": 140,
+      "style": {
+        "position": "fixed",
+        "top": 16,
+        "left": "50%",
+        "transform": "translateX(-50%)",
+        "boxShadow": "0 4px 12px rgba(0,0,0,0.06)"
+      }
+    },
+    "children": [
+      {
+        "type": "Icon",
+        "props": {
+          "name": "check_circle",
+          "size": 20,
+          "color": "#FFFFFF"
+        }
+      },
+      {
+        "type": "Text",
+        "props": {
+          "variant": "body",
+          "color": "#FFFFFF",
+          "weight": 500
+        },
+        "children": "Success"
+      }
+    ]
+  }
+}
+[NEXT]
+{
+  "tree": {
+    "type": "Row",
+    "props": {
+      "background": "#64BB5C",
+      "borderRadius": 8,
+      "padding": [10, 16],
+      "gap": 8,
+      "align": "center",
+      "justify": "center",
+      "width": "fit-content",
+      "minWidth": 140,
+      "style": "position: fixed; left: 50%; transform: translateX(-50%); top: 24px; z-index: 9999; box-sizing: border-box; shadow: 0 4px 12px rgba(0,0,0,0.06);"
+    },
+    "children": [
+      {
+        "type": "Icon",
+        "props": {
+          "name": "check_circle",
+          "size": 20,
+          "color": "#FFFFFF"
+        }
+      },
+      {
+        "type": "Text",
+        "props": {
+          "variant": "body",
+          "color": "#FFFFFF"
+        },
+        "children": "已开启企业微信同步"
+      }
+    ]
+  }
+}
+[NEXT]
+{
+  "tree": {
+    "type": "Row",
+    "props": {
+      "background": "#64BB5C",
+      "borderRadius": 8,
+      "padding": [10, 16],
+      "gap": 8,
+      "align": "center",
+      "width": "fit-content",
+      "minWidth": "140px",
+      "position": "fixed",
+      "bottom": "24px",
+      "left": "50%",
+      "transform": "translateX(-50%)",
+      "zIndex": 10000,
+      "shadow": "0 4px 12px rgba(0,0,0,0.06)"
+    },
+    "children": [
+      { "type": "Icon", "props": { "name": "check_circle", "size": 20, "color": "#FFFFFF" } },
+      { "type": "Text", "props": { "color": "#FFFFFF", "size": 14, "weight": 500, "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif" }, "children": "添加成功" }
+    ]
+  }
+}

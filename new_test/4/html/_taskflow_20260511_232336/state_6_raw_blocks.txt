@@ -1,0 +1,17 @@
+{
+  "state_name": "返回工作台态",
+  "lifecycle": "temporary",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "FullscreenPanel",
+    "props": { "background": "#FFFFFF" },
+    "children": [
+      { "type": "StatusBar" },
+      { "type": "NavBar", "props": { "title": "", "leftIcon": "arrow_back", "align": "left" } },
+      { "type": "Column", "props": { "gap": 16, "padding": 16 }, "children": [
+        { "type": "Text", "props": { "text": "表单内容占位", "variant": "body" } }
+      ]}
+    ]
+  }
+}

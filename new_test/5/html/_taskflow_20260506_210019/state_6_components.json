@@ -1,0 +1,13 @@
+{
+  "state_id": 6,
+  "state_name": "弹窗取消收起状态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": true,
+    "issues": [],
+    "fixedBlocks": "",
+    "reviewMs": 6679,
+    "screenshot": 158690
+  }
+}

@@ -1,0 +1,487 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "new-overlay",
+      "anchor": "#14_1031108",
+      "instruction": "在 body 直接子级末尾新增全屏模态浮层：背景为 rgba(0,0,0,0.5) 半透明遮罩；中央白色卡片宽360px、高自适应、圆角12px、padding 24px、居中垂直对齐；卡片顶部为宽320px、高44px、浅灰背景 #E0E0E0、1px solid #E0E0E0、圆角8px 的搜索框，placeholder 文字‘搜索...’（12px HarmonyHeiTi-Regular）；下方四枚横排分类标签（每个尺寸72×32px、圆角8px、浅蓝底色 #46B1E3、白字、12px HarmonyHeiTi-Regular、Regular 字重、居中显示）；再下方为7条垂直排列条目，每条含标题（16px HarmonyHeiTi-Medium、深灰 #191919）、简短描述（14px HarmonyHeiTi-Regular、中灰 #666666）、右侧‘查看’按钮（14px HarmonyHeiTi-Medium、蓝色 #46B1E3、右对齐）；状态栏与底部 Tab 层级高于浮层，保持原样可见；无遮罩穿透，浮层必须覆盖整个视口但不遮挡顶部状态栏和底部 Tab。",
+      "components_needed": ["Dialog", "TextInput", "Button"],
+      "icons_needed": []
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "OverlayMask",
+    "props": {
+      "opacity": 0.5,
+      "color": "#000"
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "borderRadius": 12,
+          "width": "360px",
+          "maxWidth": "360px",
+          "padding": 24,
+          "shadow": "0 8px 24px rgba(0,0,0,0.08)",
+          "gap": 24,
+          "align": "stretch",
+          "justify": "center"
+        },
+        "children": [
+          {
+            "type": "TextInput",
+            "props": {
+              "placeholder": "搜索...",
+              "size": "regular",
+              "background": "#E0E0E0",
+              "border": "1px solid #E0E0E0",
+              "borderRadius": 8,
+              "height": 44,
+              "width": "320px",
+              "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+              "fontSize": 12,
+              "fontWeight": "400",
+              "color": "rgba(0,0,0,0.60)"
+            }
+          },
+          {
+            "type": "Row",
+            "props": {
+              "gap": 8,
+              "wrap": true,
+              "align": "center"
+            },
+            "children": [
+              {
+                "type": "Button",
+                "props": {
+                  "label": "开发指南",
+                  "variant": "secondary",
+                  "size": "compact",
+                  "background": "#46B1E3",
+                  "color": "#FFFFFF",
+                  "borderRadius": 8,
+                  "width": 72,
+                  "height": 32,
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                  "fontSize": 12,
+                  "fontWeight": "500",
+                  "padding": [0, 12]
+                }
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "API 参考",
+                  "variant": "secondary",
+                  "size": "compact",
+                  "background": "#46B1E3",
+                  "color": "#FFFFFF",
+                  "borderRadius": 8,
+                  "width": 72,
+                  "height": 32,
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                  "fontSize": 12,
+                  "fontWeight": "500",
+                  "padding": [0, 12]
+                }
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "示例代码",
+                  "variant": "secondary",
+                  "size": "compact",
+                  "background": "#46B1E3",
+                  "color": "#FFFFFF",
+                  "borderRadius": 8,
+                  "width": 72,
+                  "height": 32,
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                  "fontSize": 12,
+                  "fontWeight": "500",
+                  "padding": [0, 12]
+                }
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "常见问题",
+                  "variant": "secondary",
+                  "size": "compact",
+                  "background": "#46B1E3",
+                  "color": "#FFFFFF",
+                  "borderRadius": 8,
+                  "width": 72,
+                  "height": 32,
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                  "fontSize": 12,
+                  "fontWeight": "500",
+                  "padding": [0, 12]
+                }
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": {
+              "gap": 16
+            },
+            "children": [
+              {
+                "type": "Row",
+                "props": {
+                  "justify": "space-between",
+                  "align": "center",
+                  "height": 48
+                },
+                "children": [
+                  {
+                    "type": "Column",
+                    "props": {
+                      "gap": 4
+                    },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                          "fontSize": 16,
+                          "fontWeight": "500",
+                          "color": "rgba(0,0,0,0.90)"
+                        },
+                        "children": "1. 创建第一个应用"
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                          "fontSize": 14,
+                          "fontWeight": "400",
+                          "color": "rgba(0,0,0,0.60)"
+                        },
+                        "children": "从零开始搭建一个 Hello World 应用"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Button",
+                    "props": {
+                      "label": "查看",
+                      "variant": "text",
+                      "color": "#46B1E3",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "justify": "space-between",
+                  "align": "center",
+                  "height": 48
+                },
+                "children": [
+                  {
+                    "type": "Column",
+                    "props": {
+                      "gap": 4
+                    },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                          "fontSize": 16,
+                          "fontWeight": "500",
+                          "color": "rgba(0,0,0,0.90)"
+                        },
+                        "children": "2. UI 组件入门"
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                          "fontSize": 14,
+                          "fontWeight": "400",
+                          "color": "rgba(0,0,0,0.60)"
+                        },
+                        "children": "使用 Button、Text、List 等基础组件"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Button",
+                    "props": {
+                      "label": "查看",
+                      "variant": "text",
+                      "color": "#46B1E3",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "justify": "space-between",
+                  "align": "center",
+                  "height": 48
+                },
+                "children": [
+                  {
+                    "type": "Column",
+                    "props": {
+                      "gap": 4
+                    },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                          "fontSize": 16,
+                          "fontWeight": "500",
+                          "color": "rgba(0,0,0,0.90)"
+                        },
+                        "children": "3. 页面路由与跳转"
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                          "fontSize": 14,
+                          "fontWeight": "400",
+                          "color": "rgba(0,0,0,0.60)"
+                        },
+                        "children": "掌握页面间导航与参数传递机制"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Button",
+                    "props": {
+                      "label": "查看",
+                      "variant": "text",
+                      "color": "#46B1E3",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "justify": "space-between",
+                  "align": "center",
+                  "height": 48
+                },
+                "children": [
+                  {
+                    "type": "Column",
+                    "props": {
+                      "gap": 4
+                    },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                          "fontSize": 16,
+                          "fontWeight": "500",
+                          "color": "rgba(0,0,0,0.90)"
+                        },
+                        "children": "4. 状态管理基础"
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                          "fontSize": 14,
+                          "fontWeight": "400",
+                          "color": "rgba(0,0,0,0.60)"
+                        },
+                        "children": "使用 @State 和 @Link 管理组件状态"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Button",
+                    "props": {
+                      "label": "查看",
+                      "variant": "text",
+                      "color": "#46B1E3",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "justify": "space-between",
+                  "align": "center",
+                  "height": 48
+                },
+                "children": [
+                  {
+                    "type": "Column",
+                    "props": {
+                      "gap": 4
+                    },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                          "fontSize": 16,
+                          "fontWeight": "500",
+                          "color": "rgba(0,0,0,0.90)"
+                        },
+                        "children": "5. 设备能力调用"
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                          "fontSize": 14,
+                          "fontWeight": "400",
+                          "color": "rgba(0,0,0,0.60)"
+                        },
+                        "children": "访问相机、位置、传感器等系统能力"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Button",
+                    "props": {
+                      "label": "查看",
+                      "variant": "text",
+                      "color": "#46B1E3",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "justify": "space-between",
+                  "align": "center",
+                  "height": 48
+                },
+                "children": [
+                  {
+                    "type": "Column",
+                    "props": {
+                      "gap": 4
+                    },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                          "fontSize": 16,
+                          "fontWeight": "500",
+                          "color": "rgba(0,0,0,0.90)"
+                        },
+                        "children": "6. 调试与日志"
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                          "fontSize": 14,
+                          "fontWeight": "400",
+                          "color": "rgba(0,0,0,0.60)"
+                        },
+                        "children": "使用 DevEco Studio 进行断点调试和日志分析"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Button",
+                    "props": {
+                      "label": "查看",
+                      "variant": "text",
+                      "color": "#46B1E3",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "justify": "space-between",
+                  "align": "center",
+                  "height": 48
+                },
+                "children": [
+                  {
+                    "type": "Column",
+                    "props": {
+                      "gap": 4
+                    },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                          "fontSize": 16,
+                          "fontWeight": "500",
+                          "color": "rgba(0,0,0,0.90)"
+                        },
+                        "children": "7. 发布与上架"
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                          "fontSize": 14,
+                          "fontWeight": "400",
+                          "color": "rgba(0,0,0,0.60)"
+                        },
+                        "children": "打包签名、测试验证、提交到华为应用市场"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Button",
+                    "props": {
+                      "label": "查看",
+                      "variant": "text",
+                      "color": "#46B1E3",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

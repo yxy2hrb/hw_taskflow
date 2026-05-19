@@ -1,0 +1,28 @@
+{
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "我的工作台初始首页状态",
+      "edits": [
+        {
+          "old": "          <div id=\"146_139186\" class=\"Pixso-frame-146_139186\">",
+          "new": "          <div id=\"146_139186\" class=\"Pixso-frame-146_139186\" data-next-state=\"2\">"
+        }
+      ],
+      "islands": {}
+    },
+    {
+      "state_id": 2,
+      "state_name": "体验项目列表弹窗状态",
+      "edits": [
+        {
+          "old": "</body>",
+          "new": "<div data-jsx-island id=\"s2-popup\"></div>\n</body>"
+        }
+      ],
+      "islands": {
+        "s2-popup": "<Popup visible={true} position='bottom' bodyStyle={{borderTopLeftRadius:16,borderTopRightRadius:16}} showMask={true}><div style={{padding:16}}><div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:12}}><span style={{fontSize:18,fontWeight:600}}>我的体验项目</span><Button size='small' fill='none' onClick={() => {}}>关闭</Button></div><List><List.Item>体验开局流程</List.Item><List.Item>体验运维流程</List.Item><List.Item>体验管理流程</List.Item></List></div></Popup>"
+      }
+    }
+  ]
+}

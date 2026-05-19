@@ -1,0 +1,66 @@
+[OLD]
+<script>
+
+</script>
+[NEW]
+<script>
+
+</script>
+<!-- 任务节点开始: 内嵌式体验项目弹窗态【临时】 -->
+<div style="position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.4);display:flex;align-items:flex-end;justify-content:center;overflow:hidden;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;">
+  <div style="width:100%;max-width:360px;background:#FFFFFF;border-top-left-radius:16px;border-top-right-radius:16px;box-shadow:0px -2px 12px rgba(0,0,0,0.05);overflow:hidden;">
+    <div style="height:4px;background:rgba(0,0,0,0.2);width:36px;margin:8px auto;"></div>
+    <div style="padding:16px 16px 0;max-height:50vh;overflow-y:auto;">
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="height:72px;padding:0 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(0,0,0,0.08);">
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <p style="font-size:16px;font-weight:600;color:rgba(0,0,0,0.898);line-height:1.5;margin:0;">华为云网络体验项目</p>
+            <p style="font-size:12px;color:rgba(0,0,0,0.6);line-height:1.5;margin:0;">2024-04-27 14:22</p>
+          </div>
+          <div style="display:flex;gap:12px;align-items:center;">
+            <span class="mi" style="font-size:20px;color:rgba(0,0,0,0.6);">expand_more</span>
+            <span class="mi" style="font-size:20px;color:rgba(0,0,0,0.6);">more_vert</span>
+          </div>
+        </div>
+        <div style="height:72px;padding:0 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(0,0,0,0.08);">
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <p style="font-size:16px;font-weight:600;color:rgba(0,0,0,0.898);line-height:1.5;margin:0;">企业级Wi-Fi体验项目</p>
+            <p style="font-size:12px;color:rgba(0,0,0,0.6);line-height:1.5;margin:0;">2024-04-26 09:15</p>
+          </div>
+          <div style="display:flex;gap:12px;align-items:center;">
+            <span class="mi" style="font-size:20px;color:rgba(0,0,0,0.6);">expand_more</span>
+            <span class="mi" style="font-size:20px;color:rgba(0,0,0,0.6);">more_vert</span>
+          </div>
+        </div>
+        <div style="height:72px;padding:0 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(0,0,0,0.08);">
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <p style="font-size:16px;font-weight:600;color:rgba(0,0,0,0.898);line-height:1.5;margin:0;">园区网络拓扑体验</p>
+            <p style="font-size:12px;color:rgba(0,0,0,0.6);line-height:1.5;margin:0;">2024-04-25 16:40</p>
+          </div>
+          <div style="display:flex;gap:12px;align-items:center;">
+            <span class="mi" style="font-size:20px;color:rgba(0,0,0,0.6);">expand_more</span>
+            <span class="mi" style="font-size:20px;color:rgba(0,0,0,0.6);">more_vert</span>
+          </div>
+        </div>
+        <div style="height:72px;padding:0 16px;display:flex;align-items:center;justify-content:space-between;">
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <p style="font-size:16px;font-weight:600;color:rgba(0,0,0,0.898);line-height:1.5;margin:0;">SD-WAN智能组网体验</p>
+            <p style="font-size:12px;color:rgba(0,0,0,0.6);line-height:1.5;margin:0;">2024-04-24 11:05</p>
+          </div>
+          <div style="display:flex;gap:12px;align-items:center;">
+            <span class="mi" style="font-size:20px;color:rgba(0,0,0,0.6);">expand_more</span>
+            <span class="mi" style="font-size:20px;color:rgba(0,0,0,0.6);">more_vert</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="padding:16px;">
+      <div style="display:flex;gap:8px;">
+        <span style="padding:4px 12px;background:#46B1E3;color:#FFFFFF;font-size:12px;font-weight:500;border-radius:8px;">置顶</span>
+        <span style="padding:4px 12px;background:#46B1E3;color:#FFFFFF;font-size:12px;font-weight:500;border-radius:8px;">个人</span>
+        <span style="padding:4px 12px;background:#46B1E3;color:#FFFFFF;font-size:12px;font-weight:500;border-radius:8px;">处理中</span>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 任务节点结束: 内嵌式体验项目弹窗态【临时】 -->

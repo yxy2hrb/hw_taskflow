@@ -1,0 +1,43 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "工作台主页初始态",
+    "description": "顶部状态栏显示时间/信号/电量，页面中部为营销工作台内容区，底部固定Tab导航栏高亮'营销'项（红色文字），'营销'Tab右侧可见'管理应用'按钮（位于操作栏右上角或页面主体显眼位置），其余Tab项为灰色常规文字；无任何弹窗、遮罩或Toast。",
+    "implementation_method": "原始 HTML 初始快照，不做改造。"
+  },
+  {
+    "state_id": 2,
+    "state_name": "管理应用页列表态",
+    "description": "顶部状态栏保持不变；顶部导航栏含左对齐返回箭头图标（黑色，24px）与居中'管理应用'标题（14px HarmonyHeiTi-Medium，深灰#191919）；其下方一行灰色小字'已添加X个'（14px HarmonyHeiTi-Regular，#AEAEAE，居中）；其下为垂直滚动列表，每项含左对齐圆形应用图标（40×40px）、应用名称（14px HarmonyHeiTi-Regular，#191919）、右对齐开关控件（28×16px滑块，关闭态为浅灰#DFDFDF背景+白色圆点）；底部Tab导航栏完整可见且'营销'项仍高亮。",
+    "implementation_method": "全页容器 (Page Container)：复用 state_1 的底Tab与状态栏结构；替换主体内容为固定头部+滚动列表；列表项使用 flex 布局，图标区域 width:40px，名称区域 flex:1，开关区域 width:28px；开关控件为 toggle switch (Switch)：关闭态 background-color:#DFDFDF，圆点 background-color:#FFFFFF，无文字标签。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "请选择添加方式弹窗",
+    "description": "全屏深灰半透明遮罩层（rgba(0,0,0,0.6)）覆盖整个屏幕，包括顶部状态栏与底部Tab；正中悬浮白色圆角卡片（背景#FFFFFF，圆角12px，宽320px，高320px），内含4个等距排列的方形图标（各64×64px，上下居中，间距24px）：从左至右依次为'快捷入口'、'小卡片'、'中卡片'、'大卡片'图标；卡片底部并排两个按钮：左侧'取消'文字按钮（14px HarmonyHeiTi-Regular，#191919，不加粗），右侧'确定'主按钮（14px HarmonyHeiTi-Medium，#C7000B，红色主色）；无其他浮层或Toast。",
+    "implementation_method": "模态弹窗 (Modal/Dialog)：全屏遮罩层 rgba(0,0,0,0.6)；悬浮卡片 position:absolute + transform:translate(-50%,-50%)，top:50%, left:50%；4个图标区域均为 div + background-image；按钮区域为 flex row，'取消'按钮 color:#191919，'确定'按钮 color:#C7000B；所有文本内容中文为'取消'、'确定'，英文对应为'Cancel'、'Confirm'。",
+    "last_state": 2
+  },
+  {
+    "state_id": 4,
+    "state_name": "管理应用页添加成功态",
+    "description": "顶部状态栏保持不变；顶部导航栏含左对齐返回箭头与居中'管理应用'标题；其下方一行灰色小字'已添加X个'（数字比前态+1，字体/颜色/位置完全一致）；其下为垂直滚动列表，其中某一项的应用开关控件已切换为开启态（蓝色填充背景#C7000B，白色对勾图标居中，28×16px）；底部Tab导航栏完整可见且'营销'项仍高亮；屏幕最下方出现一行黑底白字Toast（高度44px，圆角8px，背景#000000，文字14px HarmonyHeiTi-Regular，#FFFFFF，居中不换行，内容为'添加成功'）。",
+    "implementation_method": "轻量级提示 (Toast/Snackbar)：绝对定位 bottom:16px，width:fit-content，padding:0 16px；开关控件修改为开启态：background-color:#C7000B，::after 伪元素显示白色对勾 SVG（尺寸12×12px，居中）；计数文本内容更新为'已添加Y个'（Y = X+1）；画面其余部分与 state_2 完全一致。",
+    "last_state": 2
+  },
+  {
+    "state_id": 5,
+    "state_name": "添加失败提示态",
+    "description": "顶部状态栏保持不变；顶部导航栏含左对齐返回箭头与居中'管理应用'标题；其下方一行灰色小字'已添加X个'（数字未变，字体/颜色/位置完全一致）；其下为垂直滚动列表，其中某一项的应用开关控件仍处于关闭态（浅灰#DFDFDF背景+白色圆点，与 state_2 完全一致）；底部Tab导航栏完整可见且'营销'项仍高亮；屏幕最下方出现一行黑底白字Toast（高度44px，圆角8px，背景#000000，边框1px solid #FF4D4F，文字14px HarmonyHeiTi-Regular，#FFFFFF，居中不换行，内容为'添加失败，请重试'）。",
+    "implementation_method": "轻量级提示 (Toast/Snackbar)：绝对定位 bottom:16px，width:fit-content，padding:0 16px，border:1px solid #FF4D4F；开关控件保持关闭态，不作任何改动；计数文本内容维持'已添加X个'；画面其余部分与 state_2 完全一致。",
+    "last_state": 2
+  },
+  {
+    "state_id": 6,
+    "state_name": "取消添加流程态",
+    "description": "顶部状态栏保持不变；顶部导航栏含左对齐返回箭头与居中'管理应用'标题；其下方一行灰色小字'已添加X个'（数字未变，字体/颜色/位置完全一致）；其下为垂直滚动列表，所有应用开关控件均保持原关闭态（浅灰#DFDFDF背景+白色圆点）；底部Tab导航栏完整可见且'营销'项仍高亮；无任何遮罩、弹窗、Toast、高亮、抖动或动画效果；所有元素位置、尺寸、颜色、文字与 state_2 完全一致。",
+    "implementation_method": "画面与 last_state（state_2）完全一致；base 已是关闭后的样子，无需任何 DOM 改造。",
+    "last_state": 2
+  }
+]

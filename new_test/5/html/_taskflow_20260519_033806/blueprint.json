@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "title": "进入虚拟体验项目全览",
+    "slug": "enter-virtual-experience-project-overview",
+    "user_story": "已登录的企业网络管理员在‘我的工作台’点击‘我的体验项目’入口，快速进入指定体验项目全览 → 系统加载实时拓扑与运行指标 → 用户滑动查看各模块并确认当前状态 → 页面顶部显示‘虚拟体验项目’标题，且设备拓扑图、Wi-Fi评分、运行时长均完成渲染并可见",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "我的工作台初始首页",
+      "description": "纯白背景，顶部状态栏显示时间/信号/4G图标，底部Tab栏固定显示‘工作台’‘网络’‘监控’‘我’四个图标，页面中央区域有‘我的体验项目’文字按钮（深灰文字+浅灰底圆角矩形），按钮下方无其他内容，无遮罩、无弹窗、无浮动元素。",
+      "implementation_method": "原始 HTML 初始快照，不做改造",
+      "last_state": null
+    },
+    {
+      "state_id": 2,
+      "state_name": "我的体验项目内嵌弹窗",
+      "description": "顶部状态栏保持不变（含时间/信号/4G图标），底部Tab栏完整可见且未被遮挡；页面中央浮起一张半透明遮罩层（rgba(0,0,0,0.3)），其上叠加一个白色圆角卡片（宽340px，高约500px），卡片顶部居中显示‘我的体验项目’标题（16px Medium字体，深灰#191919），卡片内部为垂直滚动列表，每张项目卡片含图标+项目名+更新时间，卡片底部紧贴Tab栏上方留出8px空白。",
+      "implementation_method": "内嵌浮层弹窗 (Overlay + Card)：半透明遮罩层 rgba(0,0,0,0.3) 覆盖整个视口；白色圆角卡片（border-radius:12px, background:#FFFFFF）宽340px、高500px、绝对定位居中；卡片顶部标题 '我的体验项目'（font-size:16px, font-weight:Medium, color:#191919）；列表项共N行，每行含SVG图标（24×24）、项目名（14px Regular, #191919）、更新时间（12px Regular, #666666）；卡片底部距离Tab栏上边缘8px。",
+      "last_state": 1
+    },
+    {
+      "state_id": 3,
+      "state_name": "虚拟体验项目页加载中",
+      "description": "全屏白底页面，顶部导航栏固定显示‘虚拟体验项目’标题（16px Medium, #191919）、左侧返回箭头图标（24×24 SVG）、右侧依次为搜索图标（24×24）、通知图标（24×24）、加号图标（24×24）；导航栏下方为留空区域（高度约60vh），其中央显示三条灰色骨架横条（高16px、宽分别为80%、60%、70%，色值rgba(0,0,0,0.08)，圆角2px），无设备拓扑图、无Wi-Fi评分、无统计模块，底部Tab栏不可见。",
+      "implementation_method": "全屏白底页面 (Fullpage Skeleton)：顶部导航栏（height:56px, background:#FFFFFF, box-shadow:0 1px 2px rgba(0,0,0,0.05)）含标题 '虚拟体验项目'、返回图标（<svg>路径）、搜索图标（<svg>路径）、通知图标（<svg>路径）、加号图标（<svg>路径）；下方主内容区为60vh高度空白区；骨架图：三条水平灰色横条（height:16px, border-radius:2px, background:rgba(0,0,0,0.08)），位置垂直居中，宽度分别为80%、60%、70%；无任何可交互模块，无底部Tab。",
+      "last_state": 1
+    },
+    {
+      "state_id": 4,
+      "state_name": "虚拟体验项目页就绪",
+      "description": "全屏白底页面，顶部导航栏固定显示‘虚拟体验项目’标题（16px Medium, #191919）、左侧返回箭头图标（24×24 SVG）、右侧依次为搜索图标（24×24）、通知图标（24×24）、加号图标（24×24）；导航栏下方依次为：设备拓扑图（SVG渲染，宽100%，高220px，含节点连线与标签）、Wi-Fi评分卡片（宽100%，高80px，蓝底#46B1E3，含大数字评分+‘Wi-Fi评分’文字+色块进度条）、运行时长标签（14px Regular, #666666，含‘运行时长：’+具体小时数）、设备统计卡片（宽100%，高96px，含‘设备总数’数字+‘在线/离线’双状态）、终端统计卡片（同设备卡片结构）、业务网管理模块（标题+开关控件+‘配置’按钮）、访问控制模块（标题+列表+‘添加规则’按钮）；所有模块纵向堆叠、无遮罩、无滚动提示，底部Tab栏不可见。",
+      "implementation_method": "全屏页面 (Fullpage Content)：顶部导航栏（height:56px, background:#FFFFFF, box-shadow:0 1px 2px rgba(0,0,0,0.05)）含标题 '虚拟体验项目'、返回图标（<svg>路径）、搜索图标（<svg>路径）、通知图标（<svg>路径）、加号图标（<svg>路径）；设备拓扑图：SVG容器宽100%、高220px，含圆形节点（stroke:#46B1E3, fill:#FFFFFF）、连线（stroke:#CCCCCC）、文字标签（12px Regular, #333333）；Wi-Fi评分卡片：背景#46B1E3，内含大数字（32px Medium, #FFFFFF）、副标题 'Wi-Fi评分'（14px Regular, rgba(255,255,255,0.9)）、进度条（height:4px, background:#FFFFFF, opacity:0.3）；运行时长标签：文本 '运行时长：72h 15m'（14px Regular, #666666）；设备统计卡片：标题 '设备总数'（14px Medium, #191919）、数字 '42'（24px Medium, #191919）、状态行 '在线 38 / 离线 4'（12px Regular, #666666）；终端统计卡片：结构同设备统计卡片；业务网管理模块：标题 '业务网管理'（16px Medium, #191919）、开关控件（on/off toggle）、按钮 '配置'（14px Regular, #46B1E3）；访问控制模块：标题 '访问控制'（16px Medium, #191919）、列表项（每项含名称+IP+操作按钮）、按钮 '添加规则'（14px Regular, #46B1E3）。",
+      "last_state": 3
+    },
+    {
+      "state_id": 5,
+      "state_name": "网络异常提示页",
+      "description": "全屏白底页面，顶部导航栏固定显示‘虚拟体验项目’标题（16px Medium, #191919）、左侧返回箭头图标（24×24 SVG）、右侧依次为搜索图标（24×24）、通知图标（24×24）、加号图标（24×24）；导航栏下方中央区域显示红色警示图标（48×48 SVG）、大字‘网络连接异常’（20px Medium, #FF4D4F）、灰字说明‘请检查网络后重试’（14px Regular, #666666），底部居中一个‘刷新’按钮（宽120px、高40px、圆角20px、背景#46B1E3、文字‘刷新’（14px Medium, #FFFFFF））；无设备拓扑图、无Wi-Fi评分、无统计模块，底部Tab栏不可见。",
+      "implementation_method": "全屏红色警示页 (Fullpage Error State)：顶部导航栏（height:56px, background:#FFFFFF, box-shadow:0 1px 2px rgba(0,0,0,0.05)）含标题 '虚拟体验项目'、返回图标（<svg>路径）、搜索图标（<svg>路径）、通知图标（<svg>路径）、加号图标（<svg>路径）；中央区域：红色警示图标（<svg>路径, width:48px, height:48px, fill:#FF4D4F）、标题 '网络连接异常'（20px Medium, #FF4D4F）、说明 '请检查网络后重试'（14px Regular, #666666）；底部按钮：'刷新'（width:120px, height:40px, border-radius:20px, background:#46B1E3, color:#FFFFFF, font-size:14px, font-weight:Medium）；无任何数据模块。",
+      "last_state": 3
+    },
+    {
+      "state_id": 6,
+      "state_name": "权限不足提示页",
+      "description": "纯白背景，顶部状态栏显示时间/信号/4G图标，底部Tab栏固定显示‘工作台’‘网络’‘监控’‘我’四个图标；页面中央区域显示蓝色锁形图标（48×48 SVG）、大字‘暂无访问权限’（20px Medium, #191919）、小字‘您当前账号未被授权查看该项目’（14px Regular, #666666），底部居中一个‘返回工作台’按钮（宽140px、高40px、圆角20px、背景#F3F3F3、文字‘返回工作台’（14px Medium, #191919））；无导航栏、无拓扑图、无评分、无统计模块。",
+      "implementation_method": "全屏权限拦截页 (Fullpage Permission Denied)：纯白背景（#FFFFFF）；顶部状态栏（time/signal/4G icons）正常可见；底部Tab栏（‘工作台’‘网络’‘监控’‘我’）完整可见；中央区域：锁形图标（<svg>路径, width:48px, height:48px, fill:#46B1E3）、标题 '暂无访问权限'（20px Medium, #191919）、说明 '您当前账号未被授权查看该项目'（14px Regular, #666666）；底部按钮：'返回工作台'（width:140px, height:40px, border-radius:20px, background:#F3F3F3, color:#191919, font-size:14px, font-weight:Medium）；无导航栏、无内容模块。",
+      "last_state": 1
+    }
+  ]
+}

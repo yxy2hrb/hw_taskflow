@@ -1,0 +1,15 @@
+{
+  "state_name": "校验失败实时提示",
+  "lifecycle": "persistent",
+  "injection": { "mode": "append", "anchor": "#name-field" },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "Text",
+    "props": {
+      "text": "Name cannot be empty",
+      "size": 14,
+      "color": "#FF4D4F",
+      "align": "left"
+    }
+  }
+}

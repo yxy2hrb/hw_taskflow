@@ -1,0 +1,7 @@
+{"event":"state-start","data":{"state_id":3,"state_name":"请选择添加方式弹窗","last_state":2,"ts":1779225859364},"ts":"2026-05-19T21:24:19.367Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[baseline] HM_BASELINE_ENABLED=1，走 baseline 一锤子路径（跳过 twoPhase / DSL / legacy）","ts":1779225859364},"ts":"2026-05-19T21:24:19.368Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[baseline] 启动 state_3 「请选择添加方式弹窗」","ts":1779225859364},"ts":"2026-05-19T21:24:19.369Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[baseline] prompt 20.3KB lang=zh prevHtml=228.6KB->stripped 13.7KB","ts":1779225859366},"ts":"2026-05-19T21:24:19.369Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[baseline] LLM 第 1 次返回空，重试（temp=0.2）","ts":1779225951361},"ts":"2026-05-19T21:25:51.363Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[baseline] LLM 第 2 次返回空，重试（temp=0.5）","ts":1779225984102},"ts":"2026-05-19T21:26:24.103Z"}
+{"event":"state-fail","data":{"state_id":3,"error":"LLM 返回空","elapsed_ms":124738,"ts":1779225984102},"ts":"2026-05-19T21:26:24.103Z"}

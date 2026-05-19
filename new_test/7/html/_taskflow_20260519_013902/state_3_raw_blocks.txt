@@ -1,0 +1,179 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "new-overlay",
+      "anchor": "#146_395667",
+      "instruction": "在 body 末尾、底部导航栏容器之前插入全屏深灰半透遮罩层（position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6)）；正中悬浮白色圆角卡片（position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); width:320px; height:360px; background:white; border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,0.15)）；卡片内顶部居中显示'请选择添加方式'标题（14px HarmonyHeiTi-Medium，#191919）；下方四列等距排列图标项（每项含32×32px线性图标 + 下方12px文字：'快捷入口'/'小卡片'/'中卡片'/'大卡片'，文字颜色#191919）；卡片底部居中显示'取消'文字按钮（14px HarmonyHeiTi-Regular，#C7000B，无背景、无边框）；所有文字字体为 HarmonyHeiTi, 'HarmonyOS Sans', sans-serif；无任何动画痕迹。",
+      "components_needed": ["Dialog", "Button"],
+      "icons_needed": []
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "OverlayMask",
+    "props": {
+      "opacity": 0.4,
+      "color": "#000000"
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "borderRadius": 16,
+          "width": "auto",
+          "maxWidth": 320,
+          "padding": 24,
+          "shadow": true,
+          "gap": 24,
+          "align": "stretch"
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "variant": "title",
+              "size": 20,
+              "weight": 700,
+              "color": "rgba(0,0,0,0.90)",
+              "align": "center"
+            },
+            "children": "请选择添加方式"
+          },
+          {
+            "type": "Grid",
+            "props": {
+              "columns": 2,
+              "gap": 24
+            },
+            "children": [
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 8,
+                  "align": "center"
+                },
+                "children": [
+                  {
+                    "type": "Icon",
+                    "props": {
+                      "name": "dashboard",
+                      "size": 32,
+                      "color": "rgba(0,0,0,0.60)"
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "body",
+                      "size": 12,
+                      "weight": 500,
+                      "color": "rgba(0,0,0,0.90)"
+                    },
+                    "children": "快捷入口"
+                  }
+                ]
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 8,
+                  "align": "center"
+                },
+                "children": [
+                  {
+                    "type": "Icon",
+                    "props": {
+                      "name": "widgets",
+                      "size": 32,
+                      "color": "rgba(0,0,0,0.60)"
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "body",
+                      "size": 12,
+                      "weight": 500,
+                      "color": "rgba(0,0,0,0.90)"
+                    },
+                    "children": "小卡片"
+                  }
+                ]
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 8,
+                  "align": "center"
+                },
+                "children": [
+                  {
+                    "type": "Icon",
+                    "props": {
+                      "name": "view_compact",
+                      "size": 32,
+                      "color": "rgba(0,0,0,0.60)"
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "body",
+                      "size": 12,
+                      "weight": 500,
+                      "color": "rgba(0,0,0,0.90)"
+                    },
+                    "children": "中卡片"
+                  }
+                ]
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 8,
+                  "align": "center"
+                },
+                "children": [
+                  {
+                    "type": "Icon",
+                    "props": {
+                      "name": "view_module",
+                      "size": 32,
+                      "color": "rgba(0,0,0,0.60)"
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "body",
+                      "size": 12,
+                      "weight": 500,
+                      "color": "rgba(0,0,0,0.90)"
+                    },
+                    "children": "大卡片"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "取消",
+              "variant": "text",
+              "size": "compact",
+              "color": "#C7000B",
+              "align": "center"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

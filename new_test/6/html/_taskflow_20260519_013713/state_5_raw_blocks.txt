@@ -1,0 +1,55 @@
+{
+  "state_name": "快速入门网络失败态",
+  "lifecycle": "temporary",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "FullscreenPanel",
+    "props": { "background": "rgba(0, 0, 0, 0.1)" },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "align": "center",
+          "justify": "center",
+          "gap": 16,
+          "padding": 24,
+          "width": "100%",
+          "maxWidth": 360
+        },
+        "children": [
+          {
+            "type": "Icon",
+            "props": {
+              "name": "error",
+              "size": 24,
+              "color": "#FF4D4F"
+            }
+          },
+          {
+            "type": "Text",
+            "props": {
+              "text": "Network error. Please check and retry.",
+              "variant": "body",
+              "size": 14,
+              "color": "#FF4D4F",
+              "align": "center"
+            }
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "Retry",
+              "variant": "primary",
+              "size": "compact",
+              "block": false,
+              "width": 80,
+              "color": "#46B1E3",
+              "background": "#46B1E3"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

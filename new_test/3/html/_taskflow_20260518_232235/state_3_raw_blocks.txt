@@ -1,0 +1,194 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": ["#14_884212", "#14_884368"],
+      "replace_at": "#14_884212",
+      "instruction": "将顶部导航栏（原'我的工作台'区域）替换为全屏页固定导航栏：高56px，背景#FFFFFF，底部1px #F3F3F3边框；左侧为蓝色左向箭头图标（24×24px，#46B1E3）；居中显示文字'虚拟体验项目'（16px，#191919，HarmonyHeiTi-Medium）；右侧并排三个图标：搜索放大镜（20×20px，#666）、铃铛通知（20×20px，#666）、加号（20×20px，#46B1E3）；所有图标使用内联SVG，尺寸与颜色严格匹配。",
+      "components_needed": ["IconButton"]
+    },
+    {
+      "id": "e2",
+      "type": "state-toggle",
+      "anchor": "#14_884368",
+      "instruction": "将'虚拟体验项目'区块整体替换为全屏页主体内容：从导航栏下方开始，顶部为宽100%、高240px的网络拓扑图SVG（含AP/终端节点与连线）；其下方依次为Wi-Fi评分卡片（蓝底#46B1E3、白字'Wi-Fi评分：92分'、14px）、运行时长条（灰色底#F3F3F3、蓝色进度条#46B1E3高8px、文字'已运行 3天12小时'、14px）、设备统计（'设备总数：15台'、14px #191919）、终端统计（'在线终端：12个'、14px #191919），全部左对齐，行高20px，字体HarmonyHeiTi-Regular；无图标，纯文字展示。",
+      "components_needed": ["Card"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Row",
+    "props": {
+      "height": 56,
+      "background": "#FFFFFF",
+      "borderBottom": "1px solid #F3F3F3",
+      "padding": [0, 16],
+      "align": "center",
+      "justify": "space-between"
+    },
+    "children": [
+      {
+        "type": "Icon",
+        "props": {
+          "name": "arrow_back",
+          "size": 24,
+          "color": "#46B1E3"
+        }
+      },
+      {
+        "type": "Text",
+        "props": {
+          "text": "虚拟体验项目",
+          "size": 16,
+          "weight": 500,
+          "color": "#191919",
+          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+        }
+      },
+      {
+        "type": "Row",
+        "props": {
+          "gap": 16,
+          "align": "center"
+        },
+        "children": [
+          {
+            "type": "Icon",
+            "props": {
+              "name": "search",
+              "size": 20,
+              "color": "#666"
+            }
+          },
+          {
+            "type": "Icon",
+            "props": {
+              "name": "notifications",
+              "size": 20,
+              "color": "#666"
+            }
+          },
+          {
+            "type": "Icon",
+            "props": {
+              "name": "add",
+              "size": 20,
+              "color": "#46B1E3"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+[NEXT]
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "gap": 16,
+      "padding": "0 16px",
+      "align": "stretch"
+    },
+    "children": [
+      {
+        "type": "Image",
+        "props": {
+          "placeholder": "topology",
+          "width": "100%",
+          "height": 240,
+          "borderRadius": 8
+        }
+      },
+      {
+        "type": "Column",
+        "props": {
+          "background": "#46B1E3",
+          "borderRadius": 16,
+          "padding": "12px 16px",
+          "gap": 4
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "variant": "body",
+              "color": "#FFFFFF",
+              "size": 14,
+              "weight": "500",
+              "lineHeight": 1.43
+            },
+            "children": "Wi-Fi评分：92分"
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "background": "#F3F3F3",
+          "borderRadius": 4,
+          "padding": "8px 16px",
+          "gap": 4
+        },
+        "children": [
+          {
+            "type": "Row",
+            "props": {
+              "justify": "space-between",
+              "align": "center"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "caption",
+                  "color": "rgba(0,0,0,0.90)",
+                  "size": 14,
+                  "weight": "500",
+                  "lineHeight": 1.43
+                },
+                "children": "已运行 3天12小时"
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "background": "#46B1E3",
+              "height": 8,
+              "borderRadius": 4,
+              "width": "100%"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Text",
+        "props": {
+          "variant": "caption",
+          "color": "rgba(0,0,0,0.90)",
+          "size": 14,
+          "weight": "500",
+          "lineHeight": 1.43
+        },
+        "children": "设备总数：15台"
+      },
+      {
+        "type": "Text",
+        "props": {
+          "variant": "caption",
+          "color": "rgba(0,0,0,0.90)",
+          "size": 14,
+          "weight": "500",
+          "lineHeight": 1.43
+        },
+        "children": "在线终端：12个"
+      }
+    ]
+  }
+}

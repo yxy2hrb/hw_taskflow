@@ -1,0 +1,103 @@
+{
+  "sessionId": "tf_63b85eb0bbb8",
+  "question": {
+    "id": "phase_1",
+    "phase": 1,
+    "questionText": "请从下面四个维度各选一项最贴近你意图的描述，我会把它们拼成完整的 User Story。",
+    "options": [
+      {
+        "id": "actor_1",
+        "label": "已登录的企业协作者",
+        "rationale": "有组织归属、可创建项目集、需区分公司/个人属性",
+        "group": "① Actor · 主角",
+        "default": true
+      },
+      {
+        "id": "actor_2",
+        "label": "刚完成实名认证的个人用户",
+        "rationale": "具备创建权限但无组织绑定，倾向选择‘个人’属性",
+        "group": "① Actor · 主角",
+        "default": false
+      },
+      {
+        "id": "actor_3",
+        "label": "多角色切换的管理员",
+        "rationale": "可能同时管理公司级与个人项目集，需快速切换上下文",
+        "group": "① Actor · 主角",
+        "default": false
+      },
+      {
+        "id": "trigger_1",
+        "label": "在‘我的工作台’页面点击‘创建项目集’按钮",
+        "rationale": "与用户简述完全一致，是明确、唯一、主路径入口",
+        "group": "② Trigger · 触发点",
+        "default": true
+      },
+      {
+        "id": "trigger_2",
+        "label": "从项目详情页右上角菜单选择‘加入项目集’",
+        "rationale": "属于延伸场景，需先存在项目，非初始创建流程",
+        "group": "② Trigger · 触发点",
+        "default": false
+      },
+      {
+        "id": "trigger_3",
+        "label": "通过分享链接跳转至空白创建页并预填来源信息",
+        "rationale": "支持协作邀请场景，但依赖外部参数注入",
+        "group": "② Trigger · 触发点",
+        "default": false
+      },
+      {
+        "id": "goal_1",
+        "label": "填写名称并指定归属类型 → 系统校验名称非空且所选项目匹配属性 → 用户点击确认后完成创建",
+        "rationale": "严格对应简述中的动作链和校验逻辑，不含额外分支",
+        "group": "③ Goal & Happy Path · 核心目标与理想路径",
+        "default": true
+      },
+      {
+        "id": "goal_2",
+        "label": "输入名称并切换‘公司/个人’开关 → 系统动态过滤可添加项目列表 → 用户勾选后确认提交",
+        "rationale": "强调实时筛选交互，但原始简述未提及动态过滤行为",
+        "group": "③ Goal & Happy Path · 核心目标与理想路径",
+        "default": false
+      },
+      {
+        "id": "goal_3",
+        "label": "粘贴项目ID或扫码添加 → 系统自动识别归属并锁定属性 → 用户仅需补全名称后确认",
+        "rationale": "引入新输入方式，属于增强型路径，非基础流程",
+        "group": "③ Goal & Happy Path · 核心目标与理想路径",
+        "default": false
+      },
+      {
+        "id": "success_1",
+        "label": "顶部弹出‘创建成功’Toast，且页面自动返回工作台并刷新项目集列表",
+        "rationale": "包含视觉反馈+状态同步，覆盖用户可见的成功闭环",
+        "group": "④ Success Criteria · 成功判定",
+        "default": true
+      },
+      {
+        "id": "success_2",
+        "label": "仅顶部弹出‘创建成功’Toast，不跳转也不刷新，需用户手动下拉刷新",
+        "rationale": "轻量反馈，适合弱一致性要求场景，但与‘确认后’隐含的流程终止感略有偏差",
+        "group": "④ Success Criteria · 成功判定",
+        "default": false
+      },
+      {
+        "id": "success_3",
+        "label": "Toast出现后，底部Tab中‘项目集’徽标角标+1，且新项目集出现在最近访问栏首位",
+        "rationale": "强化发现性，增加二级状态提示，属体验增强而非必要成功信号",
+        "group": "④ Success Criteria · 成功判定",
+        "default": false
+      }
+    ],
+    "multiSelect": true,
+    "allowCustom": true,
+    "note": "四个维度各选一项，也可以在补充栏写'Actor: xxx; Trigger: xxx;' 形式覆盖。",
+    "sectionLabel": "任务流阶段 1/3",
+    "sectionProgress": {
+      "current": 1,
+      "total": 3
+    }
+  },
+  "sourceDir": ""
+}

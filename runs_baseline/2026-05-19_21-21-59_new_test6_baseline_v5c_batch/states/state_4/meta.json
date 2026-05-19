@@ -1,0 +1,9 @@
+{
+  "state_id": 4,
+  "state_name": "快速入门就绪态",
+  "description": "顶部状态栏与底部Tab栏保持完全可见且交互正常，背景为原工作台页整体半透明蒙层（rgba(0,0,0,0.4)），中部垂直居中显示宽320px圆角搜索框（高44px，浅灰边框#E1E1E1，内嵌‘搜索...’提示文字，14px Regular，浅灰#999），下方并排四枚蓝色描边标签（宽72px×高28px，圆角8px，描边#46B1E3，文字‘产品类A’/‘产品类B’/‘产品类C’/‘产品类D’，12px Regular，深蓝#46B1E3），再下方七行卡片式条目：每行含左对齐16×16产品图标、14px深灰标题文本、右对齐‘查看’文字按钮（12px Medium，主色#46B1E3），所有元素间距均匀，无骨架、无加载动画，全部内容稳定渲染完成。",
+  "implementation_method": "全屏浮层 (Overlay Modal)：背景为 rgba(0,0,0,0.4) 半透明遮罩；中部容器宽320px，垂直居中；搜索框为 input[type='text'] 元素，placeholder='搜索...'；四枚标签为 button 元素，文案分别为 '产品类A' / '产品类B' / '产品类C' / '产品类D'；七条条目为 div.card 行容器，每行含 img.icon（16×16）、p.title（14px，#191919）、button.view-btn（12px Medium，#46B1E3）；所有文字中英文均未出现，仅中文。",
+  "last_state": 1,
+  "failed": true,
+  "error": "LLM 返回空"
+}

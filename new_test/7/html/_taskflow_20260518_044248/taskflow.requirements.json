@@ -1,0 +1,44 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "管理应用首页",
+    "description": "顶部状态栏显示时间与信号图标，页面主体为带开关的应用列表，每项含应用图标、名称、右侧灰色关闭态开关；列表顶部固定显示‘已添加X个’文字（深灰14px），底部Tab导航栏高亮‘营销’项（红色文字），其余Tab为黑色常规文字。",
+    "implementation_method": "原始 HTML 初始快照，不做改造",
+    "last_state": null
+  },
+  {
+    "state_id": 2,
+    "state_name": "添加方式选择弹窗",
+    "description": "全屏深色半透明遮罩层（rgba(0,0,0,0.5)）覆盖整个页面，中央悬浮白色圆角卡片（宽320px，高360px），顶部居中显示标题‘请选择添加方式’（14px Medium，深灰#191919）；下方横向平铺四张等宽卡片（各72px宽），从左至右依次为：快捷入口（闪电图标+‘快捷’文字）、小卡片（方块图标+‘小’）、中卡片（矩形图标+‘中’）、大卡片（横幅图标+‘大’），所有图标为16px单色SVG，文字为14px Regular，底色均为白色，边框1px浅灰#DFDFDF，间距均匀。",
+    "implementation_method": "模态弹窗 (Modal/Dialog)：深色半透明遮罩层（rgba(0,0,0,0.5)）+ 居中白色圆角卡片（320×360px）；标题 '请选择添加方式'；四张选项卡片分别含图标+文字：'快捷'、'小'、'中'、'大'；无按钮，全部区域可点击。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "添加中过渡态",
+    "description": "全屏遮罩层已消失，页面主体恢复为应用列表，被操作的应用项右侧开关变为灰色禁用态（背景#DFDFDF，实心圆点不可见，内部嵌入16px旋转加载图标），列表顶部‘已添加X个’数字旁叠加浅灰色微标‘+1’（12px，opacity:0.6），其余所有元素（状态栏、应用图标、名称、其他开关、底部Tab）保持原样静止，无任何浮层或动效残留。",
+    "implementation_method": "开关控件 (Switch)：禁用态（background-color:#DFDFDF；内部嵌入16px旋转加载图标 SVG，stroke:#191919；无文字变化）；总数区域叠加微标 ' +1 '（12px Regular，rgba(25,25,25,0.6)）；画面其余部分与 state_1 完全一致，仅在此处做局部修改。",
+    "last_state": 1
+  },
+  {
+    "state_id": 4,
+    "state_name": "添加成功终态",
+    "description": "应用列表完整可见，被操作的应用项右侧开关显示为绿色开启态（轨道背景#C7000B，实心圆点#FFFFFF，直径12px，位置居右），列表顶部‘已添加X个’文字已更新为新总数（14px Medium，深灰#191919），右上角状态栏下方16px处悬浮白色Toast（圆角4px，宽240px，高44px），内含绿色对勾图标（16px）与文字‘添加成功’（14px Regular，深灰#191919），底部Tab导航栏仍高亮‘营销’项。",
+    "implementation_method": "轻量级提示 (Toast/Snackbar)：白色圆角矩形（240×44px，border-radius:4px），位于顶部状态栏下方16px；内含绿色对勾图标（SVG，#C7000B）+ 文字 '添加成功'；开关控件 (Switch)：开启态（track background:#C7000B，thumb:#FFFFFF）；总数文字已更新为新值；其余界面与 state_1 完全一致。",
+    "last_state": 1
+  },
+  {
+    "state_id": 5,
+    "state_name": "添加失败终态",
+    "description": "应用列表完整可见，被操作的应用项右侧开关恢复为灰色关闭态（背景#DFDFDF，无实心圆点），列表顶部‘已添加X个’文字回退为原始总数（14px Medium，深灰#191919），右上角状态栏下方16px处悬浮白色Toast（圆角4px，宽240px，高44px），内含红色感叹号图标（16px）与文字‘添加失败，请重试’（14px Regular，深灰#191919），底部Tab导航栏仍高亮‘营销’项。",
+    "implementation_method": "轻量级提示 (Toast/Snackbar)：白色圆角矩形（240×44px，border-radius:4px），位于顶部状态栏下方16px；内含红色感叹号图标（SVG，#C7000B）+ 文字 '添加失败，请重试'；开关控件 (Switch)：关闭态（background:#DFDFDF，无thumb）；总数文字已还原为原始值；其余界面与 state_1 完全一致。",
+    "last_state": 1
+  },
+  {
+    "state_id": 6,
+    "state_name": "取消添加状态",
+    "description": "顶部状态栏显示时间与信号图标，页面主体为带开关的应用列表，每项含应用图标、名称、右侧灰色关闭态开关；列表顶部固定显示‘已添加X个’文字（深灰14px），底部Tab导航栏高亮‘营销’项（红色文字），其余Tab为黑色常规文字；画面中没有任何遮罩、弹窗、浮层、Toast或临时图标。",
+    "implementation_method": "画面与 last_state（state_1）完全一致；base 已是关闭后的样子，无需任何 DOM 改造。",
+    "last_state": 1
+  }
+]

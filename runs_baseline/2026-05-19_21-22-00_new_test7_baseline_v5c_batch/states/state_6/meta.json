@@ -1,0 +1,12 @@
+{
+  "state_id": 6,
+  "state_name": "添加失败态",
+  "description": "顶部固定标题栏含返回箭头与'管理应用'文字；下方灰色小字'已添加X个'（数值与state_2相同，未增加）；主体列表中，被用户选择添加方式的应用项右侧开关控件仍为关闭态（浅灰轨道+深灰滑块）；其余所有应用项开关保持原态；底部Tab导航栏完整可见；屏幕中央偏上位置悬浮一个橙红色底白字Toast条（宽280px、高44px、背景#FF6B35、圆角4px、文字'添加失败，请重试'、14px Regular、#FFFFFF、居中对齐）；无遮罩、无弹窗、无其他浮层。",
+  "implementation_method": "状态变更叠加 (State Overlay)：在state_2 DOM 基础上，确保目标应用项.switch-wrapper保持关闭态（class不包含'is-on'，或style='background:#DFDFDF;'）；计数文本内容保持'已添加X个'不变；在body末尾追加<div class='toast' style='position:fixed;top:88px;left:50%;transform:translateX(-50%);width:280px;height:44px;background:#FF6B35;border-radius:4px;display:flex;align-items:center;justify-content:center;z-index:1001;'><span style='font-size:14px;font-family:\"HarmonyHeiTi-Regular\";color:#FFFFFF;'>添加失败，请重试</span></div>。",
+  "last_state": 2,
+  "applied": 1,
+  "skipped": 0,
+  "elapsed_ms": 122773,
+  "failed": false,
+  "error": null
+}

@@ -1,0 +1,504 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "new-overlay",
+      "anchor": "#14_1031108",
+      "instruction": "在 body 直接子级末尾新增全屏模态浮层：背景蒙层 rgba(0,0,0,0.1) 覆盖整个 viewport；顶部状态栏与底部 Tab 栏未遮挡；中部悬浮白色圆角卡片（#FFFFFF，width:340px，height:620px，border-radius:12px，box-shadow:0 4px 12px rgba(0,0,0,0.05)）；卡片内顶部为 placeholder='搜索...' 的灰色搜索框（#999，14px，HarmonyHeiTi-Regular）；下方横向排列四枚浅蓝底色圆形标签（WPS云、协作、安全、运维），每枚宽高约64px，圆角50%，背景色 #E6F4FF，文字14px #191919；再下方垂直排列7条条目，每条含标题（14px #191919，HarmonyHeiTi-Medium）、摘要（12px #666，HarmonyHeiTi-Regular）和右侧‘查看’按钮（80px宽，#46B1E3底色，白色文字，圆角8px）；所有文案使用中文；无遮罩，不覆盖顶部状态栏与底部 Tab 栏。",
+      "components_needed": ["Dialog", "Search", "Button", "Card"],
+      "icons_needed": []
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "position": "fixed",
+      "top": "50%",
+      "left": "50%",
+      "transform": "translate(-50%, -50%)",
+      "width": 340,
+      "height": 620,
+      "background": "#FFFFFF",
+      "borderRadius": 12,
+      "shadow": "0 4px 12px rgba(0,0,0,0.05)",
+      "padding": [24, 24, 24, 24],
+      "gap": 24,
+      "zIndex": 10000
+    },
+    "children": [
+      {
+        "type": "TextInput",
+        "props": {
+          "placeholder": "搜索...",
+          "size": "regular",
+          "icon": "search"
+        }
+      },
+      {
+        "type": "Row",
+        "props": {
+          "gap": 12,
+          "wrap": true,
+          "align": "center"
+        },
+        "children": [
+          {
+            "type": "Button",
+            "props": {
+              "label": "WPS云",
+              "variant": "secondary",
+              "size": "compact",
+              "background": "#E6F4FF",
+              "color": "#191919",
+              "borderRadius": 32,
+              "width": 64,
+              "height": 64,
+              "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+              "fontSize": 14,
+              "fontWeight": 400
+            }
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "协作",
+              "variant": "secondary",
+              "size": "compact",
+              "background": "#E6F4FF",
+              "color": "#191919",
+              "borderRadius": 32,
+              "width": 64,
+              "height": 64,
+              "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+              "fontSize": 14,
+              "fontWeight": 400
+            }
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "安全",
+              "variant": "secondary",
+              "size": "compact",
+              "background": "#E6F4FF",
+              "color": "#191919",
+              "borderRadius": 32,
+              "width": 64,
+              "height": 64,
+              "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+              "fontSize": 14,
+              "fontWeight": 400
+            }
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "运维",
+              "variant": "secondary",
+              "size": "compact",
+              "background": "#E6F4FF",
+              "color": "#191919",
+              "borderRadius": 32,
+              "width": 64,
+              "height": 64,
+              "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+              "fontSize": 14,
+              "fontWeight": 400
+            }
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "gap": 16
+        },
+        "children": [
+          {
+            "type": "Row",
+            "props": {
+              "justify": "space-between",
+              "align": "start",
+              "gap": 12
+            },
+            "children": [
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 4
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "color": "#191919",
+                      "fontSize": 14,
+                      "fontWeight": 500,
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "WPS云文档协作指南"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "color": "#666666",
+                      "fontSize": 12,
+                      "fontWeight": 400,
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "如何在WPS云中高效开展多人实时协作编辑"
+                  }
+                ]
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "查看",
+                  "variant": "primary",
+                  "size": "compact",
+                  "background": "#46B1E3",
+                  "color": "#FFFFFF",
+                  "borderRadius": 8,
+                  "width": 80,
+                  "height": 32,
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                  "fontSize": 14,
+                  "fontWeight": 500
+                }
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "justify": "space-between",
+              "align": "start",
+              "gap": 12
+            },
+            "children": [
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 4
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "color": "#191919",
+                      "fontSize": 14,
+                      "fontWeight": 500,
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "企业级数据安全规范"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "color": "#666666",
+                      "fontSize": 12,
+                      "fontWeight": 400,
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "涵盖加密传输、权限分级与审计日志要求"
+                  }
+                ]
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "查看",
+                  "variant": "primary",
+                  "size": "compact",
+                  "background": "#46B1E3",
+                  "color": "#FFFFFF",
+                  "borderRadius": 8,
+                  "width": 80,
+                  "height": 32,
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                  "fontSize": 14,
+                  "fontWeight": 500
+                }
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "justify": "space-between",
+              "align": "start",
+              "gap": 12
+            },
+            "children": [
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 4
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "color": "#191919",
+                      "fontSize": 14,
+                      "fontWeight": 500,
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "智能运维平台接入手册"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "color": "#666666",
+                      "fontSize": 12,
+                      "fontWeight": 400,
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "支持Zabbix/Prometheus指标对接与告警联动"
+                  }
+                ]
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "查看",
+                  "variant": "primary",
+                  "size": "compact",
+                  "background": "#46B1E3",
+                  "color": "#FFFFFF",
+                  "borderRadius": 8,
+                  "width": 80,
+                  "height": 32,
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                  "fontSize": 14,
+                  "fontWeight": 500
+                }
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "justify": "space-between",
+              "align": "start",
+              "gap": 12
+            },
+            "children": [
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 4
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "color": "#191919",
+                      "fontSize": 14,
+                      "fontWeight": 500,
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "多端协同工作流设计"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "color": "#666666",
+                      "fontSize": 12,
+                      "fontWeight": 400,
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "覆盖手机/平板/PC三端任务同步与状态追踪"
+                  }
+                ]
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "查看",
+                  "variant": "primary",
+                  "size": "compact",
+                  "background": "#46B1E3",
+                  "color": "#FFFFFF",
+                  "borderRadius": 8,
+                  "width": 80,
+                  "height": 32,
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                  "fontSize": 14,
+                  "fontWeight": 500
+                }
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "justify": "space-between",
+              "align": "start",
+              "gap": 12
+            },
+            "children": [
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 4
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "color": "#191919",
+                      "fontSize": 14,
+                      "fontWeight": 500,
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "AI辅助文档生成实践"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "color": "#666666",
+                      "fontSize": 12,
+                      "fontWeight": 400,
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "基于大模型的会议纪要自动提炼与格式化输出"
+                  }
+                ]
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "查看",
+                  "variant": "primary",
+                  "size": "compact",
+                  "background": "#46B1E3",
+                  "color": "#FFFFFF",
+                  "borderRadius": 8,
+                  "width": 80,
+                  "height": 32,
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                  "fontSize": 14,
+                  "fontWeight": 500
+                }
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "justify": "space-between",
+              "align": "start",
+              "gap": 12
+            },
+            "children": [
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 4
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "color": "#191919",
+                      "fontSize": 14,
+                      "fontWeight": 500,
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "跨组织协作权限管理"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "color": "#666666",
+                      "fontSize": 12,
+                      "fontWeight": 400,
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "支持外部成员邀请、临时访问码与过期策略"
+                  }
+                ]
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "查看",
+                  "variant": "primary",
+                  "size": "compact",
+                  "background": "#46B1E3",
+                  "color": "#FFFFFF",
+                  "borderRadius": 8,
+                  "width": 80,
+                  "height": 32,
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                  "fontSize": 14,
+                  "fontWeight": 500
+                }
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "justify": "space-between",
+              "align": "start",
+              "gap": 12
+            },
+            "children": [
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 4
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "color": "#191919",
+                      "fontSize": 14,
+                      "fontWeight": 500,
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "HarmonyOS应用开发入门"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "color": "#666666",
+                      "fontSize": 12,
+                      "fontWeight": 400,
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "从DevEco Studio环境搭建到首个UI组件渲染"
+                  }
+                ]
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "查看",
+                  "variant": "primary",
+                  "size": "compact",
+                  "background": "#46B1E3",
+                  "color": "#FFFFFF",
+                  "borderRadius": 8,
+                  "width": 80,
+                  "height": 32,
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                  "fontSize": 14,
+                  "fontWeight": 500
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

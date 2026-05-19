@@ -1,0 +1,56 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "new-overlay",
+      "anchor": "#14_807629",
+      "instruction": "在 body 直接子级末尾新增顶部 Toast：居中悬浮窄条（width:fit-content; left:50%; transform:translateX(-50%); background:#64BB5C; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.06); padding:10px 16px; display:flex; align-items:center; gap:8px;），内含 Material Icons Round check_circle 图标（20×20px，fill:#FFFFFF）和中文文字'创建成功'（font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif; font-size:16px; font-weight:500; color:#FFFFFF; letter-spacing:0.2px;），无遮罩，不覆盖状态栏与底部 Tab。",
+      "components_needed": ["Toast"],
+      "icons_needed": ["check_circle"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Row",
+    "props": {
+      "background": "#64BB5C",
+      "borderRadius": 8,
+      "padding": [10, 16],
+      "gap": 8,
+      "align": "center",
+      "width": "fit-content",
+      "minWidth": "140px",
+      "position": "fixed",
+      "top": "calc(32px + 16px)",
+      "left": "50%",
+      "transform": "translateX(-50%)",
+      "zIndex": 10000,
+      "shadow": "0 4px 12px rgba(0,0,0,0.06)"
+    },
+    "children": [
+      {
+        "type": "Icon",
+        "props": {
+          "name": "check_circle",
+          "size": 20,
+          "color": "#FFFFFF"
+        }
+      },
+      {
+        "type": "Text",
+        "props": {
+          "color": "#FFFFFF",
+          "size": 16,
+          "weight": 500,
+          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+          "letterSpacing": "0.2px"
+        },
+        "children": "创建成功"
+      }
+    ]
+  }
+}

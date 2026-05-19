@@ -1,0 +1,12 @@
+{
+  "state_id": 2,
+  "state_name": "体验项目内嵌弹窗列表",
+  "description": "页面保持原有顶部状态栏与底部Tab栏可见；中部覆盖一层固定高度半屏白色弹窗（高约50vh），顶部有‘我的体验项目’标题（16px Medium 居中）、右侧关闭X图标；弹窗内垂直排列多张卡片，每张卡片含项目名称（14px Regular）、创建时间（12px Regular，灰色）、设备类型与数量（12px Regular，如‘AP×3, 终端×12’）、状态标签（圆角矩形，蓝底白字‘运行中’）、右侧‘进入’按钮（12px Regular，蓝色文字）。",
+  "implementation_method": "内嵌弹窗 (Inline Modal)：固定高度半屏（50vh），白色背景，顶部标题‘我的体验项目’（HarmonyHeiTi-Medium 16px），右侧关闭X图标；每张卡片包含：项目名称文本（HarmonyHeiTi-Regular 14px）、创建时间文本（HarmonyHeiTi-Regular 12px，rgba(0,0,0,0.6)）、设备信息文本（HarmonyHeiTi-Regular 12px，如'AP×3, 终端×12'）、状态标签（圆角矩形，fill-info信息色info_1-14_365554-paragraph 蓝色文字，背景 fill-info信息色info_2-14_365553）、操作按钮‘进入’（HarmonyHeiTi-Regular 12px，fill-info信息色info_1-14_365554-paragraph）。",
+  "last_state": 1,
+  "applied": 1,
+  "skipped": 0,
+  "elapsed_ms": 99416,
+  "failed": false,
+  "error": null
+}

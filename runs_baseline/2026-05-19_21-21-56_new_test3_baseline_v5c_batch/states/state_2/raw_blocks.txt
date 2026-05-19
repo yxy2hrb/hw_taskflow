@@ -1,0 +1,180 @@
+<!-- BASELINE_BODY_START -->
+<body>
+<!-- 顶部状态栏 -->
+<div class="scroll-container">
+  <div id="0_1" class="Pixso-canvas-0_1">
+    <div id="14_884197" class="Pixso-frame-14_884197 fill-场景background-colorcolor-bg-1-14_886006">
+      <div id="14_884198" class="Pixso-frame-14_884198">
+        <div id="14_884199" class="Pixso-vector-14_884199"></div>
+        <div id="14_884200" class="Pixso-vector-14_884200"></div>
+        <div id="14_884201" class="Pixso-vector-14_884201"></div>
+        <div id="14_884202" class="Pixso-vector-14_884202"></div>
+        
+      </div>
+      <div id="14_884211" class="Pixso-rectangle-14_884211"></div>
+      <div id="14_884212" class="Pixso-frame-14_884212">
+        <div id="14_884213" class="Pixso-frame-14_884213">
+          <div class="frame-content-14_884213">
+            <div id="146_170564" class="Pixso-frame-146_170564">
+              <div id="146_170565" class="Pixso-frame-146_170565">
+                <div class="frame-content-146_170565">
+                  <p id="146_170566" class="Pixso-paragraph-146_170566">08:08</p>
+                  <div id="146_170567" class="Pixso-frame-146_170567">
+                    <div id="146_170568" class="Pixso-vector-146_170568"></div>
+                    <div id="146_170580" class="Pixso-vector-146_170580"></div>
+                    <div id="146_170587" class="Pixso-vector-146_170587"></div>
+                    <div id="146_170614" class="Pixso-vector-146_170614"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="146_170624" class="Pixso-frame-146_170624">
+              <div class="frame-content-146_170624">
+                <div id="146_170625" class="Pixso-frame-146_170625">
+                  <div id="146_170626" class="Pixso-frame-146_170626">
+                    <div id="146_170631" class="Pixso-frame-146_170631">
+                      <div id="146_170632" class="Pixso-frame-146_170632">
+                        <div id="146_170633" class="Pixso-frame-146_170633">
+                          <div class="frame-content-146_170633">
+                            <div id="146_170634" class="Pixso-frame-146_170634">
+                              <p id="146_170635" class="Pixso-paragraph-146_170635 fill-场景text-colorcolor-text-primary-6_11379-paragraph">我的</p>
+                            </div>
+                            <p id="146_170639" class="Pixso-paragraph-146_170639 fill-场景text-colorcolor-text-primary-6_11379-paragraph">工作台</p>
+                          </div>
+                        </div>
+                        <div id="146_170640" class="Pixso-frame-146_170640">
+                          <div class="frame-content-146_170640">
+                            <div id="146_170641" class="Pixso-group-146_170641">
+                              <div id="146_170642" class="Pixso-vector-146_170642"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 【删除】上一态所有主内容区块：我要办会、营销物料、分享获客、虚拟体验项目等全部移除 -->
+        <!-- 【删除】顶部导航栏中所有业务卡片（如“我要办会”“营销物料”“分享获客”）及装饰背景层 -->
+        <!-- 【保留】状态栏下方纯色背景：fill-场景background-colorcolor-bg-1-14_886006 已满足 #F5F5F5 / #FFFFFF 要求 -->
+
+        <!-- 【任务节点开始: 体验项目内嵌弹窗列表【临时】】 -->
+        <!-- 内嵌弹窗容器：固定高度半屏，白色背景，不透明，z-index=50，top:44px, bottom:66px -->
+        <div id="hm-inline-modal-experience-list" style="position: fixed; top: 44px; bottom: 66px; left: 0; right: 0; z-index: 50; background: #FFFFFF; overflow-y: auto;">
+          <!-- 弹窗标题栏 -->
+          <div style="height: 44px; display: flex; align-items: center; justify-content: center; position: relative; padding: 0 16px;">
+            <h2 id="hm-modal-title" style="font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif; font-weight: 500; font-size: 16px; color: #191919; margin: 0;">我的体验项目</h2>
+            <button id="hm-modal-close" type="button" style="position: absolute; right: 16px; width: 24px; height: 24px; background: none; border: none; padding: 0; cursor: pointer;">
+              <div class="Pixso-vector-146_139225" style="width: 24px; height: 24px;"></div>
+            </button>
+          </div>
+
+          <!-- 弹窗内容区：垂直卡片流 -->
+          <div style="padding: 0 16px 16px;">
+            <!-- 卡片 1 -->
+            <div id="hm-card-1" style="margin-top: 12px; padding: 12px 0; border-bottom: 1px solid #F0F0F0;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div style="flex: 1; min-width: 0;">
+                  <p id="hm-project-name-1" style="font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif; font-weight: 400; font-size: 14px; color: #191919; margin: 0; line-height: 20px;">华为园区Wi-Fi体验项目</p>
+                  <p id="hm-created-time-1" style="font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif; font-weight: 400; font-size: 12px; color: rgba(0,0,0,0.6); margin: 4px 0 0; line-height: 16px;">创建于 2024-09-20 14:22</p>
+                  <p id="hm-device-info-1" style="font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif; font-weight: 400; font-size: 12px; color: rgba(0,0,0,0.6); margin: 2px 0 0; line-height: 16px;">AP×3, 终端×12</p>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: flex-end; margin-left: 8px;">
+                  <div id="hm-status-tag-1" class="fill-info信息色info_2-14_365553" style="border-radius: 4px; padding: 2px 8px; margin-bottom: 4px;">
+                    <p id="hm-status-text-1" class="fill-info信息色info_1-14_365554-paragraph" style="font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif; font-weight: 400; font-size: 12px; margin: 0;">运行中</p>
+                  </div>
+                  <button id="hm-enter-btn-1" type="button" style="font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif; font-weight: 400; font-size: 12px; color: #1A73E8; background: none; border: none; padding: 0; margin: 0; cursor: pointer;">
+                    进入
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 卡片 2 -->
+            <div id="hm-card-2" style="margin-top: 12px; padding: 12px 0; border-bottom: 1px solid #F0F0F0;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div style="flex: 1; min-width: 0;">
+                  <p id="hm-project-name-2" style="font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif; font-weight: 400; font-size: 14px; color: #191919; margin: 0; line-height: 20px;">SOHO网络开局体验</p>
+                  <p id="hm-created-time-2" style="font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif; font-weight: 400; font-size: 12px; color: rgba(0,0,0,0.6); margin: 4px 0 0; line-height: 16px;">创建于 2024-09-18 09:05</p>
+                  <p id="hm-device-info-2" style="font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif; font-weight: 400; font-size: 12px; color: rgba(0,0,0,0.6); margin: 2px 0 0; line-height: 16px;">AP×2, 终端×8</p>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: flex-end; margin-left: 8px;">
+                  <div id="hm-status-tag-2" class="fill-info信息色info_2-14_365553" style="border-radius: 4px; padding: 2px 8px; margin-bottom: 4px;">
+                    <p id="hm-status-text-2" class="fill-info信息色info_1-14_365554-paragraph" style="font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif; font-weight: 400; font-size: 12px; margin: 0;">已暂停</p>
+                  </div>
+                  <button id="hm-enter-btn-2" type="button" style="font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif; font-weight: 400; font-size: 12px; color: #1A73E8; background: none; border: none; padding: 0; margin: 0; cursor: pointer;">
+                    进入
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 卡片 3 -->
+            <div id="hm-card-3" style="margin-top: 12px; padding: 12px 0;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div style="flex: 1; min-width: 0;">
+                  <p id="hm-project-name-3" style="font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif; font-weight: 400; font-size: 14px; color: #191919; margin: 0; line-height: 20px;">数通网络安全体验沙箱</p>
+                  <p id="hm-created-time-3" style="font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif; font-weight: 400; font-size: 12px; color: rgba(0,0,0,0.6); margin: 4px 0 0; line-height: 16px;">创建于 2024-09-15 16:40</p>
+                  <p id="hm-device-info-3" style="font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif; font-weight: 400; font-size: 12px; color: rgba(0,0,0,0.6); margin: 2px 0 0; line-height: 16px;">防火墙×1, 终端×5</p>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: flex-end; margin-left: 8px;">
+                  <div id="hm-status-tag-3" class="fill-info信息色info_2-14_365553" style="border-radius: 4px; padding: 2px 8px; margin-bottom: 4px;">
+                    <p id="hm-status-text-3" class="fill-info信息色info_1-14_365554-paragraph" style="font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif; font-weight: 400; font-size: 12px; margin: 0;">运行中</p>
+                  </div>
+                  <button id="hm-enter-btn-3" type="button" style="font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif; font-weight: 400; font-size: 12px; color: #1A73E8; background: none; border: none; padding: 0; margin: 0; cursor: pointer;">
+                    进入
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 【任务节点结束: 体验项目内嵌弹窗列表【临时】】 -->
+
+      </div>
+      <!-- 底部导航栏 -->
+      <div id="14_884324" class="Pixso-frame-14_884324">
+        <div id="14_884325" class="Pixso-rectangle-14_884325"></div>
+        <p id="14_884326" class="Pixso-paragraph-14_884326">我的</p>
+        <p id="14_884327" class="Pixso-paragraph-14_884327">服务</p>
+        <p id="14_884328" class="Pixso-paragraph-14_884328">工作台</p>
+        <p id="14_884329" class="Pixso-paragraph-14_884329">商城</p>
+        <p id="14_884330" class="Pixso-paragraph-14_884330">首页</p>
+        <div id="14_884331" class="Pixso-group-14_884331">
+          <div id="14_884332" class="Pixso-vector-14_884332"></div>
+          <div id="14_884333" class="Pixso-group-14_884333">
+            <div id="14_884334" class="Pixso-vector-14_884334"></div>
+            <div id="14_884335" class="stroke-wrapper-14_884335">
+              <div class="Pixso-rectangle-14_884335"></div>
+              <div class="stroke-14_884335"></div>
+            </div>
+          </div>
+        </div>
+        <div id="14_884336" class="Pixso-vector-14_884336"></div>
+        <div id="14_884340" class="Pixso-vector-14_884340"></div>
+        <div id="14_884353" class="Pixso-group-14_884353">
+          <div id="14_884354" class="Pixso-vector-14_884354"></div>
+          <div id="14_884355" class="Pixso-vector-14_884355"></div>
+        </div>
+        <div id="14_884358" class="Pixso-group-14_884358">
+          <div id="14_884359" class="Pixso-vector-14_884359"></div>
+          <div id="14_884360" class="Pixso-group-14_884360">
+            <div id="14_884361" class="Pixso-vector-14_884361"></div>
+            <div id="14_884364" class="Pixso-vector-14_884364"></div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+</script>
+</body>
+<!-- BASELINE_BODY_END -->

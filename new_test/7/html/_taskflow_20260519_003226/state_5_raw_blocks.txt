@@ -1,0 +1,28 @@
+{
+  "state_name": "添加失败提示态",
+  "lifecycle": "temporary",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "FullscreenPanel",
+    "props": { "background": "transparent" },
+    "children": [
+      {
+        "type": "Column",
+        "props": { "align": "center", "justify": "flex-end", "padding": 16, "width": "100%" },
+        "children": [
+          {
+            "type": "Row",
+            "props": { "background": "#000000", "borderRadius": 8, "height": 44, "align": "center", "justify": "center", "padding": "0 16px" },
+            "children": [
+              {
+                "type": "Text",
+                "props": { "text": "添加失败，请重试", "size": 14, "color": "#FFFFFF", "weight": "regular" }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

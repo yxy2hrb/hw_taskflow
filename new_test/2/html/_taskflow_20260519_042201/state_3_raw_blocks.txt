@@ -1,0 +1,108 @@
+{
+  "state_name": "创建项目集校验失败态",
+  "lifecycle": "persistent",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "Page",
+    "props": { "background": "#FFFFFF" },
+    "children": [
+      { "type": "StatusBar" },
+      {
+        "type": "Column",
+        "props": { "gap": 16, "padding": 16 },
+        "children": [
+          {
+            "type": "FormField",
+            "props": {
+              "label": "项目集名称",
+              "required": true,
+              "value": "",
+              "error": "请输入项目集名称"
+            }
+          },
+          {
+            "type": "Row",
+            "props": { "gap": 8, "align": "center" },
+            "children": [
+              {
+                "type": "Text",
+                "props": { "text": "项目类型", "variant": "body" }
+              },
+              {
+                "type": "Row",
+                "props": { "gap": 12, "align": "center" },
+                "children": [
+                  {
+                    "type": "Checkbox",
+                    "props": { "checked": false, "size": 22 }
+                  },
+                  {
+                    "type": "Text",
+                    "props": { "text": "标准项目", "variant": "body" }
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": { "gap": 12, "align": "center" },
+                "children": [
+                  {
+                    "type": "Checkbox",
+                    "props": { "checked": true, "size": 22 }
+                  },
+                  {
+                    "type": "Text",
+                    "props": { "text": "敏捷项目", "variant": "body" }
+                  }
+                ]
+              },
+              {
+                "type": "Icon",
+                "props": { "name": "error", "size": 16, "color": "#FF3B30" }
+              }
+            ]
+          },
+          {
+            "type": "Banner",
+            "props": {
+              "text": "所选项目类型不匹配，请调整",
+              "variant": "warning",
+              "background": "#FFF5F5",
+              "padding": "4px 12px"
+            }
+          },
+          {
+            "type": "Column",
+            "props": { "gap": 8 },
+            "children": [
+              {
+                "type": "Text",
+                "props": { "text": "已添加项目（2）", "variant": "subtitle" }
+              },
+              {
+                "type": "ListItem",
+                "props": { "title": "项目A", "subtitle": "标准项目", "leftIcon": "folder" }
+              },
+              {
+                "type": "ListItem",
+                "props": { "title": "项目B", "subtitle": "敏捷项目", "leftIcon": "folder" }
+              }
+            ]
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "确认",
+              "variant": "primary",
+              "block": true,
+              "disabled": true,
+              "background": "#CCCCCC",
+              "color": "#999999"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "state_name": "产品文档详情页",
+  "lifecycle": "persistent",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": false,
+  "tree": {
+    "type": "Page",
+    "props": { "background": "#FFFFFF" },
+    "children": [
+      { "type": "StatusBar" },
+      { "type": "NavBar", "props": { "title": "WPS 文档快速入门", "leftIcon": "arrow_back", "align": "center" } },
+      { "type": "Column", "props": { "gap": 24, "padding": 16 }, "children": [
+        { "type": "Text", "props": { "text": "一、准备工作", "variant": "subtitle", "size": 16, "weight": "medium", "color": "#191919" } },
+        { "type": "Text", "props": { "text": "请确保您已安装最新版 WPS Office 应用，并登录个人账号。", "size": 14, "weight": "regular", "color": "#191919", "lineHeight": 20 } },
+        { "type": "Column", "props": { "background": "#F5F5F5", "padding": 12, "borderRadius": 4 }, "children": [
+          { "type": "Text", "props": { "text": "$ wps --version", "size": 12, "fontFamily": "monospace", "color": "#333333" } }
+        ]},
+        { "type": "Text", "props": { "text": "二、创建第一个文档", "variant": "subtitle", "size": 16, "weight": "medium", "color": "#191919" } },
+        { "type": "Text", "props": { "text": "1. 点击底部「+」按钮；\n2. 选择「新建文档」→「空白文档」；\n3. 输入标题并开始编辑。", "size": 14, "weight": "regular", "color": "#191919", "lineHeight": 20 } },
+        { "type": "Column", "props": { "align": "center" }, "children": [
+          { "type": "Icon", "props": { "name": "image", "size": 200, "color": "#CCCCCC" } }
+        ]},
+        { "type": "Text", "props": { "text": "三、保存与分享", "variant": "subtitle", "size": 16, "weight": "medium", "color": "#191919" } },
+        { "type": "Text", "props": { "text": "点击右上角「…」→「保存」，或使用快捷键 Ctrl+S。分享时选择「生成链接」即可发送给他人。", "size": 14, "weight": "regular", "color": "#191919", "lineHeight": 20 } }
+      ]}
+    ]
+  }
+}

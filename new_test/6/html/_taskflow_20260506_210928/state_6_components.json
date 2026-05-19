@@ -1,0 +1,13 @@
+{
+  "state_id": 6,
+  "state_name": "取消返回态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": true,
+    "issues": [],
+    "fixedBlocks": "",
+    "reviewMs": 6745,
+    "screenshot": 122831
+  }
+}

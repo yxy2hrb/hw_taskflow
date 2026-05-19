@@ -1,0 +1,35 @@
+{
+  "state_name": "创建项目集失败态",
+  "lifecycle": "persistent",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "Page",
+    "props": { "background": "#FFFFFF" },
+    "children": [
+      {
+        "type": "Column",
+        "props": { "gap": 16, "padding": 16 },
+        "children": [
+          {
+            "type": "FormField",
+            "props": {
+              "label": "项目集名称",
+              "required": true,
+              "placeholder": "请输入项目集名称",
+              "error": "请输入项目集名称"
+            }
+          },
+          {
+            "type": "FormField",
+            "props": {
+              "label": "公司/个人",
+              "required": true,
+              "error": "所选项目不符合“个人”类型要求"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

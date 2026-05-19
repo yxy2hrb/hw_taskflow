@@ -1,0 +1,11 @@
+{
+  "state_id": 1,
+  "state_name": "我的工作台初始页",
+  "description": "页面为全屏移动工作台首页，顶部状态栏显示时间/信号/电量，底部固定 TabBar 含‘工作台’‘项目’‘监控’‘我’四图标；中部主区域清晰展示‘我的体验项目’入口按钮（蓝色底+白色文字，居中卡片式布局），其余区域为空白内容区，背景色为 #F3F3F3。",
+  "implementation_method": "原始 HTML 初始快照，不做改造",
+  "last_state": null,
+  "applied": 0,
+  "skipped": 0,
+  "failed": false,
+  "error": null
+}

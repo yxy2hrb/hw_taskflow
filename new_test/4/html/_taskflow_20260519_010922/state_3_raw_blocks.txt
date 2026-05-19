@@ -1,0 +1,132 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": ["#14_884729"],
+      "replace_at": "#14_884729",
+      "instruction": "将左侧表单区所有控件置灰不可交互：input 和 select 元素添加 disabled='disabled' 属性，并统一应用 style='opacity: 0.4'；保留原有结构与文案，仅状态变更。",
+      "components_needed": ["TextInput", "Dropdown"]
+    },
+    {
+      "id": "e2",
+      "type": "new-overlay",
+      "anchor": "#14_884883",
+      "instruction": "在右侧模型容器区域（即 id='14_884883' 的 Pixso-frame）上覆盖一层半透明黑色遮罩（background: rgba(0,0,0,0.2)），内部垂直水平居中显示：蓝色环形进度条（SVG viewBox='0 0 32 32'，stroke='#46B1E3'，stroke-width='3'，stroke-linecap='round'，animation: hmspin 1s linear infinite），下方紧贴小字‘三维模型加载中’（14px HarmonyHeiTi-Regular，#191919，line-height:20px）；遮罩层使用 position: absolute; top:0; left:0; width:100%; height:100%; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 10。",
+      "components_needed": ["ProgressBar"],
+      "icons_needed": []
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "gap": 16,
+      "padding": 16
+    },
+    "children": [
+      {
+        "type": "FormField",
+        "props": {
+          "label": "项目名称",
+          "required": true,
+          "placeholder": "请输入项目名称",
+          "value": "",
+          "disabled": true,
+          "invalid": false
+        }
+      },
+      {
+        "type": "FormField",
+        "props": {
+          "label": "负责人",
+          "required": true,
+          "placeholder": "请选择负责人",
+          "value": "",
+          "disabled": true,
+          "invalid": false
+        }
+      },
+      {
+        "type": "FormField",
+        "props": {
+          "label": "开始日期",
+          "required": true,
+          "placeholder": "请选择开始日期",
+          "value": "",
+          "disabled": true,
+          "invalid": false
+        }
+      },
+      {
+        "type": "FormField",
+        "props": {
+          "label": "结束日期",
+          "required": true,
+          "placeholder": "请选择结束日期",
+          "value": "",
+          "disabled": true,
+          "invalid": false
+        }
+      },
+      {
+        "type": "FormField",
+        "props": {
+          "label": "项目描述",
+          "placeholder": "请输入项目描述（选填）",
+          "value": "",
+          "disabled": true,
+          "invalid": false
+        }
+      },
+      {
+        "type": "Row",
+        "props": {
+          "gap": 12
+        },
+        "children": [
+          {
+            "type": "Button",
+            "props": {
+              "label": "取消",
+              "variant": "secondary",
+              "disabled": true
+            }
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "创建项目",
+              "variant": "primary",
+              "disabled": true
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+[NEXT]
+{
+  "tree": {
+    "type": "OverlayMask",
+    "props": {
+      "opacity": 0.2,
+      "color": "#000000"
+    },
+    "children": [
+      {
+        "type": "Spinner",
+        "props": {
+          "size": 32,
+          "color": "#46B1E3",
+          "text": "三维模型加载中"
+        }
+      }
+    ]
+  }
+}

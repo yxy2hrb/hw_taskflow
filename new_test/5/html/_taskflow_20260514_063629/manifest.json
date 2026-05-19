@@ -1,0 +1,61 @@
+{
+  "title": "体验项目查看流程",
+  "slug": "experience-project-view-flow",
+  "createdAt": "2026-05-13T22:40:34.633Z",
+  "meta": {
+    "title": "体验项目查看流程",
+    "slug": "experience-project-view-flow",
+    "user_story": "已登录的企业网络管理员在‘我的工作台’点击‘我的体验项目’入口，快速查看当前项目的设备拓扑与运行健康度 → 系统自动加载实时Wi-Fi评分与终端统计 → 用户滑动浏览全部模块并确认无异常",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "工作台主界面初始态",
+      "description": "屏幕完整显示‘我的工作台’页面，顶部状态栏（含时间、信号、电量图标）可见，底部Tab栏（含‘工作台’‘项目’‘报表’‘我的’四个图标及文字标签）正常显示；页面主体为滚动内容区，含‘我的体验项目’入口卡片（位于中部偏上，浅灰底+蓝色箭头图标+‘我的体验项目’文字），无任何浮层或遮罩。",
+      "implementation_method": "原始 HTML 初始快照，不做改造",
+      "last_state": null,
+      "file": "state_1.html"
+    },
+    {
+      "state_id": 2,
+      "state_name": "体验项目列表弹窗态",
+      "description": "白色圆角卡片居中悬浮于屏幕中央，宽度320px，高度适配内容；顶部有深灰标题‘我的体验项目’（16px Medium，HarmonyHeiTi-Medium），下方为垂直滚动列表，每张项目卡片含左侧蓝色设备图标、中间项目名称（14px Regular）、右侧状态标签（绿色‘运行中’或灰色‘已停止’）；背景为半透明黑色遮罩（rgba(0,0,0,0.4)），但顶部状态栏与底部Tab栏完全可见且未被遮挡。",
+      "implementation_method": "全屏模态弹窗 (Modal/Dialog)：白色圆角卡片（border-radius:12px，padding:16px）居中；标题文字 '我的体验项目'（Chinese）/'My Experience Projects'（English）；每张卡片结构为左图标+中文字‘项目A’/‘Project A’+右标签‘运行中’/‘Running’或‘已停止’/‘Stopped’；遮罩层 rgba(0,0,0,0.4)，不覆盖状态栏与Tab栏。",
+      "last_state": 1,
+      "file": "state_2.html"
+    },
+    {
+      "state_id": 3,
+      "state_name": "全屏页面加载过渡态",
+      "description": "屏幕整体为纯白背景，顶部状态栏（含4G标识、时间、电量）与底部Tab栏（‘工作台’高亮选中）保持可见；页面中部显示蓝色细横条（高度2px，宽度80%，位置距顶10%），其正下方居中排列文字‘正在加载设备数据’（14px Regular，深灰#191919）；无任何图标、按钮或骨架图，无动画帧描述，仅为静态视觉。",
+      "implementation_method": "顶部进度条+居中文字 (Progress Bar + Text)：蓝色细横条（#46B1E3，height:2px）位于距顶部10%处；下方文字 '正在加载设备数据'（Chinese）/'Loading device data...'（English），14px Regular，HarmonyHeiTi-Regular，line-height:20px，color:#191919；画面其余区域纯白，无遮罩、无浮层、无图标。",
+      "last_state": 2,
+      "file": "state_3.html"
+    },
+    {
+      "state_id": 4,
+      "state_name": "虚拟体验项目终态成功",
+      "description": "全屏页面顶部导航栏固定显示：左侧返回箭头图标（深灰#191919）、居中标题‘虚拟体验项目’（16px Medium）、右侧依次为搜索图标（深灰）、通知图标（深灰）、加号图标（深灰）；下方为滚动内容区：首区块为SVG格式设备拓扑图（宽100%，高度自适应，含节点连线与设备标签）；第二区块为Wi-Fi评分卡片（蓝底白字，评分数字+‘分’，副标‘Wi-Fi评分’）与运行时长卡片（灰底黑字，‘X天Y小时’）；第三区块为设备及终端统计卡片（两列等宽，左‘设备数’+数字，右‘终端数’+数字）；第四区块为业务网管理与访问控制模块（标题‘业务网管理’+开关控件+‘访问控制’+列表项）。",
+      "implementation_method": "完整单页布局 (Full Page Layout)：顶部导航栏含返回图标（←）、标题 '虚拟体验项目'（Chinese）/'Virtual Experience Project'（English）、搜索图标（🔍）、通知图标（🔔）、加号图标（＋）；设备拓扑图为内联SVG（无外部依赖，viewBox适配）；Wi-Fi评分卡片背景色#46B1E3，文字白色；运行时长卡片背景色#F3F3F3，文字#191919；设备/终端统计卡片为双列flex布局，文字均14px Regular；业务网模块含开关控件（toggle）、‘访问控制’标题及3行终端列表（每行含图标+名称+状态）。",
+      "last_state": 3,
+      "file": "state_4.html"
+    },
+    {
+      "state_id": 5,
+      "state_name": "数据加载失败终态",
+      "description": "顶部固定黄色横条（高度32px，背景色#FFC107，文字深灰#191919），横条内左对齐文字‘数据加载失败’（Chinese）/'Data load failed'（English），右侧为蓝色填充按钮‘重试’（Chinese）/'Retry'（English）；横条下方页面内容与 state_4 完全一致（含拓扑图、评分卡、统计卡、业务网模块），但整体置灰（opacity:0.4），不可交互；顶部状态栏与底部Tab栏正常可见。",
+      "implementation_method": "顶部黄色横条 (Banner)：黄色横条（#FFC107，height:32px）固定于顶部状态栏下方；文字 '数据加载失败'（Chinese）/'Data load failed'（English）左对齐；右侧按钮 '重试'（Chinese）/'Retry'（English），蓝色背景#46B1E3，白色文字，圆角4px；下方内容区域 opacity:0.4，其余视觉元素与 state_4 完全一致。",
+      "last_state": 4,
+      "file": "state_5.html"
+    },
+    {
+      "state_id": 6,
+      "state_name": "弹窗取消返回态",
+      "description": "屏幕显示与 state_1 完全一致：‘我的工作台’页面完整呈现，顶部状态栏与底部Tab栏正常可见，‘我的体验项目’入口卡片清晰可见，无遮罩、无浮层、无过渡效果，无任何新增或修改元素。",
+      "implementation_method": "画面与 last_state（state_1）完全一致；base 已是关闭后的样子，无需任何 DOM 改造。",
+      "last_state": 1,
+      "file": "state_6.html"
+    }
+  ]
+}

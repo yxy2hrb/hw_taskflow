@@ -1,0 +1,37 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "new-overlay",
+      "anchor": "#14_884883",
+      "instruction": "在顶部状态栏下方 16px 处新增通栏 Toast：浅绿色背景 #E6F7EE、高度 44px、左右边距 16px、圆角 8px；左侧放置白色对勾图标（Material Icons Round 名 'check_circle'，20×20px，颜色 #FFFFFF）；右侧文字 '创建成功'（字号 14px，深灰 #191919，行高 20px）；Toast 为 fixed 定位，inset: 0 16px auto 16px；必须用 <!-- 任务节点开始: 创建成功提示【临时】 -->...<!-- 任务节点结束: 创建成功提示【临时】 --> 包裹",
+      "components_needed": ["Toast"],
+      "icons_needed": ["check_circle"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Row",
+    "props": {
+      "background": "#E6F7EE",
+      "borderRadius": 8,
+      "padding": [12, 16],
+      "gap": 12,
+      "align": "center",
+      "width": "fit-content",
+      "position": "fixed",
+      "top": "calc(32px + 16px)",
+      "left": "50%",
+      "transform": "translateX(-50%)",
+      "zIndex": 10000
+    },
+    "children": [
+      { "type": "Icon", "props": { "name": "check_circle", "size": 20, "color": "#FFFFFF" } },
+      { "type": "Text", "props": { "size": 14, "weight": 500, "color": "#191919" }, "children": "创建成功" }
+    ]
+  }
+}

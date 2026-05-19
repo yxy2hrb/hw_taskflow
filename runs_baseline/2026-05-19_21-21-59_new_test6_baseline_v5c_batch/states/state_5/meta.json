@@ -1,0 +1,12 @@
+{
+  "state_id": 5,
+  "state_name": "文档详情页",
+  "description": "顶部固定标题栏显示当前产品名称（16px Medium，深灰#191919），左侧返回箭头图标（24×24，主色#46B1E3），右侧无操作按钮；正文区域为纯白背景（#FFFFFF），段落文字深灰#191919、14px Regular、行高20px；含二级标题（16px Medium）、步骤说明（带数字序号列表）、代码块（浅灰背景#F5F5F5，13px mono字体）、嵌入图片（宽100%，高自适应）；底部无Tab栏，顶部状态栏可见，页面无浮层、无遮罩、无搜索框或标签。",
+  "implementation_method": "独立文档页 (Standalone Page)：顶部导航栏含 left-arrow icon（24×24，#46B1E3）与 title（16px Medium，#191919）；正文区 div.content 背景 #FFFFFF；段落 p（14px Regular，#191919，line-height:20px）；h2 标题（16px Medium，#191919）；ol.step-list（list-style-type: decimal；margin-left: 16px）；pre.code-block（background #F5F5F5；font-size:13px；font-family: monospace）；img（max-width:100%；height:auto）；无底部Tab，无状态栏遮挡。",
+  "last_state": 2,
+  "applied": 1,
+  "skipped": 0,
+  "elapsed_ms": 90210,
+  "failed": false,
+  "error": null
+}

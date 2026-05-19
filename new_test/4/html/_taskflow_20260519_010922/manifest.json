@@ -1,0 +1,61 @@
+{
+  "title": "体验运维流程",
+  "slug": "experience-ops-flow",
+  "createdAt": "2026-05-18T17:12:03.165Z",
+  "meta": {
+    "title": "体验运维流程",
+    "slug": "experience-ops-flow",
+    "user_story": "已登录的企业运维人员 | 在‘我的工作台’页面点击‘体验运维流程’按钮 | 填写预设场景与名称 → 系统加载三维模型并校验字段 → 用户点击蓝色‘确定’提交 | 界面弹出‘创建成功’Toast，且底Tab保持高亮在当前页",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "我的工作台首页",
+      "description": "顶部状态栏显示时间、信号与电量图标；页面中部为功能卡片网格，其中右下角可见‘体验运维流程’按钮（蓝色填充、圆角矩形、白色文字‘体验运维流程’）；底部 Tab 栏高亮‘工作台’项（深蓝底色+白字），其余 Tab 灰色未选中；整体背景为浅灰（#F3F3F3）。",
+      "implementation_method": "原始 HTML 初始快照，不做改造",
+      "last_state": null,
+      "file": "state_1.html"
+    },
+    {
+      "state_id": 2,
+      "state_name": "运维流程全屏页空载态",
+      "description": "页面全屏展开，顶部状态栏保持可见（时间/信号/电量正常显示），底部 Tab 栏完整保留且‘工作台’项仍高亮；左侧为固定宽度表单区（宽约360px），含‘项目场景’下拉框（灰色边框、占位符‘请选择场景’）、‘项目名称’输入框（灰色边框、占位符‘请输入名称’）；右侧为剩余全部宽度的空白容器，背景为纯白，中央无任何内容。",
+      "implementation_method": "全屏页面 (Fullpage View)：基于 state_1 的 base HTML，移除原有卡片网格 DOM，插入左右分栏结构；左侧表单区使用 class 'fill-场景background-colorcolor-bg-1-14_886006'（#F3F3F3 背景），右侧模型容器使用 class 'container' 并设 background-color: white；所有输入控件初始 disabled=false，border: 1px solid #D9D9D9；文案均为中文，无图标。",
+      "last_state": 1,
+      "file": "state_2.html"
+    },
+    {
+      "state_id": 3,
+      "state_name": "三维模型加载中态",
+      "description": "顶部状态栏与底部 Tab 栏完全可见且样式不变；左侧表单区所有控件置灰不可交互（opacity: 0.4，input[disabled] + select[disabled]），右侧模型容器覆盖一层半透明黑色遮罩（rgba(0,0,0,0.2)），中央居中显示蓝色环形进度条（直径32px，stroke:#46B1E3，stroke-width:3px），下方小字‘三维模型加载中’（14px HarmonyHeiTi-Regular，#191919，line-height:20px），位于遮罩层内垂直水平居中。",
+      "implementation_method": "加载遮罩 (Overlay + Progress Indicator)：在 state_2 的右侧模型容器内追加 div.overlay-container（position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.2); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 10）；内部嵌入 svg 圆环进度条（viewBox='0 0 32 32'，stroke='#46B1E3'，stroke-width='3'，stroke-linecap='round'，animation:hmspin 1s linear infinite）；下方添加 p 元素，class 'text-ohos_id_text_size_body2regular-14_886008'，文本 '三维模型加载中'；左侧表单所有 input/select 添加 disabled='disabled' 属性，并统一应用 opacity: 0.4。",
+      "last_state": 2,
+      "file": "state_3.html"
+    },
+    {
+      "state_id": 4,
+      "state_name": "创建成功提示态",
+      "description": "顶部状态栏与底部 Tab 栏正常可见；左侧表单与右侧模型容器完整保留（无遮罩、无禁用），画面底部上滑出半屏 Toast 弹层（高度约120px，白色背景，圆角12px，阴影 0 4px 12px rgba(0,0,0,0.1)），内含绿色对勾图标（SVG，尺寸24x24，fill:#52C418）、标题文字‘创建成功’（16px HarmonyHeiTi-Medium，#191919，line-height:20px），无按钮；Toast 完全静止显示，未开始消失动画。",
+      "implementation_method": "轻量级提示 (Toast/Snackbar)：在 state_2 的 body 内最末尾追加 div.toast-container（position: fixed; bottom: 0; left: 0; width: 100%; height: 120px; background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: flex; flex-direction: row; align-items: center; padding: 0 24px; z-index: 100）；内部左侧为 SVG 对勾图标（path d='M9 16.17L4.83 12l-1.42 1.41L9 18.83 21 7.83 19.59 6.41z' fill='#52C418'）；右侧为 p 元素，class 'text-单行行高headline标题headline_s-14_365549'，文本 '创建成功'。",
+      "last_state": 2,
+      "file": "state_4.html"
+    },
+    {
+      "state_id": 5,
+      "state_name": "创建失败提示态",
+      "description": "顶部状态栏与底部 Tab 栏正常可见；左侧表单与右侧模型容器完整保留（无遮罩、无禁用），画面底部上滑出半屏 Toast 弹层（高度约120px，红色背景 #F5222D，圆角12px），内含白色感叹号图标（SVG，尺寸24x24，fill:white）、主文案‘创建失败，请重试’（16px HarmonyHeiTi-Medium，white，line-height:20px），右侧带‘重试’按钮（14px HarmonyHeiTi-Regular，#FFFFFF，padding:6px 16px，border-radius:6px，background:#F5222D）；Toast 完全静止显示，未开始消失动画。",
+      "implementation_method": "轻量级提示 (Toast/Snackbar)：在 state_2 的 body 内最末尾追加 div.toast-container（position: fixed; bottom: 0; left: 0; width: 100%; height: 120px; background: #F5222D; border-radius: 12px; display: flex; flex-direction: row; align-items: center; padding: 0 16px; z-index: 100）；内部左侧为 SVG 感叹号图标（path d='M12 9v4m0 4h.01M21 12c0-5.523-4.477-10-10-10S1 6.477 1 12s4.477 10 10 10 10-4.477 10-10z' fill='white'）；中间为 p 元素，class 'text-单行行高headline标题headline_s-14_365549'，文本 '创建失败，请重试'；右侧为 button 元素，class 'text-fontbody_sregular-14_365555'，文本 '重试'。",
+      "last_state": 2,
+      "file": "state_5.html"
+    },
+    {
+      "state_id": 6,
+      "state_name": "字段校验不通过态",
+      "description": "顶部状态栏与底部 Tab 栏正常可见；左侧表单区中，‘项目场景’下拉框边框变为红色（#F5222D，2px solid），下方紧贴显示红色提示文字‘请选择有效场景’（12px HarmonyHeiTi-Regular，#F5222D，line-height:16px）；‘项目名称’输入框边框同样变为红色（2px solid #F5222D），下方紧贴显示红色提示文字‘名称不能为空’（12px HarmonyHeiTi-Regular，#F5222D，line-height:16px）；右侧模型容器为空白白底区域，无遮罩无加载指示；所有其他元素位置与样式均与 state_2 一致。",
+      "implementation_method": "表单错误反馈 (Form Validation Feedback)：在 state_2 的表单区对应下拉框后插入 div.error-message（class 'text-fontbody_sregular-14_365555'，color:#F5222D），文本 '请选择有效场景'；在项目名称输入框后插入同结构 div，文本 '名称不能为空'；同时为两个控件分别添加 style='border: 2px solid #F5222D'；右侧模型容器保持原样，不新增任何元素。",
+      "last_state": 2,
+      "file": "state_6.html"
+    }
+  ]
+}

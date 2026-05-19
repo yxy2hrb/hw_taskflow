@@ -1,0 +1,35 @@
+{
+  "state_id": 4,
+  "state_name": "虚拟体验项目全屏页",
+  "components": [
+    {
+      "tag": "Switch",
+      "attrs": {
+        "state": "on"
+      },
+      "instance": 1,
+      "component": {
+        "group": "Switch-Phone",
+        "variant": "Selected=OFF,状态=Enabled",
+        "node_id": "1:10244",
+        "page": "5. Selection 选择类",
+        "component_key": "22e2ad49ce973874ee10b832d32759d3659f4887"
+      }
+    }
+  ],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "顶部导航栏左侧返回图标未使用需求中指定的纯黑#000000，实际为灰色；右侧加号图标颜色应为蓝色#46B1E3，但截图中显示为深蓝偏紫，不匹配。",
+      "Wi-Fi评分横幅背景色需求为#46B1E3（亮蓝），但截图中为#0A59F7（深蓝），颜色偏差明显。",
+      "运行时长提示文字‘已运行 7天12小时’前的图标在截图中为冒号‘::’，而需求中应为schedule图标，视觉元素错误。",
+      "设备统计卡片中‘设备总数’和‘终端接入’的文字颜色需求为#191919（深灰），但截图中为黑色#000000，对比度过高，不符合鸿蒙规范。",
+      "业务网管理模块中的开关控件在截图中为关闭状态，但需求未明确初始状态，此点可接受；但‘访问控制策略’下方的下拉选择器placeholder‘请选择策略’字体颜色需求为rgba(0,0,0,0.6)，截图中颜色偏浅，不一致。"
+    ],
+    "fixedBlocks": "[OLD]\n<span class=\"mi hm-icon\" style=\"font-size:24px; color:rgba(0,0,0,0.9);\">󰣒</span>\n[NEW]\n<span class=\"mi hm-icon\" style=\"font-size:24px; color:#000000;\">󰣒</span>\n[OLD]\n<span class=\"mi hm-icon\" style=\"font-size:24px; color:#0A59F7;\">󰀬</span>\n[NEW]\n<span class=\"mi hm-icon\" style=\"font-size:24px; color:#46B1E3;\">󰀬</span>\n[OLD]\n<div style=\"background:#0A59F7; border-radius:16px; padding:16px; color:#FFFFFF;\">\n[NEW]\n<div style=\"background:#46B1E3; border-radius:16px; padding:16px; color:#FFFFFF;\">\n[OLD]\n<span class=\"mi hm-icon\" style=\"font-size:16px; color:rgba(0,0,0,0.6); margin-right:8px;\">󰁡</span>\n[NEW]\n<span class=\"mi hm-icon\" style=\"font-size:16px; color:rgba(0,0,0,0.6); margin-right:8px;\">󰁡</span>\n[OLD]\n<div style=\"padding:16px; background:#FFFFFF; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.05); border:1px solid rgba(0,0,0,0.08);\">\n[NEW]\n<div style=\"padding:16px; background:#FFFFFF; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.05); border:1px solid rgba(0,0,0,0.08);\">\n[OLD]\n<div style=\"padding:12px 16px; background:rgba(0,0,0,0.047); border-radius:8px; font-size:14px; color:rgba(0,0,0,0.6);\">请选择策略</div>\n[NEW]\n<div style=\"padding:12px 16px; background:rgba(0,0,0,0.047); border-radius:8px; font-size:14px; color:rgba(0,0,0,0.6);\">请选择策略</div]",
+    "reviewMs": 26348,
+    "screenshot": 64528,
+    "fixedBlocksParsed": 6
+  }
+}

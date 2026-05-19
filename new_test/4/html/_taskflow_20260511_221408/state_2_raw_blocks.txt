@@ -1,0 +1,68 @@
+{
+  "state_name": "全屏表单与模型页",
+  "lifecycle": "persistent",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "Page",
+    "props": { "background": "#FFFFFF" },
+    "children": [
+      { "type": "StatusBar", "props": { "time": "08:08", "signal": "5G", "battery": 100 } },
+      {
+        "type": "Column",
+        "props": { "gap": 0, "padding": 0 },
+        "children": [
+          {
+            "type": "Grid",
+            "props": { "columns": 2, "gap": 16, "padding": 16 },
+            "children": [
+              {
+                "type": "Column",
+                "props": { "gap": 16, "width": 360 },
+                "children": [
+                  {
+                    "type": "Column",
+                    "props": { "gap": 4 },
+                    "children": [
+                      { "type": "Text", "props": { "text": "项目场景", "variant": "body", "weight": "medium" } },
+                      { "type": "Text", "props": { "text": "Scenario", "variant": "caption", "color": "#666" } }
+                    ]
+                  },
+                  {
+                    "type": "ListItem",
+                    "props": { "title": "数据中心运维", "subtitle": "Select scenario", "leftIcon": "arrow_drop_down", "divider": false, "height": 48 }
+                  },
+                  {
+                    "type": "Column",
+                    "props": { "gap": 4 },
+                    "children": [
+                      { "type": "Text", "props": { "text": "项目名称", "variant": "body", "weight": "medium" } },
+                      { "type": "Text", "props": { "text": "Project name", "variant": "caption", "color": "#666" } }
+                    ]
+                  },
+                  {
+                    "type": "ListItem",
+                    "props": { "title": "", "subtitle": "请输入项目名称", "leftIcon": "text_fields", "divider": false, "height": 48 }
+                  }
+                ]
+              },
+              {
+                "type": "Column",
+                "props": { "align": "center", "justify": "center", "width": "auto", "height": 360 },
+                "children": [
+                  {
+                    "type": "Column",
+                    "props": { "align": "center", "justify": "center", "width": "100%", "height": "100%", "background": "#F3F3F3" },
+                    "children": [
+                      { "type": "Text", "props": { "text": "设备模型预览", "variant": "caption", "color": "#999" } }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

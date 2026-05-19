@@ -1,0 +1,69 @@
+{
+  "title": "创建项目集全流程",
+  "slug": "create-project-set-flow",
+  "createdAt": "2026-05-18T23:03:17.029Z",
+  "meta": {
+    "title": "创建项目集全流程",
+    "slug": "create-project-set-flow",
+    "user_story": "已登录的企业管理员 | 在‘我的工作台’页面点击‘创建项目集’按钮 | 填写名称并选定属性 → 系统校验所选项目与属性一致 → 用户点击确认完成创建 | 顶部弹出‘创建成功’Toast，且工作台列表立即出现新项目集卡片",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "我的工作台初始列表页",
+      "description": "页面为全屏移动端布局，顶部显示状态栏（含时间、信号、电量图标），底部固定Tab导航栏（含‘工作台’高亮项）；中部为白色卡片式列表，首项为‘项目开局’标题，下方三张功能卡片：‘创建开局’‘创建项目集’‘接收项目’，其中‘创建项目集’按钮为红色实心矩形，居中排布，文字为‘创建项目集’。",
+      "implementation_method": "原始 HTML 初始快照，不做改造。",
+      "last_state": null,
+      "file": "state_1.html"
+    },
+    {
+      "state_id": 2,
+      "state_name": "创建项目集全屏空白表单页",
+      "description": "页面为全屏覆盖态，顶部状态栏保持可见（含时间、信号、电量图标），底部Tab导航栏完整保留并固定在屏幕底部；中间悬浮一张圆角白底卡片（宽360px，上下留白），卡片内含标题‘创建项目集’（16px加粗黑字）、名称输入框（浅灰边框，占位符‘请输入项目集名称’）、‘公司/个人’单选按钮组（两个并排圆角矩形选项，左侧‘公司’右侧‘个人’，均无选中态）、‘+ 添加项目’按钮（浅蓝底+号图标+文字）、底部红色宽按钮（文字‘确认’，无图标，无阴影）。",
+      "implementation_method": "全屏覆盖页 (Full-Screen Overlay)：顶部状态栏与底部Tab保持透明底色；中间悬浮圆角白卡片（#FFFFFF，圆角12px，阴影 rgba(0,0,0,0.05)）；卡片内标题 '创建项目集'（font-size:16px, font-weight:600, color:#191919）；名称输入框 border:1px solid #E0E0E0，placeholder '请输入项目集名称'；单选按钮组为两个并排 80×40px 圆角矩形（#F5F5F5，文字‘公司’/‘个人’，color:#666，font-size:14px）；‘+ 添加项目’按钮背景#E3F2FD，文字颜色#1976D2，含+号SVG图标；底部按钮宽100%，高48px，背景#F44336，文字‘确认’（white, 16px bold）。",
+      "last_state": 1,
+      "file": "state_2.html"
+    },
+    {
+      "state_id": 3,
+      "state_name": "创建项目集已填已选已添加页",
+      "description": "页面结构与state_2完全一致：顶部状态栏、底部Tab、悬浮圆角白卡片均保持原位置与样式；卡片内名称输入框已填写文字（如‘测试项目集A’），字体黑色14px；单选按钮组中‘公司’处于高亮选中态（背景#F44336，文字白色）；‘+ 添加项目’按钮旁显示3个已添加项目标签（浅蓝底#E3F2FD，白字，圆角16px，文字‘项目X’‘项目Y’‘项目Z’）；底部红色按钮文字仍为‘确认’，可点击，无禁用态，无加载动画。",
+      "implementation_method": "全屏覆盖页 (Full-Screen Overlay)：在state_2基础上，名称输入框 value='测试项目集A'（或用户实际输入内容）；单选按钮组中‘公司’项 background-color:#F44336，color:white；三个项目标签为水平排列的 64×24px 圆角矩形（#E3F2FD，border-radius:16px，text-align:center，line-height:24px，font-size:12px，color:#1976D2，文字分别为 '项目X' / '项目Y' / '项目Z'）；底部按钮保持原样式，无变更。",
+      "last_state": 2,
+      "file": "state_3.html"
+    },
+    {
+      "state_id": 4,
+      "state_name": "创建中加载态",
+      "description": "页面结构与state_3完全一致：顶部状态栏、底部Tab、悬浮圆角白卡片、已填名称、已选‘公司’、已显示3个项目标签均保持原位置与样式；底部红色按钮变为不可点击态，背景色不变，文字由‘确认’替换为‘创建中…’（14px white bold），按钮中央嵌入一个16px直径的环形加载动画（深灰#191919描边，浅灰#EEEEEE填充，CSS animation:hmspin 1s linear infinite）；无遮罩层，无其他新增元素。",
+      "implementation_method": "按钮控件 (Button)：在state_3基础上，底部按钮 disabled=true，text-content '创建中…'，button内嵌 SVG circle loader（viewBox='0 0 24 24'，stroke='#191919'，stroke-width='2'，fill='none'，stroke-linecap='round'，animation:hmspin 1s linear infinite）；其余所有元素（包括输入框、单选按钮、项目标签）保持原样，无隐藏、无禁用、无样式变更。",
+      "last_state": 3,
+      "file": "state_4.html"
+    },
+    {
+      "state_id": 5,
+      "state_name": "创建成功返回工作台页",
+      "description": "页面为全屏移动端布局，顶部状态栏可见（含时间、信号、电量图标），底部Tab导航栏完整保留且‘工作台’项高亮；中部白色卡片式列表已刷新，首项‘项目开局’标题下方新增一张项目集卡片，标题为刚创建的名称（如‘测试项目集A’），右上角有蓝色‘公司’标签；顶部状态栏正下方16px处悬浮一条半透明黑色Toast横条（宽100%，高44px，背景rgba(0,0,0,0.7)，圆角8px），横条内左对齐白色勾选图标（20×20px SVG），右侧紧邻文字‘创建成功’（16px white bold，line-height:44px）；无遮罩、无弹窗、无抽屉。",
+      "implementation_method": "轻量级提示 (Toast/Snackbar)：在state_1基础上，顶部状态栏下方16px处叠加 Toast 横条（background:rgba(0,0,0,0.7), height:44px, border-radius:8px, width:100%）；横条内左侧为白色勾选SVG图标（<svg viewBox='0 0 24 24'><path d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z' fill='white'/></svg>），右侧文字 '创建成功'（font-size:16px, font-weight:bold, color:white, line-height:44px, padding-left:12px）；列表中新增项目集卡片：标题 '测试项目集A'（16px #191919 bold），右上角蓝色标签 '公司'（background:#2196F3, color:white, font-size:12px, height:20px, line-height:20px, padding:0 8px, border-radius:10px）。",
+      "last_state": 1,
+      "file": "state_5.html"
+    },
+    {
+      "state_id": 6,
+      "state_name": "校验失败错误提示页",
+      "description": "页面结构与state_3完全一致：顶部状态栏、底部Tab、悬浮圆角白卡片、已填名称、已选‘公司’、已显示3个项目标签均保持原位置与样式；名称输入框下方显示红色小字‘请输入项目集名称’（12px，#F44336，左对齐，距输入框下边缘8px）；单选按钮组下方显示红色小字‘所选项目类型与属性不匹配’（12px，#F44336，左对齐，距单选组下边缘8px）；底部红色按钮仍为‘确认’文字，可点击，无禁用态。",
+      "implementation_method": "表单错误提示 (Form Error Message)：在state_3基础上，名称输入框下方追加 p 元素，text-content '请输入项目集名称'，style='color:#F44336;font-size:12px;margin-top:8px;'；单选按钮组下方追加 p 元素，text-content '所选项目类型与属性不匹配'，style='color:#F44336;font-size:12px;margin-top:8px;'；其余所有元素（包括按钮、项目标签）保持原样，无隐藏、无禁用。",
+      "last_state": 3,
+      "file": "state_6.html"
+    },
+    {
+      "state_id": 7,
+      "state_name": "取消创建确认态",
+      "description": "页面为全屏移动端布局，顶部状态栏可见（含时间、信号、电量图标），底部Tab导航栏完整保留且‘工作台’项高亮；中部白色卡片式列表与state_1完全一致，无新增卡片，无修改项；左上角无返回按钮，无任何弹窗、遮罩、浮层；‘创建项目集’按钮恢复为红色实心矩形，文字‘创建项目集’，可点击；画面与state_1完全一致。",
+      "implementation_method": "画面与 last_state（state_1）完全一致；base 已是关闭后的样子，无需任何 DOM 改造。",
+      "last_state": 1,
+      "file": "state_7.html"
+    }
+  ]
+}

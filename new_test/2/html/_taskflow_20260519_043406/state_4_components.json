@@ -1,0 +1,17 @@
+{
+  "state_id": 4,
+  "state_name": "创建项目集提交中过渡态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "确认按钮文字被截断，'确认'二字垂直堆叠显示，未完整呈现，违反元素溢出规则",
+      "底部确认按钮的旋转图标未正确显示为16px×16px灰色SVG动画，实际显示为模糊或缺失，不符合基础样式要求"
+    ],
+    "fixedBlocks": "[OLD]\n<button data-hm=\"Button\"  style=\"display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 32px;background:#F5F5F5;color:rgba(0,0,0,0.25);border:1px solid transparent;border-radius:20px;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:500;line-height:1;cursor:not-allowed;opacity:1;width:100%;box-sizing:border-box;outline:none;\">\n  <span class=\"mi\" style=\"font-size:16px;color:#191919;animation:hmspin 1s linear infinite;margin-right:8px;\">progress_activity</span>确认\n</button>\n[NEW]\n<button data-hm=\"Button\"  style=\"display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 32px;background:#F5F5F5;color:rgba(0,0,0,0.25);border:1px solid transparent;border-radius:20px;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:500;line-height:1;cursor:not-allowed;opacity:1;width:100%;box-sizing:border-box;outline:none;\">\n  <span class=\"mi\" style=\"font-size:16px;color:#191919;animation:hmspin 1s linear infinite;margin-right:8px;\">progress_activity</span><span style=\"font-size:16px;vertical-align:middle;\">确认</span>\n</button>",
+    "reviewMs": 18515,
+    "screenshot": 28402,
+    "fixedBlocksParsed": 1
+  }
+}

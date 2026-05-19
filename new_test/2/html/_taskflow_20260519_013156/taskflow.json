@@ -1,0 +1,43 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "我的工作台首页",
+    "description": "页面为移动端全屏布局，顶部状态栏显示时间与信号图标，底部固定Tab栏含‘工作台’‘项目’‘消息’‘我’四图标，当前高亮‘工作台’；中部内容区为滚动列表，顶部有‘创建项目集’按钮（红色填充、白色文字、圆角矩形、居中水平排列），按钮下方为项目集卡片流。",
+    "implementation_method": "原始 HTML 初始快照，不做改造"
+  },
+  {
+    "state_id": 2,
+    "state_name": "创建项目集全屏页初始态",
+    "description": "全屏页面保留顶部状态栏（时间/信号/电池图标）与底部Tab栏（‘工作台’高亮），无标题栏；中部为白色圆角卡片（宽360px、背景#FFFFFF、浅灰阴影、毛玻璃底衬），内含：顶部‘项目集名称’输入框（占位符‘请输入名称’、无边框、底部细灰线）、中部‘公司’与‘个人’单选按钮组（横向排列、左侧圆点+文字、默认未选）、下方‘添加项目’卡片区域（灰色虚线边框、中央加号图标+‘点击添加项目’文字）、底部悬浮红色按钮（宽100%、高52px、#E62429背景、白色‘确认’文字、居中）。",
+    "implementation_method": "全屏覆盖页 (Fullscreen Overlay)：基于 state_1 的 DOM 结构，移除原工作台列表区域，插入白色圆角卡片容器；卡片内含输入框（input[type='text']，placeholder='请输入名称'）、单选按钮组（label+input[type='radio']，文案分别为'公司'和'个人'）、项目添加区（div，含svg加号图标+段落'点击添加项目'）、底部按钮（button，文字'确认'，背景色#E62429，文字色#FFFFFF）。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "校验失败态",
+    "description": "全屏页面结构与 state_2 完全一致：顶部状态栏与底部Tab栏正常可见；中部白色圆角卡片内，名称输入框下方显示红色提示文字‘请输入项目集名称’（14px，#E62429，font-family: HarmonyHeiTi-Medium），单选按钮组右侧紧邻一个红色叹号图标（16×16px，#E62429），项目添加区域整体置灰（opacity:0.4），中央显示‘请先选择归属类型’（14px，#999999，居中）；底部红色‘确认’按钮保持启用态。",
+    "implementation_method": "表单错误提示 (Inline Validation Feedback)：在 state_2 卡片内，于名称输入框下方追加 p 元素（class='error-text'，color:#E62429，text-align:left），内容为'请输入项目集名称'；在单选按钮组右侧插入 svg 元素（红色叹号图标）；将项目添加区域 div 设置 opacity:0.4，并在其内部追加 p 元素（color:#999999，text-align:center），内容为'请先选择归属类型'。",
+    "last_state": 2
+  },
+  {
+    "state_id": 4,
+    "state_name": "提交中过渡态",
+    "description": "全屏页面结构与 state_2 完全一致：顶部状态栏与底部Tab栏正常可见；中部白色圆角卡片内所有元素位置与样式不变；底部红色‘确认’按钮变为禁用态（背景色#CCCCCC、文字色#999999、opacity:0.6），按钮左侧嵌入三个等距排列的灰色实心圆点（直径6px、#999999、水平居中对齐文字基线）；按钮文字仍为‘确认’，无其他遮罩或浮层。",
+    "implementation_method": "按钮加载态 (Button Loading State)：在 state_2 底部按钮内，前置三个 span 元素（display:inline-block；width:6px；height:6px；border-radius:50%；background-color:#999999；margin-right:6px；vertical-align:middle），按钮 background-color 设为 #CCCCCC，color 设为 #999999，opacity 设为 0.6。",
+    "last_state": 2
+  },
+  {
+    "state_id": 5,
+    "state_name": "创建成功终态",
+    "description": "全屏页面结构与 state_2 完全一致：顶部状态栏与底部Tab栏正常可见；中部白色圆角卡片内所有表单元素（名称输入框、单选按钮组、项目添加区、底部按钮）保持原样、完全未改动；顶部状态栏正下方 16px 处，悬浮一条浅绿色 Toast 条（宽328px、高44px、圆角8px、背景#E8F5E9、左端含白色对勾图标、右侧为‘创建成功’文字（16px，#2E7D32，HarmonyHeiTi-Medium），Toast 右侧带关闭叉号图标（16×16px，#2E7D32））。",
+    "implementation_method": "轻量级提示 (Toast/Snackbar)：在 state_2 页面 body 内顶部插入 div（position:fixed；top:44px；left:50%；transform:translateX(-50%)；width:328px；height:44px；background:#E8F5E9；border-radius:8px；display:flex；align-items:center；padding:0 16px；z-index:1000），内含 svg 对勾图标、span 文字'创建成功'（color:#2E7D32）、svg 关闭图标。",
+    "last_state": 2
+  },
+  {
+    "state_id": 6,
+    "state_name": "用户中途取消返回态",
+    "description": "画面与 last_state（state_1）完全一致；base 已是关闭后的样子，无需任何 DOM 改造。",
+    "implementation_method": "画面与 last_state（state_1）完全一致；base 已是关闭后的样子，无需任何 DOM 改造。",
+    "last_state": 1
+  }
+]

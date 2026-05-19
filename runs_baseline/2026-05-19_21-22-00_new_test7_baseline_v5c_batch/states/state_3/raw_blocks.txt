@@ -1,0 +1,8 @@
+[state-fail] LLM 返回空
+
+--- state logs ---
+[baseline] HM_BASELINE_ENABLED=1，走 baseline 一锤子路径（跳过 twoPhase / DSL / legacy）
+[baseline] 启动 state_3 「请选择添加方式弹窗」
+[baseline] prompt 20.3KB lang=zh prevHtml=228.6KB->stripped 13.7KB
+[baseline] LLM 第 1 次返回空，重试（temp=0.2）
+[baseline] LLM 第 2 次返回空，重试（temp=0.5）

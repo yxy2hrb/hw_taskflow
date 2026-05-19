@@ -1,0 +1,163 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": ["#14_884283", "#14_884284", "#14_884285"],
+      "replace_at": "#14_884283",
+      "instruction": "把'我要办会区块'整段替换为32px深灰圆环spinner（stroke:#191919，stroke-width:2，CSS animation:hmspin 1s linear infinite），并保留其下方'分享获客数据区块'和'虚拟体验项目区块'的占位结构；Wi-Fi评分占位文字改为'Wi-Fi评分：--分'，运行时长占位文字改为'已运行 --'，设备统计占位文字改为'设备总数：--台'，终端统计占位文字改为'在线终端：--个'，全部14px #999，行高20px，无图标，高度与原state_3一致；背景色保持#FFFFFF；所有占位文字使用HarmonyHeiTi-Regular字体",
+      "components_needed": ["ProgressBar"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "gap": 24,
+      "padding": 0,
+      "background": "#FFFFFF",
+      "align": "stretch"
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "gap": 16,
+          "padding": "16px 16px 0",
+          "align": "stretch"
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "variant": "title",
+              "size": 20,
+              "weight": 700,
+              "color": "rgba(0,0,0,0.90)",
+              "align": "left"
+            },
+            "children": "我要办会"
+          },
+          {
+            "type": "Spinner",
+            "props": {
+              "size": 32,
+              "color": "#191919",
+              "text": ""
+            }
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "gap": 16,
+          "padding": "16px 16px 0",
+          "align": "stretch"
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "variant": "title",
+              "size": 20,
+              "weight": 700,
+              "color": "rgba(0,0,0,0.90)",
+              "align": "left"
+            },
+            "children": "分享获客数据"
+          },
+          {
+            "type": "Column",
+            "props": {
+              "gap": 8,
+              "padding": 0,
+              "align": "stretch"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "size": 14,
+                  "weight": 400,
+                  "color": "#999999",
+                  "lineHeight": 20,
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                },
+                "children": "Wi-Fi评分：--分"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "size": 14,
+                  "weight": 400,
+                  "color": "#999999",
+                  "lineHeight": 20,
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                },
+                "children": "已运行 --"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "gap": 16,
+          "padding": "16px 16px 0",
+          "align": "stretch"
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "variant": "title",
+              "size": 20,
+              "weight": 700,
+              "color": "rgba(0,0,0,0.90)",
+              "align": "left"
+            },
+            "children": "虚拟体验项目"
+          },
+          {
+            "type": "Column",
+            "props": {
+              "gap": 8,
+              "padding": 0,
+              "align": "stretch"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "size": 14,
+                  "weight": 400,
+                  "color": "#999999",
+                  "lineHeight": 20,
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                },
+                "children": "设备总数：--台"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "size": 14,
+                  "weight": 400,
+                  "color": "#999999",
+                  "lineHeight": 20,
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                },
+                "children": "在线终端：--个"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

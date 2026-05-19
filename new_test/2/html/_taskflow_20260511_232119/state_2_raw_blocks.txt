@@ -1,0 +1,68 @@
+{
+  "state_name": "项目集创建全屏页",
+  "lifecycle": "persistent",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "FullscreenPanel",
+    "props": { "background": "#FFFFFF" },
+    "children": [
+      {
+        "type": "Column",
+        "props": { "gap": 24, "padding": 16 },
+        "children": [
+          {
+            "type": "Text",
+            "props": { "text": "创建项目集", "variant": "title", "align": "center" }
+          },
+          {
+            "type": "FormField",
+            "props": { "label": "项目集名称", "placeholder": "请输入项目集名称", "required": true }
+          },
+          {
+            "type": "Column",
+            "props": { "gap": 12 },
+            "children": [
+              {
+                "type": "Text",
+                "props": { "text": "类型", "variant": "subtitle" }
+              },
+              {
+                "type": "Row",
+                "props": { "gap": 12 },
+                "children": [
+                  {
+                    "type": "Button",
+                    "props": { "label": "公司\nCompany", "variant": "text", "size": "regular" }
+                  },
+                  {
+                    "type": "Button",
+                    "props": { "label": "个人\nPersonal", "variant": "text", "size": "regular" }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": { "gap": 8, "align": "center" },
+            "children": [
+              {
+                "type": "Icon",
+                "props": { "name": "add", "size": 24, "color": "#BFBFBF" }
+              },
+              {
+                "type": "Text",
+                "props": { "text": "点击添加项目\nTap to add project", "variant": "caption", "color": "#8C8C8C", "align": "center" }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Button",
+        "props": { "label": "确认\nConfirm", "variant": "primary", "block": true, "size": "large", "color": "#FFFFFF", "weight": "bold" }
+      }
+    ]
+  }
+}

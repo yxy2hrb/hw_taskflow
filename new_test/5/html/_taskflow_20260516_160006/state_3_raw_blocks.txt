@@ -1,0 +1,291 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#14_884368",
+      "instruction": "把整段替换为全屏项目加载中态：顶部导航栏固定显示‘虚拟体验项目’标题（16px Medium，#191919），左侧返回图标（24×24px黑色箭头SVG）、右侧依次为搜索放大镜图标（20×20px）、铃铛通知图标（20×20px）、加号图标（20×20px）；下方内容区：拓扑图区域显示三段灰色波浪线（高12px，色值 rgba(0,0,0,0.08)）与两个浅灰圆形节点（直径24px，色值 rgba(0,0,0,0.12)）；Wi-Fi评分区为两行浅灰横条（高14px，色值 rgba(0,0,0,0.08)）；设备与终端统计双卡片各为等宽浅灰矩形（高72px，色值 rgba(0,0,0,0.08)）；业务网管理模块为四块等宽浅灰矩形（高48px，色值 rgba(0,0,0,0.08)）。",
+      "components_needed": ["TopBar", "Skeleton"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Page",
+    "props": {
+      "background": "#F1F3F5",
+      "width": "100%",
+      "height": "100%"
+    },
+    "children": [
+      {
+        "type": "NavBar",
+        "props": {
+          "title": "虚拟体验项目",
+          "leftIcon": "arrow_back",
+          "rightIcon": ["search", "notifications", "add"],
+          "align": "center"
+        }
+      },
+      {
+        "type": "Column",
+        "props": {
+          "padding": [24, 16, 16, 16],
+          "gap": 24,
+          "background": "#F1F3F5"
+        },
+        "children": [
+          {
+            "type": "Column",
+            "props": {
+              "gap": 16
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "subtitle",
+                  "color": "rgba(0,0,0,0.60)",
+                  "size": 14,
+                  "weight": 500
+                },
+                "children": "拓扑图"
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 8
+                },
+                "children": [
+                  {
+                    "type": "Row",
+                    "props": {
+                      "gap": 8,
+                      "align": "center"
+                    },
+                    "children": [
+                      {
+                        "type": "Column",
+                        "props": {
+                          "gap": 4
+                        },
+                        "children": [
+                          {
+                            "type": "Text",
+                            "props": {
+                              "size": 12,
+                              "color": "rgba(0,0,0,0.08)",
+                              "weight": 400
+                            },
+                            "children": "····················"
+                          },
+                          {
+                            "type": "Text",
+                            "props": {
+                              "size": 12,
+                              "color": "rgba(0,0,0,0.08)",
+                              "weight": 400
+                            },
+                            "children": "····················"
+                          },
+                          {
+                            "type": "Text",
+                            "props": {
+                              "size": 12,
+                              "color": "rgba(0,0,0,0.08)",
+                              "weight": 400
+                            },
+                            "children": "····················"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Column",
+                        "props": {
+                          "gap": 12
+                        },
+                        "children": [
+                          {
+                            "type": "Icon",
+                            "props": {
+                              "name": "circle",
+                              "size": 24,
+                              "color": "rgba(0,0,0,0.12)"
+                            }
+                          },
+                          {
+                            "type": "Icon",
+                            "props": {
+                              "name": "circle",
+                              "size": 24,
+                              "color": "rgba(0,0,0,0.12)"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": {
+              "gap": 16
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "subtitle",
+                  "color": "rgba(0,0,0,0.60)",
+                  "size": 14,
+                  "weight": 500
+                },
+                "children": "Wi-Fi 评分"
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 8
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 14,
+                      "color": "rgba(0,0,0,0.08)",
+                      "weight": 400
+                    },
+                    "children": "··············"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 14,
+                      "color": "rgba(0,0,0,0.08)",
+                      "weight": 400
+                    },
+                    "children": "··············"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": {
+              "gap": 16
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "subtitle",
+                  "color": "rgba(0,0,0,0.60)",
+                  "size": 14,
+                  "weight": 500
+                },
+                "children": "设备与终端统计"
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 16,
+                  "wrap": false
+                },
+                "children": [
+                  {
+                    "type": "Column",
+                    "props": {
+                      "background": "rgba(0,0,0,0.08)",
+                      "borderRadius": 8,
+                      "width": "50%",
+                      "height": 72
+                    }
+                  },
+                  {
+                    "type": "Column",
+                    "props": {
+                      "background": "rgba(0,0,0,0.08)",
+                      "borderRadius": 8,
+                      "width": "50%",
+                      "height": 72
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": {
+              "gap": 16
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "subtitle",
+                  "color": "rgba(0,0,0,0.60)",
+                  "size": 14,
+                  "weight": 500
+                },
+                "children": "业务网管理"
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 12,
+                  "wrap": false
+                },
+                "children": [
+                  {
+                    "type": "Column",
+                    "props": {
+                      "background": "rgba(0,0,0,0.08)",
+                      "borderRadius": 8,
+                      "width": "25%",
+                      "height": 48
+                    }
+                  },
+                  {
+                    "type": "Column",
+                    "props": {
+                      "background": "rgba(0,0,0,0.08)",
+                      "borderRadius": 8,
+                      "width": "25%",
+                      "height": 48
+                    }
+                  },
+                  {
+                    "type": "Column",
+                    "props": {
+                      "background": "rgba(0,0,0,0.08)",
+                      "borderRadius": 8,
+                      "width": "25%",
+                      "height": 48
+                    }
+                  },
+                  {
+                    "type": "Column",
+                    "props": {
+                      "background": "rgba(0,0,0,0.08)",
+                      "borderRadius": 8,
+                      "width": "25%",
+                      "height": 48
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "text-edit",
+      "anchor": "<p id=\"146_394612\" class=\"Pixso-paragraph-146_394612\">我的线索</p>",
+      "instruction": "更新为 '管理应用'"
+    },
+    {
+      "id": "e2",
+      "type": "state-toggle",
+      "anchor": "#146_394679",
+      "instruction": "将整个管理应用列表区块替换为包含三项应用的列表，每项左对齐圆形图标（40×40px，圆角20px）、应用名称（14px Regular，主文本色）、右对齐开关控件；其中最后一项（营销物料 C）的开关控件轨道色改为 rgba(199,0,11,1)，滑块色也改为 rgba(199,0,11,1)；其余两项开关保持未开启态（轨道色 rgba(223,223,223,1)，滑块色 rgba(255,255,255,1)）"
+    },
+    {
+      "id": "e3",
+      "type": "text-edit",
+      "anchor": "<span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:500;color:rgba(0,0,0,1);text-align:left;line-height:1.4;\">已添加X个</span>",
+      "instruction": "更新为 '已添加(X+1)个'（X 为原数字）"
+    },
+    {
+      "id": "e4",
+      "type": "new-overlay",
+      "anchor": "#146_395667",
+      "instruction": "在页面顶部居中悬浮成功 Toast：背景 #64BB5C，圆角 8px，宽 fit-content，左右 padding 16px，上下 padding 10px，文字'添加成功'（14px Medium，白色），无遮罩，不覆盖状态栏和底部 Tab，阴影 0 4px 12px rgba(0,0,0,0.06)"
+    }
+  ]
+}
+
+--- skill2 outputs ---
+[OLD]
+<p id="146_394612" class="Pixso-paragraph-146_394612">我的线索</p>
+[NEW]
+<p id="146_394612" class="Pixso-paragraph-146_394612" style="position: fixed; top: 24px; left: 50%; transform: translateX(-50%); width: fit-content; min-width: 140px; background: #64BB5C; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); padding: 10px 16px; display: flex; align-items: center; gap: 8px; z-index: 1000;">管理应用</p>
+[NEXT]
+
+[NEXT]
+[OLD]
+<span data-hm="Text" style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:500;color:rgba(0,0,0,1);text-align:left;line-height:1.4;">已添加X个</span>
+[NEW]
+<span data-hm="Text" style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:500;color:#FFFFFF;text-align:center;line-height:1.4;background:#64BB5C;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.06);padding:10px 16px;min-width:140px;width:fit-content;position:fixed;top:24px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:8px;">已添加(X+1)个</span>
+[NEXT]
+{
+  "tree": {
+    "type": "Row",
+    "props": {
+      "background": "#64BB5C",
+      "borderRadius": 8,
+      "padding": [10, 16],
+      "gap": 8,
+      "align": "center",
+      "width": "fit-content",
+      "minWidth": "140px",
+      "position": "fixed",
+      "top": "calc(32px + 16px)",
+      "left": "50%",
+      "transform": "translateX(-50%)",
+      "zIndex": 10000,
+      "shadow": "0 4px 12px rgba(0,0,0,0.06)"
+    },
+    "children": [
+      { "type": "Icon", "props": { "name": "check_circle", "size": 20, "color": "#FFFFFF" } },
+      { "type": "Text", "props": { "color": "#FFFFFF", "size": 14, "weight": 500 }, "children": "添加成功" }
+    ]
+  }
+}

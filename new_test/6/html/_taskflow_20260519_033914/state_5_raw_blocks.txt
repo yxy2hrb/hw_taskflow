@@ -1,0 +1,22 @@
+{
+  "state_name": "文档详情页独立展示",
+  "lifecycle": "persistent",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": false,
+  "tree": {
+    "type": "Page",
+    "props": { "background": "#FFFFFF" },
+    "children": [
+      { "type": "StatusBar" },
+      { "type": "NavBar", "props": { "title": "WPS AI 使用指南", "leftIcon": "arrow_back", "align": "center", "background": "#191919" } },
+      { "type": "Column", "props": { "gap": 16, "padding": 16 }, "children": [
+        { "type": "Text", "props": { "text": "WPS AI 使用指南", "variant": "title", "size": 16, "weight": "medium", "color": "#191919", "align": "left" } },
+        { "type": "Text", "props": { "text": "WPS AI 是一款智能办公助手，支持文档生成、内容润色、多轮问答与格式优化。本指南将帮助您快速上手核心功能。", "variant": "body", "size": 14, "weight": "regular", "color": "#191919", "align": "left" } },
+        { "type": "Text", "props": { "text": "一、创建新文档", "variant": "subtitle", "size": 16, "weight": "medium", "color": "#191919", "align": "left" } },
+        { "type": "Text", "props": { "text": "点击「+」按钮 → 选择「AI 文档」→ 输入需求描述（如：生成一份产品发布会PPT大纲），AI 将自动生成结构化初稿。", "variant": "body", "size": 14, "weight": "regular", "color": "#191919", "align": "left" } },
+        { "type": "Text", "props": { "text": "二、智能润色", "variant": "subtitle", "size": 16, "weight": "medium", "color": "#191919", "align": "left" } },
+        { "type": "Text", "props": { "text": "选中段落 → 点击工具栏「润色」图标 → 选择风格（简洁/正式/生动）→ 确认应用。支持语法纠错、语序优化与词汇升级。", "variant": "body", "size": 14, "weight": "regular", "color": "#191919", "align": "left" } }
+      ]}
+    ]
+  }
+}

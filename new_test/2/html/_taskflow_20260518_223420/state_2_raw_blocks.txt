@@ -1,0 +1,163 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": ["#14_807630"],
+      "replace_at": "#14_807630",
+      "instruction": "把项目开局卡片区域整段替换为创建项目集全屏表单：顶部留白44px高度；下方依次为项目集名称输入框（浅灰背景#F5F5F5、圆角8px、宽90%、placeholder='请输入项目集名称'、字体HarmonyHeiTi, 'HarmonyOS Sans', sans-serif）；'公司/个人'单选组（横向排列，左侧圆点直径12px、填充色#E53935，右侧文字'公司'和'个人'字号14px、颜色#191919）；项目添加区域（白色卡片、圆角8px、边框#EEEEEE、内边距16px、中央含加号图标+灰色文字' + 添加项目'）；底部红色确认按钮（宽80%、高48px、圆角8px、背景色#E53935、白色文字'确认'、16px Medium）。",
+      "components_needed": ["TextInput", "Radio", "Card", "Button"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "background": "#F1F3F5",
+      "padding": [44, 0, 0, 0],
+      "gap": 24,
+      "align": "center",
+      "width": "100%"
+    },
+    "children": [
+      {
+        "type": "TextInput",
+        "props": {
+          "placeholder": "请输入项目集名称",
+          "size": "regular",
+          "background": "#F5F5F5",
+          "borderRadius": 8,
+          "width": "90%",
+          "style": {
+            "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+          }
+        }
+      },
+      {
+        "type": "Row",
+        "props": {
+          "gap": 32,
+          "align": "center",
+          "justify": "center"
+        },
+        "children": [
+          {
+            "type": "Row",
+            "props": {
+              "gap": 8,
+              "align": "center"
+            },
+            "children": [
+              {
+                "type": "Icon",
+                "props": {
+                  "name": "radio_button_unchecked",
+                  "size": 12,
+                  "color": "#E53935"
+                }
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "size": 14,
+                  "weight": 500,
+                  "color": "#191919"
+                },
+                "children": "公司"
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "gap": 8,
+              "align": "center"
+            },
+            "children": [
+              {
+                "type": "Icon",
+                "props": {
+                  "name": "radio_button_unchecked",
+                  "size": 12,
+                  "color": "#E53935"
+                }
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "size": 14,
+                  "weight": 500,
+                  "color": "#191919"
+                },
+                "children": "个人"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "borderRadius": 8,
+          "border": "1px solid #EEEEEE",
+          "padding": 16,
+          "width": "90%",
+          "align": "center",
+          "justify": "center"
+        },
+        "children": [
+          {
+            "type": "Row",
+            "props": {
+              "gap": 8,
+              "align": "center"
+            },
+            "children": [
+              {
+                "type": "Icon",
+                "props": {
+                  "name": "add",
+                  "size": 20,
+                  "color": "rgba(0,0,0,0.4)"
+                }
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "size": 14,
+                  "color": "rgba(0,0,0,0.4)",
+                  "weight": 500
+                },
+                "children": "+ 添加项目"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Button",
+        "props": {
+          "label": "确认",
+          "variant": "primary",
+          "size": "large",
+          "width": "80%",
+          "height": 48,
+          "borderRadius": 8,
+          "background": "#E53935",
+          "color": "#FFFFFF",
+          "style": {
+            "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+          }
+        }
+      }
+    ]
+  }
+}

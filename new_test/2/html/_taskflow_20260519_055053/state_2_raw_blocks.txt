@@ -1,0 +1,134 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": ["#14_807629", "#14_807630"],
+      "replace_at": "#14_807629",
+      "instruction": "把整块工作台主内容替换为创建项目集全屏页：悬浮白底卡片（宽360px，高520px，圆角12px，阴影rgba(0,0,0,0.08)），内含居中标题'创建项目集'（16px Medium，#191919）；名称输入框（空值，placeholder='请输入项目集名称'，浅灰边框）；'公司/个人'单选组（两个未选中圆形按钮并排，右侧文字标签分别为'公司'和'个人'）；'添加项目'区域（高80px浅灰容器，内含+号图标与文字'点击添加项目'）；底部红色按钮（高56px，背景#E53935，文字'确认'，白色）",
+      "components_needed": ["TextInput", "Radio", "Button", "Card"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "background": "#FFFFFF",
+      "borderRadius": 12,
+      "width": 360,
+      "height": 520,
+      "shadow": true,
+      "padding": 24,
+      "gap": 24,
+      "align": "center",
+      "justify": "flex-start"
+    },
+    "children": [
+      {
+        "type": "Text",
+        "props": {
+          "variant": "title",
+          "size": 16,
+          "weight": 500,
+          "color": "#191919",
+          "align": "center"
+        },
+        "children": "创建项目集"
+      },
+      {
+        "type": "TextInput",
+        "props": {
+          "placeholder": "请输入项目集名称",
+          "value": "",
+          "size": "regular"
+        }
+      },
+      {
+        "type": "Column",
+        "props": { "gap": 12 },
+        "children": [
+          {
+            "type": "Text",
+            "props": { "variant": "subtitle", "size": 14, "weight": 500, "color": "rgba(0,0,0,0.90)" },
+            "children": "公司/个人"
+          },
+          {
+            "type": "Row",
+            "props": { "gap": 24, "align": "center" },
+            "children": [
+              {
+                "type": "Row",
+                "props": { "gap": 8, "align": "center" },
+                "children": [
+                  {
+                    "type": "Checkbox",
+                    "props": { "checked": false, "size": 22 }
+                  },
+                  {
+                    "type": "Text",
+                    "props": { "variant": "body", "size": 16, "weight": 500, "color": "rgba(0,0,0,0.90)" },
+                    "children": "公司"
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": { "gap": 8, "align": "center" },
+                "children": [
+                  {
+                    "type": "Checkbox",
+                    "props": { "checked": false, "size": 22 }
+                  },
+                  {
+                    "type": "Text",
+                    "props": { "variant": "body", "size": 16, "weight": 500, "color": "rgba(0,0,0,0.90)" },
+                    "children": "个人"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "background": "rgba(0,0,0,0.05)",
+          "borderRadius": 8,
+          "width": "100%",
+          "height": 80,
+          "padding": 12,
+          "align": "center",
+          "justify": "center",
+          "gap": 4
+        },
+        "children": [
+          {
+            "type": "Icon",
+            "props": { "name": "add", "size": 24, "color": "#0A59F7" }
+          },
+          {
+            "type": "Text",
+            "props": { "variant": "body", "size": 14, "weight": 400, "color": "rgba(0,0,0,0.60)" },
+            "children": "点击添加项目"
+          }
+        ]
+      },
+      {
+        "type": "Button",
+        "props": {
+          "label": "确认",
+          "variant": "primary",
+          "size": "large",
+          "height": 56,
+          "background": "#E53935",
+          "color": "#FFFFFF"
+        }
+      }
+    ]
+  }
+}

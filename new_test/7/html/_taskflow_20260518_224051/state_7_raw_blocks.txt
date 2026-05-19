@@ -1,0 +1,107 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "new-overlay",
+      "anchor": "#hm-dsl-root-st2",
+      "instruction": "在 body 末尾追加全屏深灰遮罩层（rgba(0,0,0,0.6)）覆盖管理应用页；正中悬浮白色圆角卡片（320×360px、圆角 12px、阴影 0 4px 12px rgba(0,0,0,0.1)）；卡片内四图标选项布局与 state_3 完全一致（'快捷入口'、'小卡片'、'中卡片'、'大卡片'，文字 14px Regular、深灰 #191919）；卡片底部新增红色小字提示（12px Regular、#C7000B、居中）：'该组件已启用'（中文在上）、'This component is already enabled'（英文在下，间距 4px）；无取消按钮、无其他按钮、无图标变化；禁止使用 Emoji，所有图标用 Material Icons Round 名（如 app_icon），字体统一 HarmonyHeiTi, 'HarmonyOS Sans', sans-serif。",
+      "components_needed": ["Dialog"],
+      "icons_needed": ["app_icon"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "OverlayMask",
+    "props": {
+      "opacity": 0.6,
+      "color": "#000000"
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "borderRadius": 12,
+          "width": 320,
+          "height": 360,
+          "padding": 24,
+          "shadow": "0 4px 12px rgba(0,0,0,0.1)",
+          "gap": 24,
+          "align": "center",
+          "justify": "flex-start"
+        },
+        "children": [
+          {
+            "type": "Row",
+            "props": {
+              "gap": 24,
+              "wrap": true,
+              "justify": "center"
+            },
+            "children": [
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 8,
+                  "align": "center"
+                },
+                "children": [
+                  { "type": "Icon", "props": { "name": "app_icon", "size": 24, "color": "#191919" } },
+                  { "type": "Text", "props": { "size": 14, "weight": 500, "color": "#191919" }, "children": "快捷入口" }
+                ]
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 8,
+                  "align": "center"
+                },
+                "children": [
+                  { "type": "Icon", "props": { "name": "widgets", "size": 24, "color": "#191919" } },
+                  { "type": "Text", "props": { "size": 14, "weight": 500, "color": "#191919" }, "children": "小卡片" }
+                ]
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 8,
+                  "align": "center"
+                },
+                "children": [
+                  { "type": "Icon", "props": { "name": "view_compact", "size": 24, "color": "#191919" } },
+                  { "type": "Text", "props": { "size": 14, "weight": 500, "color": "#191919" }, "children": "中卡片" }
+                ]
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 8,
+                  "align": "center"
+                },
+                "children": [
+                  { "type": "Icon", "props": { "name": "view_module", "size": 24, "color": "#191919" } },
+                  { "type": "Text", "props": { "size": 14, "weight": 500, "color": "#191919" }, "children": "大卡片" }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": {
+              "gap": 4,
+              "align": "center"
+            },
+            "children": [
+              { "type": "Text", "props": { "size": 12, "weight": 500, "color": "#C7000B" }, "children": "该组件已启用" },
+              { "type": "Text", "props": { "size": 12, "weight": 400, "color": "#C7000B" }, "children": "This component is already enabled" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

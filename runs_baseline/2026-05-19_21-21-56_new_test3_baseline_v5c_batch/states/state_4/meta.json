@@ -1,0 +1,12 @@
+{
+  "state_id": 4,
+  "state_name": "卡片点击后加载中态",
+  "description": "全屏覆盖一层深灰半透明遮罩（rgba(0,0,0,0.4)），中央悬浮32px圆环spinner（深灰描边#191919，浅灰底，CSS animation:hmspin 1s linear infinite），原工作台页面内容完全不可见，顶部状态栏与底部Tab栏被遮罩覆盖，无任何文字提示。",
+  "implementation_method": "加载中遮罩 (Loading Overlay)：全屏深灰半透明遮罩 rgba(0,0,0,0.4)；中央32px圆环spinner（stroke:#191919, stroke-width:2.5, width:32px, height:32px, CSS animation:hmspin 1s linear infinite）；无文字提示；顶部状态栏与底部Tab栏均被遮罩覆盖，不可见。",
+  "last_state": 1,
+  "applied": 1,
+  "skipped": 0,
+  "elapsed_ms": 51729,
+  "failed": false,
+  "error": null
+}

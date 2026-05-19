@@ -1,0 +1,7 @@
+{"event":"state-start","data":{"state_id":3,"state_name":"提交中状态","last_state":2,"ts":1779225809262},"ts":"2026-05-19T21:23:29.264Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[baseline] HM_BASELINE_ENABLED=1，走 baseline 一锤子路径（跳过 twoPhase / DSL / legacy）","ts":1779225809262},"ts":"2026-05-19T21:23:29.264Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[baseline] 启动 state_3 「提交中状态」","ts":1779225809262},"ts":"2026-05-19T21:23:29.264Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[baseline] prompt 14.1KB lang=zh prevHtml=80.1KB->stripped 8.6KB","ts":1779225809263},"ts":"2026-05-19T21:23:29.264Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[baseline] 生成 HTML 80.5KB（其中 LLM body=8.7KB）","ts":1779225884699},"ts":"2026-05-19T21:24:44.700Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[baseline] 成功（html 82474B applied=1）","ts":1779225884700},"ts":"2026-05-19T21:24:44.700Z"}
+{"event":"state-done","data":{"state_id":3,"state_name":"提交中状态","file":"state_3.html","applied":1,"skipped":0,"review_ok":null,"review_applied":0,"review_issues":[],"elapsed_ms":75440,"hmExpansions":[],"hmMissing":[],"ts":1779225884702},"ts":"2026-05-19T21:24:44.704Z"}

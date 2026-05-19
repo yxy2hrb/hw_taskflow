@@ -1,0 +1,115 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "text-edit",
+      "anchor": "<p id=\"146_395666\" class=\"Pixso-paragraph-146_395666 text-ohos_id_text_size_body2regular-6_250025\">管理应用</p>",
+      "instruction": "更新为 '管理应用'",
+      "components_needed": ["BottomTab"]
+    },
+    {
+      "id": "e2",
+      "type": "state-toggle",
+      "anchor": "#146_394693",
+      "instruction": "把快捷入口卡片标题文字更新为 '快捷入口'，保持原样式"
+    },
+    {
+      "id": "e3",
+      "type": "new-overlay",
+      "anchor": "#146_395667",
+      "instruction": "在 body 末尾、底部 Tab 容器（id=146_395667）之前添加顶部居中 Toast：背景 #64BB5C，圆角 8px，阴影 box-shadow: 0 4px 12px rgba(0,0,0,0.06)，padding=10px 16px，内含左侧 16×16px 绿色对勾图标（Material Icons Round 名 check_circle），右侧 14px HarmonyHeiTi-Regular 黑字 '添加成功'；无遮罩，不覆盖状态栏和底部 Tab；宽度 fit-content，left=50%，transform=translateX(-50%)",
+      "components_needed": ["Toast"],
+      "icons_needed": ["check_circle"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+[OLD]
+<p id="146_395666" class="Pixso-paragraph-146_395666 text-ohos_id_text_size_body2regular-6_250025">管理应用</p>
+[NEW]
+<div id="146_395666" class="Pixso-paragraph-146_395666 text-ohos_id_text_size_body2regular-6_250025" style="position: fixed; top: 24px; z-index: 1000; width: fit-content; min-width: 140px; left: 50%; transform: translateX(-50%); background: #64BB5C; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); padding: 10px 16px; display: flex; align-items: center; gap: 8px;">管理应用</div>
+[NEXT]
+{
+  "tree": {
+    "type": "Row",
+    "props": {
+      "background": "#64BB5C",
+      "borderRadius": 8,
+      "padding": [10, 16],
+      "gap": 8,
+      "align": "center",
+      "justify": "center",
+      "width": "fit-content",
+      "minWidth": 140,
+      "style": {
+        "position": "fixed",
+        "top": "24px",
+        "left": "50%",
+        "transform": "translateX(-50%)",
+        "boxShadow": "0 4px 12px rgba(0,0,0,0.06)"
+      }
+    },
+    "children": [
+      {
+        "type": "Icon",
+        "props": {
+          "name": "check_circle",
+          "size": 20,
+          "color": "#FFFFFF"
+        }
+      },
+      {
+        "type": "Text",
+        "props": {
+          "variant": "body",
+          "color": "#FFFFFF",
+          "weight": 500
+        },
+        "children": "快捷入口"
+      }
+    ]
+  }
+}
+[NEXT]
+{
+  "tree": {
+    "type": "Row",
+    "props": {
+      "background": "#64BB5C",
+      "borderRadius": 8,
+      "padding": [10, 16],
+      "gap": 8,
+      "align": "center",
+      "width": "fit-content",
+      "minWidth": "140px",
+      "position": "fixed",
+      "top": "calc(32px + 16px)",
+      "left": "50%",
+      "transform": "translateX(-50%)",
+      "zIndex": 10000,
+      "shadow": "0 4px 12px rgba(0,0,0,0.06)"
+    },
+    "children": [
+      {
+        "type": "Icon",
+        "props": {
+          "name": "check_circle",
+          "size": 16,
+          "color": "#FFFFFF"
+        }
+      },
+      {
+        "type": "Text",
+        "props": {
+          "color": "#FFFFFF",
+          "size": 14,
+          "weight": 500,
+          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+        },
+        "children": "添加成功"
+      }
+    ]
+  }
+}

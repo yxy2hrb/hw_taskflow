@@ -1,0 +1,8 @@
+{"event":"state-start","data":{"state_id":3,"state_name":"项目详情全屏页面","last_state":1,"ts":1779225839361},"ts":"2026-05-19T21:23:59.364Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[baseline] HM_BASELINE_ENABLED=1，走 baseline 一锤子路径（跳过 twoPhase / DSL / legacy）","ts":1779225839361},"ts":"2026-05-19T21:23:59.364Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[baseline] 启动 state_3 「项目详情全屏页面」","ts":1779225839361},"ts":"2026-05-19T21:23:59.364Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[baseline-pre] 删除空白半透明遮罩节点 7 个","ts":1779225839363},"ts":"2026-05-19T21:23:59.364Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[baseline] prompt 31.4KB lang=zh prevHtml=96.6KB->stripped 25.1KB","ts":1779225839363},"ts":"2026-05-19T21:23:59.364Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[baseline] 生成 HTML 79.8KB（其中 LLM body=8.0KB）","ts":1779225912374},"ts":"2026-05-19T21:25:12.374Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[baseline] 成功（html 81758B applied=1）","ts":1779225912374},"ts":"2026-05-19T21:25:12.374Z"}
+{"event":"state-done","data":{"state_id":3,"state_name":"项目详情全屏页面","file":"state_3.html","applied":1,"skipped":0,"review_ok":null,"review_applied":0,"review_issues":[],"elapsed_ms":73014,"hmExpansions":[],"hmMissing":[],"ts":1779225912375},"ts":"2026-05-19T21:25:12.378Z"}

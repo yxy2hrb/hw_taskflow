@@ -1,0 +1,11 @@
+{
+  "state_id": 1,
+  "state_name": "营销工作台主页",
+  "description": "顶部状态栏显示时间/信号/电量，页面中部为'管理应用'按钮（蓝色填充、白色文字、圆角矩形），底部固定Tab导航栏：首页、商城、营销（高亮）、服务、我的；所有元素使用HarmonyHeiTi字体，主色#C7000B用于当前Tab标识。",
+  "implementation_method": "原始 HTML 初始快照，不做改造",
+  "last_state": null,
+  "applied": 0,
+  "skipped": 0,
+  "failed": false,
+  "error": null
+}

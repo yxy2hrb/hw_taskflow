@@ -1,0 +1,8 @@
+{"event":"state-start","data":{"state_id":6,"state_name":"网络失败提示态","last_state":1,"ts":1779226085049},"ts":"2026-05-19T21:28:05.053Z"}
+{"event":"state-log","data":{"state_id":6,"msg":"[baseline] HM_BASELINE_ENABLED=1，走 baseline 一锤子路径（跳过 twoPhase / DSL / legacy）","ts":1779226085049},"ts":"2026-05-19T21:28:05.054Z"}
+{"event":"state-log","data":{"state_id":6,"msg":"[baseline] 启动 state_6 「网络失败提示态」","ts":1779226085049},"ts":"2026-05-19T21:28:05.054Z"}
+{"event":"state-log","data":{"state_id":6,"msg":"[baseline-pre] 删除空白半透明遮罩节点 7 个","ts":1779226085051},"ts":"2026-05-19T21:28:05.054Z"}
+{"event":"state-log","data":{"state_id":6,"msg":"[baseline] prompt 28.4KB lang=zh prevHtml=84.3KB->stripped 22.1KB","ts":1779226085051},"ts":"2026-05-19T21:28:05.054Z"}
+{"event":"state-log","data":{"state_id":6,"msg":"[baseline] 生成 HTML 70.8KB（其中 LLM body=8.3KB）","ts":1779226179270},"ts":"2026-05-19T21:29:39.271Z"}
+{"event":"state-log","data":{"state_id":6,"msg":"[baseline] 成功（html 72546B applied=1）","ts":1779226179270},"ts":"2026-05-19T21:29:39.271Z"}
+{"event":"state-done","data":{"state_id":6,"state_name":"网络失败提示态","file":"state_6.html","applied":1,"skipped":0,"review_ok":null,"review_applied":0,"review_issues":[],"elapsed_ms":94232,"hmExpansions":[],"hmMissing":[],"ts":1779226179281},"ts":"2026-05-19T21:29:39.282Z"}

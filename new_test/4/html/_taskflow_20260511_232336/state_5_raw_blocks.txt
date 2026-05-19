@@ -1,0 +1,42 @@
+{
+  "state_name": "创建失败提示态",
+  "lifecycle": "temporary",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "FullscreenPanel",
+    "props": { "background": "transparent" },
+    "children": [
+      {
+        "type": "OverlayMask",
+        "props": { "opacity": 0, "blur": 0 },
+        "children": [
+          {
+            "type": "Column",
+            "props": { "align": "center", "justify": "flex-end", "padding": { "bottom": 44 } },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "text": "创建失败，请重试",
+                  "variant": "body",
+                  "size": 14,
+                  "color": "#D81B1B",
+                  "weight": "regular"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Banner",
+        "props": {
+          "text": "创建失败，请重试",
+          "variant": "warning",
+          "closable": false
+        }
+      }
+    ]
+  }
+}

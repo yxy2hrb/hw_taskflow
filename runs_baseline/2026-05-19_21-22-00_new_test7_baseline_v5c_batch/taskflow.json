@@ -1,0 +1,43 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "营销工作台主页",
+    "description": "顶部状态栏显示时间/信号/电量，页面中部为'管理应用'按钮（蓝色填充、白色文字、圆角矩形），底部固定Tab导航栏：首页、商城、营销（高亮）、服务、我的；所有元素使用HarmonyHeiTi字体，主色#C7000B用于当前Tab标识。",
+    "implementation_method": "原始 HTML 初始快照，不做改造"
+  },
+  {
+    "state_id": 2,
+    "state_name": "管理应用页列表态",
+    "description": "顶部固定标题栏含左对齐返回箭头图标（纯黑、24px）与居中文字'管理应用'（14px Medium、#191919）；下方灰色小字'已添加X个'（14px Regular、#AEAEAE）；主体为垂直滚动列表，每项含左对齐圆形应用图标（40×40px）、应用名（14px Regular、#191919）、右对齐开关控件（开启态为蓝色填充+白点，关闭态为浅灰轨道+深灰滑块）；底部完整Tab导航栏与state_1一致。",
+    "implementation_method": "全屏新页面 (Page/View)：基于state_1 HTML wipe 改造；移除原'管理应用'按钮区域；插入固定标题栏（含返回箭头SVG + '管理应用'文本）；插入计数行（div.text-ohos_id_text_size_body2regular-6_250025）；插入滚动列表容器（.scroll-container），内含N个应用项（每个项含.icon-wrapper + .app-name + .switch-wrapper）；保留底部Tab导航栏（.Pixso-frame-146_395667）不变。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "请选择添加方式弹窗",
+    "description": "全屏深灰半透明遮罩层（rgba(0,0,0,0.7)）覆盖整个管理应用页；正中央悬浮白色圆角卡片（宽320px、高280px、背景#FFFFFF、圆角12px）；卡片顶部居中显示标题'请选择添加方式'（14px Medium、#191919）；下方等距排列4个方形图标（各64×64px、圆角8px、底色#F3F3F3、图标居中，从左至右依次为快捷入口/小卡片/中卡片/大卡片文字标签）；卡片底部并排两个按钮：左侧'取消'（14px Regular、#191919、无背景）、右侧'确定'（14px Medium、#FFFFFF、背景#C7000B、圆角8px、宽104px）。",
+    "implementation_method": "模态弹窗 (Modal/Dialog)：在state_2 DOM 根节点追加<div class='modal-overlay' style='position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:1000;'>；内部嵌套<div class='modal-card' style='position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:320px;height:280px;background:#FFFFFF;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);'>；卡片内含标题'请选择添加方式'；4个图标项用flex布局水平均分，每项含<div class='icon-item'><div class='icon-bg'></div><p>快捷入口</p></div>；底部按钮区含<button class='btn-cancel'>取消</button>与<button class='btn-confirm' style='background:#C7000B;color:#FFFFFF;'>确定</button>。",
+    "last_state": 2
+  },
+  {
+    "state_id": 4,
+    "state_name": "管理应用页添加成功态",
+    "description": "顶部固定标题栏含返回箭头与'管理应用'文字；下方灰色小字'已添加X个'（X比state_2数值+1）；主体列表中，被用户选择添加方式的应用项右侧开关控件已切换为开启态（蓝色填充轨道+白色滑块圆点）；其余所有应用项开关保持原态；底部Tab导航栏完整可见；屏幕中央偏上位置悬浮一个黑底白字Toast条（宽280px、高44px、背景#000000、圆角4px、文字'添加成功'、14px Regular、#FFFFFF、居中对齐）；无遮罩、无弹窗、无其他浮层。",
+    "implementation_method": "状态变更叠加 (State Overlay)：在state_2 DOM 基础上，定位到对应应用项的.switch-wrapper，修改其class为'is-on'（或添加style='background:#C7000B;'及子元素白色圆点）；更新计数文本节点内容为'已添加Y个'（Y=X+1）；在body末尾追加<div class='toast' style='position:fixed;top:88px;left:50%;transform:translateX(-50%);width:280px;height:44px;background:#000000;border-radius:4px;display:flex;align-items:center;justify-content:center;z-index:1001;'><span style='font-size:14px;font-family:\"HarmonyHeiTi-Regular\";color:#FFFFFF;'>添加成功</span></div>。",
+    "last_state": 2
+  },
+  {
+    "state_id": 5,
+    "state_name": "弹窗取消态",
+    "description": "画面与state_2完全一致：顶部固定标题栏含返回箭头与'管理应用'文字；下方灰色小字'已添加X个'；主体为垂直滚动列表，每项含左对齐图标、应用名、右对齐开关控件（全部保持取消前一刻的状态）；底部Tab导航栏完整可见；无遮罩、无弹窗、无Toast、无任何浮层或过渡残留。",
+    "implementation_method": "画面与 last_state（state_2）完全一致；base 已是关闭后的样子，无需任何 DOM 改造。",
+    "last_state": 2
+  },
+  {
+    "state_id": 6,
+    "state_name": "添加失败态",
+    "description": "顶部固定标题栏含返回箭头与'管理应用'文字；下方灰色小字'已添加X个'（数值与state_2相同，未增加）；主体列表中，被用户选择添加方式的应用项右侧开关控件仍为关闭态（浅灰轨道+深灰滑块）；其余所有应用项开关保持原态；底部Tab导航栏完整可见；屏幕中央偏上位置悬浮一个橙红色底白字Toast条（宽280px、高44px、背景#FF6B35、圆角4px、文字'添加失败，请重试'、14px Regular、#FFFFFF、居中对齐）；无遮罩、无弹窗、无其他浮层。",
+    "implementation_method": "状态变更叠加 (State Overlay)：在state_2 DOM 基础上，确保目标应用项.switch-wrapper保持关闭态（class不包含'is-on'，或style='background:#DFDFDF;'）；计数文本内容保持'已添加X个'不变；在body末尾追加<div class='toast' style='position:fixed;top:88px;left:50%;transform:translateX(-50%);width:280px;height:44px;background:#FF6B35;border-radius:4px;display:flex;align-items:center;justify-content:center;z-index:1001;'><span style='font-size:14px;font-family:\"HarmonyHeiTi-Regular\";color:#FFFFFF;'>添加失败，请重试</span></div>。",
+    "last_state": 2
+  }
+]

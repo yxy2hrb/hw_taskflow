@@ -1,0 +1,42 @@
+{
+  "state_name": "成功终态",
+  "lifecycle": "persistent",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "FullscreenPanel",
+    "props": { "background": "transparent" },
+    "children": [
+      {
+        "type": "Row",
+        "props": {
+          "width": "100%",
+          "height": 48,
+          "background": "#52C418",
+          "padding": "0 16",
+          "align": "center",
+          "justify": "space-between"
+        },
+        "children": [
+          {
+            "type": "Icon",
+            "props": {
+              "name": "check",
+              "size": 20,
+              "color": "#FFFFFF"
+            }
+          },
+          {
+            "type": "Text",
+            "props": {
+              "text": "Created Successfully",
+              "size": 14,
+              "weight": "medium",
+              "color": "#FFFFFF"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

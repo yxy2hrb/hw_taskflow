@@ -1,0 +1,45 @@
+{
+  "state_name": "权限不足页",
+  "lifecycle": "temporary",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "OverlayMask",
+    "props": { "opacity": 0.5, "color": "#000000" },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "width": 360,
+          "background": "#FFFFFF",
+          "borderRadius": 12,
+          "padding": 24,
+          "align": "center",
+          "justify": "center",
+          "gap": 16
+        },
+        "children": [
+          {
+            "type": "Icon",
+            "props": { "name": "lock", "size": 24, "color": "#191919" }
+          },
+          {
+            "type": "Text",
+            "props": { "text": "暂无访问权限", "size": 16, "weight": "medium", "color": "#191919" }
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "联系管理员",
+              "size": "compact",
+              "variant": "text",
+              "color": "#46B1E3",
+              "width": 140,
+              "borderRadius": 8
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

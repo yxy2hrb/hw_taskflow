@@ -1,0 +1,12 @@
+{
+  "state_id": 3,
+  "state_name": "提交中状态",
+  "description": "页面结构与运维流程全屏页完全一致：顶部状态栏与底部 Tab 栏正常可见；左侧表单区不变，‘确定’按钮变为灰色不可点击态（#9E9E9E 背景、#FFFFFF 文字、opacity:0.6）；右侧三维模型容器内覆盖一层半透明深色遮罩（rgba(0,0,0,0.4)），遮罩中央显示白色旋转圆圈图标（直径 32px，stroke #FFFFFF，CSS animation:hmspin 1s linear infinite）。",
+  "implementation_method": "按钮控件 (Button)：原蓝色‘确定’按钮改为 background-color:#9E9E9E、color:#FFFFFF、opacity:0.6；遮罩层 (Overlay)：absolute 定位覆盖整个右侧模型容器（60% 宽）、background:rgba(0,0,0,0.4)；旋转图标 (Spinner)：position:absolute 居中、width:32px、height:32px、border:2px solid #FFFFFF、border-top-color:transparent、animation:hmspin 1s linear infinite。",
+  "last_state": 2,
+  "applied": 1,
+  "skipped": 0,
+  "elapsed_ms": 75440,
+  "failed": false,
+  "error": null
+}

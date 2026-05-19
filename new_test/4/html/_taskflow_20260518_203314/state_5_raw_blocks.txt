@@ -1,0 +1,34 @@
+{
+  "state_name": "创建失败态",
+  "lifecycle": "temporary",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "Page",
+    "props": { "background": "transparent" },
+    "children": [
+      {
+        "type": "Column",
+        "props": { "gap": 16, "padding": 16, "align": "center", "justify": "flex-start" },
+        "children": [
+          {
+            "type": "Row",
+            "props": { "gap": 8, "align": "center", "background": "rgba(239, 68, 68, 0.1)", "height": 40, "width": "100%", "borderRadius": 0 },
+            "children": [
+              { "type": "Icon", "props": { "name": "error", "size": 20, "color": "#FFFFFF" } },
+              { "type": "Text", "props": { "text": "创建失败，请重试", "variant": "body", "color": "#FFFFFF", "weight": "medium" } }
+            ]
+          },
+          {
+            "type": "Spinner",
+            "props": { "size": 48, "color": "#46B1E3" }
+          },
+          {
+            "type": "Button",
+            "props": { "label": "确定", "variant": "primary", "block": true, "disabled": false }
+          }
+        ]
+      }
+    ]
+  }
+}

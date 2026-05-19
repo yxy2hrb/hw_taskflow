@@ -1,0 +1,121 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#14_884214",
+      "instruction": "替换为顶部导航栏：高度56px，背景#FFFFFF，阴影0 1px 2px rgba(0,0,0,0.05)；含左侧返回箭头图标（<span class=\"mi\" style=\"font-size:24px;color:#191919;\">arrow_back</span>）、标题'虚拟体验项目'（16px Medium, #191919）、右侧依次为搜索图标（<span class=\"mi\" style=\"font-size:24px;color:#191919;\">search</span>）、通知图标（<span class=\"mi\" style=\"font-size:24px;color:#191919;\">notifications</span>）、加号图标（<span class=\"mi\" style=\"font-size:24px;color:#191919;\">add</span>）；所有图标使用 inline style 控制尺寸与颜色，字体统一用 HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+      "components_needed": ["IconButton"],
+      "icons_needed": ["arrow_back", "search", "notifications", "add"]
+    },
+    {
+      "id": "e2",
+      "type": "state-toggle",
+      "anchor": "#14_884368",
+      "instruction": "替换为60vh高度空白内容区，其中央垂直居中显示三条灰色骨架横条：高16px、圆角2px、背景rgba(0,0,0,0.08)，宽度分别为80%、60%、70%；无设备拓扑图、无Wi-Fi评分、无统计模块；底部Tab栏不可见，因此该区块需覆盖原底部Tab位置，故设height:60vh且不保留原frame-content结构；使用inline style控制所有样式，禁用class控制",
+      "components_needed": ["ProgressBar"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "NavBar",
+    "props": {
+      "title": "虚拟体验项目",
+      "leftIcon": "arrow_back",
+      "rightIcon": "add",
+      "background": "#FFFFFF",
+      "shadow": "0 1px 2px rgba(0,0,0,0.05)",
+      "height": 56
+    },
+    "children": [
+      {
+        "type": "Row",
+        "props": {
+          "gap": 16,
+          "align": "center"
+        },
+        "children": [
+          {
+            "type": "Icon",
+            "props": {
+              "name": "search",
+              "size": 24,
+              "color": "#191919"
+            }
+          },
+          {
+            "type": "Icon",
+            "props": {
+              "name": "notifications",
+              "size": 24,
+              "color": "#191919"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+[NEXT]
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "height": "60vh",
+      "align": "center",
+      "justify": "center",
+      "gap": 12,
+      "background": "#FFFFFF",
+      "padding": 0
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "gap": 12,
+          "align": "center",
+          "width": "100%"
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "variant": "caption",
+              "color": "rgba(0,0,0,0.08)",
+              "size": 16,
+              "weight": 400,
+              "lineHeight": 1.0
+            },
+            "children": "····················"
+          },
+          {
+            "type": "Text",
+            "props": {
+              "variant": "caption",
+              "color": "rgba(0,0,0,0.08)",
+              "size": 16,
+              "weight": 400,
+              "lineHeight": 1.0
+            },
+            "children": "················"
+          },
+          {
+            "type": "Text",
+            "props": {
+              "variant": "caption",
+              "color": "rgba(0,0,0,0.08)",
+              "size": 16,
+              "weight": 400,
+              "lineHeight": 1.0
+            },
+            "children": "···················"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,200 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#14_884197",
+      "instruction": "将主内容区替换为加载过渡态：左侧60%宽度显示三组同心椭圆骨架（外圈200×180px、中圈160×144px、内圈107×105px，stroke:#CCCCCC，stroke-width:1，fill:none），右侧40%宽度竖排三张统计卡片（每张高88px、宽=40vw、圆角8px、边框1px solid #F3F3F3）；Wi-Fi评分卡含标题'Wi-Fi评分'（14px Medium，#333）、数值'86'（24px Medium，#191919）、单位'分'（12px，#666）；运行时长卡含标题'运行时长'（14px Medium，#333）、数值'2天14小时'（24px Medium，#191919）；设备/终端卡含标题'设备/终端'（14px Medium，#333）、数值'AP×3 / 终端×12'（24px Medium，#191919）；所有文字使用HarmonyHeiTi字体，无图标、无交互元素；顶部状态栏与底部Tab导航栏保持可见。",
+      "components_needed": ["Card"]
+    },
+    {
+      "id": "e2",
+      "type": "delete",
+      "anchor": "<!-- 任务节点开始: 弹窗列表态【临时】 -->\n<div data-hm=\"OverlayMask\" style=\"position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.4);z-index:10000;\"><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;background:#FFFFFF;width:100vw;height:50vh;border-radius:12px;box-shadow:0 1px 12px rgba(0,0,0,0.08);box-sizing:border-box\"><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:8px;padding:16px 16px 16px 16px;width:100%;box-sizing:border-box\"><div data-hm=\"Row\" style=\"display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding:0px 16px;width:100%;height:72px;box-sizing:border-box\"><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:4px;width:100%;box-sizing:border-box\"><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:500;color:#191919;text-align:left;line-height:1.4;\">项目工作台</span><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:12px;font-weight:400;color:#666666;text-align:left;line-height:1.4;\">2024-05-20 14:32</span><div data-hm=\"Row\" style=\"display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:8px;width:100%;box-sizing:border-box\"><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:400;color:#333333;text-align:left;line-height:1.4;\">设备：3台，任务：12个</span></div></div><div data-hm=\"Row\" style=\"display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:8px;width:100%;box-sizing:border-box\"><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4px 8px;background:#E6F4FF;width:100%;border-radius:4px;box-sizing:border-box\"><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:12px;font-weight:400;color:#46B1E3;text-align:left;line-height:1.4;\">运行中</span></div><span class=\"mi\" style=\"font-size:12px;color:#46B1E3;line-height:1;\">arrow_forward</span></div></div><div data-hm=\"Row\" style=\"display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding:0px 16px;width:100%;height:72px;box-sizing:border-box\"><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:4px;width:100%;box-sizing:border-box\"><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:500;color:#191919;text-align:left;line-height:1.4;\">团队工作台</span><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:12px;font-weight:400;color:#666666;text-align:left;line-height:1.4;\">2024-05-19 09:15</span><div data-hm=\"Row\" style=\"display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:8px;width:100%;box-sizing:border-box\"><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:400;color:#333333;text-align:left;line-height:1.4;\">设备：5台，任务：28个</span></div></div><div data-hm=\"Row\" style=\"display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:8px;width:100%;box-sizing:border-box\"><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4px 8px;background:#E6F4FF;width:100%;border-radius:4px;box-sizing:border-box\"><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:12px;font-weight:400;color:#46B1E3;text-align:left;line-height:1.4;\">运行中</span></div><span class=\"mi\" style=\"font-size:12px;color:#46B1E3;line-height:1;\">arrow_forward</span></div></div><div data-hm=\"Row\" style=\"display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding:0px 16px;width:100%;height:72px;box-sizing:border-box\"><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:4px;width:100%;box-sizing:border-box\"><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:500;color:#191919;text-align:left;line-height:1.4;\">个人工作台</span><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:12px;font-weight:400;color:#666666;text-align:left;line-height:1.4;\">2024-05-18 16:47</span><div data-hm=\"Row\" style=\"display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:8px;width:100%;box-sizing:border-box\"><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:400;color:#333333;text-align:left;line-height:1.4;\">设备：1台，任务：3个</span></div></div><div data-hm=\"Row\" style=\"display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:8px;width:100%;box-sizing:border-box\"><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4px 8px;background:#FFF0F0;width:100%;border-radius:4px;box-sizing:border-box\"><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:12px;font-weight:400;color:#E84026;text-align:left;line-height:1.4;\">已暂停</span></div><span class=\"mi\" style=\"font-size:12px;color:#46B1E3;line-height:1;\">arrow_forward</span></div></div></div></div></div>\n<!-- 任务节点结束: 弹窗列表态【临时】 -->",
+      "instruction": "删除弹窗列表态临时浮层"
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "gap": 24,
+      "padding": 16,
+      "background": "#F1F3F5",
+      "width": "100%",
+      "align": "stretch"
+    },
+    "children": [
+      {
+        "type": "Row",
+        "props": {
+          "gap": 16,
+          "align": "start",
+          "justify": "space-between",
+          "width": "100%"
+        },
+        "children": [
+          {
+            "type": "Column",
+            "props": {
+              "width": "60%",
+              "align": "center",
+              "justify": "center"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "size": 14,
+                  "weight": 500,
+                  "color": "rgba(0,0,0,0.4)",
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                },
+                "children": "Loading..."
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": {
+              "width": "40%",
+              "gap": 12
+            },
+            "children": [
+              {
+                "type": "Column",
+                "props": {
+                  "background": "#FFFFFF",
+                  "borderRadius": 8,
+                  "height": 88,
+                  "padding": [12, 16],
+                  "shadow": false,
+                  "border": "1px solid #F3F3F3",
+                  "width": "40vw"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "caption",
+                      "size": 14,
+                      "weight": 500,
+                      "color": "#333333",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "Wi-Fi评分"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "title",
+                      "size": 24,
+                      "weight": 500,
+                      "color": "#191919",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "86"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "caption",
+                      "size": 12,
+                      "weight": 400,
+                      "color": "#666666",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "分"
+                  }
+                ]
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "background": "#FFFFFF",
+                  "borderRadius": 8,
+                  "height": 88,
+                  "padding": [12, 16],
+                  "shadow": false,
+                  "border": "1px solid #F3F3F3",
+                  "width": "40vw"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "caption",
+                      "size": 14,
+                      "weight": 500,
+                      "color": "#333333",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "运行时长"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "title",
+                      "size": 24,
+                      "weight": 500,
+                      "color": "#191919",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "2天14小时"
+                  }
+                ]
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "background": "#FFFFFF",
+                  "borderRadius": 8,
+                  "height": 88,
+                  "padding": [12, 16],
+                  "shadow": false,
+                  "border": "1px solid #F3F3F3",
+                  "width": "40vw"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "caption",
+                      "size": 14,
+                      "weight": 500,
+                      "color": "#333333",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "设备/终端"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "title",
+                      "size": 24,
+                      "weight": 500,
+                      "color": "#191919",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "AP×3 / 终端×12"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+[NEXT]
+[OLD]
+<!-- 任务节点开始: 弹窗列表态【临时】 -->
+<div data-hm="OverlayMask" style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.4);z-index:10000;"><div data-hm="Column" style="display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;background:#FFFFFF;width:100vw;height:50vh;border-radius:12px;box-shadow:0 1px 12px rgba(0,0,0,0.08);box-sizing:border-box"><div data-hm="Column" style="display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:8px;padding:16px 16px 16px 16px;width:100%;box-sizing:border-box"><div data-hm="Row" style="display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding:0px 16px;width:100%;height:72px;box-sizing:border-box"><div data-hm="Column" style="display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:4px;width:100%;box-sizing:border-box"><span data-hm="Text" style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:500;color:#191919;text-align:left;line-height:1.4;">项目工作台</span><span data-hm="Text" style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:12px;font-weight:400;color:#666666;text-align:left;line-height:1.4;">2024-05-20 14:32</span><div data-hm="Row" style="display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:8px;width:100%;box-sizing:border-box"><span data-hm="Text" style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:400;color:#333333;text-align:left;line-height:1.4;">设备：3台，任务：12个</span></div></div><div data-hm="Row" style="display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:8px;width:100%;box-sizing:border-box"><div data-hm="Column" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4px 8px;background:#E6F4FF;width:100%;border-radius:4px;box-sizing:border-box"><span data-hm="Text" style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:12px;font-weight:400;color:#46B1E3;text-align:left;line-height:1.4;">运行中</span></div><span class="mi" style="font-size:12px;color:#46B1E3;line-height:1;">arrow_forward</span></div></div><div data-hm="Row" style="display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding:0px 16px;width:100%;height:72px;box-sizing:border-box"><div data-hm="Column" style="display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:4px;width:100%;box-sizing:border-box"><span data-hm="Text" style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:500;color:#191919;text-align:left;line-height:1.4;">团队工作台</span><span data-hm="Text" style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:12px;font-weight:400;color:#666666;text-align:left;line-height:1.4;">2024-05-19 09:15</span><div data-hm="Row" style="display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:8px;width:100%;box-sizing:border-box"><span data-hm="Text" style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:400;color:#333333;text-align:left;line-height:1.4;">设备：5台，任务：28个</span></div></div><div data-hm="Row" style="display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:8px;width:100%;box-sizing:border-box"><div data-hm="Column" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4px 8px;background:#E6F4FF;width:100%;border-radius:4px;box-sizing:border-box"><span data-hm="Text" style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:12px;font-weight:400;color:#46B1E3;text-align:left;line-height:1.4;">运行中</span></div><span class="mi" style="font-size:12px;color:#46B1E3;line-height:1;">arrow_forward</span></div></div><div data-hm="Row" style="display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding:0px 16px;width:100%;height:72px;box-sizing:border-box"><div data-hm="Column" style="display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:4px;width:100%;box-sizing:border-box"><span data-hm="Text" style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:500;color:#191919;text-align:left;line-height:1.4;">个人工作台</span><span data-hm="Text" style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:12px;font-weight:400;color:#666666;text-align:left;line-height:1.4;">2024-05-18 16:47</span><div data-hm="Row" style="display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:8px;width:100%;box-sizing:border-box"><span data-hm="Text" style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:400;color:#333333;text-align:left;line-height:1.4;">设备：1台，任务：3个</span></div></div><div data-hm="Row" style="display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:8px;width:100%;box-sizing:border-box"><div data-hm="Column" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4px 8px;background:#FFF0F0;width:100%;border-radius:4px;box-sizing:border-box"><span data-hm="Text" style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:12px;font-weight:400;color:#E84026;text-align:left;line-height:1.4;">已暂停</span></div><span class="mi" style="font-size:12px;color:#46B1E3;line-height:1;">arrow_forward</span></div></div></div></div></div>
+<!-- 任务节点结束: 弹窗列表态【临时】 -->
+[NEW]

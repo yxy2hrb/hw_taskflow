@@ -1,0 +1,75 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": ["#14_1031108", "#14_1031109"],
+      "replace_at": "#14_1031108",
+      "instruction": "将原黑色半透明遮罩（rgba(0,0,0,0.4)）与售后文档区块整体替换为：全屏模态层（Modal Overlay）——黑色半透明遮罩 rgba(0,0,0,0.4) 覆盖整个 viewport；正中悬浮一张宽320px、高240px的白色圆角卡片（border-radius:12px，background:#FFFFFF）；卡片内顶部标题‘该文档暂不可用’（16px，HarmonyHeiTi-Medium，#191919），中部正文‘可能尚未发布或权限不足’（14px，#666），底部单个灰色按钮（宽120px，高40px，圆角20px，背景#CCCCCC，文字颜色#333，文案‘返回’）；卡片无其他元素；顶部状态栏与底部Tab在蒙层下正常可见。",
+      "components_needed": ["Dialog", "Button"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "OverlayMask",
+    "props": {
+      "opacity": 0.4,
+      "color": "#000"
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "borderRadius": 12,
+          "width": 320,
+          "height": 240,
+          "padding": 24,
+          "gap": 16,
+          "align": "center",
+          "justify": "space-between"
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "size": 16,
+              "weight": 500,
+              "color": "#191919",
+              "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+            },
+            "children": "该文档暂不可用"
+          },
+          {
+            "type": "Text",
+            "props": {
+              "size": 14,
+              "weight": 400,
+              "color": "#666",
+              "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+            },
+            "children": "可能尚未发布或权限不足"
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "返回",
+              "size": "regular",
+              "block": false,
+              "width": 120,
+              "height": 40,
+              "borderRadius": 20,
+              "background": "#CCCCCC",
+              "color": "#333",
+              "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

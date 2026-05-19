@@ -1,0 +1,50 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "工作台主页面初始态",
+    "description": "用户停留在‘我的工作台’主页面，顶部状态栏显示时间/信号/电量图标，底部Tab栏含‘首页’‘工作台’‘消息’‘我的’四个标签并高亮‘工作台’，页面中央区域为卡片式工作项列表，右下角固定悬浮圆形按钮，内含‘快速入门’文字与向右箭头图标。",
+    "implementation_method": "原始 HTML 初始快照，不做改造。"
+  },
+  {
+    "state_id": 2,
+    "state_name": "蒙层弹出态",
+    "description": "全屏覆盖一层 rgba(0,0,0,0.4) 半透明黑色遮罩，顶部状态栏与底部Tab栏完全保留且清晰可见（无遮挡、无透明度变化），原工作台页面内容整体降为 opacity:0.35，中央悬浮一个宽320px、圆角12px、白底阴影的垂直居中卡片，卡片内无其他浮动元素。",
+    "implementation_method": "全屏半透明遮罩 (Overlay)：rgba(0,0,0,0.4) 覆盖整个视口；顶部状态栏与底部Tab栏层级高于遮罩（z-index > 100）；原工作台主体区域添加 style='opacity:0.35'；中央卡片绝对定位（top:50%; left:50%; transform:translate(-50%,-50%)；width:320px；background:#FFFFFF；border-radius:12px；box-shadow:0 4px 16px rgba(0,0,0,0.08)）。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "内容加载态",
+    "description": "遮罩与状态栏/Tab栏同 state_2，中央卡片内部呈现骨架屏：顶部一行高40px浅灰圆角输入框占位符（#F3F3F3，height:40px，border-radius:20px），下方四枚等宽浅灰胶囊形标签占位符（宽64px×高28px，#EDEDED，border-radius:14px），再下方七行条目占位符（每行高56px，含左侧浅灰圆点图标+右侧两行浅灰横线，末尾无按钮），所有占位符均无文字。",
+    "implementation_method": "骨架屏 (Skeleton Screen)：中央卡片内，第一行为 input 占位符（background:#F3F3F3；height:40px；border-radius:20px；margin:24px auto 16px；width:272px）；第二行为四枚胶囊标签（background:#EDEDED；width:64px；height:28px；border-radius:14px；display:inline-block；margin:0 8px）；第三部分为七行条目（height:56px；padding:12px 16px；display:flex；align-items:center；gap:12px；background:transparent）；每行含左侧 circle（width:16px；height:16px；background:#EDEDED；border-radius:50%）与右侧两行 text-line（height:12px；background:#EDEDED；border-radius:4px；width:120px / 80px）。",
+    "last_state": 2
+  },
+  {
+    "state_id": 4,
+    "state_name": "就绪态",
+    "description": "遮罩与状态栏/Tab栏同 state_2，中央卡片内：顶部为带‘搜索...’提示文字的白色输入框（16px HarmonyHeiTi-Regular，#999，padding:12px 16px，border:1px solid #E0E0E0，border-radius:20px），下方四枚蓝色描边圆形标签（直径44px，#46B1E3 边框2px，#FFFFFF 填充，居中图标+文字，文字为‘云服务’‘AI工具’‘数据管理’‘安全合规’），再下方七条浅灰分隔线划分的条目（每条高64px，左对齐，含16px图标+标题+副标题+右端蓝色‘查看’文字按钮），所有文字使用14px HarmonyHeiTi-Regular，行高20px。",
+    "implementation_method": "卡片式内容区 (Card Layout)：中央卡片内，input 控件（placeholder='搜索...'；color:#999；font-size:14px；font-family:'HarmonyHeiTi-Regular'；padding:12px 16px；border:1px solid #E0E0E0；border-radius:20px；width:272px；margin:24px auto 16px）；四枚圆形标签（width:44px；height:44px；border:2px solid #46B1E3；border-radius:50%；background:#FFFFFF；display:flex；justify-content:center；align-items:center；font-size:12px；font-family:'HarmonyHeiTi-Regular'；color:#46B1E3；margin:0 8px；text-align:center）；七条条目（height:64px；padding:0 16px；display:flex；flex-direction:column；justify-content:center；border-bottom:1px solid #F3F3F3；last:border-bottom:none）；每条含 icon（16px×16px）、title（font-size:14px；font-weight:500；color:#191919；line-height:20px）、subtitle（font-size:12px；color:#666；line-height:16px）、button（position:absolute；right:16px；top:50%；transform:translateY(-50%)；color:#46B1E3；font-size:14px；font-family:'HarmonyHeiTi-Regular'；font-weight:500）。",
+    "last_state": 2
+  },
+  {
+    "state_id": 5,
+    "state_name": "文档跳转态",
+    "description": "当前页面已完全替换为文档详情页视觉：顶部导航栏含左向箭头图标、标题‘XX产品快速入门’、右侧空白；正文为图文混排段落，首段为加粗摘要，后续含三张宽度100%的示意图（图下配12px说明文字），段落间有16px间距，无任何蒙层、遮罩、悬浮卡片或过渡残留，状态栏与底部Tab栏均不可见。",
+    "implementation_method": "全屏文档页 (Full-page Document View)：移除所有遮罩与浮层 DOM；渲染全新页面结构：header（height:48px；display:flex；align-items:center；padding:0 16px；background:#FFFFFF；border-bottom:1px solid #F3F3F3）；包含 left-icon（24px×24px SVG arrow-left）、title（'XX产品快速入门'；font-size:16px；font-family:'HarmonyHeiTi-Medium'；color:#191919；margin:0 12px）；main（padding:24px 16px；background:#FFFFFF）；含 h2（'快速上手'；font-size:16px；font-weight:500；color:#191919；margin-bottom:12px）、p（font-size:14px；line-height:20px；color:#333；margin-bottom:16px）、img（width:100%；height:auto；border-radius:8px；margin-bottom:12px）、figcaption（font-size:12px；color:#666；text-align:center；margin-bottom:24px）。",
+    "last_state": 1
+  },
+  {
+    "state_id": 6,
+    "state_name": "失败态",
+    "description": "遮罩与状态栏/Tab栏同 state_2，中央卡片内：顶部为红色感叹号图标（24px×24px，#FF5252），中部大字‘网络连接失败’（16px HarmonyHeiTi-Medium，#191919），下方灰色小字‘请检查网络后重试’（12px HarmonyHeiTi-Regular，#666），底部居中显示蓝色‘重试’按钮（14px HarmonyHeiTi-Regular，#46B1E3，padding:10px 24px，border-radius:20px，border:1px solid #46B1E3）。",
+    "implementation_method": "错误提示卡片 (Error Card)：中央卡片内，icon（SVG '!'；width:24px；height:24px；color:#FF5252；margin:24px auto 12px；display:block；text-align:center）；h2（'网络连接失败'；font-size:16px；font-family:'HarmonyHeiTi-Medium'；color:#191919；text-align:center；margin-bottom:8px）；p（'请检查网络后重试'；font-size:12px；font-family:'HarmonyHeiTi-Regular'；color:#666；text-align:center；margin-bottom:24px）；button（'重试'；font-size:14px；font-family:'HarmonyHeiTi-Regular'；color:#46B1E3；border:1px solid #46B1E3；border-radius:20px；padding:10px 24px；display:block；margin:0 auto；width:auto）。",
+    "last_state": 2
+  },
+  {
+    "state_id": 7,
+    "state_name": "取消态",
+    "description": "画面与初始态 state_1 完全一致，顶部状态栏与底部Tab栏正常显示，工作台内容完整复原，无叠加蒙层、无悬浮卡片、无骨架占位、无任何按钮高亮或临时样式，右下角‘快速入门’按钮恢复默认视觉状态。",
+    "implementation_method": "画面与 last_state（state_1）完全一致；base 已是关闭后的样子，无需任何 DOM 改造。",
+    "last_state": 1
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#14_1031108",
+      "instruction": "把中央浮层卡片区域替换为错误提示卡片：顶部红色感叹号图标（24px×24px，#FF5252），中部大字‘网络连接失败’（16px HarmonyHeiTi-Medium，#191919），下方灰色小字‘请检查网络后重试’（12px HarmonyHeiTi-Regular，#666），底部居中显示蓝色‘重试’按钮（14px HarmonyHeiTi-Regular，#46B1E3，padding:10px 24px，border-radius:20px，border:1px solid #46B1E3）；所有文字使用 inline style 指定字体、字号、颜色和行高；图标用 <span class=\"mi\" style=\"font-size:24px;color:#FF5252;\">warning</span>；按钮需可点击语义（保留原 button 结构或用 div+role=button）；卡片整体宽320px、圆角12px、白底、阴影 0 4px 16px rgba(0,0,0,0.08)，绝对定位居中（top:50%; left:50%; transform:translate(-50%,-50%)）；外层注释块名保持为‘蒙层弹出态【持久】’不变。",
+      "components_needed": ["Button"],
+      "icons_needed": ["warning"]
+    }
+  ]
+}
+
+--- skill2 outputs ---

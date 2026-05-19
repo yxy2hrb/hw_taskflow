@@ -1,0 +1,364 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#14_807570",
+      "instruction": "将轮播位首张卡片替换为新创建的项目集卡片：封面图（保留原占位结构）、标题文字更新为'智能办公平台'（16px，HarmonyHeiTi-Medium，#191919）、副标题文字更新为'公司 · 已上线'（14px，#666，HarmonyHeiTi-Regular）；左上角叠加绿色'NEW'角标（32×16px，背景色 #4CAF50，白色文字'NEW'，绝对定位 top:8px left:8px）",
+      "components_needed": ["Card"]
+    },
+    {
+      "id": "e2",
+      "type": "state-toggle",
+      "anchor": "#14_807630",
+      "instruction": "将项目集列表首位插入与轮播首卡视觉一致的新项目集卡片（含封面图、标题'智能办公平台'、副标题'公司 · 已上线'），左上角叠加绿色'NEW'角标（32×16px，背景色 #4CAF50，白色文字'NEW'，绝对定位 top:8px left:8px）；其余列表项保持与 state_1 完全一致（即保留原三张卡片结构及文案）",
+      "components_needed": ["Card"]
+    },
+    {
+      "id": "e3",
+      "type": "text-edit",
+      "anchor": "<p id=\"14_807590\" class=\"Pixso-paragraph-14_807590\">工作台</p>",
+      "instruction": "将底部Tab栏中‘工作台’文字旁的徽标数字更新为红色数字‘1’（背景色 #F44336，白色数字，圆角50%，尺寸适配文字高度，绝对定位在文字右上角）",
+      "components_needed": ["Badge"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "background": "#FFFFFF",
+      "borderRadius": 16,
+      "shadow": true,
+      "padding": 0,
+      "width": "100%",
+      "height": 200
+    },
+    "children": [
+      {
+        "type": "Image",
+        "props": {
+          "placeholder": "abstract",
+          "width": "100%",
+          "height": 200,
+          "borderRadius": 16
+        }
+      },
+      {
+        "type": "Column",
+        "props": {
+          "padding": [12, 16, 12, 16],
+          "gap": 4,
+          "width": "100%"
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "variant": "body",
+              "size": 16,
+              "weight": "500",
+              "color": "#191919",
+              "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+            },
+            "children": "智能办公平台"
+          },
+          {
+            "type": "Text",
+            "props": {
+              "variant": "caption",
+              "size": 14,
+              "weight": "400",
+              "color": "#666666",
+              "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+            },
+            "children": "公司 · 已上线"
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "position": "absolute",
+          "top": 8,
+          "left": 8,
+          "width": 32,
+          "height": 16,
+          "background": "#4CAF50",
+          "borderRadius": 8,
+          "align": "center",
+          "justify": "center"
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "size": 12,
+              "weight": "500",
+              "color": "#FFFFFF",
+              "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+            },
+            "children": "NEW"
+          }
+        ]
+      }
+    ]
+  }
+}
+[NEXT]
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "gap": 16,
+      "padding": 0,
+      "align": "stretch"
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "borderRadius": 16,
+          "shadow": true,
+          "padding": 0,
+          "position": "relative",
+          "width": "100%"
+        },
+        "children": [
+          {
+            "type": "Image",
+            "props": {
+              "placeholder": "abstract",
+              "width": "100%",
+              "height": 120,
+              "borderRadius": 16
+            }
+          },
+          {
+            "type": "Column",
+            "props": {
+              "padding": [12, 16, 16, 16],
+              "gap": 4
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "title",
+                  "size": 20,
+                  "weight": 700,
+                  "color": "rgba(0,0,0,0.90)",
+                  "lineHeight": 1.4
+                },
+                "children": "智能办公平台"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "size": 14,
+                  "weight": 500,
+                  "color": "rgba(0,0,0,0.60)",
+                  "lineHeight": 1.5
+                },
+                "children": "公司 · 已上线"
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": {
+              "position": "absolute",
+              "top": 8,
+              "left": 8,
+              "background": "#4CAF50",
+              "borderRadius": 4,
+              "padding": [4, 8],
+              "width": 32,
+              "height": 16,
+              "align": "center",
+              "justify": "center"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "size": 12,
+                  "weight": 700,
+                  "color": "#FFFFFF",
+                  "lineHeight": 1.2
+                },
+                "children": "NEW"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "borderRadius": 16,
+          "shadow": true,
+          "padding": 0,
+          "width": "100%"
+        },
+        "children": [
+          {
+            "type": "Image",
+            "props": {
+              "placeholder": "abstract",
+              "width": "100%",
+              "height": 120,
+              "borderRadius": 16
+            }
+          },
+          {
+            "type": "Column",
+            "props": {
+              "padding": [12, 16, 16, 16],
+              "gap": 4
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "title",
+                  "size": 20,
+                  "weight": 700,
+                  "color": "rgba(0,0,0,0.90)",
+                  "lineHeight": 1.4
+                },
+                "children": "企业级数据中台"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "size": 14,
+                  "weight": 500,
+                  "color": "rgba(0,0,0,0.60)",
+                  "lineHeight": 1.5
+                },
+                "children": "IT部 · 已上线"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "borderRadius": 16,
+          "shadow": true,
+          "padding": 0,
+          "width": "100%"
+        },
+        "children": [
+          {
+            "type": "Image",
+            "props": {
+              "placeholder": "abstract",
+              "width": "100%",
+              "height": 120,
+              "borderRadius": 16
+            }
+          },
+          {
+            "type": "Column",
+            "props": {
+              "padding": [12, 16, 16, 16],
+              "gap": 4
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "title",
+                  "size": 20,
+                  "weight": 700,
+                  "color": "rgba(0,0,0,0.90)",
+                  "lineHeight": 1.4
+                },
+                "children": "AI客服系统升级"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "size": 14,
+                  "weight": 500,
+                  "color": "rgba(0,0,0,0.60)",
+                  "lineHeight": 1.5
+                },
+                "children": "客服中心 · 开发中"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "borderRadius": 16,
+          "shadow": true,
+          "padding": 0,
+          "width": "100%"
+        },
+        "children": [
+          {
+            "type": "Image",
+            "props": {
+              "placeholder": "abstract",
+              "width": "100%",
+              "height": 120,
+              "borderRadius": 16
+            }
+          },
+          {
+            "type": "Column",
+            "props": {
+              "padding": [12, 16, 16, 16],
+              "gap": 4
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "title",
+                  "size": 20,
+                  "weight": 700,
+                  "color": "rgba(0,0,0,0.90)",
+                  "lineHeight": 1.4
+                },
+                "children": "云原生微服务架构"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "size": 14,
+                  "weight": 500,
+                  "color": "rgba(0,0,0,0.60)",
+                  "lineHeight": 1.5
+                },
+                "children": "研发部 · 设计中"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+[NEXT]
+[OLD]
+<p id="14_807590" class="Pixso-paragraph-14_807590">工作台</p>
+[NEW]
+<p id="14_807590" class="Pixso-paragraph-14_807590">工作台<span style="position: absolute; top: -2px; right: -6px; background-color: #F44336; color: white; font-size: 10px; width: 14px; height: 14px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; line-height: 1;">1</span></p>

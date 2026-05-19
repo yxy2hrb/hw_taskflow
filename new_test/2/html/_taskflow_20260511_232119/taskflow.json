@@ -1,0 +1,43 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "我的工作台主界面",
+    "description": "用户位于移动端‘我的工作台’首页，页面顶部显示状态栏（含时间、信号、电量），底部固定Tab导航栏（含‘工作台’高亮选中），页面中部清晰可见圆形图标+文字的‘创建项目集’按钮，背景为浅灰底色，无任何临时浮层或输入态。",
+    "implementation_method": "原始 HTML 初始快照，不做改造"
+  },
+  {
+    "state_id": 2,
+    "state_name": "项目集创建全屏页",
+    "description": "用户点击‘创建项目集’按钮后，全屏覆盖新页加载完成：顶部状态栏与底部Tab栏完整保留；内容区从状态栏下方开始，顶部居中显示‘创建项目集’标题；中部为名称输入框（带占位符‘请输入项目集名称’）、单选组‘公司/个人’两个圆形单选按钮（默认未选）、下方‘添加项目’区域（当前为空，显示灰色加号图标+‘点击添加项目’提示文字）；底部固定红色宽按钮‘确认’，文字为白色粗体。",
+    "implementation_method": "全屏覆盖页 (Fullscreen Overlay)：顶部状态栏与底部Tab栏完全透传；标题‘创建项目集’居中于内容区顶部；输入框带placeholder '请输入项目集名称'；单选组含两个选项，中文文案‘公司’和‘个人’，英文文案‘Company’和‘Personal’；‘添加项目’区域含灰色加号图标（SVG）+ 文字‘点击添加项目’（英文‘Tap to add project’）；底部按钮背景色#FF4D4F，文字‘确认’（英文‘Confirm’），字体白色加粗，固定定位在视口底部。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "校验失败实时提示",
+    "description": "用户填写名称后未填或留空，或选择‘个人’类型却添加了公司项目时，立即在对应字段下方出现红字提示：名称输入框正下方显示‘名称不能为空’，归属类型单选组下方显示‘所选项目不适用于个人类型’；所有提示文字紧贴字段边界、左对齐、14px字号、颜色#FF4D4F，无图标，无弹窗遮罩，页面其余部分保持不变。",
+    "implementation_method": "行内错误提示 (Inline Validation Message)：红色文本控件 (Text)：位置紧贴对应表单项下方；名称校验提示文案‘名称不能为空’（英文‘Name cannot be empty’）；归属类型校验提示文案‘所选项目不适用于个人类型’（英文‘Selected projects are not applicable for Personal type’）；文字颜色#FF4D4F，字体14px，无边框无背景，仅纯文本渲染。",
+    "last_state": 2
+  },
+  {
+    "state_id": 4,
+    "state_name": "提交中过渡态",
+    "description": "用户点击底部红色‘确认’按钮后，按钮立即禁用、背景色变暗（#CC3A3A），文字变为‘提交中…’并内嵌顺时针旋转小圆点动画（直径16px，白色，居中于文字右侧）；页面其余元素（输入框、单选按钮、项目列表）全部保持可读但不可交互状态；顶部状态栏与底部Tab栏持续可见，无遮罩层。",
+    "implementation_method": "按钮加载态 (Button Loading State)：按钮控件 (Button)：背景色#CC3A3A，文字‘提交中…’（英文‘Submitting…’），右侧内嵌 SVG 旋转圆点（white, 16px diameter, clockwise spin）；按钮 disabled 属性生效；输入框与单选组保持视觉可见但 pointer-events: none；无全局遮罩，仅按钮自身状态变更。",
+    "last_state": 2
+  },
+  {
+    "state_id": 5,
+    "state_name": "创建成功Toast提示",
+    "description": "提交成功后，页面顶部状态栏下方立即下拉浮现浅绿色Toast：底色#F6FFED，文字‘创建成功’居中显示，无图标，字体14px深灰#52C418；2秒后自动向上滑出屏幕并消失；期间页面主体（输入框、单选、项目列表、底部Tab）全部保持静止可见，无跳转、无刷新。",
+    "implementation_method": "轻量级提示 (Toast/Snackbar)：浅绿底白字矩形浮层（#F6FFED / #52C418），尺寸宽90%、高44px、圆角4px、居中水平、垂直方向距顶部状态栏下沿8px；文案‘创建成功’（英文‘Created successfully’）；无图标；2秒后执行 translateY(-100%) 动画滑出；不遮挡任何底层元素。",
+    "last_state": 2
+  },
+  {
+    "state_id": 6,
+    "state_name": "取消返回工作台",
+    "description": "用户点击左上返回箭头（位于创建页顶部左侧）或底部‘取消’按钮（位于红色确认按钮同级右侧，文字为‘取消’），立即退出全屏创建页，页面无缝回退至 state_1 的‘我的工作台主界面’，所有已填名称、已选类型、已添加项目全部清空，无二次确认弹窗，状态栏与Tab栏全程连贯无闪烁。",
+    "implementation_method": "页面回退 (Navigation Back)：左上返回箭头（SVG 左向三角图标 + ‘返回’文字，英文‘Back’）；底部‘取消’按钮（文字‘取消’，英文‘Cancel’，背景透明，文字色#8C8C8C）；点击任一即触发 history.back() 或 router.replace()，目标页面为 state_1 完整骨架；所有表单数据重置为初始值，无本地缓存。",
+    "last_state": 1
+  }
+]

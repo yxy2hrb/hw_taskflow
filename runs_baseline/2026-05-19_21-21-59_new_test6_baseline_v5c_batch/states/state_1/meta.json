@@ -1,0 +1,11 @@
+{
+  "state_id": 1,
+  "state_name": "我的工作台初始页",
+  "description": "页面为完整移动端工作台首页，顶部状态栏显示时间与信号图标，底部Tab栏含‘首页’‘工作台’‘消息’‘我的’四枚图标并高亮‘工作台’，中部区域包含功能卡片组，其中‘快速入门’卡片位于左上第一位置，卡片内含蓝色圆形图标与‘快速入门’文字（16px Medium，深灰#191919），无任何浮层或遮罩。",
+  "implementation_method": "原始 HTML 初始快照，不做改造",
+  "last_state": null,
+  "applied": 0,
+  "skipped": 0,
+  "failed": false,
+  "error": null
+}

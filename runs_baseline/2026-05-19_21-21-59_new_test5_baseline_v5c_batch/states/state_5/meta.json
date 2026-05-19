@@ -1,0 +1,12 @@
+{
+  "state_id": 5,
+  "state_name": "权限不足提示页",
+  "description": "全屏页面，顶部导航栏为‘虚拟体验项目’标题（16px HarmonyHeiTi-Medium，#191919），左侧返回箭头（24px 黑色）、右侧搜索/通知/加号图标（24px 灰色）均可见；导航栏下方为纯灰底 #F3F3F3；中央悬浮白色卡片（宽 320px，圆角 12px，阴影 rgba(0,0,0,0.08)），卡片内含标题‘暂无访问权限’（16px HarmonyHeiTi-Medium，#191919）、正文‘请联系管理员开通虚拟体验项目查看权限’（14px HarmonyHeiTi-Regular，#666），底部仅一个‘返回工作台’按钮（蓝色底+白字，宽 160px，居中）；状态栏与底部 TabBar 正常可见。",
+  "implementation_method": "全屏提示页 (Full-Screen Alert Card)：顶部导航栏同 state_3；中央白色卡片（320px×160px，圆角 12px，box-shadow: 0 2px 12px rgba(0,0,0,0.08)），含标题‘暂无访问权限’（16px HarmonyHeiTi-Medium，#191919）、正文‘请联系管理员开通虚拟体验项目查看权限’（14px HarmonyHeiTi-Regular，#666）、底部按钮‘返回工作台’（14px HarmonyHeiTi-Medium，#FFFFFF，背景 #46B1E3，宽 160px，居中）；其余区域为 #F3F3F3 灰底；状态栏与底部 TabBar 完整保留。",
+  "last_state": 3,
+  "applied": 1,
+  "skipped": 0,
+  "elapsed_ms": 76357,
+  "failed": false,
+  "error": null
+}

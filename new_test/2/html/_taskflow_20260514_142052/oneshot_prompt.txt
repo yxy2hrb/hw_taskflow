@@ -1,0 +1,232 @@
+=== SYSTEM ===
+你是高级前端工程师，擅长把"低保真 D2C HTML 原型 + 状态机蓝图"改造成基于 antd-mobile (v5) React 组件的可交互前端。
+
+输入：
+  · 一份基线 HTML（D2C 自动产出，含 <html><head><style>...</style></head><body>...</body></html>，里面的标签都是手机端 360×780 的绝对布局）
+  · 一条 happy path（用户主路径），按顺序列出 N 个 state，每个 state 含 state_id / state_name / description / implementation_method
+
+你的任务：一次性产出 happy path 上每个 state 的 UI 改造方案。每个 state 包含：
+  1. edits[]：对**原始基线 HTML**的若干 [OLD]/[NEW] 字符串替换；
+  2. islands{}：嵌入在 NEW 块内 `<div data-jsx-island id="...">` 占位 div 上要渲染的 antd-mobile JSX 表达式；
+  3. trigger：本 state 内"用户点击后进入下一 state"的元素描述（直接体现在某个 edit 的 NEW 里，标记 data-next-state="下一 state_id"）。
+
+# 输出 JSON Schema（必须严格遵守）
+{
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "...",
+      "edits": [
+        {
+          "old": "原基线 HTML 中**逐字逐符复制**的一段 ≤ 200 字符的字符串（必须能精确匹配，否则无法定位）",
+          "new": "替换后的 HTML 片段；如果需要 antd-mobile 组件，用 <div data-jsx-island id=\"独一无二的island-id\"></div> 占位"
+        }
+      ],
+      "islands": {
+        "独一无二的island-id": "单行 JSX 表达式，例如 <Button block color='primary' data-next-state={2} onClick={() => {}}>编辑</Button>"
+      }
+    },
+    {
+      "state_id": 2,
+      ...
+    }
+  ]
+}
+
+# 关键约束
+1. **OLD 必须从基线 HTML 中精确复制**（包括前后空白、引号、属性顺序），不能改写、不能简化、不能用 ... 省略。如果不知道要改哪段，宁可不出 edit。
+2. **NEW 之于 OLD 是替换关系**，不是追加。如果是新增 UI（比如全屏弹层），把 OLD 选作"插入点的稳定锚点"（例如 `</body>`），NEW = "锚点 + 你要新增的 HTML"。注意 NEW 必须**包含**整个 OLD 字符串，否则会破坏锚点。
+3. **每个 state 的 edits 全部基于原始基线**，不要假设前面 state 的 edits 已经应用过。比如 state_3 是"保存中"，它的 edits 要表达"编辑表单 + 保存中 spinner"两层视觉，而不能只表达 spinner。
+4. **不要碰** <head> 里的 <style> 和 <script>；只在 <body> 内做替换。
+5. **antd-mobile 组件名表（v5）**：Button, Form, Input, TextArea, Toast, NavBar, List, Selector, Dialog, ActionSheet, Tabs, Switch, Picker, Checkbox, Radio, Tag, Avatar, Card, Modal, Mask, Popup, Skeleton, ProgressBar, Stepper, ImageUploader, SearchBar, Slider, Steps。运行时已通过全局 antdMobile 解构注入，JSX 中直接首字母大写即可。
+6. **trigger 元素**：每个 state（除 happy path 最后一个 terminal state）必须有**且仅有一个** trigger 元素，标记方式 = 在该元素上加 `data-next-state="K+1"`（HTML 属性形式）或 `data-next-state={K+1}`（JSX 形式）。trigger 不一定要是 antd 组件，也可以是 NEW 块里的普通 <div> / <button>。
+7. **island 命名**：用 `s{state_id}-{purpose}` 格式，例如 `s2-form` / `s3-spinner` / `s4-toast`。同一 island id 在所有 state 内必须唯一。
+8. **JSX 表达式只能写一行**，内部禁用换行（JSON 字符串里换行会破坏解析）。JSX 中需要双引号时写成 \" 转义，或改用单引号。
+9. **edits 总数控制在合理范围**：单个 state 1～5 个 edit，避免一锅炖。
+
+# 你的产出
+直接输出 JSON 对象（用 ```json 围栏或裸 JSON 都行）。**不要**输出任何 Markdown 说明文字、不要解释、不要打招呼。
+
+=== USER ===
+# 基线 HTML（请逐字复制 OLD）
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixso HTML</title>
+  <link rel="stylesheet" href="css/font.css">
+  <script src="js/animation.js"></script>
+  <style>/* CSS omitted for LLM brevity */</style>
+<style>/* CSS omitted for LLM brevity */</style>
+</head>
+<body>
+<div class="scroll-container">
+  <div id="0_1" class="Pixso-canvas-0_1">
+    <div id="14_807569" class="Pixso-frame-14_807569 fill-场景background-colorcolor-bg-1-14_809175">
+      <div id="14_807570" class="Pixso-frame-14_807570">
+        <div id="14_807571" class="Pixso-vector-14_807571"></div>
+        <div id="14_807572" class="Pixso-vector-14_807572"></div>
+        <div id="14_807573" class="Pixso-vector-14_807573"></div>
+        <div id="14_807574" class="Pixso-vector-14_807574"></div>
+        <div id="14_807575" class="Pixso-rectangle-14_807575"></div>
+      </div>
+      <div id="14_807583" class="Pixso-rectangle-14_807583"></div>
+      <div id="14_807584" class="Pixso-frame-14_807584">
+        <div id="14_807585" class="Pixso-frame-14_807585">
+          <div class="frame-content-14_807585">
+            <div id="146_168947" class="Pixso-frame-146_168947">
+              <div id="146_168948" class="Pixso-frame-146_168948">
+                <div class="frame-content-146_168948">
+                  <p id="146_168949" class="Pixso-paragraph-146_168949">08:08</p>
+                  <div id="146_168950" class="Pixso-frame-146_168950">
+                    <div id="146_168951" class="Pixso-vector-146_168951"></div>
+                    <div id="146_168963" class="Pixso-vector-146_168963"></div>
+                    <div id="146_168970" class="Pixso-vector-146_168970"></div>
+                    <div id="146_168997" class="Pixso-vector-146_168997"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="146_169007" class="Pixso-frame-146_169007">
+              <div class="frame-content-146_169007">
+                <div id="146_169008" class="Pixso-frame-146_169008">
+                  <div id="146_169009" class="Pixso-frame-146_169009">
+                    <div id="146_169014" class="Pixso-frame-146_169014">
+                      <div id="146_169015" class="Pixso-frame-146_169015">
+                        <div id="146_169016" class="Pixso-frame-146_169016">
+                          <div class="frame-content-146_169016">
+                            <div id="146_169017" class="Pixso-frame-146_169017">
+                              <p id="146_169018" class="Pixso-paragraph-146_169018 fill-场景text-colorcolor-text-primary-6_11379-paragraph">我的</p>
+                            </div>
+                            <p id="146_169022" class="Pixso-paragraph-146_169022 fill-场景text-colorcolor-text-primary-6_11379-paragraph">工作台</p>
+                          </div>
+                        </div>
+                        <div id="146_169023" class="Pixso-frame-146_169023">
+                          <div class="frame-content-146_169023">
+                            <div id="146_169024" class="Pixso-group-146_169024">
+                              <div id="146_169025" class="Pixso-vector-146_169025"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="14_807586" class="Pixso-frame-14_807586">
+        <div id="14_807587" class="Pixso-rectangle-14_807587"></div>
+        <p id="14_807588" class="Pixso-paragraph-14_807588">我的</p>
+        <p id="14_807589" class="Pixso-paragraph-14_807589">服务</p>
+        <p id="14_807590" class="Pixso-paragraph-14_807590">工作台</p>
+        <p id="14_807591" class="Pixso-paragraph-14_807591">商城</p>
+        <p id="14_807592" class="Pixso-paragraph-14_807592">首页</p>
+        <div id="14_807593" class="Pixso-group-14_807593">
+          <div id="14_807594" class="Pixso-vector-14_807594"></div>
+          <div id="14_807595" class="Pixso-group-14_807595">
+            <div id="14_807596" class="Pixso-vector-14_807596"></div>
+            <div id="14_807597" class="stroke-wrapper-14_807597">
+              <div class="Pixso-rectangle-14_807597"></div>
+              <div class="stroke-14_807597"></div>
+            </div>
+          </div>
+        </div>
+        <div id="14_807598" class="Pixso-vector-14_807598"></div>
+        <div id="14_807602" class="Pixso-vector-14_807602"></div>
+        <div id="14_807615" class="Pixso-group-14_807615">
+          <div id="14_807616" class="Pixso-vector-14_807616"></div>
+          <div id="14_807617" class="Pixso-vector-14_807617"></div>
+        </div>
+        <div id="14_807620" class="Pixso-group-14_807620">
+          <div id="14_807621" class="Pixso-vector-14_807621"></div>
+          <div id="14_807622" class="Pixso-group-14_807622">
+            <div id="14_807623" class="Pixso-vector-14_807623"></div>
+            <div id="14_807626" class="Pixso-vector-14_807626"></div>
+          </div>
+        </div>
+      </div>
+      <div id="14_807629" class="Pixso-frame-14_807629"></div>
+      <div id="14_807630" class="Pixso-frame-14_807630">
+        <div id="146_161533" class="Pixso-rectangle-146_161533"></div>
+        <div id="146_161534" class="Pixso-frame-146_161534">
+          <div class="frame-content-146_161534">
+            <div id="146_161535" class="Pixso-frame-146_161535">
+              <div class="frame-content-146_161535">
+                <div id="146_161536" class="Pixso-frame-146_161536">
+                  <div id="146_161552" class="Pixso-group-146_161552">
+                    <div id="146_161553" class="Pixso-rectangle-146_161553"></div>
+                    <div id="146_161554" class="Pixso-vector-146_161554"></div>
+                    <div id="146_161555" class="Pixso-vector-146_161555"></div>
+                    <div id="146_161556" class="Pixso-vector-146_161556"></div>
+                    <div id="146_161557" class="Pixso-vector-146_161557"></div>
+                  </div>
+                </div>
+                <p id="146_161558" class="Pixso-paragraph-146_161558 fill-text文本色图标色color_text_primary-14_290523-paragraph">创建开局</p>
+              </div>
+            </div>
+            <div id="146_161559" class="Pixso-frame-146_161559">
+              <div class="frame-content-146_161559">
+                <div id="146_161560" class="Pixso-frame-146_161560">
+                  <div id="146_161576" class="Pixso-vector-146_161576"></div>
+                </div>
+                <p id="146_161583" class="Pixso-paragraph-146_161583 fill-text文本色图标色color_text_primary-14_290523-paragraph">创建项目集</p>
+              </div>
+            </div>
+            <div id="146_161584" class="Pixso-frame-146_161584">
+              <div class="frame-content-146_161584">
+                <div id="146_161585" class="Pixso-frame-146_161585">
+                  <div id="146_161586" class="Pixso-vector-146_161586"></div>
+                  <div id="146_161590" class="Pixso-vector-146_161590"></div>
+                  <div id="146_161591" class="Pixso-vector-146_161591"></div>
+                  <div id="146_161592" class="Pixso-rectangle-146_161592"></div>
+                  <div id="146_161593" class="Pixso-rectangle-146_161593"></div>
+                </div>
+                <p id="146_161594" class="Pixso-paragraph-146_161594 fill-text文本色图标色color_text_primary-14_290523-paragraph">接收项目</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="146_161595" class="Pixso-frame-146_161595">
+          <div class="frame-content-146_161595">
+            <div id="146_161596" class="Pixso-frame-146_161596">
+              <p id="146_161597" class="Pixso-paragraph-146_161597 fill-text文本色图标色color_text_primary-14_290523-paragraph text-单行行高headline标题headline_s-14_365549">项目开局</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+</body>
+</html>
+```
+
+# Happy Path（顺序即用户操作顺序）
+### state_1: 工作台首页入口展示态
+- 描述: 屏幕顶部为深色状态栏，底部为固定导航Tab栏。页面中央为工作台内容区域，右上角悬浮明显的创建项目集按钮，背景为浅灰色网格布局展示现有项目列表。
+- 实现方法: 原始 HTML 初始快照，不做改造。
+- 下一态 (trigger 应指向): state_2 (项目集信息表单编辑态)
+
+### state_2: 项目集信息表单编辑态
+- 描述: 顶部状态栏与底部导航栏保持不变，中间区域替换为纯白背景表单。自上而下依次排列带占位符的名称输入框、公司或个人单选按钮组、项目添加列表区。底部固定显示红色圆角确认按钮。
+- 实现方法: 全屏覆盖层 (Full-screen Overlay)：在 last_state（state_1）基础上，将中间内容区替换为白色背景表单容器；顶部添加返回箭头与“创建项目集”(Create Project Set)标题；中部依次排列“项目集名称”(Project Set Name)输入框（边框 #E5E5E5）、“属性”(Attribute)单选组（公司/个人，默认未选中）、“添加项目”(Add Projects)列表占位区；底部固定红色按钮（背景 #E53935，文字“确认”(Confirm)）。
+- 下一态 (trigger 应指向): state_3 (底部确认按钮加载状态)
+
+### state_3: 底部确认按钮加载状态
+- 描述: 页面骨架与表单编辑态完全一致，顶部状态栏与底部导航栏可见。底部红色确认按钮变为浅灰色不可点击状态，按钮内部居中显示白色圆形加载图标与提交中文字，其余表单内容保持原样。
+- 实现方法: 按钮控件 (Button)：定位至底部固定按钮区域，将背景色改为浅灰（#F5F5F5），禁用点击交互；按钮内部替换为居中排列的 16px 白色圆环加载图标与“提交中”(Submitting)文字；页面其余元素保持与 last_state（state_2）一致。
+- 终态（无后继，不需要 trigger）
+
+# 输出要求
+为上面 3 个 state（含 state_1）各产出一项 states[]。state_1 通常无须修改（或仅注入 trigger 让用户开始流程）。最后一个 state 是终态，可以不带 trigger。
+
+直接输出 JSON。

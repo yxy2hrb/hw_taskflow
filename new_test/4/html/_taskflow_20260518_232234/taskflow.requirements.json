@@ -1,0 +1,44 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "工作台首页",
+    "description": "用户已登录，屏幕显示‘我的工作台’主界面；顶部状态栏显示时间、信号与电量图标；中部为功能卡片区；底部 Tab 栏完整可见，当前高亮‘工作台’Tab；右下角悬浮按钮区域含‘体验运维流程’按钮（蓝色填充、白色文字、圆角矩形），位于页面右下角距底边 24px、距右边缘 24px。",
+    "implementation_method": "原始 HTML 初始快照，不做改造",
+    "last_state": null
+  },
+  {
+    "state_id": 2,
+    "state_name": "运维流程全屏页初始态",
+    "description": "页面全屏展开，顶部状态栏保持可见（时间/信号/电量图标正常显示），底部 Tab 栏完整保留且当前高亮‘工作台’Tab；左侧为表单区域，含两行灰色占位文字：上方‘项目场景’（14px HarmonyHeiTi-Regular，rgba(0,0,0,0.89)）、下方‘项目名称’（同字体字号）；右侧为三维模型展示区，背景为浅灰（#F3F3F3），中央显示浅蓝设备轮廓线图标（无纹理、无光照、无旋转动画），无任何三维模型渲染内容。",
+    "implementation_method": "全屏页容器 (Fullscreen Container)：覆盖 viewport 100% 高度，保留顶部状态栏与底部 Tab 栏；左侧表单区宽 360px，含两个灰色占位段落（'项目场景'、'项目名称'，均使用 text-ohos_id_text_size_body2regular-14_886008 类）；右侧模型区宽剩余空间，背景 fill-场景background-colorcolor-bg-1-14_886006，中央嵌入 SVG 轮廓图标（class Pixso-vector-146_139370）。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "运维流程页填写中",
+    "description": "页面全屏展开，顶部状态栏与底部 Tab 栏保持可见且高亮‘工作台’Tab；左侧表单区域两个输入框已填入预设值：第一行‘园区安防’（16px HarmonyHeiTi-Medium，加粗，fill-text文本色图标色color_text_primary-14_290523-paragraph）、第二行‘南山数据中心试点’（同字体字号）；右侧模型区完整渲染蓝色机柜三维模型（带环境光阴影，模型中心对齐，尺寸适配容器，无交互控件），背景仍为浅灰 #F3F3F3。",
+    "implementation_method": "全屏页容器 (Fullscreen Container)：左侧表单段落文字替换为‘园区安防’和‘南山数据中心试点’，应用 text-单行行高headline标题headline_s-14_365549 类（加粗）；右侧模型区移除轮廓线图标，替换为完整三维模型 DOM 容器（class Pixso-frame-146_139350 子节点中插入 <model-viewer> 或 canvas 元素，具蓝色材质与环境光阴影效果）。",
+    "last_state": 2
+  },
+  {
+    "state_id": 4,
+    "state_name": "提交中过渡态",
+    "description": "页面全屏展开，顶部状态栏与底部 Tab 栏保持可见且高亮‘工作台’Tab；左侧表单内容不变（‘园区安防’与‘南山数据中心试点’仍清晰显示）；蓝色‘确定’按钮变为禁用态（背景色 rgba(0,0,0,0.12)，文字颜色 rgba(0,0,0,0.38)，不可点击）；右侧三维模型区整体覆盖一层不透明度 15% 的黑色蒙层（rgba(0,0,0,0.15)），蒙层中央显示白色 32px 圆环 spinner（stroke #191919，无填充，CSS animation: hmspin 1s linear infinite）。",
+    "implementation_method": "按钮控件 (Button)：将 class Pixso-paragraph-146_139389 所在父容器的 background-color 改为 rgba(0,0,0,0.12)，文字 color 改为 rgba(0,0,0,0.38)，pointer-events: none；三维区叠加 div（class overlay-submit-loading）覆盖整个右侧区域，background: rgba(0,0,0,0.15)，中央绝对定位 32px svg spinner（stroke #191919，viewBox='0 0 32 32'，animation: hmspin 1s linear infinite）。",
+    "last_state": 3
+  },
+  {
+    "state_id": 5,
+    "state_name": "创建成功终态",
+    "description": "页面全屏展开，顶部状态栏与底部 Tab 栏保持可见且高亮‘工作台’Tab；左侧表单内容不变（‘园区安防’与‘南山数据中心试点’仍清晰显示）；右侧三维模型区完整渲染蓝色机柜三维模型（与 state_3 一致）；页面顶部状态栏正下方 16px 处显示 100% 宽度浅蓝横条（background-color: rgba(70,177,227,0.1)，height: 48px），内含白色勾选图标（left 16px）+ 文字‘创建成功’（14px HarmonyHeiTi-Regular，white）+ 右对齐关闭 × 图标（right 16px，24px×24px，white）。",
+    "implementation_method": "轻量级提示 (Toast/Snackbar)：在 body 内追加 div（class toast-success），position: fixed; top: 48px; left: 0; width: 100%; height: 48px; background: rgba(70,177,227,0.1); display: flex; align-items: center; padding: 0 16px; z-index: 1000；子元素含 svg checkmark（fill:white）、span '创建成功'（text-ohos_id_text_size_body2regular-14_886008 + color:white）、svg close（fill:white）。",
+    "last_state": 3
+  },
+  {
+    "state_id": 6,
+    "state_name": "创建失败终态",
+    "description": "页面全屏展开，顶部状态栏与底部 Tab 栏保持可见且高亮‘工作台’Tab；左侧表单内容不变（‘园区安防’与‘南山数据中心试点’仍清晰显示）；蓝色‘确定’按钮恢复可用（背景色 rgba(70,177,227,1)，文字颜色 white）；右侧三维模型区完整渲染蓝色机柜三维模型（与 state_3 一致）；页面顶部状态栏正下方 16px 处显示 100% 宽度橙红横条（background-color: rgba(255,107,107,0.1)，height: 48px），内含白色感叹号图标（left 16px）+ 文字‘创建失败，请重试’（14px HarmonyHeiTi-Regular，white）+ 右对齐刷新箭头图标（right 16px，24px×24px，white）。",
+    "implementation_method": "轻量级提示 (Toast/Snackbar)：在 body 内追加 div（class toast-error），position: fixed; top: 48px; left: 0; width: 100%; height: 48px; background: rgba(255,107,107,0.1); display: flex; align-items: center; padding: 0 16px; z-index: 1000；子元素含 svg warning（fill:white）、span '创建失败，请重试'（text-ohos_id_text_size_body2regular-14_886008 + color:white）、svg refresh（fill:white）；同时将按钮类 Pixso-paragraph-146_139389 父容器 background-color 改为 rgba(70,177,227,1)，color:white，pointer-events:auto。",
+    "last_state": 3
+  }
+]

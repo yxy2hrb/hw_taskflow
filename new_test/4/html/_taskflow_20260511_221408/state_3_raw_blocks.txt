@@ -1,0 +1,22 @@
+{
+  "state_name": "提交中加载态",
+  "lifecycle": "temporary",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "FullscreenPanel",
+    "props": { "background": "rgba(0,0,0,0.15)" },
+    "children": [
+      {
+        "type": "OverlayMask",
+        "props": { "opacity": 0.15, "color": "#000", "blur": 0 },
+        "children": [
+          {
+            "type": "Text",
+            "props": { "text": "加载中…", "variant": "body", "size": 14, "color": "#FFFFFF", "align": "center" }
+          }
+        ]
+      }
+    ]
+  }
+}

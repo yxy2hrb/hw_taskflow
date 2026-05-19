@@ -1,0 +1,57 @@
+▶ run dir: runs_baseline\2026-05-19_21-22-00_new_test7_baseline_v5c_batch
+  source: new_test/7/html
+  brief : new_test/7/input.txt
+  blueprint: runs_new_test_twophase_strict_scan/2026-05-19_12-10-27_new_test7_scan_v2_bodyonly/blueprint.json
+  api   : http://localhost:3001/api
+  /health → 404
+
+▶ POST /oneclick/start  brief="在营销工作台主页点击"管理应用"按钮，**先进入一个新的"管理应用"页面**（顶部标题"管理应用"、返回箭头，列表里展示…"  htmlBytes=325983
+  sessionId=tf_9c73b7798a7b  sourceDir(echo)=
+
+▶ POST /oneclick/blueprint  使用固定蓝图
+   title: 管理应用开关与添加流程
+   user_story: 已登录的营销运营人员在营销工作台主页点击'管理应用'按钮，统一管理已装应用开关 → 系统实时同步开关状态 → 页面计数更新+Toast反馈
+   states: 6
+     state_1 ← null  营销工作台主页
+     state_2 ← 1  管理应用页列表态
+     state_3 ← 2  请选择添加方式弹窗
+     state_4 ← 2  管理应用页添加成功态
+     state_5 ← 2  弹窗取消态
+     state_6 ← 2  添加失败态
+
+▶ SSE /oneclick/generate/stream
+  [state-done ] state_1 营销工作台主页  applied=0 skipped=0 undefinedms
+               components: (无)
+  [state-start] state_2 管理应用页列表态
+  [state-done ] state_2 管理应用页列表态  applied=1 skipped=0 121185ms
+               components: (无)
+  [state-start] state_3 请选择添加方式弹窗
+  [state-fail ] state_3 error=LLM 返回空
+  [state-start] state_4 管理应用页添加成功态
+  [state-done ] state_4 管理应用页添加成功态  applied=1 skipped=0 134942ms
+               components: (无)
+  [state-start] state_5 弹窗取消态
+  [state-done ] state_5 弹窗取消态  applied=1 skipped=0 118862ms
+               components: (无)
+  [state-start] state_6 添加失败态
+  [state-done ] state_6 添加失败态  applied=1 skipped=0 122773ms
+               components: (无)
+
+  [done] outDir=E:\任务流\任务流\p2p\saved-taskflow\20260520_052218_manage-app-switch-and-add-flow savedInSource=false
+
+▶ 归档后端产物 from E:\任务流\任务流\p2p\saved-taskflow\20260520_052218_manage-app-switch-and-add-flow
+
+▶ Playwright 截图 5 个 state（视口 360×780, fullPage）
+  ✓ state_1  1788ms  H=780px  127.1KB
+  ✓ state_2  1677ms  H=1080px  70.3KB
+  ✓ state_4  1719ms  H=1080px  73.1KB
+  ✓ state_5  1717ms  H=1080px  70.3KB
+  ✓ state_6  1695ms  H=1080px  73.1KB
+
+✅ 全部归档到 runs_baseline\2026-05-19_21-22-00_new_test7_baseline_v5c_batch
+   关键文件：
+   - 00_input.json / blueprint.json
+   - phase_{1,2,3}_{question,answer,response}.json
+   - sse_events.jsonl
+   - states/state_<id>/{meta.json, components.json, raw_blocks.txt, output.html, events.jsonl}
+   - summary.md

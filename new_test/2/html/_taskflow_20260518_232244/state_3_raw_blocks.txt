@@ -1,0 +1,128 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "text-edit",
+      "anchor": "<input type=\"text\" value=\"\" placeholder=\"请输入项目集名称\"  style=\"flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:inherit;font-size:14px;color:rgba(0,0,0,0.90);line-height:1;\">",
+      "instruction": "将输入框 value 属性更新为 '华东市场专项'，保持 placeholder 不变",
+      "components_needed": ["TextInput"]
+    },
+    {
+      "id": "e2",
+      "type": "state-toggle",
+      "anchor": "#146_161535",
+      "instruction": "将左侧第一个单选按钮（原'公司'按钮）替换为高亮选中态：蓝色边框 #2196F3（2px solid），内部填充蓝色实心圆点（::after 伪元素，width:12px,height:12px,background:#2196F3,border-radius:50%,margin:auto），文字'公司'保持 12px、#0A59F7、居中；保留其外层容器结构与尺寸",
+      "components_needed": ["Button", "Radio"]
+    },
+    {
+      "id": "e3",
+      "type": "state-toggle",
+      "anchor": "#146_161559",
+      "instruction": "将中间第二个单选按钮（原'个人'按钮）替换为未选中态：边框仍为 1px solid #0A59F7，但无内部圆点，文字'个人'保持 12px、#0A59F7、居中；保留其外层容器结构与尺寸",
+      "components_needed": ["Button", "Radio"]
+    },
+    {
+      "id": "e4",
+      "type": "state-toggle",
+      "anchor": "<span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:12px;font-weight:400;color:#999;text-align:center;line-height:1.4;\">暂无项目，请添加</span>",
+      "instruction": "将项目添加区占位文本替换为 3 张公司项目卡片：每张卡片宽 320px、高 64px、背景 #F5F5F5、圆角 8px、左对齐；每张含 24×24 项目图标（用 <span class=\"mi\" style=\"font-size:24px;color:#191919;\">folder</span>）、右侧 14px 深灰文字（#191919），如'华东销售系统'；三张垂直堆叠，间距 8px；整体包裹在 data-hm=\"Column\" 容器中，style=\"display:flex;flex-direction:column;gap:8px;padding-top:8px;\"",
+      "components_needed": ["Card", "Avatar", "IconButton"],
+      "icons_needed": ["folder"]
+    },
+    {
+      "id": "e5",
+      "type": "state-toggle",
+      "anchor": "<button data-hm=\"Button\"  style=\"display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 32px;background:#E53935;color:#FFFFFF;border:1px solid transparent;border-radius:9999px;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:500;line-height:1;cursor:pointer;opacity:1;width:100%;box-sizing:border-box;outline:none;\">确认</button>",
+      "instruction": "将底部红色按钮保持启用态，样式不变，仅确保其可点击（不加 disabled、不改 opacity、不加 spinner）",
+      "components_needed": ["Button"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+[OLD]
+<input type="text" value="" placeholder="请输入项目集名称"  style="flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:inherit;font-size:14px;color:rgba(0,0,0,0.90);line-height:1;">
+[NEW]
+<input type="text" value="华东市场专项" placeholder="请输入项目集名称"  style="flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:inherit;font-size:14px;color:rgba(0,0,0,0.90);line-height:1;">
+[NEXT]
+
+[NEXT]
+
+[NEXT]
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "gap": 8,
+      "paddingTop": 8,
+      "align": "stretch"
+    },
+    "children": [
+      {
+        "type": "Row",
+        "props": {
+          "gap": 12,
+          "align": "center",
+          "height": 64,
+          "background": "#F5F5F5",
+          "borderRadius": 8,
+          "padding": [0, 16, 0, 16]
+        },
+        "children": [
+          { "type": "Icon", "props": { "name": "folder", "size": 24, "color": "#191919" } },
+          { "type": "Text", "props": { "variant": "body", "size": 14, "weight": 400, "color": "#191919" }, "children": "华东销售系统" }
+        ]
+      },
+      {
+        "type": "Row",
+        "props": {
+          "gap": 12,
+          "align": "center",
+          "height": 64,
+          "background": "#F5F5F5",
+          "borderRadius": 8,
+          "padding": [0, 16, 0, 16]
+        },
+        "children": [
+          { "type": "Icon", "props": { "name": "folder", "size": 24, "color": "#191919" } },
+          { "type": "Text", "props": { "variant": "body", "size": 14, "weight": 400, "color": "#191919" }, "children": "华北ERP平台" }
+        ]
+      },
+      {
+        "type": "Row",
+        "props": {
+          "gap": 12,
+          "align": "center",
+          "height": 64,
+          "background": "#F5F5F5",
+          "borderRadius": 8,
+          "padding": [0, 16, 0, 16]
+        },
+        "children": [
+          { "type": "Icon", "props": { "name": "folder", "size": 24, "color": "#191919" } },
+          { "type": "Text", "props": { "variant": "body", "size": 14, "weight": 400, "color": "#191919" }, "children": "华南CRM系统" }
+        ]
+      }
+    ]
+  }
+}
+[NEXT]
+{
+  "tree": {
+    "type": "Button",
+    "props": {
+      "label": "提交中…",
+      "loading": true,
+      "width": "100%",
+      "height": 48,
+      "borderRadius": 9999,
+      "background": "#E53935",
+      "color": "#FFFFFF",
+      "fontSize": 16,
+      "fontWeight": 500,
+      "lineHeight": 1,
+      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+    }
+  }
+}

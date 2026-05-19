@@ -1,0 +1,61 @@
+{
+  "title": "体验项目查看与详情浏览",
+  "slug": "experience-project-view-flow",
+  "createdAt": "2026-05-13T22:37:03.148Z",
+  "meta": {
+    "title": "体验项目查看与详情浏览",
+    "slug": "experience-project-view-flow",
+    "user_story": "已登录的企业体验管理员在‘我的工作台’点击‘我的体验项目’入口，快速查看所有体验项目概览 → 系统内嵌弹窗保留底Tab与状态栏 → 用户点击任一卡片跳转全屏详情页",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "工作台主界面初始态",
+      "description": "用户停留在‘我的工作台’主界面，顶部状态栏显示时间、信号强度与4G图标，底部Tab栏完整可见（含‘首页’‘工作台’‘消息’‘我的’四个标签），页面主体为灰色背景，中央区域有‘我的体验项目’文字入口按钮，无任何浮层或弹窗。",
+      "implementation_method": "原始 HTML 初始快照，不做改造",
+      "last_state": null,
+      "file": "state_1.html"
+    },
+    {
+      "state_id": 2,
+      "state_name": "内嵌项目列表弹窗态",
+      "description": "顶部状态栏保持可见且内容不变（含时间、信号图标、4G标识），底部Tab栏完整保留在屏幕最下方；弹窗区域为半透明黑色遮罩（rgba(0,0,0,0.3)）覆盖主界面，居中显示宽360px高约792px的白色卡片列表容器，内部纵向滚动展示至少3张项目卡片，每张卡片含项目名称（16px加粗黑字）、创建时间（14px灰字）、设备类型与数量（12px深灰字）、状态标签（蓝底白字圆角矩形，如‘运行中’）、右侧操作按钮（12px蓝字‘进入’）。",
+      "implementation_method": "内嵌弹窗 (BottomSheet/ModalOverlay)：半透明黑色遮罩（rgba(0,0,0,0.3)）覆盖底层；白色卡片容器（#FFFFFF，圆角8px，宽360px）垂直居中，顶部对齐状态栏下沿，底部距底Tab上沿16px；每张卡片高度120px，内边距16px，标题‘项目A’、副标题‘2024-05-20 14:32’、设备行‘AP ×2 / 终端 ×5’、状态标签‘运行中’（#46B1E3/#FFFFFF）、操作按钮‘进入’（#46B1E3，12px Medium）；共3张卡片等距排列。",
+      "last_state": 1,
+      "file": "state_2.html"
+    },
+    {
+      "state_id": 3,
+      "state_name": "弹窗加载中骨架态",
+      "description": "顶部状态栏与底部Tab栏完全可见且内容不变；半透明黑色遮罩（rgba(0,0,0,0.3)）覆盖主界面；白色卡片容器（宽360px，圆角8px，#FFFFFF）居中悬浮，内部显示三行等高灰色骨架卡片，每张骨架卡含顶部标题线（高16px，浅灰#F3F3F3）、中部时间线（高14px，浅灰#F3F3F3）、底部标签位（高20px圆角矩形，浅灰#F3F3F3）及右侧按钮位（高24px宽64px，浅灰#F3F3F3），无文字、无图标、无交互元素。",
+      "implementation_method": "纯灰底骨架屏 (Skeleton Screen)：三行等高卡片轮廓（每张高120px），均位于白色容器内；每张含标题线（16px高，#F3F3F3）、时间线（14px高，#F3F3F3）、标签位（20px高圆角矩形，#F3F3F3）、按钮位（24×64px矩形，#F3F3F3）；全部居中纵向排列，间距16px；无任何文本、图标或可点击区域。",
+      "last_state": 2,
+      "file": "state_3.html"
+    },
+    {
+      "state_id": 4,
+      "state_name": "弹窗空项目提示态",
+      "description": "顶部状态栏与底部Tab栏完全可见且内容不变；半透明黑色遮罩（rgba(0,0,0,0.3)）覆盖主界面；白色卡片容器（宽360px，圆角8px，#FFFFFF）居中悬浮，内部中央垂直排列：大号标题‘暂无体验项目’（16px加粗黑字）、引导副标题‘点击右上角+号新建首个项目’（14px灰字）、底部悬浮圆形加号按钮（直径56px，蓝底#46B1E3，白色+号图标，居中水平对齐）。",
+      "implementation_method": "弹窗内居中灰色文案卡片 (EmptyState Card)：白色容器内中央垂直布局；标题‘暂无体验项目’（'No Experience Projects Yet'，16px HarmonyHeiTi-Medium，#191919）；副标题‘点击右上角+号新建首个项目’（'Tap + in top-right to create your first project'，14px HarmonyHeiTi-Regular，#666666）；底部悬浮圆形按钮（56×56px，#46B1E3，中心白色+号SVG图标，无文字）；整体上下留白各40px。",
+      "last_state": 2,
+      "file": "state_4.html"
+    },
+    {
+      "state_id": 5,
+      "state_name": "弹窗加载失败提示态",
+      "description": "顶部状态栏与底部Tab栏完全可见且内容不变；半透明黑色遮罩（rgba(0,0,0,0.3)）覆盖主界面；白色卡片容器（宽360px，圆角8px，#FFFFFF）居中悬浮，内部中央垂直排列：红色感叹号图标（24×24px，#FF4D4F）、标题‘加载失败’（16px加粗黑字）、副标题‘网络连接异常，请检查后重试’（14px灰字）、底部‘重试’按钮（蓝底白字，高36px宽120px，圆角8px）。",
+      "implementation_method": "弹窗内居中错误卡片 (ErrorCard Modal)：白色容器内中央垂直布局；红色感叹号图标（24×24px，#FF4D4F，SVG路径）；标题‘加载失败’（'Failed to Load'，16px HarmonyHeiTi-Medium，#191919）；副标题‘网络连接异常，请检查后重试’（'Network connection failed. Please check and retry.'，14px HarmonyHeiTi-Regular，#666666）；底部按钮‘重试’（'Retry'，36×120px，#46B1E3/#FFFFFF，圆角8px，14px Medium）。",
+      "last_state": 2,
+      "file": "state_5.html"
+    },
+    {
+      "state_id": 6,
+      "state_name": "全屏体验项目详情态",
+      "description": "页面全屏展开，顶部固定导航栏：左侧为左向箭头图标（24×24px，#191919）、居中标题‘虚拟体验项目’（16px加粗黑字）、右侧三个等距图标（搜索放大镜、通知铃铛、加号，均为24×24px，#191919）；主体区域从上至下依次为：网络拓扑图（SVG渲染，宽100%，高240px，含AP/终端节点与连线）、Wi-Fi评分卡片（蓝底白字，标题‘Wi-Fi评分’、分数‘86分’、描述‘信号强度良好’）、运行时长卡片（灰底黑字，标题‘运行时长’、时长‘12天8小时’）、设备与终端统计卡片（白底边框，两列数据：‘AP设备’‘2台’、‘接入终端’‘47个’）；底部Tab栏不可见。",
+      "implementation_method": "全屏页面 (FullPage View)：顶部导航栏（48px高，#FFFFFF，阴影0 1px 4px rgba(0,0,0,0.08)）；左箭头图标（<svg>路径，#191919）；标题‘虚拟体验项目’（'Virtual Experience Project'，16px HarmonyHeiTi-Medium，#191919）；右侧三图标（搜索‘🔍’、通知‘🔔’、加号‘+’，均24×24px，#191919）；主体区域：拓扑图SVG（viewBox='0 0 360 240'，含3个AP圆点+8个终端小方块+连线）；Wi-Fi评分卡片（#46B1E3/#FFFFFF，标题‘Wi-Fi评分’、分数‘86分’、副标‘信号强度良好’）；运行时长卡片（#F3F3F3/#191919，标题‘运行时长’、数值‘12天8小时’）；设备统计卡片（#FFFFFF/#191919边框1px，两行两列：‘AP设备’/‘2台’、‘接入终端’/‘47个’）。",
+      "last_state": 1,
+      "file": "state_6.html"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#14_884368",
+      "instruction": "把虚拟体验项目区块整段替换为错误提示页：顶部导航栏仅保留左侧返回图标（SVG 箭头）与文字'虚拟体验项目'（16px Medium，#191919）；中央区域垂直居中：顶部 Unicode 警示图标 ⚠️（font-size:48px，color:#FF6B35），主文案'获取数据失败'（16px Medium，#191919），副文案'请检查网络后重试'（14px Regular，#666），下方居中按钮'重试'（14px Medium，#46B1E3，text-decoration:underline）；无拓扑图、无统计卡片、无业务网模块；所有元素上下留白相等；背景纯白。",
+      "components_needed": ["IconButton", "Button"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Page",
+    "props": {
+      "background": "#FFFFFF"
+    },
+    "children": [
+      {
+        "type": "NavBar",
+        "props": {
+          "title": "虚拟体验项目",
+          "leftIcon": "arrow_back",
+          "align": "left"
+        }
+      },
+      {
+        "type": "Column",
+        "props": {
+          "gap": 24,
+          "padding": 32,
+          "align": "center",
+          "justify": "center",
+          "height": "100%",
+          "width": "100%"
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "size": 48,
+              "weight": "normal",
+              "color": "#FF6B35",
+              "align": "center",
+              "style": "font-family: 'HarmonyOS Sans', sans-serif;"
+            },
+            "children": "⚠️"
+          },
+          {
+            "type": "Text",
+            "props": {
+              "variant": "body",
+              "size": 16,
+              "weight": "500",
+              "color": "#191919",
+              "align": "center"
+            },
+            "children": "获取数据失败"
+          },
+          {
+            "type": "Text",
+            "props": {
+              "variant": "caption",
+              "size": 14,
+              "weight": "400",
+              "color": "#666",
+              "align": "center"
+            },
+            "children": "请检查网络后重试"
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "重试",
+              "variant": "text",
+              "size": "compact",
+              "color": "#46B1E3",
+              "style": "text-decoration: underline;"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

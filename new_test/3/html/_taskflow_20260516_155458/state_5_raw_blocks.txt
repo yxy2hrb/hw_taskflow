@@ -1,0 +1,81 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "new-overlay",
+      "anchor": "#14_884367",
+      "instruction": "在 body 直接子级末尾（#14_884367 之后）新增一个居中错误卡片浮层：白色圆角卡片（宽320px，高144px，圆角12px，阴影0 4px 16px rgba(0,0,0,0.08)），内含红色感叹号图标（24px×24px，#F44336）、标题‘加载失败’（16px Medium，#191919）、副标题‘网络异常或权限不足’（14px Regular，#666）、底部蓝色重试按钮（宽120px，高36px，圆角6px，背景#46B1E3，文字‘重试’（14px Medium，#fff））；卡片需水平垂直居中，无遮罩层；使用 Material Icons Round 的 'error' 图标（对应红色感叹号）。",
+      "components_needed": ["Dialog", "Button"],
+      "icons_needed": ["error"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "position": "fixed",
+      "top": "50%",
+      "left": "50%",
+      "transform": "translate(-50%, -50%)",
+      "width": 320,
+      "height": 144,
+      "background": "#FFFFFF",
+      "borderRadius": 12,
+      "shadow": "0 4px 16px rgba(0,0,0,0.08)",
+      "padding": [24, 24],
+      "gap": 12,
+      "align": "center",
+      "zIndex": 10000
+    },
+    "children": [
+      {
+        "type": "Icon",
+        "props": {
+          "name": "error",
+          "size": 24,
+          "color": "#F44336"
+        }
+      },
+      {
+        "type": "Text",
+        "props": {
+          "size": 16,
+          "weight": 500,
+          "color": "rgba(0,0,0,0.90)",
+          "align": "center"
+        },
+        "children": "加载失败"
+      },
+      {
+        "type": "Text",
+        "props": {
+          "size": 14,
+          "weight": 400,
+          "color": "rgba(0,0,0,0.60)",
+          "align": "center"
+        },
+        "children": "网络异常或权限不足"
+      },
+      {
+        "type": "Button",
+        "props": {
+          "label": "重试",
+          "variant": "primary",
+          "size": "compact",
+          "block": false,
+          "width": 120,
+          "height": 36,
+          "borderRadius": 6,
+          "background": "#46B1E3",
+          "color": "#FFFFFF",
+          "fontSize": 14,
+          "fontWeight": 500
+        }
+      }
+    ]
+  }
+}

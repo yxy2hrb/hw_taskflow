@@ -1,0 +1,71 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "<div data-hm=\"TextInput\" style=\"display:flex;align-items:center;height:40px;padding:0 16px;background:#F7F8FA;border:1px solid rgba(0,0,0,0.08);border-radius:8px;width:100%;box-sizing:border-box;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;\">  <input type=\"text\" value=\"\" placeholder=\"请输入项目集名称\"  style=\"flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:inherit;font-size:14px;color:rgba(0,0,0,0.90);line-height:1;\">  </div>",
+      "instruction": "将输入框底部边框改为2px solid #D32F2F，右侧插入红色感叹号图标（16×16px，fill #D32F2F），保持原有结构和placeholder不变；注意：仅修改此TextInput容器内样式与子节点，不改变父级布局",
+      "components_needed": ["TextInput"],
+      "icons_needed": ["error"]
+    },
+    {
+      "id": "e2",
+      "type": "new-overlay",
+      "anchor": "#0_1",
+      "instruction": "在单选按钮组（公司/个人按钮）正下方添加一行红色小字提示：文字为'请选择公司类项目'或'请选择个人类项目'（中文），字体HarmonyHeiTi-Regular、12px、#D32F2F、行高16px、居左对齐、无缩进；该提示紧贴按钮组底部，垂直间距0；注意：此为新增元素，非替换，需用fixed定位确保不破坏原布局流",
+      "components_needed": ["Text"],
+      "icons_needed": []
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "TextInput",
+    "props": {
+      "placeholder": "请输入项目集名称",
+      "invalid": true,
+      "suffix": {
+        "type": "Icon",
+        "props": {
+          "name": "error",
+          "size": 16,
+          "color": "#D32F2F"
+        }
+      }
+    }
+  }
+}
+[NEXT]
+{
+  "tree": {
+    "type": "Row",
+    "props": {
+      "position": "fixed",
+      "top": "auto",
+      "bottom": "auto",
+      "left": "20px",
+      "width": "calc(100% - 40px)",
+      "background": "transparent",
+      "padding": [0, 0],
+      "gap": 0,
+      "align": "flex-start",
+      "zIndex": 10000
+    },
+    "children": [
+      {
+        "type": "Text",
+        "props": {
+          "color": "#D32F2F",
+          "size": 12,
+          "weight": 400,
+          "lineHeight": 1.33,
+          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+        },
+        "children": "请选择公司类项目"
+      }
+    ]
+  }
+}

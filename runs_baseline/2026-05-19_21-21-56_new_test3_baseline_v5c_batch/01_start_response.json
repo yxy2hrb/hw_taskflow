@@ -1,0 +1,103 @@
+{
+  "sessionId": "tf_d89916f6f2cc",
+  "question": {
+    "id": "phase_1",
+    "phase": 1,
+    "questionText": "请从下面四个维度各选一项最贴近你意图的描述，我会把它们拼成完整的 User Story。",
+    "options": [
+      {
+        "id": "opt_a1",
+        "label": "已登录的企业网络管理员",
+        "rationale": "能访问‘我的工作台’和体验项目数据，具备设备与拓扑管理权限",
+        "group": "① Actor · 主角",
+        "default": true
+      },
+      {
+        "id": "opt_a2",
+        "label": "刚完成入职的运维新人",
+        "rationale": "首次接触平台，依赖引导式入口和状态可视化理解项目进展",
+        "group": "① Actor · 主角",
+        "default": false
+      },
+      {
+        "id": "opt_a3",
+        "label": "跨部门协作的测试工程师",
+        "rationale": "需快速查看特定体验项目的实时运行指标，不负责创建或配置",
+        "group": "① Actor · 主角",
+        "default": false
+      },
+      {
+        "id": "opt_t1",
+        "label": "在‘我的工作台’点击‘我的体验项目’入口",
+        "rationale": "符合用户简述的明确起点，保留底Tab与状态栏，属轻量级展开",
+        "group": "② Trigger · 触发点",
+        "default": true
+      },
+      {
+        "id": "opt_t2",
+        "label": "从消息通知栏点击项目更新提醒",
+        "rationale": "触发于异步事件，需带上下文跳转至对应项目详情页",
+        "group": "② Trigger · 触发点",
+        "default": false
+      },
+      {
+        "id": "opt_t3",
+        "label": "在搜索结果中点击某体验项目卡片",
+        "rationale": "前置有全局搜索动作，强调项目发现而非归属感入口",
+        "group": "② Trigger · 触发点",
+        "default": false
+      },
+      {
+        "id": "opt_g1",
+        "label": "快速定位并进入某个虚拟体验项目 → 系统保持当前会话上下文并加载其拓扑与指标 → 用户看到完整运行视图并可执行下一步操作",
+        "rationale": "紧扣‘点击卡片→跳转全屏’主路径，强调上下文连续性与信息完整性",
+        "group": "③ Goal & Happy Path · 核心目标与理想路径",
+        "default": true
+      },
+      {
+        "id": "opt_g2",
+        "label": "对比多个体验项目关键指标 → 系统高亮差异项（如Wi-Fi评分、设备数量） → 用户滑动浏览后点击目标卡片",
+        "rationale": "侧重弹窗内列表页的信息密度与决策支持，非单点深入",
+        "group": "③ Goal & Happy Path · 核心目标与理想路径",
+        "default": false
+      },
+      {
+        "id": "opt_g3",
+        "label": "启动一个新体验项目 → 系统校验设备可用性并预加载拓扑草图 → 用户确认后进入可交互调试态",
+        "rationale": "引入新建流程与初始化逻辑，超出当前简述范围",
+        "group": "③ Goal & Happy Path · 核心目标与理想路径",
+        "default": false
+      },
+      {
+        "id": "opt_s1",
+        "label": "全屏页面完整渲染网络拓扑图、Wi-Fi评分、运行时长及设备终端统计，且顶部返回键可正常响应",
+        "rationale": "覆盖所有用户提到的视觉要素与基础交互，是任务流终点的最小可观测状态",
+        "group": "④ Success Criteria · 成功判定",
+        "default": true
+      },
+      {
+        "id": "opt_s2",
+        "label": "弹窗列表中任一卡片点击后，平滑过渡至全屏页，URL或路由发生变化",
+        "rationale": "强调导航行为的技术可观测性，但未覆盖内容完整性",
+        "group": "④ Success Criteria · 成功判定",
+        "default": false
+      },
+      {
+        "id": "opt_s3",
+        "label": "用户在全屏页完成一次Wi-Fi评分刷新操作，界面实时显示新数值",
+        "rationale": "延伸至交互闭环，属于增强型成功，非基础路径必需",
+        "group": "④ Success Criteria · 成功判定",
+        "default": false
+      }
+    ],
+    "multiSelect": true,
+    "allowCustom": true,
+    "note": "四个维度各选一项，也可以在补充栏写'Actor: xxx; Trigger: xxx;' 形式覆盖。",
+    "sectionLabel": "任务流阶段 1/3",
+    "sectionProgress": {
+      "current": 1,
+      "total": 3
+    }
+  },
+  "sourceDir": ""
+}

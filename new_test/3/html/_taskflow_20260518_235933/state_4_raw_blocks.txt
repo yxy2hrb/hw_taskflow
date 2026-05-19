@@ -1,0 +1,22 @@
+{
+  "state_name": "详情页加载中态",
+  "lifecycle": "persistent",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": false,
+  "tree": {
+    "type": "Page",
+    "props": { "background": "#FFFFFF" },
+    "children": [
+      { "type": "StatusBar" },
+      { "type": "NavBar", "props": { "title": "虚拟体验项目", "leftIcon": "arrow_back", "rightIcon": "more_vert" } },
+      { "type": "Column", "props": { "gap": 16, "padding": 16 }, "children": [
+        { "type": "Column", "props": { "height": 180, "background": "#E0E0E0", "width": "100%" } },
+        { "type": "Row", "props": { "height": 24, "width": "60%", "background": "#E0E0E0" } },
+        { "type": "Row", "props": { "gap": 12 }, "children": [
+          { "type": "Column", "props": { "width": 120, "height": 64, "background": "#E0E0E0" } },
+          { "type": "Column", "props": { "width": 120, "height": 64, "background": "#E0E0E0" } }
+        ]}
+      ]}
+    ]
+  }
+}

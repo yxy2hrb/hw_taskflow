@@ -1,0 +1,134 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#14_807569",
+      "instruction": "将整个页面替换为创建项目集全屏页：保留顶部状态栏（含时间、信号、电量图标）和底部Tab栏（四图标完整），中间内容区替换为白色圆角卡片（宽360px，居中），卡片内从上至下依次为：顶部留白区、居中标题'创建项目集'（16px Medium字体，深灰文字色rgba(0,0,0,0.899)）、名称输入框（placeholder='请输入项目集名称'，浅灰文字色rgba(0,0,0,0.45)）、归属单选按钮组（'公司'与'个人'两个横向排列按钮，默认未选中，文字色rgba(0,0,0,0.899)，无背景填充，1px浅灰边框）、'+ 添加项目'按钮（浅灰文字色rgba(0,0,0,0.45)，左对齐）、底部红色实心按钮'确认'（宽100%，高56px，背景色#FF4D4F，白色文字，固定于视口底边上方16px处）。",
+      "components_needed": ["TextInput", "Button", "Radio"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "background": "#FFFFFF",
+      "borderRadius": 16,
+      "width": 360,
+      "padding": 24,
+      "shadow": true,
+      "gap": 24,
+      "align": "stretch"
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": { "height": 24 }
+      },
+      {
+        "type": "Text",
+        "props": {
+          "variant": "title",
+          "size": 16,
+          "weight": 500,
+          "color": "rgba(0,0,0,0.899)",
+          "align": "center"
+        },
+        "children": "创建项目集"
+      },
+      {
+        "type": "TextInput",
+        "props": {
+          "placeholder": "请输入项目集名称",
+          "size": "regular",
+          "value": "",
+          "icon": "",
+          "suffix": ""
+        }
+      },
+      {
+        "type": "Text",
+        "props": {
+          "variant": "body",
+          "size": 14,
+          "weight": 500,
+          "color": "rgba(0,0,0,0.899)"
+        },
+        "children": "归属"
+      },
+      {
+        "type": "Row",
+        "props": {
+          "gap": 12,
+          "wrap": false
+        },
+        "children": [
+          {
+            "type": "Button",
+            "props": {
+              "label": "公司",
+              "variant": "text",
+              "size": "compact",
+              "color": "rgba(0,0,0,0.899)",
+              "border": "1px solid rgba(0,0,0,0.10)",
+              "borderRadius": 20,
+              "padding": [8, 16]
+            }
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "个人",
+              "variant": "text",
+              "size": "compact",
+              "color": "rgba(0,0,0,0.899)",
+              "border": "1px solid rgba(0,0,0,0.10)",
+              "borderRadius": 20,
+              "padding": [8, 16]
+            }
+          }
+        ]
+      },
+      {
+        "type": "Button",
+        "props": {
+          "label": "+ 添加项目",
+          "variant": "text",
+          "size": "compact",
+          "color": "rgba(0,0,0,0.45)",
+          "align": "start"
+        }
+      },
+      {
+        "type": "Column",
+        "props": {
+          "height": "auto",
+          "gap": 0,
+          "padding": 0,
+          "align": "stretch",
+          "justify": "flex-end"
+        },
+        "children": [
+          {
+            "type": "Button",
+            "props": {
+              "label": "确认",
+              "variant": "primary",
+              "size": "large",
+              "block": true,
+              "background": "#FF4D4F",
+              "color": "#FFFFFF",
+              "height": 56,
+              "borderRadius": 20,
+              "marginBottom": 16
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

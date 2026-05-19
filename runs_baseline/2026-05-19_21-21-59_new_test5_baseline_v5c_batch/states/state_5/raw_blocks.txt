@@ -1,0 +1,154 @@
+<!-- BASELINE_BODY_START -->
+<body>
+<!-- 顶部状态栏 -->
+<div class="scroll-container">
+  <div id="0_1" class="Pixso-canvas-0_1">
+    <div id="14_884197" class="Pixso-frame-14_884197 fill-场景background-colorcolor-bg-1-14_886006">
+      <div id="14_884198" class="Pixso-frame-14_884198">
+        <div id="14_884199" class="Pixso-vector-14_884199"></div>
+        <div id="14_884200" class="Pixso-vector-14_884200"></div>
+        <div id="14_884201" class="Pixso-vector-14_884201"></div>
+        <div id="14_884202" class="Pixso-vector-14_884202"></div>
+        
+      </div>
+      <div id="14_884211" class="Pixso-rectangle-14_884211"></div>
+      <div id="14_884212" class="Pixso-frame-14_884212">
+        <div id="14_884213" class="Pixso-frame-14_884213">
+          <div class="frame-content-14_884213">
+            <div id="146_170564" class="Pixso-frame-146_170564">
+              <div id="146_170565" class="Pixso-frame-146_170565">
+                <div class="frame-content-146_170565">
+                  <p id="146_170566" class="Pixso-paragraph-146_170566">08:08</p>
+                  <div id="146_170567" class="Pixso-frame-146_170567">
+                    <div id="146_170568" class="Pixso-vector-146_170568"></div>
+                    <div id="146_170580" class="Pixso-vector-146_170580"></div>
+                    <div id="146_170587" class="Pixso-vector-146_170587"></div>
+                    <div id="146_170614" class="Pixso-vector-146_170614"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="146_170624" class="Pixso-frame-146_170624">
+              <div class="frame-content-146_170624">
+                <div id="146_170625" class="Pixso-frame-146_170625">
+                  <div id="146_170626" class="Pixso-frame-146_170626">
+                    <div id="146_170631" class="Pixso-frame-146_170631">
+                      <div id="146_170632" class="Pixso-frame-146_170632">
+                        <div id="146_170633" class="Pixso-frame-146_170633">
+                          <div class="frame-content-146_170633">
+                            <!-- 【删除】上一态标题残影：已清空 frame-content-146_170633 内容 -->
+                          </div>
+                        </div>
+                        <div id="146_170640" class="Pixso-frame-146_170640">
+                          <div class="frame-content-146_170640">
+                            <div id="146_170641" class="Pixso-group-146_170641">
+                              <div id="146_170642" class="Pixso-vector-146_170642"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 【持久】虚拟体验项目加载中：全宽导航栏（复用，仅更新语义） -->
+        <div id="14_884214" class="Pixso-frame-14_884214">
+          <div id="14_884281" class="Pixso-frame-14_884281">
+            <div id="14_884282" class="Pixso-frame-14_884282">
+              <div class="frame-content-14_884282">
+                <!-- 导航栏容器：全宽，固定高度，纯白背景 -->
+                <div id="hm-nav-bar" style="position: relative; width: 100%; height: 44px; background-color: #FFFFFF; display: flex; align-items: center; padding: 0 16px; box-sizing: border-box;">
+                  <!-- 左侧返回箭头 -->
+                  <div id="hm-nav-back" style="width: 24px; height: 24px; margin-right: 12px; color: #000; font-size: 24px; line-height: 24px; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-weight: normal; opacity: 1;">
+                    &lt;
+                  </div>
+                  <!-- 中间标题 -->
+                  <div id="hm-nav-title" style="flex: 1; text-align: center; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-size: 16px; font-weight: 500; color: #191919; line-height: 22px;">
+                    虚拟体验项目
+                  </div>
+                  <!-- 右侧图标组 -->
+                  <div id="hm-nav-icons" style="display: flex; gap: 16px;">
+                    <!-- 搜索图标 -->
+                    <div id="hm-nav-search" style="width: 24px; height: 24px; color: #000; font-size: 24px; line-height: 24px; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-weight: normal; opacity: 0.89;">
+                      🔍
+                    </div>
+                    <!-- 通知图标 -->
+                    <div id="hm-nav-notify" style="width: 24px; height: 24px; color: #000; font-size: 24px; line-height: 24px; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-weight: normal; opacity: 0.89;">
+                      🔔
+                    </div>
+                    <!-- 加号图标 -->
+                    <div id="hm-nav-add" style="width: 24px; height: 24px; color: #000; font-size: 24px; line-height: 24px; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-weight: normal; opacity: 0.89;">
+                      +
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 【持久】权限不足提示页：主内容区（纯灰底，无任何内容） -->
+        <!-- 主容器：fixed，top=44px（导航栏高），bottom=66px（TabBar高），不透明白/灰底 -->
+        <div id="hm-main-container" style="position: fixed; top: 44px; bottom: 66px; left: 0; right: 0; z-index: 50; background-color: #F3F3F3;">
+          <!-- 【任务节点开始: 权限不足提示页【持久】】 -->
+          <div id="hm-permission-denied-card" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 320px; height: 160px; background-color: #FFFFFF; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); display: flex; flex-direction: column; justify-content: space-between; padding: 24px 20px; box-sizing: border-box;">
+            <div>
+              <p id="hm-permission-title" style="font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-size: 16px; font-weight: 500; color: #191919; line-height: 22px; margin: 0;">暂无访问权限</p>
+            </div>
+            <p id="hm-permission-desc" style="font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-size: 14px; font-weight: 400; color: #666; line-height: 20px; margin: 0;">请联系管理员开通虚拟体验项目查看权限</p>
+            <div style="margin-top: 16px;">
+              <button id="hm-permission-back-btn" type="button" style="width: 160px; height: 40px; background-color: #46B1E3; border: none; border-radius: 8px; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-size: 14px; font-weight: 500; color: #FFFFFF; line-height: 20px; cursor: pointer; margin: 0 auto; display: block;">
+                返回工作台
+              </button>
+            </div>
+          </div>
+          <!-- 【任务节点结束: 权限不足提示页【持久】】 -->
+        </div>
+      </div>
+      <!-- 底部导航栏 -->
+      <div id="14_884324" class="Pixso-frame-14_884324">
+        <div id="14_884325" class="Pixso-rectangle-14_884325"></div>
+        <p id="14_884326" class="Pixso-paragraph-14_884326">我的</p>
+        <p id="14_884327" class="Pixso-paragraph-14_884327">服务</p>
+        <p id="14_884328" class="Pixso-paragraph-14_884328">工作台</p>
+        <p id="14_884329" class="Pixso-paragraph-14_884329">商城</p>
+        <p id="14_884330" class="Pixso-paragraph-14_884330">首页</p>
+        <div id="14_884331" class="Pixso-group-14_884331">
+          <div id="14_884332" class="Pixso-vector-14_884332"></div>
+          <div id="14_884333" class="Pixso-group-14_884333">
+            <div id="14_884334" class="Pixso-vector-14_884334"></div>
+            <div id="14_884335" class="stroke-wrapper-14_884335">
+              <div class="Pixso-rectangle-14_884335"></div>
+              <div class="stroke-14_884335"></div>
+            </div>
+          </div>
+        </div>
+        <div id="14_884336" class="Pixso-vector-14_884336"></div>
+        <div id="14_884340" class="Pixso-vector-14_884340"></div>
+        <div id="14_884353" class="Pixso-group-14_884353">
+          <div id="14_884354" class="Pixso-vector-14_884354"></div>
+          <div id="14_884355" class="Pixso-vector-14_884355"></div>
+        </div>
+        <div id="14_884358" class="Pixso-group-14_884358">
+          <div id="14_884359" class="Pixso-vector-14_884359"></div>
+          <div id="14_884360" class="Pixso-group-14_884360">
+            <div id="14_884361" class="Pixso-vector-14_884361"></div>
+            <div id="14_884364" class="Pixso-vector-14_884364"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 【删除】上一态遗留的「虚拟体验项目」卡片区块（id=14_884368）及所有子节点 -->
+      <!-- 【删除】上一态遗留的「我要办会」「营销物料」「分享获客」等所有中部内容区块 -->
+      <!-- 【删除】顶部装饰背景层（如 id=14_884211 等非状态栏/导航栏/TabBar 的装饰性元素） -->
+      <!-- 【删除】所有旧标题残影（如“我的工作台”文字块）已通过移除 frame-content-146_170633 内容确保清除 -->
+
+    </div>
+  </div>
+</div>
+
+
+</body>
+<!-- BASELINE_BODY_END -->

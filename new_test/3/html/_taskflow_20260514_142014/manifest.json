@@ -1,0 +1,63 @@
+{
+  "title": "体验项目查看与监控流",
+  "slug": "experience-project-view-flow",
+  "pipeline": "antdOneShot",
+  "createdAt": "2026-05-14T06:22:04.685Z",
+  "meta": {
+    "title": "体验项目查看与监控流",
+    "slug": "experience-project-view-flow",
+    "user_story": "企业IT运维人员在工作台首页点击项目入口查看项目列表并筛选，系统加载卡片状态与标签后用户点击目标卡片进入详情，详情页完整加载拓扑与统计数据且无报错。",
+    "platform": "mobile"
+  },
+  "happy_path": [
+    {
+      "state_id": 1,
+      "state_name": "体验项目列表弹窗初始态"
+    },
+    {
+      "state_id": 2,
+      "state_name": "列表数据加载过渡态"
+    }
+  ],
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "体验项目列表弹窗初始态",
+      "description": "工作台首页背景与底部导航栏完整可见。屏幕中央覆盖半透明遮罩，上方浮出圆角白色弹窗，内含项目卡片网格，卡片静态展示名称、时间与状态标签。",
+      "implementation_method": "原始 HTML 初始快照，不做改造。",
+      "last_state": null,
+      "file": "state_1.html"
+    },
+    {
+      "state_id": 2,
+      "state_name": "列表数据加载过渡态",
+      "description": "工作台背景与底部导航保持不变，中央弹窗内替换为浅灰色骨架块。标题、时间与状态标签位置以固定高度灰色矩形静态填充，无实际文本。",
+      "implementation_method": "骨架屏占位组件 (Skeleton Loader)：弹窗内容区替换为 3 行浅灰色矩形块（背景色 rgba(200,200,200,0.3)），高度分别为 16px、12px、10px，间距 8px，静态铺满卡片区域。",
+      "last_state": 1,
+      "file": "state_2.html"
+    }
+  ],
+  "interactive": "interactive.html",
+  "apply_meta": [
+    {
+      "state_id": 1,
+      "edits": 1,
+      "applied": 1,
+      "skipped": 0,
+      "fallback": false,
+      "logs": [
+        "✔ 替换 @ 99554"
+      ]
+    },
+    {
+      "state_id": 2,
+      "edits": 1,
+      "applied": 1,
+      "skipped": 0,
+      "fallback": false,
+      "logs": [
+        "✔ 替换 @ 99554"
+      ]
+    }
+  ]
+}

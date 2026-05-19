@@ -1,0 +1,100 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#146_395655",
+      "instruction": "把管理应用卡片区域整段替换为：'已添加X个应用'文字（X值比state_1增加1），字体14px HarmonyHeiTi-Regular，颜色rgba(25,25,25,1)；卡片内含应用图标、名称、右侧蓝色开关（背景#C7000B，滑块右侧嵌入白色对勾图标）",
+      "components_needed": ["Card"]
+    },
+    {
+      "id": "e2",
+      "type": "new-overlay",
+      "anchor": "#146_395667",
+      "instruction": "在body末尾、底部Tab上方新增白色圆角Toast：宽240px，高44px，background:#FFFFFF，border-radius:8px，box-shadow:none；位置固定于屏幕顶部中央（top:64px; left:50%; transform:translateX(-50%)）；内部左侧为Material Icons Round对勾图标（class=\"mi\" style=\"font-size:16px; color:rgba(25,25,25,1); margin-right:8px\"），右侧黑字'添加成功'（font-size:14px; font-family:\"HarmonyHeiTi-Regular\"; color:rgba(25,25,25,1)）；无箭头、无阴影、无关闭按钮",
+      "components_needed": ["Toast"],
+      "icons_needed": ["check_circle"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "gap": 12,
+      "padding": 16,
+      "align": "stretch"
+    },
+    "children": [
+      {
+        "type": "Text",
+        "props": {
+          "size": 14,
+          "weight": "normal",
+          "color": "rgba(25,25,25,1)",
+          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+        },
+        "children": "已添加1个应用"
+      },
+      {
+        "type": "ListItem",
+        "props": {
+          "title": "计算器",
+          "leftIcon": "calculate",
+          "height": 56,
+          "divider": true
+        },
+        "children": [
+          {
+            "type": "Button",
+            "props": {
+              "label": "",
+              "variant": "primary",
+              "size": "compact",
+              "block": false,
+              "icon": "check",
+              "style": {
+                "width": "32px",
+                "height": "20px",
+                "backgroundColor": "#C7000B",
+                "borderRadius": "10px",
+                "padding": "0",
+                "display": "flex",
+                "alignItems": "center",
+                "justifyContent": "flex-end",
+                "marginRight": "0"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+[NEXT]
+{
+  "tree": {
+    "type": "Row",
+    "props": {
+      "background": "#FFFFFF",
+      "borderRadius": 8,
+      "width": 240,
+      "height": 44,
+      "gap": 8,
+      "align": "center",
+      "padding": [0, 12, 0, 12],
+      "position": "fixed",
+      "top": 64,
+      "left": "50%",
+      "transform": "translateX(-50%)",
+      "zIndex": 10000
+    },
+    "children": [
+      { "type": "Icon", "props": { "name": "check_circle", "size": 16, "color": "rgba(25,25,25,1)" } },
+      { "type": "Text", "props": { "size": 14, "color": "rgba(25,25,25,1)", "weight": 500 }, "children": "添加成功" }
+    ]
+  }
+}

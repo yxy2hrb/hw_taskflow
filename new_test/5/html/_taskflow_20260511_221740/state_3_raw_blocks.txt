@@ -1,0 +1,27 @@
+{
+  "state_name": "项目详情全屏加载态",
+  "lifecycle": "persistent",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": false,
+  "tree": {
+    "type": "Page",
+    "props": { "background": "#FFFFFF" },
+    "children": [
+      { "type": "StatusBar" },
+      { "type": "NavBar", "props": { "title": "虚拟体验项目", "leftIcon": "arrow_back", "rightIcon": ["search", "notifications", "add"], "align": "center" } },
+      { "type": "Column", "props": { "gap": 16, "padding": 16 }, "children": [
+        { "type": "Column", "props": { "gap": 8 }, "children": [
+          { "type": "Text", "props": { "text": "拓扑图", "variant": "subtitle" } },
+          { "type": "Column", "props": { "gap": 8, "align": "center" }, "children": [
+            { "type": "Spinner", "props": { "size": 32, "color": "#46B1E3", "text": "加载中" } }
+          ]}
+        ]},
+        { "type": "Column", "props": { "gap": 16 }, "children": [
+          { "type": "Column", "props": { "height": 88, "background": "#F3F3F3" } },
+          { "type": "Column", "props": { "height": 88, "background": "#F3F3F3" } },
+          { "type": "Column", "props": { "height": 88, "background": "#F3F3F3" } }
+        ]}
+      ]}
+    ]
+  }
+}

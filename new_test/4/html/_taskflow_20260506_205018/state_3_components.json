@@ -1,0 +1,13 @@
+{
+  "state_id": 3,
+  "state_name": "提交中加载状态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": true,
+    "issues": [],
+    "fixedBlocks": "",
+    "reviewMs": 6454,
+    "screenshot": 159750
+  }
+}

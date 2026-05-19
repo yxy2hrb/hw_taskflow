@@ -1,0 +1,43 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "我的工作台首页",
+    "description": "页面为移动端全屏布局，顶部状态栏显示时间、信号与电量图标，底部固定 Tab 导航栏含‘工作台’‘项目’‘消息’‘我的’四图标，当前‘工作台’Tab 高亮；页面中部有‘项目开局’标题栏，下方三张功能卡片：‘创建开局’‘创建项目集’‘接收项目’，其中‘创建项目集’卡片含红色描边与文字‘创建项目集’。",
+    "implementation_method": "原始 HTML 初始快照，不做改造"
+  },
+  {
+    "state_id": 2,
+    "state_name": "创建项目集全屏页初始态",
+    "description": "全屏覆盖工作台页面，顶部状态栏（时间/信号/电量）保持可见且未遮挡，底部 Tab 导航栏完整保留并置于最底层；页面顶部固定深灰标题栏，居中显示白色文字‘创建项目集’；中部为白色表单区域：上方是名称输入框（浅灰底、圆角、placeholder‘请输入项目集名称’），中间是‘公司’与‘个人’两个水平排列的单选按钮（默认无选中，左侧带空心圆圈），下方是项目添加区域（浅灰虚线边框、居中图标+文字‘点击添加项目’），无任何项目卡片。",
+    "implementation_method": "全屏表单页 (Full-Screen Form Page)：顶部固定标题栏背景色 #191919，文字‘创建项目集’（white, 16px, Medium）；名称输入框高 48px，浅灰背景 #F5F5F5，placeholder 文字‘请输入项目集名称’（#999, 14px）；属性单选组为两个并排按钮，左按钮文字‘公司’、右按钮文字‘个人’，均含空心圆图标（stroke #999, size 16px）；项目添加区域为 120×120px 浅灰虚线框（#D9D9D9, dashed, 1px），中央灰色加号图标（#999）+ 下方文字‘点击添加项目’（#999, 14px）。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "创建项目集校验失败态",
+    "description": "页面结构与 state_2 完全一致，仅局部修改：名称输入框外边框变为红色（#FF4D4F, 2px solid），输入框下方紧邻位置显示红色提示文字‘请输入项目集名称’（14px, #FF4D4F）；属性单选按钮组保持原样式（两个空心圆按钮，无选中）；项目添加区域显示灰色文字‘请先选择属性’（#999, 14px），加号图标隐藏；顶部标题栏与底部 Tab 均未变化。",
+    "implementation_method": "表单错误反馈 (Form Validation Feedback)：名称输入框 border: 2px solid #FF4D4F；下方新增段落元素，文字‘请输入项目集名称’（'Please enter project set name'），颜色 #FF4D4F，字体 14px；项目添加区域内文字替换为‘请先选择属性’（'Please select attribute first'），颜色 #999；加号图标 DOM 节点移除或 display:none；属性单选按钮组无样式变更。",
+    "last_state": 2
+  },
+  {
+    "state_id": 4,
+    "state_name": "创建项目集提交中过渡态",
+    "description": "页面结构与 state_2 完全一致，仅局部修改：底部红色‘确认’按钮变为禁用态（背景色 #F0F0F0，文字色 #BFBFBF，无 hover 效果），按钮内部左侧嵌入 16px 灰色旋转图标（SVG path stroke #BFBFBF），右侧文字‘确认’保持不变；其余所有表单元素（输入框、单选按钮、项目添加区域）均不可编辑且视觉未变；顶部标题栏与底部 Tab 正常可见。",
+    "implementation_method": "按钮加载态 (Button Loading State)：底部按钮 background-color #F0F0F0，color #BFBFBF，cursor not-allowed；按钮内嵌 SVG 旋转图标（<svg><circle cx='8' cy='8' r='6' stroke='#BFBFBF' stroke-width='2' fill='none'/></svg>），CSS animation: hmspin 1s linear infinite；文字‘确认’（'Confirm'）保持居中对齐，字体大小 16px；其他所有控件保持原样，无交互响应。",
+    "last_state": 2
+  },
+  {
+    "state_id": 5,
+    "state_name": "创建项目集成功态",
+    "description": "页面结构与 state_2 完全一致，仅顶部状态栏下方 16px 处叠加一条绿色横条（高度 48px，背景色 #52C418，圆角 8px），横条左侧为白色对勾图标（SVG，尺寸 20×20px，fill white），右侧为白色文字‘创建成功’（16px, Medium）；其余所有界面元素（标题栏、输入框、单选按钮、项目添加区域、底部 Tab）均保持原位置与样式，未被遮挡或位移。",
+    "implementation_method": "轻量级提示 (Toast/Snackbar)：绿色横条 position: fixed; top: 44px; left: 16px; right: 16px; height: 48px; background-color: #52C418; border-radius: 8px；内部左侧 SVG 对勾图标（<svg viewBox='0 0 20 20'><path d='M16.7 4.9l-7.1 7.1-3.3-3.3L4 8l5 5 8-8z' fill='white'/></svg>），右侧文字‘创建成功’（'Created successfully'），white, 16px, Medium；其余 DOM 无增删改。",
+    "last_state": 2
+  },
+  {
+    "state_id": 6,
+    "state_name": "工作台返回新增卡片态",
+    "description": "页面与 state_1 完全一致，仅在‘项目开局’标题栏下方、三张功能卡片正下方新增一张项目集卡片：卡片宽 328px、高 120px、圆角 12px、浅灰边框 #D9D9D9、1px solid；左上角为公司/个人标签（蓝色底 #1890FF，白字，圆角 4px，文字‘公司’或‘个人’）；中部左侧为项目集名称（黑字，16px，Medium），右侧为创建时间（灰色，12px，如‘今天 14:22’）；卡片右下角为默认缩略图（64×64px 灰色占位图，含白色文件图标）。",
+    "implementation_method": "画面与 last_state（state_1）完全一致；base 已是关闭后的样子，无需任何 DOM 改造。",
+    "last_state": 1
+  }
+]

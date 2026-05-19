@@ -1,0 +1,44 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "我的工作台首页",
+    "description": "页面为完整移动工作台视图，顶部状态栏显示时间、信号与电量图标，底部固定Tab栏含‘首页’‘工作台’‘消息’‘我的’四图标；中部区域显示功能卡片网格，其中‘快速入门’卡片位于左上第一行第一列，含蓝色圆形图标与白色文字‘快速入门’，卡片尺寸约80×80px，背景为浅灰圆角矩形。",
+    "implementation_method": "原始 HTML 初始快照，不做改造",
+    "last_state": null
+  },
+  {
+    "state_id": 2,
+    "state_name": "快速入门全屏页初始态",
+    "description": "原工作台页被不透明度40%的黑色半透明蒙层（rgba(0,0,0,0.4)）完全覆盖，蒙层上居中悬浮一张宽320px、高560px的白色圆角卡片（border-radius:12px）；卡片内顶部为带‘搜索...’占位符的输入框（高44px，浅灰边框，圆角8px），下方横向排列四个等宽标签（各64px宽，高32px，浅蓝底色#46B1E3，白字，圆角16px，文字分别为‘云服务’‘终端设备’‘安全合规’‘集成开发’）；再下方为7条垂直排列的条目，每条高64px，含左侧图标（24×24px）、主标题（14px深灰#191919，HarmonyHeiTi-Regular）、副标题（12px浅灰#666），右侧对齐‘查看’按钮（64×28px，蓝底#46B1E3，白字，圆角14px）。",
+    "implementation_method": "全屏模态层 (Modal Overlay)：黑色半透明遮罩 rgba(0,0,0,0.4) 覆盖整个 viewport；正中悬浮白色圆角卡片（#FFFFFF, border-radius:12px, width:320px, height:560px）；搜索框 placeholder '搜索...'；四分类标签文本 '云服务'/'终端设备'/'安全合规'/'集成开发'；7条条目每条含图标+双行文本+右对齐按钮，按钮文案 '查看'（View）；顶部状态栏与底部Tab在蒙层下保持可见但不可交互。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "快速入门页加载中态",
+    "description": "原工作台页被不透明度40%的黑色半透明蒙层完全覆盖，蒙层上居中悬浮一张宽320px、高560px的白色圆角卡片；卡片内顶部搜索框显示‘加载中...’灰色占位文字（12px，#999），下方四分类标签呈浅灰不可点状态（#CCCCCC，opacity:0.6），无交互反馈；再下方7个等高骨架块（高64px），每块由左侧24×24px浅灰圆角矩形（#F3F3F3）、上方14px深灰横条（#E0E0E0）、下方12px浅灰横条（#F0F0F0）组成，无图标与文字；顶部状态栏与底部Tab在蒙层下正常可见。",
+    "implementation_method": "全屏模态层 (Modal Overlay)：黑色半透明遮罩 rgba(0,0,0,0.4)；白色圆角卡片同 state_2；搜索框 placeholder '加载中...'；四分类标签文本置灰（color:#CCCCCC, opacity:0.6）；7个骨架块结构：左侧圆角矩形（24×24px, #F3F3F3）、上方主标题横条（14px高, #E0E0E0）、下方副标题横条（12px高, #F0F0F0）；所有按钮与文字均不渲染。",
+    "last_state": 1
+  },
+  {
+    "state_id": 4,
+    "state_name": "产品文档详情页",
+    "description": "纯白背景页面，顶部固定导航栏高44px，左侧为蓝色‘<’返回图标（24×24px），中间为文档标题（16px，HarmonyHeiTi-Medium，#191919），右侧为空白；正文区自上而下依次为：大标题（20px加粗）、导语段落（14px，#333）、分段小标题（16px，#191919）、正文段落（14px，#333）、代码块（浅灰背景#F8F8F8，13px等宽字体，带行号）、关键截图（宽100%，高自适应，圆角8px，带1px浅灰边框）；右侧固定目录栏宽120px，顶部‘目录’标题（14px，#666），下方6个可点击锚点项（14px，#46B1E3，圆角4px，悬停变浅蓝底），当前滚动位置对应项高亮（#46B1E3底+白字）。",
+    "implementation_method": "独立文档页 (Document Page)：顶部导航栏（height:44px, background:#FFFFFF, border-bottom:1px solid #EEEEEE）；返回图标 SVG（<svg><path fill='#46B1E3'/></svg>）；文档标题 'XXX产品快速入门指南'（Title）；正文含大标题 '一、准备工作'、导语 '本文档适用于...'、小标题 '1.1 创建账号'、正文段落、代码块（<pre><code class='language-bash'>...</code></pre>）、截图 img[src='./doc-1.png']；右侧目录栏（position:fixed, right:0, top:44px, width:120px）含 '目录' 标题及6个锚点项，当前项样式 background:#46B1E3 color:#FFFFFF；所有文本中英文双语标注（如 '一、准备工作 / Section 1: Setup'）。",
+    "last_state": 1
+  },
+  {
+    "state_id": 5,
+    "state_name": "网络失败提示页",
+    "description": "原工作台页被不透明度40%的黑色半透明蒙层完全覆盖，蒙层上居中悬浮一张宽320px、高240px的白色圆角卡片；卡片内顶部标题‘加载失败’（16px，HarmonyHeiTi-Medium，#191919），中部正文‘请检查网络后重试’（14px，#666），底部单个蓝色按钮（宽120px，高40px，圆角20px，背景#46B1E3，白字‘重试’）；卡片无其他元素，顶部状态栏与底部Tab在蒙层下正常可见。",
+    "implementation_method": "全屏模态层 (Modal Overlay)：黑色半透明遮罩 rgba(0,0,0,0.4)；白色圆角卡片（#FFFFFF, border-radius:12px, width:320px, height:240px）；标题 '加载失败'（Failed to Load）；正文 '请检查网络后重试'（Please check your network connection and try again.）；按钮 '重试'（Retry）；无图标、无输入框、无分类标签。",
+    "last_state": 1
+  },
+  {
+    "state_id": 6,
+    "state_name": "文档不存在提示页",
+    "description": "原工作台页被不透明度40%的黑色半透明蒙层完全覆盖，蒙层上居中悬浮一张宽320px、高240px的白色圆角卡片；卡片内顶部标题‘该文档暂不可用’（16px，HarmonyHeiTi-Medium，#191919），中部正文‘可能尚未发布或权限不足’（14px，#666），底部单个灰色按钮（宽120px，高40px，圆角20px，背景#CCCCCC，深灰字‘返回’）；卡片无其他元素，顶部状态栏与底部Tab在蒙层下正常可见。",
+    "implementation_method": "全屏模态层 (Modal Overlay)：黑色半透明遮罩 rgba(0,0,0,0.4)；白色圆角卡片（#FFFFFF, border-radius:12px, width:320px, height:240px）；标题 '该文档暂不可用'（Document Unavailable）；正文 '可能尚未发布或权限不足'（This document may not be published yet or you lack permission.）；按钮 '返回'（Back）；按钮背景 #CCCCCC，文字颜色 #333；无图标、无输入框、无分类标签。",
+    "last_state": 1
+  }
+]

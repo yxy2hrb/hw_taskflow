@@ -1,0 +1,333 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "new-overlay",
+      "anchor": "#14_1031109",
+      "instruction": "在 body 末尾、最后一个 Pixso-frame（id='14_1031109'）之后，新增一个全屏模态浮层：半透明黑色遮罩（background: rgba(0,0,0,0.4)；inset: 0；position: fixed；z-index: 1000）；顶部状态栏与底部 Tab 保持可见（不遮挡）；中央悬浮一张宽 340px、高 560px 的白色圆角卡片（border-radius: 8px；box-shadow: 0 2px 12px rgba(0,0,0,0.08)；background: #FFFFFF；position: fixed；inset: 0；margin: auto；max-width: 340px；max-height: 560px；display: flex；flex-direction: column；align-items: center；padding: 24px 16px；z-index: 1001）；卡片内顶部居中显示灰色‘搜索...’提示文字（14px HarmonyHeiTi-Regular；color: #999；margin-bottom: 24px）；下方横向平铺 4 个标签按钮（每个宽 72px × 高 28px；border-radius: 14px；background: #46B1E3；color: #FFFFFF；font-size: 12px；font-family: HarmonyHeiTi-Regular；display: flex；justify-content: center；align-items: center；margin-bottom: 24px；gap: 8px）；文案依次为：‘产品概览’、‘部署指南’、‘配置说明’、‘常见问题’；再下方垂直排列 7 条条目（每条高 56px；display: flex；align-items: center；justify-content: space-between；padding: 0 12px；width: 100%；border-bottom: 1px solid #F1F3F5；last-child: border-bottom: none）；每条左图标用 <span class=\"mi\" style=\"font-size:20px;color:#191919;\">menu_book</span>；右按钮文字为‘查看’（14px HarmonyHeiTi-Medium；color: #46B1E3；text-decoration: none）。",
+      "components_needed": ["Dialog", "Button", "Card"],
+      "icons_needed": ["menu_book"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "OverlayMask",
+    "props": {
+      "opacity": 0.4
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "borderRadius": 8,
+          "width": "auto",
+          "maxWidth": 340,
+          "maxHeight": 560,
+          "padding": [24, 16],
+          "gap": 24,
+          "shadow": true,
+          "align": "center",
+          "justify": "flex-start"
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "size": 14,
+              "color": "#999999",
+              "weight": 400,
+              "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+            },
+            "children": "搜索..."
+          },
+          {
+            "type": "Row",
+            "props": {
+              "gap": 8,
+              "wrap": true,
+              "align": "center"
+            },
+            "children": [
+              {
+                "type": "Button",
+                "props": {
+                  "label": "产品概览",
+                  "variant": "primary",
+                  "size": "compact",
+                  "block": false,
+                  "style": "background-color: #46B1E3; color: #FFFFFF; font-size: 12px; font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif; border-radius: 14px; height: 28px; width: 72px;"
+                }
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "部署指南",
+                  "variant": "primary",
+                  "size": "compact",
+                  "block": false,
+                  "style": "background-color: #46B1E3; color: #FFFFFF; font-size: 12px; font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif; border-radius: 14px; height: 28px; width: 72px;"
+                }
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "配置说明",
+                  "variant": "primary",
+                  "size": "compact",
+                  "block": false,
+                  "style": "background-color: #46B1E3; color: #FFFFFF; font-size: 12px; font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif; border-radius: 14px; height: 28px; width: 72px;"
+                }
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "常见问题",
+                  "variant": "primary",
+                  "size": "compact",
+                  "block": false,
+                  "style": "background-color: #46B1E3; color: #FFFFFF; font-size: 12px; font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif; border-radius: 14px; height: 28px; width: 72px;"
+                }
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": {
+              "gap": 0
+            },
+            "children": [
+              {
+                "type": "Row",
+                "props": {
+                  "height": 56,
+                  "padding": [0, 12],
+                  "justify": "space-between",
+                  "align": "center",
+                  "width": "100%",
+                  "borderBottom": "1px solid #F1F3F5"
+                },
+                "children": [
+                  {
+                    "type": "Icon",
+                    "props": {
+                      "name": "menu_book",
+                      "size": 20,
+                      "color": "#191919"
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 14,
+                      "weight": 500,
+                      "color": "#46B1E3",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                      "style": "text-decoration: none;"
+                    },
+                    "children": "查看"
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "height": 56,
+                  "padding": [0, 12],
+                  "justify": "space-between",
+                  "align": "center",
+                  "width": "100%",
+                  "borderBottom": "1px solid #F1F3F5"
+                },
+                "children": [
+                  {
+                    "type": "Icon",
+                    "props": {
+                      "name": "menu_book",
+                      "size": 20,
+                      "color": "#191919"
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 14,
+                      "weight": 500,
+                      "color": "#46B1E3",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                      "style": "text-decoration: none;"
+                    },
+                    "children": "查看"
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "height": 56,
+                  "padding": [0, 12],
+                  "justify": "space-between",
+                  "align": "center",
+                  "width": "100%",
+                  "borderBottom": "1px solid #F1F3F5"
+                },
+                "children": [
+                  {
+                    "type": "Icon",
+                    "props": {
+                      "name": "menu_book",
+                      "size": 20,
+                      "color": "#191919"
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 14,
+                      "weight": 500,
+                      "color": "#46B1E3",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                      "style": "text-decoration: none;"
+                    },
+                    "children": "查看"
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "height": 56,
+                  "padding": [0, 12],
+                  "justify": "space-between",
+                  "align": "center",
+                  "width": "100%",
+                  "borderBottom": "1px solid #F1F3F5"
+                },
+                "children": [
+                  {
+                    "type": "Icon",
+                    "props": {
+                      "name": "menu_book",
+                      "size": 20,
+                      "color": "#191919"
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 14,
+                      "weight": 500,
+                      "color": "#46B1E3",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                      "style": "text-decoration: none;"
+                    },
+                    "children": "查看"
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "height": 56,
+                  "padding": [0, 12],
+                  "justify": "space-between",
+                  "align": "center",
+                  "width": "100%",
+                  "borderBottom": "1px solid #F1F3F5"
+                },
+                "children": [
+                  {
+                    "type": "Icon",
+                    "props": {
+                      "name": "menu_book",
+                      "size": 20,
+                      "color": "#191919"
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 14,
+                      "weight": 500,
+                      "color": "#46B1E3",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                      "style": "text-decoration: none;"
+                    },
+                    "children": "查看"
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "height": 56,
+                  "padding": [0, 12],
+                  "justify": "space-between",
+                  "align": "center",
+                  "width": "100%",
+                  "borderBottom": "1px solid #F1F3F5"
+                },
+                "children": [
+                  {
+                    "type": "Icon",
+                    "props": {
+                      "name": "menu_book",
+                      "size": 20,
+                      "color": "#191919"
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 14,
+                      "weight": 500,
+                      "color": "#46B1E3",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                      "style": "text-decoration: none;"
+                    },
+                    "children": "查看"
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "height": 56,
+                  "padding": [0, 12],
+                  "justify": "space-between",
+                  "align": "center",
+                  "width": "100%"
+                },
+                "children": [
+                  {
+                    "type": "Icon",
+                    "props": {
+                      "name": "menu_book",
+                      "size": 20,
+                      "color": "#191919"
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 14,
+                      "weight": 500,
+                      "color": "#46B1E3",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                      "style": "text-decoration: none;"
+                    },
+                    "children": "查看"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

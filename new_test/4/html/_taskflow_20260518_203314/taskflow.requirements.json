@@ -1,0 +1,37 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "我的工作台首页",
+    "description": "页面完整显示企业运维人员工作台主界面，顶部状态栏（含时间、信号、电量图标）正常可见，底部Tab栏（含‘首页’‘工作台’‘消息’‘我的’）完整固定在屏幕底端；中部区域清晰展示‘体验运维流程’按钮（蓝色填充、圆角矩形、居中排布、文字为‘体验运维流程’），按钮上方有标题‘我的工作台’。",
+    "implementation_method": "原始 HTML 初始快照，不做改造",
+    "last_state": null
+  },
+  {
+    "state_id": 2,
+    "state_name": "运维流程全屏页初始态",
+    "description": "页面为全屏覆盖式布局，顶部状态栏（时间/信号/电量）与底部Tab栏（‘首页’‘工作台’‘消息’‘我的’）完整保留且不可滚动；左侧为固定宽度表单区（宽约360px），内含‘项目场景’下拉框（带灰色向下箭头图标、默认文案‘请选择场景’）与‘项目名称’输入框（浅灰边框、占位符‘请输入项目名称’）；右侧为剩余宽度空白容器区域（背景为#F3F3F3），无任何模型或占位图；‘确定’按钮位于表单区底部，蓝色填充、圆角矩形、文字为‘确定’。",
+    "implementation_method": "全屏页 (Full-Screen Page)：左侧固定宽度表单区（宽360px）含下拉框控件（Dropdown）与文本输入框（Input Field）；下拉框默认文案 '请选择场景'（'Please select a scenario'），输入框占位符 '请输入项目名称'（'Please enter project name'）；右侧空白容器区域背景色 rgba(243, 243, 243, 1)；底部确定按钮为 Button 控件，背景色 rgba(70, 177, 227, 1)，文字 '确定'（'Confirm'）。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "运维流程加载中态",
+    "description": "页面顶部状态栏与底部Tab栏完整保留；左侧表单区内容保持不变（‘项目场景’已选中某项、‘项目名称’已填写具体文字）；右侧空白容器区域内居中显示一个蓝色旋转加载图标（直径48px，环形stroke，深蓝#46B1E3，CSS animation: hmspin 1s linear infinite）；‘确定’按钮变为灰色禁用态（背景色 rgba(200, 200, 200, 1)，文字颜色 rgba(150, 150, 150, 1)，文字仍为‘确定’）；无遮罩层，无其他浮层。",
+    "implementation_method": "加载指示器 (Spinner)：中央蓝色环形旋转图标（48px diameter, stroke #46B1E3, CSS animation:hmspin 1s linear infinite）；确定按钮（Button）禁用态：背景色 rgba(200, 200, 200, 1)，文字 '确定'（'Confirm'）颜色 rgba(150, 150, 150, 1)；表单内容与 state_2 完全一致，无新增元素；顶部状态栏与底部Tab栏视觉未变化。",
+    "last_state": 2
+  },
+  {
+    "state_id": 4,
+    "state_name": "创建成功态",
+    "description": "页面顶部状态栏与底部Tab栏完整保留；左侧表单区内容保持不变（‘项目场景’已选中某项、‘项目名称’已填写具体文字）；右侧容器区域正常渲染三维设备模型（可见可交互，支持手势缩放与旋转）；页面顶部状态栏下方16px处悬浮一条绿色横条（高40px，宽100%，背景色 rgba(70, 177, 227, 0.1)，内含白色对勾图标 + 文字‘创建成功’）；‘确定’按钮恢复为蓝色可用态（背景色 rgba(70, 177, 227, 1)，文字‘确定’）。",
+    "implementation_method": "轻量级提示 (Toast/Snackbar)：顶部状态栏下方16px处悬浮绿色横条（height:40px, width:100%, background:rgba(70, 177, 227, 0.1)），内含白色对勾图标（✓）与文字 '创建成功'（'Created successfully'）；三维模型容器（Model Viewer Container）已渲染设备模型并处于可交互状态（支持touch rotate & pinch zoom）；确定按钮（Button）恢复启用：背景色 rgba(70, 177, 227, 1)，文字 '确定'（'Confirm'）。",
+    "last_state": 2
+  },
+  {
+    "state_id": 5,
+    "state_name": "创建失败态",
+    "description": "页面顶部状态栏与底部Tab栏完整保留；左侧表单区内容保持不变（‘项目场景’已选中某项、‘项目名称’已填写具体文字）；右侧容器区域仍显示蓝色旋转加载图标（直径48px，环形stroke，深蓝#46B1E3，CSS animation: hmspin 1s linear infinite）；页面顶部状态栏下方16px处悬浮一条红色横条（高40px，宽100%，背景色 rgba(239, 68, 68, 0.1)，内含白色感叹号图标 + 文字‘创建失败，请重试’）；‘确定’按钮恢复为蓝色可用态（背景色 rgba(70, 177, 227, 1)，文字‘确定’）。",
+    "implementation_method": "轻量级提示 (Toast/Snackbar)：顶部状态栏下方16px处悬浮红色横条（height:40px, width:100%, background:rgba(239, 68, 68, 0.1)），内含白色感叹号图标（!）与文字 '创建失败，请重试'（'Creation failed. Please retry.'）；右侧加载图标（Spinner）与 state_3 完全一致；确定按钮（Button）恢复启用：背景色 rgba(70, 177, 227, 1)，文字 '确定'（'Confirm'）。",
+    "last_state": 2
+  }
+]

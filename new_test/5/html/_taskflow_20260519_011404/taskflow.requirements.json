@@ -1,0 +1,44 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "我的工作台初始首页",
+    "description": "页面为全屏白色背景，顶部状态栏显示时间/信号/电量图标，底部固定 Tab 栏含‘首页’‘工作台’‘消息’‘我的’四个图标，其中‘工作台’Tab 处于高亮选中态；页面中央区域可见‘我的体验项目’文字入口按钮，字体14px、深灰#191919、居中对齐，无遮罩、无弹窗、无加载指示。",
+    "implementation_method": "原始 HTML 初始快照，不做改造",
+    "last_state": null
+  },
+  {
+    "state_id": 2,
+    "state_name": "我的体验项目内嵌弹窗",
+    "description": "页面保留顶部状态栏（时间/信号/电量正常显示）与底部 Tab 栏（‘工作台’仍高亮），弹窗以半透明磨砂背景（rgba(255,255,255,0.92) + backdrop-filter: blur(12px)）覆盖在工作台内容上方，顶部对齐状态栏下沿，底部留出底Tab高度（约56px），弹窗内垂直排列3张项目卡片，每张卡片含圆角矩形背景（#FFFFFF）、项目名称（14px Medium，#191919）、更新时间（12px Regular，#666666）、右向箭头图标，卡片间有8px间距，整体宽度360px、最大高度50vh。",
+    "implementation_method": "内嵌半透明弹窗 (Overlay Modal)：磨砂背景 rgba(255,255,255,0.92) + backdrop-filter: blur(12px)；3张卡片均含标题 '项目A' / '项目B' / '项目C'（中英文：'Project A' / 'Project B' / 'Project C'）、副标 '2小时前更新'（'Updated 2 hours ago'）、右侧 SVG 箭头图标；无遮罩层外延，不覆盖底Tab；所有文本使用 HarmonyHeiTi 字体。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "虚拟体验项目加载中态",
+    "description": "页面为全屏纯白背景，顶部固定导航栏高度56px，背景#FFFFFF，左侧返回图标（SVG，宽24px，色值#191919），中间标题‘虚拟体验项目’（16px Medium，#191919），右侧从左至右依次为搜索图标（SVG，24px）、通知图标（SVG，24px）、加号图标（SVG，24px），全部图标色值#191919；导航栏下方留白区居中显示32px圆环spinner（stroke #191919，stroke-width 2px，无fill，CSS animation: hmspin 1s linear infinite），下方紧邻文字‘加载中…’（14px Regular，#666666，行高20px），页面其余区域为空白，无拓扑图、无卡片、无任何统计模块。",
+    "implementation_method": "全屏白色背景页 (Fullscreen Loading Page)：顶部导航栏含返回图标、标题 '虚拟体验项目'（'Virtual Experience Project'）、搜索图标、通知图标、加号图标；中央 spinner 使用 CSS animation:hmspin 1s linear infinite；文字 '加载中…'（'Loading...'）；无其他DOM元素；base 来自 state_1，需移除原Tab栏、插入新导航栏、覆盖全屏白底。",
+    "last_state": 1
+  },
+  {
+    "state_id": 4,
+    "state_name": "虚拟体验项目完整态",
+    "description": "页面为全屏纯白背景，顶部固定导航栏高度56px，背景#FFFFFF，左侧返回图标（SVG，24px，#191919），中间标题‘虚拟体验项目’（16px Medium，#191919），右侧从左至右依次为搜索图标、通知图标、加号图标（均为24px SVG，#191919）；导航栏下方依次为：设备拓扑图（SVG容器宽100%，高220px，含3个带标签的设备节点与连接线）、Wi-Fi评分卡片（圆角矩形，#FFFFFF，阴影，含标题‘Wi-Fi评分’、数值‘92分’、进度条填充色#46B1E3）、运行时长标签（12px Regular，#666666，‘运行时长：3天12小时’）、设备及终端统计卡片（两行并列：‘设备数 27’与‘终端数 142’，14px Medium，#191919）、业务网管理与访问控制模块（标题‘业务网管理’+‘访问控制’两个可点击区块，各含图标+文字，14px Medium，#191919）；无遮罩、无弹窗、无加载指示。",
+    "implementation_method": "全屏页完整渲染 (Fullpage Content Page)：顶部导航栏结构同 state_3；拓扑图使用内联SVG（含3个椭圆节点与贝塞尔连接线）；Wi-Fi评分卡片含标题 'Wi-Fi评分'（'Wi-Fi Score'）、数值 '92分'（'92/100'）、蓝色进度条（#46B1E3）；运行时长文案 '运行时长：3天12小时'（'Uptime: 3d 12h'）；设备统计文案 '设备数 27'（'Devices: 27'）、'终端数 142'（'Terminals: 142'）；业务网模块含标题 '业务网管理'（'Business Network Management'）与 '访问控制'（'Access Control'），各配24px线性图标；所有文本使用 HarmonyHeiTi 字体。",
+    "last_state": 3
+  },
+  {
+    "state_id": 5,
+    "state_name": "网络加载失败页",
+    "description": "页面为全屏纯白背景，顶部状态栏正常显示时间/信号/电量，底部无Tab栏（因是全屏页）；中央区域显示红色感叹号图标（SVG，48px，#FF4D4F），下方主标题‘加载失败，请重试’（16px Medium，#191919），副标题‘网络连接异常或服务暂时不可用’（14px Regular，#666666，行高20px），底部固定蓝色刷新按钮（宽120px，高36px，圆角8px，背景#1890FF，文字‘刷新’（'Retry'），14px Medium，#FFFFFF），按钮水平居中、距底部24px；无导航栏、无拓扑图、无任何统计模块。",
+    "implementation_method": "全屏红色警示页 (Fullpage Error Page)：纯白背景；中央感叹号图标（SVG ID='icon-warning'）；主标题 '加载失败，请重试'（'Failed to load. Please retry.'）；副标题 '网络连接异常或服务暂时不可用'（'Network unavailable or service is temporarily down.'）；底部按钮 '刷新'（'Retry'）；所有文本使用 HarmonyHeiTi 字体；base 来自 state_3，需移除 spinner 与加载文案，替换为错误图文。",
+    "last_state": 3
+  },
+  {
+    "state_id": 6,
+    "state_name": "权限不足提示页",
+    "description": "页面为全屏纯白背景，顶部状态栏正常显示时间/信号/电量，底部无Tab栏；中央悬浮白色圆角模态卡片（宽320px，高160px，背景#FFFFFF，阴影，圆角12px），顶部浅蓝分隔线（高4px，#46B1E3），卡片内含感叹号图标（SVG，24px，#46B1E3），图标下方标题‘暂无该项目访问权限’（16px Medium，#191919），再下方说明文字‘您当前账号未被授权查看此体验项目’（14px Regular，#666666，行高20px），底部单按钮‘确认’（14px Medium，#1890FF，居中，宽104px，高36px，圆角8px，无边框，背景透明）；无导航栏、无拓扑图、无统计模块。",
+    "implementation_method": "居中模态弹窗 (Centered Modal Dialog)：白色圆角卡片（border-radius:12px）；顶部色块 '#46B1E3' 高4px；图标 '⚠️' 或 SVG；标题 '暂无该项目访问权限'（'Access denied for this project.'）；说明 '您当前账号未被授权查看此体验项目'（'Your account is not authorized to view this project.'）；按钮 '确认'（'OK'）；所有文本使用 HarmonyHeiTi 字体；base 来自 state_1，需添加卡片DOM，不改动原工作台内容。",
+    "last_state": 1
+  }
+]

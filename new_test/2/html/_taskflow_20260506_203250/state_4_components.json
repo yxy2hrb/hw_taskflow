@@ -1,0 +1,18 @@
+{
+  "state_id": 4,
+  "state_name": "提交中加载态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "按钮文字‘提交中…’后方的旋转图标显示为竖线而非圆形加载动画，视觉上不符合‘顺时针旋转图标’的描述，应使用标准 SVG 动画图标。",
+      "按钮背景色虽为 #E53935 且 opacity=0.7，但截图中颜色偏浅，疑似未正确应用透明度，需确保样式准确。",
+      "弹窗内输入框、单选按钮、添加按钮等元素均被禁用（opacity=0.6），但截图中‘添加’按钮文字仍清晰可见，与预期的弱化交互状态不一致，应统一降低可读性。"
+    ],
+    "fixedBlocks": "[OLD]\n<button type=\"button\" disabled style=\"width:100%;padding:12px;background:#E53935;color:#FFFFFF;font-size:16px;font-weight:600;border:none;border-radius:24px;cursor:not-allowed;outline:none;opacity:0.7;display:flex;align-items:center;justify-content:center;gap:4px;\">提交中…<span class=\"mi\" style=\"font-size:16px;animation:spin 1s linear infinite;\">󱓼</span></button>\n[NEW]\n<button type=\"button\" disabled style=\"width:100%;padding:12px;background:#E53935;color:#FFFFFF;font-size:16px;font-weight:600;border:none;border-radius:24px;cursor:not-allowed;outline:none;opacity:0.7;display:flex;align-items:center;justify-content:center;gap:4px;\">提交中…<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" style=\"animation:spin 1s linear infinite;\"><circle cx=\"12\" cy=\"12\" r=\"10\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-dasharray=\"62.83\" stroke-dashoffset=\"0\"></circle><path d=\"M12 2V4\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"round\"></path><path d=\"M12 20V22\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"round\"></path><path d=\"M2 12H4\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"round\"></path><path d=\"M20 12H22\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"round\"></path></svg></button>",
+    "reviewMs": 19086,
+    "screenshot": 57164,
+    "fixedBlocksParsed": 1
+  }
+}

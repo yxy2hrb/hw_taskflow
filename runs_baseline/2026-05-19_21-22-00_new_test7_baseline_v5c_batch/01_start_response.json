@@ -1,0 +1,103 @@
+{
+  "sessionId": "tf_9c73b7798a7b",
+  "question": {
+    "id": "phase_1",
+    "phase": 1,
+    "questionText": "请从下面四个维度各选一项最贴近你意图的描述，我会把它们拼成完整的 User Story。",
+    "options": [
+      {
+        "id": "opt_a1",
+        "label": "已登录的营销运营人员",
+        "rationale": "有工作台访问权限，能管理应用配置与状态",
+        "group": "① Actor · 主角",
+        "default": true
+      },
+      {
+        "id": "opt_a2",
+        "label": "企业管理员",
+        "rationale": "拥有全量应用上下架权限，常批量操作",
+        "group": "",
+        "default": false
+      },
+      {
+        "id": "opt_a3",
+        "label": "新入职的运营助理",
+        "rationale": "首次使用该功能，依赖清晰引导和防错提示",
+        "group": "",
+        "default": false
+      },
+      {
+        "id": "opt_t1",
+        "label": "在营销工作台主页点击'管理应用'按钮",
+        "rationale": "明确入口，无需前置条件，当前页即起点",
+        "group": "② Trigger · 触发点",
+        "default": true
+      },
+      {
+        "id": "opt_t2",
+        "label": "从消息通知卡片跳转进入",
+        "rationale": "需服务端推送+客户端点击，非主动导航",
+        "group": "",
+        "default": false
+      },
+      {
+        "id": "opt_t3",
+        "label": "在设置页中选择'应用管理'",
+        "rationale": "属于二级路径，需先进入个人设置模块",
+        "group": "",
+        "default": false
+      },
+      {
+        "id": "opt_g1",
+        "label": "查看已安装应用列表并开关控制 → 点击新增触发方式选择 → 选定后立即生效并反馈成功",
+        "rationale": "完全匹配用户简述的三步闭环：浏览→选择→确认生效",
+        "group": "③ Goal & Happy Path · 核心目标与理想路径",
+        "default": true
+      },
+      {
+        "id": "opt_g2",
+        "label": "批量启用多个应用 → 系统汇总变更请求 → 用户统一确认提交",
+        "rationale": "强调批量操作与事务一致性，非单点即时生效",
+        "group": "",
+        "default": false
+      },
+      {
+        "id": "opt_g3",
+        "label": "添加新应用时预览样式效果 → 拖拽调整位置 → 最终保存布局",
+        "rationale": "引入交互式编辑环节，超出当前任务流范围",
+        "group": "",
+        "default": false
+      },
+      {
+        "id": "opt_s1",
+        "label": "管理应用页显示更新后的开关状态、计数+1，且弹出'添加成功'Toast",
+        "rationale": "三重可视反馈同时达成，覆盖界面状态与临时提示",
+        "group": "④ Success Criteria · 成功判定",
+        "default": true
+      },
+      {
+        "id": "opt_s2",
+        "label": "仅底部Toast出现，页面无其他变化",
+        "rationale": "弱反馈，忽略状态同步与计数准确性验证",
+        "group": "",
+        "default": false
+      },
+      {
+        "id": "opt_s3",
+        "label": "后台返回200且本地缓存写入成功，但不强制要求UI同步",
+        "rationale": "偏技术验收，不体现用户可感知的成功终点",
+        "group": "",
+        "default": false
+      }
+    ],
+    "multiSelect": true,
+    "allowCustom": true,
+    "note": "四个维度各选一项，也可以在补充栏写'Actor: xxx; Trigger: xxx;' 形式覆盖。",
+    "sectionLabel": "任务流阶段 1/3",
+    "sectionProgress": {
+      "current": 1,
+      "total": 3
+    }
+  },
+  "sourceDir": ""
+}

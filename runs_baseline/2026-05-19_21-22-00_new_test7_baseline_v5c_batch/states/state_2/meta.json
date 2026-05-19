@@ -1,0 +1,12 @@
+{
+  "state_id": 2,
+  "state_name": "管理应用页列表态",
+  "description": "顶部固定标题栏含左对齐返回箭头图标（纯黑、24px）与居中文字'管理应用'（14px Medium、#191919）；下方灰色小字'已添加X个'（14px Regular、#AEAEAE）；主体为垂直滚动列表，每项含左对齐圆形应用图标（40×40px）、应用名（14px Regular、#191919）、右对齐开关控件（开启态为蓝色填充+白点，关闭态为浅灰轨道+深灰滑块）；底部完整Tab导航栏与state_1一致。",
+  "implementation_method": "全屏新页面 (Page/View)：基于state_1 HTML wipe 改造；移除原'管理应用'按钮区域；插入固定标题栏（含返回箭头SVG + '管理应用'文本）；插入计数行（div.text-ohos_id_text_size_body2regular-6_250025）；插入滚动列表容器（.scroll-container），内含N个应用项（每个项含.icon-wrapper + .app-name + .switch-wrapper）；保留底部Tab导航栏（.Pixso-frame-146_395667）不变。",
+  "last_state": 1,
+  "applied": 1,
+  "skipped": 0,
+  "elapsed_ms": 121185,
+  "failed": false,
+  "error": null
+}

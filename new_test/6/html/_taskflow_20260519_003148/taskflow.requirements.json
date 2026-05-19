@@ -1,0 +1,44 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "我的工作台初始首页",
+    "description": "页面为移动端竖屏布局，顶部状态栏显示时间/信号/电量，底部固定 Tab 导航栏（含‘首页’‘工作台’‘消息’‘我的’），中央区域为功能卡片网格；其中‘快速入门’卡片位于‘售后文档’区块内，卡片含蓝色图标与文字‘快速入门’，字体大小16px、Medium字重、深灰文字色 rgba(0,0,0,0.899)。",
+    "implementation_method": "原始 HTML 初始快照，不做改造。",
+    "last_state": null
+  },
+  {
+    "state_id": 2,
+    "state_name": "快速入门浮层页",
+    "description": "全屏覆盖半透明黑色蒙层（opacity 0.5），中央白色卡片宽360px、高自适应，居中垂直对齐；卡片顶部为带圆角的搜索框（浅灰背景、12px占位符文字‘搜索...’），下方四枚横排分类标签（圆角矩形、浅蓝底色 #46B1E3、白字、12px Regular）；再下方为7条垂直排列条目（每条含标题文字、简短描述、右对齐‘查看’按钮），按钮为蓝色文字 #46B1E3、14px Medium，顶部状态栏与底部 Tab 均保持可见且未被遮挡。",
+    "implementation_method": "全屏模态浮层 (Modal Overlay)：背景为 rgba(0,0,0,0.5) 半透明遮罩；中央白色卡片（#FFFFFF，圆角12px，padding 24px）；搜索框为 320px 宽输入框（border: 1px solid #E0E0E0，height 44px，placeholder '搜索...'）；四分类标签为水平 Flex 排列，每个尺寸 72×32px；7条条目为垂直列表，每项含标题（16px Medium，深灰 #191919）、描述（14px Regular，中灰 #666666）、右侧‘查看’按钮（14px Medium，#46B1E3）；状态栏与底部 Tab 层级高于浮层，保持原样。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "快速入门页加载中",
+    "description": "全屏覆盖半透明黑色蒙层（opacity 0.5），中央白色卡片宽360px、高自适应，居中垂直对齐；卡片顶部为带圆角的搜索框（浅灰背景、12px占位符文字‘搜索...’），下方四枚横排分类标签（圆角矩形、浅蓝底色 #46B1E3、白字、12px Regular）；再下方为7条垂直排列骨架屏（每条为高24px浅灰矩形，rgba(0,0,0,0.08)，无文字无图标），顶部状态栏与底部 Tab 均保持可见且未被遮挡。",
+    "implementation_method": "全屏模态浮层 (Modal Overlay)：背景为 rgba(0,0,0,0.5) 半透明遮罩；中央白色卡片（#FFFFFF，圆角12px，padding 24px）；搜索框同 state_2；四分类标签同 state_2；7条骨架屏为垂直列表，每条为 320×24px 矩形，fill rgba(0,0,0,0.08)，间距16px；状态栏与底部 Tab 层级高于浮层，保持原样。",
+    "last_state": 2
+  },
+  {
+    "state_id": 4,
+    "state_name": "产品文档详情页",
+    "description": "纯白背景，顶部固定导航栏高度56px，左侧为返回箭头图标（24×24px，深灰 #191919），中间为产品名称（16px Medium，深灰 #191919），右侧为空；正文区从导航栏下方开始，含完整文档标题（20px Medium）、段落文字（14px Regular，行高20px，深灰 #191919）、代码块（等宽字体、浅灰背景 #F5F5F5、深灰文字）、末尾固定‘返回快速入门’按钮（蓝色文字 #46B1E3、14px Medium、居中显示），底部 Tab 正常可见。",
+    "implementation_method": "独立文档页 (Standalone Page)：顶部导航栏（height 56px，#FFFFFF，border-bottom: 1px solid #EEEEEE）；返回箭头 SVG 图标（<svg viewBox='0 0 24 24' fill='none'><path d='M15 18L9 12L15 6' stroke='#191919' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>）；标题文字 '产品名称'；正文区含标题 '文档标题'、段落文本、代码块容器（background #F5F5F5，padding 16px，font-family 'monospace'）；底部按钮文案 '返回快速入门'；底部 Tab 保持原样。",
+    "last_state": 1
+  },
+  {
+    "state_id": 5,
+    "state_name": "网络失败页",
+    "description": "全屏覆盖半透明黑色蒙层（opacity 0.5），中央白色卡片宽360px、高自适应，居中垂直对齐；卡片内居中显示红色感叹号图标（24×24px，#FF3B30），下方为文字‘加载失败，请重试’（16px Medium，深灰 #191919），再下方为蓝色‘刷新’按钮（14px Medium，#46B1E3，宽120px，圆角8px，居中），顶部状态栏与底部 Tab 均保持可见且未被遮挡。",
+    "implementation_method": "全屏模态浮层 (Modal Overlay)：背景为 rgba(0,0,0,0.5) 半透明遮罩；中央白色卡片（#FFFFFF，圆角12px，padding 24px）；红色感叹号 SVG 图标（<svg viewBox='0 0 24 24' fill='none'><circle cx='12' cy='12' r='10' stroke='#FF3B30' stroke-width='2' fill='none'/><path d='M12 8v4m0 4h.01' stroke='#FF3B30' stroke-width='2' stroke-linecap='round'/></svg>）；文字 '加载失败，请重试'；按钮 '刷新'；状态栏与底部 Tab 层级高于浮层，保持原样。",
+    "last_state": 2
+  },
+  {
+    "state_id": 6,
+    "state_name": "权限不足页",
+    "description": "全屏覆盖半透明黑色蒙层（opacity 0.5），中央白色卡片宽360px、高自适应，居中垂直对齐；卡片内居中显示锁形图标（24×24px，深灰 #191919），下方为文字‘暂无访问权限’（16px Medium，深灰 #191919），再下方为‘联系管理员’按钮（14px Medium，#46B1E3，宽140px，圆角8px，居中），顶部状态栏与底部 Tab 均保持可见且未被遮挡。",
+    "implementation_method": "全屏模态浮层 (Modal Overlay)：背景为 rgba(0,0,0,0.5) 半透明遮罩；中央白色卡片（#FFFFFF，圆角12px，padding 24px）；锁形 SVG 图标（<svg viewBox='0 0 24 24' fill='none'><path d='M18 8h-1V6a2 2 0 00-2-2H7a2 2 0 00-2 2v2H5a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V10a2 2 0 00-2-2zm-1 4l-1 1v3a1 1 0 01-1 1H8a1 1 0 01-1-1v-3L6 9v3a2 2 0 002 2h8a2 2 0 002-2V9z' fill='#191919'/></svg>）；文字 '暂无访问权限'；按钮 '联系管理员'；状态栏与底部 Tab 层级高于浮层，保持原样。",
+    "last_state": 2
+  }
+]

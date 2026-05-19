@@ -1,0 +1,27 @@
+{
+  "state_name": "网络异常提示态",
+  "lifecycle": "temporary",
+  "injection": { "mode": "append", "anchor": "body" },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "Row",
+    "props": {
+      "width": 280,
+      "height": 44,
+      "background": "#D32F2F",
+      "borderRadius": 8,
+      "align": "center",
+      "justify": "center"
+    },
+    "children": [
+      {
+        "type": "Text",
+        "props": {
+          "text": "网络异常，请重试",
+          "size": 14,
+          "color": "#FFFFFF"
+        }
+      }
+    ]
+  }
+}

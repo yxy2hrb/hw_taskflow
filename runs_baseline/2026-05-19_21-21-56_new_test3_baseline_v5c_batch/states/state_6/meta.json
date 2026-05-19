@@ -1,0 +1,12 @@
+{
+  "state_id": 6,
+  "state_name": "权限不足提示浮层",
+  "description": "页面中央悬浮一张圆角白卡（宽280px，高144px，背景#FFFFFF，阴影0 4px 12px rgba(0,0,0,0.08)），顶部居中锁形图标（24px SVG），下方标题‘权限不足’（16px Medium，#191919），中间说明文字‘您暂未开通体验服务权限’（14px Regular，#666666），底部‘去开通’主按钮（宽120px，高36px，背景#1A73E8，文字‘去开通’14px Medium 白色）；背景为深灰半透明遮罩（rgba(0,0,0,0.5)），原项目详情页内容整体变暗但结构可见。",
+  "implementation_method": "轻量浮层 (Lightweight Modal)：圆角白卡（width:280px; height:144px; background:#FFFFFF; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.08)）；顶部锁形图标（Pixso-vector-146_139225）；标题‘权限不足’（HarmonyHeiTi-Medium 16px, #191919）；说明文字‘您暂未开通体验服务权限’（HarmonyHeiTi-Regular 14px, #666666）；主按钮‘去开通’（width:120px; height:36px; background:#1A73E8; border-radius:8px; color:#FFFFFF; HarmonyHeiTi-Medium 14px）；背景遮罩 rgba(0,0,0,0.5)。",
+  "last_state": 3,
+  "applied": 1,
+  "skipped": 0,
+  "elapsed_ms": 83346,
+  "failed": false,
+  "error": null
+}

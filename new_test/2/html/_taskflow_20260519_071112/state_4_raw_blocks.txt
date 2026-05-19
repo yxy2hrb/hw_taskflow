@@ -1,0 +1,34 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#146_161559",
+      "instruction": "将'创建项目集'卡片按钮替换为加载中状态：背景色#BDBDBD，文字'创建中…'（14px白色，HarmonyHeiTi-Medium），内部嵌套16px顺时针旋转圆环spinner（stroke=#191919，stroke-width=2，stroke-linecap=round，路径d='M12,2 A10,10 0 0,1 22,12'，CSS animation:hmspin 1s linear infinite）；保持卡片尺寸、圆角、外边距等布局不变",
+      "icons_needed": ["refresh"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Button",
+    "props": {
+      "label": "创建中…",
+      "variant": "primary",
+      "size": "regular",
+      "disabled": true,
+      "background": "#BDBDBD",
+      "color": "#FFFFFF",
+      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+      "fontWeight": 500,
+      "fontSize": 14,
+      "height": 40,
+      "borderRadius": 20,
+      "loading": true,
+      "icon": "progress_activity"
+    }
+  }
+}

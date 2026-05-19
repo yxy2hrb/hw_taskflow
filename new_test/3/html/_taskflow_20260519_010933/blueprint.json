@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "title": "虚拟体验项目查看流程",
+    "slug": "virtual-experience-project-view-flow",
+    "user_story": "已登录的企业管理员在‘我的工作台’点击‘我的体验项目’入口，快速定位并进入一个虚拟体验项目，系统保持上下文并加载完整拓扑视图，用户滑动查看Wi-Fi评分与设备统计后返回，全屏页面完整渲染网络拓扑图、Wi-Fi评分、运行时长及设备/终端统计卡片，且顶部导航可正常返回",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "我的工作台主页",
+      "description": "页面为移动设备尺寸（360px宽），顶部显示状态栏（含时间、信号、电量图标），底部固定Tab栏（含‘工作台’‘应用’‘消息’‘我的’四图标），中央区域可见‘我的体验项目’入口按钮（蓝色文字+右向箭头图标，位于卡片式容器内，背景白，圆角8px，上下留白24px）。",
+      "implementation_method": "原始 HTML 初始快照，不做改造",
+      "last_state": null
+    },
+    {
+      "state_id": 2,
+      "state_name": "我的体验项目弹窗",
+      "description": "页面保留顶部状态栏（时间/信号/电量正常显示）与底部Tab栏（四图标完整可见），中间区域覆盖半屏固定高度弹窗（高480px），顶部有浅灰色分隔线（#f3f3f3，1px高），弹窗底部距Tab栏8px；弹窗内垂直居中排列卡片列表，每张卡片宽328px、高96px、白底、圆角12px、阴影轻微，含左对齐项目名称（16px加粗黑字）、创建时间（14px灰字，如‘2024-05-22’）、设备类型与数量（14px灰字，如‘AP×3, 终端×12’）、右侧蓝色状态标签（#46B1E3背景，白字，圆角16px，宽64px，高24px，文字‘运行中’），以及右侧操作按钮（24×24px蓝色箭头图标）。",
+      "implementation_method": "内嵌浮层 (Inline Modal/Sheet)：固定高度480px，顶部浅灰分隔线 #f3f3f3（1px），底部距Tab栏8px；卡片列表垂直居中，每张卡片含：标题‘项目A’、副标题‘2024-05-22’、设备描述‘AP×3, 终端×12’、状态标签‘运行中’（英文‘Running’）、操作图标（右向箭头SVG，fill=#46B1E3）；无遮罩层，无滚动指示器。",
+      "last_state": 1
+    },
+    {
+      "state_id": 3,
+      "state_name": "虚拟体验项目详情页",
+      "description": "全屏页面（无状态栏遮挡，无Tab栏），顶部导航栏高56px，含左侧24×24px左向箭头图标（fill=#000000, opacity=0.89）、居中16px Medium黑字标题‘虚拟体验项目’（中文）、右侧三个等距图标：搜索（24×24px放大镜SVG）、通知（24×24px铃铛SVG）、加号（24×24px圆形+号SVG），全部图标 fill=#000000, opacity=0.89；主体区域从上到下依次为：网络拓扑图（占高50%，SVG渲染，含AP/终端节点与连线，背景白）、Wi-Fi评分卡片（宽328px，高80px，绿底#4CAF50，白字，含大号数字‘89’、小字‘分’、右侧‘优秀’标签（白底深绿#2E7D32，圆角12px，文字‘Excellent’））、运行时长标签（14px灰字，‘已运行 3天12小时’）、设备与终端统计卡片（宽328px，高104px，白底，两列并排：左列‘设备数’+‘12台’，右列‘终端数’+‘47个’，均用14px黑字+12px灰字副标）。",
+      "implementation_method": "全屏页面 (Full-page View)：顶部导航栏（56px高）含左向箭头（SVG，fill=#000000, opacity=0.89）、标题‘虚拟体验项目’（英文‘Virtual Experience Project’）、右侧三图标（Search / Bell / Plus，均24×24px，fill=#000000, opacity=0.89）；主体：拓扑图（SVG，宽100%，高50vh）、Wi-Fi评分卡片（绿底#4CAF50，主文案‘89’+‘分’+‘Excellent’）、运行时长‘已运行 3天12小时’（英文‘Running for 3d 12h’）、统计卡片（两列：‘Device Count: 12’ / ‘Terminal Count: 47’）。",
+      "last_state": 1
+    },
+    {
+      "state_id": 4,
+      "state_name": "虚拟体验项目加载中",
+      "description": "全屏页面（无状态栏遮挡，无Tab栏），顶部导航栏完整显示：左侧24×24px左向箭头图标、居中16px Medium黑字标题‘虚拟体验项目’、右侧三个24×24px图标（搜索/通知/加号），全部图标 fill=#000000, opacity=0.89；主体区域为纯白背景，从上到下三段灰色矩形块：第一段高200px（宽328px，深灰#e0e0e0，模拟拓扑图占位）、第二段高80px（宽328px，中灰#f5f5f5，模拟Wi-Fi评分卡片占位）、第三段高104px（宽328px，中灰#f5f5f5，模拟统计卡片占位）；无文字、无图标、无边框、无阴影、无动画。",
+      "implementation_method": "骨架屏 (Skeleton Screen)：顶部导航栏同 state_3；主体三段占位块——拓扑图位（200px高，#e0e0e0）、Wi-Fi评分位（80px高，#f5f5f5）、统计卡片位（104px高，#f5f5f5），全部宽328px，居中，无文字，无图标，无描边，无圆角。",
+      "last_state": 3
+    },
+    {
+      "state_id": 5,
+      "state_name": "虚拟体验项目详情页已渲染",
+      "description": "全屏页面（无状态栏遮挡，无Tab栏），顶部导航栏高56px，含左侧24×24px左向箭头图标（fill=#000000, opacity=0.89）、居中16px Medium黑字标题‘虚拟体验项目’、右侧三个24×24px图标（搜索/通知/加号，fill=#000000, opacity=0.89）；主体区域：网络拓扑图（SVG已完整渲染，含5个AP节点、12个终端节点、带连线与信号强度色阶）、Wi-Fi评分卡片（绿底#4CAF50，大号白色数字‘89’、小字‘分’、右侧‘优秀’标签（白底深绿#2E7D32，圆角12px，文字‘Excellent’））、运行时长标签（14px灰字，‘已运行 3天12小时’，英文‘Running for 3d 12h’）、设备与终端统计卡片（宽328px，高104px，白底，左列‘设备数’+‘12台’，右列‘终端数’+‘47个’，主文案14px黑字，副标12px灰字）。",
+      "implementation_method": "全屏页面 (Full-page View)：顶部导航栏同 state_3；主体：已渲染SVG拓扑图（含AP/终端节点与连线）；Wi-Fi评分卡片（#4CAF50底，‘89’+‘分’+‘Excellent’）；运行时长‘已运行 3天12小时’（英文‘Running for 3d 12h’）；统计卡片（‘Device Count: 12’ / ‘Terminal Count: 47’）。",
+      "last_state": 3
+    },
+    {
+      "state_id": 6,
+      "state_name": "网络请求失败页",
+      "description": "全屏页面（无状态栏遮挡，无Tab栏），顶部导航栏完整显示：左侧24×24px左向箭头图标、居中16px Medium黑字标题‘虚拟体验项目’、右侧三个24×24px图标（搜索/通知/加号），全部图标 fill=#000000, opacity=0.89；主体区域纯白背景，中央位置显示感叹号圆圈图标（直径64px，红底#F44336，白感叹号，SVG）；图标上方16px Medium黑字标题‘加载失败’（英文‘Load Failed’）；图标下方14px灰字说明‘网络连接异常，请检查后重试’（英文‘Network connection failed. Please check and retry.’）；底部两个水平排列按钮：左按钮为‘重试’（蓝底#2196F3，白字，圆角8px，宽120px，高40px）、右按钮为‘返回工作台’（无背景，14px蓝字#2196F3，无边框，无圆角）。",
+      "implementation_method": "错误页 (Error Page)：顶部导航栏同 state_3；中央64px红底感叹号图标（#F44336，SVG）；上方标题‘加载失败’（‘Load Failed’）；下方说明‘网络连接异常，请检查后重试’（‘Network connection failed. Please check and retry.’）；底部双按钮：‘重试’（#2196F3底，白字，120×40px）+‘返回工作台’（文字按钮，#2196F3，14px）。",
+      "last_state": 3
+    }
+  ]
+}

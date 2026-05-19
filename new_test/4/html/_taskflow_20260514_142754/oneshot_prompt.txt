@@ -1,0 +1,517 @@
+=== SYSTEM ===
+你是高级前端工程师，擅长把"低保真 D2C HTML 原型 + 状态机蓝图"改造成基于 antd-mobile (v5) React 组件的可交互前端。
+
+输入：
+  · 一份基线 HTML（D2C 自动产出，含 <html><head><style>...</style></head><body>...</body></html>，里面的标签都是手机端 360×780 的绝对布局）
+  · 一条 happy path（用户主路径），按顺序列出 N 个 state，每个 state 含 state_id / state_name / description / implementation_method
+
+你的任务：一次性产出 happy path 上每个 state 的 UI 改造方案。每个 state 包含：
+  1. edits[]：对**原始基线 HTML**的若干 [OLD]/[NEW] 字符串替换；
+  2. islands{}：嵌入在 NEW 块内 `<div data-jsx-island id="...">` 占位 div 上要渲染的 antd-mobile JSX 表达式；
+  3. trigger：本 state 内"用户点击后进入下一 state"的元素描述（直接体现在某个 edit 的 NEW 里，标记 data-next-state="下一 state_id"）。
+
+# 输出 JSON Schema（必须严格遵守）
+{
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "...",
+      "edits": [
+        {
+          "old": "原基线 HTML 中**逐字逐符复制**的一段 ≤ 200 字符的字符串（必须能精确匹配，否则无法定位）",
+          "new": "替换后的 HTML 片段；如果需要 antd-mobile 组件，用 <div data-jsx-island id=\"独一无二的island-id\"></div> 占位"
+        }
+      ],
+      "islands": {
+        "独一无二的island-id": "单行 JSX 表达式，例如 <Button block color='primary' data-next-state={2} onClick={() => {}}>编辑</Button>"
+      }
+    },
+    {
+      "state_id": 2,
+      ...
+    }
+  ]
+}
+
+# 关键约束
+1. **OLD 必须从基线 HTML 中精确复制**（包括前后空白、引号、属性顺序），不能改写、不能简化、不能用 ... 省略。如果不知道要改哪段，宁可不出 edit。
+2. **NEW 之于 OLD 是替换关系**，不是追加。如果是新增 UI（比如全屏弹层），把 OLD 选作"插入点的稳定锚点"（例如 `</body>`），NEW = "锚点 + 你要新增的 HTML"。注意 NEW 必须**包含**整个 OLD 字符串，否则会破坏锚点。
+3. **每个 state 的 edits 全部基于原始基线**，不要假设前面 state 的 edits 已经应用过。比如 state_3 是"保存中"，它的 edits 要表达"编辑表单 + 保存中 spinner"两层视觉，而不能只表达 spinner。
+4. **不要碰** <head> 里的 <style> 和 <script>；只在 <body> 内做替换。
+5. **antd-mobile 组件名表（v5）**：Button, Form, Input, TextArea, Toast, NavBar, List, Selector, Dialog, ActionSheet, Tabs, Switch, Picker, Checkbox, Radio, Tag, Avatar, Card, Modal, Mask, Popup, Skeleton, ProgressBar, Stepper, ImageUploader, SearchBar, Slider, Steps。运行时已通过全局 antdMobile 解构注入，JSX 中直接首字母大写即可。
+6. **trigger 元素**：每个 state（除 happy path 最后一个 terminal state）必须有**且仅有一个** trigger 元素，标记方式 = 在该元素上加 `data-next-state="K+1"`（HTML 属性形式）或 `data-next-state={K+1}`（JSX 形式）。trigger 不一定要是 antd 组件，也可以是 NEW 块里的普通 <div> / <button>。
+7. **island 命名**：用 `s{state_id}-{purpose}` 格式，例如 `s2-form` / `s3-spinner` / `s4-toast`。同一 island id 在所有 state 内必须唯一。
+8. **JSX 表达式只能写一行**，内部禁用换行（JSON 字符串里换行会破坏解析）。JSX 中需要双引号时写成 \" 转义，或改用单引号。
+9. **edits 总数控制在合理范围**：单个 state 1～5 个 edit，避免一锅炖。
+
+# 你的产出
+直接输出 JSON 对象（用 ```json 围栏或裸 JSON 都行）。**不要**输出任何 Markdown 说明文字、不要解释、不要打招呼。
+
+=== USER ===
+# 基线 HTML（请逐字复制 OLD）
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixso HTML</title>
+  <link rel="stylesheet" href="css/font.css">
+  <script src="js/animation.js"></script>
+  <style>/* CSS omitted for LLM brevity */</style>
+<style>/* CSS omitted for LLM brevity */</style>
+</head>
+<body>
+<div class="scroll-container">
+  <div id="0_1" class="Pixso-canvas-0_1">
+    <div id="14_884713" class="Pixso-frame-14_884713 fill-场景background-colorcolor-bg-1-14_886006">
+      <div id="14_884714" class="Pixso-frame-14_884714">
+        <div id="14_884715" class="Pixso-vector-14_884715"></div>
+        <div id="14_884716" class="Pixso-vector-14_884716"></div>
+        <div id="14_884717" class="Pixso-vector-14_884717"></div>
+        <div id="14_884718" class="Pixso-vector-14_884718"></div>
+        <div id="14_884719" class="Pixso-rectangle-14_884719"></div>
+      </div>
+      <div id="14_884727" class="Pixso-rectangle-14_884727"></div>
+      <div id="14_884728" class="Pixso-frame-14_884728">
+        <div id="14_884729" class="Pixso-frame-14_884729">
+          <div class="frame-content-14_884729">
+            <div id="146_168653" class="Pixso-frame-146_168653">
+              <div id="146_168654" class="Pixso-frame-146_168654">
+                <div class="frame-content-146_168654">
+                  <p id="146_168655" class="Pixso-paragraph-146_168655">08:08</p>
+                  <div id="146_168656" class="Pixso-frame-146_168656">
+                    <div id="146_168657" class="Pixso-vector-146_168657"></div>
+                    <div id="146_168669" class="Pixso-vector-146_168669"></div>
+                    <div id="146_168676" class="Pixso-vector-146_168676"></div>
+                    <div id="146_168703" class="Pixso-vector-146_168703"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="146_168713" class="Pixso-frame-146_168713">
+              <div class="frame-content-146_168713">
+                <div id="146_168714" class="Pixso-frame-146_168714">
+                  <div id="146_168715" class="Pixso-frame-146_168715">
+                    <div id="146_168720" class="Pixso-frame-146_168720">
+                      <div id="146_168721" class="Pixso-frame-146_168721">
+                        <div id="146_168722" class="Pixso-frame-146_168722">
+                          <div class="frame-content-146_168722">
+                            <div id="146_168723" class="Pixso-frame-146_168723">
+                              <p id="146_168724" class="Pixso-paragraph-146_168724 fill-场景text-colorcolor-text-primary-6_11379-paragraph">我的</p>
+                            </div>
+                            <p id="146_168728" class="Pixso-paragraph-146_168728 fill-场景text-colorcolor-text-primary-6_11379-paragraph">工作台</p>
+                          </div>
+                        </div>
+                        <div id="146_168729" class="Pixso-frame-146_168729">
+                          <div class="frame-content-146_168729">
+                            <div id="146_168730" class="Pixso-group-146_168730">
+                              <div id="146_168731" class="Pixso-vector-146_168731"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="14_884730" class="Pixso-frame-14_884730">
+          <div id="14_884797" class="Pixso-frame-14_884797">
+            <div id="14_884798" class="Pixso-frame-14_884798">
+              <div class="frame-content-14_884798">
+                <div id="14_884799" class="Pixso-frame-14_884799">
+                  <div id="146_200634" class="Pixso-rectangle-146_200634"></div>
+                  <div id="146_200635" class="Pixso-group-146_200635">
+                    <div id="146_200637" class="Pixso-frame-146_200637">
+                      <div class="frame-content-146_200637">
+                        <p id="146_200646" class="Pixso-paragraph-146_200646">我要办会</p>
+                      </div>
+                    </div>
+                    <div id="146_200647" class="Pixso-frame-146_200647">
+                      <div class="frame-content-146_200647">
+                        <p id="146_200648" class="Pixso-paragraph-146_200648">9月23日</p>
+                        <div id="146_200649" class="Pixso-frame-146_200649">
+                          <div id="146_200650" class="Pixso-frame-146_200650">
+                            <div class="frame-content-146_200650">
+                              <div id="146_200651" class="Pixso-frame-146_200651">
+                                <p id="146_200652" class="Pixso-paragraph-146_200652">09:30</p>
+                                <p id="146_200653" class="Pixso-paragraph-146_200653">10:30</p>
+                              </div>
+                              <div id="146_200654" class="Pixso-frame-146_200654">
+                                <div class="frame-content-146_200654">
+                                  <div id="146_200655" class="Pixso-rectangle-146_200655"></div>
+                                </div>
+                              </div>
+                              <div id="146_200656" class="Pixso-frame-146_200656">
+                                <div class="frame-content-146_200656">
+                                  <p id="146_200657" class="Pixso-paragraph-146_200657">华为坤灵协作平板SOHO分销渠道沙龙<br><br></p>
+                                  <div id="146_200658" class="Pixso-frame-146_200658 fill-info信息色info_2-14_365553">
+                                    <p id="146_200659" class="Pixso-paragraph-146_200659 fill-info信息色info_1-14_365554-paragraph">待开始</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div id="146_200662" class="Pixso-vector-146_200662"></div>
+                          <div id="146_200663" class="Pixso-frame-146_200663">
+                            <div class="frame-content-146_200663">
+                              <div id="146_200664" class="Pixso-frame-146_200664">
+                                <div class="frame-content-146_200664">
+                                  <p id="146_200665" class="Pixso-paragraph-146_200665">14:30</p>
+                                  <p id="146_200666" class="Pixso-paragraph-146_200666 text-fontbody_sregular-14_365555">10:30</p>
+                                </div>
+                              </div>
+                              <div id="146_200667" class="Pixso-frame-146_200667">
+                                <div class="frame-content-146_200667">
+                                  <div id="146_200668" class="Pixso-rectangle-146_200668"></div>
+                                </div>
+                              </div>
+                              <div id="146_200669" class="Pixso-frame-146_200669">
+                                <div class="frame-content-146_200669">
+                                  <p id="146_200670" class="Pixso-paragraph-146_200670">华为存储产品伙伴研讨会</p>
+                                  <div id="146_200671" class="Pixso-frame-146_200671">
+                                    <p id="146_200672" class="Pixso-paragraph-146_200672">未开始</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="146_200673" class="Pixso-frame-146_200673">
+                    <div id="146_200674" class="Pixso-frame-146_200674">
+                      <div id="146_200675" class="Pixso-group-146_200675">
+                        <div id="146_200676" class="Pixso-group-146_200676">
+                          <div id="146_200678" class="Pixso-vector-146_200678"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="146_200679" class="Pixso-frame-146_200679">
+                    <p id="146_200680" class="Pixso-paragraph-146_200680 fill-场景text-colorcolor-text-primary-6_11379-paragraph">更多</p>
+                    <div id="146_200681" class="Pixso-vector-146_200681"></div>
+                  </div>
+                </div>
+                <div id="14_884800" class="Pixso-frame-14_884800">
+                  <div id="146_372186" class="Pixso-group-146_372186">
+                    <div id="146_372187" class="Pixso-group-146_372187">
+                      <div id="146_372188" class="Pixso-rectangle-146_372188"></div>
+                      <div id="146_372189" class="Pixso-frame-146_372189">
+                        <p id="146_372190" class="Pixso-paragraph-146_372190">980</p>
+                        <div id="146_372191" class="Pixso-group-146_372191">
+                          <div id="146_372192" class="Pixso-frame-146_372192">
+                            <div class="frame-content-146_372192">
+                              <p id="146_372193" class="Pixso-paragraph-146_372193">物料总数</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="146_372200" class="Pixso-frame-146_372200">
+                        <p id="146_372215" class="Pixso-paragraph-146_372215">营销物料</p>
+                      </div>
+                      <div id="146_372216" class="Pixso-group-146_372216">
+                        <div id="146_372217" class="Pixso-frame-146_372217">
+                          <div class="frame-content-146_372217">
+                            <div id="146_372218" class="Pixso-group-146_372218">
+                              <div id="146_372219" class="Pixso-frame-146_372219">
+                                <div id="146_372220" class="Pixso-frame-146_372220">
+                                  <div class="frame-content-146_372220">
+                                    <div id="146_372221" class="Pixso-rectangle-146_372221"></div>
+                                    <div id="146_372222" class="Pixso-rectangle-146_372222"></div>
+                                    <div id="146_372223" class="Pixso-rectangle-146_372223"></div>
+                                    <div id="146_372224" class="Pixso-rectangle-146_372224"></div>
+                                  </div>
+                                </div>
+                                <div id="146_372226" class="Pixso-rectangle-146_372226"></div>
+                              </div>
+                            </div>
+                            <div id="146_372227" class="Pixso-frame-146_372227">
+                              <div class="frame-content-146_372227">
+                                <div id="146_372228" class="Pixso-frame-146_372228">
+                                  <div class="frame-content-146_372228">
+                                    <div id="146_372229" class="Pixso-vector-146_372229"></div>
+                                    <p id="146_372230" class="Pixso-paragraph-146_372230">数通</p>
+                                    <p id="146_372231" class="Pixso-paragraph-146_372231">420</p>
+                                  </div>
+                                </div>
+                                <div id="146_372232" class="Pixso-frame-146_372232">
+                                  <div class="frame-content-146_372232">
+                                    <div id="146_372233" class="Pixso-vector-146_372233"></div>
+                                    <p id="146_372234" class="Pixso-paragraph-146_372234">SOHO</p>
+                                    <p id="146_372235" class="Pixso-paragraph-146_372235">260</p>
+                                  </div>
+                                </div>
+                                <div id="146_372236" class="Pixso-frame-146_372236">
+                                  <div class="frame-content-146_372236">
+                                    <div id="146_372237" class="Pixso-vector-146_372237"></div>
+                                    <p id="146_372238" class="Pixso-paragraph-146_372238">数通网络安全</p>
+                                    <p id="146_372239" class="Pixso-paragraph-146_372239">130</p>
+                                  </div>
+                                </div>
+                                <div id="146_372240" class="Pixso-frame-146_372240">
+                                  <div class="frame-content-146_372240">
+                                    <div id="146_372241" class="Pixso-vector-146_372241"></div>
+                                    <p id="146_372242" class="Pixso-paragraph-146_372242">其他</p>
+                                    <p id="146_372243" class="Pixso-paragraph-146_372243">340</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="146_372244" class="Pixso-frame-146_372244">
+                        <p id="146_372245" class="Pixso-paragraph-146_372245 fill-场景text-colorcolor-text-primary-6_11379-paragraph">场景</p>
+                        <div id="146_372246" class="Pixso-vector-146_372246"></div>
+                      </div>
+                      <div id="146_372293" class="Pixso-frame-146_372293">
+                        <p id="146_372308" class="Pixso-paragraph-146_372308">营销物料</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="14_884801" class="Pixso-frame-14_884801">
+                  <div id="146_332020" class="Pixso-rectangle-146_332020"></div>
+                  <div id="146_332021" class="Pixso-frame-146_332021">
+                    <p id="146_332022" class="Pixso-paragraph-146_332022 fill-场景text-colorcolor-text-primary-6_11379-paragraph">更多</p>
+                    <div id="146_332023" class="Pixso-vector-146_332023"></div>
+                  </div>
+                  <div id="146_332025" class="Pixso-frame-146_332025">
+                    <div class="frame-content-146_332025">
+                      <div id="146_332026" class="Pixso-frame-146_332026">
+                        <div id="146_332027" class="Pixso-group-146_332027">
+                          <p id="146_332028" class="Pixso-paragraph-146_332028">99999+</p>
+                        </div>
+                        <div id="146_332029" class="Pixso-frame-146_332029">
+                          <div id="146_332030" class="Pixso-frame-146_332030">
+                            <p id="146_332031" class="Pixso-paragraph-146_332031">新增访客 (周)</p>
+                          </div>
+                          <div id="146_332032" class="Pixso-frame-146_332032">
+                            <div class="frame-content-146_332032">
+                              <div id="146_332033" class="Pixso-frame-146_332033">
+                                <p id="146_332034" class="Pixso-paragraph-146_332034">同比</p>
+                                <div id="146_332035" class="Pixso-vector-146_332035"></div>
+                                <p id="146_332037" class="Pixso-paragraph-146_332037">2.6%</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="146_332038" class="Pixso-frame-146_332038">
+                        <div id="146_332039" class="Pixso-group-146_332039">
+                          <p id="146_332040" class="Pixso-paragraph-146_332040">26728</p>
+                        </div>
+                        <div id="146_332041" class="Pixso-frame-146_332041">
+                          <div id="146_332042" class="Pixso-frame-146_332042">
+                            <p id="146_332043" class="Pixso-paragraph-146_332043">兴趣访客 (周)</p>
+                          </div>
+                          <div id="146_332044" class="Pixso-frame-146_332044">
+                            <div class="frame-content-146_332044">
+                              <div id="146_332045" class="Pixso-frame-146_332045">
+                                <div class="frame-content-146_332045">
+                                  <p id="146_332046" class="Pixso-paragraph-146_332046">同比</p>
+                                  <div id="146_332047" class="Pixso-vector-146_332047"></div>
+                                  <p id="146_332049" class="Pixso-paragraph-146_332049">2.6%</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="146_332050" class="Pixso-frame-146_332050">
+                        <div id="146_332051" class="Pixso-group-146_332051">
+                          <p id="146_332052" class="Pixso-paragraph-146_332052">26000</p>
+                        </div>
+                        <div id="146_332053" class="Pixso-frame-146_332053">
+                          <div id="146_332054" class="Pixso-frame-146_332054">
+                            <p id="146_332055" class="Pixso-paragraph-146_332055">互动访客 (周)</p>
+                          </div>
+                          <div id="146_332056" class="Pixso-frame-146_332056">
+                            <div class="frame-content-146_332056">
+                              <div id="146_332057" class="Pixso-frame-146_332057">
+                                <p id="146_332058" class="Pixso-paragraph-146_332058">同比</p>
+                                <div id="146_332059" class="Pixso-vector-146_332059"></div>
+                                <p id="146_332061" class="Pixso-paragraph-146_332061">2.6%</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="146_332062" class="Pixso-frame-146_332062">
+                    <p id="146_332082" class="Pixso-paragraph-146_332082">分享获客</p>
+                  </div>
+                  <div id="146_332083" class="Pixso-group-146_332083"></div>
+                </div>
+              </div>
+            </div>
+            <div id="14_884803" class="Pixso-frame-14_884803">
+              <div class="frame-content-14_884803">
+                <div id="14_884804" class="Pixso-frame-14_884804">
+                  <div class="frame-content-14_884804">
+                    <div id="14_884805" class="Pixso-frame-14_884805">
+                      <div id="14_884806" class="Pixso-frame-14_884806">
+                        <div id="14_884807" class="Pixso-group-14_884807">
+                          <div id="14_884808" class="Pixso-group-14_884808">
+                            <div id="14_884813" class="Pixso-vector-14_884813"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <p id="14_884814" class="Pixso-paragraph-14_884814 text-ohos_id_text_size_body2regular-14_886008">管理应用</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="14_884840" class="Pixso-frame-14_884840">
+        <div id="14_884841" class="Pixso-rectangle-14_884841"></div>
+        <p id="14_884842" class="Pixso-paragraph-14_884842">我的</p>
+        <p id="14_884843" class="Pixso-paragraph-14_884843">服务</p>
+        <p id="14_884844" class="Pixso-paragraph-14_884844">工作台</p>
+        <p id="14_884845" class="Pixso-paragraph-14_884845">商城</p>
+        <p id="14_884846" class="Pixso-paragraph-14_884846">首页</p>
+        <div id="14_884847" class="Pixso-group-14_884847">
+          <div id="14_884848" class="Pixso-vector-14_884848"></div>
+          <div id="14_884849" class="Pixso-group-14_884849">
+            <div id="14_884850" class="Pixso-vector-14_884850"></div>
+            <div id="14_884851" class="stroke-wrapper-14_884851">
+              <div class="Pixso-rectangle-14_884851"></div>
+              <div class="stroke-14_884851"></div>
+            </div>
+          </div>
+        </div>
+        <div id="14_884852" class="Pixso-vector-14_884852"></div>
+        <div id="14_884856" class="Pixso-vector-14_884856"></div>
+        <div id="14_884869" class="Pixso-group-14_884869">
+          <div id="14_884870" class="Pixso-vector-14_884870"></div>
+          <div id="14_884871" class="Pixso-vector-14_884871"></div>
+        </div>
+        <div id="14_884874" class="Pixso-group-14_884874">
+          <div id="14_884875" class="Pixso-vector-14_884875"></div>
+          <div id="14_884876" class="Pixso-group-14_884876">
+            <div id="14_884877" class="Pixso-vector-14_884877"></div>
+            <div id="14_884880" class="Pixso-vector-14_884880"></div>
+          </div>
+        </div>
+      </div>
+      <div id="14_884883" class="Pixso-frame-14_884883"></div>
+      <div id="14_884884" class="Pixso-frame-14_884884">
+        <div class="frame-content-14_884884">
+          <div id="146_139285" class="Pixso-frame-146_139285">
+            <div class="frame-content-146_139285">
+              <div id="146_139286" class="Pixso-frame-146_139286">
+                <p id="146_139287" class="Pixso-paragraph-146_139287 fill-text文本色图标色color_text_primary-14_290523-paragraph text-单行行高headline标题headline_s-14_365549">虚拟体验项目</p>
+              </div>
+            </div>
+          </div>
+          <div id="146_139298" class="Pixso-frame-146_139298">
+            <p id="146_139299" class="Pixso-paragraph-146_139299 fill-text文本色图标色color_text_primary-14_290523-paragraph">我的体验项目</p>
+          </div>
+          <div id="146_139300" class="Pixso-frame-146_139300">
+            <div class="frame-content-146_139300">
+              <div id="146_139301" class="Pixso-frame-146_139301">
+                <div class="frame-content-146_139301">
+                  <div id="146_139302" class="Pixso-frame-146_139302">
+                    <div id="146_139303" class="Pixso-group-146_139303">
+                      <div id="146_139304" class="Pixso-rectangle-146_139304"></div>
+                      <div id="146_139305" class="Pixso-group-146_139305">
+                        <div id="146_139312" class="Pixso-vector-146_139312"></div>
+                      </div>
+                      <div id="146_139315" class="Pixso-group-146_139315">
+                        <div id="146_139322" class="Pixso-vector-146_139322"></div>
+                      </div>
+                      <div id="146_139325" class="Pixso-group-146_139325">
+                        <div id="146_139332" class="Pixso-vector-146_139332"></div>
+                      </div>
+                      <div id="146_139335" class="Pixso-vector-146_139335"></div>
+                      <div id="146_139336" class="Pixso-vector-146_139336"></div>
+                      <div id="146_139337" class="Pixso-vector-146_139337"></div>
+                      <div id="146_139338" class="Pixso-vector-146_139338"></div>
+                      <div id="146_139339" class="Pixso-vector-146_139339"></div>
+                      <div id="146_139340" class="Pixso-vector-146_139340"></div>
+                    </div>
+                  </div>
+                  <p id="146_139348" class="Pixso-paragraph-146_139348 fill-text文本色图标色color_text_primary-14_290523-paragraph">体验开局流程</p>
+                </div>
+              </div>
+              <div id="146_139349" class="Pixso-frame-146_139349">
+                <div class="frame-content-146_139349">
+                  <div id="146_139350" class="Pixso-frame-146_139350">
+                    <div id="146_139351" class="Pixso-group-146_139351">
+                      <div id="146_139352" class="Pixso-rectangle-146_139352"></div>
+                      <div id="146_139353" class="Pixso-group-146_139353">
+                        <div id="146_139360" class="Pixso-vector-146_139360"></div>
+                      </div>
+                      <div id="146_139363" class="Pixso-group-146_139363">
+                        <div id="146_139370" class="Pixso-vector-146_139370"></div>
+                      </div>
+                      <div id="146_139373" class="Pixso-group-146_139373">
+                        <div id="146_139380" class="Pixso-vector-146_139380"></div>
+                      </div>
+                      <div id="146_139383" class="Pixso-vector-146_139383"></div>
+                      <div id="146_139384" class="Pixso-vector-146_139384"></div>
+                      <div id="146_139385" class="Pixso-vector-146_139385"></div>
+                      <div id="146_139386" class="Pixso-vector-146_139386"></div>
+                      <div id="146_139387" class="Pixso-vector-146_139387"></div>
+                      <div id="146_139388" class="Pixso-vector-146_139388"></div>
+                    </div>
+                  </div>
+                  <p id="146_139389" class="Pixso-paragraph-146_139389 fill-text文本色图标色color_text_primary-14_290523-paragraph">体验运维流程</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="146_139390" class="Pixso-group-146_139390">
+            <div id="146_139392" class="Pixso-group-146_139392">
+              <div id="146_139393" class="vector-wrapper-146_139393">
+                <div id="146_139393" class="Pixso-vector-146_139393"></div>
+              </div>
+              <div id="146_139394" class="Pixso-vector-146_139394"></div>
+              <div id="146_139395" class="vector-wrapper-146_139395">
+                <div id="146_139395" class="Pixso-vector-146_139395"></div>
+              </div>
+              <div id="146_139396" class="Pixso-rectangle-146_139396"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+</body>
+</html>
+```
+
+# Happy Path（顺序即用户操作顺序）
+### state_1: 工作台体验按钮待点击态
+- 描述: 页面显示“我的工作台”标题，内容区居中放置“体验运维流程”按钮，顶部状态栏与底部导航Tab正常可见，按钮为蓝色高亮可点击状态。
+- 实现方法: 原始 HTML 初始快照，不做改造。
+- 下一态 (trigger 应指向): state_2 (全屏填单与模型预览态)
+
+### state_2: 全屏填单与模型预览态
+- 描述: 页面切换为全屏布局，顶部状态栏与底部Tab保留。左侧为垂直滚动的表单卡片，包含“项目场景”和“项目名称”输入框；右侧为等宽比例的3D模型渲染区。底部固定悬浮蓝色“确定”按钮。
+- 实现方法: 全屏容器 (Full-screen Container)：覆盖原工作台内容，左侧 50% 区域为白色表单卡片，内含标题“项目信息 / Project Info”、输入框“项目场景 / Project Scenario”与“项目名称 / Project Name”；右侧 50% 区域为灰色 3D 模型渲染区；底部固定悬浮蓝色按钮，文案“确定 / Confirm”。
+- 下一态 (trigger 应指向): state_3 (表单必填项校验拦截态)
+
+### state_3: 表单必填项校验拦截态
+- 描述: 画面保持全屏填单布局，左侧表单中未填写的字段边框变为红色，字段正下方显示一行红色提示文字，页面保持当前滚动位置，底部“确定”按钮仍为蓝色可点击状态。
+- 实现方法: 表单控件样式修改 (Form Field Style Update)：在 state_2 基础上，将未填输入框的 border-color 改为红色 (#FF4D4F)，并在下方插入红色文字提示 “该项为必填 / Required”；页面其余布局与 state_2 完全一致。
+- 终态（无后继，不需要 trigger）
+
+# 输出要求
+为上面 3 个 state（含 state_1）各产出一项 states[]。state_1 通常无须修改（或仅注入 trigger 让用户开始流程）。最后一个 state 是终态，可以不带 trigger。
+
+直接输出 JSON。

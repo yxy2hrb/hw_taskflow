@@ -1,0 +1,61 @@
+{
+  "title": "快速入门引导流程",
+  "slug": "quick-start-onboarding-flow",
+  "createdAt": "2026-05-16T08:07:45.856Z",
+  "meta": {
+    "title": "快速入门引导流程",
+    "slug": "quick-start-onboarding-flow",
+    "user_story": "已登录的普通用户在‘我的工作台’点击‘快速入门’按钮，找到适合当前角色的入门内容，系统按预设分类聚合条目，用户点击‘查看’进入文档详情，页面完全加载并聚焦搜索框，四类标签与7条条目全部可见且可交互",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "工作台主页面初始态",
+      "description": "用户停留在‘我的工作台’主页面，顶部状态栏显示时间、信号与电量图标，底部Tab栏包含‘首页’‘工作台’‘消息’‘我’四个图标且当前‘工作台’高亮，主内容区完整显示卡片式任务列表与快捷入口区域，无任何蒙层、弹窗或悬浮元素。",
+      "implementation_method": "原始 HTML 初始快照，不做改造",
+      "last_state": null,
+      "file": "state_1.html"
+    },
+    {
+      "state_id": 2,
+      "state_name": "蒙层弹出态",
+      "description": "全屏半透明黑色遮罩（rgba(0,0,0,0.4)）覆盖整个工作台主内容区，顶部状态栏与底部Tab栏保持完全不透明且位置固定不变；遮罩中央悬浮一张宽320px、高520px、圆角12px、白底阴影的卡片，卡片内含搜索框、四类标签横排区域、7条条目垂直排列区域，卡片外其余屏幕区域均为遮罩色。",
+      "implementation_method": "全屏遮罩叠加悬浮卡片 (Overlay + Floating Card)：遮罩为 rgba(0,0,0,0.4) 全屏 div；悬浮卡片为绝对定位 white 背景容器，宽320px、高520px、border-radius:12px、box-shadow:0 4px 16px rgba(0,0,0,0.08)；卡片内布局从上至下依次为搜索框、四类标签横排容器（flex-row）、7条条目垂直容器（flex-col）。",
+      "last_state": 1,
+      "file": "state_2.html"
+    },
+    {
+      "state_id": 3,
+      "state_name": "加载中态",
+      "description": "全屏半透明黑色遮罩（rgba(0,0,0,0.4)）覆盖工作台主内容区，顶部状态栏与底部Tab栏正常可见；遮罩中央悬浮白色圆角卡片，卡片内顶部为灰色细线输入框（高40px、边框#D9D9D9、圆角8px），内含浅灰文字‘搜索...’；下方四类标签以浅灰底色（#F5F5F5）、圆角20px、高32px胶囊呈现，文字分别为‘产品功能’‘配置指南’‘常见问题’‘API接入’；再下方为7组灰色虚线骨架：每组含1条高16px标题横条（rgba(0,0,0,0.08)）、1条高12px描述横条（rgba(0,0,0,0.06)）、1个高28px宽64px蓝色按钮骨架（rgba(70,177,227,0.1)），全部垂直等距排列。",
+      "implementation_method": "骨架屏填充卡片 (Skeleton Card)：卡片结构同 state_2；搜索框为 border:1px solid #D9D9D9、height:40px、border-radius:8px、padding:0 12px，内部文字‘搜索...’ color:#BFBFBF；四类标签为 background:#F5F5F5、height:32px、border-radius:20px、font-size:12px、line-height:32px、text-align:center，文案分别为‘产品功能’‘配置指南’‘常见问题’‘API接入’；7条骨架每组含三段：标题条 height:16px、bg:rgba(0,0,0,0.08)；描述条 height:12px、bg:rgba(0,0,0,0.06)；按钮条 width:64px、height:28px、bg:rgba(70,177,227,0.1)、border-radius:4px。",
+      "last_state": 2,
+      "file": "state_3.html"
+    },
+    {
+      "state_id": 4,
+      "state_name": "就绪态",
+      "description": "全屏半透明黑色遮罩（rgba(0,0,0,0.4)）覆盖工作台主内容区，顶部状态栏与底部Tab栏正常可见；遮罩中央悬浮白色圆角卡片，卡片内顶部搜索框已获得焦点，光标闪烁，内含浅灰提示文字‘搜索...’；下方四类标签背景色为#E6F7FF、文字色#46B1E3、字体加粗，文案分别为‘产品功能’‘配置指南’‘常见问题’‘API接入’；再下方7条条目均完整渲染：每条含标题（14px深灰#191919）、描述（12px中灰#595959）、右侧蓝色实心矩形按钮（#46B1E3、高28px、宽64px、圆角4px、文字‘查看’白色12px Medium），全部垂直等距排列。",
+      "implementation_method": "交互就绪卡片 (Interactive Card)：卡片结构同 state_2；搜索框 focus-visible 状态，outline:none，caret-color:#46B1E3；四类标签 background:#E6F7FF、color:#46B1E3、font-weight:Medium；7条条目每条含 h3 标题（class='text-ohos_id_text_size_body2regular-14_1031727'）、p 描述（class='text-fontbody_sregular-14_365555'）、button（background:#46B1E3、color:white、font-size:12px、font-weight:Medium、border-radius:4px、width:64px、height:28px、text-align:center，文案‘查看’）。",
+      "last_state": 2,
+      "file": "state_4.html"
+    },
+    {
+      "state_id": 5,
+      "state_name": "文档详情态",
+      "description": "画面与工作台主页面初始态完全一致，顶部状态栏显示时间、信号与电量图标，底部Tab栏‘工作台’仍高亮，主内容区恢复完整显示卡片式任务列表与快捷入口区域，无任何蒙层、卡片、浮层或遮罩，全屏无叠加元素。",
+      "implementation_method": "画面与 last_state（state_1）完全一致；base 已是关闭后的样子，无需任何 DOM 改造。",
+      "last_state": 1,
+      "file": "state_5.html"
+    },
+    {
+      "state_id": 6,
+      "state_name": "空数据态",
+      "description": "全屏半透明黑色遮罩（rgba(0,0,0,0.4)）覆盖工作台主内容区，顶部状态栏与底部Tab栏正常可见；遮罩中央悬浮白色圆角卡片，卡片内顶部为灰色细线搜索框（含‘搜索...’提示），下方四类标签正常显示；卡片中部为空状态区：居中显示一个 48×48px 灰色线条图标（SVG path d='M22 12c0-1.1-.9-2-2-2s-2 .9-2 2 .9 2 2 2 2-.9 2-2zm-4 8c0-1.1-.9-2-2-2s-2 .9-2 2 .9 2 2 2 2-.9 2-2zm6 0c0-1.1-.9-2-2-2s-2 .9-2 2 .9 2 2 2 2-.9 2-2z' fill=#BFBFBF），图标下方为深灰文字‘暂无内容’（14px Medium），再下方为蓝色实心矩形按钮（#46B1E3、高32px、宽120px、圆角4px、文字‘重试’白色12px Medium），按钮水平居中。",
+      "implementation_method": "空状态卡片 (Empty State Card)：卡片结构同 state_2；空状态区为 flex-col 垂直居中容器，含 SVG 图标（width:48px;height:48px;fill:#BFBFBF）、文字‘暂无内容’（color:#191919;font-size:14px;font-weight:Medium;line-height:20px）、按钮（background:#46B1E3;width:120px;height:32px;border-radius:4px;color:white;font-size:12px;font-weight:Medium;text-align:center，文案‘重试’）。",
+      "last_state": 2,
+      "file": "state_6.html"
+    }
+  ]
+}

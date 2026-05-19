@@ -1,0 +1,36 @@
+{
+  "state_name": "运维流程加载中",
+  "lifecycle": "persistent",
+  "injection": { "mode": "replace", "anchor": "#main-content" },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "Row",
+    "props": { "gap": 16, "padding": 16, "width": "100%" },
+    "children": [
+      {
+        "type": "Column",
+        "props": { "gap": 16, "width": "50%", "maxWidth": "400px" },
+        "children": [
+          {
+            "type": "FormField",
+            "props": { "label": "项目场景", "value": "生产环境部署", "required": true }
+          },
+          {
+            "type": "FormField",
+            "props": { "label": "项目名称", "value": "AI推理服务集群", "required": true }
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": { "gap": 16, "width": "50%", "align": "center", "justify": "center" },
+        "children": [
+          {
+            "type": "Spinner",
+            "props": { "size": 48, "color": "#46B1E3" }
+          }
+        ]
+      }
+    ]
+  }
+}

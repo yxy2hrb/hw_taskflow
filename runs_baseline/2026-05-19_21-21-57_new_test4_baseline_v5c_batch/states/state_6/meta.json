@@ -1,0 +1,12 @@
+{
+  "state_id": 6,
+  "state_name": "字段校验失败",
+  "description": "页面结构与运维流程全屏页完全一致：顶部状态栏与底部 Tab 栏正常可见；左侧表单区中，‘项目场景’下拉框下方紧贴显示红色小字‘请选择项目场景’（12px Regular、#F44336、HarmonyHeiTi-Regular）；‘项目名称’输入框下方紧贴显示红色小字‘请输入有效项目名称’（12px Regular、#F44336、HarmonyHeiTi-Regular）；右侧三维模型容器内无任何遮罩或图标，仅显示原始设备线框图。",
+  "implementation_method": "表单错误提示 (Form Error Text)：下拉框下方添加 p 元素，text '请选择项目场景'（12px Regular、#F44336）；输入框下方添加 p 元素，text '请输入有效项目名称'（12px Regular、#F44336）；两段文字均 margin-top:4px、line-height:16px、font-family:'HarmonyHeiTi-Regular'；右侧模型区保持原始状态，无新增 DOM。",
+  "last_state": 2,
+  "applied": 1,
+  "skipped": 0,
+  "elapsed_ms": 75454,
+  "failed": false,
+  "error": null
+}

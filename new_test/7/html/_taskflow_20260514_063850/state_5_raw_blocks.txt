@@ -1,0 +1,59 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#146_394426",
+      "instruction": "将开关背景色改为 rgba(223,223,223,1)（灰色关闭态）",
+      "components_needed": ["Switch"]
+    },
+    {
+      "id": "e2",
+      "type": "new-overlay",
+      "anchor": "#146_395667",
+      "instruction": "在页面右上角添加 Toast：红底 #C7000B、圆角矩形（radius=8px）、轻微阴影（box-shadow:0 2px 8px rgba(0,0,0,0.1)），宽度180px、高度44px；内部左侧嵌入白色感叹号图标（Material Icons Round 名 warning），右侧文字'添加失败，请重试'（14px HarmonyHeiTi-Regular，颜色#FFFFFF）；Toast 距顶部状态栏下沿16px、距右边缘16px。",
+      "components_needed": ["Toast"],
+      "icons_needed": ["warning"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Button",
+    "props": {
+      "label": "",
+      "variant": "text",
+      "size": "compact",
+      "disabled": false,
+      "icon": "toggle_off",
+      "style": "background-color: rgba(223,223,223,1); border-radius: 20px; width: 48px; height: 24px; padding: 0; margin: 0;"
+    }
+  }
+}
+[NEXT]
+{
+  "tree": {
+    "type": "Row",
+    "props": {
+      "background": "#C7000B",
+      "borderRadius": 8,
+      "padding": [12, 16],
+      "gap": 12,
+      "align": "center",
+      "width": 180,
+      "height": 44,
+      "position": "fixed",
+      "top": "calc(32px + 16px)",
+      "right": "16px",
+      "zIndex": 10000,
+      "shadow": "0 2px 8px rgba(0,0,0,0.1)"
+    },
+    "children": [
+      { "type": "Icon", "props": { "name": "warning", "size": 20, "color": "#FFFFFF" } },
+      { "type": "Text", "props": { "color": "#FFFFFF", "size": 14, "weight": 400, "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif" }, "children": "添加失败，请重试" }
+    ]
+  }
+}

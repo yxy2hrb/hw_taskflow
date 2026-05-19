@@ -1,0 +1,44 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "工作台主界面初始态",
+    "description": "屏幕显示‘我的工作台’主页面，顶部状态栏可见（含时间、信号、电池图标），底部 Tab 栏完整显示（含‘首页’‘工作台’‘监控’‘我’四个标签），中央区域为功能入口网格；‘我的体验项目’入口卡片位于工作台中部偏上位置，使用主色边框与图标，文字为‘我的体验项目’。",
+    "implementation_method": "原始 HTML 初始快照，不做改造。",
+    "last_state": null
+  },
+  {
+    "state_id": 2,
+    "state_name": "弹窗列表展示态",
+    "description": "屏幕保持顶部状态栏与底部 Tab 栏完全可见；中央区域覆盖一层半透明黑色遮罩（rgba(0,0,0,0.4)），其上居中悬浮白色圆角卡片（宽360px，高约80vh，圆角12px，轻微阴影），卡片内垂直排列多张项目卡片；每张卡片含左对齐项目名称（16px加粗）、右上角灰色‘创建时间’标签（12px）、下方一行‘设备类型+数量’（如‘AP × 3，终端 × 12’，12px）、右下角带圆角的蓝色状态标签（如‘运行中’）、右侧对齐操作按钮‘查看详情’（14px，主色）。",
+    "implementation_method": "全屏模态弹窗 (Modal/Dialog)：白色圆角卡片（#FFFFFF，border-radius:12px，box-shadow:0 4px 12px rgba(0,0,0,0.08)）居中悬浮于半透明遮罩（rgba(0,0,0,0.4)）之上；每张卡片含标题文本 '项目名称'、副标题文本 '创建时间：2024-05-20 14:32'、设备信息文本 'AP × 3，终端 × 12'、状态标签文本 '运行中'（背景色 #46B1E3，文字色 #FFFFFF）、操作按钮文本 '查看详情'（字体HarmonyHeiTi-Regular，14px，#46B1E3）；所有文本均为中文，无英文混排。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "空数据提示态",
+    "description": "屏幕保持顶部状态栏与底部 Tab 栏完全可见；中央区域覆盖一层半透明黑色遮罩（rgba(0,0,0,0.4)），其上居中悬浮浅灰底色卡片（宽320px，高220px，圆角12px，#F3F3F3背景），卡片内上方居中显示线性插图（SVG格式空文件夹图标），下方居中文本‘暂无体验项目’（16px加粗，#191919），再下方并排两个按钮：左侧主色按钮‘立即创建’（14px，#46B1E3，#FFFFFF文字），右侧次色按钮‘查看帮助’（14px，#666666，#000000文字）。",
+    "implementation_method": "弹窗内图文组合 (Card with Illustration)：浅灰底色卡片（#F3F3F3，width:320px，height:220px，border-radius:12px）居中；顶部 SVG 插图（空文件夹轮廓，单色 #CCCCCC）；中间标题文本 '暂无体验项目'（font-size:16px，font-weight:Medium，color:#191919）；下方按钮组：左侧按钮文本 '立即创建'（background:#46B1E3，color:#FFFFFF），右侧按钮文本 '查看帮助'（background:transparent，color:#666666，border:1px solid #CCCCCC）；所有文案均为中文。",
+    "last_state": 2
+  },
+  {
+    "state_id": 4,
+    "state_name": "详情页加载过渡态",
+    "description": "屏幕显示全屏页面：顶部通栏深蓝背景（#191919），左侧返回箭头图标（白色SVG），居中标题‘虚拟体验项目’（16px加粗，#FFFFFF），右侧三个等距图标（搜索、通知、加号，均为白色SVG）；主体区域为纯白背景，中央垂直堆叠三块灰色圆角卡片：第一块为网络拓扑图占位区（宽100%，高200px，浅灰#F3F3F3，居中显示‘拓扑图加载中’文字），第二块为Wi-Fi评分卡片（宽100%，高120px，浅灰#F3F3F3，含‘Wi-Fi评分’标题与‘--’分数），第三块为统计卡片（宽100%，高160px，浅灰#F3F3F3，含‘运行时长’‘设备数’‘终端数’三项指标，均显示‘--’）；顶部状态栏与底部Tab不可见。",
+    "implementation_method": "纯色加载卡片 (Loading Placeholder Card)：全屏页面（无遮罩）；顶部导航栏（#191919，height:56px）含左向SVG箭头、居中标题 '虚拟体验项目'（font-size:16px，color:#FFFFFF）、右侧三个SVG图标（search / bell / plus）；主体区域三块灰色圆角卡片（#F3F3F3，border-radius:8px）垂直堆叠：第一块含文本 '拓扑图加载中'（14px，#999999），第二块含标题 'Wi-Fi评分' 与数值 '--'（14px），第三块含三行文本 '运行时长：--'、'设备数：--'、'终端数：--'（14px）；所有文案均为中文。",
+    "last_state": 1
+  },
+  {
+    "state_id": 5,
+    "state_name": "详情全屏展示态",
+    "description": "屏幕显示全屏页面：顶部通栏深蓝背景（#191919），左侧返回箭头图标（白色SVG），居中标题‘虚拟体验项目’（16px加粗，#FFFFFF），右侧三个等距图标（搜索、通知、加号，均为白色SVG）；主体区域为纯白背景，自上而下依次为：网络拓扑图（SVG渲染，宽100%，高240px，含AP/终端节点与连接线），Wi-Fi评分卡片（宽100%，高120px，#FFFFFF背景，圆角8px，含标题‘Wi-Fi评分’、大号数字‘87分’、进度条（蓝色填充70%）及说明‘信号强度良好’），运行时长与设备终端统计卡片（宽100%，高160px，#FFFFFF背景，圆角8px，含三行：‘运行时长：3天12小时’‘设备总数：8台’‘终端总数：42个’）；顶部状态栏与底部Tab不可见。",
+    "implementation_method": "全屏页面 (Full Page View)：顶部导航栏（#191919，height:56px）含左向SVG箭头、居中标题 '虚拟体验项目'（font-size:16px，color:#FFFFFF）、右侧三个SVG图标（search / bell / plus）；主体区域：第一区块为SVG拓扑图（<svg>元素，viewBox适配，含circle节点与line连接）；第二区块为Wi-Fi评分卡片，含标题 'Wi-Fi评分'（14px，#191919）、数值 '87分'（28px，#46B1E3，font-weight:Medium）、进度条（height:6px，background:#E0E0E0，fill:#46B1E3，width:70%）、说明文本 '信号强度良好'（12px，#666666）；第三区块为统计卡片，含三行文本 '运行时长：3天12小时'、'设备总数：8台'、'终端总数：42个'（14px，#191919）；所有文案均为中文。",
+    "last_state": 4
+  },
+  {
+    "state_id": 6,
+    "state_name": "网络失败错误态",
+    "description": "屏幕显示全屏页面：顶部通栏深蓝背景（#191919），左侧返回箭头图标（白色SVG），居中标题‘虚拟体验项目’（16px加粗，#FFFFFF），右侧三个等距图标（搜索、通知、加号，均为白色SVG）；主体区域为纯白背景，中央悬浮浅黄背景卡片（宽320px，高180px，圆角12px，#FFF9E6背景，#FFC107边框1px），卡片内上方居中显示感叹号图标（SVG，#FFC107），中间文本‘无法加载项目详情’（16px加粗，#191919），下方文本‘检查网络后重试’（14px，#666666），底部居中一个蓝色主按钮‘重试’（14px，#46B1E3，#FFFFFF文字）；顶部状态栏与底部Tab不可见。",
+    "implementation_method": "弹窗内友好错误页 (Friendly Error Card)：浅黄背景卡片（#FFF9E6，border:1px solid #FFC107，width:320px，height:180px，border-radius:12px）居中；顶部SVG感叹号图标（#FFC107）；中间标题文本 '无法加载项目详情'（font-size:16px，font-weight:Medium，color:#191919）；下方说明文本 '检查网络后重试'（font-size:14px，color:#666666）；底部按钮文本 '重试'（font-size:14px，background:#46B1E3，color:#FFFFFF）；所有文案均为中文。",
+    "last_state": 5
+  }
+]

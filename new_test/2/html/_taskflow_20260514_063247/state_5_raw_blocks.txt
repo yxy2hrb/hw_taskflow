@@ -1,0 +1,129 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#146_161533",
+      "instruction": "将白色卡片容器（宽328px、高156px、圆角16px）替换为完整项目集创建表单：顶部居中标题'创建项目集'（16px HarmonyHeiTi-Medium、#191919）；下方名称输入框（宽320px、高48px、边框2px solid #E62A2A、内嵌placeholder='请输入项目集名称'、14px HarmonyHeiTi-Regular、#666）；输入框正下方添加红色提示文字'请输入项目集名称'（12px、#E62A2A、左对齐、margin-top: 8px）；再下方公司/个人单选组（两个并排圆角矩形按钮，左'公司'右'个人'，14px、#191919、无选中态）；再下方项目添加区（灰色'+ 添加项目'文字按钮，14px、#666）；底部固定红色'确认'按钮（宽320px、高48px、#E62A2A底色、白色16px加粗文字）；所有文本字体统一为HarmonyHeiTi，字号严格按描述；保留顶部状态栏与底部Tab导航栏可见；整体卡片需保持宽360px、高792px、绝对定位居中、白色背景、阴影/模糊效果与base一致。",
+      "components_needed": ["TextInput", "Button", "Radio"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Page",
+    "props": {
+      "background": "#FFFFFF",
+      "width": 360,
+      "height": 792
+    },
+    "children": [
+      {
+        "type": "StatusBar",
+        "props": {
+          "time": "08:08",
+          "signal": "5G",
+          "battery": 100
+        }
+      },
+      {
+        "type": "Column",
+        "props": {
+          "gap": 24,
+          "padding": 24,
+          "align": "center",
+          "justify": "flex-start",
+          "width": "100%",
+          "maxWidth": 328,
+          "background": "#FFFFFF",
+          "borderRadius": 16,
+          "shadow": true
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "variant": "title",
+              "size": 16,
+              "weight": 500,
+              "color": "#191919",
+              "align": "center"
+            },
+            "children": "创建项目集"
+          },
+          {
+            "type": "FormField",
+            "props": {
+              "label": "",
+              "placeholder": "请输入项目集名称",
+              "value": "",
+              "invalid": true,
+              "error": "请输入项目集名称",
+              "labelWidth": 0,
+              "size": "regular"
+            }
+          },
+          {
+            "type": "Row",
+            "props": {
+              "gap": 12,
+              "justify": "space-between",
+              "width": "100%"
+            },
+            "children": [
+              {
+                "type": "Button",
+                "props": {
+                  "label": "公司",
+                  "variant": "secondary",
+                  "size": "compact",
+                  "block": false
+                }
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "个人",
+                  "variant": "secondary",
+                  "size": "compact",
+                  "block": false
+                }
+              }
+            ]
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "+ 添加项目",
+              "variant": "text",
+              "size": "compact",
+              "color": "#666"
+            }
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "确认",
+              "variant": "warning",
+              "size": "regular",
+              "block": true,
+              "disabled": false
+            }
+          }
+        ]
+      },
+      {
+        "type": "NavBar",
+        "props": {
+          "title": "",
+          "leftIcon": "arrow_back",
+          "rightIcon": "",
+          "align": "left"
+        }
+      }
+    ]
+  }
+}

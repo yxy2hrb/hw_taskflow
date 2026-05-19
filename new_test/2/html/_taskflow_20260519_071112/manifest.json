@@ -1,0 +1,69 @@
+{
+  "title": "创建项目集任务流",
+  "slug": "create-project-set-flow",
+  "createdAt": "2026-05-18T23:13:12.897Z",
+  "meta": {
+    "title": "创建项目集任务流",
+    "slug": "create-project-set-flow",
+    "user_story": "已登录的企业成员在‘我的工作台’点击‘创建项目集’按钮 → 填写名称并选定属性 → 系统校验项目与属性匹配性 → 用户点击确认完成创建 → 顶部弹出‘创建成功’Toast，同时页面自动返回工作台并刷新项目集列表",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "我的工作台初始页",
+      "description": "页面为浅灰背景（#F3F3F3），顶部状态栏显示时间、信号与电量图标，底部Tab栏含‘工作台’‘项目’‘消息’‘我’四图标，当前‘工作台’Tab高亮；中部为项目集列表区域，列表顶部有‘创建项目集’按钮（红色底色、白色粗体文字、圆角矩形、居中水平排列）。",
+      "implementation_method": "原始 HTML 初始快照，不做改造",
+      "last_state": null,
+      "file": "state_1.html"
+    },
+    {
+      "state_id": 2,
+      "state_name": "创建项目集全屏页初始态",
+      "description": "顶部状态栏保持可见（时间/信号/电量图标正常显示），底部Tab栏完整保留（‘工作台’‘项目’‘消息’‘我’四图标均可见）；中央为宽320px、带轻微阴影的白色卡片区域，卡片内顶部为‘创建项目集’标题（16px HarmonyHeiTi-Medium，深灰#191919），下方为名称输入框（空、浅灰边框、占位符‘请输入项目集名称’）、‘公司/个人’单选按钮组（两个圆形单选框+对应文字，均未选中）、项目添加区（空白，仅显示‘+ 添加项目’灰色文字），底部为红色‘确认’按钮（#E53935底色、白色粗体文字、圆角矩形、居中固定于卡片底部）。",
+      "implementation_method": "全屏表单页 (Full-Screen Form Page)：浅灰背景 #F3F3F3 全局铺满；顶部状态栏与底部Tab栏原样保留；中央白色卡片（#FFFFFF，box-shadow: 0 2px 12px rgba(0,0,0,0.08)）宽320px、垂直居中；标题 '创建项目集'；名称输入框 placeholder='请输入项目集名称'；单选按钮组含 '公司' 和 '个人' 两个选项（无默认选中）；项目添加区文字 '＋ 添加项目'（#9E9E9E，14px）；底部按钮文字 '确认'（#FFFFFF，16px，Medium，#E53935底色）。",
+      "last_state": 1,
+      "file": "state_2.html"
+    },
+    {
+      "state_id": 3,
+      "state_name": "创建项目集填写完成态",
+      "description": "顶部状态栏与底部Tab栏完整保留；中央白色卡片区域中，名称输入框已填入非空文字（如‘AI平台建设’，14px深灰#191919），‘公司’单选按钮已高亮选中（右侧圆点填充#E53935），项目添加区下方横向排列2个已添加项目卡片（每张卡片含小图标+项目名称，如‘ERP系统’‘CRM升级’，12px深灰，圆角矩形背景#F5F5F5，间距8px），底部红色‘确认’按钮文字仍为‘确认’且可点击（无禁用样式）。",
+      "implementation_method": "全屏表单页 (Full-Screen Form Page)：顶部状态栏与底部Tab栏原样保留；中央白色卡片结构同 state_2；名称输入框 value='AI平台建设'；单选按钮组中‘公司’项右侧圆点 fill='#E53935'；项目添加区下方显示2个横向排列的项目标签（尺寸：高24px，圆角12px，背景#F5F5F5，图标+文字左对齐，文字 'ERP系统'、'CRM升级'）；底部按钮文字 '确认'，状态 active（无opacity降级、无loading图标）。",
+      "last_state": 2,
+      "file": "state_3.html"
+    },
+    {
+      "state_id": 4,
+      "state_name": "创建中加载态",
+      "description": "顶部状态栏与底部Tab栏完整保留；中央白色卡片区域结构同 state_2，但底部红色‘确认’按钮变为灰色（#BDBDBD底色）、文字改为‘创建中…’（14px白色，Medium），按钮内叠加一个顺时针旋转的16px圆环spinner（stroke=#191919，stroke-width=2，CSS animation:hmspin 1s linear infinite）；名称输入框、单选按钮组、项目添加区全部保持原状不可编辑；无遮罩层、无Toast、无其他浮层。",
+      "implementation_method": "按钮控件 (Button)：底部按钮 background-color='#BDBDBD'；文字 '创建中…'；内部嵌套 SVG 圆环 spinner（viewBox='0 0 24 24'，stroke='#191919'，stroke-width='2'，stroke-linecap='round'，路径 d='M12,2 A10,10 0 0,1 22,12'，CSS animation:hmspin 1s linear infinite）；其余表单元素（输入框、单选按钮、项目区）保持 state_2 结构与内容不变。",
+      "last_state": 2,
+      "file": "state_4.html"
+    },
+    {
+      "state_id": 5,
+      "state_name": "创建成功Toast态",
+      "description": "顶部状态栏保持可见，其正下方16px处悬浮一条纯白底色横幅Toast（宽100%、高40px、圆角8px、左右内边距16px），Toast内左侧为绿色勾选图标（SVG，fill=#4CAF50），右侧为14px深灰粗体文字‘创建成功’（HarmonyHeiTi-Medium），Toast完全不遮挡中央白色卡片及底部Tab栏；其余页面内容（包括状态栏、卡片、Tab）静止可见、无动画残留、无遮罩。",
+      "implementation_method": "轻量级提示 (Toast/Snackbar)：纯白背景 #FFFFFF，高度40px，圆角8px，左右内边距16px；左侧 SVG 勾选图标（path d='M9 16.17L4.83 12l-1.42 1.41L9 18.83 21 7.17 19.59 5.76z'，fill='#4CAF50'）；右侧文字 '创建成功'（#191919，14px，Medium）；Toast位于状态栏 bottom + 16px 处，z-index 高于所有内容但不覆盖 Tab 栏。",
+      "last_state": 1,
+      "file": "state_5.html"
+    },
+    {
+      "state_id": 6,
+      "state_name": "校验失败错误提示态",
+      "description": "顶部状态栏与底部Tab栏完整保留；中央白色卡片区域中，名称输入框下方显示红色12px小字‘请输入项目集名称’（#D32F2F），单选按钮组下方显示红色12px小字‘请选择属性’（#D32F2F），项目添加区上方显示红色12px小字‘所选项目与属性不匹配’（#D32F2F）；名称输入框为空、单选按钮均未选中、项目添加区空白；底部红色‘确认’按钮保持可点击状态（无禁用样式）。",
+      "implementation_method": "表单内联错误提示 (Inline Form Error)：名称输入框下方文本 '请输入项目集名称'（#D32F2F，12px）；单选按钮组下方文本 '请选择属性'（#D32F2F，12px）；项目添加区上方文本 '所选项目与属性不匹配'（#D32F2F，12px）；三处错误文本均采用绝对定位或 margin-top 插入，不改变原有表单结构；底部按钮文字仍为 '确认'，background-color='#E53935'，无disabled属性。",
+      "last_state": 2,
+      "file": "state_6.html"
+    },
+    {
+      "state_id": 7,
+      "state_name": "用户取消返回工作台",
+      "description": "画面与 last_state（state_1）完全一致；顶部状态栏显示时间/信号/电量，底部Tab栏含‘工作台’‘项目’‘消息’‘我’四图标且‘工作台’Tab高亮，中部项目集列表区域完整显示，列表顶部‘创建项目集’按钮处于原始位置与样式（红色底色、白色粗体文字、圆角矩形），无任何叠加浮层、无遮罩、无动画残留。",
+      "implementation_method": "画面与 last_state（state_1）完全一致；base 已是关闭后的样子，无需任何 DOM 改造。",
+      "last_state": 1,
+      "file": "state_7.html"
+    }
+  ]
+}

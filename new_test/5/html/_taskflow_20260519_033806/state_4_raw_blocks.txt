@@ -1,0 +1,287 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "<!-- 任务节点开始: 虚拟体验项目页加载中【持久】 -->\n<div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#FFFFFF;width:100%;height:60vh;box-sizing:border-box\"><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:12px;width:100%;box-sizing:border-box\"><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:400;color:rgba(0,0,0,0.08);text-align:left;line-height:1.4;\">····················</span><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:400;color:rgba(0,0,0,0.08);text-align:left;line-height:1.4;\">················</span><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:400;color:rgba(0,0,0,0.08);text-align:left;line-height:1.4;\">···················</span></div></div>\n<!-- 任务节点结束: 虚拟体验项目页加载中【持久】 -->",
+      "instruction": "把外层注释名改为 虚拟体验项目页就绪【临时】，并将内部骨架屏替换为完整内容区：设备拓扑图（SVG容器宽100%、高220px）、Wi-Fi评分卡片（蓝底#46B1E3，含大数字32px Medium #FFFFFF、副标题'Wi-Fi评分'14px Regular rgba(255,255,255,0.9)、进度条高4px背景#FFFFFF opacity:0.3）、运行时长标签'运行时长：72h 15m'（14px Regular #666666）、设备统计卡片（标题'设备总数'14px Medium #191919、数字'42'24px Medium #191919、状态行'在线 38 / 离线 4'12px Regular #666666）、终端统计卡片（结构同设备统计卡片）、业务网管理模块（标题'业务网管理'16px Medium #191919、开关控件、按钮'配置'14px Regular #46B1E3）、访问控制模块（标题'访问控制'16px Medium #191919、列表项含名称+IP+操作按钮、按钮'添加规则'14px Regular #46B1E3）；所有模块纵向堆叠，无遮罩，无滚动提示",
+      "components_needed": ["SVG", "Card", "Text", "ProgressBar", "Switch", "Button"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "gap": 24,
+      "padding": 24,
+      "align": "stretch",
+      "background": "#FFFFFF",
+      "borderRadius": 16,
+      "shadow": true
+    },
+    "children": [
+      {
+        "type": "Image",
+        "props": {
+          "placeholder": "topology",
+          "width": "100%",
+          "height": 220,
+          "borderRadius": 8
+        }
+      },
+      {
+        "type": "Column",
+        "props": {
+          "background": "#46B1E3",
+          "borderRadius": 16,
+          "padding": 24,
+          "gap": 12
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "size": 32,
+              "weight": 500,
+              "color": "#FFFFFF",
+              "align": "center"
+            },
+            "children": "32"
+          },
+          {
+            "type": "Text",
+            "props": {
+              "size": 14,
+              "weight": 400,
+              "color": "rgba(255,255,255,0.9)",
+              "align": "center"
+            },
+            "children": "Wi-Fi评分"
+          },
+          {
+            "type": "Row",
+            "props": {
+              "background": "rgba(255,255,255,0.3)",
+              "height": 4,
+              "borderRadius": 2,
+              "width": "100%"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Text",
+        "props": {
+          "size": 14,
+          "weight": 400,
+          "color": "#666666",
+          "align": "left"
+        },
+        "children": "运行时长：72h 15m"
+      },
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "borderRadius": 16,
+          "padding": 20,
+          "gap": 8,
+          "shadow": true
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "size": 14,
+              "weight": 500,
+              "color": "#191919",
+              "align": "left"
+            },
+            "children": "设备总数"
+          },
+          {
+            "type": "Text",
+            "props": {
+              "size": 24,
+              "weight": 500,
+              "color": "#191919",
+              "align": "left"
+            },
+            "children": "42"
+          },
+          {
+            "type": "Text",
+            "props": {
+              "size": 12,
+              "weight": 400,
+              "color": "#666666",
+              "align": "left"
+            },
+            "children": "在线 38 / 离线 4"
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "borderRadius": 16,
+          "padding": 20,
+          "gap": 8,
+          "shadow": true
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "size": 14,
+              "weight": 500,
+              "color": "#191919",
+              "align": "left"
+            },
+            "children": "终端总数"
+          },
+          {
+            "type": "Text",
+            "props": {
+              "size": 24,
+              "weight": 500,
+              "color": "#191919",
+              "align": "left"
+            },
+            "children": "27"
+          },
+          {
+            "type": "Text",
+            "props": {
+              "size": 12,
+              "weight": 400,
+              "color": "#666666",
+              "align": "left"
+            },
+            "children": "活跃 22 / 休眠 5"
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "borderRadius": 16,
+          "padding": 20,
+          "gap": 12,
+          "shadow": true
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "size": 16,
+              "weight": 500,
+              "color": "#191919",
+              "align": "left"
+            },
+            "children": "业务网管理"
+          },
+          {
+            "type": "Row",
+            "props": {
+              "gap": 12,
+              "align": "center",
+              "justify": "space-between"
+            },
+            "children": [
+              {
+                "type": "Checkbox",
+                "props": {
+                  "checked": true,
+                  "size": 22
+                }
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "配置",
+                  "variant": "text",
+                  "size": "compact",
+                  "color": "#46B1E3"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "borderRadius": 16,
+          "padding": 20,
+          "gap": 12,
+          "shadow": true
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "size": 16,
+              "weight": 500,
+              "color": "#191919",
+              "align": "left"
+            },
+            "children": "访问控制"
+          },
+          {
+            "type": "ListItem",
+            "props": {
+              "title": "办公区访客网络",
+              "subtitle": "192.168.10.0/24",
+              "divider": true
+            },
+            "children": [
+              {
+                "type": "Button",
+                "props": {
+                  "label": "编辑",
+                  "variant": "text",
+                  "size": "compact"
+                }
+              }
+            ]
+          },
+          {
+            "type": "ListItem",
+            "props": {
+              "title": "研发测试网络",
+              "subtitle": "10.20.30.0/24",
+              "divider": true
+            },
+            "children": [
+              {
+                "type": "Button",
+                "props": {
+                  "label": "编辑",
+                  "variant": "text",
+                  "size": "compact"
+                }
+              }
+            ]
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "添加规则",
+              "variant": "text",
+              "size": "compact",
+              "color": "#46B1E3"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

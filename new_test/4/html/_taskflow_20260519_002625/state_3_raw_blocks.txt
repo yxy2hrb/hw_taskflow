@@ -1,0 +1,89 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#14_884730",
+      "instruction": "把整个运维流程全屏页内容区块替换为：左侧固定宽度表单区（含项目场景下拉框、项目名称输入框）全部禁用（input边框色#CCCCCC、placeholder文字色rgba(0,0,0,0.60)、下拉箭头图标opacity=0.4、按钮背景#D0EBFF且不可点击），右侧三维模型容器背景色改为#1E1E1E，并在其中央叠加一个静态蓝色环形加载图标（直径48px，stroke #46B1E3，stroke-width 4px，无动画，仅闭合轮廓）；顶部状态栏与底部Tab导航栏保持不变。",
+      "components_needed": ["TextInput", "Dropdown"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Row",
+    "props": {
+      "gap": 24,
+      "padding": 0,
+      "width": "100%",
+      "align": "stretch",
+      "justify": "space-between"
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "width": 320,
+          "gap": 16,
+          "padding": 16
+        },
+        "children": [
+          {
+            "type": "FormField",
+            "props": {
+              "label": "项目场景",
+              "required": true,
+              "placeholder": "请选择项目场景",
+              "disabled": true,
+              "icon": "arrow_drop_down",
+              "suffix": {
+                "type": "Icon",
+                "props": {
+                  "name": "arrow_drop_down",
+                  "size": 20,
+                  "color": "rgba(0,0,0,0.4)",
+                  "style": "opacity: 0.4;"
+                }
+              }
+            }
+          },
+          {
+            "type": "FormField",
+            "props": {
+              "label": "项目名称",
+              "required": true,
+              "placeholder": "请输入项目名称",
+              "disabled": true,
+              "value": ""
+            }
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "width": "calc(100% - 344px)",
+          "background": "#1E1E1E",
+          "borderRadius": 8,
+          "padding": 0,
+          "align": "center",
+          "justify": "center"
+        },
+        "children": [
+          {
+            "type": "Icon",
+            "props": {
+              "name": "progress_activity",
+              "size": 48,
+              "color": "#46B1E3",
+              "style": "stroke-width: 4px; fill: none; stroke: #46B1E3;"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

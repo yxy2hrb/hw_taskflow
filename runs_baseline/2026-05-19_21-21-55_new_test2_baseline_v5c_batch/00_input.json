@@ -1,0 +1,8 @@
+{
+  "startedAt": "2026-05-19T21:21:55.891Z",
+  "sourceDir": "new_test/2/html",
+  "htmlPath": "new_test\\2\\html\\Index.html",
+  "htmlBytes": 31237,
+  "briefFile": "new_test/2/input.txt",
+  "brief": "用户在“我的工作台”页面点击“创建项目集”按钮→进入全屏页，保留状态栏与底Tab→填写项目集名称、单选“公司”或“个人”属性、添加符合属性的项目→点击底部红色“确认”按钮，名称非空且属性与项目一致时，顶部弹出成功提示。"
+}

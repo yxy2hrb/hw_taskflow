@@ -1,0 +1,7 @@
+{"event":"state-start","data":{"state_id":6,"state_name":"权限不足提示浮层","last_state":3,"ts":1779226038938},"ts":"2026-05-19T21:27:18.940Z"}
+{"event":"state-log","data":{"state_id":6,"msg":"[baseline] HM_BASELINE_ENABLED=1，走 baseline 一锤子路径（跳过 twoPhase / DSL / legacy）","ts":1779226038938},"ts":"2026-05-19T21:27:18.940Z"}
+{"event":"state-log","data":{"state_id":6,"msg":"[baseline] 启动 state_6 「权限不足提示浮层」","ts":1779226038938},"ts":"2026-05-19T21:27:18.940Z"}
+{"event":"state-log","data":{"state_id":6,"msg":"[baseline] prompt 14.6KB lang=zh prevHtml=79.8KB->stripped 8.3KB","ts":1779226038939},"ts":"2026-05-19T21:27:18.940Z"}
+{"event":"state-log","data":{"state_id":6,"msg":"[baseline] 生成 HTML 81.2KB（其中 LLM body=9.3KB）","ts":1779226122255},"ts":"2026-05-19T21:28:42.255Z"}
+{"event":"state-log","data":{"state_id":6,"msg":"[baseline] 成功（html 83164B applied=1）","ts":1779226122255},"ts":"2026-05-19T21:28:42.255Z"}
+{"event":"state-done","data":{"state_id":6,"state_name":"权限不足提示浮层","file":"state_6.html","applied":1,"skipped":0,"review_ok":null,"review_applied":0,"review_issues":[],"elapsed_ms":83346,"hmExpansions":[],"hmMissing":[],"ts":1779226122284},"ts":"2026-05-19T21:28:42.284Z"}

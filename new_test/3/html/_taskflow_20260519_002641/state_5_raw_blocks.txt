@@ -1,0 +1,78 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": ["<!-- 任务节点开始: 项目详情全屏页【持久】 -->\n<div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:24px;background:#FFFFFF;width:100%;border-radius:0px;box-sizing:border-box\"><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;background:#F1F3F5;width:100%;height:auto;border-radius:8px;position:relative;box-sizing:border-box\"><img data-hm=\"Image\" src=\"https://picsum.photos/seed/topology/480/270\" alt=\"\" loading=\"lazy\" style=\"display:block;width:100%;height:270px;border-radius:8px;object-fit:cover;background:#F1F3F5;box-sizing:border-box\" /></div><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:4px;width:100%;box-sizing:border-box\"><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:32px;font-weight:700;color:rgba(0,0,0,0.90);text-align:left;line-height:1.4;\">86</span><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:500;color:rgba(0,0,0,0.60);text-align:left;line-height:1.4;\">信号质量良好</span></div><div data-hm=\"Row\" style=\"display:flex;flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;width:100%;box-sizing:border-box\"><div data-hm=\"Row\" style=\"display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:8px;width:100%;box-sizing:border-box\"><span class=\"mi\" style=\"font-size:14px;color:rgba(0,0,0,0.90);line-height:1;\">access_time</span><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:500;color:rgba(0,0,0,0.90);text-align:left;line-height:1.4;\">运行时长 12h 34m</span></div><div data-hm=\"Row\" style=\"display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:8px;width:100%;box-sizing:border-box\"><span class=\"mi\" style=\"font-size:14px;color:rgba(0,0,0,0.90);line-height:1;\">public_wifi</span><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:500;color:rgba(0,0,0,0.90);text-align:left;line-height:1.4;\">设备 5台 / 终端 12个</span></div></div></div>\n<!-- 任务节点结束: 项目详情全屏页【持久】 -->"],
+      "instruction": "把外层注释名改为 项目详情全屏页【临时】，并将内部内容替换为：顶部为 48×48px 灰色感叹号图标（#9E9E9E），图标下方居中显示主标题‘网络加载失败’（16px 加粗 #191919），再下方居中显示副标题‘请检查网络后重试’（14px #666），底部居中一个蓝色‘重试’按钮（背景 #1A73E8，圆角 8px，高 40px，宽 120px，白色文字‘重试’，14px Medium）；所有文案使用中文；图标用 Material Icons Round 的 'error'；整体包裹在 data-hm=\"Column\" 容器中，背景 #FFFFFF，宽度 100%，无圆角；保留原结构层级与 box-sizing:border-box。",
+      "components_needed": ["Button"],
+      "icons_needed": ["error"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "background": "#FFFFFF",
+      "width": "100%",
+      "borderRadius": 0,
+      "gap": 16,
+      "padding": 0,
+      "align": "center",
+      "justify": "center",
+      "boxSizing": "border-box"
+    },
+    "children": [
+      {
+        "type": "Icon",
+        "props": {
+          "name": "error",
+          "size": 48,
+          "color": "#9E9E9E"
+        }
+      },
+      {
+        "type": "Text",
+        "props": {
+          "variant": "subtitle",
+          "size": 16,
+          "weight": 700,
+          "color": "#191919",
+          "align": "center"
+        },
+        "children": "网络加载失败"
+      },
+      {
+        "type": "Text",
+        "props": {
+          "variant": "body",
+          "size": 14,
+          "weight": 500,
+          "color": "#666666",
+          "align": "center"
+        },
+        "children": "请检查网络后重试"
+      },
+      {
+        "type": "Button",
+        "props": {
+          "label": "重试",
+          "variant": "primary",
+          "size": "regular",
+          "block": false,
+          "width": 120,
+          "height": 40,
+          "borderRadius": 8,
+          "background": "#1A73E8",
+          "color": "#FFFFFF",
+          "fontSize": 14,
+          "fontWeight": 500
+        }
+      }
+    ]
+  }
+}

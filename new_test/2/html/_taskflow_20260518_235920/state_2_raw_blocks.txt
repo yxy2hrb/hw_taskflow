@@ -1,0 +1,240 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": ["#14_807630"],
+      "replace_at": "#14_807630",
+      "instruction": "将项目开局卡片区域整段替换为创建项目集全屏页：保留顶部状态栏（含时间、信号、电池图标）和底部Tab栏（‘首页’‘工作台’‘消息’‘我’）；中间新增白色表单卡片（宽360px，高自适应，背景rgba(255,255,255,1)，圆角8px，阴影0 2px 12px rgba(0,0,0,0.06)），卡片居中；卡片内顶部标题为‘创建项目集’（16px HarmonyHeiTi-Medium，深灰#191919）；下方为名称输入框（带浅灰占位符‘请输入项目集名称’）；再下为‘公司/个人’单选按钮组（两个圆形单选框+对应文字标签，默认未选）；其后为项目添加区域（含蓝色Material Icons Round +号图标（#007AFF）及文字‘添加项目’）；底部红色确认按钮（高48px，宽100%，背景色#FF3B30，文字‘确认’为白色16px HarmonyHeiTi-Regular）。",
+      "components_needed": ["TextInput", "Radio", "Button"],
+      "icons_needed": ["add"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Page",
+    "props": {
+      "background": "#F1F3F5",
+      "width": 360,
+      "height": "auto"
+    },
+    "children": [
+      {
+        "type": "StatusBar",
+        "props": {
+          "time": "08:08",
+          "signal": "5G",
+          "battery": 100
+        }
+      },
+      {
+        "type": "Column",
+        "props": {
+          "gap": 24,
+          "padding": 24,
+          "align": "center",
+          "justify": "flex-start",
+          "width": "100%",
+          "maxWidth": 328,
+          "background": "#FFFFFF",
+          "borderRadius": 8,
+          "shadow": true
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "variant": "subtitle",
+              "size": 16,
+              "weight": 500,
+              "color": "#191919",
+              "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+            },
+            "children": "创建项目集"
+          },
+          {
+            "type": "TextInput",
+            "props": {
+              "placeholder": "请输入项目集名称",
+              "size": "regular",
+              "width": "100%"
+            }
+          },
+          {
+            "type": "Column",
+            "props": {
+              "gap": 12
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "caption",
+                  "size": 14,
+                  "weight": 400,
+                  "color": "rgba(0,0,0,0.60)",
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                },
+                "children": "公司/个人"
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 16,
+                  "align": "center"
+                },
+                "children": [
+                  {
+                    "type": "Row",
+                    "props": {
+                      "gap": 8,
+                      "align": "center"
+                    },
+                    "children": [
+                      {
+                        "type": "Checkbox",
+                        "props": {
+                          "checked": false,
+                          "size": 22
+                        }
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "body",
+                          "size": 16,
+                          "weight": 500,
+                          "color": "rgba(0,0,0,0.90)",
+                          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                        },
+                        "children": "公司"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Row",
+                    "props": {
+                      "gap": 8,
+                      "align": "center"
+                    },
+                    "children": [
+                      {
+                        "type": "Checkbox",
+                        "props": {
+                          "checked": false,
+                          "size": 22
+                        }
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "body",
+                          "size": 16,
+                          "weight": 500,
+                          "color": "rgba(0,0,0,0.90)",
+                          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                        },
+                        "children": "个人"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "gap": 8,
+              "align": "center",
+              "justify": "center",
+              "padding": [12, 0]
+            },
+            "children": [
+              {
+                "type": "Icon",
+                "props": {
+                  "name": "add",
+                  "size": 24,
+                  "color": "#0A59F7"
+                }
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "size": 16,
+                  "weight": 500,
+                  "color": "#0A59F7",
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                },
+                "children": "添加项目"
+              }
+            ]
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "确认",
+              "variant": "warning",
+              "size": "large",
+              "block": true,
+              "height": 48,
+              "background": "#FF3B30",
+              "color": "#FFFFFF",
+              "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Row",
+        "props": {
+          "gap": 0,
+          "width": "100%",
+          "background": "#FFFFFF",
+          "padding": [8, 0],
+          "justify": "space-around"
+        },
+        "children": [
+          {
+            "type": "IconCard",
+            "props": {
+              "icon": "home",
+              "label": "首页",
+              "selected": true
+            }
+          },
+          {
+            "type": "IconCard",
+            "props": {
+              "icon": "work",
+              "label": "工作台",
+              "selected": false
+            }
+          },
+          {
+            "type": "IconCard",
+            "props": {
+              "icon": "message",
+              "label": "消息",
+              "selected": false
+            }
+          },
+          {
+            "type": "IconCard",
+            "props": {
+              "icon": "person",
+              "label": "我",
+              "selected": false
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

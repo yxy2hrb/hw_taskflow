@@ -1,0 +1,50 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "工作台首页初始态",
+    "description": "底部导航栏高亮‘营销’Tab（红色文字），其余Tab为灰色；顶部状态栏显示时间、信号与电量图标；页面中部有‘管理应用’按钮（白色背景+红色文字+圆角矩形），无其他浮层、无弹窗、无Toast提示。",
+    "implementation_method": "原始 HTML 初始快照，不做改造"
+  },
+  {
+    "state_id": 2,
+    "state_name": "管理应用页列表态",
+    "description": "顶部状态栏保持可见（时间/信号/电量）；底部导航栏仍高亮‘营销’Tab；主内容区为垂直滚动列表，顶部有‘已添加X个’计数条（深灰文字，14px，HarmonyHeiTi-Medium）；每个应用项含左侧图标+名称（14px常规体）、右侧开关控件（默认关闭态：浅灰滑块+空心圆轨道）；无遮罩、无弹窗、无Toast。",
+    "implementation_method": "原始 HTML 初始快照，不做改造",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "请选择添加方式弹窗",
+    "description": "全屏深灰半透明遮罩层（rgba(0,0,0,0.6)）覆盖整个屏幕；遮罩层上居中悬浮白色圆角卡片（背景#FFFFFF，圆角12px，宽320px，高480px）；卡片顶部标题‘请选择添加方式’（14px Medium，黑色）；下方四行并列图标选项：快捷入口（带闪电图标）、小卡片（带方框图标）、中卡片（带中号方框图标）、大卡片（带大号方框图标），每项含图标+中文标签（14px Regular，#000000，0.6 opacity）；卡片底部‘取消’按钮（14px Medium，红色#C7000B，居中）。",
+    "implementation_method": "模态弹窗 (Modal/Dialog)：全屏遮罩 rgba(0,0,0,0.6) + 居中白色圆角卡片（320×480px，圆角12px）；标题 '请选择添加方式'；四行选项图标+文字：'快捷入口'、'小卡片'、'中卡片'、'大卡片'；底部按钮 '取消'。",
+    "last_state": 2
+  },
+  {
+    "state_id": 4,
+    "state_name": "添加中过渡态",
+    "description": "顶部状态栏与底部导航栏正常可见；主内容区列表结构与 state_2 完全一致；‘已添加X个’计数条数值未变；被操作的应用项右侧开关控件被替换为静态旋转图标（32px × 32px，深灰#191919，SVG 圆环 spinner，CSS animation:hmspin 1s linear infinite）；无遮罩、无弹窗、无Toast、无其他浮层。",
+    "implementation_method": "开关控件 (Switch/Button)：原开关区域替换为 32px 圆环 spinner（深灰#191919，SVG 轮廓，CSS animation:hmspin 1s linear infinite）；其余所有元素位置、颜色、文案均与 state_2 完全一致。",
+    "last_state": 2
+  },
+  {
+    "state_id": 5,
+    "state_name": "添加成功终态",
+    "description": "顶部状态栏与底部导航栏正常可见；主内容区列表结构与 state_2 一致；‘已添加X个’计数条数值比 state_2 增加1（如原为‘已添加3个’现为‘已添加4个’）；被操作的应用项右侧开关控件处于开启态（红色滑块+实心圆轨道）；右上角距离状态栏下边缘16px处固定显示Toast：白底圆角矩形（#FFFFFF，阴影0 2px 8px rgba(0,0,0,0.1)），内含对勾图标+文字‘添加成功’（14px Regular，#191919）。",
+    "implementation_method": "轻量级提示 (Toast/Snackbar)：右上角固定位置（状态栏下16px），白底圆角矩形（#FFFFFF，阴影0 2px 8px rgba(0,0,0,0.1)），含绿色对勾图标 + 文字 '添加成功'；开关控件更新为开启态（红色滑块+实心轨道）；计数条文本更新为 '已添加N个'（N = state_2 数值+1）。",
+    "last_state": 2
+  },
+  {
+    "state_id": 6,
+    "state_name": "取消关闭弹窗态",
+    "description": "画面与 state_2 完全一致：顶部状态栏可见，底部导航栏高亮‘营销’Tab，主内容区为应用列表，顶部‘已添加X个’计数条数值未变，所有应用项右侧开关均为原关闭态，无遮罩、无弹窗、无Toast、无任何浮层或动画。",
+    "implementation_method": "画面与 last_state（state_2）完全一致；base 已是关闭后的样子，无需任何 DOM 改造。",
+    "last_state": 2
+  },
+  {
+    "state_id": 7,
+    "state_name": "添加失败态",
+    "description": "顶部状态栏与底部导航栏正常可见；主内容区列表结构与 state_2 一致；‘已添加X个’计数条数值未变；被操作的应用项右侧开关仍为关闭态（浅灰滑块+空心轨道）；右上角距离状态栏下边缘16px处固定显示Toast：红底圆角矩形（#C7000B，阴影0 2px 8px rgba(0,0,0,0.1)），内含白色感叹号图标+文字‘添加失败，请重试’（14px Regular，#FFFFFF）。",
+    "implementation_method": "轻量级提示 (Toast/Snackbar)：右上角固定位置（状态栏下16px），红底圆角矩形（#C7000B，阴影0 2px 8px rgba(0,0,0,0.1)），含白色感叹号图标 + 文字 '添加失败，请重试'；开关控件保持关闭态；计数条文本与 state_2 完全一致。",
+    "last_state": 2
+  }
+]

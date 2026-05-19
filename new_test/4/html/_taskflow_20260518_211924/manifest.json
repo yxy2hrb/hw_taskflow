@@ -1,0 +1,61 @@
+{
+  "title": "体验运维流程",
+  "slug": "experience-ops-flow",
+  "createdAt": "2026-05-18T13:22:35.036Z",
+  "meta": {
+    "title": "体验运维流程",
+    "slug": "experience-ops-flow",
+    "user_story": "已登录的企业运维人员 | 在‘我的工作台’点击‘体验运维流程’按钮 | 填写项目场景和名称 → 系统加载对应三维设备模型 → 用户点击确定提交 | 页面顶部弹出‘创建成功’Toast，且底Tab保持高亮‘我的工作台’",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "我的工作台初始页",
+      "description": "页面为移动端全屏布局，顶部状态栏显示时间、信号与电量图标；中部为‘我的工作台’标题（16px Medium 字体，深灰#191919）；下方并列两个功能卡片：左为‘体验开局流程’按钮（灰色背景+黑字），右为‘体验运维流程’按钮（蓝色背景+白字，14px Regular，居中显示）；底部 Tab 栏高 56px，当前‘我的工作台’Tab 高亮（蓝色底+白字），其余 Tab 灰色文字。",
+      "implementation_method": "原始 HTML 初始快照，不做改造",
+      "last_state": null,
+      "file": "state_1.html"
+    },
+    {
+      "state_id": 2,
+      "state_name": "运维流程全屏页初始态",
+      "description": "页面为全屏覆盖式布局，保留顶部状态栏（时间/信号/电量正常可见）与底部 Tab 栏（‘我的工作台’Tab 仍高亮蓝色）；左侧为固定宽度 360px 表单区，含‘项目场景’下拉选择框（浅灰边框、14px Regular 字体、默认文案‘请选择场景’）、‘项目名称’输入框（浅灰边框、14px Regular、占位符‘请输入项目名称’）；右侧为等宽三维模型容器（背景为#F3F3F3，中央显示灰色设备模型占位图，下方居中显示小号灰色文字‘设备模型加载中’）；页面底部无滚动条，整体无遮罩层或浮层。",
+      "implementation_method": "全屏容器 (FullPageContainer)：左侧表单区宽 360px，含下拉框控件（border:1px solid #D9D9D9, height:44px, font-size:14px, placeholder '请选择场景'）；项目名称输入框（border:1px solid #D9D9D9, height:44px, font-size:14px, placeholder '请输入项目名称'）；右侧模型区宽 360px，背景色 rgba(243,243,243,1)，中央灰色椭圆占位图（尺寸约180×180px），下方文字 '设备模型加载中'（font-size:12px, color:#666, margin-top:8px）；顶部状态栏与底部 Tab 栏完全保留，无任何新增元素。",
+      "last_state": 1,
+      "file": "state_2.html"
+    },
+    {
+      "state_id": 3,
+      "state_name": "提交中状态",
+      "description": "页面结构与 state_2 完全一致，但右侧三维模型容器内叠加半透明黑色遮罩层（rgba(0,0,0,0.4)），遮罩层上居中显示白色‘提交中…’文字（14px Regular，HarmonyHeiTi-Regular，行高20px），文字下方无图标；左侧表单区所有控件禁用（input 和 select 的 pointer-events:none + opacity:0.6），蓝色‘确定’按钮置灰不可点击（背景色#BFBFBF，文字颜色#8C8C8C）；顶部状态栏与底部 Tab 栏正常可见，无 Toast 或弹窗。",
+      "implementation_method": "半透明遮罩层 (Overlay)：覆盖右侧模型容器区域（width:360px, height:100%, background:rgba(0,0,0,0.4), position:absolute, top:0, left:360px）；中央文字 '提交中…'（color:#FFFFFF, font-size:14px, line-height:20px, text-align:center, margin-top:calc(50% - 10px)）；左侧表单区 input/select 添加 style='opacity:0.6; pointer-events:none'；确定按钮添加 style='background-color:#BFBFBF; color:#8C8C8C; cursor:not-allowed'。",
+      "last_state": 2,
+      "file": "state_3.html"
+    },
+    {
+      "state_id": 4,
+      "state_name": "创建成功提示态",
+      "description": "页面结构与 state_2 完全一致，顶部状态栏下方 16px 处显示一条 100% 宽浅绿色横条（background:#52C418, height:48px），横条内居中显示白色勾选图标（SVG 路径，尺寸20×20px）与文字‘创建成功’（14px Regular，HarmonyHeiTi-Regular，line-height:20px）；底部 Tab 栏保持‘我的工作台’高亮（蓝色底+白字）；无遮罩层、无按钮状态变更、无模型区内容更新，三维模型容器仍为灰色占位图。",
+      "implementation_method": "轻量级提示 (Toast/Snackbar)：横条 width:100%, height:48px, background:#52C418, position:fixed, top:status-bar-height+16px（实际渲染时需适配状态栏高度）；内部左侧 16px 处为白色勾选 SVG（<path d='M9 16.17L4.83 12l-1.42 1.41L9 18.83 21 7.08 19.59 5.67z' fill='#FFFFFF'/>），右侧文字 '创建成功'（color:#FFFFFF, font-size:14px, line-height:20px, margin-left:12px）；其余 UI 元素与 state_2 完全一致，无需修改 DOM 结构。",
+      "last_state": 2,
+      "file": "state_4.html"
+    },
+    {
+      "state_id": 5,
+      "state_name": "创建失败提示态",
+      "description": "页面结构与 state_2 完全一致，顶部状态栏下方 16px 处显示一条 100% 宽浅红色横条（background:#F5222D, height:48px），横条内居中显示白色叉号图标（SVG 路径，尺寸20×20px）与文字‘创建失败，请重试’（14px Regular，HarmonyHeiTi-Regular，line-height:20px）；底部 Tab 栏保持‘我的工作台’高亮（蓝色底+白字）；无遮罩层、无按钮状态变更、无模型区内容更新，三维模型容器仍为灰色占位图。",
+      "implementation_method": "轻量级提示 (Toast/Snackbar)：横条 width:100%, height:48px, background:#F5222D, position:fixed, top:status-bar-height+16px；内部左侧 16px 处为白色叉号 SVG（<path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z' fill='#FFFFFF'/>），右侧文字 '创建失败，请重试'（color:#FFFFFF, font-size:14px, line-height:20px, margin-left:12px）；其余 UI 元素与 state_2 完全一致，无需修改 DOM 结构。",
+      "last_state": 2,
+      "file": "state_5.html"
+    },
+    {
+      "state_id": 6,
+      "state_name": "项目名称冲突校验态",
+      "description": "页面结构与 state_2 完全一致，仅‘项目名称’输入框边框变为红色（border:1px solid #F5222D），输入框正下方 4px 处显示一行红色小字‘该项目名称已存在’（12px Regular，HarmonyHeiTi-Regular，color:#F5222D，line-height:16px）；其他所有元素保持原样：左侧下拉框无变化，右侧模型区仍为灰色占位图与‘设备模型加载中’文字，蓝色‘确定’按钮可点击，顶部状态栏与底部 Tab 栏正常可见。",
+      "implementation_method": "表单校验反馈 (FormValidationFeedback)：项目名称输入框添加 style='border-color:#F5222D'；紧邻其下方插入 <p class='error-text' style='color:#F5222D; font-size:12px; line-height:16px; margin-top:4px'>该项目名称已存在</p>；其余所有元素（包括下拉框、模型区、按钮、状态栏、Tab 栏）与 state_2 完全一致，不作任何改动。",
+      "last_state": 2,
+      "file": "state_6.html"
+    }
+  ]
+}

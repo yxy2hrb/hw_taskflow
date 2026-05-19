@@ -1,0 +1,200 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#14_884368",
+      "instruction": "把整个详情页主容器替换为详情页加载过渡态：顶部固定导航栏（高48px，#fff，border-bottom:1px solid #eee），含左向箭头图标（24px×24px，#191919）、居中标题'虚拟体验项目'（16px Medium，#191919）、右侧三个图标（搜索 'search'、通知 'bell'、加号 '+'，各24px×24px，#666）；主体区域为单列卡片流：第一张为灰色拓扑图占位（宽100%，高180px，#f3f3f3，内嵌SVG路径与3个灰色圆形节点）；第二张为Wi-Fi评分占位（宽100%，高80px，#f3f3f3，绿色数字'86'（16px Bold，#46B1E3）+文字'Wi-Fi质量评分'（14px Regular，#666））；第三张为运行时长占位（宽100%，高60px，#f3f3f3，文字'运行时长：2天14小时'（14px Regular，#333））；第四、五张为并列设备与终端统计占位（各宽48%，高72px，#f3f3f3，含'设备数：12'（14px Regular，#333）和'终端数：47'（14px Regular，#333））；所有卡片间有1px浅灰分割线（#eee）。",
+      "components_needed": ["Card", "ProgressBar", "IconButton"]
+    },
+    {
+      "id": "e2",
+      "type": "new-overlay",
+      "anchor": "script",
+      "instruction": "在 body 末尾 script 标签前新增半透明黑色遮罩层（rgba(0,0,0,0.4)）覆盖全屏（inset:0），但不遮挡顶部状态栏与底部Tab栏；该遮罩层仅用于视觉过渡，无交互；注意：此遮罩必须是 new-overlay，且 anchor 必须为 'script'（base 中唯一末尾 script 标签），确保其成为 body 直接子级，避免被 D2C frame clip。",
+      "components_needed": ["OverlayMask"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Page",
+    "props": {
+      "background": "#F1F3F5",
+      "width": "100%",
+      "height": "100%"
+    },
+    "children": [
+      {
+        "type": "NavBar",
+        "props": {
+          "title": "虚拟体验项目",
+          "leftIcon": "arrow_back",
+          "rightIcon": ["search", "bell", "add"],
+          "align": "center"
+        }
+      },
+      {
+        "type": "Column",
+        "props": {
+          "gap": 0,
+          "padding": 0,
+          "align": "stretch"
+        },
+        "children": [
+          {
+            "type": "Column",
+            "props": {
+              "background": "#F3F3F3",
+              "width": "100%",
+              "height": 180,
+              "padding": 0,
+              "borderRadius": 0
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": { "variant": "caption", "color": "rgba(0,0,0,0.0)", "size": 12 },
+                "children": "拓扑图占位 SVG：M10 10 L90 10 L90 170 L10 170 Z; circle cx=40 cy=60 r=8; circle cx=80 cy=90 r=8; circle cx=50 cy=130 r=8"
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "background": "#EEEEEE",
+              "height": 1,
+              "width": "100%"
+            }
+          },
+          {
+            "type": "Column",
+            "props": {
+              "background": "#F3F3F3",
+              "width": "100%",
+              "height": 80,
+              "padding": 16,
+              "gap": 4,
+              "align": "flex-start"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "size": 16,
+                  "weight": 700,
+                  "color": "#46B1E3"
+                },
+                "children": "86"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "size": 14,
+                  "weight": 400,
+                  "color": "rgba(0,0,0,0.60)"
+                },
+                "children": "Wi-Fi质量评分"
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "background": "#EEEEEE",
+              "height": 1,
+              "width": "100%"
+            }
+          },
+          {
+            "type": "Column",
+            "props": {
+              "background": "#F3F3F3",
+              "width": "100%",
+              "height": 60,
+              "padding": 16,
+              "align": "flex-start"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "size": 14,
+                  "weight": 400,
+                  "color": "rgba(0,0,0,0.90)"
+                },
+                "children": "运行时长：2天14小时"
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "background": "#EEEEEE",
+              "height": 1,
+              "width": "100%"
+            }
+          },
+          {
+            "type": "Row",
+            "props": {
+              "gap": 8,
+              "padding": 12,
+              "width": "100%"
+            },
+            "children": [
+              {
+                "type": "Column",
+                "props": {
+                  "background": "#F3F3F3",
+                  "width": "48%",
+                  "height": 72,
+                  "padding": 12,
+                  "gap": 4,
+                  "align": "flex-start"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 14,
+                      "weight": 400,
+                      "color": "rgba(0,0,0,0.90)"
+                    },
+                    "children": "设备数：12"
+                  }
+                ]
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "background": "#F3F3F3",
+                  "width": "48%",
+                  "height": 72,
+                  "padding": 12,
+                  "gap": 4,
+                  "align": "flex-start"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 14,
+                      "weight": 400,
+                      "color": "rgba(0,0,0,0.90)"
+                    },
+                    "children": "终端数：47"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+[NEXT]

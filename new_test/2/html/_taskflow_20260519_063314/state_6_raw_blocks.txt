@@ -1,0 +1,151 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": ["#hm-escape-e1"],
+      "replace_at": "#hm-escape-e1",
+      "instruction": "把整个创建项目集全屏页表单替换为校验失败状态：名称输入框边框改为2px solid #F5222D；输入框下方添加红色提示文字'请输入项目集名称'（12px，#F5222D，左对齐，距输入框底8px）；'公司/个人'单选按钮组外框加2px solid #F5222D描边；单选组下方添加红色提示文字'所选项目与归属类型不匹配'（12px，#F5222D，左对齐，距单选组底8px）；项目添加区保持'点击添加项目'占位提示；底部'确认'按钮保持原红色可点击态；所有文案用中文；保留顶部状态栏与底部Tab栏"
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "gap": 24,
+      "padding": 24,
+      "align": "stretch"
+    },
+    "children": [
+      {
+        "type": "FormField",
+        "props": {
+          "label": "项目集名称",
+          "required": true,
+          "error": "请输入项目集名称",
+          "placeholder": "请输入项目集名称",
+          "value": ""
+        }
+      },
+      {
+        "type": "Column",
+        "props": {
+          "gap": 8
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "variant": "subtitle",
+              "color": "rgba(0,0,0,0.90)"
+            },
+            "children": "公司/个人"
+          },
+          {
+            "type": "Row",
+            "props": {
+              "gap": 16,
+              "align": "center"
+            },
+            "children": [
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 8,
+                  "align": "center"
+                },
+                "children": [
+                  {
+                    "type": "Checkbox",
+                    "props": {
+                      "checked": false,
+                      "size": 22
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "body"
+                    },
+                    "children": "公司"
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 8,
+                  "align": "center"
+                },
+                "children": [
+                  {
+                    "type": "Checkbox",
+                    "props": {
+                      "checked": true,
+                      "size": 22
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "body"
+                    },
+                    "children": "个人"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "FieldError",
+            "props": {
+              "text": "所选项目与归属类型不匹配",
+              "marginTop": 8
+            }
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "gap": 12,
+          "padding": "12px 16px",
+          "background": "rgba(0,0,0,0.05)",
+          "borderRadius": 8,
+          "align": "center"
+        },
+        "children": [
+          {
+            "type": "Icon",
+            "props": {
+              "name": "add_circle",
+              "size": 24,
+              "color": "#0A59F7"
+            }
+          },
+          {
+            "type": "Text",
+            "props": {
+              "variant": "caption",
+              "color": "rgba(0,0,0,0.60)",
+              "align": "center"
+            },
+            "children": "点击添加项目"
+          }
+        ]
+      },
+      {
+        "type": "Button",
+        "props": {
+          "label": "确认",
+          "variant": "primary",
+          "block": true
+        }
+      }
+    ]
+  }
+}

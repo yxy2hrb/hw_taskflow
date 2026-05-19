@@ -1,0 +1,18 @@
+{
+  "state_id": 6,
+  "state_name": "字段校验警告态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "语言一致性问题：截图中‘此项为必填’提示文字颜色为#E84026，但需求要求使用#FF5A5F；实际显示的红色偏深，不符合规范。",
+      "基础样式问题：‘此项为必填’提示文字字体未使用HarmonyHeiTi-Regular，实际视觉呈现与规范不符，可能为系统默认字体。",
+      "可见性问题：‘项目场景’和‘项目名称’下方的提示文字‘此项为必填’在截图中显示为红色，但其位置紧贴输入框底部，与需求中‘正下方4px处’的间距要求存在轻微偏差，视觉上略显拥挤。"
+    ],
+    "fixedBlocks": "[OLD]\n<div style=\"margin-top:4px;\"><span style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:12px;color:#E84026;line-height:1.4;\">此项为必填</span></div>\n[NEW]\n<div style=\"margin-top:4px;\"><span style=\"font-family:'HarmonyHeiTi-Regular';font-size:12px;color:#FF5A5F;line-height:1.4;\">此项为必填</span></div>",
+    "reviewMs": 11138,
+    "screenshot": 65921,
+    "fixedBlocksParsed": 1
+  }
+}

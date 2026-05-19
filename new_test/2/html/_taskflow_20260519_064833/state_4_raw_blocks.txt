@@ -1,0 +1,35 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#146_169016",
+      "instruction": "把底部确认按钮替换为提交中态：背景色#E0E0E0，文字'提交中…'（16px HarmonyHeiTi-Medium, white），中央叠加20px圆环spinner（stroke #191919, stroke-width 2px, animation:hmspin 1s linear infinite）；保持按钮宽100%、高56px、圆角12px、阴影轻微；按钮内文字与spinner垂直水平居中",
+      "components_needed": ["Button"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Button",
+    "props": {
+      "label": "提交中…",
+      "variant": "primary",
+      "size": "large",
+      "block": true,
+      "disabled": true,
+      "loading": true,
+      "background": "#E0E0E0",
+      "color": "#FFFFFF",
+      "borderRadius": 12,
+      "height": 56,
+      "shadow": true,
+      "fontSize": 16,
+      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+      "fontWeight": 500
+    }
+  }
+}

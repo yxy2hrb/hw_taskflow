@@ -1,0 +1,43 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "我的工作台首页",
+    "description": "用户已登录，顶部状态栏显示时间/信号/电量，底部 Tab 栏高亮‘工作台’图标与文字；页面中部横向排列两个功能卡片：左侧为‘体验开局流程’蓝色按钮（含文字+图标），右侧为‘体验运维流程’蓝色按钮（含文字+图标），其余区域为白色背景。",
+    "implementation_method": "原始 HTML 初始快照，不做改造"
+  },
+  {
+    "state_id": 2,
+    "state_name": "运维流程全屏页初始态",
+    "description": "页面全屏展开，顶部状态栏保持可见（时间/信号/电量正常显示），底部 Tab 栏仍高亮‘工作台’；左侧为垂直表单区：顶部标签‘项目场景’+下拉选择器（默认显示预设值，浅灰边框、12px HarmonyHeiTi-Regular 字体），下方标签‘项目名称’+输入框（可编辑、浅灰边框、占位符‘请输入项目名称’）；右侧为宽高比1:1的灰色边框容器（#E0E0E0，1px solid），居中显示‘三维模型加载中’文字（14px，HarmonyHeiTi-Regular，rgba(0,0,0,0.89)）。",
+    "implementation_method": "全屏页面 (FullPage): 左侧表单区含两个带标签的输入控件（‘项目场景’下拉器 + ‘项目名称’文本框），右侧为正方形灰色边框容器（360×360px），中央静态显示中文文案‘三维模型加载中’、英文文案‘Loading 3D device model...’（14px，HarmonyHeiTi-Regular，rgba(0,0,0,0.89)）；顶部状态栏与底部Tab栏样式与state_1完全一致，无遮罩、无动画。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "模型加载中状态",
+    "description": "页面布局与state_2完全一致；右侧三维模型容器内显示环形旋转加载动画（蓝色描边 #46B1E3，2px width，直径120px，CSS animation:hmspin 1s linear infinite），无任何文字；左侧表单所有输入框可编辑，蓝色‘确定’按钮保持可用但添加 tooltip 文案‘加载中不可提交’（悬停时显示，12px HarmonyHeiTi-Regular，rgba(0,0,0,0.6)）；顶部状态栏与底部Tab栏正常可见。",
+    "implementation_method": "进度指示器 (Spinner): 右侧容器中央替换为纯视觉环形旋转加载动画（SVG 或 CSS border-spin，stroke #46B1E3，no text, no label）；表单区域所有输入框保持 enabled 状态；蓝色按钮（#46B1E3 背景，white 文字，16px HarmonyHeiTi-Medium）保留可点击样式；tooltip 元素以 data-tooltip 属性承载中文‘加载中不可提交’、英文‘Submission disabled during loading’，不渲染在 DOM 主流布局中，仅通过伪元素或 JS hover 触发（静态快照中不显示 tooltip 浮层）。",
+    "last_state": 2
+  },
+  {
+    "state_id": 4,
+    "state_name": "创建成功状态",
+    "description": "页面布局与state_2完全一致；顶部状态栏下方紧贴一行绿色Toast条（#4CAF50 背景，white 文字，圆角4px，高度40px，水平居中，宽度90%），内文‘创建成功’（16px HarmonyHeiTi-Medium）；底部Tab栏仍高亮‘工作台’；左侧表单数据完整保留，右侧三维模型容器仍为空白灰色边框区域，无动画、无模型渲染。",
+    "implementation_method": "轻量级提示 (Toast/Snackbar): 位于顶部状态栏正下方16px处，绿色背景#4CAF50，白色文字，圆角4px，高度40px，宽度90%，水平居中；文案中文‘创建成功’、英文‘Created successfully’；无关闭按钮；页面其余所有元素（状态栏、Tab、表单、右侧容器）与state_2完全一致，无DOM增删。",
+    "last_state": 2
+  },
+  {
+    "state_id": 5,
+    "state_name": "创建失败状态",
+    "description": "页面布局与state_2完全一致；顶部状态栏下方紧贴一行红色Toast条（#F44336 背景，white 文字，圆角4px，高度40px，水平居中，宽度90%），内文‘创建失败，请重试’（16px HarmonyHeiTi-Medium）；左侧表单所有字段保留用户输入内容，蓝色‘确定’按钮恢复为可点击状态（#46B1E3 背景，white 文字）；底部Tab栏仍高亮‘工作台’；右侧三维模型容器为空白灰色边框区域。",
+    "implementation_method": "轻量级提示 (Toast/Snackbar): 位于顶部状态栏正下方16px处，红色背景#F44336，白色文字，圆角4px，高度40px，宽度90%，水平居中；文案中文‘创建失败，请重试’、英文‘Creation failed. Please retry.’；按钮控件 (Button): ‘确定’按钮恢复为启用状态（background #46B1E3，color white，font-size 16px，HarmonyHeiTi-Medium）；其余所有UI与state_2完全一致。",
+    "last_state": 2
+  },
+  {
+    "state_id": 6,
+    "state_name": "网络异常提示状态",
+    "description": "页面中部大号断网图标（Wi-Fi 斜杠符号，SVG 或 PNG，尺寸120×120px，深灰 #191919，居中于屏幕纵向50%位置），图标下方文字‘网络不可用，请检查后重试’（16px HarmonyHeiTi-Medium，rgba(0,0,0,0.89)）；左侧表单所有输入框禁用（opacity:0.4，border-color #BDBDBD），蓝色‘确定’按钮置灰（background #BDBDBD，text color rgba(0,0,0,0.38)）；顶部状态栏与底部Tab栏正常可见。",
+    "implementation_method": "错误提示页 (Error Page): 中央断网图标（Wi-Fi slash symbol，120×120px，#191919）；下方静态文本中文‘网络不可用，请检查后重试’、英文‘Network unavailable. Please check and retry.’（16px HarmonyHeiTi-Medium，rgba(0,0,0,0.89)）；表单控件全部 disabled（opacity 0.4，border #BDBDBD）；按钮控件 (Button): ‘确定’按钮变为禁用态（background #BDBDBD，color rgba(0,0,0,0.38)）；状态栏与Tab栏样式与state_2一致，无遮罩。",
+    "last_state": 2
+  }
+]

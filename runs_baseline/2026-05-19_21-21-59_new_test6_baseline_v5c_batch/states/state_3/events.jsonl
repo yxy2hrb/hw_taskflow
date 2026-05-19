@@ -1,0 +1,8 @@
+{"event":"state-start","data":{"state_id":3,"state_name":"快速入门加载中态","last_state":1,"ts":1779225852649},"ts":"2026-05-19T21:24:12.651Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[baseline] HM_BASELINE_ENABLED=1，走 baseline 一锤子路径（跳过 twoPhase / DSL / legacy）","ts":1779225852649},"ts":"2026-05-19T21:24:12.652Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[baseline] 启动 state_3 「快速入门加载中态」","ts":1779225852649},"ts":"2026-05-19T21:24:12.652Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[baseline-pre] 删除空白半透明遮罩节点 7 个","ts":1779225852650},"ts":"2026-05-19T21:24:12.652Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[baseline] prompt 28.6KB lang=zh prevHtml=84.3KB->stripped 22.1KB","ts":1779225852650},"ts":"2026-05-19T21:24:12.652Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[baseline] 生成 HTML 69.9KB（其中 LLM body=7.4KB）","ts":1779225920891},"ts":"2026-05-19T21:25:20.891Z"}
+{"event":"state-log","data":{"state_id":3,"msg":"[baseline] 成功（html 71575B applied=1）","ts":1779225920891},"ts":"2026-05-19T21:25:20.891Z"}
+{"event":"state-done","data":{"state_id":3,"state_name":"快速入门加载中态","file":"state_3.html","applied":1,"skipped":0,"review_ok":null,"review_applied":0,"review_issues":[],"elapsed_ms":68244,"hmExpansions":[],"hmMissing":[],"ts":1779225920893},"ts":"2026-05-19T21:25:20.896Z"}

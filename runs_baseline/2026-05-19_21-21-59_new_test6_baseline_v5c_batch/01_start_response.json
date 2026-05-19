@@ -1,0 +1,103 @@
+{
+  "sessionId": "tf_59de19c1db96",
+  "question": {
+    "id": "phase_1",
+    "phase": 1,
+    "questionText": "请从下面四个维度各选一项最贴近你意图的描述，我会把它们拼成完整的 User Story。",
+    "options": [
+      {
+        "id": "opt_a1",
+        "label": "已登录的普通内部员工",
+        "rationale": "有账号体系、可访问工作台，但非管理员或开发者角色",
+        "group": "① Actor · 主角",
+        "default": true
+      },
+      {
+        "id": "opt_a2",
+        "label": "首次访问的新入职员工",
+        "rationale": "刚加入组织，尚未熟悉产品矩阵，依赖引导路径",
+        "group": "① Actor · 主角",
+        "default": false
+      },
+      {
+        "id": "opt_a3",
+        "label": "内容运营支持人员",
+        "rationale": "需高频查阅多类产品文档，常帮同事答疑",
+        "group": "① Actor · 主角",
+        "default": false
+      },
+      {
+        "id": "opt_t1",
+        "label": "在‘我的工作台’点击‘快速入门’按钮",
+        "rationale": "入口明确、位于主导航区，无前置权限或状态依赖",
+        "group": "② Trigger · 触发点",
+        "default": true
+      },
+      {
+        "id": "opt_t2",
+        "label": "从消息通知卡片跳转进入",
+        "rationale": "由系统推送的新人引导任务触发，带上下文参数",
+        "group": "② Trigger · 触发点",
+        "default": false
+      },
+      {
+        "id": "opt_t3",
+        "label": "在搜索框输入关键词后自动唤起该页",
+        "rationale": "搜索未命中时降级展示入门推荐，属辅助路径",
+        "group": "② Trigger · 触发点",
+        "default": false
+      },
+      {
+        "id": "opt_g1",
+        "label": "快速找到并打开任一基础产品文档 → 系统按角色预筛7条高相关条目 → 用户点击‘查看’即直达对应详情页",
+        "rationale": "强调‘少操作、快触达’，不涉及筛选/收藏/下载等衍生动作",
+        "group": "③ Goal & Happy Path · 核心目标与理想路径",
+        "default": true
+      },
+      {
+        "id": "opt_g2",
+        "label": "对比四类产品分类再决定学习方向 → 系统动态加载对应分类下的入门内容 → 用户滑动浏览后选择一条深入",
+        "rationale": "突出分类标签的导航价值和内容分组逻辑",
+        "group": "③ Goal & Happy Path · 核心目标与理想路径",
+        "default": false
+      },
+      {
+        "id": "opt_g3",
+        "label": "通过搜索框查找特定入门主题 → 系统模糊匹配并高亮结果 → 用户确认后跳转至匹配度最高的文档页",
+        "rationale": "将搜索框作为核心交互控件，而非仅装饰性提示",
+        "group": "③ Goal & Happy Path · 核心目标与理想路径",
+        "default": false
+      },
+      {
+        "id": "opt_s1",
+        "label": "用户停留在目标产品文档详情页，且地址栏URL已更新为对应文档路径",
+        "rationale": "以页面跳转完成为终点，不依赖Toast、埋点或后台状态",
+        "group": "④ Success Criteria · 成功判定",
+        "default": true
+      },
+      {
+        "id": "opt_s2",
+        "label": "‘查看’按钮变为‘已查看’状态，且该条目在本地缓存中可离线访问",
+        "rationale": "强调状态持久化与离线能力，超出原始描述范围",
+        "group": "④ Success Criteria · 成功判定",
+        "default": false
+      },
+      {
+        "id": "opt_s3",
+        "label": "界面弹出‘已跳转’Toast，3秒后自动消失，无其他视觉反馈",
+        "rationale": "仅做轻量确认，不改变当前页或历史栈",
+        "group": "④ Success Criteria · 成功判定",
+        "default": false
+      }
+    ],
+    "multiSelect": true,
+    "allowCustom": true,
+    "note": "四个维度各选一项，也可以在补充栏写'Actor: xxx; Trigger: xxx;' 形式覆盖。",
+    "sectionLabel": "任务流阶段 1/3",
+    "sectionProgress": {
+      "current": 1,
+      "total": 3
+    }
+  },
+  "sourceDir": ""
+}

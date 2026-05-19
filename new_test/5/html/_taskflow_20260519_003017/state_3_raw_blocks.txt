@@ -1,0 +1,27 @@
+{
+  "state_name": "项目加载中状态",
+  "lifecycle": "temporary",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "FullscreenPanel",
+    "props": { "background": "#FFFFFF" },
+    "children": [
+      { "type": "StatusBar" },
+      {
+        "type": "Column",
+        "props": { "align": "center", "justify": "center", "gap": 12, "padding": 120 },
+        "children": [
+          {
+            "type": "Spinner",
+            "props": { "size": 32, "color": "#46B1E3" }
+          },
+          {
+            "type": "Text",
+            "props": { "text": "加载中…", "size": 16, "weight": "regular", "color": "#191919" }
+          }
+        ]
+      }
+    ]
+  }
+}

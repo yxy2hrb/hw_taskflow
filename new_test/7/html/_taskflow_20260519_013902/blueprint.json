@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "title": "管理应用与添加卡片流程",
+    "slug": "manage-apps-and-add-cards-flow",
+    "user_story": "已登录的营销运营人员在营销工作台主页点击'管理应用'按钮，快速添加一个新应用卡片 → 系统弹出四种尺寸选项供选择 → 用户点选后立即生效并提示成功",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "工作台主页",
+      "description": "顶部状态栏显示时间与信号图标；页面中部为营销工作台内容区，含'管理应用'按钮（位于右上角操作栏，文字为'管理应用'，无图标）；底部固定Tab导航栏：首页、商城、营销（高亮）、服务、我的；整体背景为浅灰#F3F3F3，主色为#C7000B。",
+      "implementation_method": "原始 HTML 初始快照，不做改造",
+      "last_state": null
+    },
+    {
+      "state_id": 2,
+      "state_name": "管理应用页列表态",
+      "description": "顶部固定标题栏：左侧为纯黑左向箭头图标（宽24px，高24px），中间为'管理应用'文字（14px HarmonyHeiTi-Medium，#191919），右侧悬浮圆形'新增'按钮（直径40px，红色#C7000B，内含加号图标）；下方滚动区域展示已安装应用列表，每项含左侧32×32px应用图标、名称文字（14px HarmonyHeiTi-Regular，#191919）、右侧开关控件（轨道宽48px，圆点直径20px，开启时为#C7000B，关闭时为#DFDFDF）；顶部计数条显示'已添加X个'（14px HarmonyHeiTi-Regular，#191919，居中于标题栏下方8px）；底部Tab导航栏完整保留，与主页一致。",
+      "implementation_method": "全屏页面 (Page/View)：基于 state_1 的 HTML，移除原主页内容区，插入新结构：顶部标题栏（含左箭头、居中标题、右上角新增按钮）；计数条（绝对定位或 flex 布局）；应用列表容器（flex-column，每项为 inline-flex，图标左对齐、文字中对齐、开关右对齐）；底部 Tab 导航栏保持不变；所有文字颜色统一为 #191919，主色按钮使用 #C7000B。",
+      "last_state": 1
+    },
+    {
+      "state_id": 3,
+      "state_name": "新增方式弹窗",
+      "description": "全屏深灰半透遮罩层（rgba(0,0,0,0.6)）覆盖整个管理应用页；正中悬浮白色圆角卡片（宽320px，高360px，圆角12px，阴影 rgba(0,0,0,0.15) 0px 4px 16px）；卡片内顶部为'请选择添加方式'标题（14px HarmonyHeiTi-Medium，#191919，居中）；下方四列等距排列图标项（每项含32×32px线性图标 + 下方12px文字：'快捷入口'/'小卡片'/'中卡片'/'大卡片'，文字颜色#191919）；卡片底部居中显示'取消'文字按钮（14px HarmonyHeiTi-Regular，#C7000B，无背景、无边框）；无任何动画痕迹，画面静止。",
+      "implementation_method": "模态弹窗 (Modal/Dialog)：在 state_2 的 HTML 上叠加 DOM：全屏遮罩 div（position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6)）；居中卡片 div（position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); width:320px; height:360px; background:white; border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,0.15)）；卡片内标题 '请选择添加方式'；四个图标项（每个含 img 或 svg + 文字 '快捷入口' / '小卡片' / '中卡片' / '大卡片'）；底部按钮 '取消'（color:#C7000B）。",
+      "last_state": 2
+    },
+    {
+      "state_id": 4,
+      "state_name": "添加成功Toast",
+      "description": "黑色半透明长条形浮层（宽80%，高44px，圆角8px，背景 rgba(0,0,0,0.8)，位于屏幕底部安全区上方16px）；居中显示白色'添加成功'文字（14px HarmonyHeiTi-Regular，#FFFFFF）；无图标、无阴影、无渐变；顶部状态栏、管理应用页主体内容、底部Tab导航栏全部正常可见且未被遮挡。",
+      "implementation_method": "轻量级提示 (Toast/Snackbar)：在 state_2 的 HTML 上叠加 DOM：fixed 定位 div（bottom:16px; left:10%; width:80%; height:44px; background:rgba(0,0,0,0.8); border-radius:8px; display:flex; align-items:center; justify-content:center）；内部文字 '添加成功'（color:#FFFFFF）。",
+      "last_state": 2
+    },
+    {
+      "state_id": 5,
+      "state_name": "应用开关切换中过渡态",
+      "description": "管理应用页主体内容与 state_2 完全一致：标题栏、计数条'已添加X个'（数值仍为旧值）、应用列表（其中被操作项的开关控件处于中间位置：轨道为浅灰#DFDFDF，圆点为灰色#9E9E9E，圆点居中不偏左不偏右，无文字变化、无其他元素闪烁）；顶部状态栏与底部Tab导航栏完整可见；无遮罩、无弹窗、无Toast。",
+      "implementation_method": "开关控件 (Switch/Checkbox)：在 state_2 的 HTML 中，定位被操作应用项的开关 DOM，将圆点元素设置为 transform:translateX(50%)（即居中），轨道背景色设为 #DFDFDF，圆点背景色设为 #9E9E9E；计数条文字保持原值，不更新；其余所有元素保持不变。",
+      "last_state": 2
+    },
+    {
+      "state_id": 6,
+      "state_name": "添加失败提示",
+      "description": "管理应用页主体内容与 state_2 完全一致：标题栏、计数条'已添加X个'（数值未变）、应用列表（其中被操作项右侧紧贴边缘处显示一行红色文字气泡：文字为'网络异常，请重试'，14px HarmonyHeiTi-Regular，#D32F2F，无背景色、无边框、无箭头、无阴影）；顶部状态栏与底部Tab导航栏完整可见；无遮罩、无弹窗、无Toast。",
+      "implementation_method": "错误提示气泡 (Error Tooltip)：在 state_2 的 HTML 中，于被操作应用项右侧外侧（inline-flex 容器内右侧 margin-left:auto 后追加 span）插入红色文字 '网络异常，请重试'（color:#D32F2F；font-size:14px；font-family:'HarmonyHeiTi-Regular'；no background；no padding；no border）。",
+      "last_state": 2
+    }
+  ]
+}

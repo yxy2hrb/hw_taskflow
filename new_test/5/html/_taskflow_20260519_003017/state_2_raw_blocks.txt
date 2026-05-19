@@ -1,0 +1,431 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": ["#14_884283", "#14_884284", "#14_884285", "#14_884368"],
+      "replace_at": "#14_884368",
+      "instruction": "把'虚拟体验项目区块'（id=14_884368）整段替换为内嵌弹窗：固定高度400px，顶部标题'我的体验项目'（16px Medium，#191919），下方垂直排列5张项目卡片；每张卡片宽340px、高88px、圆角8px、浅灰底#F3F3F3，含左侧项目图标、中间项目名称（14px Regular，#191919）、右侧状态标签（12px Regular，#46B1E3 背景+白字）、底部更新时间（12px Regular，#666）；卡片间间距12px；无遮罩、无关闭按钮；底部与Tab栏上边缘无缝衔接；保留顶部状态栏与底部Tab栏不变。",
+      "components_needed": ["Card"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "gap": 12,
+      "padding": 0,
+      "align": "stretch",
+      "width": "100%",
+      "maxWidth": 340
+    },
+    "children": [
+      {
+        "type": "Text",
+        "props": {
+          "variant": "subtitle",
+          "size": 16,
+          "weight": 500,
+          "color": "#191919",
+          "align": "left"
+        },
+        "children": "我的体验项目"
+      },
+      {
+        "type": "Column",
+        "props": {
+          "gap": 12,
+          "padding": 0,
+          "align": "stretch",
+          "width": "100%"
+        },
+        "children": [
+          {
+            "type": "Row",
+            "props": {
+              "gap": 12,
+              "padding": [12, 16],
+              "align": "center",
+              "justify": "space-between",
+              "background": "#F3F3F3",
+              "borderRadius": 8,
+              "width": "100%",
+              "height": 88
+            },
+            "children": [
+              {
+                "type": "Icon",
+                "props": {
+                  "name": "play_circle",
+                  "size": 24,
+                  "color": "#0A59F7"
+                }
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 4,
+                  "align": "start",
+                  "justify": "center"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "body",
+                      "size": 14,
+                      "weight": 400,
+                      "color": "#191919"
+                    },
+                    "children": "5G网络仿真体验"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "caption",
+                      "size": 12,
+                      "weight": 400,
+                      "color": "#666"
+                    },
+                    "children": "更新于 2024-06-12 14:30"
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 4,
+                  "align": "center",
+                  "padding": [4, 8],
+                  "background": "#46B1E3",
+                  "borderRadius": 8,
+                  "height": "auto"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "caption",
+                      "size": 12,
+                      "weight": 400,
+                      "color": "#FFFFFF"
+                    },
+                    "children": "进行中"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "gap": 12,
+              "padding": [12, 16],
+              "align": "center",
+              "justify": "space-between",
+              "background": "#F3F3F3",
+              "borderRadius": 8,
+              "width": "100%",
+              "height": 88
+            },
+            "children": [
+              {
+                "type": "Icon",
+                "props": {
+                  "name": "play_circle",
+                  "size": 24,
+                  "color": "#0A59F7"
+                }
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 4,
+                  "align": "start",
+                  "justify": "center"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "body",
+                      "size": 14,
+                      "weight": 400,
+                      "color": "#191919"
+                    },
+                    "children": "HarmonyOS应用开发实训"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "caption",
+                      "size": 12,
+                      "weight": 400,
+                      "color": "#666"
+                    },
+                    "children": "更新于 2024-06-10 09:15"
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 4,
+                  "align": "center",
+                  "padding": [4, 8],
+                  "background": "#46B1E3",
+                  "borderRadius": 8,
+                  "height": "auto"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "caption",
+                      "size": 12,
+                      "weight": 400,
+                      "color": "#FFFFFF"
+                    },
+                    "children": "进行中"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "gap": 12,
+              "padding": [12, 16],
+              "align": "center",
+              "justify": "space-between",
+              "background": "#F3F3F3",
+              "borderRadius": 8,
+              "width": "100%",
+              "height": 88
+            },
+            "children": [
+              {
+                "type": "Icon",
+                "props": {
+                  "name": "play_circle",
+                  "size": 24,
+                  "color": "#0A59F7"
+                }
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 4,
+                  "align": "start",
+                  "justify": "center"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "body",
+                      "size": 14,
+                      "weight": 400,
+                      "color": "#191919"
+                    },
+                    "children": "分布式设备协同实验"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "caption",
+                      "size": 12,
+                      "weight": 400,
+                      "color": "#666"
+                    },
+                    "children": "更新于 2024-06-08 16:42"
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 4,
+                  "align": "center",
+                  "padding": [4, 8],
+                  "background": "#ED6F21",
+                  "borderRadius": 8,
+                  "height": "auto"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "caption",
+                      "size": 12,
+                      "weight": 400,
+                      "color": "#FFFFFF"
+                    },
+                    "children": "待启动"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "gap": 12,
+              "padding": [12, 16],
+              "align": "center",
+              "justify": "space-between",
+              "background": "#F3F3F3",
+              "borderRadius": 8,
+              "width": "100%",
+              "height": 88
+            },
+            "children": [
+              {
+                "type": "Icon",
+                "props": {
+                  "name": "play_circle",
+                  "size": 24,
+                  "color": "#0A59F7"
+                }
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 4,
+                  "align": "start",
+                  "justify": "center"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "body",
+                      "size": 14,
+                      "weight": 400,
+                      "color": "#191919"
+                    },
+                    "children": "AI模型轻量化部署"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "caption",
+                      "size": 12,
+                      "weight": 400,
+                      "color": "#666"
+                    },
+                    "children": "更新于 2024-06-05 11:20"
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 4,
+                  "align": "center",
+                  "padding": [4, 8],
+                  "background": "#64BB5C",
+                  "borderRadius": 8,
+                  "height": "auto"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "caption",
+                      "size": 12,
+                      "weight": 400,
+                      "color": "#FFFFFF"
+                    },
+                    "children": "已完成"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "gap": 12,
+              "padding": [12, 16],
+              "align": "center",
+              "justify": "space-between",
+              "background": "#F3F3F3",
+              "borderRadius": 8,
+              "width": "100%",
+              "height": 88
+            },
+            "children": [
+              {
+                "type": "Icon",
+                "props": {
+                  "name": "play_circle",
+                  "size": 24,
+                  "color": "#0A59F7"
+                }
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 4,
+                  "align": "start",
+                  "justify": "center"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "body",
+                      "size": 14,
+                      "weight": 400,
+                      "color": "#191919"
+                    },
+                    "children": "安全可信执行环境验证"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "caption",
+                      "size": 12,
+                      "weight": 400,
+                      "color": "#666"
+                    },
+                    "children": "更新于 2024-06-01 10:05"
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 4,
+                  "align": "center",
+                  "padding": [4, 8],
+                  "background": "#64BB5C",
+                  "borderRadius": 8,
+                  "height": "auto"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "caption",
+                      "size": 12,
+                      "weight": 400,
+                      "color": "#FFFFFF"
+                    },
+                    "children": "已完成"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

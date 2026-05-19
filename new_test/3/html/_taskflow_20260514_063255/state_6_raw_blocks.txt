@@ -1,0 +1,262 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#14_884197",
+      "instruction": "将整个工作台主界面容器替换为全屏体验项目详情页：顶部固定导航栏（48px高，#FFFFFF，阴影0 1px 4px rgba(0,0,0,0.08)），含左向箭头图标（24×24px，#191919）、居中标题‘虚拟体验项目’（16px HarmonyHeiTi-Medium，#191919）、右侧三个等距图标（搜索放大镜、通知铃铛、加号，均为24×24px，#191919）；主体区域从上至下依次为：网络拓扑图（SVG渲染，宽100%，高240px，含3个AP圆点+8个终端小方块+连线）、Wi-Fi评分卡片（蓝底#46B1E3/白字，标题‘Wi-Fi评分’、分数‘86分’、描述‘信号强度良好’）、运行时长卡片（灰底#F3F3F3/黑字，标题‘运行时长’、时长‘12天8小时’）、设备与终端统计卡片（白底#FFFFFF/1px #191919边框，两列数据：‘AP设备’‘2台’、‘接入终端’‘47个’）；底部Tab栏不可见（需移除原 #14_884324 及其全部子节点）。",
+      "components_needed": ["TopAppBar", "Svg", "Card"]
+    },
+    {
+      "id": "e2",
+      "type": "delete",
+      "anchor": "<div id=\"14_884324\" class=\"Pixso-frame-14_884324\">",
+      "instruction": "删除底部Tab栏容器（id='14_884324'及其全部子节点），因全屏态底部Tab栏不可见"
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Page",
+    "props": {
+      "background": "#F1F3F5",
+      "width": "100%",
+      "height": "100%"
+    },
+    "children": [
+      {
+        "type": "NavBar",
+        "props": {
+          "title": "虚拟体验项目",
+          "leftIcon": "arrow_back",
+          "rightIcon": ["search", "notifications", "add"],
+          "align": "center"
+        }
+      },
+      {
+        "type": "Column",
+        "props": {
+          "gap": 24,
+          "padding": [24, 16],
+          "align": "stretch",
+          "background": "#F1F3F5"
+        },
+        "children": [
+          {
+            "type": "Column",
+            "props": {
+              "background": "#FFFFFF",
+              "borderRadius": 16,
+              "shadow": true,
+              "padding": 0,
+              "width": "100%"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "size": 14,
+                  "weight": 500,
+                  "color": "rgba(0,0,0,0.90)",
+                  "align": "center"
+                },
+                "children": "网络拓扑图"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "caption",
+                  "size": 12,
+                  "color": "rgba(0,0,0,0.40)",
+                  "align": "center",
+                  "marginTop": 4
+                },
+                "children": "3个AP · 47个终端 · 实时连接状态"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "size": 14,
+                  "weight": 400,
+                  "color": "rgba(0,0,0,0.60)",
+                  "align": "center",
+                  "marginTop": 8
+                },
+                "children": "（SVG渲染，宽100%，高240px）"
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": {
+              "background": "#46B1E3",
+              "borderRadius": 16,
+              "padding": 16,
+              "width": "100%"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "subtitle",
+                  "size": 14,
+                  "weight": 500,
+                  "color": "#FFFFFF"
+                },
+                "children": "Wi-Fi评分"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "title",
+                  "size": 20,
+                  "weight": 700,
+                  "color": "#FFFFFF",
+                  "marginTop": 8
+                },
+                "children": "86分"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "size": 14,
+                  "weight": 400,
+                  "color": "rgba(255,255,255,0.90)",
+                  "marginTop": 4
+                },
+                "children": "信号强度良好"
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": {
+              "background": "#F3F3F3",
+              "borderRadius": 16,
+              "padding": 16,
+              "width": "100%"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "subtitle",
+                  "size": 14,
+                  "weight": 500,
+                  "color": "rgba(0,0,0,0.90)"
+                },
+                "children": "运行时长"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "title",
+                  "size": 20,
+                  "weight": 700,
+                  "color": "rgba(0,0,0,0.90)",
+                  "marginTop": 8
+                },
+                "children": "12天8小时"
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": {
+              "background": "#FFFFFF",
+              "borderRadius": 16,
+              "padding": 16,
+              "width": "100%",
+              "shadow": true,
+              "border": "1px solid #191919"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "subtitle",
+                  "size": 14,
+                  "weight": 500,
+                  "color": "rgba(0,0,0,0.90)"
+                },
+                "children": "设备与终端统计"
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 32,
+                  "justify": "space-between",
+                  "marginTop": 12
+                },
+                "children": [
+                  {
+                    "type": "Column",
+                    "props": { "gap": 4 },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "body",
+                          "size": 14,
+                          "weight": 400,
+                          "color": "rgba(0,0,0,0.60)"
+                        },
+                        "children": "AP设备"
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "title",
+                          "size": 20,
+                          "weight": 700,
+                          "color": "rgba(0,0,0,0.90)"
+                        },
+                        "children": "2台"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Column",
+                    "props": { "gap": 4 },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "body",
+                          "size": 14,
+                          "weight": 400,
+                          "color": "rgba(0,0,0,0.60)"
+                        },
+                        "children": "接入终端"
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "title",
+                          "size": 20,
+                          "weight": 700,
+                          "color": "rgba(0,0,0,0.90)"
+                        },
+                        "children": "47个"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+[NEXT]
+[OLD]
+<div id="14_884324" class="Pixso-frame-14_884324">
+[NEW]

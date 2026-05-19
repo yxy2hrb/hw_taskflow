@@ -1,0 +1,191 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": ["#14_807629"],
+      "replace_at": "#14_807629",
+      "instruction": "将原表单区域（含标题、名称输入框、归属类型单选、已添加项目标签、添加项目按钮、创建项目集按钮）整体替换为：保留顶部状态栏与底部Tab栏；表单卡片宽320px、圆角12px、阴影0 2px 12px rgba(0,0,0,0.06)，居中；标题‘创建项目集’（16px HarmonyHeiTi-Medium，#191919）；名称输入框已填‘AI平台二期’（14px，#000000），边框#D9D9D9；归属类型单选中‘公司’项为选中态（实心蓝点#1890FF + 外圈蓝边#1890FF，‘个人’项未选中）；已添加项目区显示蓝色标签‘XX项目（公司）’（背景#E6F7FF，文字#1890FF，12px，圆角8px），右侧带灰色删除图标（Material Icons Round 名 󰂴，16px，#8C8C8C）；‘添加项目’按钮保持原样式；底部‘创建项目集’按钮变为禁用态：背景色#D9D9D9，文字色#BFBFBF，不可点击，按钮内居中叠加静止环形加载图标（SVG 或 CSS 圆环，stroke:#191919, stroke-width:2px, width:20px, height:20px）；所有字体使用 HarmonyHeiTi, 'HarmonyOS Sans', sans-serif；无遮罩、无弹窗、无其他新增元素。",
+      "components_needed": ["Button", "TextInput", "Radio"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "width": 320,
+      "background": "#FFFFFF",
+      "borderRadius": 12,
+      "shadow": "0 2px 12px rgba(0,0,0,0.06)",
+      "padding": 24,
+      "gap": 16,
+      "align": "stretch"
+    },
+    "children": [
+      {
+        "type": "Text",
+        "props": {
+          "variant": "subtitle",
+          "size": 16,
+          "weight": 500,
+          "color": "#191919",
+          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+        },
+        "children": "创建项目集"
+      },
+      {
+        "type": "FormField",
+        "props": {
+          "label": "名称",
+          "placeholder": "请输入项目集名称",
+          "value": "AI平台二期",
+          "size": "regular",
+          "labelWidth": 48
+        }
+      },
+      {
+        "type": "Column",
+        "props": { "gap": 8 },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "variant": "subtitle",
+              "size": 14,
+              "weight": 500,
+              "color": "#191919",
+              "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+            },
+            "children": "归属类型"
+          },
+          {
+            "type": "Column",
+            "props": { "gap": 12 },
+            "children": [
+              {
+                "type": "Row",
+                "props": { "gap": 12, "align": "center" },
+                "children": [
+                  {
+                    "type": "Checkbox",
+                    "props": {
+                      "checked": true,
+                      "size": 22,
+                      "color": "#1890FF"
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "body",
+                      "size": 14,
+                      "color": "#000000",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "公司"
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": { "gap": 12, "align": "center" },
+                "children": [
+                  {
+                    "type": "Checkbox",
+                    "props": {
+                      "checked": false,
+                      "size": 22,
+                      "color": "#1890FF"
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "body",
+                      "size": 14,
+                      "color": "#000000",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "个人"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": { "gap": 12 },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "variant": "subtitle",
+              "size": 14,
+              "weight": 500,
+              "color": "#191919",
+              "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+            },
+            "children": "已添加项目"
+          },
+          {
+            "type": "Row",
+            "props": {
+              "background": "#E6F7FF",
+              "borderRadius": 8,
+              "padding": [4, 12],
+              "align": "center",
+              "gap": 8
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "caption",
+                  "size": 12,
+                  "color": "#1890FF",
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                },
+                "children": "XX项目（公司）"
+              },
+              {
+                "type": "Icon",
+                "props": {
+                  "name": "close",
+                  "size": 16,
+                  "color": "#8C8C8C"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Button",
+        "props": {
+          "label": "添加项目",
+          "variant": "secondary",
+          "size": "regular",
+          "block": true
+        }
+      },
+      {
+        "type": "Button",
+        "props": {
+          "label": "创建项目集",
+          "variant": "primary",
+          "size": "regular",
+          "block": true,
+          "disabled": true,
+          "background": "#D9D9D9",
+          "color": "#BFBFBF"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "state_id": 5,
+  "state_name": "网络加载失败态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "语言一致性：截图中'拓扑数据暂不可用'和'重试'为中文，符合主语言zh要求，但存在重复的弹窗结构（两个相同横幅），导致视觉冗余。",
+      "元素溢出：右侧'重试'按钮文字未被裁切，但其容器宽度未严格限制，可能在窄屏下出现布局问题。",
+      "可见性：需求描述中的'浅红色横幅提示'在截图中可见，但存在两个相同的横幅，一个位于主体内容上方，另一个是固定定位的浮层，造成重复显示，不符合单个Toast设计规范。",
+      "位置合理性：固定定位的浮层横幅使用了position:fixed且z-index=1000，但其top:80px与页面导航栏高度不匹配，可能导致在不同设备上偏移，且应仅保留一个横幅以避免重复。",
+      "基础样式：横幅背景色#FEF2F2和文字色#C0392B符合规范，但按钮颜色#0A59F7为蓝色，虽可用，但在错误态中建议使用更突出的颜色如红色或橙色以增强警示性。"
+    ],
+    "fixedBlocks": "[OLD]\n<!-- 任务节点开始: 网络加载失败态【临时】 -->\n<div style=\"position:fixed; inset:0; z-index:1000; pointer-events:none;\">\n  <div style=\"position:absolute; top:80px; left:0; right:0; height:44px; background:#FEF2F2; display:flex; align-items:center; padding:0 16px; box-sizing:border-box; pointer-events:auto;\">\n    <span style=\"font-size:14px; color:#C0392B; word-break:break-word; overflow-wrap:anywhere; line-height:1.5;\">拓扑数据暂不可用</span>\n    <button type=\"button\" style=\"margin-left:auto; padding:0 12px; height:28px; background:#0A59F7; color:#FFFFFF; border:none; border-radius:8px; font-size:14px; font-weight:500; line-height:1.5; white-space:nowrap;\">重试</button>\n  </div>\n</div>\n<!-- 任务节点结束: 网络加载失败态【临时】 -->\n[NEW]\n<!-- 任务节点开始: 网络加载失败态【临时】 -->\n<div style=\"position:sticky; top:80px; z-index:1000; width:100%; height:44px; background:#FEF2F2; display:flex; align-items:center; padding:0 16px; box-sizing:border-box; pointer-events:auto;\">\n  <span style=\"font-size:14px; color:#C0392B; word-break:break-word; overflow-wrap:anywhere; line-height:1.5;\">拓扑数据暂不可用</span>\n  <button type=\"button\" style=\"margin-left:auto; padding:0 12px; height:28px; background:#E84026; color:#FFFFFF; border:none; border-radius:8px; font-size:14px; font-weight:500; line-height:1.5; white-space:nowrap;\">重试</button>\n</div>\n<!-- 任务节点结束: 网络加载失败态【临时】 -->",
+    "reviewMs": 32843,
+    "screenshot": 58900,
+    "fixedBlocksParsed": 1
+  }
+}

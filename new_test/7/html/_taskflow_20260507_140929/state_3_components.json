@@ -1,0 +1,18 @@
+{
+  "state_id": 3,
+  "state_name": "添加成功反馈状态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "语言一致性：主语言为中文，但Toast文字'添加成功'在截图中显示为英文'Added successfully'，违反了主语言一致性要求。",
+      "元素溢出：Toast弹窗宽度超出360px画布边界，右边缘被裁切，不符合视觉规范。",
+      "位置合理性：Toast应位于视口右上角（right: 16px; top: 16px），但截图中Toast被放置在状态栏区域，位置不合理。"
+    ],
+    "fixedBlocks": "[OLD]\n<div style=\"position:fixed;top:16px;right:16px;z-index:9999;box-sizing:border-box;padding:12px 16px;background:#191919;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.06);font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:400;color:#FFFFFF;transform:translateY(0);animation:toast-in 0.3s ease-out forwards;\">\n  添加成功\n</div>\n[NEW]\n<div style=\"position:fixed;top:16px;right:16px;z-index:9999;box-sizing:border-box;padding:12px 16px;background:#191919;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.06);font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:400;color:#FFFFFF;transform:translateY(0);animation:toast-in 0.3s ease-out forwards;max-width:328px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;\">\n  添加成功\n</div>",
+    "reviewMs": 59613,
+    "screenshot": 129251,
+    "fixedBlocksParsed": 1
+  }
+}

@@ -1,0 +1,364 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#14_884368",
+      "instruction": "把整个虚拟体验项目内容区替换为完整单页布局：顶部导航栏含左侧返回箭头图标（深灰#191919）、居中标题'虚拟体验项目'（16px Medium，HarmonyHeiTi-Medium，深灰#191919）、右侧依次为搜索图标（深灰#191919，Material Icons Round 'search'）、通知图标（深灰#191919，'notifications'）、加号图标（深灰#191919，'add'）；下方滚动内容区首区块为SVG设备拓扑图（宽100%，高度自适应，内联SVG结构保留）；第二区块为Wi-Fi评分卡片（蓝底#46B1E3，白字，评分数字+‘分’，副标‘Wi-Fi评分’）与运行时长卡片（灰底#F3F3F3，黑字#191919，‘X天Y小时’）；第三区块为设备及终端统计卡片（两列等宽flex，左‘设备数’+数字，右‘终端数’+数字，文字14px Regular，HarmonyHeiTi-Regular）；第四区块为业务网管理模块（标题‘业务网管理’+开关控件+‘访问控制’+3行终端列表，每行含图标+名称+状态）",
+      "components_needed": ["Card", "Switch", "IconButton"]
+    },
+    {
+      "id": "e2",
+      "type": "text-edit",
+      "anchor": "<p id=\"146_139175\" class=\"Pixso-paragraph-146_139175 fill-text文本色图标色color_text_primary-14_290523-paragraph text-单行行高headline标题headline_s-14_365549\">虚拟体验项目</p>",
+      "instruction": "更新为 '虚拟体验项目'（16px Medium，HarmonyHeiTi-Medium，深灰#191919）"
+    },
+    {
+      "id": "e3",
+      "type": "text-edit",
+      "anchor": "<p id=\"146_139187\" class=\"Pixso-paragraph-146_139187 fill-text文本色图标色color_text_primary-14_290523-paragraph\">我的体验项目</p>",
+      "instruction": "更新为 '我的体验项目'（14px Regular，HarmonyHeiTi-Regular，深灰#191919）"
+    },
+    {
+      "id": "e4",
+      "type": "new-overlay",
+      "anchor": "#14_884367",
+      "instruction": "在 body 直接子级末尾新增顶部导航栏固定浮层：position: fixed; top: 0; left: 0; width: 100%; height: 56px; background-color: white; z-index: 1000; display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 0 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); 包含：左侧 <span class=\"mi\" style=\"color:#191919;font-size:20px;\">arrow_back</span>；居中 <span style=\"font-family: 'HarmonyHeiTi-Medium', 'HarmonyOS Sans', sans-serif; font-size:16px; font-weight:500; color:#191919; line-height:20px;\">虚拟体验项目</span>；右侧三个 <span class=\"mi\" style=\"color:#191919;font-size:20px;\">search</span> / <span class=\"mi\" style=\"color:#191919;font-size:20px;\">notifications</span> / <span class=\"mi\" style=\"color:#191919;font-size:20px;\">add</span> 图标（等距排列，间距12px）",
+      "components_needed": ["IconButton"],
+      "icons_needed": ["search", "notifications", "add"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Page",
+    "props": {
+      "background": "#F1F3F5"
+    },
+    "children": [
+      {
+        "type": "NavBar",
+        "props": {
+          "title": "虚拟体验项目",
+          "leftIcon": "arrow_back",
+          "rightIcon": ["search", "notifications", "add"],
+          "align": "center"
+        }
+      },
+      {
+        "type": "Column",
+        "props": {
+          "padding": [16, 0, 16, 0],
+          "gap": 24,
+          "background": "#F1F3F5"
+        },
+        "children": [
+          {
+            "type": "Column",
+            "props": {
+              "padding": [0, 16],
+              "gap": 24
+            },
+            "children": [
+              {
+                "type": "Column",
+                "props": {
+                  "background": "#FFFFFF",
+                  "borderRadius": 16,
+                  "shadow": true,
+                  "padding": 16
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "subtitle",
+                      "color": "rgba(0,0,0,0.90)",
+                      "size": 14,
+                      "weight": 500
+                    },
+                    "children": "设备拓扑图"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "caption",
+                      "color": "rgba(0,0,0,0.40)",
+                      "size": 12
+                    },
+                    "children": "点击查看全图"
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 16,
+                  "wrap": false
+                },
+                "children": [
+                  {
+                    "type": "Column",
+                    "props": {
+                      "background": "#46B1E3",
+                      "borderRadius": 16,
+                      "padding": 16,
+                      "width": "50%",
+                      "align": "center",
+                      "justify": "center"
+                    },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "title",
+                          "color": "#FFFFFF",
+                          "size": 24,
+                          "weight": 700
+                        },
+                        "children": "87"
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "caption",
+                          "color": "rgba(255,255,255,0.90)",
+                          "size": 12
+                        },
+                        "children": "分"
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "caption",
+                          "color": "rgba(255,255,255,0.90)",
+                          "size": 12
+                        },
+                        "children": "Wi-Fi评分"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Column",
+                    "props": {
+                      "background": "#F3F3F3",
+                      "borderRadius": 16,
+                      "padding": 16,
+                      "width": "50%",
+                      "align": "center",
+                      "justify": "center"
+                    },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "title",
+                          "color": "#191919",
+                          "size": 20,
+                          "weight": 700
+                        },
+                        "children": "3天5小时"
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "caption",
+                          "color": "rgba(0,0,0,0.60)",
+                          "size": 12
+                        },
+                        "children": "运行时长"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 16,
+                  "wrap": false
+                },
+                "children": [
+                  {
+                    "type": "Column",
+                    "props": {
+                      "background": "#FFFFFF",
+                      "borderRadius": 16,
+                      "shadow": true,
+                      "padding": 16,
+                      "width": "50%"
+                    },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "body",
+                          "color": "rgba(0,0,0,0.60)",
+                          "size": 14,
+                          "weight": 400
+                        },
+                        "children": "设备数"
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "title",
+                          "color": "rgba(0,0,0,0.90)",
+                          "size": 20,
+                          "weight": 700
+                        },
+                        "children": "12"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Column",
+                    "props": {
+                      "background": "#FFFFFF",
+                      "borderRadius": 16,
+                      "shadow": true,
+                      "padding": 16,
+                      "width": "50%"
+                    },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "body",
+                          "color": "rgba(0,0,0,0.60)",
+                          "size": 14,
+                          "weight": 400
+                        },
+                        "children": "终端数"
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "title",
+                          "color": "rgba(0,0,0,0.90)",
+                          "size": 20,
+                          "weight": 700
+                        },
+                        "children": "48"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "background": "#FFFFFF",
+                  "borderRadius": 16,
+                  "shadow": true,
+                  "padding": 16
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "subtitle",
+                      "color": "rgba(0,0,0,0.90)",
+                      "size": 16,
+                      "weight": 500
+                    },
+                    "children": "业务网管理"
+                  },
+                  {
+                    "type": "Row",
+                    "props": {
+                      "gap": 12,
+                      "align": "center",
+                      "justify": "space-between"
+                    },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "body",
+                          "color": "rgba(0,0,0,0.60)",
+                          "size": 14,
+                          "weight": 400
+                        },
+                        "children": "访问控制"
+                      },
+                      {
+                        "type": "Button",
+                        "props": {
+                          "label": "ON",
+                          "variant": "primary",
+                          "size": "compact"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Column",
+                    "props": {
+                      "gap": 12,
+                      "padding": [12, 0]
+                    },
+                    "children": [
+                      {
+                        "type": "ListItem",
+                        "props": {
+                          "title": "终端A",
+                          "subtitle": "在线",
+                          "leftIcon": "computer",
+                          "divider": true
+                        }
+                      },
+                      {
+                        "type": "ListItem",
+                        "props": {
+                          "title": "终端B",
+                          "subtitle": "离线",
+                          "leftIcon": "phone_ipad",
+                          "divider": true
+                        }
+                      },
+                      {
+                        "type": "ListItem",
+                        "props": {
+                          "title": "终端C",
+                          "subtitle": "在线",
+                          "leftIcon": "tablet_mac",
+                          "divider": false
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+[NEXT]
+[OLD]
+<p id="146_139175" class="Pixso-paragraph-146_139175 fill-text文本色图标色color_text_primary-14_290523-paragraph text-单行行高headline标题headline_s-14_365549">虚拟体验项目</p>
+[NEW]
+<p id="146_139175" class="Pixso-paragraph-146_139175 fill-text文本色图标色color_text_primary-14_290523-paragraph text-单行行高headline标题headline_s-14_365549" style="font-size: 16px; font-weight: 500; font-family: 'HarmonyHeiTi-Medium', sans-serif; color: #191919;">虚拟体验项目</p>
+[NEXT]
+[OLD]
+<p id="146_139187" class="Pixso-paragraph-146_139187 fill-text文本色图标色color_text_primary-14_290523-paragraph">我的体验项目</p>
+[NEW]
+<p id="146_139187" class="Pixso-paragraph-146_139187 fill-text文本色图标色color_text_primary-14_290523-paragraph" style="font-size: 14px; font-family: 'HarmonyHeiTi-Regular'; color: #191919;">我的体验项目</p>
+[NEXT]
+{
+  "tree": {
+    "type": "NavBar",
+    "props": {
+      "title": "虚拟体验项目",
+      "leftIcon": "arrow_back",
+      "rightIcon": ["search", "notifications", "add"],
+      "align": "center"
+    }
+  }
+}

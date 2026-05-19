@@ -1,0 +1,155 @@
+[OLD]
+<div id="146_139173" class="Pixso-frame-146_139173">
+            <div class="frame-content-146_139173">
+              <div id="146_139174" class="Pixso-frame-146_139174">
+                <p id="146_139175" class="Pixso-paragraph-146_139175 fill-text文本色图标色color_text_primary-14_290523-paragraph text-单行行高headline标题headline_s-14_365549">虚拟体验项目</p>
+              </div>
+            </div>
+          </div>
+          <div id="146_139186" class="Pixso-frame-146_139186">
+            <p id="146_139187" class="Pixso-paragraph-146_139187 fill-text文本色图标色color_text_primary-14_290523-paragraph">我的体验项目</p>
+          </div>
+          <div id="146_139188" class="Pixso-frame-146_139188">
+            <div class="frame-content-146_139188">
+              <div id="146_139189" class="Pixso-frame-146_139189">
+                <div class="frame-content-146_139189">
+                  <div id="146_139190" class="Pixso-frame-146_139190">
+                    <div id="146_139191" class="Pixso-group-146_139191">
+                      <div id="146_139192" class="Pixso-rectangle-146_139192"></div>
+                      <div id="146_139193" class="Pixso-group-146_139193">
+                        <div id="146_139200" class="Pixso-vector-146_139200"></div>
+                      </div>
+                      <div id="146_139203" class="Pixso-group-146_139203">
+                        <div id="146_139210" class="Pixso-vector-146_139210"></div>
+                      </div>
+                      <div id="146_139213" class="Pixso-group-146_139213">
+                        <div id="146_139220" class="Pixso-vector-146_139220"></div>
+                      </div>
+                      <div id="146_139223" class="Pixso-vector-146_139223"></div>
+                      <div id="146_139224" class="Pixso-vector-146_139224"></div>
+                      <div id="146_139225" class="Pixso-vector-146_139225"></div>
+                      <div id="146_139226" class="Pixso-vector-146_139226"></div>
+                      <div id="146_139227" class="Pixso-vector-146_139227"></div>
+                      <div id="146_139228" class="Pixso-vector-146_139228"></div>
+                    </div>
+                  </div>
+                  <p id="146_139236" class="Pixso-paragraph-146_139236 fill-text文本色图标色color_text_primary-14_290523-paragraph">体验开局流程</p>
+                </div>
+              </div>
+              <div id="146_139237" class="Pixso-frame-146_139237">
+                <div class="frame-content-146_139237">
+                  <div id="146_139238" class="Pixso-frame-146_139238">
+                    <div id="146_139239" class="Pixso-group-146_139239">
+                      <div id="146_139240" class="Pixso-rectangle-146_139240"></div>
+                      <div id="146_139241" class="Pixso-group-146_139241">
+                        <div id="146_139248" class="Pixso-vector-146_139248"></div>
+                      </div>
+                      <div id="146_139251" class="Pixso-group-146_139251">
+                        <div id="146_139258" class="Pixso-vector-146_139258"></div>
+                      </div>
+                      <div id="146_139261" class="Pixso-group-146_139261">
+                        <div id="146_139268" class="Pixso-vector-146_139268"></div>
+                      </div>
+                      <div id="146_139271" class="Pixso-vector-146_139271"></div>
+                      <div id="146_139272" class="Pixso-vector-146_139272"></div>
+                      <div id="146_139273" class="Pixso-vector-146_139273"></div>
+                      <div id="146_139274" class="Pixso-vector-146_139274"></div>
+                      <div id="146_139275" class="Pixso-vector-146_139275"></div>
+                      <div id="146_139276" class="Pixso-vector-146_139276"></div>
+                    </div>
+                  </div>
+                  <p id="146_139277" class="Pixso-paragraph-146_139277 fill-text文本色图标色color_text_primary-14_290523-paragraph">体验运维流程</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="146_139278" class="Pixso-group-146_139278">
+            <div id="146_139280" class="Pixso-group-146_139280">
+              <div id="146_139281" class="vector-wrapper-146_139281">
+                <div id="146_139281" class="Pixso-vector-146_139281"></div>
+              </div>
+              <div id="146_139282" class="Pixso-vector-146_139282"></div>
+              <div id="146_139283" class="vector-wrapper-146_139283">
+                <div id="146_139283" class="Pixso-vector-146_139283"></div>
+              </div>
+              <div id="146_139284" class="Pixso-rectangle-146_139284"></div>
+            </div>
+          </div>
+[NEW]
+<!-- 任务节点开始: 拓扑图加载中状态【临时】 -->
+<div style="position:fixed;inset:0;z-index:9999;background:#FFFFFF;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;overflow-y:auto;">
+  <!-- 顶部状态栏（复用原页面） -->
+  <div id="146_170564" class="Pixso-frame-146_170564" style="height:32px;padding:0 16px;display:flex;align-items:center;justify-content:space-between;">
+    <p id="146_170566" class="Pixso-paragraph-146_170566" style="font-size:14px;color:rgba(0,0,0,0.898);margin:0;">08:08</p>
+    <div id="146_170567" class="Pixso-frame-146_170567" style="display:flex;gap:4px;">
+      <div id="146_170568" class="Pixso-vector-146_170568" style="width:16px;height:12px;background:rgba(0,0,0,0.6);border-radius:2px;"></div>
+      <div id="146_170580" class="Pixso-vector-146_170580" style="width:16px;height:12px;background:rgba(0,0,0,0.6);border-radius:2px;"></div>
+      <div id="146_170587" class="Pixso-vector-146_170587" style="width:16px;height:12px;background:rgba(0,0,0,0.6);border-radius:2px;"></div>
+      <div id="146_170614" class="Pixso-vector-146_170614" style="width:20px;height:12px;background:rgba(0,0,0,0.6);border-radius:2px;"></div>
+    </div>
+  </div>
+  <!-- 顶部导航栏 -->
+  <div style="height:48px;padding:0 16px;display:flex;align-items:center;gap:12px;background:#FFFFFF;border-bottom:1px solid rgba(0,0,0,0.08);">
+    <span class="mi" style="font-size:24px;color:rgba(0,0,0,0.9);">arrow_back</span>
+    <span style="flex:1;text-align:center;font-size:18px;font-weight:600;color:rgba(0,0,0,0.9);">虚拟体验项目</span>
+    <div style="display:flex;gap:12px;">
+      <span class="mi" style="font-size:24px;color:rgba(0,0,0,0.6);">search</span>
+      <span class="mi" style="font-size:24px;color:rgba(0,0,0,0.6);">notifications</span>
+      <span class="mi" style="font-size:24px;color:rgba(0,0,0,0.6);">add</span>
+    </div>
+  </div>
+  <!-- 主体内容 -->
+  <div style="padding:24px 16px;box-sizing:border-box;">
+    <!-- 拓扑图容器（骨架屏） -->
+    <div style="width:360px;height:228px;margin:0 auto;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:#F1F3F5;"></div>
+      <!-- 5个椭圆节点 -->
+      <div style="position:absolute;top:40px;left:40px;width:48px;height:48px;border-radius:50%;background:#E0E0E0;animation:opacity-pulse 1.2s infinite;"></div>
+      <div style="position:absolute;top:40px;left:140px;width:48px;height:48px;border-radius:50%;background:#E0E0E0;animation:opacity-pulse 1.2s infinite 0.2s;"></div>
+      <div style="position:absolute;top:120px;left:90px;width:48px;height:48px;border-radius:50%;background:#E0E0E0;animation:opacity-pulse 1.2s infinite 0.4s;"></div>
+      <div style="position:absolute;top:120px;left:190px;width:48px;height:48px;border-radius:50%;background:#E0E0E0;animation:opacity-pulse 1.2s infinite 0.6s;"></div>
+      <div style="position:absolute;top:120px;left:290px;width:48px;height:48px;border-radius:50%;background:#E0E0E0;animation:opacity-pulse 1.2s infinite 0.8s;"></div>
+      <!-- 浅灰连线 -->
+      <div style="position:absolute;top:64px;left:88px;width:52px;height:2px;background:#E0E0E0;"></div>
+      <div style="position:absolute;top:64px;left:188px;width:52px;height:2px;background:#E0E0E0;"></div>
+      <div style="position:absolute;top:144px;left:138px;width:52px;height:2px;background:#E0E0E0;"></div>
+      <div style="position:absolute;top:144px;left:238px;width:52px;height:2px;background:#E0E0E0;"></div>
+      <div style="position:absolute;top:144px;left:290px;width:52px;height:2px;background:#E0E0E0;"></div>
+    </div>
+    <!-- Wi-Fi评分卡片 -->
+    <div style="margin-top:24px;padding:16px;background:#FFFFFF;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.08);display:flex;flex-direction:column;align-items:center;">
+      <div style="font-size:32px;font-weight:700;color:rgba(0,0,0,0.898);margin-bottom:4px;">89</div>
+      <div style="font-size:14px;color:rgba(0,0,0,0.6);">分</div>
+      <div style="margin-top:8px;width:100%;height:4px;background:rgba(0,0,0,0.05);border-radius:2px;overflow:hidden;">
+        <div style="height:100%;width:89%;background:#0A59F7;border-radius:2px;"></div>
+      </div>
+    </div>
+    <!-- 运行时长 -->
+    <div style="margin-top:16px;padding:16px;background:#FFFFFF;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.08);display:flex;align-items:center;justify-content:space-between;">
+      <div style="font-size:14px;color:rgba(0,0,0,0.6);">已运行</div>
+      <div style="font-size:16px;font-weight:500;color:rgba(0,0,0,0.898);">2天8小时</div>
+    </div>
+    <!-- 统计卡片 -->
+    <div style="margin-top:16px;padding:16px;background:#FFFFFF;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+      <div style="display:flex;gap:12px;">
+        <div style="flex:1;padding:12px;background:rgba(0,0,0,0.047);border-radius:12px;">
+          <div style="font-size:12px;color:rgba(0,0,0,0.4);margin-bottom:4px;">网络设备</div>
+          <div style="font-size:16px;font-weight:500;color:rgba(0,0,0,0.898);">12台</div>
+        </div>
+        <div style="flex:1;padding:12px;background:rgba(0,0,0,0.047);border-radius:12px;">
+          <div style="font-size:12px;color:rgba(0,0,0,0.4);margin-bottom:4px;">接入终端</div>
+          <div style="font-size:16px;font-weight:500;color:rgba(0,0,0,0.898);">47台</div>
+        </div>
+      </div>
+    </div>
+    <!-- 功能模块 -->
+    <div style="margin-top:16px;padding:16px;background:#FFFFFF;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+      <div style="font-size:14px;color:rgba(0,0,0,0.6);margin-bottom:12px;">业务网管理</div>
+      <button type="button" style="width:100%;padding:12px;background:#0A59F7;color:#FFFFFF;border:none;border-radius:20px;font-size:16px;font-weight:500;cursor:pointer;">配置业务网</button>
+      <div style="margin-top:12px;font-size:14px;color:rgba(0,0,0,0.6);margin-bottom:12px;">访问控制</div>
+      <button type="button" style="width:100%;padding:12px;background:#0A59F7;color:#FFFFFF;border:none;border-radius:20px;font-size:16px;font-weight:500;cursor:pointer;">设置访问策略</button>
+    </div>
+  </div>
+</div>
+<style>@keyframes opacity-pulse{0%{opacity:0.3;}50%{opacity:0.7;}100%{opacity:0.3;}}</style>
+<!-- 任务节点结束: 拓扑图加载中状态【临时】 -->

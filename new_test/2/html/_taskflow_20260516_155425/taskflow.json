@@ -1,0 +1,43 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "我的工作台初始态",
+    "description": "页面完整显示‘我的工作台’内容，顶部状态栏正常可见（含时间、信号、电量图标），底部 Tab 导航栏固定在屏幕最下方，中间区域可见‘创建项目集’按钮（红色底色、白色文字、圆角矩形、居中水平排列），无任何浮层、遮罩或弹窗。",
+    "implementation_method": "原始 HTML 初始快照，不做改造"
+  },
+  {
+    "state_id": 2,
+    "state_name": "全屏项目集表单页",
+    "description": "全屏覆盖式页面，顶部状态栏保持可见（未被遮挡），底部 Tab 导航栏仍固定显示；页面中部为可滚动内容区：顶部标题栏固定显示‘创建项目集’（16px Medium 字体、深灰文字、居中）；下方依次为名称输入框（浅灰边框、12px 占位符‘请输入项目集名称’）、‘公司/个人’单选按钮组（两个横向并排的圆形按钮+文字标签，左侧为‘公司’、右侧为‘个人’，当前无选中）、项目列表添加区（灰色虚线方框+‘+ 添加项目’文字，居中）、底部悬浮红色按钮（#FF4D4F 底色、白色文字‘确认’、圆角矩形、宽 320px、居中、距底 24px）。",
+    "implementation_method": "全屏覆盖页 (Full-Screen Overlay Page)：顶部固定标题栏含文字 '创建项目集'（'Create Project Set'）；名称输入框 placeholder='请输入项目集名称'（'Please enter project set name'）；单选按钮组含两个选项，文字分别为 '公司'（'Company'）和 '个人'（'Personal'），默认均未选中；项目添加区为虚线边框灰色容器（#D9D9D9），内含 '+' 图标 + 文字 '添加项目'（'Add Project'）；底部悬浮按钮文字 '确认'（'Confirm'），背景色 #FF4D4F，文字白色，圆角 8px，宽 320px，高 48px，居中定位，距屏幕底部 24px。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "校验失败态",
+    "description": "画面与全屏项目集表单页完全一致，仅做两处修改：名称输入框边框变为红色（#FF4D4F），右侧紧邻显示红色感叹号图标（16×16px，颜色 #FF4D4F）；单选按钮组下方新增一行红色提示文字（12px 字体、#FF4D4F），内容为‘请选择匹配属性的项目’（'Please select projects matching the attribute'）；底部红色‘确认’按钮保持原样式但不可点击（opacity:0.5，pointer-events:none）。",
+    "implementation_method": "表单错误反馈 (Form Validation Feedback)：名称输入框边框色改为 #FF4D4F，右侧嵌入 16×16px 红色感叹号 SVG 图标；单选按钮组正下方添加红色提示段落，文字 '请选择匹配属性的项目'（'Please select projects matching the attribute'）；底部按钮保持 #FF4D4F 背景与白色文字，但添加 opacity:0.5 和 pointer-events:none 属性，无其他视觉变化。",
+    "last_state": 2
+  },
+  {
+    "state_id": 4,
+    "state_name": "提交中态",
+    "description": "画面与全屏项目集表单页完全一致，仅做一处修改：底部红色‘确认’按钮文字替换为‘提交中…’（'Submitting...'），按钮内部左侧叠加一个 16×16px 灰色环形加载图标（stroke #191919，透明度 0.6，CSS animation:hmspin 1s linear infinite），按钮仍保持 #FF4D4F 背景与白色文字，不可点击（pointer-events:none），其余所有元素位置、颜色、层级均未改变。",
+    "implementation_method": "按钮加载态 (Button Loading State)：底部按钮文字更新为 '提交中…'（'Submitting...'）；按钮内左侧嵌入 16×16px 环形 spinner（stroke:#191919, stroke-opacity:0.6, animated with CSS @keyframes hmspin 1s linear infinite）；按钮添加 pointer-events:none，背景与文字色不变，无遮罩、无浮层、无其他 DOM 变更。",
+    "last_state": 2
+  },
+  {
+    "state_id": 5,
+    "state_name": "成功终态",
+    "description": "画面与全屏项目集表单页完全一致，顶部状态栏下方 16px 处固定显示一条绿色横条（高度 48px，背景色 #52C418，左端含白色对勾图标 20×20px，右端文字‘创建成功’（'Created Successfully'）白色 14px Medium 字体，居中垂直对齐），横条覆盖整个屏幕宽度，无阴影、无圆角、无动画效果，其余所有界面元素（包括底部 Tab）均正常可见且未被遮挡。",
+    "implementation_method": "轻量级提示 (Toast/Snackbar)：顶部状态栏下方 16px 处固定绿色横条，高 48px，宽 100%，背景色 #52C418；横条内左端为白色对勾 SVG 图标（20×20px），右端为文字 '创建成功'（'Created Successfully'），14px Medium 字体，白色，垂直居中；无遮罩、无过渡、无消失动画，仅静态显示。",
+    "last_state": 2
+  },
+  {
+    "state_id": 6,
+    "state_name": "取消返回态",
+    "description": "画面与我的工作台初始态完全一致，顶部状态栏正常可见，底部 Tab 导航栏固定在屏幕最下方，中间区域完整显示‘我的工作台’原有内容，‘创建项目集’按钮处于原始位置与样式（红色底色、白色文字、圆角矩形、居中），无任何浮层、遮罩、弹窗或残留 UI 元素。",
+    "implementation_method": "画面与 last_state（state_1）完全一致；base 已是关闭后的样子，无需任何 DOM 改造。",
+    "last_state": 1
+  }
+]

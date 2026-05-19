@@ -1,0 +1,11 @@
+{
+  "state_id": 1,
+  "state_name": "我的工作台首页",
+  "description": "页面为全屏移动端布局，顶部状态栏显示时间与信号图标，底部固定 Tab 导航栏含‘工作台’‘项目’‘消息’‘我’四图标，当前‘工作台’Tab 高亮；页面中部为‘项目开局’标题，下方排列三个功能卡片：‘创建开局’‘创建项目集’‘接收项目’，其中‘创建项目集’卡片含加号图标与文字，位于中间位置。",
+  "implementation_method": "原始 HTML 初始快照，不做改造",
+  "last_state": null,
+  "applied": 0,
+  "skipped": 0,
+  "failed": false,
+  "error": null
+}

@@ -1,0 +1,143 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": ["#14_807630"],
+      "replace_at": "#14_807630",
+      "instruction": "将项目开局卡片区域整段替换为创建项目集全屏页初始态：中央白色卡片区域（#FFFFFF，圆角8px，box-shadow: 0 2px 12px rgba(0,0,0,0.06)），垂直居中；顶部标题‘创建项目集’（16px Medium，#191919）；下方名称输入框（浅灰底#F5F5F5，1px solid #E0E0E0边框，placeholder='请输入项目集名称'，font-family: 'HarmonyHeiTi-Medium', sans-serif）；再下方‘公司/个人’单选组（两个水平排列的圆形按钮+文字标签，均未选中，间距12px，字体14px #191919）；项目添加区（高度64px，浅灰背景#F5F5F5，居中灰色文字‘+ 添加项目’，#999999，14px）；底部悬浮红色按钮（宽100%、高48px、#FF4D4F背景、白色粗体文字‘确认’，font-family: 'HarmonyHeiTi-Medium', sans-serif）；保留顶部状态栏与底部Tab栏（不改动）。",
+      "components_needed": ["TextInput", "Radio", "Button"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "background": "#FFFFFF",
+      "borderRadius": 8,
+      "shadow": "0 2px 12px rgba(0,0,0,0.06)",
+      "padding": 24,
+      "gap": 24,
+      "align": "stretch",
+      "width": "100%",
+      "maxWidth": 328,
+      "justify": "center"
+    },
+    "children": [
+      {
+        "type": "Text",
+        "props": {
+          "variant": "title",
+          "size": 16,
+          "weight": 500,
+          "color": "#191919",
+          "fontFamily": "'HarmonyHeiTi-Medium', sans-serif"
+        },
+        "children": "创建项目集"
+      },
+      {
+        "type": "FormField",
+        "props": {
+          "placeholder": "请输入项目集名称",
+          "labelWidth": 0,
+          "label": "",
+          "fontFamily": "'HarmonyHeiTi-Medium', sans-serif"
+        }
+      },
+      {
+        "type": "Column",
+        "props": { "gap": 12 },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "variant": "subtitle",
+              "size": 14,
+              "weight": 400,
+              "color": "#191919"
+            },
+            "children": "公司/个人"
+          },
+          {
+            "type": "Row",
+            "props": { "gap": 12, "align": "center" },
+            "children": [
+              {
+                "type": "Row",
+                "props": { "gap": 8, "align": "center" },
+                "children": [
+                  { "type": "Checkbox", "props": { "checked": false, "size": 22 } },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "body",
+                      "size": 14,
+                      "weight": 400,
+                      "color": "#191919"
+                    },
+                    "children": "公司"
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": { "gap": 8, "align": "center" },
+                "children": [
+                  { "type": "Checkbox", "props": { "checked": false, "size": 22 } },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "body",
+                      "size": 14,
+                      "weight": 400,
+                      "color": "#191919"
+                    },
+                    "children": "个人"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Row",
+        "props": {
+          "background": "#F5F5F5",
+          "height": 64,
+          "align": "center",
+          "justify": "center",
+          "borderRadius": 8
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "variant": "caption",
+              "size": 14,
+              "weight": 400,
+              "color": "#999999",
+              "fontFamily": "'HarmonyHeiTi-Medium', sans-serif"
+            },
+            "children": "+ 添加项目"
+          }
+        ]
+      },
+      {
+        "type": "Button",
+        "props": {
+          "label": "确认",
+          "variant": "warning",
+          "size": "large",
+          "block": true,
+          "height": 48,
+          "fontFamily": "'HarmonyHeiTi-Medium', sans-serif"
+        }
+      }
+    ]
+  }
+}

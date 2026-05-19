@@ -1,0 +1,127 @@
+{
+  "state_name": "虚拟体验项目完整态",
+  "lifecycle": "persistent",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": false,
+  "tree": {
+    "type": "Page",
+    "props": { "background": "#FFFFFF" },
+    "children": [
+      { "type": "StatusBar" },
+      {
+        "type": "NavBar",
+        "props": {
+          "title": "虚拟体验项目",
+          "leftIcon": "arrow_back",
+          "rightIcon": ["search", "notifications", "add"]
+        }
+      },
+      {
+        "type": "Column",
+        "props": { "gap": 16, "padding": 16 },
+        "children": [
+          {
+            "type": "Text",
+            "props": { "text": "设备拓扑图", "variant": "caption", "color": "#666666" }
+          },
+          {
+            "type": "Column",
+            "props": { "background": "#F5F5F5", "borderRadius": 8, "height": 220, "align": "center", "justify": "center" },
+            "children": [
+              {
+                "type": "Text",
+                "props": { "text": "（SVG 拓扑图：3个椭圆节点 + 贝塞尔连接线）", "variant": "caption", "color": "#999999" }
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": { "background": "#FFFFFF", "borderRadius": 12, "shadow": 4, "padding": 16 },
+            "children": [
+              {
+                "type": "Text",
+                "props": { "text": "Wi-Fi评分", "variant": "subtitle", "weight": "medium", "color": "#191919" }
+              },
+              {
+                "type": "Text",
+                "props": { "text": "92分", "variant": "title", "size": 24, "weight": "medium", "color": "#191919" }
+              },
+              {
+                "type": "Row",
+                "props": { "align": "center", "gap": 8 },
+                "children": [
+                  {
+                    "type": "Column",
+                    "props": { "background": "#E0F0FF", "borderRadius": 4, "width": "100%", "height": 4 },
+                    "children": [
+                      {
+                        "type": "Column",
+                        "props": { "background": "#46B1E3", "borderRadius": 4, "width": "92%", "height": 4 }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Text",
+            "props": { "text": "运行时长：3天12小时", "variant": "caption", "color": "#666666" }
+          },
+          {
+            "type": "Grid",
+            "props": { "columns": 2, "gap": 12 },
+            "children": [
+              {
+                "type": "Column",
+                "props": { "align": "center" },
+                "children": [
+                  { "type": "Text", "props": { "text": "设备数", "variant": "body", "weight": "medium", "color": "#191919" } },
+                  { "type": "Text", "props": { "text": "27", "variant": "title", "size": 20, "weight": "medium", "color": "#191919" } }
+                ]
+              },
+              {
+                "type": "Column",
+                "props": { "align": "center" },
+                "children": [
+                  { "type": "Text", "props": { "text": "终端数", "variant": "body", "weight": "medium", "color": "#191919" } },
+                  { "type": "Text", "props": { "text": "142", "variant": "title", "size": 20, "weight": "medium", "color": "#191919" } }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": { "gap": 12 },
+            "children": [
+              {
+                "type": "Text",
+                "props": { "text": "业务网管理", "variant": "subtitle", "weight": "medium", "color": "#191919" }
+              },
+              {
+                "type": "Row",
+                "props": { "gap": 12, "align": "center" },
+                "children": [
+                  { "type": "Icon", "props": { "name": "business", "size": 24, "color": "#191919" } },
+                  { "type": "Text", "props": { "text": "业务网管理", "variant": "body", "weight": "medium", "color": "#191919" } }
+                ]
+              },
+              {
+                "type": "Text",
+                "props": { "text": "访问控制", "variant": "subtitle", "weight": "medium", "color": "#191919" }
+              },
+              {
+                "type": "Row",
+                "props": { "gap": 12, "align": "center" },
+                "children": [
+                  { "type": "Icon", "props": { "name": "lock", "size": 24, "color": "#191919" } },
+                  { "type": "Text", "props": { "text": "访问控制", "variant": "body", "weight": "medium", "color": "#191919" } }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "state_id": 3,
+  "state_name": "校验失败态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "语言一致性：截图中‘请选择归属类型’为红色提示文字，但其颜色值在HTML中使用的是#E84026，而需求要求为#FF4D4F，颜色不一致，不符合鸿蒙规范。",
+      "基础样式：名称输入框下方的提示文字‘请输入项目集名称’在截图中未显示，但HTML中已添加，实际渲染缺失，导致视觉与预期不符。"
+    ],
+    "fixedBlocks": "[OLD]\n<p style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:400;color:#E84026;line-height:1.4;margin:0;\">请选择归属类型</p>\n[NEW]\n<p style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:400;color:#FF4D4F;line-height:1.4;margin:0;\">请选择归属类型</p>\n[OLD]\n<div data-hm=\"FormField\" style=\"display:flex;flex-direction:column;gap:6px;width:100%;\">\n\n    <div data-hm=\"TextInput\" style=\"display:flex;align-items:center;height:40px;padding:0 16px;background:#F7F8FA;border:1px solid rgba(0,0,0,0.08);border-radius:8px;width:100%;box-sizing:border-box;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;\">\n\n  <input type=\"text\" value=\"\" placeholder=\"请输入项目集名称\"  style=\"flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:inherit;font-size:14px;color:rgba(0,0,0,0.90);line-height:1;\">\n\n</div>\n\n  </div>\n[NEW]\n<div data-hm=\"FormField\" style=\"display:flex;flex-direction:column;gap:6px;width:100%;\">\n\n    <div data-hm=\"TextInput\" style=\"display:flex;align-items:center;height:40px;padding:0 16px;background:#F7F8FA;border:1px solid rgba(0,0,0,0.08);border-radius:8px;width:100%;box-sizing:border-box;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;\">\n\n  <input type=\"text\" value=\"\" placeholder=\"请输入项目集名称\"  style=\"flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:inherit;font-size:14px;color:rgba(0,0,0,0.90);line-height:1;\">\n\n</div>\n    <p style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:400;color:#FF4D4F;line-height:1.4;margin:0;\">请输入项目集名称</p>\n\n  </div>",
+    "reviewMs": 20484,
+    "screenshot": 63291,
+    "fixedBlocksParsed": 2
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "state_id": 6,
+  "state_name": "网络失败提示态",
+  "description": "顶部状态栏与底部Tab栏保持完全可见且交互正常，背景为原工作台页整体半透明蒙层（rgba(0,0,0,0.4)），中部垂直居中显示红色感叹号图标（24×24，#FF5252），下方紧接标题‘网络连接失败’（16px Medium，深灰#191919），再下方为正文‘请检查网络后重试’（14px Regular，浅灰#999），底部居中显示蓝色‘重试’按钮（宽120px×高44px，圆角8px，背景#46B1E3，文字‘重试’14px Medium，白色#FFFFFF），无其他图标、输入框或标签。",
+  "implementation_method": "全屏浮层 (Overlay Modal)：背景为 rgba(0,0,0,0.4) 半透明遮罩；中部容器宽320px，垂直居中；div.error-icon（24×24，#FF5252，SVG 或 img）；h2.title（16px Medium，#191919，'网络连接失败'）；p.message（14px Regular，#999，'请检查网络后重试'）；button.retry-btn（宽120px×高44px，圆角8px，背景#46B1E3，文字'重试'，14px Medium，#FFFFFF）；所有元素无动画、无悬停态、无过渡效果。",
+  "last_state": 1,
+  "applied": 1,
+  "skipped": 0,
+  "elapsed_ms": 94232,
+  "failed": false,
+  "error": null
+}

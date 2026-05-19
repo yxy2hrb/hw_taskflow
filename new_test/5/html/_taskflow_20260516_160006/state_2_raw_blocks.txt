@@ -1,0 +1,297 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "new-overlay",
+      "anchor": "#14_884367",
+      "instruction": "在 body 直接子级末尾新增半透明黑色遮罩（rgba(0,0,0,0.5)）覆盖全屏；遮罩正中悬浮白色圆角弹窗卡片（宽340px、高560px、#FFFFFF、border-radius:12px）；卡片顶部居中显示标题‘我的体验项目’（16px Medium，#191919，font-family: HarmonyHeiTi-Medium）；下方为垂直滚动列表，共5项，每项含：左侧16×16px图标（使用 <span class=\"mi\" style=\"font-size:16px;color:#191919;\">folder</span>）、项目名称文本（14px Regular，#191919，font-family: HarmonyHeiTi-Regular）、右对齐更新时间文本（12px Regular，#666，font-family: HarmonyHeiTi-Regular，如‘2小时前’）；无底部按钮或操作区；整个浮层需用 <!-- 任务节点开始: 体验项目弹窗列表态【临时】 -->...<!-- 任务节点结束: 体验项目弹窗列表态【临时】 --> 注释包裹。",
+      "components_needed": ["Dialog", "Card"],
+      "icons_needed": ["folder"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "OverlayMask",
+    "props": {
+      "opacity": 0.4,
+      "color": "#000000"
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "borderRadius": 16,
+          "width": "auto",
+          "maxWidth": 328,
+          "padding": 24,
+          "shadow": true,
+          "gap": 16,
+          "align": "stretch"
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "variant": "title",
+              "size": 16,
+              "weight": 500,
+              "color": "rgba(0,0,0,0.90)",
+              "align": "center"
+            },
+            "children": "我的体验项目"
+          },
+          {
+            "type": "Column",
+            "props": {
+              "gap": 16,
+              "overflowY": "auto",
+              "maxHeight": 440
+            },
+            "children": [
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 12,
+                  "align": "center",
+                  "justify": "space-between"
+                },
+                "children": [
+                  {
+                    "type": "Row",
+                    "props": {
+                      "gap": 8,
+                      "align": "center"
+                    },
+                    "children": [
+                      {
+                        "type": "Icon",
+                        "props": {
+                          "name": "folder",
+                          "size": 16,
+                          "color": "rgba(0,0,0,0.90)"
+                        }
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "body",
+                          "size": 14,
+                          "weight": 400,
+                          "color": "rgba(0,0,0,0.90)"
+                        },
+                        "children": "HarmonyOS 开发入门"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "caption",
+                      "size": 12,
+                      "weight": 400,
+                      "color": "rgba(0,0,0,0.40)"
+                    },
+                    "children": "2小时前"
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 12,
+                  "align": "center",
+                  "justify": "space-between"
+                },
+                "children": [
+                  {
+                    "type": "Row",
+                    "props": {
+                      "gap": 8,
+                      "align": "center"
+                    },
+                    "children": [
+                      {
+                        "type": "Icon",
+                        "props": {
+                          "name": "folder",
+                          "size": 16,
+                          "color": "rgba(0,0,0,0.90)"
+                        }
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "body",
+                          "size": 14,
+                          "weight": 400,
+                          "color": "rgba(0,0,0,0.90)"
+                        },
+                        "children": "ArkTS 高级实践"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "caption",
+                      "size": 12,
+                      "weight": 400,
+                      "color": "rgba(0,0,0,0.40)"
+                    },
+                    "children": "5小时前"
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 12,
+                  "align": "center",
+                  "justify": "space-between"
+                },
+                "children": [
+                  {
+                    "type": "Row",
+                    "props": {
+                      "gap": 8,
+                      "align": "center"
+                    },
+                    "children": [
+                      {
+                        "type": "Icon",
+                        "props": {
+                          "name": "folder",
+                          "size": 16,
+                          "color": "rgba(0,0,0,0.90)"
+                        }
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "body",
+                          "size": 14,
+                          "weight": 400,
+                          "color": "rgba(0,0,0,0.90)"
+                        },
+                        "children": "分布式能力实战"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "caption",
+                      "size": 12,
+                      "weight": 400,
+                      "color": "rgba(0,0,0,0.40)"
+                    },
+                    "children": "1天前"
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 12,
+                  "align": "center",
+                  "justify": "space-between"
+                },
+                "children": [
+                  {
+                    "type": "Row",
+                    "props": {
+                      "gap": 8,
+                      "align": "center"
+                    },
+                    "children": [
+                      {
+                        "type": "Icon",
+                        "props": {
+                          "name": "folder",
+                          "size": 16,
+                          "color": "rgba(0,0,0,0.90)"
+                        }
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "body",
+                          "size": 14,
+                          "weight": 400,
+                          "color": "rgba(0,0,0,0.90)"
+                        },
+                        "children": "原子化服务设计"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "caption",
+                      "size": 12,
+                      "weight": 400,
+                      "color": "rgba(0,0,0,0.40)"
+                    },
+                    "children": "2天前"
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 12,
+                  "align": "center",
+                  "justify": "space-between"
+                },
+                "children": [
+                  {
+                    "type": "Row",
+                    "props": {
+                      "gap": 8,
+                      "align": "center"
+                    },
+                    "children": [
+                      {
+                        "type": "Icon",
+                        "props": {
+                          "name": "folder",
+                          "size": 16,
+                          "color": "rgba(0,0,0,0.90)"
+                        }
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "body",
+                          "size": 14,
+                          "weight": 400,
+                          "color": "rgba(0,0,0,0.90)"
+                        },
+                        "children": "UI 组件库定制"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "caption",
+                      "size": 12,
+                      "weight": 400,
+                      "color": "rgba(0,0,0,0.40)"
+                    },
+                    "children": "3天前"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

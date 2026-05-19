@@ -1,0 +1,11 @@
+{
+  "state_id": 1,
+  "state_name": "工作台首页含体验项目入口",
+  "description": "页面为全屏移动工作台主页，顶部状态栏显示时间与信号图标，底部固定Tab栏含‘首页’‘工作台’‘消息’‘我的’四标签；中部区域有一张横向卡片，标题为‘我的体验项目’，右向箭头图标，卡片背景浅灰，文字深灰16px加粗，无其他浮层或遮罩。",
+  "implementation_method": "原始 HTML 初始快照，不做改造。",
+  "last_state": null,
+  "applied": 0,
+  "skipped": 0,
+  "failed": false,
+  "error": null
+}

@@ -1,0 +1,57 @@
+▶ run dir: runs_baseline\2026-05-19_21-21-59_new_test6_baseline_v5c_batch
+  source: new_test/6/html
+  brief : new_test/6/input.txt
+  blueprint: runs_new_test_twophase_strict_scan/2026-05-19_12-01-22_new_test6_scan_v2_bodyonly/blueprint.json
+  api   : http://localhost:3001/api
+  /health → 404
+
+▶ POST /oneclick/start  brief="用户在“我的工作台”点击“快速入门”按钮→全屏打开新页，保留状态栏与底Tab，原页面作半透明蒙层→新页中部显示带“搜索.…"  htmlBytes=86432
+  sessionId=tf_59de19c1db96  sourceDir(echo)=
+
+▶ POST /oneclick/blueprint  使用固定蓝图
+   title: 快速入门文档浏览
+   user_story: 已登录的普通员工在‘我的工作台’点击‘快速入门’按钮，系统按预设分类聚合展示7条高优先级条目，用户点击‘查看’即跳转至对应详情页
+   states: 6
+     state_1 ← null  我的工作台初始页
+     state_2 ← 1  快速入门全屏浮层页
+     state_3 ← 1  快速入门加载中态
+     state_4 ← 1  快速入门就绪态
+     state_5 ← 2  文档详情页
+     state_6 ← 1  网络失败提示态
+
+▶ SSE /oneclick/generate/stream
+  [state-done ] state_1 我的工作台初始页  applied=0 skipped=0 undefinedms
+               components: (无)
+  [state-start] state_2 快速入门全屏浮层页
+  [state-done ] state_2 快速入门全屏浮层页  applied=1 skipped=0 111225ms
+               components: (无)
+  [state-start] state_3 快速入门加载中态
+  [state-done ] state_3 快速入门加载中态  applied=1 skipped=0 68244ms
+               components: (无)
+  [state-start] state_4 快速入门就绪态
+  [state-fail ] state_4 error=LLM 返回空
+  [state-start] state_5 文档详情页
+  [state-done ] state_5 文档详情页  applied=1 skipped=0 90210ms
+               components: (无)
+  [state-start] state_6 网络失败提示态
+  [state-done ] state_6 网络失败提示态  applied=1 skipped=0 94232ms
+               components: (无)
+
+  [done] outDir=E:\任务流\任务流\p2p\saved-taskflow\20260520_052221_quick-start-doc-browse-flow savedInSource=false
+
+▶ 归档后端产物 from E:\任务流\任务流\p2p\saved-taskflow\20260520_052221_quick-start-doc-browse-flow
+
+▶ Playwright 截图 5 个 state（视口 360×780, fullPage）
+  ✓ state_1  1659ms  H=780px  103.1KB
+  ✓ state_2  1472ms  H=780px  96.2KB
+  ✓ state_3  1423ms  H=780px  32.1KB
+  ✓ state_5  1569ms  H=780px  178.4KB
+  ✓ state_6  1401ms  H=780px  37.3KB
+
+✅ 全部归档到 runs_baseline\2026-05-19_21-21-59_new_test6_baseline_v5c_batch
+   关键文件：
+   - 00_input.json / blueprint.json
+   - phase_{1,2,3}_{question,answer,response}.json
+   - sse_events.jsonl
+   - states/state_<id>/{meta.json, components.json, raw_blocks.txt, output.html, events.jsonl}
+   - summary.md

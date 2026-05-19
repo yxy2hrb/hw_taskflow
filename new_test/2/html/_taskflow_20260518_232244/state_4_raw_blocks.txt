@@ -1,0 +1,29 @@
+{
+  "state_name": "创建项目集页提交中",
+  "lifecycle": "persistent",
+  "injection": { "mode": "replace", "anchor": "#base-form-area" },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "Page",
+    "props": { "background": "#FFFFFF" },
+    "children": [
+      { "type": "StatusBar" },
+      { "type": "NavBar", "props": { "title": "创建项目集", "leftIcon": "arrow_back" } },
+      { "type": "Column", "props": { "gap": 16, "padding": 16 }, "children": [
+        { "type": "Text", "props": { "text": "项目集名称", "variant": "subtitle" } },
+        { "type": "Text", "props": { "text": "我的公司项目集", "variant": "body" } },
+        { "type": "Text", "props": { "text": "所属公司", "variant": "subtitle" } },
+        { "type": "Button", "props": { "label": "公司", "variant": "primary", "size": "compact" } },
+        { "type": "Text", "props": { "text": "关联项目", "variant": "subtitle" } },
+        { "type": "Grid", "props": { "columns": 3, "gap": 16 }, "children": [
+          { "type": "IconCard", "props": { "icon": "work", "label": "ERP系统" } },
+          { "type": "IconCard", "props": { "icon": "code", "label": "CRM平台" } },
+          { "type": "IconCard", "props": { "icon": "settings", "label": "OA系统" } }
+        ]}
+      ]},
+      { "type": "Column", "props": { "padding": 16, "width": "100%", "align": "center" }, "children": [
+        { "type": "Button", "props": { "label": "确认", "variant": "warning", "block": true, "disabled": true, "size": "large" } }
+      ]}
+    ]
+  }
+}

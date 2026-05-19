@@ -1,0 +1,410 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": ["#14_884283", "#14_884284", "#14_884285", "#14_884287"],
+      "replace_at": "#14_884283",
+      "instruction": "把整段替换为顶部黄色横条（高40px，背景#FFD740），横条内左对齐文字‘网络异常，请重试’（14px Medium，#191919），右侧对齐蓝色圆角矩形按钮‘重试’（14px Medium，#FFFFFF 背景，#46B1E3 文字，padding 6px 16px，圆角6px）；其余页面主体（导航栏、拓扑图、卡片等）保持结构完整但添加 style=\"opacity:0.4\"，不可点击。",
+      "components_needed": ["Button"]
+    },
+    {
+      "id": "e2",
+      "type": "state-toggle",
+      "anchor": "<!-- 任务节点开始: 虚拟体验项目全屏页【持久】 -->\n<div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:16px;padding:16px;background:#FFFFFF;width:100%;box-sizing:border-box\"><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;background:#F3F3F3;width:100%;min-height:220px;border-radius:8px;box-sizing:border-box\"><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:12px;font-weight:400;color:rgba(0,0,0,0.4);text-align:left;line-height:1.4;\">设备拓扑图（SVG渲染）</span></div><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:8px;padding:16px;background:#FFFFFF;width:100%;min-height:120px;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,0.12);box-sizing:border-box\"><div data-hm=\"Row\" style=\"display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:8px;width:100%;box-sizing:border-box\"><span class=\"mi\" style=\"font-size:24px;color:#0A59F7;line-height:1;\">wifi</span><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:500;color:#191919;text-align:left;line-height:1.4;\">Wi-Fi评分</span></div><div data-hm=\"Row\" style=\"display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:12px;width:100%;box-sizing:border-box\"><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:18px;font-weight:700;color:#191919;text-align:left;line-height:1.4;\">92</span><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:400;color:rgba(0,0,0,0.6);text-align:left;line-height:1.4;\">已运行 7天12小时</span></div></div><div data-hm=\"Row\" style=\"display:flex;flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding:16px;background:#FFFFFF;width:100%;height:120px;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,0.12);box-sizing:border-box\"><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:4px;width:100%;box-sizing:border-box\"><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:12px;font-weight:400;color:rgba(0,0,0,0.4);text-align:left;line-height:1.4;\">设备数</span><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:18px;font-weight:700;color:#191919;text-align:left;line-height:1.4;\">23</span></div><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:4px;width:100%;box-sizing:border-box\"><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:12px;font-weight:400;color:rgba(0,0,0,0.4);text-align:left;line-height:1.4;\">终端数</span><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:18px;font-weight:700;color:#191919;text-align:left;line-height:1.4;\">147</span></div><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:4px;width:100%;box-sizing:border-box\"><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:12px;font-weight:400;color:rgba(0,0,0,0.4);text-align:left;line-height:1.4;\">在线率</span><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:18px;font-weight:700;color:#191919;text-align:left;line-height:1.4;\">98.3%</span></div></div><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:12px;padding:16px;background:#FFFFFF;width:100%;min-height:180px;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,0.12);box-sizing:border-box\"><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:500;color:#191919;text-align:left;line-height:1.4;\">业务网管理</span><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:12px;width:100%;box-sizing:border-box\"><div data-hm=\"Row\" style=\"display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:12px;width:100%;box-sizing:border-box\"><span data-hm=\"Checkbox\" style=\"display:inline-block;width:22px;height:22px;border:2px solid rgba(0,0,0,0.08);border-radius:4px;background:#fff;box-sizing:border-box;\"></span><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:400;color:#191919;text-align:left;line-height:1.4;\">访客网络</span></div><div data-hm=\"Row\" style=\"display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:12px;width:100%;box-sizing:border-box\"><span data-hm=\"Checkbox\" style=\"display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:4px;background:#0A59F7;color:#fff;box-sizing:border-box;\"><span class=\"mi hm-icon\" style=\"font-size:16px;color:#fff;\">󰄴</span></span><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:400;color:#191919;text-align:left;line-height:1.4;\">员工网络</span></div></div></div></div>\n<!-- 任务节点结束: 虚拟体验项目全屏页【持久】 -->",
+      "instruction": "把外层注释名改为 网络异常提示状态【临时】，同时为整个包裹的 D2C 内容区域添加 style=\"opacity:0.4\"，使其不可交互；注意保留原有结构和所有子元素，仅增加 opacity 属性。",
+      "components_needed": []
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "gap": 0,
+      "background": "#FFFFFF",
+      "width": "100%",
+      "padding": 0
+    },
+    "children": [
+      {
+        "type": "Row",
+        "props": {
+          "background": "#FFD740",
+          "height": 40,
+          "padding": [0, 16],
+          "align": "center",
+          "justify": "space-between"
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "size": 14,
+              "weight": 500,
+              "color": "#191919",
+              "align": "left"
+            },
+            "children": "网络异常，请重试"
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "重试",
+              "size": "compact",
+              "variant": "text",
+              "style": {
+                "backgroundColor": "#46B1E3",
+                "color": "#FFFFFF",
+                "padding": "6px 16px",
+                "borderRadius": "6px",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "height": "auto",
+                "minHeight": "auto"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "style": {
+            "opacity": 0.4
+          }
+        },
+        "children": [
+          {
+            "type": "Text",
+            "children": "（原页面主体内容占位：导航栏、拓扑图、卡片等结构保持完整，由 base 渲染；此处仅作语义占位，实际由 base 的 DOM 原样透出）"
+          }
+        ]
+      }
+    ]
+  }
+}
+[NEXT]
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "gap": 16,
+      "padding": 16,
+      "background": "#FFFFFF",
+      "width": "100%",
+      "opacity": 0.4
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "gap": 16,
+          "padding": 16,
+          "background": "#F3F3F3",
+          "width": "100%",
+          "minHeight": 220,
+          "borderRadius": 8
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+              "fontSize": 12,
+              "fontWeight": 400,
+              "color": "rgba(0,0,0,0.4)",
+              "textAlign": "left",
+              "lineHeight": 1.4
+            },
+            "children": "设备拓扑图（SVG渲染）"
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "gap": 8,
+          "padding": 16,
+          "background": "#FFFFFF",
+          "width": "100%",
+          "minHeight": 120,
+          "borderRadius": 16,
+          "shadow": true
+        },
+        "children": [
+          {
+            "type": "Row",
+            "props": {
+              "gap": 8,
+              "width": "100%"
+            },
+            "children": [
+              {
+                "type": "Icon",
+                "props": {
+                  "name": "wifi",
+                  "size": 24,
+                  "color": "#0A59F7"
+                }
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                  "fontSize": 16,
+                  "fontWeight": 500,
+                  "color": "#191919",
+                  "textAlign": "left",
+                  "lineHeight": 1.4
+                },
+                "children": "Wi-Fi评分"
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "gap": 12,
+              "width": "100%"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                  "fontSize": 18,
+                  "fontWeight": 700,
+                  "color": "#191919",
+                  "textAlign": "left",
+                  "lineHeight": 1.4
+                },
+                "children": "92"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                  "fontSize": 14,
+                  "fontWeight": 400,
+                  "color": "rgba(0,0,0,0.6)",
+                  "textAlign": "left",
+                  "lineHeight": 1.4
+                },
+                "children": "已运行 7天12小时"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Row",
+        "props": {
+          "gap": 16,
+          "padding": 16,
+          "background": "#FFFFFF",
+          "width": "100%",
+          "height": 120,
+          "borderRadius": 16,
+          "shadow": true,
+          "wrap": true
+        },
+        "children": [
+          {
+            "type": "Column",
+            "props": {
+              "gap": 4,
+              "width": "100%"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                  "fontSize": 12,
+                  "fontWeight": 400,
+                  "color": "rgba(0,0,0,0.4)",
+                  "textAlign": "left",
+                  "lineHeight": 1.4
+                },
+                "children": "设备数"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                  "fontSize": 18,
+                  "fontWeight": 700,
+                  "color": "#191919",
+                  "textAlign": "left",
+                  "lineHeight": 1.4
+                },
+                "children": "23"
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": {
+              "gap": 4,
+              "width": "100%"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                  "fontSize": 12,
+                  "fontWeight": 400,
+                  "color": "rgba(0,0,0,0.4)",
+                  "textAlign": "left",
+                  "lineHeight": 1.4
+                },
+                "children": "终端数"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                  "fontSize": 18,
+                  "fontWeight": 700,
+                  "color": "#191919",
+                  "textAlign": "left",
+                  "lineHeight": 1.4
+                },
+                "children": "147"
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": {
+              "gap": 4,
+              "width": "100%"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                  "fontSize": 12,
+                  "fontWeight": 400,
+                  "color": "rgba(0,0,0,0.4)",
+                  "textAlign": "left",
+                  "lineHeight": 1.4
+                },
+                "children": "在线率"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                  "fontSize": 18,
+                  "fontWeight": 700,
+                  "color": "#191919",
+                  "textAlign": "left",
+                  "lineHeight": 1.4
+                },
+                "children": "98.3%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "gap": 12,
+          "padding": 16,
+          "background": "#FFFFFF",
+          "width": "100%",
+          "minHeight": 180,
+          "borderRadius": 16,
+          "shadow": true
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+              "fontSize": 16,
+              "fontWeight": 500,
+              "color": "#191919",
+              "textAlign": "left",
+              "lineHeight": 1.4
+            },
+            "children": "业务网管理"
+          },
+          {
+            "type": "Column",
+            "props": {
+              "gap": 12,
+              "width": "100%"
+            },
+            "children": [
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 12,
+                  "width": "100%"
+                },
+                "children": [
+                  {
+                    "type": "Checkbox",
+                    "props": {
+                      "checked": false,
+                      "size": 22
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                      "fontSize": 14,
+                      "fontWeight": 400,
+                      "color": "#191919",
+                      "textAlign": "left",
+                      "lineHeight": 1.4
+                    },
+                    "children": "访客网络"
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 12,
+                  "width": "100%"
+                },
+                "children": [
+                  {
+                    "type": "Checkbox",
+                    "props": {
+                      "checked": true,
+                      "size": 22
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+                      "fontSize": 14,
+                      "fontWeight": 400,
+                      "color": "#191919",
+                      "textAlign": "left",
+                      "lineHeight": 1.4
+                    },
+                    "children": "员工网络"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

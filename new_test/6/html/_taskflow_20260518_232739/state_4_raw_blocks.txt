@@ -1,0 +1,181 @@
+{
+  "state_name": "产品文档详情页",
+  "lifecycle": "persistent",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": false,
+  "tree": {
+    "type": "Page",
+    "props": { "background": "#FFFFFF" },
+    "children": [
+      { "type": "StatusBar" },
+      {
+        "type": "NavBar",
+        "props": {
+          "title": "XXX产品快速入门指南",
+          "leftIcon": "arrow_back",
+          "align": "center"
+        }
+      },
+      {
+        "type": "Row",
+        "props": { "gap": 16, "padding": 16, "align": "start" },
+        "children": [
+          {
+            "type": "Column",
+            "props": { "gap": 24, "width": "calc(100% - 120px)" },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "text": "一、准备工作 / Section 1: Setup",
+                  "variant": "title",
+                  "size": 20,
+                  "weight": "bold",
+                  "color": "#191919"
+                }
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "text": "本文档适用于初次使用XXX产品的开发者，帮助您在5分钟内完成环境配置与首个应用部署。",
+                  "size": 14,
+                  "color": "#333"
+                }
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "text": "1.1 创建账号 / Subsection 1.1: Account Creation",
+                  "size": 16,
+                  "color": "#191919"
+                }
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "text": "登录控制台后，点击右上角「注册」按钮，输入邮箱与密码，完成邮箱验证即可激活账号。",
+                  "size": 14,
+                  "color": "#333"
+                }
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "background": "#F8F8F8",
+                  "borderRadius": 4,
+                  "padding": 12,
+                  "gap": 8
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "text": "1  # 安装 CLI 工具",
+                      "size": 13,
+                      "fontFamily": "monospace",
+                      "color": "#333"
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "text": "2  npm install -g @xxx/cli",
+                      "size": 13,
+                      "fontFamily": "monospace",
+                      "color": "#333"
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "text": "3  xxx login",
+                      "size": 13,
+                      "fontFamily": "monospace",
+                      "color": "#333"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "Icon",
+                "props": {
+                  "name": "image",
+                  "size": 24,
+                  "color": "#999"
+                }
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": { "width": 120, "gap": 12, "padding": 12 },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "text": "目录",
+                  "size": 14,
+                  "color": "#666"
+                }
+              },
+              {
+                "type": "Column",
+                "props": { "gap": 4 },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "text": "一、准备工作",
+                      "size": 14,
+                      "color": "#46B1E3"
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "text": "二、安装 CLI",
+                      "size": 14,
+                      "color": "#46B1E3"
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "text": "三、创建项目",
+                      "size": 14,
+                      "color": "#46B1E3"
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "text": "四、运行调试",
+                      "size": 14,
+                      "color": "#46B1E3"
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "text": "五、打包发布",
+                      "size": 14,
+                      "color": "#46B1E3"
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "text": "六、常见问题",
+                      "size": 14,
+                      "color": "#46B1E3"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

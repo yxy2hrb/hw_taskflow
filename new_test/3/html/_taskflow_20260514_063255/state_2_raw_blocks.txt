@@ -1,0 +1,359 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "new-overlay",
+      "anchor": "#14_884367",
+      "instruction": "在 body 直接子级末尾新增半透明黑色遮罩（rgba(0,0,0,0.3)）覆盖主界面；居中悬浮宽360px、高约792px、圆角8px、#FFFFFF 的白色卡片容器；容器内纵向排列3张项目卡片，每张高120px、内边距16px；每张含：标题‘项目A’（16px HarmonyHeiTi-Medium，#191919）、副标题‘2024-05-20 14:32’（14px HarmonyHeiTi-Regular，#666666）、设备行‘AP ×2 / 终端 ×5’（12px HarmonyHeiTi-Medium，#333333）、状态标签‘运行中’（蓝底#46B1E3/#FFFFFF，圆角4px，12px Medium）、右侧操作按钮‘进入’（#46B1E3，12px Medium）；三张卡片等距排列，间距16px。",
+      "components_needed": ["Card"],
+      "icons_needed": []
+    },
+    {
+      "id": "e2",
+      "type": "state-toggle",
+      "anchor": "<div id=\"14_884368\" class=\"Pixso-frame-14_884368\">\n        <div class=\"frame-content-14_884368\">\n          <div id=\"146_139173\" class=\"Pixso-frame-146_139173\">\n            <div class=\"frame-content-146_139173\">\n              <div id=\"146_139174\" class=\"Pixso-frame-146_139174\">\n                <p id=\"146_139175\" class=\"Pixso-paragraph-146_139175 fill-text文本色图标色color_text_primary-14_290523-paragraph text-单行行高headline标题headline_s-14_365549\">虚拟体验项目</p>\n              </div>\n            </div>\n          </div>\n          <div id=\"146_139186\" class=\"Pixso-frame-146_139186\">\n            <p id=\"146_139187\" class=\"Pixso-paragraph-146_139187 fill-text文本色图标色color_text_primary-14_290523-paragraph\">我的体验项目</p>\n          </div>\n          <div id=\"146_139188\" class=\"Pixso-frame-146_139188\">\n            <div class=\"frame-content-146_139188\">\n              <div id=\"146_139189\" class=\"Pixso-frame-146_139189\">\n                <div class=\"frame-content-146_139189\">\n                  <div id=\"146_139190\" class=\"Pixso-frame-146_139190\">\n                    <div id=\"146_139191\" class=\"Pixso-group-146_139191\">\n                      <div id=\"146_139192\" class=\"Pixso-rectangle-146_139192\"></div>\n                      <div id=\"146_139193\" class=\"Pixso-group-146_139193\">\n                        <div id=\"146_139200\" class=\"Pixso-vector-146_139200\"></div>\n                      </div>\n                      <div id=\"146_139203\" class=\"Pixso-group-146_139203\">\n                        <div id=\"146_139210\" class=\"Pixso-vector-146_139210\"></div>\n                      </div>\n                      <div id=\"146_139213\" class=\"Pixso-group-146_139213\">\n                        <div id=\"146_139220\" class=\"Pixso-vector-146_139220\"></div>\n                      </div>\n                      <div id=\"146_139223\" class=\"Pixso-vector-146_139223\"></div>\n                      <div id=\"146_139224\" class=\"Pixso-vector-146_139224\"></div>\n                      <div id=\"146_139225\" class=\"Pixso-vector-146_139225\"></div>\n                      <div id=\"146_139226\" class=\"Pixso-vector-146_139226\"></div>\n                      <div id=\"146_139227\" class=\"Pixso-vector-146_139227\"></div>\n                      <div id=\"146_139228\" class=\"Pixso-vector-146_139228\"></div>\n                    </div>\n                  </div>\n                  <p id=\"146_139236\" class=\"Pixso-paragraph-146_139236 fill-text文本色图标色color_text_primary-14_290523-paragraph\">体验开局流程</p>\n                </div>\n              </div>\n              <div id=\"146_139237\" class=\"Pixso-frame-146_139237\">\n                <div class=\"frame-content-146_139237\">\n                  <div id=\"146_139238\" class=\"Pixso-frame-146_139238\">\n                    <div id=\"146_139239\" class=\"Pixso-group-146_139239\">\n                      <div id=\"146_139240\" class=\"Pixso-rectangle-146_139240\"></div>\n                      <div id=\"146_139241\" class=\"Pixso-group-146_139241\">\n                        <div id=\"146_139248\" class=\"Pixso-vector-146_139248\"></div>\n                      </div>\n                      <div id=\"146_139251\" class=\"Pixso-group-146_139251\">\n                        <div id=\"146_139258\" class=\"Pixso-vector-146_139258\"></div>\n                      </div>\n                      <div id=\"146_139261\" class=\"Pixso-group-146_139261\">\n                        <div id=\"146_139268\" class=\"Pixso-vector-146_139268\"></div>\n                      </div>\n                      <div id=\"146_139271\" class=\"Pixso-vector-146_139271\"></div>\n                      <div id=\"146_139272\" class=\"Pixso-vector-146_139272\"></div>\n                      <div id=\"146_139273\" class=\"Pixso-vector-146_139273\"></div>\n                      <div id=\"146_139274\" class=\"Pixso-vector-146_139274\"></div>\n                      <div id=\"146_139275\" class=\"Pixso-vector-146_139275\"></div>\n                      <div id=\"146_139276\" class=\"Pixso-vector-146_139276\"></div>\n                    </div>\n                  </div>\n                  <p id=\"146_139277\" class=\"Pixso-paragraph-146_139277 fill-text文本色图标色color_text_primary-14_290523-paragraph\">体验运维流程</p>\n                </div>\n              </div>\n            </div>\n          </div>\n          <div id=\"146_139278\" class=\"Pixso-group-146_139278\">\n            <div id=\"146_139280\" class=\"Pixso-group-146_139280\">\n              <div id=\"146_139281\" class=\"vector-wrapper-146_139281\">\n                <div id=\"146_139281\" class=\"Pixso-vector-146_139281\"></div>\n              </div>\n              <div id=\"146_139282\" class=\"Pixso-vector-146_139282\"></div>\n              <div id=\"146_139283\" class=\"vector-wrapper-146_139283\">\n                <div id=\"146_139283\" class=\"Pixso-vector-146_139283\"></div>\n              </div>\n              <div id=\"146_139284\" class=\"Pixso-rectangle-146_139284\"></div>\n            </div>\n          </div>\n        </div>\n      </div>",
+      "instruction": "将原‘虚拟体验项目’详情页区域（含标题、入口文案、拓扑图、卡片组）整体替换为隐藏状态；该区域不再显示，保持顶部状态栏与底部Tab栏可见。"
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "OverlayMask",
+    "props": {
+      "opacity": 0.4,
+      "color": "#000"
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "borderRadius": 8,
+          "width": "auto",
+          "maxWidth": 360,
+          "padding": 24,
+          "shadow": true,
+          "gap": 16,
+          "align": "stretch"
+        },
+        "children": [
+          {
+            "type": "Column",
+            "props": {
+              "background": "#FFFFFF",
+              "borderRadius": 8,
+              "padding": 16,
+              "shadow": false,
+              "gap": 8,
+              "height": 120
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "weight": 500,
+                  "size": 16,
+                  "color": "rgba(0,0,0,0.90)",
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                },
+                "children": "项目A"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "caption",
+                  "weight": 400,
+                  "size": 14,
+                  "color": "rgba(0,0,0,0.60)",
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                },
+                "children": "2024-05-20 14:32"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "caption",
+                  "weight": 500,
+                  "size": 12,
+                  "color": "rgba(0,0,0,0.60)",
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                },
+                "children": "AP ×2 / 终端 ×5"
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "justify": "space-between",
+                  "align": "center",
+                  "gap": 8
+                },
+                "children": [
+                  {
+                    "type": "Row",
+                    "props": {
+                      "gap": 4,
+                      "align": "center"
+                    },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "caption",
+                          "weight": 500,
+                          "size": 12,
+                          "color": "#FFFFFF",
+                          "background": "#46B1E3",
+                          "borderRadius": 4,
+                          "padding": [2, 8],
+                          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                        },
+                        "children": "运行中"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Button",
+                    "props": {
+                      "label": "进入",
+                      "variant": "text",
+                      "size": "compact",
+                      "color": "#46B1E3",
+                      "weight": 500,
+                      "size": 12,
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": {
+              "background": "#FFFFFF",
+              "borderRadius": 8,
+              "padding": 16,
+              "shadow": false,
+              "gap": 8,
+              "height": 120
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "weight": 500,
+                  "size": 16,
+                  "color": "rgba(0,0,0,0.90)",
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                },
+                "children": "项目B"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "caption",
+                  "weight": 400,
+                  "size": 14,
+                  "color": "rgba(0,0,0,0.60)",
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                },
+                "children": "2024-05-21 09:15"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "caption",
+                  "weight": 500,
+                  "size": 12,
+                  "color": "rgba(0,0,0,0.60)",
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                },
+                "children": "AP ×1 / 终端 ×3"
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "justify": "space-between",
+                  "align": "center",
+                  "gap": 8
+                },
+                "children": [
+                  {
+                    "type": "Row",
+                    "props": {
+                      "gap": 4,
+                      "align": "center"
+                    },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "caption",
+                          "weight": 500,
+                          "size": 12,
+                          "color": "#FFFFFF",
+                          "background": "#46B1E3",
+                          "borderRadius": 4,
+                          "padding": [2, 8],
+                          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                        },
+                        "children": "运行中"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Button",
+                    "props": {
+                      "label": "进入",
+                      "variant": "text",
+                      "size": "compact",
+                      "color": "#46B1E3",
+                      "weight": 500,
+                      "size": 12,
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": {
+              "background": "#FFFFFF",
+              "borderRadius": 8,
+              "padding": 16,
+              "shadow": false,
+              "gap": 8,
+              "height": 120
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "weight": 500,
+                  "size": 16,
+                  "color": "rgba(0,0,0,0.90)",
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                },
+                "children": "项目C"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "caption",
+                  "weight": 400,
+                  "size": 14,
+                  "color": "rgba(0,0,0,0.60)",
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                },
+                "children": "2024-05-22 16:47"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "caption",
+                  "weight": 500,
+                  "size": 12,
+                  "color": "rgba(0,0,0,0.60)",
+                  "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                },
+                "children": "AP ×3 / 终端 ×8"
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "justify": "space-between",
+                  "align": "center",
+                  "gap": 8
+                },
+                "children": [
+                  {
+                    "type": "Row",
+                    "props": {
+                      "gap": 4,
+                      "align": "center"
+                    },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "caption",
+                          "weight": 500,
+                          "size": 12,
+                          "color": "#FFFFFF",
+                          "background": "#46B1E3",
+                          "borderRadius": 4,
+                          "padding": [2, 8],
+                          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                        },
+                        "children": "运行中"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Button",
+                    "props": {
+                      "label": "进入",
+                      "variant": "text",
+                      "size": "compact",
+                      "color": "#46B1E3",
+                      "weight": 500,
+                      "size": 12,
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+[NEXT]
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "background": "#F1F3F5",
+      "height": "100vh",
+      "width": "100vw",
+      "align": "center",
+      "justify": "center"
+    },
+    "children": [
+      {
+        "type": "Icon",
+        "props": {
+          "name": "visibility_off",
+          "size": 48,
+          "color": "rgba(0,0,0,0.4)"
+        }
+      },
+      {
+        "type": "Text",
+        "props": {
+          "variant": "subtitle",
+          "color": "rgba(0,0,0,0.90)"
+        },
+        "children": "内容已隐藏"
+      },
+      {
+        "type": "Text",
+        "props": {
+          "variant": "caption",
+          "color": "rgba(0,0,0,0.60)"
+        },
+        "children": "该虚拟体验项目当前不可见"
+      }
+    ]
+  }
+}

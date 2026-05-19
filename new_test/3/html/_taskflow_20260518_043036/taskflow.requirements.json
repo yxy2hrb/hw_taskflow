@@ -1,0 +1,44 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "工作台首页初始态",
+    "description": "屏幕完整显示‘我的工作台’页面，顶部状态栏（含时间、信号、电量图标）可见，底部Tab导航栏（含‘工作台’‘项目’‘报告’‘我’）正常固定显示，‘我的体验项目’入口卡片位于中部区域，使用深灰文字+浅蓝底色，无任何浮层或遮罩。",
+    "implementation_method": "原始 HTML 初始快照，不做改造。",
+    "last_state": null
+  },
+  {
+    "state_id": 2,
+    "state_name": "弹窗列表态",
+    "description": "屏幕背景为半透黑色遮罩（rgba(0,0,0,0.4)），顶部状态栏与底部Tab导航栏保持可见且未被遮挡；中央浮出高度约50vh的白色圆角弹窗，内含垂直滚动项目卡片列表，每张卡片显示项目名称（14px中文字体）、创建时间（12px灰色）、设备类型与数量（如‘AP×3，终端×12’）、状态标签（绿色‘运行中’或灰色‘已暂停’）、右侧‘进入’按钮（蓝色文字+右向箭头图标）。",
+    "implementation_method": "底部上滑半屏抽屉 (Bottom Sheet)：背景遮罩 rgba(0,0,0,0.4)；抽屉容器宽100%、高50vh、圆角12px、白底；每张卡片高72px、左右内边距16px、上下间距8px；项目名称字体 size:14px / line-height:20px / color:#191919；创建时间 color:#666；设备与数量 color:#333；状态标签背景色#E6F4FF / 文字色#46B1E3 / 圆角4px / padding:4px 8px；‘进入’按钮文字为‘进入’（EN:'Enter'），右对齐，配 SVG 右向箭头图标（宽12px，色#46B1E3）。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "加载过渡态",
+    "description": "全屏页面已渲染完成，顶部状态栏与底部Tab导航栏正常可见；页面主体区域为纯白背景，左侧占60%宽度处显示网络拓扑图骨架（三组同心椭圆轮廓线，浅灰描边 #CCCCCC，无填充）；右侧占40%宽度区域竖排三张统计卡片：Wi-Fi评分卡（标题‘Wi-Fi评分’+大号数字‘86’+‘分’字）、运行时长卡（标题‘运行时长’+‘2天14小时’）、设备与终端卡（标题‘设备/终端’+‘AP×3 / 终端×12’），所有文字均为14px灰色（#666），无图标、无交互元素。",
+    "implementation_method": "骨架图占位 (Skeleton Placeholder)：左侧拓扑图区域为三组嵌套椭圆SVG轮廓（外圈宽200px高180px，中圈宽160px高144px，内圈宽107px高105px），stroke:#CCCCCC / stroke-width:1 / fill:none；右侧三张卡片均高88px、宽=40%vw、圆角8px、边框1px solid #F3F3F3；每张卡片内标题文字 size:14px / font-weight:Medium / color:#333；数值文字 size:24px / font-weight:Medium / color:#191919；单位文字 size:12px / color:#666；所有文案中文为‘Wi-Fi评分’‘86’‘分’‘运行时长’‘2天14小时’‘设备/终端’‘AP×3 / 终端×12’；英文对应为'Wi-Fi Score'/'86'/'pts'/'Uptime'/'2d 14h'/'Devices/Terminals'/'AP×3 / Terminals×12'。",
+    "last_state": 2
+  },
+  {
+    "state_id": 4,
+    "state_name": "全屏详情态",
+    "description": "全屏页面已完全加载，顶部状态栏（时间/信号/电量）可见，底部Tab导航栏被隐藏；顶部导航栏固定显示：左侧为蓝色左向箭头图标（宽20px）、居中标题‘虚拟体验项目’（16px Medium字体，#191919）、右侧并排三个图标按钮——搜索（放大镜图标）、通知（铃铛图标）、加号（+圆形按钮，蓝底白+）；主体区域左侧为完整网络拓扑图（含AP节点、终端节点、连线及实时流量动画效果），右侧竖排三张卡片：Wi-Fi评分（‘Wi-Fi评分’标题+‘86’大数字+‘分’+进度条满格蓝色）、运行时长（‘运行时长’+‘2天14小时’+时钟图标）、设备与终端（‘设备/终端’+‘AP×3 / 终端×12’+设备图标+终端图标），所有文字清晰可读，无遮罩、无骨架。",
+    "implementation_method": "全屏页面 (Full-Screen Page)：顶部导航栏高56px / 背景白 / 阴影0 1px 4px rgba(0,0,0,0.08)；左箭头图标为 SVG（path fill:#46B1E3）；标题文字 size:16px / font-family:'HarmonyHeiTi-Medium' / color:#191919；右侧三图标按钮等宽36px、高36px、圆角18px，搜索图标为放大镜（fill:#666）、通知图标为铃铛（fill:#666）、加号按钮 background-color:#46B1E3 / +号 fill:white；主体区域左侧拓扑图宽60%vw / 高calc(100vh - 56px)；右侧卡片区宽40%vw / 每张卡片高120px / 圆角12px / 白底 / 阴影0 1px 4px rgba(0,0,0,0.04)；Wi-Fi评分卡含 title:'Wi-Fi评分'(EN:'Wi-Fi Score') / score:'86'(EN:'86') / unit:'分'(EN:'pts') / 进度条 height:6px / bg:#F3F3F3 / filled:#46B1E3；运行时长卡含 title:'运行时长'(EN:'Uptime') / value:'2天14小时'(EN:'2d 14h') / icon:clock（fill:#666）；设备与终端卡含 title:'设备/终端'(EN:'Devices/Terminals') / value:'AP×3 / 终端×12'(EN:'AP×3 / Terminals×12') / icons:AP(20px SVG fill:#46B1E3)+Terminal(20px SVG fill:#46B1E3)。",
+    "last_state": 2
+  },
+  {
+    "state_id": 5,
+    "state_name": "空数据态",
+    "description": "全屏页面已加载完成，顶部状态栏可见，底部Tab导航栏被隐藏；顶部导航栏同全屏详情态（左箭头、居中标题‘虚拟体验项目’、右侧搜索/通知/加号）；主体区域中央垂直居中显示断连线缆图标（SVG，宽64px，深灰#999），下方主文案‘暂无体验项目’（16px Medium，#191919），再下方‘新建项目’主按钮（蓝底白字，圆角8px，宽144px，高40px），底部小字‘刷新重试’（12px，#666，带下划线，可点击）。",
+    "implementation_method": "全屏空白页 (Empty State Page)：断连线缆图标为 SVG（viewBox='0 0 64 64'，path fill:#999）；主文案 '暂无体验项目'（EN:'No experience projects yet'）size:16px / font-weight:Medium / color:#191919；‘新建项目’按钮文字为‘新建项目’（EN:'Create Project'）/ background-color:#46B1E3 / color:white / padding:0 24px / border-radius:8px / height:40px / display:flex / align-items:center / justify-content:center；‘刷新重试’文字为‘刷新重试’（EN:'Refresh to try again'）/ size:12px / color:#666 / text-decoration:underline / margin-top:16px；所有元素垂直居中对齐，背景纯白。",
+    "last_state": 2
+  },
+  {
+    "state_id": 6,
+    "state_name": "网络异常态",
+    "description": "全屏页面已加载完成，顶部状态栏可见，底部Tab导航栏被隐藏；顶部导航栏同全屏详情态（左箭头、居中标题‘虚拟体验项目’、右侧搜索/通知/加号）；主体区域中央垂直居中显示断网图标（云+叉SVG，宽64px，深灰#999），下方主文案‘网络连接异常’（16px Medium，#191919），再下方‘重新加载’主按钮（蓝底白字，圆角8px，宽144px，高40px），底部小字‘请检查网络后重试’（12px，#666）。",
+    "implementation_method": "全屏错误页 (Error Page)：断网图标为 SVG（cloud+cross，viewBox='0 0 64 64'，path fill:#999）；主文案 '网络连接异常'（EN:'Network connection failed'）size:16px / font-weight:Medium / color:#191919；‘重新加载’按钮文字为‘重新加载’（EN:'Retry'）/ background-color:#46B1E3 / color:white / padding:0 24px / border-radius:8px / height:40px / display:flex / align-items:center / justify-content:center；底部提示文字 '请检查网络后重试'（EN:'Please check your network and retry'）size:12px / color:#666 / margin-top:16px；所有元素垂直居中对齐，背景纯白。",
+    "last_state": 2
+  }
+]

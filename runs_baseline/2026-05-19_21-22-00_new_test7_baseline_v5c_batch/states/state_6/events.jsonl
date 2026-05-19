@@ -1,0 +1,7 @@
+{"event":"state-start","data":{"state_id":6,"state_name":"添加失败态","last_state":2,"ts":1779226237906},"ts":"2026-05-19T21:30:37.926Z"}
+{"event":"state-log","data":{"state_id":6,"msg":"[baseline] HM_BASELINE_ENABLED=1，走 baseline 一锤子路径（跳过 twoPhase / DSL / legacy）","ts":1779226237906},"ts":"2026-05-19T21:30:37.927Z"}
+{"event":"state-log","data":{"state_id":6,"msg":"[baseline] 启动 state_6 「添加失败态」","ts":1779226237906},"ts":"2026-05-19T21:30:37.927Z"}
+{"event":"state-log","data":{"state_id":6,"msg":"[baseline] prompt 20.1KB lang=zh prevHtml=228.6KB->stripped 13.7KB","ts":1779226237918},"ts":"2026-05-19T21:30:37.927Z"}
+{"event":"state-log","data":{"state_id":6,"msg":"[baseline] 生成 HTML 229.1KB（其中 LLM body=13.8KB）","ts":1779226360666},"ts":"2026-05-19T21:32:40.667Z"}
+{"event":"state-log","data":{"state_id":6,"msg":"[baseline] 成功（html 234589B applied=1）","ts":1779226360666},"ts":"2026-05-19T21:32:40.667Z"}
+{"event":"state-done","data":{"state_id":6,"state_name":"添加失败态","file":"state_6.html","applied":1,"skipped":0,"review_ok":null,"review_applied":0,"review_issues":[],"elapsed_ms":122773,"hmExpansions":[],"hmMissing":[],"ts":1779226360679},"ts":"2026-05-19T21:32:40.681Z"}

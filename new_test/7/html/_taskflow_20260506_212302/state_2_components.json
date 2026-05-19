@@ -1,0 +1,20 @@
+{
+  "state_id": 2,
+  "state_name": "添加方式全屏弹窗状态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "语言一致性：弹窗内所有文字均为中文，符合主语言zh要求，但图标使用了非标准的mi类名（如'dashboard'）而非HarmonyOS图标，且图标颜色为蓝色#0A59F7，与鸿蒙设计规范中推荐的系统蓝不符。",
+      "元素溢出：弹窗宽度328px，在360px画布中居中显示，右侧有少量留白，未超出边界；但选项项内的说明文字在截图中显示正常，无截断或折行问题。",
+      "可见性：描述中要求的四个选项（快捷入口、小卡片、中卡片、大卡片）均可见，且每个选项包含图标和两行文本，符合需求。",
+      "位置合理性：弹窗整体居中于屏幕，遮罩层覆盖全屏，视觉上合理。标题位于顶部中央，选项垂直排列，布局符合预期。",
+      "基础样式：弹窗背景为白色，边框圆角8px，阴影柔和，符合规范；标题字体为HarmonyHeiTi-Medium 14px，颜色为#191919，正确；选项文字大小和颜色也符合规范，但图标颜色应调整为系统蓝（如#0066FF），以保持品牌一致性。"
+    ],
+    "fixedBlocks": "[OLD]\n<span class=\"mi\" style=\"font-size:20px;color:#0A59F7;\">dashboard</span>\n[NEW]\n<span class=\"mi\" style=\"font-size:20px;color:#0066FF;\">dashboard</span>\n[OLD]\n<span class=\"mi\" style=\"font-size:20px;color:#0A59F7;\">widgets</span>\n[NEW]\n<span class=\"mi\" style=\"font-size:20px;color:#0066FF;\">widgets</span>\n[OLD]\n<span class=\"mi\" style=\"font-size:20px;color:#0A59F7;\">view_compact</span>\n[NEW]\n<span class=\"mi\" style=\"font-size:20px;color:#0066FF;\">view_compact</span>\n[OLD]\n<span class=\"mi\" style=\"font-size:20px;color:#0A59F7;\">view_module</span>\n[NEW]\n<span class=\"mi\" style=\"font-size:20px;color:#0066FF;\">view_module</span]",
+    "reviewMs": 63209,
+    "screenshot": 96929,
+    "fixedBlocksParsed": 4
+  }
+}

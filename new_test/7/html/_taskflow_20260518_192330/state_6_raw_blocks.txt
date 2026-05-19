@@ -1,0 +1,35 @@
+{
+  "state_name": "添加失败终态",
+  "lifecycle": "temporary",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "FullscreenPanel",
+    "props": { "background": "rgba(0, 0, 0, 0.4)" },
+    "children": [
+      {
+        "type": "OverlayMask",
+        "props": { "opacity": 0.4, "blur": 0 },
+        "children": [
+          {
+            "type": "Column",
+            "props": { "align": "center", "justify": "center" },
+            "children": [
+              {
+                "type": "Row",
+                "props": { "width": 240, "height": 44, "borderRadius": 8, "background": "#C7000B", "align": "center", "gap": 8, "padding": "0 12px" },
+                "children": [
+                  { "type": "Icon", "props": { "name": "error", "size": 16, "color": "#FFFFFF" } },
+                  {
+                    "type": "Text",
+                    "props": { "text": "添加失败，请重试", "size": 14, "color": "#FFFFFF", "weight": "regular", "align": "left" }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

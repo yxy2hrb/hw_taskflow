@@ -1,0 +1,306 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "new-overlay",
+      "anchor": "#14_1031108",
+      "instruction": "在 body 末尾、紧贴 </body> 前插入全屏模态浮层：白色圆角卡片（width:360px; height:792px; background:#FFFFFF; border-radius:16px; margin:auto; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); z-index:1000），卡片内顶部为带 placeholder='搜索...' 的浅灰底搜索框（input[type='text']，font-size:16px; font-family:'HarmonyHeiTi-Regular'; color:#0000008F; outline:none; box-shadow:0 0 0 2px rgba(70,177,227,0.3)），下方四分类标签横向排列（'全部'高亮 color:#46B1E3；'AI工具''云服务''安全合规'为常规黑字 #0000008F；font-size:14px; font-weight:Medium），再下方7条完整条目：每条含标题文字（14px HarmonyHeiTi-Medium，如'WPS AI 使用指南'）与右侧'查看'按钮（12px HarmonyHeiTi-Regular，color:#46B1E3，可点击），无遮罩、无禁用态，顶部状态栏与底部 Tab 栏保持原样可见。",
+      "components_needed": ["TextInput", "Button"],
+      "icons_needed": []
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "position": "fixed",
+      "top": "50%",
+      "left": "50%",
+      "transform": "translate(-50%, -50%)",
+      "width": 360,
+      "height": 792,
+      "background": "#FFFFFF",
+      "borderRadius": 16,
+      "padding": 24,
+      "gap": 24,
+      "zIndex": 1000,
+      "shadow": "0 8px 24px rgba(0,0,0,0.08)"
+    },
+    "children": [
+      {
+        "type": "TextInput",
+        "props": {
+          "placeholder": "搜索...",
+          "size": "regular",
+          "icon": "search",
+          "style": "box-shadow: 0 0 0 2px rgba(70,177,227,0.3); font-family: 'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif; color: rgba(0,0,0,0.56);"
+        }
+      },
+      {
+        "type": "Row",
+        "props": {
+          "gap": 16,
+          "wrap": true,
+          "align": "center"
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "size": 14,
+              "weight": "medium",
+              "color": "#46B1E3",
+              "style": "font-family: 'HarmonyHeiTi-Medium', 'HarmonyOS Sans', sans-serif;"
+            },
+            "children": "全部"
+          },
+          {
+            "type": "Text",
+            "props": {
+              "size": 14,
+              "weight": "medium",
+              "color": "rgba(0,0,0,0.56)",
+              "style": "font-family: 'HarmonyHeiTi-Medium', 'HarmonyOS Sans', sans-serif;"
+            },
+            "children": "AI工具"
+          },
+          {
+            "type": "Text",
+            "props": {
+              "size": 14,
+              "weight": "medium",
+              "color": "rgba(0,0,0,0.56)",
+              "style": "font-family: 'HarmonyHeiTi-Medium', 'HarmonyOS Sans', sans-serif;"
+            },
+            "children": "云服务"
+          },
+          {
+            "type": "Text",
+            "props": {
+              "size": 14,
+              "weight": "medium",
+              "color": "rgba(0,0,0,0.56)",
+              "style": "font-family: 'HarmonyHeiTi-Medium', 'HarmonyOS Sans', sans-serif;"
+            },
+            "children": "安全合规"
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "gap": 16
+        },
+        "children": [
+          {
+            "type": "Row",
+            "props": {
+              "justify": "space-between",
+              "align": "center",
+              "width": "100%"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "size": 14,
+                  "weight": "medium",
+                  "color": "rgba(0,0,0,0.90)",
+                  "style": "font-family: 'HarmonyHeiTi-Medium', 'HarmonyOS Sans', sans-serif;"
+                },
+                "children": "WPS AI 使用指南"
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "查看",
+                  "variant": "text",
+                  "size": "compact",
+                  "style": "font-family: 'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif; font-size: 12px; color: #46B1E3;"
+                }
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "justify": "space-between",
+              "align": "center",
+              "width": "100%"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "size": 14,
+                  "weight": "medium",
+                  "color": "rgba(0,0,0,0.90)",
+                  "style": "font-family: 'HarmonyHeiTi-Medium', 'HarmonyOS Sans', sans-serif;"
+                },
+                "children": "DevEco Studio 快速上手"
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "查看",
+                  "variant": "text",
+                  "size": "compact",
+                  "style": "font-family: 'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif; font-size: 12px; color: #46B1E3;"
+                }
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "justify": "space-between",
+              "align": "center",
+              "width": "100%"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "size": 14,
+                  "weight": "medium",
+                  "color": "rgba(0,0,0,0.90)",
+                  "style": "font-family: 'HarmonyHeiTi-Medium', 'HarmonyOS Sans', sans-serif;"
+                },
+                "children": "ArkTS 语言基础"
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "查看",
+                  "variant": "text",
+                  "size": "compact",
+                  "style": "font-family: 'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif; font-size: 12px; color: #46B1E3;"
+                }
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "justify": "space-between",
+              "align": "center",
+              "width": "100%"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "size": 14,
+                  "weight": "medium",
+                  "color": "rgba(0,0,0,0.90)",
+                  "style": "font-family: 'HarmonyHeiTi-Medium', 'HarmonyOS Sans', sans-serif;"
+                },
+                "children": "分布式能力开发指南"
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "查看",
+                  "variant": "text",
+                  "size": "compact",
+                  "style": "font-family: 'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif; font-size: 12px; color: #46B1E3;"
+                }
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "justify": "space-between",
+              "align": "center",
+              "width": "100%"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "size": 14,
+                  "weight": "medium",
+                  "color": "rgba(0,0,0,0.90)",
+                  "style": "font-family: 'HarmonyHeiTi-Medium', 'HarmonyOS Sans', sans-serif;"
+                },
+                "children": "UI 组件库使用规范"
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "查看",
+                  "variant": "text",
+                  "size": "compact",
+                  "style": "font-family: 'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif; font-size: 12px; color: #46B1E3;"
+                }
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "justify": "space-between",
+              "align": "center",
+              "width": "100%"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "size": 14,
+                  "weight": "medium",
+                  "color": "rgba(0,0,0,0.90)",
+                  "style": "font-family: 'HarmonyHeiTi-Medium', 'HarmonyOS Sans', sans-serif;"
+                },
+                "children": "应用签名与发布流程"
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "查看",
+                  "variant": "text",
+                  "size": "compact",
+                  "style": "font-family: 'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif; font-size: 12px; color: #46B1E3;"
+                }
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "justify": "space-between",
+              "align": "center",
+              "width": "100%"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "size": 14,
+                  "weight": "medium",
+                  "color": "rgba(0,0,0,0.90)",
+                  "style": "font-family: 'HarmonyHeiTi-Medium', 'HarmonyOS Sans', sans-serif;"
+                },
+                "children": "调试与性能分析技巧"
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "查看",
+                  "variant": "text",
+                  "size": "compact",
+                  "style": "font-family: 'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif; font-size: 12px; color: #46B1E3;"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "工作台主页初始状态",
+    "description": "用户位于营销工作台首页，顶部状态栏显示时间/信号/电量，页面中部有'管理应用'按钮（蓝色填充+白色文字，居中、圆角矩形），底部Tab栏完整可见，当前'营销'Tab高亮（红色文字），其余Tab为灰色文字。",
+    "implementation_method": "原始 HTML 初始快照，不做改造",
+    "last_state": null
+  },
+  {
+    "state_id": 2,
+    "state_name": "管理应用页列表态",
+    "description": "顶部固定栏含左对齐返回箭头（黑色、24px）和居中标题'管理应用'（16px黑体），主体为垂直滚动列表，每项含左侧32×32px应用图标、中间应用名称（14px深灰）、右侧开关控件（未开启：灰色圆轨+空心圆钮）；顶部计数条显示'已添加X个'（14px深灰，左对齐，距顶部8px）；底部Tab栏完整保留，当前'营销'Tab高亮（红色文字）。",
+    "implementation_method": "全屏页面 (Page/View)：复用 state_1 的底部Tab栏与顶部状态栏；移除原主页内容区域，替换为新结构：顶部计数条 + 返回箭头+标题栏 + 可滚动列表容器；列表项共N行，每行高度64px，内边距16px；开关控件使用CSS自定义样式（圆轨宽40px、高24px、背景rgba(223,223,223,1)，滑钮直径16px、背景white、边框1px rgba(0,0,0,0.1)）。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "添加方式弹窗展示态",
+    "description": "全屏深灰遮罩层（rgba(0,0,0,0.6)）覆盖整个视口；正中悬浮白色圆角卡片（宽320px、高360px、圆角12px、阴影0 4px 12px rgba(0,0,0,0.08)），卡片内顶部居中标题'请选择添加方式'（16px黑体、深灰），下方4个等距排列的尺寸图标（各64×64px，含'快捷入口'/'小卡片'/'中卡片'/'大卡片'文字标签，12px灰色），卡片底部居中'取消'文字按钮（14px#666，无背景，下划线）。",
+    "implementation_method": "模态弹窗 (Modal/Dialog)：在 state_2 页面 DOM 根节点追加 <div class='overlay'>（fixed full-viewport, z-index:1000, background:rgba(0,0,0,0.6)）与 <div class='card'>（absolute center, z-index:1001, width:320px, height:360px, bg:white, radius:12px, shadow）；卡片内包含标题 '请选择添加方式'、4个图标项（每个含img+label，label文本分别为'快捷入口'/'小卡片'/'中卡片'/'大卡片'）、底部按钮 '取消'。",
+    "last_state": 2
+  },
+  {
+    "state_id": 4,
+    "state_name": "管理应用页添加成功态",
+    "description": "画面与 state_2 完全一致，仅目标应用行的开关控件变为开启态（蓝色圆轨#C7000B+白色对勾图标，滑钮右移至轨道最右端），顶部计数条数字比 state_2 增加1（如'已添加5个'→'已添加6个'），底部距离底边48px处固定显示黑底白字Toast块（宽280px、高44px、圆角8px、bg:#191919、text:#FFFFFF、14px常规字体、居中'添加成功'）。",
+    "implementation_method": "状态变更叠加 (State Patch)：在 state_2 的基础上，将目标应用行开关元素的 class 替换为 'switch-on'（对应蓝色轨道+对勾图标）；更新顶部计数条文本内容（数值+1）；在 body 最末尾追加 Toast 元素：<div class='toast' style='position:fixed;bottom:48px;left:50%;transform:translateX(-50%);width:280px;height:44px;background:#191919;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#FFFFFF;font-size:14px;'>添加成功</div>。",
+    "last_state": 2
+  },
+  {
+    "state_id": 5,
+    "state_name": "添加方式弹窗取消态",
+    "description": "画面与 state_2 完全一致，无任何遮罩层、无悬浮卡片、无半透明残留、无偏移缩放、无过渡动画痕迹；顶部状态栏、返回箭头、标题、列表、计数条、底部Tab栏全部按 state_2 规范正常渲染；所有开关控件保持原状（无开启/关闭变化）。",
+    "implementation_method": "画面与 last_state（state_2）完全一致；base 已是关闭后的样子，无需任何 DOM 改造。",
+    "last_state": 2
+  },
+  {
+    "state_id": 6,
+    "state_name": "网络异常提示态",
+    "description": "画面与 state_2 完全一致，无遮罩、无弹窗、无浮层；顶部状态栏、返回箭头、标题、列表、计数条、底部Tab栏全部正常渲染；目标应用行开关控件保持原状（未开启）；底部距离底边48px处固定显示红底白字Toast块（宽280px、高44px、圆角8px、bg:#D32F2F、text:#FFFFFF、14px常规字体、居中'网络异常，请重试'）。",
+    "implementation_method": "状态变更叠加 (State Patch)：在 state_2 的基础上，保持所有开关状态不变；在 body 最末尾追加 Toast 元素：<div class='toast' style='position:fixed;bottom:48px;left:50%;transform:translateX(-50%);width:280px;height:44px;background:#D32F2F;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#FFFFFF;font-size:14px;'>网络异常，请重试</div>。",
+    "last_state": 2
+  }
+]

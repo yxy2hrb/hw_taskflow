@@ -1,0 +1,183 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": ["#14_807569"],
+      "replace_at": "#14_807569",
+      "instruction": "将整个页面容器替换为创建项目集全屏页初始态：顶部固定深灰标题栏（#191919，居中白色文字'创建项目集'）；中部白色表单区域含三部分——上方名称输入框（高48px、浅灰底#F5F5F5、placeholder'请输入项目集名称'、#999/14px）、中间'公司'与'个人'水平单选按钮组（均带空心圆图标stroke #999、16px）、下方项目添加区域（120×120px浅灰虚线框#D9D9D9/1px、中央灰色加号图标#999+下方文字'点击添加项目'#999/14px）；顶部状态栏与底部Tab导航栏完整保留且置于最底层。",
+      "components_needed": ["TextInput", "Radio", "IconButton"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "gap": 0,
+      "background": "#F1F3F5",
+      "width": "100%",
+      "align": "stretch"
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "background": "#191919",
+          "padding": [16, 0],
+          "align": "center",
+          "justify": "center",
+          "height": 56
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "text": "创建项目集",
+              "color": "#FFFFFF",
+              "size": 20,
+              "weight": 700,
+              "align": "center"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "padding": [24, 16],
+          "gap": 24,
+          "align": "stretch",
+          "width": "100%"
+        },
+        "children": [
+          {
+            "type": "FormField",
+            "props": {
+              "label": "",
+              "placeholder": "请输入项目集名称",
+              "labelWidth": 0,
+              "value": "",
+              "size": "regular",
+              "invalid": false
+            }
+          },
+          {
+            "type": "Column",
+            "props": {
+              "gap": 12
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "subtitle",
+                  "color": "rgba(0,0,0,0.90)",
+                  "size": 14,
+                  "weight": 500
+                },
+                "children": "公司"
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 12,
+                  "align": "center"
+                },
+                "children": [
+                  {
+                    "type": "Checkbox",
+                    "props": {
+                      "checked": false,
+                      "size": 22
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "body",
+                      "color": "rgba(0,0,0,0.90)",
+                      "size": 16,
+                      "weight": 500
+                    },
+                    "children": "公司"
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 12,
+                  "align": "center"
+                },
+                "children": [
+                  {
+                    "type": "Checkbox",
+                    "props": {
+                      "checked": false,
+                      "size": 22
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "variant": "body",
+                      "color": "rgba(0,0,0,0.90)",
+                      "size": 16,
+                      "weight": 500
+                    },
+                    "children": "个人"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": {
+              "gap": 8,
+              "align": "center"
+            },
+            "children": [
+              {
+                "type": "Row",
+                "props": {
+                  "width": 120,
+                  "height": 120,
+                  "border": "1px dashed #D9D9D9",
+                  "borderRadius": 8,
+                  "align": "center",
+                  "justify": "center",
+                  "background": "#F5F5F5"
+                },
+                "children": [
+                  {
+                    "type": "Icon",
+                    "props": {
+                      "name": "add",
+                      "size": 24,
+                      "color": "#999999"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "caption",
+                  "color": "#999999",
+                  "size": 14
+                },
+                "children": "点击添加项目"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{"event":"state-start","data":{"state_id":5,"state_name":"网络拓扑图加载失败态","last_state":3,"ts":1779225964104},"ts":"2026-05-19T21:26:04.108Z"}
+{"event":"state-log","data":{"state_id":5,"msg":"[baseline] HM_BASELINE_ENABLED=1，走 baseline 一锤子路径（跳过 twoPhase / DSL / legacy）","ts":1779225964104},"ts":"2026-05-19T21:26:04.109Z"}
+{"event":"state-log","data":{"state_id":5,"msg":"[baseline] 启动 state_5 「网络拓扑图加载失败态」","ts":1779225964104},"ts":"2026-05-19T21:26:04.109Z"}
+{"event":"state-log","data":{"state_id":5,"msg":"[baseline] prompt 14.3KB lang=zh prevHtml=79.8KB->stripped 8.3KB","ts":1779225964105},"ts":"2026-05-19T21:26:04.109Z"}
+{"event":"state-log","data":{"state_id":5,"msg":"[baseline] 生成 HTML 79.9KB（其中 LLM body=8.0KB）","ts":1779226038935},"ts":"2026-05-19T21:27:18.935Z"}
+{"event":"state-log","data":{"state_id":5,"msg":"[baseline] 成功（html 81775B applied=1）","ts":1779226038935},"ts":"2026-05-19T21:27:18.935Z"}
+{"event":"state-done","data":{"state_id":5,"state_name":"网络拓扑图加载失败态","file":"state_5.html","applied":1,"skipped":0,"review_ok":null,"review_applied":0,"review_issues":[],"elapsed_ms":74834,"hmExpansions":[],"hmMissing":[],"ts":1779226038938},"ts":"2026-05-19T21:27:18.940Z"}

@@ -1,0 +1,97 @@
+{
+  "state_name": "快速入门页加载中",
+  "lifecycle": "temporary",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "FullscreenPanel",
+    "props": { "background": "rgba(0,0,0,0.5)" },
+    "children": [
+      {
+        "type": "OverlayMask",
+        "props": { "opacity": 0.5, "color": "#000", "blur": 0 },
+        "children": [
+          {
+            "type": "Column",
+            "props": {
+              "width": 360,
+              "background": "#FFFFFF",
+              "borderRadius": 12,
+              "padding": 24,
+              "align": "center",
+              "justify": "flex-start"
+            },
+            "children": [
+              {
+                "type": "TextInput",
+                "props": {
+                  "placeholder": "搜索...",
+                  "size": "regular",
+                  "background": "#F5F5F5",
+                  "borderRadius": 8
+                }
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 8,
+                  "wrap": true,
+                  "padding": 0
+                },
+                "children": [
+                  {
+                    "type": "Button",
+                    "props": {
+                      "label": "全部",
+                      "variant": "secondary",
+                      "size": "compact"
+                    }
+                  },
+                  {
+                    "type": "Button",
+                    "props": {
+                      "label": "应用",
+                      "variant": "secondary",
+                      "size": "compact"
+                    }
+                  },
+                  {
+                    "type": "Button",
+                    "props": {
+                      "label": "服务",
+                      "variant": "secondary",
+                      "size": "compact"
+                    }
+                  },
+                  {
+                    "type": "Button",
+                    "props": {
+                      "label": "设置",
+                      "variant": "secondary",
+                      "size": "compact"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 16
+                },
+                "children": [
+                  { "type": "Text", "props": { "text": "", "size": 24 } },
+                  { "type": "Text", "props": { "text": "", "size": 24 } },
+                  { "type": "Text", "props": { "text": "", "size": 24 } },
+                  { "type": "Text", "props": { "text": "", "size": 24 } },
+                  { "type": "Text", "props": { "text": "", "size": 24 } },
+                  { "type": "Text", "props": { "text": "", "size": 24 } },
+                  { "type": "Text", "props": { "text": "", "size": 24 } }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

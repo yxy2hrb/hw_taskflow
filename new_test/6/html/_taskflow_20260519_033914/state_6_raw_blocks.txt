@@ -1,0 +1,68 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "new-overlay",
+      "anchor": "#14_1031108",
+      "instruction": "在 body 直接子级末尾新增全屏模态浮层：白色圆角卡片（width:360px; height:792px; background:#FFFFFF; border-radius:16px; margin:auto; position:relative; top:0; left:0; right:0; bottom:0; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:24px; padding:32px 24px）；中央放置红色感叹号图标（<span class=\"mi\" style=\"font-size:32px; color:#FF4D4F;\">error</span>）；下方紧接文字‘加载失败，请重试’（14px Medium，#191919，HarmonyHeiTi, 'HarmonyOS Sans', sans-serif）；再下方为蓝色填充按钮‘重试’（12px Regular，white文字，#46B1E3背景，宽120px，高32px，border-radius:8px，display:flex; align-items:center; justify-content:center）；无其他元素、无输入框、无分类标签、无条目列表；顶部状态栏与底部 Tab 栏保持原样、完全可见；无遮罩层，仅卡片自身为白色背景。",
+      "components_needed": ["Dialog", "Button"],
+      "icons_needed": ["error"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "position": "fixed",
+      "top": 0,
+      "left": 0,
+      "right": 0,
+      "bottom": 0,
+      "background": "#FFFFFF",
+      "borderRadius": 16,
+      "width": "360px",
+      "height": "792px",
+      "padding": [32, 24],
+      "gap": 24,
+      "align": "center",
+      "justify": "center",
+      "shadow": true
+    },
+    "children": [
+      {
+        "type": "Icon",
+        "props": {
+          "name": "error",
+          "size": 32,
+          "color": "#E84026"
+        }
+      },
+      {
+        "type": "Text",
+        "props": {
+          "size": 14,
+          "weight": 500,
+          "color": "rgba(0,0,0,0.90)",
+          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+        },
+        "children": "加载失败，请重试"
+      },
+      {
+        "type": "Button",
+        "props": {
+          "label": "重试",
+          "variant": "primary",
+          "size": "compact",
+          "width": "120px",
+          "height": "32px",
+          "borderRadius": 8,
+          "background": "#0A59F7"
+        }
+      }
+    ]
+  }
+}

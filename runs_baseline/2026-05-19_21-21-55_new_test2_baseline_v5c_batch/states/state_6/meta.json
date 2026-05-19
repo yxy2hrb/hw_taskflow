@@ -1,0 +1,12 @@
+{
+  "state_id": 6,
+  "state_name": "自动返回工作台",
+  "description": "画面与 state_1（我的工作台首页）完全一致；顶部状态栏显示时间与信号图标，底部固定 Tab 导航栏含‘工作台’‘项目’‘消息’‘我’四图标且‘工作台’高亮；页面中部‘项目开局’标题下排列三个功能卡片，‘创建项目集’卡片含加号图标与文字，位于中间位置；无Toast、无遮罩、无加载态残留、无任何叠加元素。",
+  "implementation_method": "画面与 last_state（state_1）完全一致；base 已是关闭后的样子，无需任何 DOM 改造。",
+  "last_state": 1,
+  "applied": 1,
+  "skipped": 0,
+  "elapsed_ms": 73444,
+  "failed": false,
+  "error": null
+}

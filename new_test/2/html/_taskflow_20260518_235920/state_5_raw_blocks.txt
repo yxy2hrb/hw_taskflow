@@ -1,0 +1,14 @@
+{
+  "state_name": "创建成功终态",
+  "lifecycle": "temporary",
+  "injection": { "mode": "append", "anchor": "body" },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "Row",
+    "props": { "width": "100%", "height": 44, "background": "#34C759", "borderRadius": 8, "align": "center", "justify": "center", "gap": 8, "padding": "0 16px" },
+    "children": [
+      { "type": "Icon", "props": { "name": "check", "size": 20, "color": "#FFFFFF" } },
+      { "type": "Text", "props": { "text": "创建成功", "size": 16, "color": "#FFFFFF", "weight": "regular" } }
+    ]
+  }
+}

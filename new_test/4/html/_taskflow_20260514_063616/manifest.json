@@ -1,0 +1,53 @@
+{
+  "title": "体验运维流程创建",
+  "slug": "experience-ops-flow-creation",
+  "createdAt": "2026-05-13T22:37:40.774Z",
+  "meta": {
+    "title": "体验运维流程创建",
+    "slug": "experience-ops-flow-creation",
+    "user_story": "已登录的企业运维人员 | 在‘我的工作台’页面点击‘体验运维流程’按钮 | 填写项目场景和名称 → 系统加载三维设备模型并校验字段 → 用户点击蓝色‘确定’提交 | 界面弹出‘创建成功’Toast，且底Tab保持高亮在当前页",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "我的工作台初始页",
+      "description": "页面为移动端全屏布局，顶部状态栏显示时间与信号图标，底部Tab栏高亮‘工作台’项（蓝色选中态），中部区域可见两个功能卡片：左上‘体验开局流程’按钮与右下‘体验运维流程’按钮（蓝色文字+浅灰底圆角矩形），其余区域为白色背景，无遮罩、无浮层、无模型渲染。",
+      "implementation_method": "原始 HTML 初始快照，不做改造",
+      "last_state": null,
+      "file": "state_1.html"
+    },
+    {
+      "state_id": 2,
+      "state_name": "全屏运维表单页",
+      "description": "页面全屏展开，顶部状态栏保持可见（含时间与4G图标），底部Tab栏仍高亮‘工作台’项；左侧为固定宽度表单区（宽约360px）：顶部标题‘项目场景’为16px Medium黑字，下方下拉选择框（浅灰边框、12px常规字体、默认文案‘请选择场景’），再下方‘项目名称’输入框（同边框、占位符‘请输入项目名称’）；右侧为三维模型容器（占满剩余宽度与高度），中央显示线框风格设备模型（无纹理、无阴影、灰蓝主色），背景为纯白。",
+      "implementation_method": "全屏页面 (Full-Screen Page)：左侧表单区含标题‘项目场景’（'Project Scenario'）、下拉控件（默认文案‘请选择场景’ / 'Please select scenario'）、标题‘项目名称’（'Project Name'）、输入框（占位符‘请输入项目名称’ / 'Please enter project name'）；右侧三维模型容器尺寸自适应，内嵌线框设备模型（SVG 或 Canvas 渲染，无交互控件、无加载动画、无文字提示）；顶部状态栏与底部Tab栏完全保留。",
+      "last_state": 1,
+      "file": "state_2.html"
+    },
+    {
+      "state_id": 3,
+      "state_name": "提交中状态",
+      "description": "页面结构与 state_2 完全一致：顶部状态栏、底部Tab栏、左侧表单区（字段值保留）、右侧三维模型容器均可见；蓝色‘确定’按钮处于置灰不可点状态（opacity:0.5，无 hover 效果）；三维模型容器中央覆盖半透明深色蒙层（rgba(0,0,0,0.4)），其上居中显示灰色12px Regular小字‘校验中…’（'Validating...'），无图标、无动效、无其他浮层。",
+      "implementation_method": "半透明遮罩层 + 文本标签 (Overlay + Label)：深色蒙层（rgba(0,0,0,0.4)）覆盖整个三维模型容器区域；中央绝对定位文本‘校验中…’（'Validating...'），12px HarmonyHeiTi-Regular，颜色 rgba(128,128,128,1)，无边框、无背景、无图标；蓝色‘确定’按钮添加 opacity:0.5 与 pointer-events:none 样式；其余所有元素（状态栏、Tab、表单、模型）与 state_2 完全一致。",
+      "last_state": 2,
+      "file": "state_3.html"
+    },
+    {
+      "state_id": 4,
+      "state_name": "创建成功提示",
+      "description": "页面结构与 state_2 完全一致：顶部状态栏、底部Tab栏、左侧表单区（字段值保留）、右侧三维模型容器均可见；顶部状态栏正下方 16px 处悬浮一条蓝底白字 Toast 条（宽100%、高44px、圆角8px），内含绿色勾选图标（16×16px）与文字‘创建成功’（'Created successfully'），无按钮、无关闭叉号、无动画痕迹，其余区域无遮罩、无浮层、无模型变化。",
+      "implementation_method": "轻量级提示 (Toast/Snackbar)：蓝底（#46B1E3）白字（rgba(255,255,255,1)）条状容器（宽100%、高44px、圆角8px、padding-left 48px），左侧内置 16×16px 绿色勾选 SVG 图标（#00C853），右侧文字‘创建成功’（'Created successfully'），14px HarmonyHeiTi-Regular；Toast 位于顶部状态栏正下方 16px 处；其余所有元素与 state_2 完全一致。",
+      "last_state": 2,
+      "file": "state_4.html"
+    },
+    {
+      "state_id": 5,
+      "state_name": "创建失败提示",
+      "description": "页面结构与 state_2 完全一致：顶部状态栏、底部Tab栏、左侧表单区（字段值保留）、右侧三维模型容器均可见；页面底部上滑出半屏抽屉（高50vh、深灰背景 #1F1F1F、圆角顶部16px），抽屉内顶部居中白色16px Medium标题‘创建失败’（'Creation failed'），下方灰色14px Regular说明文字‘请检查网络或重试’（'Please check your network or try again'），底部固定两个按钮：左‘重试’（蓝色填充、白字、14px Medium）、右‘取消’（浅灰边框+浅灰字、14px Medium），按钮宽各48%、高44px、圆角8px、水平居中排列。",
+      "implementation_method": "底部抽屉 (Bottom Sheet)：深灰背景（#1F1F1F）抽屉（高50vh、宽100%、顶部圆角16px、底部平直），内含白色16px HarmonyHeiTi-Medium标题‘创建失败’（'Creation failed'）；下方灰色14px HarmonyHeiTi-Regular说明文字‘请检查网络或重试’（'Please check your network or try again'）；底部固定按钮组：左按钮‘重试’（background:#46B1E3, color:white, text:'Retry'），右按钮‘取消’（border:1px solid #9E9E9E, color:#9E9E9E, text:'Cancel'），两按钮等宽（48%）、高44px、圆角8px、间距8px、水平居中；其余所有元素与 state_2 完全一致。",
+      "last_state": 2,
+      "file": "state_5.html"
+    }
+  ]
+}

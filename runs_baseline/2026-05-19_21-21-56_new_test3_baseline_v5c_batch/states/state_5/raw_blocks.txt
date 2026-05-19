@@ -1,0 +1,151 @@
+<!-- BASELINE_BODY_START -->
+<body>
+<!-- 顶部状态栏 -->
+<div class="scroll-container">
+  <div id="0_1" class="Pixso-canvas-0_1">
+    <div id="14_884197" class="Pixso-frame-14_884197 fill-场景background-colorcolor-bg-1-14_886006">
+      <div id="14_884198" class="Pixso-frame-14_884198">
+        <div id="14_884199" class="Pixso-vector-14_884199"></div>
+        <div id="14_884200" class="Pixso-vector-14_884200"></div>
+        <div id="14_884201" class="Pixso-vector-14_884201"></div>
+        <div id="14_884202" class="Pixso-vector-14_884202"></div>
+        
+      </div>
+      <div id="14_884211" class="Pixso-rectangle-14_884211"></div>
+      <div id="14_884212" class="Pixso-frame-14_884212">
+        <div id="14_884213" class="Pixso-frame-14_884213">
+          <div class="frame-content-14_884213">
+            <div id="146_170564" class="Pixso-frame-146_170564">
+              <div id="146_170565" class="Pixso-frame-146_170565">
+                <div class="frame-content-146_170565">
+                  <p id="146_170566" class="Pixso-paragraph-146_170566">08:08</p>
+                  <div id="146_170567" class="Pixso-frame-146_170567">
+                    <div id="146_170568" class="Pixso-vector-146_170568"></div>
+                    <div id="146_170580" class="Pixso-vector-146_170580"></div>
+                    <div id="146_170587" class="Pixso-vector-146_170587"></div>
+                    <div id="146_170614" class="Pixso-vector-146_170614"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="146_170624" class="Pixso-frame-146_170624">
+              <div class="frame-content-146_170624">
+                <div id="146_170625" class="Pixso-frame-146_170625">
+                  <div id="146_170626" class="Pixso-frame-146_170626">
+                    <div id="146_170631" class="Pixso-frame-146_170631">
+                      <div id="146_170632" class="Pixso-frame-146_170632">
+                        <div id="146_170633" class="Pixso-frame-146_170633">
+                          <div class="frame-content-146_170633">
+                            <div id="146_170634" class="Pixso-frame-146_170634">
+                              <p id="146_170635" class="Pixso-paragraph-146_170635 fill-场景text-colorcolor-text-primary-6_11379-paragraph">我的</p>
+                            </div>
+                            <p id="146_170639" class="Pixso-paragraph-146_170639 fill-场景text-colorcolor-text-primary-6_11379-paragraph">工作台</p>
+                          </div>
+                        </div>
+                        <div id="146_170640" class="Pixso-frame-146_170640">
+                          <div class="frame-content-146_170640">
+                            <div id="146_170641" class="Pixso-group-146_170641">
+                              <div id="146_170642" class="Pixso-vector-146_170642"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 【持久】网络拓扑图加载失败态：替换原拓扑图区域为错误占位图，保留其余所有结构 -->
+        <!-- 主容器：全屏白色，固定定位，避开状态栏(44px)和底Tab(66px) -->
+        <div id="hm-project-detail-main" style="position: fixed; top: 44px; bottom: 66px; left: 0; right: 0; z-index: 50; background: #FFFFFF;">
+          <!-- 顶部导航栏 -->
+          <div id="hm-project-detail-header" class="Pixso-frame-14_884214" style="height: 48px; padding: 0 16px; display: flex; align-items: center; justify-content: space-between; background: #FFFFFF; border-bottom: 1px solid #F0F0F0;">
+            <div id="hm-project-detail-back" class="Pixso-frame-146_139225" style="width: 24px; height: 24px;"></div>
+            <div id="hm-project-detail-title" style="font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-weight: 500; font-size: 16px; color: #191919; text-align: center; flex: 1; margin: 0 16px;">虚拟体验项目</div>
+            <div id="hm-project-detail-actions" style="display: flex; gap: 16px;">
+              <div id="hm-project-detail-search" class="Pixso-frame-146_139248" style="width: 20px; height: 20px;"></div>
+              <div id="hm-project-detail-notif" class="Pixso-frame-146_139258" style="width: 20px; height: 20px;"></div>
+              <div id="hm-project-detail-add" class="Pixso-frame-146_139268" style="width: 20px; height: 20px;"></div>
+            </div>
+          </div>
+
+          <!-- 主体内容区 -->
+          <div id="hm-project-detail-body" style="padding: 16px; overflow-y: auto; height: calc(100% - 48px);">
+            <!-- 网络拓扑图区域：替换为错误占位图（带灰色斜线填充 + 红色角标） -->
+            <div id="hm-topology-container" style="width: 100%; height: 228px; border: 1px solid #CCCCCC; border-radius: 8px; margin-bottom: 16px; position: relative; overflow: hidden; background-image: url('./image/error-pattern.svg'); background-repeat: repeat; background-color: #F5F5F5;">
+              <!-- 右上角红色小角标 -->
+              <div id="hm-topology-error-badge" class="Pixso-vector-146_139271" style="position: absolute; top: 8px; right: 8px; width: 12px; height: 12px; background-color: #FF4D4F; border-radius: 50%;"></div>
+              <!-- 占位文字已移除，仅保留视觉占位与角标 -->
+            </div>
+
+            <!-- Wi-Fi评分 -->
+            <div id="hm-wifi-score" style="font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-weight: 400; font-size: 14px; color: #191919; line-height: 20px; margin-bottom: 12px;">
+              Wi-Fi评分：89分
+            </div>
+
+            <!-- 运行时长 -->
+            <div id="hm-runtime" style="font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-weight: 400; font-size: 14px; color: #191919; line-height: 20px; margin-bottom: 12px;">
+              运行时长：2天14小时
+            </div>
+
+            <!-- 设备统计 -->
+            <div id="hm-device-count" style="font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-weight: 400; font-size: 14px; color: #191919; line-height: 20px; margin-bottom: 12px;">
+              设备：7台
+            </div>
+
+            <!-- 终端统计 -->
+            <div id="hm-terminal-count" style="font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-weight: 400; font-size: 14px; color: #191919; line-height: 20px;">
+              终端：23个
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- 底部导航栏 -->
+      <div id="14_884324" class="Pixso-frame-14_884324">
+        <div id="14_884325" class="Pixso-rectangle-14_884325"></div>
+        <p id="14_884326" class="Pixso-paragraph-14_884326">我的</p>
+        <p id="14_884327" class="Pixso-paragraph-14_884327">服务</p>
+        <p id="14_884328" class="Pixso-paragraph-14_884328">工作台</p>
+        <p id="14_884329" class="Pixso-paragraph-14_884329">商城</p>
+        <p id="14_884330" class="Pixso-paragraph-14_884330">首页</p>
+        <div id="14_884331" class="Pixso-group-14_884331">
+          <div id="14_884332" class="Pixso-vector-14_884332"></div>
+          <div id="14_884333" class="Pixso-group-14_884333">
+            <div id="14_884334" class="Pixso-vector-14_884334"></div>
+            <div id="14_884335" class="stroke-wrapper-14_884335">
+              <div class="Pixso-rectangle-14_884335"></div>
+              <div class="stroke-14_884335"></div>
+            </div>
+          </div>
+        </div>
+        <div id="14_884336" class="Pixso-vector-14_884336"></div>
+        <div id="14_884340" class="Pixso-vector-14_884340"></div>
+        <div id="14_884353" class="Pixso-group-14_884353">
+          <div id="14_884354" class="Pixso-vector-14_884354"></div>
+          <div id="14_884355" class="Pixso-vector-14_884355"></div>
+        </div>
+        <div id="14_884358" class="Pixso-group-14_884358">
+          <div id="14_884359" class="Pixso-vector-14_884359"></div>
+          <div id="14_884360" class="Pixso-group-14_884360">
+            <div id="14_884361" class="Pixso-vector-14_884361"></div>
+            <div id="14_884364" class="Pixso-vector-14_884364"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 【删除】上一态所有遗留区块：'我要办会'、'营销物料'、'分享获客'、'虚拟体验项目'卡片等全部移除 -->
+      <!-- 已在主容器外彻底清除 -->
+
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+</script>
+</body>
+<!-- BASELINE_BODY_END -->

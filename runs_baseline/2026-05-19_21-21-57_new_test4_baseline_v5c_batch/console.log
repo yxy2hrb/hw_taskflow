@@ -1,0 +1,59 @@
+▶ run dir: runs_baseline\2026-05-19_21-21-57_new_test4_baseline_v5c_batch
+  source: new_test/4/html
+  brief : new_test/4/input.txt
+  blueprint: runs_baseline/2026-05-19_17-19-55_new_test4_baseline_v1/blueprint.json
+  api   : http://localhost:3001/api
+  /health → 404
+
+▶ POST /oneclick/start  brief="用户在“我的工作台”页面点击“体验运维流程”按钮→进入全屏页，保留状态栏与底Tab→左侧填写预设的项目场景和项目名称，右…"  htmlBytes=98983
+  sessionId=tf_064a5de555e2  sourceDir(echo)=
+
+▶ POST /oneclick/blueprint  使用固定蓝图
+   title: 体验运维流程
+   user_story: 已登录的运维工程师 | 在‘我的工作台’点击‘体验运维流程’按钮 | 填写项目场景与名称 → 系统加载三维模型并校验字段 → 用户点击蓝色‘确定’完成提交 | 页面顶部弹出‘创建成功’Toast，且底Tab保持高亮在当前页
+   states: 6
+     state_1 ← null  我的工作台首页
+     state_2 ← 1  运维流程全屏页
+     state_3 ← 2  提交中状态
+     state_4 ← 2  创建成功提示
+     state_5 ← 2  创建失败提示
+     state_6 ← 2  字段校验失败
+
+▶ SSE /oneclick/generate/stream
+  [state-done ] state_1 我的工作台首页  applied=0 skipped=0 undefinedms
+               components: (无)
+  [state-start] state_2 运维流程全屏页
+  [state-done ] state_2 运维流程全屏页  applied=1 skipped=0 74079ms
+               components: (无)
+  [state-start] state_3 提交中状态
+  [state-done ] state_3 提交中状态  applied=1 skipped=0 75440ms
+               components: (无)
+  [state-start] state_4 创建成功提示
+  [state-done ] state_4 创建成功提示  applied=1 skipped=0 150092ms
+               components: (无)
+  [state-start] state_5 创建失败提示
+  [state-done ] state_5 创建失败提示  applied=1 skipped=0 79257ms
+               components: (无)
+  [state-start] state_6 字段校验失败
+  [state-done ] state_6 字段校验失败  applied=1 skipped=0 75454ms
+               components: (无)
+
+  [done] outDir=E:\任务流\任务流\p2p\saved-taskflow\20260520_052215_experience-ops-flow savedInSource=false
+
+▶ 归档后端产物 from E:\任务流\任务流\p2p\saved-taskflow\20260520_052215_experience-ops-flow
+
+▶ Playwright 截图 6 个 state（视口 360×780, fullPage）
+  ✓ state_1  1721ms  H=780px  155.0KB
+  ✓ state_2  1415ms  H=780px  42.3KB
+  ✓ state_3  1450ms  H=780px  43.8KB
+  ✓ state_4  1415ms  H=780px  44.0KB
+  ✓ state_5  1456ms  H=780px  46.0KB
+  ✓ state_6  1418ms  H=780px  50.4KB
+
+✅ 全部归档到 runs_baseline\2026-05-19_21-21-57_new_test4_baseline_v5c_batch
+   关键文件：
+   - 00_input.json / blueprint.json
+   - phase_{1,2,3}_{question,answer,response}.json
+   - sse_events.jsonl
+   - states/state_<id>/{meta.json, components.json, raw_blocks.txt, output.html, events.jsonl}
+   - summary.md

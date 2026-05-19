@@ -1,0 +1,59 @@
+▶ run dir: runs_baseline\2026-05-19_21-21-59_new_test5_baseline_v5c_batch
+  source: new_test/5/html
+  brief : new_test/5/input.txt
+  blueprint: runs_new_test_twophase_strict_scan/2026-05-19_12-27-45_new_test5_scan_v3_fullhtml_cssclean_p/blueprint.json
+  api   : http://localhost:3001/api
+  /health → 404
+
+▶ POST /oneclick/start  brief="用户在“我的工作台”点击“我的体验项目”→弹出内嵌列表弹窗，保留状态栏与底Tab→点击任一项目卡片→跳转全屏页面，顶部导…"  htmlBytes=98950
+  sessionId=tf_260faa355b85  sourceDir(echo)=
+
+▶ POST /oneclick/blueprint  使用固定蓝图
+   title: 虚拟体验项目查看流程
+   user_story: 已登录的企业网络管理员在‘我的工作台’点击‘我的体验项目’入口，快速掌握当前虚拟体验项目健康度，系统聚合Wi-Fi评分、设备在线率与运行时长生成摘要，用户滑动浏览即完成整体评估。
+   states: 6
+     state_1 ← null  我的工作台初始页
+     state_2 ← 1  我的体验项目弹窗
+     state_3 ← 1  虚拟体验项目加载中
+     state_4 ← 3  虚拟体验项目就绪页
+     state_5 ← 3  权限不足提示页
+     state_6 ← 3  项目不存在或已失效页
+
+▶ SSE /oneclick/generate/stream
+  [state-done ] state_1 我的工作台初始页  applied=0 skipped=0 undefinedms
+               components: (无)
+  [state-start] state_2 我的体验项目弹窗
+  [state-done ] state_2 我的体验项目弹窗  applied=1 skipped=0 91282ms
+               components: (无)
+  [state-start] state_3 虚拟体验项目加载中
+  [state-done ] state_3 虚拟体验项目加载中  applied=1 skipped=0 70117ms
+               components: (无)
+  [state-start] state_4 虚拟体验项目就绪页
+  [state-done ] state_4 虚拟体验项目就绪页  applied=1 skipped=0 122485ms
+               components: (无)
+  [state-start] state_5 权限不足提示页
+  [state-done ] state_5 权限不足提示页  applied=1 skipped=0 76357ms
+               components: (无)
+  [state-start] state_6 项目不存在或已失效页
+  [state-done ] state_6 项目不存在或已失效页  applied=1 skipped=0 81641ms
+               components: (无)
+
+  [done] outDir=E:\任务流\任务流\p2p\saved-taskflow\20260520_052219_virtual-experience-project-view-flow savedInSource=false
+
+▶ 归档后端产物 from E:\任务流\任务流\p2p\saved-taskflow\20260520_052219_virtual-experience-project-view-flow
+
+▶ Playwright 截图 6 个 state（视口 360×780, fullPage）
+  ✓ state_1  1574ms  H=780px  155.0KB
+  ✓ state_2  1494ms  H=780px  79.9KB
+  ✓ state_3  1445ms  H=780px  25.9KB
+  ✓ state_4  1443ms  H=780px  77.0KB
+  ✓ state_5  1410ms  H=780px  45.7KB
+  ✓ state_6  1445ms  H=780px  53.2KB
+
+✅ 全部归档到 runs_baseline\2026-05-19_21-21-59_new_test5_baseline_v5c_batch
+   关键文件：
+   - 00_input.json / blueprint.json
+   - phase_{1,2,3}_{question,answer,response}.json
+   - sse_events.jsonl
+   - states/state_<id>/{meta.json, components.json, raw_blocks.txt, output.html, events.jsonl}
+   - summary.md

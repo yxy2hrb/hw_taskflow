@@ -1,0 +1,61 @@
+{
+  "title": "管理应用与添加方式选择",
+  "slug": "manage-apps-and-add-flow",
+  "createdAt": "2026-05-18T19:45:36.795Z",
+  "meta": {
+    "title": "管理应用与添加方式选择",
+    "slug": "manage-apps-and-add-flow",
+    "user_story": "已登录的企业营销运营者在营销工作台首页点击'管理应用'按钮，统一管理已装应用开关 → 点击新增唤起方式选择 → 选定后立即生效并反馈",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "工作台首页初始状态",
+      "description": "用户位于营销工作台首页，顶部状态栏可见（含时间/信号/电量），底部 Tab 栏完整显示：首页、商城、营销（高亮选中）、服务、我的；中间区域展示营销模块内容，右上角可见'管理应用'按钮（深红色文字，字号14px，HarmonyHeiTi-Medium字体），页面背景为浅灰（#F3F3F3）。",
+      "implementation_method": "原始 HTML 初始快照，不做改造",
+      "last_state": null,
+      "file": "state_1.html"
+    },
+    {
+      "state_id": 2,
+      "state_name": "管理应用页列表态",
+      "description": "页面顶部固定标题栏：左侧为黑色左向箭头图标（宽24px，高24px），中间为'管理应用'文字（14px，HarmonyHeiTi-Medium，#191919）；其下方为浅灰底色计数条'已添加X个'（14px，HarmonyHeiTi-Regular，#191919，居中显示）；计数条下方为垂直滚动列表，每项含左对齐圆形图标（40×40px）、应用名称（14px，HarmonyHeiTi-Regular，#191919）、右侧开关控件（开启时为深红#C7000B，关闭时为#DFDFDF）；底部Tab栏完整可见（背景色rgba(255,254.745,254.745,0.95)），状态栏保持原样。",
+      "implementation_method": "全屏页面 (Page/View)：基于 state_1 的 HTML，移除原主页内容区，插入新结构：顶部导航栏（含左箭头+标题）、计数条、应用列表（含图标+名称+开关）、保留底部Tab栏与状态栏；所有文本使用中文，无英文文案。",
+      "last_state": 1,
+      "file": "state_2.html"
+    },
+    {
+      "state_id": 3,
+      "state_name": "新增方式选择弹窗",
+      "description": "全屏深灰遮罩层（rgba(0,0,0,0.6)）覆盖整个屏幕；正中悬浮白色圆角卡片（背景#FFFFFF，圆角8px，宽320px，高360px，上下左右居中）；卡片内纵向排列四个等宽图标按钮（各宽64px，高64px，间距16px，图标居中，上方标注文字：'快捷入口'、'小卡片'、'中卡片'、'大卡片'，均为14px HarmonyHeiTi-Regular，#191919）；卡片底部居中显示'取消'文字按钮（14px HarmonyHeiTi-Regular，#C7000B，无背景无边框）；状态栏、底部Tab栏均被遮罩覆盖不可见。",
+      "implementation_method": "模态弹窗 (Modal/Dialog)：在 state_2 页面基础上叠加全屏遮罩（rgba(0,0,0,0.6)）与居中白色卡片；卡片内含4个图标按钮（图标未提供，留空占位）及对应中文文案 '快捷入口' / '小卡片' / '中卡片' / '大卡片'；底部按钮文案 '取消'；无其他浮层或动效残留。",
+      "last_state": 2,
+      "file": "state_3.html"
+    },
+    {
+      "state_id": 4,
+      "state_name": "添加成功反馈态",
+      "description": "页面与 state_2 完全一致：顶部固定标题栏含左向箭头与'管理应用'文字；下方'已添加X个'计数条中数字已更新为X+1（14px HarmonyHeiTi-Regular，#191919）；列表中某一项的右侧开关控件已切换为开启状态（深红#C7000B）；底部距离底边24px处居中显示黑底白字Toast（背景#000000，文字'添加成功'，14px HarmonyHeiTi-Regular，#FFFFFF，圆角4px，宽120px，高32px）；状态栏与底部Tab栏正常可见。",
+      "implementation_method": "轻量级提示 (Toast/Snackbar)：在 state_2 页面基础上，修改计数条数字为X+1，将目标应用开关状态设为开启（class 或 data-state='on'），并在页面底部绝对定位插入 Toast 元素：背景#000000，文字'添加成功'（中文），无英文文案；位置：bottom: 24px，left: 50%，transform: translateX(-50%)。",
+      "last_state": 2,
+      "file": "state_4.html"
+    },
+    {
+      "state_id": 5,
+      "state_name": "弹窗取消态",
+      "description": "页面与 state_2 完全一致：顶部固定标题栏含左向箭头与'管理应用'文字；下方'已添加X个'计数条显示原始数字X；列表中所有应用开关状态保持原状（无任何变更）；底部Tab栏完整可见；状态栏正常可见；画面中没有任何遮罩、弹窗、浮层或透明残影。",
+      "implementation_method": "画面与 last_state（state_2）完全一致；base 已是关闭后的样子，无需任何 DOM 改造。",
+      "last_state": 2,
+      "file": "state_5.html"
+    },
+    {
+      "state_id": 6,
+      "state_name": "网络失败态",
+      "description": "页面与 state_2 完全一致：顶部固定标题栏含左向箭头与'管理应用'文字；下方'已添加X个'计数条显示原始数字X（未变化）；列表中所有应用开关状态保持关闭（#DFDFDF）；底部距离底边24px处居中显示红底白字Toast（背景#C7000B，文字'添加失败，请重试'，14px HarmonyHeiTi-Regular，#FFFFFF，圆角4px，宽144px，高32px）；状态栏与底部Tab栏正常可见。",
+      "implementation_method": "轻量级提示 (Toast/Snackbar)：在 state_2 页面基础上，保持计数条数字不变，所有开关状态维持关闭，插入 Toast 元素：背景#C7000B，文字'添加失败，请重试'（中文），无英文文案；位置：bottom: 24px，left: 50%，transform: translateX(-50%)。",
+      "last_state": 2,
+      "file": "state_6.html"
+    }
+  ]
+}

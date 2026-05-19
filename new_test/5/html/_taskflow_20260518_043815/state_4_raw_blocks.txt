@@ -1,0 +1,218 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#14_884368",
+      "instruction": "把全屏内容区替换为'虚拟体验项目'全屏成功展示态：顶部固定导航栏（56px高，#FFFFFF背景），含左对齐返回箭头图标、居中标题'虚拟体验项目'（16px Medium）、右对齐四个图标（搜索/放大镜、通知/铃铛、加号/圆圈加号、空位/透明）；导航栏下方依次为：设备拓扑图（SVG容器viewBox='0 0 320 180'，含3个#46B1E3填充椭圆节点'AP-01'/'SW-02'/'GW-03'及贝塞尔连线）、Wi-Fi评分卡片（#46B1E3蓝底白字'89分'，16px Medium，蓝色进度条height:4px，标签'优秀'white 12px Regular）、运行时长标签'已运行 7天12小时'（深灰14px Regular）、设备与终端统计卡片（标题'设备与终端'，下方'在线设备 12台'和'接入终端 87个'，均14px Regular）、业务网管理模块（标题'业务网管理'，下方iOS风格开关控件，列表项'访客网络'和'员工网络'，文字深灰14px，行高20px）",
+      "components_needed": ["SVG", "Card", "ProgressBar", "Switch"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Page",
+    "props": {
+      "background": "#F1F3F5",
+      "width": "100%",
+      "height": "100%"
+    },
+    "children": [
+      {
+        "type": "NavBar",
+        "props": {
+          "title": "虚拟体验项目",
+          "leftIcon": "arrow_back",
+          "rightIcon": "more_vert",
+          "align": "center"
+        }
+      },
+      {
+        "type": "Column",
+        "props": {
+          "padding": [24, 16, 0, 16],
+          "gap": 24,
+          "align": "stretch"
+        },
+        "children": [
+          {
+            "type": "Column",
+            "props": {
+              "background": "#FFFFFF",
+              "borderRadius": 16,
+              "padding": 16,
+              "shadow": true,
+              "gap": 16
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "subtitle",
+                  "color": "rgba(0,0,0,0.90)",
+                  "weight": 500
+                },
+                "children": "设备拓扑图"
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "width": "100%",
+                  "height": 180,
+                  "align": "center",
+                  "justify": "center"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 12,
+                      "color": "rgba(0,0,0,0.40)",
+                      "weight": 400
+                    },
+                    "children": "拓扑图（SVG渲染）"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": {
+              "background": "#46B1E3",
+              "borderRadius": 16,
+              "padding": 24,
+              "shadow": true,
+              "gap": 12,
+              "align": "center"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "title",
+                  "color": "#FFFFFF",
+                  "weight": 500,
+                  "size": 16
+                },
+                "children": "89分"
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "width": "100%",
+                  "height": 4,
+                  "background": "#FFFFFF",
+                  "borderRadius": 2
+                }
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "caption",
+                  "color": "#FFFFFF",
+                  "weight": 500,
+                  "size": 12
+                },
+                "children": "优秀"
+              }
+            ]
+          },
+          {
+            "type": "Text",
+            "props": {
+              "variant": "body",
+              "color": "rgba(0,0,0,0.60)",
+              "size": 14,
+              "weight": 400
+            },
+            "children": "已运行 7天12小时"
+          },
+          {
+            "type": "Column",
+            "props": {
+              "background": "#FFFFFF",
+              "borderRadius": 16,
+              "padding": 24,
+              "shadow": true,
+              "gap": 16
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "subtitle",
+                  "color": "rgba(0,0,0,0.90)",
+                  "weight": 500
+                },
+                "children": "设备与终端"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "color": "rgba(0,0,0,0.60)",
+                  "size": 14,
+                  "weight": 400
+                },
+                "children": "在线设备 12台"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "color": "rgba(0,0,0,0.60)",
+                  "size": 14,
+                  "weight": 400
+                },
+                "children": "接入终端 87个"
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": {
+              "background": "#FFFFFF",
+              "borderRadius": 16,
+              "padding": 24,
+              "shadow": true,
+              "gap": 16
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "subtitle",
+                  "color": "rgba(0,0,0,0.90)",
+                  "weight": 500
+                },
+                "children": "业务网管理"
+              },
+              {
+                "type": "ListItem",
+                "props": {
+                  "title": "访客网络",
+                  "height": 20,
+                  "divider": false,
+                  "leftIcon": "wifi"
+                }
+              },
+              {
+                "type": "ListItem",
+                "props": {
+                  "title": "员工网络",
+                  "height": 20,
+                  "divider": false,
+                  "leftIcon": "business"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": ["#14_1030954", "#14_1030955", "#14_1031109"],
+      "replace_at": "#14_1030954",
+      "instruction": "将顶部导航栏替换为产品文档页专用导航栏：高度56px，纯白背景，底部1px浅灰边框；左侧为24×24px返回箭头SVG图标（深灰#191919）；中间为产品名称文字（16px Medium，深灰#191919）；右侧为空；正文区从该导航栏下方开始，包含文档标题（20px Medium）、段落文字（14px Regular，行高20px，深灰#191919）、代码块（等宽字体、浅灰背景#F5F5F5、深灰文字）、末尾固定居中按钮‘返回快速入门’（蓝色文字#46B1E3、14px Medium）；保留底部Tab导航栏原样；所有新文案使用中文"
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "gap": 24,
+      "padding": [0, 16],
+      "align": "stretch"
+    },
+    "children": [
+      {
+        "type": "Row",
+        "props": {
+          "height": 56,
+          "background": "#FFFFFF",
+          "borderBottom": "1px solid rgba(0,0,0,0.10)",
+          "padding": [0, 16],
+          "align": "center",
+          "justify": "space-between"
+        },
+        "children": [
+          {
+            "type": "Icon",
+            "props": {
+              "name": "arrow_back",
+              "size": 24,
+              "color": "#191919"
+            }
+          },
+          {
+            "type": "Text",
+            "props": {
+              "variant": "body",
+              "size": 16,
+              "weight": 500,
+              "color": "#191919",
+              "align": "center"
+            },
+            "children": "产品文档"
+          },
+          ""
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "gap": 16,
+          "padding": [0, 16]
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "variant": "title",
+              "size": 20,
+              "weight": 500,
+              "color": "#191919"
+            },
+            "children": "快速上手指南"
+          },
+          {
+            "type": "Text",
+            "props": {
+              "variant": "body",
+              "size": 14,
+              "weight": 400,
+              "color": "#191919",
+              "lineHeight": 1.43
+            },
+            "children": "本指南将帮助您在5分钟内完成环境配置、服务启动与首个接口调用。请确保已安装 HarmonyOS SDK 4.0 及以上版本。"
+          },
+          {
+            "type": "Column",
+            "props": {
+              "background": "#F5F5F5",
+              "borderRadius": 8,
+              "padding": 16,
+              "gap": 8
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "size": 14,
+                  "weight": 400,
+                  "color": "#191919",
+                  "fontFamily": "'JetBrains Mono', 'Courier New', monospace"
+                },
+                "children": "$ hdc install -p com.example.helloapp.hap"
+              }
+            ]
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "返回快速入门",
+              "variant": "text",
+              "size": "compact",
+              "color": "#46B1E3",
+              "style": {
+                "fontSize": "14px",
+                "fontWeight": "500"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

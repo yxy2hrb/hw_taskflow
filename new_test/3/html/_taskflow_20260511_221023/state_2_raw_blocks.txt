@@ -1,0 +1,88 @@
+{
+  "state_name": "内嵌项目列表弹窗态",
+  "lifecycle": "temporary",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "FullscreenPanel",
+    "props": { "background": "rgba(0, 0, 0, 0.4)" },
+    "children": [
+      {
+        "type": "OverlayMask",
+        "props": { "opacity": 0.4, "color": "#000", "blur": 0 },
+        "children": [
+          {
+            "type": "Column",
+            "props": { "gap": 0, "padding": "16px 16px 0 16px", "align": "stretch" },
+            "children": [
+              {
+                "type": "NavBar",
+                "props": { "title": "我的体验项目", "align": "center", "leftIcon": null, "rightIcon": null }
+              },
+              {
+                "type": "Column",
+                "props": { "gap": 8, "padding": "12px 0 24px 0" },
+                "children": [
+                  {
+                    "type": "ListItem",
+                    "props": { "title": "XX园区网络体验", "subtitle": "AP ×3 / 终端 ×12", "divider": false, "height": 80 },
+                    "children": [
+                      {
+                        "type": "Column",
+                        "props": { "gap": 4, "align": "start" },
+                        "children": [
+                          { "type": "Text", "props": { "text": "2024-03-15", "variant": "caption", "color": "#888" } },
+                          { "type": "Text", "props": { "text": "运行中", "color": "#1890FF", "size": 12, "weight": "bold" } }
+                        ]
+                      },
+                      {
+                        "type": "Button",
+                        "props": { "label": "进入", "variant": "primary", "size": "compact" }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ListItem",
+                    "props": { "title": "YY智慧工厂体验", "subtitle": "AP ×5 / 终端 ×28", "divider": false, "height": 80 },
+                    "children": [
+                      {
+                        "type": "Column",
+                        "props": { "gap": 4, "align": "start" },
+                        "children": [
+                          { "type": "Text", "props": { "text": "2024-03-12", "variant": "caption", "color": "#888" } },
+                          { "type": "Text", "props": { "text": "运行中", "color": "#1890FF", "size": 12, "weight": "bold" } }
+                        ]
+                      },
+                      {
+                        "type": "Button",
+                        "props": { "label": "进入", "variant": "primary", "size": "compact" }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ListItem",
+                    "props": { "title": "ZZ医疗物联网体验", "subtitle": "AP ×2 / 终端 ×8", "divider": false, "height": 80 },
+                    "children": [
+                      {
+                        "type": "Column",
+                        "props": { "gap": 4, "align": "start" },
+                        "children": [
+                          { "type": "Text", "props": { "text": "2024-03-10", "variant": "caption", "color": "#888" } },
+                          { "type": "Text", "props": { "text": "已暂停", "color": "#FAAD14", "size": 12, "weight": "bold" } }
+                        ]
+                      },
+                      {
+                        "type": "Button",
+                        "props": { "label": "进入", "variant": "primary", "size": "compact" }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,309 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#146_161533",
+      "instruction": "把中央白色卡片容器（宽328px，高156px，圆角16px，背景rgba(255,254.745,254.745,1)）替换为：宽360px、高200px、白色背景、圆角8px、阴影rgba(0,0,0,0.06)的居中表单卡片；内部结构按创建项目集全屏页规范重排：顶部标题'创建项目集'（16px Medium，#191919），下方名称输入框（带placeholder'请输入项目集名称'，color:rgba(0,0,0,0.38)），再下方'公司/个人'单选按钮组（两个圆形单选+文字标签，未选中边框#9E9E9E，选中填充#F44336），再下方'添加项目'按钮（浅蓝#E3F2FD底色+白色箭头图标+文字'添加项目'，14px Medium），底部悬浮红色'确认'按钮（宽100%，高52px，#F44336底色，白色Medium字体）；注意：此替换仅覆盖该卡片区域，状态栏与底部Tab栏保持原样不变。",
+      "components_needed": ["TextInput", "Radio", "Button"]
+    },
+    {
+      "id": "e2",
+      "type": "state-toggle",
+      "anchor": "#146_161534",
+      "instruction": "把原项目开局功能卡片流区域（含创建开局/创建项目集/接收项目三张卡片）整段替换为：在名称输入框下方新增红色段落'请输入项目集名称'（14px Regular，#F44336，font-family:'HarmonyHeiTi-Regular'）；在单选按钮组容器外层添加border:2px solid #F44336；在项目添加区域上方新增红色提示条（height:40px，background:#FFF3F3，padding:0 16px，display:flex，align-items:center，color:#D32F2F，font-size:14px，line-height:20px，文字'所选项目类型与属性不匹配，请调整'）；其余所有元素位置、样式、结构均与base中创建项目集全屏页完全一致。",
+      "components_needed": ["Radio", "Text"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "background": "#FFFFFF",
+      "borderRadius": 8,
+      "width": 360,
+      "height": 200,
+      "shadow": true,
+      "padding": 24,
+      "gap": 16,
+      "align": "stretch"
+    },
+    "children": [
+      {
+        "type": "Text",
+        "props": {
+          "variant": "subtitle",
+          "size": 16,
+          "weight": 500,
+          "color": "#191919"
+        },
+        "children": "创建项目集"
+      },
+      {
+        "type": "TextInput",
+        "props": {
+          "placeholder": "请输入项目集名称",
+          "size": "regular",
+          "color": "rgba(0,0,0,0.38)"
+        }
+      },
+      {
+        "type": "Column",
+        "props": { "gap": 12 },
+        "children": [
+          {
+            "type": "Text",
+            "props": { "variant": "caption", "color": "rgba(0,0,0,0.60)" },
+            "children": "公司/个人"
+          },
+          {
+            "type": "Row",
+            "props": { "gap": 16, "align": "center" },
+            "children": [
+              {
+                "type": "Row",
+                "props": { "gap": 8, "align": "center" },
+                "children": [
+                  {
+                    "type": "Checkbox",
+                    "props": {
+                      "checked": false,
+                      "size": 22,
+                      "color": "#9E9E9E"
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": { "variant": "body" },
+                    "children": "公司"
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": { "gap": 8, "align": "center" },
+                "children": [
+                  {
+                    "type": "Checkbox",
+                    "props": {
+                      "checked": false,
+                      "size": 22,
+                      "color": "#9E9E9E"
+                    }
+                  },
+                  {
+                    "type": "Text",
+                    "props": { "variant": "body" },
+                    "children": "个人"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Button",
+        "props": {
+          "label": "添加项目",
+          "variant": "secondary",
+          "size": "compact",
+          "icon": "add",
+          "background": "#E3F2FD",
+          "color": "#191919"
+        }
+      },
+      {
+        "type": "Button",
+        "props": {
+          "label": "确认",
+          "variant": "primary",
+          "size": "large",
+          "block": true,
+          "background": "#F44336",
+          "color": "#FFFFFF"
+        }
+      }
+    ]
+  }
+}
+[NEXT]
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "gap": 16,
+      "padding": 16,
+      "background": "#FFFFFF",
+      "borderRadius": 16,
+      "shadow": true
+    },
+    "children": [
+      {
+        "type": "Text",
+        "props": {
+          "variant": "title",
+          "color": "rgba(0,0,0,0.90)",
+          "weight": 700,
+          "size": 20
+        },
+        "children": "创建项目集"
+      },
+      {
+        "type": "FormField",
+        "props": {
+          "label": "项目集名称",
+          "required": true,
+          "placeholder": "请输入项目集名称",
+          "value": "",
+          "error": "请输入项目集名称",
+          "labelWidth": 88
+        }
+      },
+      {
+        "type": "Column",
+        "props": {
+          "gap": 12,
+          "border": "2px solid #F44336",
+          "padding": 16,
+          "borderRadius": 8,
+          "background": "rgba(0,0,0,0.05)"
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "variant": "subtitle",
+              "color": "rgba(0,0,0,0.90)",
+              "weight": 500,
+              "size": 16
+            },
+            "children": "项目类型"
+          },
+          {
+            "type": "Row",
+            "props": {
+              "gap": 12,
+              "align": "center"
+            },
+            "children": [
+              {
+                "type": "Checkbox",
+                "props": {
+                  "checked": false,
+                  "size": 22
+                }
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "color": "rgba(0,0,0,0.90)",
+                  "weight": 500,
+                  "size": 16
+                },
+                "children": "标准项目集"
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "gap": 12,
+              "align": "center"
+            },
+            "children": [
+              {
+                "type": "Checkbox",
+                "props": {
+                  "checked": false,
+                  "size": 22
+                }
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "color": "rgba(0,0,0,0.90)",
+                  "weight": 500,
+                  "size": 16
+                },
+                "children": "定制项目集"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Row",
+        "props": {
+          "height": 40,
+          "background": "#FFF3F3",
+          "padding": [0, 16],
+          "align": "center",
+          "gap": 8
+        },
+        "children": [
+          {
+            "type": "Icon",
+            "props": {
+              "name": "error",
+              "size": 20,
+              "color": "#D32F2F"
+            }
+          },
+          {
+            "type": "Text",
+            "props": {
+              "variant": "caption",
+              "color": "#D32F2F",
+              "size": 14,
+              "lineHeight": 20,
+              "weight": 400,
+              "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif"
+            },
+            "children": "所选项目类型与属性不匹配，请调整"
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "gap": 12
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "variant": "subtitle",
+              "color": "rgba(0,0,0,0.90)",
+              "weight": 500,
+              "size": 16
+            },
+            "children": "项目添加"
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "+ 添加项目",
+              "variant": "secondary",
+              "size": "compact"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Button",
+        "props": {
+          "label": "创建项目集",
+          "variant": "primary",
+          "block": true
+        }
+      }
+    ]
+  }
+}

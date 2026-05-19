@@ -1,0 +1,186 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": ["#14_884368"],
+      "replace_at": "#14_884368",
+      "instruction": "把虚拟体验项目区块整段替换为内嵌半透明弹窗：一层半透明浅灰遮罩（rgba(0,0,0,0.15)）覆盖主内容区上半部；其上叠加圆角矩形弹窗（宽360px，高228px，背景白，带轻微高斯模糊背景 filter: blur(4px)，阴影 box-shadow: 0px 4px 12px rgba(0,0,0,0.08)）；弹窗内垂直排列3张项目卡片，每张含左侧SVG图标、标题文字'XX体验项目'（14px HarmonyHeiTi-Medium，#191919）、副标题'更新于 2024-06-12 14:30'（12px HarmonyHeiTi-Regular，#666666）；所有卡片间距16px；弹窗容器需包裹在遮罩层内，且整体位于状态栏与底部Tab栏之间，不遮挡二者。",
+      "components_needed": ["Card"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "OverlayMask",
+    "props": {
+      "opacity": 0.15,
+      "color": "#000"
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "borderRadius": 16,
+          "width": 360,
+          "height": 228,
+          "padding": 0,
+          "shadow": true,
+          "gap": 16,
+          "align": "stretch",
+          "style": "backdrop-filter: blur(4px);"
+        },
+        "children": [
+          {
+            "type": "Row",
+            "props": {
+              "gap": 12,
+              "padding": [16, 16, 0, 16],
+              "align": "center"
+            },
+            "children": [
+              {
+                "type": "Image",
+                "props": {
+                  "placeholder": "abstract",
+                  "width": 40,
+                  "height": 40,
+                  "borderRadius": 8
+                }
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 4,
+                  "justify": "flex-start"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 14,
+                      "weight": 500,
+                      "color": "rgba(0,0,0,0.90)",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "AR体验项目"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 12,
+                      "weight": 400,
+                      "color": "rgba(0,0,0,0.60)",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "更新于 2024-06-12 14:30"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "gap": 12,
+              "padding": [0, 16, 0, 16],
+              "align": "center"
+            },
+            "children": [
+              {
+                "type": "Image",
+                "props": {
+                  "placeholder": "abstract",
+                  "width": 40,
+                  "height": 40,
+                  "borderRadius": 8
+                }
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 4,
+                  "justify": "flex-start"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 14,
+                      "weight": 500,
+                      "color": "rgba(0,0,0,0.90)",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "VR体验项目"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 12,
+                      "weight": 400,
+                      "color": "rgba(0,0,0,0.60)",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "更新于 2024-06-12 14:30"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "gap": 12,
+              "padding": [0, 16, 16, 16],
+              "align": "center"
+            },
+            "children": [
+              {
+                "type": "Image",
+                "props": {
+                  "placeholder": "abstract",
+                  "width": 40,
+                  "height": 40,
+                  "borderRadius": 8
+                }
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 4,
+                  "justify": "flex-start"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 14,
+                      "weight": 500,
+                      "color": "rgba(0,0,0,0.90)",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "MR体验项目"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 12,
+                      "weight": 400,
+                      "color": "rgba(0,0,0,0.60)",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "更新于 2024-06-12 14:30"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

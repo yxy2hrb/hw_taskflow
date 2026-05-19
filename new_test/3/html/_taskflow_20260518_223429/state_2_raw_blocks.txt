@@ -1,0 +1,159 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "new-overlay",
+      "anchor": "#14_884367",
+      "instruction": "在 body 末尾、#14_884367 之前插入一个内嵌半透明浮层：高度约 80vh，顶部有 1px 浅灰色分隔线（#e0e0e0），背景色 rgba(255,255,255,0.95)；卡片纵向排列，每张卡片高 72px，含左对齐项目名称（14px HarmonyHeiTi-Regular，#191919）、右对齐创建时间（12px HarmonyHeiTi-Regular，#666）、下方居中设备类型与数量（如‘AP×3 + 终端×12’，12px，#333）、右上角蓝色状态标签（背景 rgba(70,177,227,0.1)，文字 rgba(70,177,227,1)，12px），以及右侧‘查看’按钮（12px，#46b1e3）；底部Tab与状态栏完全可见且未被遮挡；无关闭按钮，无阴影，无圆角裁剪；该浮层必须包裹在 <!-- 任务节点开始: 体验项目弹窗【临时】 -->...<!-- 任务节点结束: 体验项目弹窗【临时】 --> 注释块内。",
+      "components_needed": ["Card", "Button"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "position": "fixed",
+      "top": "32px",
+      "left": "0",
+      "right": "0",
+      "height": "80vh",
+      "background": "rgba(255,255,255,0.95)",
+      "borderTop": "1px solid #e0e0e0",
+      "padding": [0, 16],
+      "gap": 8,
+      "zIndex": 10000
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "gap": 8,
+          "padding": [12, 0]
+        },
+        "children": [
+          {
+            "type": "Row",
+            "props": {
+              "justify": "space-between",
+              "align": "center",
+              "height": 72,
+              "padding": [0, 12]
+            },
+            "children": [
+              {
+                "type": "Column",
+                "props": { "gap": 4 },
+                "children": [
+                  { "type": "Text", "props": { "size": 14, "weight": 400, "color": "rgba(25,25,25,0.9)", "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif" }, "children": "项目A" },
+                  { "type": "Text", "props": { "size": 12, "weight": 400, "color": "rgba(102,102,102,1)", "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif" }, "children": "AP×3 + 终端×12" }
+                ]
+              },
+              {
+                "type": "Column",
+                "props": { "gap": 4, "align": "end" },
+                "children": [
+                  { "type": "Text", "props": { "size": 12, "weight": 400, "color": "rgba(102,102,102,1)", "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif" }, "children": "2024-05-20 14:30" },
+                  {
+                    "type": "Row",
+                    "props": {
+                      "align": "center",
+                      "gap": 4,
+                      "background": "rgba(70,177,227,0.1)",
+                      "borderRadius": 4,
+                      "padding": [2, 8]
+                    },
+                    "children": [
+                      { "type": "Text", "props": { "size": 12, "weight": 500, "color": "rgba(70,177,227,1)", "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif" }, "children": "运行中" }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "justify": "space-between",
+              "align": "center",
+              "height": 72,
+              "padding": [0, 12]
+            },
+            "children": [
+              {
+                "type": "Column",
+                "props": { "gap": 4 },
+                "children": [
+                  { "type": "Text", "props": { "size": 14, "weight": 400, "color": "rgba(25,25,25,0.9)", "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif" }, "children": "项目B" },
+                  { "type": "Text", "props": { "size": 12, "weight": 400, "color": "rgba(102,102,102,1)", "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif" }, "children": "AP×1 + 终端×5" }
+                ]
+              },
+              {
+                "type": "Column",
+                "props": { "gap": 4, "align": "end" },
+                "children": [
+                  { "type": "Text", "props": { "size": 12, "weight": 400, "color": "rgba(102,102,102,1)", "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif" }, "children": "2024-05-19 09:15" },
+                  {
+                    "type": "Row",
+                    "props": {
+                      "align": "center",
+                      "gap": 4,
+                      "background": "rgba(70,177,227,0.1)",
+                      "borderRadius": 4,
+                      "padding": [2, 8]
+                    },
+                    "children": [
+                      { "type": "Text", "props": { "size": 12, "weight": 500, "color": "rgba(70,177,227,1)", "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif" }, "children": "运行中" }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "justify": "space-between",
+              "align": "center",
+              "height": 72,
+              "padding": [0, 12]
+            },
+            "children": [
+              {
+                "type": "Column",
+                "props": { "gap": 4 },
+                "children": [
+                  { "type": "Text", "props": { "size": 14, "weight": 400, "color": "rgba(25,25,25,0.9)", "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif" }, "children": "项目C" },
+                  { "type": "Text", "props": { "size": 12, "weight": 400, "color": "rgba(102,102,102,1)", "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif" }, "children": "终端×8" }
+                ]
+              },
+              {
+                "type": "Column",
+                "props": { "gap": 4, "align": "end" },
+                "children": [
+                  { "type": "Text", "props": { "size": 12, "weight": 400, "color": "rgba(102,102,102,1)", "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif" }, "children": "2024-05-18 16:42" },
+                  {
+                    "type": "Row",
+                    "props": {
+                      "align": "center",
+                      "gap": 4,
+                      "background": "rgba(70,177,227,0.1)",
+                      "borderRadius": 4,
+                      "padding": [2, 8]
+                    },
+                    "children": [
+                      { "type": "Text", "props": { "size": 12, "weight": 500, "color": "rgba(70,177,227,1)", "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif" }, "children": "已暂停" }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

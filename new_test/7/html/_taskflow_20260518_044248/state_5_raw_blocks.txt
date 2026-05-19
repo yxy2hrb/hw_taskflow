@@ -1,0 +1,87 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#146_395655",
+      "instruction": "把管理应用按钮卡片替换为灰色关闭态开关（背景#DFDFDF，无实心圆点），保持原有位置和尺寸",
+      "components_needed": ["Switch"]
+    },
+    {
+      "id": "e2",
+      "type": "text-edit",
+      "anchor": "<p id=\"146_394612\" class=\"Pixso-paragraph-146_394612\">我的线索</p>",
+      "instruction": "更新为 '已添加X个'（14px Medium，深灰#191919）",
+      "components_needed": ["Text"]
+    },
+    {
+      "id": "e3",
+      "type": "new-overlay",
+      "anchor": "#146_395667",
+      "instruction": "在顶部状态栏下方16px处悬浮白色Toast（圆角4px，宽240px，高44px），内含红色感叹号图标（16px，Material Icons Round warning）与文字'添加失败，请重试'（14px Regular，深灰#191919）；字体声明 HarmonyHeiTi, 'HarmonyOS Sans', sans-serif；所有样式必须 inline style",
+      "components_needed": ["Toast"],
+      "icons_needed": ["warning"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Button",
+    "props": {
+      "label": "管理应用",
+      "variant": "secondary",
+      "disabled": true,
+      "size": "regular",
+      "block": true
+    }
+  }
+}
+[NEXT]
+[OLD]
+<p id="146_394612" class="Pixso-paragraph-146_394612">我的线索</p>
+[NEW]
+<p id="146_394612" class="Pixso-paragraph-146_394612" style="font-size: 14px; font-weight: 500; color: #191919;">已添加X个</p>
+[NEXT]
+{
+  "tree": {
+    "type": "Row",
+    "props": {
+      "background": "#FFFFFF",
+      "borderRadius": 4,
+      "padding": [0, 16],
+      "gap": 8,
+      "align": "center",
+      "width": 240,
+      "height": 44,
+      "position": "fixed",
+      "top": "calc(32px + 16px)",
+      "left": "50%",
+      "transform": "translateX(-50%)",
+      "zIndex": 10000,
+      "style": "font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif;"
+    },
+    "children": [
+      {
+        "type": "Icon",
+        "props": {
+          "name": "warning",
+          "size": 16,
+          "color": "#E84026"
+        }
+      },
+      {
+        "type": "Text",
+        "props": {
+          "size": 14,
+          "weight": 500,
+          "color": "#191919",
+          "style": "font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif;"
+        },
+        "children": "添加失败，请重试"
+      }
+    ]
+  }
+}

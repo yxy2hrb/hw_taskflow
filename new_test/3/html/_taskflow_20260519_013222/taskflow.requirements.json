@@ -1,0 +1,51 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "我的工作台初始页",
+    "description": "页面为移动端竖屏布局，顶部显示状态栏（含时间、信号、电量图标），底部固定 Tab 栏（含‘首页’‘工作台’‘监控’‘我’四图标，‘工作台’Tab 高亮选中），中部主区域显示‘我的体验项目’入口卡片：白色圆角背景、浅灰边框、居中图标+文字‘我的体验项目’，字体14px深灰，无其他浮层或弹窗。",
+    "implementation_method": "原始 HTML 初始快照，不做改造",
+    "last_state": null
+  },
+  {
+    "state_id": 2,
+    "state_name": "我的体验项目弹窗",
+    "description": "顶部状态栏保持可见（含时间、信号、电量图标），底部 Tab 栏完整保留并正常显示（‘工作台’Tab 仍高亮），页面中央区域为白色圆角卡片列表，每张卡片宽320px、高120px、圆角8px、阴影轻微，内含项目名称（16px加粗黑字左对齐）、创建时间（12px灰色右上角）、设备类型与数量（12px深灰居中行）、状态标签（绿色/橙色/红色小圆点+文字，如‘运行中’‘异常’‘已停止’）、右侧操作按钮（‘查看详情’文字按钮，12px蓝色）；列表垂直居中，上下留白，无遮罩层。",
+    "implementation_method": "内嵌弹窗 (Inline Overlay)：顶部状态栏与底部 Tab 栏完全可见；主体区域为白色圆角卡片列表（320×120px，圆角8px，box-shadow: 0 2px 8px rgba(0,0,0,0.06)）；每张卡片内含标题‘项目A’、副标题‘2024-05-20 14:32’、设备信息‘AP×3 / 终端×12’、状态标签‘运行中’（绿色圆点+文字）、操作按钮‘查看详情’（12px #46B1E3）；所有文本使用 HarmonyHeiTi-Regular 字体。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "体验项目详情页",
+    "description": "全屏页面，顶部为通栏深蓝导航栏（#191919，高56px），左侧为白色返回箭头图标（24×24px），居中显示白色大号标题‘虚拟体验项目’（16px Medium），右侧三个等距图标：搜索放大镜（20×20px）、通知铃铛（20×20px）、加号圆形按钮（32×32px，白底蓝边）；主体内容自上而下依次为：SVG 格式网络拓扑图（宽100%、高220px、居中、无滚动）、Wi-Fi评分卡片（宽100%、高80px、浅蓝底#E6F4FF、含‘Wi-Fi评分’标题、78分数字+蓝色进度条）、运行时长条（宽100%、高64px、白底、含‘运行时长’标题、‘12天8小时’大号数字+单位）、设备与终端统计卡片（两列横排，每列含图标+数值+标签，如‘AP 12’‘终端 47’）；底部无 Tab 栏。",
+    "implementation_method": "全屏页面 (Fullpage View)：顶部导航栏为深蓝背景#191919，返回图标（white SVG path）、标题‘虚拟体验项目’（HarmonyHeiTi-Medium 16px white）、右侧三图标（search: ‘搜索’ icon, bell: ‘通知’ icon, plus: ‘添加’ icon）；主体区依次为：拓扑图（SVG 元素，含 AP/终端节点连线，无交互）；Wi-Fi评分卡片（背景#E6F4FF，标题‘Wi-Fi评分’、数字‘78’、蓝色进度条 78% 宽）；运行时长条（标题‘运行时长’、数字‘12天8小时’，字体24px bold #191919）；设备统计（两列卡片，左列：AP图标+‘12’+‘接入点’；右列：终端图标+‘47’+‘在线终端’）。",
+    "last_state": 1
+  },
+  {
+    "state_id": 4,
+    "state_name": "详情页加载中状态",
+    "description": "全屏页面，顶部导航栏与 state_3 完全一致（深蓝背景#191919、返回图标、标题‘虚拟体验项目’、右侧三图标）；主体区域中央显示旋转加载图标（32px 圆环 spinner，stroke #191919，stroke-width 2.5，CSS animation: hmspin 1s linear infinite），下方居中显示‘加载中…’文字（14px #666，HarmonyHeiTi-Regular）；其余区域纯白留空，无骨架图、无占位符、无其他元素。",
+    "implementation_method": "全屏页面 (Fullpage Loading State)：顶部导航栏与 state_3 完全一致；主体区域中央为 32px SVG 圆环 spinner（stroke:#191919, stroke-width:2.5, animation:hmspin 1s linear infinite），下方 14px 灰色文字‘加载中…’；背景为纯白#FFFFFF，无任何占位卡片或文字块。",
+    "last_state": 3
+  },
+  {
+    "state_id": 5,
+    "state_name": "详情页成功态",
+    "description": "全屏页面，顶部导航栏与 state_3 完全一致；主体内容自上而下依次为：SVG 网络拓扑图（宽100%、高220px、含 AP 节点（蓝色圆点+‘AP-01’文字）、终端节点（灰色圆点+‘T-001’文字）、连线为浅灰直线）、Wi-Fi评分卡片（浅蓝底#E6F4FF，标题‘Wi-Fi评分’、数字‘78’、蓝色进度条填充至78%宽度、右侧带‘优’标签）、运行时长条（白底，标题‘运行时长’、数字‘12天8小时’、单位‘天·小时’用12px灰色小字标注）、设备与终端统计卡片（两列横排：左列图标+‘12’+‘接入点’；右列图标+‘47’+‘在线终端’）；所有文字使用 HarmonyHeiTi-Regular 字体，无遮罩、无弹窗。",
+    "implementation_method": "全屏页面 (Fullpage Success State)：顶部导航栏同 state_3；拓扑图 SVG 含 3 个 AP 节点（蓝色#46B1E3 圆点+12px 白字）、5 个终端节点（灰色#999 圆点+12px 深灰字）、连线为 #CCCCCC 直线；Wi-Fi评分卡片含标题‘Wi-Fi评分’、数字‘78’（16px bold #191919）、进度条（height:6px, background:#46B1E3, width:78%）、右侧标签‘优’（12px #46B1E3）；运行时长条含标题‘运行时长’、主数字‘12天8小时’（24px bold #191919）、单位‘天·小时’（12px #666）；设备统计两列卡片各含图标（SVG）、数值（16px bold #191919）、标签（12px #666）。",
+    "last_state": 3
+  },
+  {
+    "state_id": 6,
+    "state_name": "网络请求失败状态",
+    "description": "全屏页面，顶部导航栏与 state_3 完全一致；主体区域中央显示红色感叹号图标（32×32px，#FF5252）、正下方为‘加载失败’标题（16px bold #191919）、再下方为‘网络异常，请重试’正文（14px #666）、底部居中为蓝色‘重试’按钮（88×36px，圆角18px，背景#46B1E3，白色14px文字）；其余区域纯白留空，无拓扑图、无评分、无统计。",
+    "implementation_method": "全屏页面 (Fullpage Error State)：顶部导航栏同 state_3；中央图标‘⚠️’（SVG path fill:#FF5252, 32×32px）；标题‘加载失败’（HarmonyHeiTi-Medium 16px #191919）；正文‘网络异常，请重试’（HarmonyHeiTi-Regular 14px #666）；按钮‘重试’（88×36px, #46B1E3, white 14px HarmonyHeiTi-Regular, border-radius:18px）；背景纯白#FFFFFF。",
+    "last_state": 3
+  },
+  {
+    "state_id": 7,
+    "state_name": "权限不足提示状态",
+    "description": "全屏页面，顶部导航栏与 state_3 完全一致；主体区域顶部为黄色警示横条（高24px，背景#FFF9C4，居中显示‘权限不足’文字，14px #333，HarmonyHeiTi-Regular）；横条下方为灰色文字‘您暂无权限查看该项目详情’（14px #999，居中，行高20px）；无按钮、无图标、无其他元素；背景纯白。",
+    "implementation_method": "全屏页面 (Fullpage Permission Denied State)：顶部导航栏同 state_3；顶部横条（24px high, #FFF9C4, centered text ‘权限不足’ in 14px #333 HarmonyHeiTi-Regular）；下方文字‘您暂无权限查看该项目详情’（14px #999, center-aligned, line-height:20px）；无按钮、无图标、无遮罩；背景#FFFFFF。",
+    "last_state": 3
+  }
+]

@@ -1,0 +1,143 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#14_807630",
+      "instruction": "把整个项目开局卡片区域替换为创建项目集全屏页初始态的白色卡片式表单区：顶部居中标题‘创建项目集’（16px Medium，#191919）；下方名称输入框（浅灰底#F5F5F5，1px #E0E0E0边框，占位符‘请输入项目集名称’，14px HarmonyHeiTi-Regular，#999999）；其下是‘公司’与‘个人’两个单选按钮组（圆点空心浅灰#BDBDBD，文字14px #191919左对齐）；再下方是项目列表空占位图（灰色虚线方框#E0E0E0，2px dashed，宽280px高120px，中央‘+’号图标#999999，24px，下方文字‘添加项目’14px #666666）；底部红色实心按钮铺满宽度，背景#FF3B30，文字‘确认’16px Medium白色；所有元素垂直居中于卡片内，卡片背景#FFFFFF，圆角8px，阴影1px rgba(0,0,0,0.05)，宽328px，高560px；卡片整体在页面垂直居中。",
+      "components_needed": ["TextInput", "Radio", "Button"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "background": "#FFFFFF",
+      "borderRadius": 8,
+      "width": 328,
+      "height": 560,
+      "shadow": "0 1px 0 rgba(0,0,0,0.05)",
+      "gap": 24,
+      "padding": 24,
+      "align": "center",
+      "justify": "flex-start"
+    },
+    "children": [
+      {
+        "type": "Text",
+        "props": {
+          "variant": "title",
+          "size": 16,
+          "weight": 500,
+          "color": "#191919",
+          "align": "center"
+        },
+        "children": "创建项目集"
+      },
+      {
+        "type": "TextInput",
+        "props": {
+          "placeholder": "请输入项目集名称",
+          "size": "regular",
+          "background": "#F5F5F5",
+          "border": "1px solid #E0E0E0",
+          "fontSize": 14,
+          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+          "color": "#191919",
+          "placeholderColor": "#999999"
+        }
+      },
+      {
+        "type": "Column",
+        "props": { "gap": 12 },
+        "children": [
+          {
+            "type": "Text",
+            "props": { "variant": "subtitle", "size": 14, "color": "#191919" },
+            "children": "公司"
+          },
+          {
+            "type": "Row",
+            "props": { "gap": 12, "align": "center" },
+            "children": [
+              {
+                "type": "Checkbox",
+                "props": { "checked": false, "size": 22, "color": "#BDBDBD" }
+              },
+              {
+                "type": "Text",
+                "props": { "variant": "body", "size": 14, "color": "#191919" },
+                "children": "公司"
+              }
+            ]
+          },
+          {
+            "type": "Text",
+            "props": { "variant": "subtitle", "size": 14, "color": "#191919" },
+            "children": "个人"
+          },
+          {
+            "type": "Row",
+            "props": { "gap": 12, "align": "center" },
+            "children": [
+              {
+                "type": "Checkbox",
+                "props": { "checked": false, "size": 22, "color": "#BDBDBD" }
+              },
+              {
+                "type": "Text",
+                "props": { "variant": "body", "size": 14, "color": "#191919" },
+                "children": "个人"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": { "gap": 8, "align": "center" },
+        "children": [
+          {
+            "type": "Row",
+            "props": {
+              "width": 280,
+              "height": 120,
+              "border": "2px dashed #E0E0E0",
+              "borderRadius": 8,
+              "align": "center",
+              "justify": "center"
+            },
+            "children": [
+              {
+                "type": "Icon",
+                "props": { "name": "add", "size": 24, "color": "#999999" }
+              }
+            ]
+          },
+          {
+            "type": "Text",
+            "props": { "variant": "caption", "size": 14, "color": "#666666" },
+            "children": "添加项目"
+          }
+        ]
+      },
+      {
+        "type": "Button",
+        "props": {
+          "label": "确认",
+          "variant": "primary",
+          "size": "large",
+          "block": true,
+          "background": "#FF3B30",
+          "color": "#FFFFFF",
+          "fontSize": 16,
+          "fontWeight": 500
+        }
+      }
+    ]
+  }
+}

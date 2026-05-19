@@ -1,0 +1,36 @@
+{
+  "state_name": "创建成功状态",
+  "lifecycle": "temporary",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "FullscreenPanel",
+    "props": { "background": "transparent" },
+    "children": [
+      {
+        "type": "Column",
+        "props": { "gap": 0, "padding": 0, "align": "center", "justify": "flex-start" },
+        "children": [
+          {
+            "type": "Row",
+            "props": { "width": "100%", "height": 44, "background": "#46B1E3", "borderRadius": 8, "align": "center", "padding": "0 16" },
+            "children": [
+              { "type": "Icon", "props": { "name": "check", "size": 20, "color": "#FFFFFF" } },
+              { "type": "Text", "props": { "text": "创建成功", "variant": "body", "color": "#FFFFFF", "weight": "medium", "size": 16 } }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "OverlayMask",
+        "props": { "opacity": 0, "blur": 0 },
+        "children": [
+          {
+            "type": "Badge",
+            "props": { "color": "#FF4D4F", "size": 16, "offsetTop": -4, "offsetRight": -4 }
+          }
+        ]
+      }
+    ]
+  }
+}

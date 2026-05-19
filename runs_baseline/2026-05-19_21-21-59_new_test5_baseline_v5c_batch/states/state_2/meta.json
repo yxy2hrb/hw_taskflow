@@ -1,0 +1,12 @@
+{
+  "state_id": 2,
+  "state_name": "我的体验项目弹窗",
+  "description": "在 state_1 基础上，顶部状态栏下沿对齐处浮起固定高度内嵌弹窗（高约 480px），弹窗顶部无遮挡，底部精确停驻于 TabBar 上沿；弹窗内含可垂直滚动的项目卡片列表（每张卡片含项目名、创建时间、状态标签），右上角有‘取消’按钮（× 图标，灰色，16px）；弹窗外区域保持半透明遮罩（rgba(0,0,0,0.3)）。",
+  "implementation_method": "内嵌浮层弹窗 (Inline Modal/Sheet)：固定高度 480px，顶部与状态栏下沿对齐，底部紧贴 TabBar 上沿；遮罩层 rgba(0,0,0,0.3) 覆盖除弹窗外全部区域；弹窗内为垂直滚动列表，每张卡片含标题‘体验开局流程’‘体验运维流程’等（14px HarmonyHeiTi-Regular，#191919），右上角‘取消’按钮（× 图标，16px，#666）；无其他操作控件。",
+  "last_state": 1,
+  "applied": 1,
+  "skipped": 0,
+  "elapsed_ms": 91282,
+  "failed": false,
+  "error": null
+}

@@ -1,0 +1,425 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "<!-- 任务节点开始: 蒙层弹出态【持久】 -->\n<div data-hm=\"FullscreenPanel\" style=\"position:fixed;inset:0;width:100%;height:100%;display:flex;flex-direction:column;background:#F1F3F5;overflow:auto;box-sizing:border-box;z-index:9999;\"><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;width:100%;box-sizing:border-box\"></div></div>\n<!-- 任务节点结束: 蒙层弹出态【持久】 -->",
+      "instruction": "把外层注释名改为 内容加载态【临时】，并将 FullscreenPanel 内部 Column 替换为：中央卡片（宽320px、高auto、圆角12px、白底、阴影0 4px 16px rgba(0,0,0,0.08)、绝对定位居中），卡片内按顺序包含：① 输入框占位符（宽272px、高40px、背景#F3F3F3、圆角20px、上下外边距24px/16px、居中显示）；② 四枚胶囊标签占位符（宽64px×高28px、背景#EDEDED、圆角14px、inline-block、水平间距8px、共四枚）；③ 七行条目占位符（每行高56px、内边距12px 16px、flex align-center、gap 12px；每行含左侧16px×16px圆点（背景#EDEDED、圆角50%）+右侧两行横线（上行高12px宽120px、下行高12px宽80px、均背景#EDEDED、圆角4px））；所有占位符无文字；状态栏与底部Tab栏保持可见且层级高于遮罩。",
+      "components_needed": ["Card", "TextInput", "Button"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "FullscreenPanel",
+    "props": {
+      "background": "#F1F3F5"
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "align": "center",
+          "justify": "center",
+          "width": "100%",
+          "height": "100%"
+        },
+        "children": [
+          {
+            "type": "Column",
+            "props": {
+              "background": "#FFFFFF",
+              "borderRadius": 12,
+              "width": 320,
+              "maxWidth": 320,
+              "shadow": true,
+              "padding": 0,
+              "gap": 0
+            },
+            "children": [
+              {
+                "type": "TextInput",
+                "props": {
+                  "placeholder": "",
+                  "size": "regular",
+                  "disabled": true,
+                  "style": "width:272px;height:40px;background:#F3F3F3;border-radius:20px;margin:24px 0 16px 0;"
+                }
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 8,
+                  "padding": [0, 16, 16, 16],
+                  "wrap": true
+                },
+                "children": [
+                  {
+                    "type": "Button",
+                    "props": {
+                      "label": "",
+                      "variant": "secondary",
+                      "size": "compact",
+                      "disabled": true,
+                      "style": "width:64px;height:28px;background:#EDEDED;border-radius:14px;"
+                    }
+                  },
+                  {
+                    "type": "Button",
+                    "props": {
+                      "label": "",
+                      "variant": "secondary",
+                      "size": "compact",
+                      "disabled": true,
+                      "style": "width:64px;height:28px;background:#EDEDED;border-radius:14px;"
+                    }
+                  },
+                  {
+                    "type": "Button",
+                    "props": {
+                      "label": "",
+                      "variant": "secondary",
+                      "size": "compact",
+                      "disabled": true,
+                      "style": "width:64px;height:28px;background:#EDEDED;border-radius:14px;"
+                    }
+                  },
+                  {
+                    "type": "Button",
+                    "props": {
+                      "label": "",
+                      "variant": "secondary",
+                      "size": "compact",
+                      "disabled": true,
+                      "style": "width:64px;height:28px;background:#EDEDED;border-radius:14px;"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 0,
+                  "padding": [0, 16, 16, 16]
+                },
+                "children": [
+                  {
+                    "type": "Row",
+                    "props": {
+                      "align": "center",
+                      "gap": 12,
+                      "height": 56,
+                      "padding": [12, 16]
+                    },
+                    "children": [
+                      {
+                        "type": "Column",
+                        "props": {
+                          "background": "#EDEDED",
+                          "borderRadius": "50%",
+                          "width": 16,
+                          "height": 16
+                        }
+                      },
+                      {
+                        "type": "Column",
+                        "props": {
+                          "gap": 4
+                        },
+                        "children": [
+                          {
+                            "type": "Text",
+                            "props": {
+                              "size": 12,
+                              "color": "rgba(0,0,0,0)",
+                              "style": "height:12px;width:120px;background:#EDEDED;border-radius:4px;"
+                            }
+                          },
+                          {
+                            "type": "Text",
+                            "props": {
+                              "size": 12,
+                              "color": "rgba(0,0,0,0)",
+                              "style": "height:12px;width:80px;background:#EDEDED;border-radius:4px;"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Row",
+                    "props": {
+                      "align": "center",
+                      "gap": 12,
+                      "height": 56,
+                      "padding": [12, 16]
+                    },
+                    "children": [
+                      {
+                        "type": "Column",
+                        "props": {
+                          "background": "#EDEDED",
+                          "borderRadius": "50%",
+                          "width": 16,
+                          "height": 16
+                        }
+                      },
+                      {
+                        "type": "Column",
+                        "props": {
+                          "gap": 4
+                        },
+                        "children": [
+                          {
+                            "type": "Text",
+                            "props": {
+                              "size": 12,
+                              "color": "rgba(0,0,0,0)",
+                              "style": "height:12px;width:120px;background:#EDEDED;border-radius:4px;"
+                            }
+                          },
+                          {
+                            "type": "Text",
+                            "props": {
+                              "size": 12,
+                              "color": "rgba(0,0,0,0)",
+                              "style": "height:12px;width:80px;background:#EDEDED;border-radius:4px;"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Row",
+                    "props": {
+                      "align": "center",
+                      "gap": 12,
+                      "height": 56,
+                      "padding": [12, 16]
+                    },
+                    "children": [
+                      {
+                        "type": "Column",
+                        "props": {
+                          "background": "#EDEDED",
+                          "borderRadius": "50%",
+                          "width": 16,
+                          "height": 16
+                        }
+                      },
+                      {
+                        "type": "Column",
+                        "props": {
+                          "gap": 4
+                        },
+                        "children": [
+                          {
+                            "type": "Text",
+                            "props": {
+                              "size": 12,
+                              "color": "rgba(0,0,0,0)",
+                              "style": "height:12px;width:120px;background:#EDEDED;border-radius:4px;"
+                            }
+                          },
+                          {
+                            "type": "Text",
+                            "props": {
+                              "size": 12,
+                              "color": "rgba(0,0,0,0)",
+                              "style": "height:12px;width:80px;background:#EDEDED;border-radius:4px;"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Row",
+                    "props": {
+                      "align": "center",
+                      "gap": 12,
+                      "height": 56,
+                      "padding": [12, 16]
+                    },
+                    "children": [
+                      {
+                        "type": "Column",
+                        "props": {
+                          "background": "#EDEDED",
+                          "borderRadius": "50%",
+                          "width": 16,
+                          "height": 16
+                        }
+                      },
+                      {
+                        "type": "Column",
+                        "props": {
+                          "gap": 4
+                        },
+                        "children": [
+                          {
+                            "type": "Text",
+                            "props": {
+                              "size": 12,
+                              "color": "rgba(0,0,0,0)",
+                              "style": "height:12px;width:120px;background:#EDEDED;border-radius:4px;"
+                            }
+                          },
+                          {
+                            "type": "Text",
+                            "props": {
+                              "size": 12,
+                              "color": "rgba(0,0,0,0)",
+                              "style": "height:12px;width:80px;background:#EDEDED;border-radius:4px;"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Row",
+                    "props": {
+                      "align": "center",
+                      "gap": 12,
+                      "height": 56,
+                      "padding": [12, 16]
+                    },
+                    "children": [
+                      {
+                        "type": "Column",
+                        "props": {
+                          "background": "#EDEDED",
+                          "borderRadius": "50%",
+                          "width": 16,
+                          "height": 16
+                        }
+                      },
+                      {
+                        "type": "Column",
+                        "props": {
+                          "gap": 4
+                        },
+                        "children": [
+                          {
+                            "type": "Text",
+                            "props": {
+                              "size": 12,
+                              "color": "rgba(0,0,0,0)",
+                              "style": "height:12px;width:120px;background:#EDEDED;border-radius:4px;"
+                            }
+                          },
+                          {
+                            "type": "Text",
+                            "props": {
+                              "size": 12,
+                              "color": "rgba(0,0,0,0)",
+                              "style": "height:12px;width:80px;background:#EDEDED;border-radius:4px;"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Row",
+                    "props": {
+                      "align": "center",
+                      "gap": 12,
+                      "height": 56,
+                      "padding": [12, 16]
+                    },
+                    "children": [
+                      {
+                        "type": "Column",
+                        "props": {
+                          "background": "#EDEDED",
+                          "borderRadius": "50%",
+                          "width": 16,
+                          "height": 16
+                        }
+                      },
+                      {
+                        "type": "Column",
+                        "props": {
+                          "gap": 4
+                        },
+                        "children": [
+                          {
+                            "type": "Text",
+                            "props": {
+                              "size": 12,
+                              "color": "rgba(0,0,0,0)",
+                              "style": "height:12px;width:120px;background:#EDEDED;border-radius:4px;"
+                            }
+                          },
+                          {
+                            "type": "Text",
+                            "props": {
+                              "size": 12,
+                              "color": "rgba(0,0,0,0)",
+                              "style": "height:12px;width:80px;background:#EDEDED;border-radius:4px;"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Row",
+                    "props": {
+                      "align": "center",
+                      "gap": 12,
+                      "height": 56,
+                      "padding": [12, 16]
+                    },
+                    "children": [
+                      {
+                        "type": "Column",
+                        "props": {
+                          "background": "#EDEDED",
+                          "borderRadius": "50%",
+                          "width": 16,
+                          "height": 16
+                        }
+                      },
+                      {
+                        "type": "Column",
+                        "props": {
+                          "gap": 4
+                        },
+                        "children": [
+                          {
+                            "type": "Text",
+                            "props": {
+                              "size": 12,
+                              "color": "rgba(0,0,0,0)",
+                              "style": "height:12px;width:120px;background:#EDEDED;border-radius:4px;"
+                            }
+                          },
+                          {
+                            "type": "Text",
+                            "props": {
+                              "size": 12,
+                              "color": "rgba(0,0,0,0)",
+                              "style": "height:12px;width:80px;background:#EDEDED;border-radius:4px;"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

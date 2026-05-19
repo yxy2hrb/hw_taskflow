@@ -1,0 +1,241 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": ["#14_884214", "#14_884368"],
+      "replace_at": "#14_884214",
+      "instruction": "将顶部导航栏替换为新导航栏：高56px，左侧为左向返回箭头图标（深灰，24px），居中显示'虚拟体验项目'标题（16px Medium 黑字，HarmonyHeiTi-Medium），右侧并排三个图标——搜索（24px 深灰放大镜）、通知（24px 深灰铃铛）、加号（24px 深灰圆圈+）；所有图标使用 Material Icons Round 名：arrow_back、search、notifications、add；文字与图标均使用 HarmonyHeiTi, 'HarmonyOS Sans', sans-serif 字体；背景透明；无底边；保留原状态栏与底部 Tab 栏位置不变。",
+      "components_needed": ["IconButton"],
+      "icons_needed": ["arrow_back", "search", "notifications", "add"]
+    },
+    {
+      "id": "e2",
+      "type": "state-toggle",
+      "anchor": "#14_884368",
+      "instruction": "将'虚拟体验项目'区块整段替换为项目详情页主体区域：从导航栏下方开始，上方为宽高比16:9的网络拓扑图占位区（浅灰底，rgba(243,243,243,1)，圆角8px，宽100%，高160px，含示意连线与设备节点图标占位）；下方三栏等宽卡片横向排列（flex-row，gap 12px），每张卡片宽33.33%，高64px，背景白，圆角8px，内含图标+标题+数值+辅助图标；第一张卡片：标题'Wi-Fi评分'（14px 灰字），数值'87分'（16px 加粗黑字），绿色进度条（三段色块：黄/橙/绿，高度6px，圆角6px）；第二张：标题'运行时长'（14px 灰字），数值'3天12小时'（16px 加粗黑字），右侧配时钟图标（16px 深灰）；第三张：标题'设备与终端'（14px 灰字），数值'AP×3 / 终端×12'（16px 加粗黑字），右侧配设备图标（16px 深灰）；所有文本使用 text-ohos_id_text_size_body2regular-14_886008 类；所有文案用中文；禁止复用原 Pixso id，新容器不写 id 或使用 hm-st3- 命名空间；所有样式必须 inline style。"
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "NavBar",
+    "props": {
+      "title": "虚拟体验项目",
+      "leftIcon": "arrow_back",
+      "rightIcon": ["search", "notifications", "add"],
+      "align": "center"
+    }
+  }
+}
+[NEXT]
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "gap": 16,
+      "align": "stretch"
+    },
+    "children": [
+      {
+        "type": "Image",
+        "props": {
+          "placeholder": "topology",
+          "width": "100%",
+          "height": 160,
+          "borderRadius": 8,
+          "background": "rgba(243,243,243,1)"
+        }
+      },
+      {
+        "type": "Row",
+        "props": {
+          "gap": 12,
+          "wrap": false
+        },
+        "children": [
+          {
+            "type": "Column",
+            "props": {
+              "width": "33.33%",
+              "height": 64,
+              "background": "#FFFFFF",
+              "borderRadius": 8,
+              "padding": [12, 12, 12, 12],
+              "gap": 4,
+              "align": "start"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "caption",
+                  "size": 14,
+                  "weight": 400,
+                  "color": "rgba(0,0,0,0.60)",
+                  "lineHeight": 1.5
+                },
+                "children": "Wi-Fi评分"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "size": 16,
+                  "weight": 700,
+                  "color": "rgba(0,0,0,0.90)",
+                  "lineHeight": 1.5
+                },
+                "children": "87分"
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 2,
+                  "align": "center",
+                  "height": 6
+                },
+                "children": [
+                  {
+                    "type": "Column",
+                    "props": {
+                      "width": "33.33%",
+                      "height": "100%",
+                      "background": "#ED6F21"
+                    }
+                  },
+                  {
+                    "type": "Column",
+                    "props": {
+                      "width": "33.33%",
+                      "height": "100%",
+                      "background": "#FFA32D"
+                    }
+                  },
+                  {
+                    "type": "Column",
+                    "props": {
+                      "width": "33.33%",
+                      "height": "100%",
+                      "background": "#64BB5C",
+                      "borderRadius": 6
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": {
+              "width": "33.33%",
+              "height": 64,
+              "background": "#FFFFFF",
+              "borderRadius": 8,
+              "padding": [12, 12, 12, 12],
+              "gap": 4,
+              "align": "start"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "caption",
+                  "size": 14,
+                  "weight": 400,
+                  "color": "rgba(0,0,0,0.60)",
+                  "lineHeight": 1.5
+                },
+                "children": "运行时长"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "size": 16,
+                  "weight": 700,
+                  "color": "rgba(0,0,0,0.90)",
+                  "lineHeight": 1.5
+                },
+                "children": "3天12小时"
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 4,
+                  "align": "center"
+                },
+                "children": [
+                  {
+                    "type": "Icon",
+                    "props": {
+                      "name": "schedule",
+                      "size": 16,
+                      "color": "rgba(0,0,0,0.90)"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": {
+              "width": "33.33%",
+              "height": 64,
+              "background": "#FFFFFF",
+              "borderRadius": 8,
+              "padding": [12, 12, 12, 12],
+              "gap": 4,
+              "align": "start"
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "caption",
+                  "size": 14,
+                  "weight": 400,
+                  "color": "rgba(0,0,0,0.60)",
+                  "lineHeight": 1.5
+                },
+                "children": "设备与终端"
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "size": 16,
+                  "weight": 700,
+                  "color": "rgba(0,0,0,0.90)",
+                  "lineHeight": 1.5
+                },
+                "children": "AP×3 / 终端×12"
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 4,
+                  "align": "center"
+                },
+                "children": [
+                  {
+                    "type": "Icon",
+                    "props": {
+                      "name": "devices",
+                      "size": 16,
+                      "color": "rgba(0,0,0,0.90)"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

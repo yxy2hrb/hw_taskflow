@@ -1,0 +1,8 @@
+{"event":"state-start","data":{"state_id":2,"state_name":"快速入门全屏浮层页","last_state":1,"ts":1779225741424},"ts":"2026-05-19T21:22:21.427Z"}
+{"event":"state-log","data":{"state_id":2,"msg":"[baseline] HM_BASELINE_ENABLED=1，走 baseline 一锤子路径（跳过 twoPhase / DSL / legacy）","ts":1779225741424},"ts":"2026-05-19T21:22:21.427Z"}
+{"event":"state-log","data":{"state_id":2,"msg":"[baseline] 启动 state_2 「快速入门全屏浮层页」","ts":1779225741424},"ts":"2026-05-19T21:22:21.427Z"}
+{"event":"state-log","data":{"state_id":2,"msg":"[baseline-pre] 删除空白半透明遮罩节点 7 个","ts":1779225741425},"ts":"2026-05-19T21:22:21.427Z"}
+{"event":"state-log","data":{"state_id":2,"msg":"[baseline] prompt 28.5KB lang=zh prevHtml=84.3KB->stripped 22.1KB","ts":1779225741425},"ts":"2026-05-19T21:22:21.427Z"}
+{"event":"state-log","data":{"state_id":2,"msg":"[baseline] 生成 HTML 74.9KB（其中 LLM body=12.4KB）","ts":1779225852647},"ts":"2026-05-19T21:24:12.646Z"}
+{"event":"state-log","data":{"state_id":2,"msg":"[baseline] 成功（html 76721B applied=1）","ts":1779225852647},"ts":"2026-05-19T21:24:12.646Z"}
+{"event":"state-done","data":{"state_id":2,"state_name":"快速入门全屏浮层页","file":"state_2.html","applied":1,"skipped":0,"review_ok":null,"review_applied":0,"review_issues":[],"elapsed_ms":111225,"hmExpansions":[],"hmMissing":[],"ts":1779225852649},"ts":"2026-05-19T21:24:12.651Z"}

@@ -1,0 +1,1539 @@
+=== SYSTEM ===
+你是高级前端工程师，擅长把"低保真 D2C HTML 原型 + 状态机蓝图"改造成基于 antd-mobile (v5) React 组件的可交互前端。
+
+输入：
+  · 一份基线 HTML（D2C 自动产出，含 <html><head><style>...</style></head><body>...</body></html>，里面的标签都是手机端 360×780 的绝对布局）
+  · 一条 happy path（用户主路径），按顺序列出 N 个 state，每个 state 含 state_id / state_name / description / implementation_method
+
+你的任务：一次性产出 happy path 上每个 state 的 UI 改造方案。每个 state 包含：
+  1. edits[]：对**原始基线 HTML**的若干 [OLD]/[NEW] 字符串替换；
+  2. islands{}：嵌入在 NEW 块内 `<div data-jsx-island id="...">` 占位 div 上要渲染的 antd-mobile JSX 表达式；
+  3. trigger：本 state 内"用户点击后进入下一 state"的元素描述（直接体现在某个 edit 的 NEW 里，标记 data-next-state="下一 state_id"）。
+
+# 输出 JSON Schema（必须严格遵守）
+{
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "...",
+      "edits": [
+        {
+          "old": "原基线 HTML 中**逐字逐符复制**的一段 ≤ 200 字符的字符串（必须能精确匹配，否则无法定位）",
+          "new": "替换后的 HTML 片段；如果需要 antd-mobile 组件，用 <div data-jsx-island id=\"独一无二的island-id\"></div> 占位"
+        }
+      ],
+      "islands": {
+        "独一无二的island-id": "单行 JSX 表达式，例如 <Button block color='primary' data-next-state={2} onClick={() => {}}>编辑</Button>"
+      }
+    },
+    {
+      "state_id": 2,
+      ...
+    }
+  ]
+}
+
+# 关键约束
+1. **OLD 必须从基线 HTML 中精确复制**（包括前后空白、引号、属性顺序），不能改写、不能简化、不能用 ... 省略。如果不知道要改哪段，宁可不出 edit。
+2. **NEW 之于 OLD 是替换关系**，不是追加。如果是新增 UI（比如全屏弹层），把 OLD 选作"插入点的稳定锚点"（例如 `</body>`），NEW = "锚点 + 你要新增的 HTML"。注意 NEW 必须**包含**整个 OLD 字符串，否则会破坏锚点。
+3. **每个 state 的 edits 全部基于原始基线**，不要假设前面 state 的 edits 已经应用过。比如 state_3 是"保存中"，它的 edits 要表达"编辑表单 + 保存中 spinner"两层视觉，而不能只表达 spinner。
+4. **不要碰** <head> 里的 <style> 和 <script>；只在 <body> 内做替换。
+5. **antd-mobile 组件名表（v5）**：Button, Form, Input, TextArea, Toast, NavBar, List, Selector, Dialog, ActionSheet, Tabs, Switch, Picker, Checkbox, Radio, Tag, Avatar, Card, Modal, Mask, Popup, Skeleton, ProgressBar, Stepper, ImageUploader, SearchBar, Slider, Steps。运行时已通过全局 antdMobile 解构注入，JSX 中直接首字母大写即可。
+6. **trigger 元素**：每个 state（除 happy path 最后一个 terminal state）必须有**且仅有一个** trigger 元素，标记方式 = 在该元素上加 `data-next-state="K+1"`（HTML 属性形式）或 `data-next-state={K+1}`（JSX 形式）。trigger 不一定要是 antd 组件，也可以是 NEW 块里的普通 <div> / <button>。
+7. **island 命名**：用 `s{state_id}-{purpose}` 格式，例如 `s2-form` / `s3-spinner` / `s4-toast`。同一 island id 在所有 state 内必须唯一。
+8. **JSX 表达式只能写一行**，内部禁用换行（JSON 字符串里换行会破坏解析）。JSX 中需要双引号时写成 \" 转义，或改用单引号。
+9. **edits 总数控制在合理范围**：单个 state 1～5 个 edit，避免一锅炖。
+
+# 你的产出
+直接输出 JSON 对象（用 ```json 围栏或裸 JSON 都行）。**不要**输出任何 Markdown 说明文字、不要解释、不要打招呼。
+
+=== USER ===
+# 基线 HTML（请逐字复制 OLD）
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixso HTML</title>
+  <link rel="stylesheet" href="css/font.css">
+  <script src="js/animation.js"></script>
+  <style>/* CSS omitted for LLM brevity */</style>
+<style>/* CSS omitted for LLM brevity */</style>
+</head>
+<body>
+<div class="scroll-container">
+  <div id="0_1" class="Pixso-canvas-0_1">
+    <div id="14_619629" class="Pixso-frame-14_619629 fill-场景background-colorcolor-bg-1-6_11380">
+      <div id="146_394409" class="Pixso-frame-146_394409">
+        <div id="146_394410" class="Pixso-vector-146_394410"></div>
+        <div id="146_394411" class="Pixso-vector-146_394411"></div>
+        <div id="146_394412" class="Pixso-vector-146_394412"></div>
+        <div id="146_394413" class="Pixso-vector-146_394413"></div>
+        <div id="146_394414" class="Pixso-rectangle-146_394414"></div>
+      </div>
+      <div id="146_394422" class="Pixso-rectangle-146_394422"></div>
+      <div id="146_394423" class="Pixso-frame-146_394423">
+        <div id="146_394424" class="Pixso-frame-146_394424 fill-场景background-colorcolor-bg-1-6_11380">
+          <div class="frame-content-146_394424">
+            <div id="146_394425" class="Pixso-rectangle-146_394425 fill-场景fill-colorcolor-fill-disabled-subtle-14_536315"></div>
+            <div id="146_394426" class="Pixso-rectangle-146_394426 fill-场景fill-colorcolor-fill-disabled-14_365678"></div>
+            <div id="146_394427" class="Pixso-rectangle-146_394427 fill-场景fill-colorcolor-fill-disabled-subtle-14_536315"></div>
+            <div id="146_394428" class="Pixso-rectangle-146_394428 fill-场景fill-colorcolor-fill-disabled-subtle-14_536315"></div>
+            <div id="146_394429" class="Pixso-rectangle-146_394429 fill-场景fill-colorcolor-fill-disabled-subtle-14_536315"></div>
+          </div>
+        </div>
+      </div>
+      <div id="146_394432" class="Pixso-frame-146_394432">
+        <div id="146_394433" class="Pixso-frame-146_394433">
+          <div id="146_394434" class="Pixso-frame-146_394434">
+            <div id="146_394435" class="Pixso-frame-146_394435">
+              <div class="frame-content-146_394435">
+                <p id="146_394436" class="Pixso-paragraph-146_394436">08:08</p>
+                <div id="146_394437" class="Pixso-frame-146_394437">
+                  <div id="146_394438" class="Pixso-vector-146_394438"></div>
+                  <div id="146_394450" class="Pixso-vector-146_394450"></div>
+                  <div id="146_394457" class="Pixso-vector-146_394457"></div>
+                  <div id="146_394484" class="Pixso-vector-146_394484"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="146_394494" class="Pixso-frame-146_394494">
+            <div class="frame-content-146_394494">
+              <div id="146_394495" class="Pixso-frame-146_394495">
+                <div id="146_394496" class="Pixso-frame-146_394496">
+                  <div id="146_394501" class="Pixso-frame-146_394501">
+                    <div id="146_394502" class="Pixso-frame-146_394502">
+                      <div class="frame-content-146_394502">
+                        <div id="146_394503" class="Pixso-frame-146_394503">
+                          <p id="146_394504" class="Pixso-paragraph-146_394504 fill-场景text-colorcolor-text-primary-6_11379-paragraph">营销</p>
+                          <div id="146_394505" class="Pixso-frame-146_394505">
+                            <div class="frame-content-146_394505">
+                              <div id="146_394506" class="Pixso-rectangle-146_394506"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <p id="146_394508" class="Pixso-paragraph-146_394508 fill-场景text-colorcolor-text-primary-6_11379-paragraph">工作台</p>
+                      </div>
+                    </div>
+                    <div id="146_394509" class="Pixso-frame-146_394509">
+                      <div class="frame-content-146_394509">
+                        <div id="146_394510" class="Pixso-group-146_394510">
+                          <div id="146_394511" class="Pixso-vector-146_394511"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="146_394560" class="Pixso-frame-146_394560">
+          <div id="146_394561" class="Pixso-frame-146_394561">
+            <div id="146_394562" class="Pixso-frame-146_394562">
+              <div id="146_394563" class="Pixso-group-146_394563">
+                <div id="146_394564" class="Pixso-group-146_394564">
+                  <div id="146_394565" class="Pixso-rectangle-146_394565">
+                    <div class="shadow-behind-146_394565-0"></div>
+                    <div class="fill-layer-146_394565"></div>
+                  </div>
+                </div>
+                <div id="146_394567" class="Pixso-frame-146_394567">
+                  <div id="146_394568" class="Pixso-rectangle-146_394568"></div>
+                  <div id="146_394569" class="Pixso-vector-146_394569"></div>
+                  <div id="146_394572" class="Pixso-frame-146_394572"></div>
+                </div>
+                <div id="146_394582" class="Pixso-rectangle-146_394582"></div>
+              </div>
+            </div>
+            <div id="146_394583" class="Pixso-frame-146_394583">
+              <div id="146_394584" class="Pixso-frame-146_394584">
+                <div class="frame-content-146_394584">
+                  <div id="146_394585" class="Pixso-frame-146_394585">
+                    <div class="frame-content-146_394585">
+                      <p id="146_394586" class="Pixso-paragraph-146_394586">70</p>
+                      <p id="146_394587" class="Pixso-paragraph-146_394587">待接收</p>
+                    </div>
+                  </div>
+                  <div id="146_394588" class="Pixso-frame-146_394588">
+                    <div class="frame-content-146_394588">
+                      <p id="146_394589" class="Pixso-paragraph-146_394589">16</p>
+                      <p id="146_394590" class="Pixso-paragraph-146_394590">跟进中</p>
+                    </div>
+                  </div>
+                  <div id="146_394591" class="Pixso-frame-146_394591">
+                    <div class="frame-content-146_394591">
+                      <p id="146_394592" class="Pixso-paragraph-146_394592">99+</p>
+                      <p id="146_394593" class="Pixso-paragraph-146_394593">全部</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="146_394597" class="Pixso-vector-146_394597"></div>
+            <div id="146_394598" class="Pixso-frame-146_394598">
+              <div id="146_394599" class="Pixso-frame-146_394599">
+                <div id="146_394600" class="Pixso-group-146_394600">
+                  <div id="146_394601" class="Pixso-rectangle-146_394601"></div>
+                  <p id="146_394602" class="Pixso-paragraph-146_394602">最新</p>
+                  <p id="146_394603" class="Pixso-paragraph-146_394603">线索</p>
+                </div>
+              </div>
+              <div id="146_394604" class="Pixso-frame-146_394604">
+                <div id="146_394605" class="Pixso-frame-146_394605">
+                  <p id="146_394606" class="Pixso-paragraph-146_394606">LEB1234567890</p>
+                </div>
+                <div id="146_394607" class="Pixso-frame-146_394607">
+                  <p id="146_394608" class="Pixso-paragraph-146_394608">客户公司名称</p>
+                  <p id="146_394609" class="Pixso-paragraph-146_394609">南京松海科技有限公司</p>
+                </div>
+              </div>
+            </div>
+            <p id="146_394612" class="Pixso-paragraph-146_394612">我的线索</p>
+          </div>
+          <div id="146_394679" class="Pixso-frame-146_394679">
+            <div id="146_394689" class="Pixso-frame-146_394689">
+              <div id="146_394690" class="Pixso-frame-146_394690">
+                <div id="146_394691" class="Pixso-frame-146_394691">
+                  <div class="frame-content-146_394691">
+                    <div id="146_394692" class="Pixso-frame-146_394692">
+                      <div id="146_394693" class="Pixso-frame-146_394693">
+                        <p id="146_394694" class="Pixso-paragraph-146_394694">快捷入口</p>
+                      </div>
+                    </div>
+                    <div id="146_394709" class="Pixso-frame-146_394709">
+                      <div id="146_394710" class="Pixso-frame-146_394710">
+                        <div id="146_394711" class="Pixso-group-146_394711">
+                          <div id="146_394712" class="Pixso-rectangle-146_394712"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="146_394713" class="Pixso-frame-146_394713">
+                  <div class="frame-content-146_394713">
+                    <div id="146_394714" class="Pixso-frame-146_394714">
+                      <div class="frame-content-146_394714">
+                        <div id="146_394727" class="Pixso-frame-146_394727">
+                          <div id="146_394729" class="Pixso-vector-146_394729"></div>
+                        </div>
+                        <p id="146_394734" class="Pixso-paragraph-146_394734">创建会议</p>
+                      </div>
+                    </div>
+                    <div id="146_394735" class="Pixso-frame-146_394735">
+                      <div class="frame-content-146_394735">
+                        <div id="146_394748" class="Pixso-frame-146_394748">
+                          <div id="146_394749" class="Pixso-rectangle-146_394749"></div>
+                          <div id="146_394750" class="Pixso-vector-146_394750"></div>
+                        </div>
+                        <p id="146_394751" class="Pixso-paragraph-146_394751">分析看板</p>
+                      </div>
+                    </div>
+                    <div id="146_394752" class="Pixso-frame-146_394752">
+                      <div class="frame-content-146_394752">
+                        <div id="146_394758" class="Pixso-frame-146_394758">
+                          <div id="146_394759" class="Pixso-vector-146_394759"></div>
+                          <div id="146_394760" class="Pixso-frame-146_394760">
+                            <div id="146_394761" class="Pixso-vector-146_394761"></div>
+                            <p id="146_394765" class="Pixso-paragraph-146_394765">JMF</p>
+                            <div id="146_394772" class="Pixso-vector-146_394772"></div>
+                          </div>
+                        </div>
+                        <p id="146_394773" class="Pixso-paragraph-146_394773">JMF管理</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="146_394833" class="Pixso-frame-146_394833">
+              <div id="146_394834" class="Pixso-frame-146_394834">
+                <div id="146_394835" class="Pixso-rectangle-146_394835"></div>
+                <div id="146_394843" class="Pixso-frame-146_394843">
+                  <p id="146_394844" class="Pixso-paragraph-146_394844 fill-场景text-colorcolor-text-primary-6_11379-paragraph">场景</p>
+                  <div id="146_394845" class="Pixso-vector-146_394845"></div>
+                </div>
+                <div id="146_394847" class="Pixso-frame-146_394847">
+                  <p id="146_394848" class="Pixso-paragraph-146_394848">980</p>
+                  <div id="146_394849" class="Pixso-group-146_394849">
+                    <div id="146_394850" class="Pixso-frame-146_394850">
+                      <div class="frame-content-146_394850">
+                        <p id="146_394851" class="Pixso-paragraph-146_394851">物料总数</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="146_394858" class="Pixso-frame-146_394858">
+                  <p id="146_394873" class="Pixso-paragraph-146_394873">营销物料</p>
+                </div>
+                <div id="146_394874" class="Pixso-frame-146_394874">
+                  <div class="frame-content-146_394874">
+                    <div id="146_394875" class="Pixso-group-146_394875">
+                      <div id="146_394876" class="Pixso-frame-146_394876">
+                        <div id="146_394877" class="Pixso-frame-146_394877">
+                          <div class="frame-content-146_394877">
+                            <div id="146_394878" class="Pixso-rectangle-146_394878"></div>
+                            <div id="146_394879" class="Pixso-rectangle-146_394879"></div>
+                            <div id="146_394880" class="Pixso-rectangle-146_394880"></div>
+                            <div id="146_394881" class="Pixso-rectangle-146_394881"></div>
+                          </div>
+                        </div>
+                        <div id="146_394883" class="Pixso-rectangle-146_394883"></div>
+                      </div>
+                    </div>
+                    <div id="146_394884" class="Pixso-frame-146_394884">
+                      <div class="frame-content-146_394884">
+                        <div id="146_394885" class="Pixso-frame-146_394885">
+                          <div class="frame-content-146_394885">
+                            <div id="146_394886" class="Pixso-vector-146_394886"></div>
+                            <p id="146_394887" class="Pixso-paragraph-146_394887">数通</p>
+                            <p id="146_394888" class="Pixso-paragraph-146_394888">420</p>
+                          </div>
+                        </div>
+                        <div id="146_394889" class="Pixso-frame-146_394889">
+                          <div class="frame-content-146_394889">
+                            <div id="146_394890" class="Pixso-vector-146_394890"></div>
+                            <p id="146_394891" class="Pixso-paragraph-146_394891">SOHO</p>
+                            <p id="146_394892" class="Pixso-paragraph-146_394892">260</p>
+                          </div>
+                        </div>
+                        <div id="146_394893" class="Pixso-frame-146_394893">
+                          <div class="frame-content-146_394893">
+                            <div id="146_394894" class="Pixso-vector-146_394894"></div>
+                            <p id="146_394895" class="Pixso-paragraph-146_394895">数通网络安全</p>
+                            <p id="146_394896" class="Pixso-paragraph-146_394896">130</p>
+                          </div>
+                        </div>
+                        <div id="146_394897" class="Pixso-frame-146_394897">
+                          <div class="frame-content-146_394897">
+                            <div id="146_394898" class="Pixso-vector-146_394898"></div>
+                            <p id="146_394899" class="Pixso-paragraph-146_394899">其他</p>
+                            <p id="146_394900" class="Pixso-paragraph-146_394900">340</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="146_394901" class="Pixso-frame-146_394901">
+                  <p id="146_394902" class="Pixso-paragraph-146_394902">营销物料</p>
+                </div>
+              </div>
+            </div>
+            <div id="146_394903" class="Pixso-frame-146_394903">
+              <div id="146_394904" class="Pixso-frame-146_394904">
+                <div id="146_394905" class="Pixso-group-146_394905">
+                  <div id="146_394906" class="Pixso-rectangle-146_394906"></div>
+                  <div id="146_394907" class="Pixso-frame-146_394907">
+                    <p id="146_394908" class="Pixso-paragraph-146_394908 fill-text文本色图标色color_text_secondary-14_468126-paragraph text-单行行高headline标题headline_xs-14_290524">更多</p>
+                    <div id="146_394909" class="Pixso-frame-146_394909">
+                      <div id="146_394910" class="Pixso-frame-146_394910">
+                        <div id="146_394911" class="Pixso-frame-146_394911">
+                          <div id="146_394912" class="Pixso-rectangle-146_394912"></div>
+                          <div id="146_394913" class="Pixso-vector-146_394913"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="146_394914" class="Pixso-frame-146_394914">
+                    <div class="frame-content-146_394914">
+                      <div id="146_394915" class="Pixso-frame-146_394915">
+                        <div id="146_394916" class="Pixso-group-146_394916">
+                          <p id="146_394917" class="Pixso-paragraph-146_394917">99999+</p>
+                        </div>
+                        <div id="146_394918" class="Pixso-frame-146_394918">
+                          <div id="146_394919" class="Pixso-frame-146_394919">
+                            <p id="146_394920" class="Pixso-paragraph-146_394920">新增访客 (周)</p>
+                          </div>
+                          <div id="146_394921" class="Pixso-frame-146_394921">
+                            <div class="frame-content-146_394921">
+                              <div id="146_394922" class="Pixso-frame-146_394922">
+                                <p id="146_394923" class="Pixso-paragraph-146_394923">同比</p>
+                                <div id="146_394924" class="Pixso-vector-146_394924"></div>
+                                <p id="146_394926" class="Pixso-paragraph-146_394926">2.6%</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="146_394927" class="Pixso-frame-146_394927">
+                        <div id="146_394928" class="Pixso-group-146_394928">
+                          <p id="146_394929" class="Pixso-paragraph-146_394929">26728</p>
+                        </div>
+                        <div id="146_394930" class="Pixso-frame-146_394930">
+                          <div id="146_394931" class="Pixso-frame-146_394931">
+                            <p id="146_394932" class="Pixso-paragraph-146_394932">兴趣访客 (周)</p>
+                          </div>
+                          <div id="146_394933" class="Pixso-frame-146_394933">
+                            <div class="frame-content-146_394933">
+                              <div id="146_394934" class="Pixso-frame-146_394934">
+                                <div class="frame-content-146_394934">
+                                  <p id="146_394935" class="Pixso-paragraph-146_394935">同比</p>
+                                  <div id="146_394936" class="Pixso-vector-146_394936"></div>
+                                  <p id="146_394938" class="Pixso-paragraph-146_394938">2.6%</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="146_394939" class="Pixso-frame-146_394939">
+                        <div id="146_394940" class="Pixso-group-146_394940">
+                          <p id="146_394941" class="Pixso-paragraph-146_394941">26000</p>
+                        </div>
+                        <div id="146_394942" class="Pixso-frame-146_394942">
+                          <div id="146_394943" class="Pixso-frame-146_394943">
+                            <p id="146_394944" class="Pixso-paragraph-146_394944">互动访客 (周)</p>
+                          </div>
+                          <div id="146_394945" class="Pixso-frame-146_394945">
+                            <div class="frame-content-146_394945">
+                              <div id="146_394946" class="Pixso-frame-146_394946">
+                                <p id="146_394947" class="Pixso-paragraph-146_394947">同比</p>
+                                <div id="146_394948" class="Pixso-vector-146_394948"></div>
+                                <p id="146_394950" class="Pixso-paragraph-146_394950">2.6%</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="146_394951" class="Pixso-frame-146_394951">
+                    <p id="146_394952" class="Pixso-paragraph-146_394952">分享获客</p>
+                  </div>
+                  <div id="146_394960" class="Pixso-frame-146_394960">
+                    <div id="146_394961" class="Pixso-frame-146_394961">
+                      <div id="146_394962" class="Pixso-frame-146_394962">
+                        <div id="146_394963" class="Pixso-frame-146_394963">
+                          <div class="frame-content-146_394963">
+                            <div id="146_394964" class="Pixso-frame-146_394964">
+                              <div class="frame-content-146_394964">
+                                <p id="146_394965" class="Pixso-paragraph-146_394965 fill-场景text-colorcolor-text-placeholder-14_365618-paragraph">1000</p>
+                                <div id="146_394966" class="Pixso-vector-146_394966"></div>
+                              </div>
+                            </div>
+                            <div id="146_394967" class="Pixso-frame-146_394967">
+                              <div class="frame-content-146_394967">
+                                <p id="146_394968" class="Pixso-paragraph-146_394968 fill-场景text-colorcolor-text-placeholder-14_365618-paragraph">800</p>
+                                <div id="146_394969" class="Pixso-vector-146_394969"></div>
+                              </div>
+                            </div>
+                            <div id="146_394970" class="Pixso-frame-146_394970">
+                              <div class="frame-content-146_394970">
+                                <p id="146_394971" class="Pixso-paragraph-146_394971 fill-场景text-colorcolor-text-placeholder-14_365618-paragraph">600</p>
+                                <div id="146_394972" class="Pixso-vector-146_394972"></div>
+                              </div>
+                            </div>
+                            <div id="146_394973" class="Pixso-frame-146_394973">
+                              <div class="frame-content-146_394973">
+                                <p id="146_394974" class="Pixso-paragraph-146_394974 fill-场景text-colorcolor-text-placeholder-14_365618-paragraph">400</p>
+                                <div id="146_394975" class="Pixso-vector-146_394975"></div>
+                              </div>
+                            </div>
+                            <div id="146_394976" class="Pixso-frame-146_394976">
+                              <div class="frame-content-146_394976">
+                                <p id="146_394977" class="Pixso-paragraph-146_394977 fill-场景text-colorcolor-text-placeholder-14_365618-paragraph">200</p>
+                                <div id="146_394978" class="Pixso-vector-146_394978"></div>
+                              </div>
+                            </div>
+                            <div id="146_394979" class="Pixso-frame-146_394979">
+                              <div class="frame-content-146_394979">
+                                <p id="146_394980" class="Pixso-paragraph-146_394980 fill-场景text-colorcolor-text-placeholder-14_365618-paragraph">0</p>
+                                <div id="146_394981" class="Pixso-vector-146_394981"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div id="146_394982" class="Pixso-group-146_394982">
+                          <div id="146_394983" class="Pixso-frame-146_394983">
+                            <div class="frame-content-146_394983">
+                              <div id="146_394984" class="Pixso-frame-146_394984">
+                                <div class="frame-content-146_394984">
+                                  <div id="146_394985" class="Pixso-frame-146_394985">
+                                    <div class="frame-content-146_394985">
+                                      <div id="146_394986" class="Pixso-frame-146_394986">
+                                        <div class="frame-content-146_394986">
+                                          <div id="146_394987" class="Pixso-frame-146_394987"></div>
+                                          <div id="146_394988" class="Pixso-frame-146_394988"></div>
+                                          <div id="146_394989" class="Pixso-frame-146_394989"></div>
+                                          <div id="146_394990" class="Pixso-frame-146_394990"></div>
+                                          <div id="146_394991" class="Pixso-frame-146_394991">
+                                            <div class="frame-content-146_394991">
+                                              <div id="146_394992" class="Pixso-rectangle-146_394992"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_394993" class="Pixso-frame-146_394993">
+                                            <div class="frame-content-146_394993">
+                                              <div id="146_394994" class="Pixso-rectangle-146_394994"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_394995" class="Pixso-frame-146_394995">
+                                            <div class="frame-content-146_394995">
+                                              <div id="146_394996" class="Pixso-rectangle-146_394996"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_394997" class="Pixso-frame-146_394997">
+                                            <div class="frame-content-146_394997">
+                                              <div id="146_394998" class="Pixso-rectangle-146_394998"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_394999" class="Pixso-frame-146_394999">
+                                            <div class="frame-content-146_394999">
+                                              <div id="146_395000" class="Pixso-rectangle-146_395000"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395001" class="Pixso-frame-146_395001">
+                                            <div class="frame-content-146_395001">
+                                              <div id="146_395002" class="Pixso-rectangle-146_395002"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395003" class="Pixso-frame-146_395003">
+                                            <div class="frame-content-146_395003">
+                                              <div id="146_395004" class="Pixso-rectangle-146_395004"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395005" class="Pixso-frame-146_395005">
+                                            <div class="frame-content-146_395005">
+                                              <div id="146_395006" class="Pixso-rectangle-146_395006"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div id="146_395007" class="Pixso-frame-146_395007">
+                                        <div class="frame-content-146_395007">
+                                          <div id="146_395008" class="Pixso-frame-146_395008"></div>
+                                          <div id="146_395009" class="Pixso-frame-146_395009"></div>
+                                          <div id="146_395010" class="Pixso-frame-146_395010"></div>
+                                          <div id="146_395011" class="Pixso-frame-146_395011"></div>
+                                          <div id="146_395012" class="Pixso-frame-146_395012"></div>
+                                          <div id="146_395013" class="Pixso-frame-146_395013"></div>
+                                          <div id="146_395014" class="Pixso-frame-146_395014"></div>
+                                          <div id="146_395015" class="Pixso-frame-146_395015"></div>
+                                          <div id="146_395016" class="Pixso-frame-146_395016"></div>
+                                          <div id="146_395017" class="Pixso-frame-146_395017"></div>
+                                          <div id="146_395018" class="Pixso-frame-146_395018">
+                                            <div class="frame-content-146_395018">
+                                              <div id="146_395019" class="Pixso-rectangle-146_395019"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395020" class="Pixso-frame-146_395020">
+                                            <div class="frame-content-146_395020">
+                                              <div id="146_395021" class="Pixso-rectangle-146_395021"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div id="146_395022" class="Pixso-frame-146_395022">
+                                        <div class="frame-content-146_395022">
+                                          <div id="146_395023" class="Pixso-frame-146_395023"></div>
+                                          <div id="146_395024" class="Pixso-frame-146_395024"></div>
+                                          <div id="146_395025" class="Pixso-frame-146_395025"></div>
+                                          <div id="146_395026" class="Pixso-frame-146_395026"></div>
+                                          <div id="146_395027" class="Pixso-frame-146_395027"></div>
+                                          <div id="146_395028" class="Pixso-frame-146_395028"></div>
+                                          <div id="146_395029" class="Pixso-frame-146_395029"></div>
+                                          <div id="146_395030" class="Pixso-frame-146_395030">
+                                            <div class="frame-content-146_395030">
+                                              <div id="146_395031" class="Pixso-rectangle-146_395031"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395032" class="Pixso-frame-146_395032">
+                                            <div class="frame-content-146_395032">
+                                              <div id="146_395033" class="Pixso-rectangle-146_395033"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395034" class="Pixso-frame-146_395034">
+                                            <div class="frame-content-146_395034">
+                                              <div id="146_395035" class="Pixso-rectangle-146_395035"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395036" class="Pixso-frame-146_395036">
+                                            <div class="frame-content-146_395036">
+                                              <div id="146_395037" class="Pixso-rectangle-146_395037"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395038" class="Pixso-frame-146_395038">
+                                            <div class="frame-content-146_395038">
+                                              <div id="146_395039" class="Pixso-rectangle-146_395039"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div id="146_395043" class="Pixso-frame-146_395043">
+                                    <div class="frame-content-146_395043">
+                                      <div id="146_395044" class="Pixso-vector-146_395044"></div>
+                                      <p id="146_395045" class="Pixso-paragraph-146_395045 fill-场景text-colorcolor-text-placeholder-14_365618-paragraph">2-14</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div id="146_395046" class="Pixso-frame-146_395046">
+                                <div class="frame-content-146_395046">
+                                  <div id="146_395047" class="Pixso-frame-146_395047">
+                                    <div class="frame-content-146_395047">
+                                      <div id="146_395048" class="Pixso-frame-146_395048">
+                                        <div class="frame-content-146_395048">
+                                          <div id="146_395049" class="Pixso-frame-146_395049"></div>
+                                          <div id="146_395050" class="Pixso-frame-146_395050"></div>
+                                          <div id="146_395051" class="Pixso-frame-146_395051"></div>
+                                          <div id="146_395052" class="Pixso-frame-146_395052"></div>
+                                          <div id="146_395053" class="Pixso-frame-146_395053">
+                                            <div class="frame-content-146_395053">
+                                              <div id="146_395054" class="Pixso-rectangle-146_395054"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395055" class="Pixso-frame-146_395055">
+                                            <div class="frame-content-146_395055">
+                                              <div id="146_395056" class="Pixso-rectangle-146_395056"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395057" class="Pixso-frame-146_395057">
+                                            <div class="frame-content-146_395057">
+                                              <div id="146_395058" class="Pixso-rectangle-146_395058"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395059" class="Pixso-frame-146_395059">
+                                            <div class="frame-content-146_395059">
+                                              <div id="146_395060" class="Pixso-rectangle-146_395060"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395061" class="Pixso-frame-146_395061">
+                                            <div class="frame-content-146_395061">
+                                              <div id="146_395062" class="Pixso-rectangle-146_395062"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395063" class="Pixso-frame-146_395063">
+                                            <div class="frame-content-146_395063">
+                                              <div id="146_395064" class="Pixso-rectangle-146_395064"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395065" class="Pixso-frame-146_395065">
+                                            <div class="frame-content-146_395065">
+                                              <div id="146_395066" class="Pixso-rectangle-146_395066"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395067" class="Pixso-frame-146_395067">
+                                            <div class="frame-content-146_395067">
+                                              <div id="146_395068" class="Pixso-rectangle-146_395068"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div id="146_395069" class="Pixso-frame-146_395069">
+                                        <div class="frame-content-146_395069">
+                                          <div id="146_395070" class="Pixso-frame-146_395070"></div>
+                                          <div id="146_395071" class="Pixso-frame-146_395071"></div>
+                                          <div id="146_395072" class="Pixso-frame-146_395072"></div>
+                                          <div id="146_395073" class="Pixso-frame-146_395073"></div>
+                                          <div id="146_395074" class="Pixso-frame-146_395074"></div>
+                                          <div id="146_395075" class="Pixso-frame-146_395075"></div>
+                                          <div id="146_395076" class="Pixso-frame-146_395076"></div>
+                                          <div id="146_395077" class="Pixso-frame-146_395077"></div>
+                                          <div id="146_395078" class="Pixso-frame-146_395078"></div>
+                                          <div id="146_395079" class="Pixso-frame-146_395079"></div>
+                                          <div id="146_395080" class="Pixso-frame-146_395080">
+                                            <div class="frame-content-146_395080">
+                                              <div id="146_395081" class="Pixso-rectangle-146_395081"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395082" class="Pixso-frame-146_395082">
+                                            <div class="frame-content-146_395082">
+                                              <div id="146_395083" class="Pixso-rectangle-146_395083"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div id="146_395084" class="Pixso-frame-146_395084">
+                                        <div class="frame-content-146_395084">
+                                          <div id="146_395085" class="Pixso-frame-146_395085"></div>
+                                          <div id="146_395086" class="Pixso-frame-146_395086"></div>
+                                          <div id="146_395087" class="Pixso-frame-146_395087"></div>
+                                          <div id="146_395088" class="Pixso-frame-146_395088"></div>
+                                          <div id="146_395089" class="Pixso-frame-146_395089"></div>
+                                          <div id="146_395090" class="Pixso-frame-146_395090"></div>
+                                          <div id="146_395091" class="Pixso-frame-146_395091"></div>
+                                          <div id="146_395092" class="Pixso-frame-146_395092">
+                                            <div class="frame-content-146_395092">
+                                              <div id="146_395093" class="Pixso-rectangle-146_395093"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395094" class="Pixso-frame-146_395094">
+                                            <div class="frame-content-146_395094">
+                                              <div id="146_395095" class="Pixso-rectangle-146_395095"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395096" class="Pixso-frame-146_395096">
+                                            <div class="frame-content-146_395096">
+                                              <div id="146_395097" class="Pixso-rectangle-146_395097"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395098" class="Pixso-frame-146_395098">
+                                            <div class="frame-content-146_395098">
+                                              <div id="146_395099" class="Pixso-rectangle-146_395099"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395100" class="Pixso-frame-146_395100">
+                                            <div class="frame-content-146_395100">
+                                              <div id="146_395101" class="Pixso-rectangle-146_395101"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div id="146_395105" class="Pixso-frame-146_395105">
+                                    <div class="frame-content-146_395105">
+                                      <div id="146_395106" class="Pixso-vector-146_395106"></div>
+                                      <p id="146_395107" class="Pixso-paragraph-146_395107 fill-场景text-colorcolor-text-placeholder-14_365618-paragraph">2-15</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div id="146_395108" class="Pixso-frame-146_395108">
+                                <div class="frame-content-146_395108">
+                                  <div id="146_395109" class="Pixso-frame-146_395109">
+                                    <div class="frame-content-146_395109">
+                                      <div id="146_395110" class="Pixso-frame-146_395110">
+                                        <div class="frame-content-146_395110">
+                                          <div id="146_395111" class="Pixso-frame-146_395111"></div>
+                                          <div id="146_395112" class="Pixso-frame-146_395112"></div>
+                                          <div id="146_395113" class="Pixso-frame-146_395113"></div>
+                                          <div id="146_395114" class="Pixso-frame-146_395114"></div>
+                                          <div id="146_395115" class="Pixso-frame-146_395115">
+                                            <div class="frame-content-146_395115">
+                                              <div id="146_395116" class="Pixso-rectangle-146_395116"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395117" class="Pixso-frame-146_395117">
+                                            <div class="frame-content-146_395117">
+                                              <div id="146_395118" class="Pixso-rectangle-146_395118"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395119" class="Pixso-frame-146_395119">
+                                            <div class="frame-content-146_395119">
+                                              <div id="146_395120" class="Pixso-rectangle-146_395120"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395121" class="Pixso-frame-146_395121">
+                                            <div class="frame-content-146_395121">
+                                              <div id="146_395122" class="Pixso-rectangle-146_395122"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395123" class="Pixso-frame-146_395123">
+                                            <div class="frame-content-146_395123">
+                                              <div id="146_395124" class="Pixso-rectangle-146_395124"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395125" class="Pixso-frame-146_395125">
+                                            <div class="frame-content-146_395125">
+                                              <div id="146_395126" class="Pixso-rectangle-146_395126"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395127" class="Pixso-frame-146_395127">
+                                            <div class="frame-content-146_395127">
+                                              <div id="146_395128" class="Pixso-rectangle-146_395128"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395129" class="Pixso-frame-146_395129">
+                                            <div class="frame-content-146_395129">
+                                              <div id="146_395130" class="Pixso-rectangle-146_395130"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div id="146_395131" class="Pixso-frame-146_395131">
+                                        <div class="frame-content-146_395131">
+                                          <div id="146_395132" class="Pixso-frame-146_395132"></div>
+                                          <div id="146_395133" class="Pixso-frame-146_395133"></div>
+                                          <div id="146_395134" class="Pixso-frame-146_395134"></div>
+                                          <div id="146_395135" class="Pixso-frame-146_395135"></div>
+                                          <div id="146_395136" class="Pixso-frame-146_395136"></div>
+                                          <div id="146_395137" class="Pixso-frame-146_395137"></div>
+                                          <div id="146_395138" class="Pixso-frame-146_395138"></div>
+                                          <div id="146_395139" class="Pixso-frame-146_395139"></div>
+                                          <div id="146_395140" class="Pixso-frame-146_395140"></div>
+                                          <div id="146_395141" class="Pixso-frame-146_395141"></div>
+                                          <div id="146_395142" class="Pixso-frame-146_395142">
+                                            <div class="frame-content-146_395142">
+                                              <div id="146_395143" class="Pixso-rectangle-146_395143"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395144" class="Pixso-frame-146_395144">
+                                            <div class="frame-content-146_395144">
+                                              <div id="146_395145" class="Pixso-rectangle-146_395145"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div id="146_395146" class="Pixso-frame-146_395146">
+                                        <div class="frame-content-146_395146">
+                                          <div id="146_395147" class="Pixso-frame-146_395147"></div>
+                                          <div id="146_395148" class="Pixso-frame-146_395148"></div>
+                                          <div id="146_395149" class="Pixso-frame-146_395149"></div>
+                                          <div id="146_395150" class="Pixso-frame-146_395150"></div>
+                                          <div id="146_395151" class="Pixso-frame-146_395151"></div>
+                                          <div id="146_395152" class="Pixso-frame-146_395152"></div>
+                                          <div id="146_395153" class="Pixso-frame-146_395153"></div>
+                                          <div id="146_395154" class="Pixso-frame-146_395154">
+                                            <div class="frame-content-146_395154">
+                                              <div id="146_395155" class="Pixso-rectangle-146_395155"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395156" class="Pixso-frame-146_395156">
+                                            <div class="frame-content-146_395156">
+                                              <div id="146_395157" class="Pixso-rectangle-146_395157"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395158" class="Pixso-frame-146_395158">
+                                            <div class="frame-content-146_395158">
+                                              <div id="146_395159" class="Pixso-rectangle-146_395159"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395160" class="Pixso-frame-146_395160">
+                                            <div class="frame-content-146_395160">
+                                              <div id="146_395161" class="Pixso-rectangle-146_395161"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395162" class="Pixso-frame-146_395162">
+                                            <div class="frame-content-146_395162">
+                                              <div id="146_395163" class="Pixso-rectangle-146_395163"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div id="146_395167" class="Pixso-frame-146_395167">
+                                    <div class="frame-content-146_395167">
+                                      <div id="146_395168" class="Pixso-vector-146_395168"></div>
+                                      <p id="146_395169" class="Pixso-paragraph-146_395169 fill-场景text-colorcolor-text-placeholder-14_365618-paragraph">2-16</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div id="146_395170" class="Pixso-frame-146_395170">
+                                <div class="frame-content-146_395170">
+                                  <div id="146_395171" class="Pixso-frame-146_395171">
+                                    <div class="frame-content-146_395171">
+                                      <div id="146_395172" class="Pixso-frame-146_395172">
+                                        <div class="frame-content-146_395172">
+                                          <div id="146_395173" class="Pixso-frame-146_395173"></div>
+                                          <div id="146_395174" class="Pixso-frame-146_395174"></div>
+                                          <div id="146_395175" class="Pixso-frame-146_395175"></div>
+                                          <div id="146_395176" class="Pixso-frame-146_395176"></div>
+                                          <div id="146_395177" class="Pixso-frame-146_395177">
+                                            <div class="frame-content-146_395177">
+                                              <div id="146_395178" class="Pixso-rectangle-146_395178"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395179" class="Pixso-frame-146_395179">
+                                            <div class="frame-content-146_395179">
+                                              <div id="146_395180" class="Pixso-rectangle-146_395180"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395181" class="Pixso-frame-146_395181">
+                                            <div class="frame-content-146_395181">
+                                              <div id="146_395182" class="Pixso-rectangle-146_395182"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395183" class="Pixso-frame-146_395183">
+                                            <div class="frame-content-146_395183">
+                                              <div id="146_395184" class="Pixso-rectangle-146_395184"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395185" class="Pixso-frame-146_395185">
+                                            <div class="frame-content-146_395185">
+                                              <div id="146_395186" class="Pixso-rectangle-146_395186"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395187" class="Pixso-frame-146_395187">
+                                            <div class="frame-content-146_395187">
+                                              <div id="146_395188" class="Pixso-rectangle-146_395188"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395189" class="Pixso-frame-146_395189">
+                                            <div class="frame-content-146_395189">
+                                              <div id="146_395190" class="Pixso-rectangle-146_395190"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395191" class="Pixso-frame-146_395191">
+                                            <div class="frame-content-146_395191">
+                                              <div id="146_395192" class="Pixso-rectangle-146_395192"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div id="146_395193" class="Pixso-frame-146_395193">
+                                        <div class="frame-content-146_395193">
+                                          <div id="146_395194" class="Pixso-frame-146_395194"></div>
+                                          <div id="146_395195" class="Pixso-frame-146_395195"></div>
+                                          <div id="146_395196" class="Pixso-frame-146_395196"></div>
+                                          <div id="146_395197" class="Pixso-frame-146_395197"></div>
+                                          <div id="146_395198" class="Pixso-frame-146_395198"></div>
+                                          <div id="146_395199" class="Pixso-frame-146_395199"></div>
+                                          <div id="146_395200" class="Pixso-frame-146_395200"></div>
+                                          <div id="146_395201" class="Pixso-frame-146_395201"></div>
+                                          <div id="146_395202" class="Pixso-frame-146_395202"></div>
+                                          <div id="146_395203" class="Pixso-frame-146_395203"></div>
+                                          <div id="146_395204" class="Pixso-frame-146_395204">
+                                            <div class="frame-content-146_395204">
+                                              <div id="146_395205" class="Pixso-rectangle-146_395205"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395206" class="Pixso-frame-146_395206">
+                                            <div class="frame-content-146_395206">
+                                              <div id="146_395207" class="Pixso-rectangle-146_395207"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div id="146_395208" class="Pixso-frame-146_395208">
+                                        <div class="frame-content-146_395208">
+                                          <div id="146_395209" class="Pixso-frame-146_395209"></div>
+                                          <div id="146_395210" class="Pixso-frame-146_395210"></div>
+                                          <div id="146_395211" class="Pixso-frame-146_395211"></div>
+                                          <div id="146_395212" class="Pixso-frame-146_395212"></div>
+                                          <div id="146_395213" class="Pixso-frame-146_395213"></div>
+                                          <div id="146_395214" class="Pixso-frame-146_395214"></div>
+                                          <div id="146_395215" class="Pixso-frame-146_395215"></div>
+                                          <div id="146_395216" class="Pixso-frame-146_395216">
+                                            <div class="frame-content-146_395216">
+                                              <div id="146_395217" class="Pixso-rectangle-146_395217"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395218" class="Pixso-frame-146_395218">
+                                            <div class="frame-content-146_395218">
+                                              <div id="146_395219" class="Pixso-rectangle-146_395219"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395220" class="Pixso-frame-146_395220">
+                                            <div class="frame-content-146_395220">
+                                              <div id="146_395221" class="Pixso-rectangle-146_395221"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395222" class="Pixso-frame-146_395222">
+                                            <div class="frame-content-146_395222">
+                                              <div id="146_395223" class="Pixso-rectangle-146_395223"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395224" class="Pixso-frame-146_395224">
+                                            <div class="frame-content-146_395224">
+                                              <div id="146_395225" class="Pixso-rectangle-146_395225"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div id="146_395229" class="Pixso-frame-146_395229">
+                                    <div class="frame-content-146_395229">
+                                      <div id="146_395230" class="Pixso-vector-146_395230"></div>
+                                      <p id="146_395231" class="Pixso-paragraph-146_395231 fill-场景text-colorcolor-text-placeholder-14_365618-paragraph">2-17</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div id="146_395232" class="Pixso-frame-146_395232">
+                                <div class="frame-content-146_395232">
+                                  <div id="146_395233" class="Pixso-frame-146_395233">
+                                    <div class="frame-content-146_395233">
+                                      <div id="146_395234" class="Pixso-frame-146_395234">
+                                        <div class="frame-content-146_395234">
+                                          <div id="146_395235" class="Pixso-frame-146_395235"></div>
+                                          <div id="146_395236" class="Pixso-frame-146_395236"></div>
+                                          <div id="146_395237" class="Pixso-frame-146_395237"></div>
+                                          <div id="146_395238" class="Pixso-frame-146_395238"></div>
+                                          <div id="146_395239" class="Pixso-frame-146_395239">
+                                            <div class="frame-content-146_395239">
+                                              <div id="146_395240" class="Pixso-rectangle-146_395240"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395241" class="Pixso-frame-146_395241">
+                                            <div class="frame-content-146_395241">
+                                              <div id="146_395242" class="Pixso-rectangle-146_395242"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395243" class="Pixso-frame-146_395243">
+                                            <div class="frame-content-146_395243">
+                                              <div id="146_395244" class="Pixso-rectangle-146_395244"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395245" class="Pixso-frame-146_395245">
+                                            <div class="frame-content-146_395245">
+                                              <div id="146_395246" class="Pixso-rectangle-146_395246"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395247" class="Pixso-frame-146_395247">
+                                            <div class="frame-content-146_395247">
+                                              <div id="146_395248" class="Pixso-rectangle-146_395248"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395249" class="Pixso-frame-146_395249">
+                                            <div class="frame-content-146_395249">
+                                              <div id="146_395250" class="Pixso-rectangle-146_395250"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395251" class="Pixso-frame-146_395251">
+                                            <div class="frame-content-146_395251">
+                                              <div id="146_395252" class="Pixso-rectangle-146_395252"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395253" class="Pixso-frame-146_395253">
+                                            <div class="frame-content-146_395253">
+                                              <div id="146_395254" class="Pixso-rectangle-146_395254"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div id="146_395255" class="Pixso-frame-146_395255">
+                                        <div class="frame-content-146_395255">
+                                          <div id="146_395256" class="Pixso-frame-146_395256"></div>
+                                          <div id="146_395257" class="Pixso-frame-146_395257"></div>
+                                          <div id="146_395258" class="Pixso-frame-146_395258"></div>
+                                          <div id="146_395259" class="Pixso-frame-146_395259"></div>
+                                          <div id="146_395260" class="Pixso-frame-146_395260"></div>
+                                          <div id="146_395261" class="Pixso-frame-146_395261"></div>
+                                          <div id="146_395262" class="Pixso-frame-146_395262"></div>
+                                          <div id="146_395263" class="Pixso-frame-146_395263"></div>
+                                          <div id="146_395264" class="Pixso-frame-146_395264"></div>
+                                          <div id="146_395265" class="Pixso-frame-146_395265"></div>
+                                          <div id="146_395266" class="Pixso-frame-146_395266">
+                                            <div class="frame-content-146_395266">
+                                              <div id="146_395267" class="Pixso-rectangle-146_395267"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395268" class="Pixso-frame-146_395268">
+                                            <div class="frame-content-146_395268">
+                                              <div id="146_395269" class="Pixso-rectangle-146_395269"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div id="146_395270" class="Pixso-frame-146_395270">
+                                        <div class="frame-content-146_395270">
+                                          <div id="146_395271" class="Pixso-frame-146_395271"></div>
+                                          <div id="146_395272" class="Pixso-frame-146_395272"></div>
+                                          <div id="146_395273" class="Pixso-frame-146_395273"></div>
+                                          <div id="146_395274" class="Pixso-frame-146_395274"></div>
+                                          <div id="146_395275" class="Pixso-frame-146_395275"></div>
+                                          <div id="146_395276" class="Pixso-frame-146_395276"></div>
+                                          <div id="146_395277" class="Pixso-frame-146_395277"></div>
+                                          <div id="146_395278" class="Pixso-frame-146_395278">
+                                            <div class="frame-content-146_395278">
+                                              <div id="146_395279" class="Pixso-rectangle-146_395279"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395280" class="Pixso-frame-146_395280">
+                                            <div class="frame-content-146_395280">
+                                              <div id="146_395281" class="Pixso-rectangle-146_395281"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395282" class="Pixso-frame-146_395282">
+                                            <div class="frame-content-146_395282">
+                                              <div id="146_395283" class="Pixso-rectangle-146_395283"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395284" class="Pixso-frame-146_395284">
+                                            <div class="frame-content-146_395284">
+                                              <div id="146_395285" class="Pixso-rectangle-146_395285"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395286" class="Pixso-frame-146_395286">
+                                            <div class="frame-content-146_395286">
+                                              <div id="146_395287" class="Pixso-rectangle-146_395287"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div id="146_395291" class="Pixso-frame-146_395291">
+                                    <div class="frame-content-146_395291">
+                                      <div id="146_395292" class="Pixso-vector-146_395292"></div>
+                                      <p id="146_395293" class="Pixso-paragraph-146_395293 fill-场景text-colorcolor-text-placeholder-14_365618-paragraph">2-18</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div id="146_395294" class="Pixso-frame-146_395294">
+                                <div class="frame-content-146_395294">
+                                  <div id="146_395295" class="Pixso-frame-146_395295">
+                                    <div class="frame-content-146_395295">
+                                      <div id="146_395296" class="Pixso-frame-146_395296">
+                                        <div class="frame-content-146_395296">
+                                          <div id="146_395297" class="Pixso-frame-146_395297"></div>
+                                          <div id="146_395298" class="Pixso-frame-146_395298"></div>
+                                          <div id="146_395299" class="Pixso-frame-146_395299"></div>
+                                          <div id="146_395300" class="Pixso-frame-146_395300"></div>
+                                          <div id="146_395301" class="Pixso-frame-146_395301">
+                                            <div class="frame-content-146_395301">
+                                              <div id="146_395302" class="Pixso-rectangle-146_395302"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395303" class="Pixso-frame-146_395303">
+                                            <div class="frame-content-146_395303">
+                                              <div id="146_395304" class="Pixso-rectangle-146_395304"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395305" class="Pixso-frame-146_395305">
+                                            <div class="frame-content-146_395305">
+                                              <div id="146_395306" class="Pixso-rectangle-146_395306"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395307" class="Pixso-frame-146_395307">
+                                            <div class="frame-content-146_395307">
+                                              <div id="146_395308" class="Pixso-rectangle-146_395308"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395309" class="Pixso-frame-146_395309">
+                                            <div class="frame-content-146_395309">
+                                              <div id="146_395310" class="Pixso-rectangle-146_395310"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395311" class="Pixso-frame-146_395311">
+                                            <div class="frame-content-146_395311">
+                                              <div id="146_395312" class="Pixso-rectangle-146_395312"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395313" class="Pixso-frame-146_395313">
+                                            <div class="frame-content-146_395313">
+                                              <div id="146_395314" class="Pixso-rectangle-146_395314"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395315" class="Pixso-frame-146_395315">
+                                            <div class="frame-content-146_395315">
+                                              <div id="146_395316" class="Pixso-rectangle-146_395316"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div id="146_395317" class="Pixso-frame-146_395317">
+                                        <div class="frame-content-146_395317">
+                                          <div id="146_395318" class="Pixso-frame-146_395318"></div>
+                                          <div id="146_395319" class="Pixso-frame-146_395319"></div>
+                                          <div id="146_395320" class="Pixso-frame-146_395320"></div>
+                                          <div id="146_395321" class="Pixso-frame-146_395321"></div>
+                                          <div id="146_395322" class="Pixso-frame-146_395322"></div>
+                                          <div id="146_395323" class="Pixso-frame-146_395323"></div>
+                                          <div id="146_395324" class="Pixso-frame-146_395324"></div>
+                                          <div id="146_395325" class="Pixso-frame-146_395325"></div>
+                                          <div id="146_395326" class="Pixso-frame-146_395326"></div>
+                                          <div id="146_395327" class="Pixso-frame-146_395327"></div>
+                                          <div id="146_395328" class="Pixso-frame-146_395328">
+                                            <div class="frame-content-146_395328">
+                                              <div id="146_395329" class="Pixso-rectangle-146_395329"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395330" class="Pixso-frame-146_395330">
+                                            <div class="frame-content-146_395330">
+                                              <div id="146_395331" class="Pixso-rectangle-146_395331"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div id="146_395332" class="Pixso-frame-146_395332">
+                                        <div class="frame-content-146_395332">
+                                          <div id="146_395333" class="Pixso-frame-146_395333"></div>
+                                          <div id="146_395334" class="Pixso-frame-146_395334"></div>
+                                          <div id="146_395335" class="Pixso-frame-146_395335"></div>
+                                          <div id="146_395336" class="Pixso-frame-146_395336"></div>
+                                          <div id="146_395337" class="Pixso-frame-146_395337"></div>
+                                          <div id="146_395338" class="Pixso-frame-146_395338"></div>
+                                          <div id="146_395339" class="Pixso-frame-146_395339"></div>
+                                          <div id="146_395340" class="Pixso-frame-146_395340">
+                                            <div class="frame-content-146_395340">
+                                              <div id="146_395341" class="Pixso-rectangle-146_395341"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395342" class="Pixso-frame-146_395342">
+                                            <div class="frame-content-146_395342">
+                                              <div id="146_395343" class="Pixso-rectangle-146_395343"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395344" class="Pixso-frame-146_395344">
+                                            <div class="frame-content-146_395344">
+                                              <div id="146_395345" class="Pixso-rectangle-146_395345"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395346" class="Pixso-frame-146_395346">
+                                            <div class="frame-content-146_395346">
+                                              <div id="146_395347" class="Pixso-rectangle-146_395347"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395348" class="Pixso-frame-146_395348">
+                                            <div class="frame-content-146_395348">
+                                              <div id="146_395349" class="Pixso-rectangle-146_395349"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div id="146_395353" class="Pixso-frame-146_395353">
+                                    <div class="frame-content-146_395353">
+                                      <div id="146_395354" class="Pixso-vector-146_395354"></div>
+                                      <p id="146_395355" class="Pixso-paragraph-146_395355 fill-场景text-colorcolor-text-placeholder-14_365618-paragraph">2-19</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div id="146_395356" class="Pixso-frame-146_395356">
+                                <div class="frame-content-146_395356">
+                                  <div id="146_395357" class="Pixso-frame-146_395357">
+                                    <div class="frame-content-146_395357">
+                                      <div id="146_395358" class="Pixso-frame-146_395358">
+                                        <div class="frame-content-146_395358">
+                                          <div id="146_395359" class="Pixso-frame-146_395359"></div>
+                                          <div id="146_395360" class="Pixso-frame-146_395360"></div>
+                                          <div id="146_395361" class="Pixso-frame-146_395361"></div>
+                                          <div id="146_395362" class="Pixso-frame-146_395362"></div>
+                                          <div id="146_395363" class="Pixso-frame-146_395363">
+                                            <div class="frame-content-146_395363">
+                                              <div id="146_395364" class="Pixso-rectangle-146_395364"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395365" class="Pixso-frame-146_395365">
+                                            <div class="frame-content-146_395365">
+                                              <div id="146_395366" class="Pixso-rectangle-146_395366"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395367" class="Pixso-frame-146_395367">
+                                            <div class="frame-content-146_395367">
+                                              <div id="146_395368" class="Pixso-rectangle-146_395368"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395369" class="Pixso-frame-146_395369">
+                                            <div class="frame-content-146_395369">
+                                              <div id="146_395370" class="Pixso-rectangle-146_395370"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395371" class="Pixso-frame-146_395371">
+                                            <div class="frame-content-146_395371">
+                                              <div id="146_395372" class="Pixso-rectangle-146_395372"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395373" class="Pixso-frame-146_395373">
+                                            <div class="frame-content-146_395373">
+                                              <div id="146_395374" class="Pixso-rectangle-146_395374"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395375" class="Pixso-frame-146_395375">
+                                            <div class="frame-content-146_395375">
+                                              <div id="146_395376" class="Pixso-rectangle-146_395376"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395377" class="Pixso-frame-146_395377">
+                                            <div class="frame-content-146_395377">
+                                              <div id="146_395378" class="Pixso-rectangle-146_395378"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div id="146_395379" class="Pixso-frame-146_395379">
+                                        <div class="frame-content-146_395379">
+                                          <div id="146_395380" class="Pixso-frame-146_395380"></div>
+                                          <div id="146_395381" class="Pixso-frame-146_395381"></div>
+                                          <div id="146_395382" class="Pixso-frame-146_395382"></div>
+                                          <div id="146_395383" class="Pixso-frame-146_395383"></div>
+                                          <div id="146_395384" class="Pixso-frame-146_395384"></div>
+                                          <div id="146_395385" class="Pixso-frame-146_395385"></div>
+                                          <div id="146_395386" class="Pixso-frame-146_395386"></div>
+                                          <div id="146_395387" class="Pixso-frame-146_395387"></div>
+                                          <div id="146_395388" class="Pixso-frame-146_395388"></div>
+                                          <div id="146_395389" class="Pixso-frame-146_395389"></div>
+                                          <div id="146_395390" class="Pixso-frame-146_395390">
+                                            <div class="frame-content-146_395390">
+                                              <div id="146_395391" class="Pixso-rectangle-146_395391"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395392" class="Pixso-frame-146_395392">
+                                            <div class="frame-content-146_395392">
+                                              <div id="146_395393" class="Pixso-rectangle-146_395393"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div id="146_395394" class="Pixso-frame-146_395394">
+                                        <div class="frame-content-146_395394">
+                                          <div id="146_395395" class="Pixso-frame-146_395395"></div>
+                                          <div id="146_395396" class="Pixso-frame-146_395396"></div>
+                                          <div id="146_395397" class="Pixso-frame-146_395397"></div>
+                                          <div id="146_395398" class="Pixso-frame-146_395398"></div>
+                                          <div id="146_395399" class="Pixso-frame-146_395399"></div>
+                                          <div id="146_395400" class="Pixso-frame-146_395400"></div>
+                                          <div id="146_395401" class="Pixso-frame-146_395401"></div>
+                                          <div id="146_395402" class="Pixso-frame-146_395402">
+                                            <div class="frame-content-146_395402">
+                                              <div id="146_395403" class="Pixso-rectangle-146_395403"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395404" class="Pixso-frame-146_395404">
+                                            <div class="frame-content-146_395404">
+                                              <div id="146_395405" class="Pixso-rectangle-146_395405"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395406" class="Pixso-frame-146_395406">
+                                            <div class="frame-content-146_395406">
+                                              <div id="146_395407" class="Pixso-rectangle-146_395407"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395408" class="Pixso-frame-146_395408">
+                                            <div class="frame-content-146_395408">
+                                              <div id="146_395409" class="Pixso-rectangle-146_395409"></div>
+                                            </div>
+                                          </div>
+                                          <div id="146_395410" class="Pixso-frame-146_395410">
+                                            <div class="frame-content-146_395410">
+                                              <div id="146_395411" class="Pixso-rectangle-146_395411"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div id="146_395415" class="Pixso-frame-146_395415">
+                                    <div class="frame-content-146_395415">
+                                      <div id="146_395416" class="Pixso-vector-146_395416"></div>
+                                      <p id="146_395417" class="Pixso-paragraph-146_395417 fill-场景text-colorcolor-text-placeholder-14_365618-paragraph">2-20</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div id="146_395418" class="Pixso-frame-146_395418">
+                            <div class="frame-content-146_395418">
+                              <div id="146_395419" class="Pixso-frame-146_395419">
+                                <div class="frame-content-146_395419">
+                                  <div id="146_395420" class="Pixso-frame-146_395420">
+                                    <div class="frame-content-146_395420">
+                                      <div id="146_395421" class="Pixso-frame-146_395421"></div>
+                                      <div id="146_395424" class="Pixso-frame-146_395424"></div>
+                                      <div id="146_395427" class="Pixso-frame-146_395427"></div>
+                                      <div id="146_395430" class="Pixso-frame-146_395430"></div>
+                                      <div id="146_395433" class="Pixso-frame-146_395433">
+                                        <div class="frame-content-146_395433">
+                                          <div id="146_395434" class="Pixso-rectangle-146_395434"></div>
+                                        </div>
+                                      </div>
+                                      <div id="146_395437" class="Pixso-frame-146_395437">
+                                        <div class="frame-content-146_395437">
+                                          <div id="146_395438" class="Pixso-rectangle-146_395438"></div>
+                                        </div>
+                                      </div>
+                                      <div id="146_395441" class="Pixso-frame-146_395441">
+                                        <div class="frame-content-146_395441">
+                                          <div id="146_395442" class="Pixso-rectangle-146_395442"></div>
+                                        </div>
+                                      </div>
+                                      <div id="146_395445" class="Pixso-frame-146_395445">
+                                        <div class="frame-content-146_395445">
+                                          <div id="146_395446" class="Pixso-rectangle-146_395446"></div>
+                                        </div>
+                                      </div>
+                                      <div id="146_395449" class="Pixso-frame-146_395449">
+                                        <div class="frame-content-146_395449">
+                                          <div id="146_395450" class="Pixso-rectangle-146_395450"></div>
+                                        </div>
+                                      </div>
+                                      <div id="146_395453" class="Pixso-frame-146_395453">
+                                        <div class="frame-content-146_395453">
+                                          <div id="146_395454" class="Pixso-rectangle-146_395454"></div>
+                                        </div>
+                                      </div>
+                                      <div id="146_395457" class="Pixso-frame-146_395457">
+                                        <div class="frame-content-146_395457">
+                                          <div id="146_395458" class="Pixso-rectangle-146_395458"></div>
+                                        </div>
+                                      </div>
+                                      <div id="146_395461" class="Pixso-frame-146_395461">
+                                        <div class="frame-content-146_395461">
+                                          <div id="146_395462" class="Pixso-rectangle-146_395462"></div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div id="146_395465" class="Pixso-frame-146_395465">
+                                    <div class="frame-content-146_395465">
+                                      <div id="146_395466" class="Pixso-frame-146_395466"></div>
+                                      <div id="146_395469" class="Pixso-frame-146_395469"></div>
+                                      <div id="146_395472" class="Pixso-frame-146_395472"></div>
+                                      <div id="146_395475" class="Pixso-frame-146_395475"></div>
+                                      <div id="146_395478" class="Pixso-frame-146_395478"></div>
+                                      <div id="146_395481" class="Pixso-frame-146_395481"></div>
+                                      <div id="146_395484" class="Pixso-frame-146_395484"></div>
+                                      <div id="146_395487" class="Pixso-frame-146_395487"></div>
+                                      <div id="146_395490" class="Pixso-frame-146_395490"></div>
+                                      <div id="146_395493" class="Pixso-frame-146_395493"></div>
+                                      <div id="146_395496" class="Pixso-frame-146_395496">
+                                        <div class="frame-content-146_395496">
+                                          <div id="146_395497" class="Pixso-rectangle-146_395497"></div>
+                                        </div>
+                                      </div>
+                                      <div id="146_395500" class="Pixso-frame-146_395500">
+                                        <div class="frame-content-146_395500">
+                                          <div id="146_395501" class="Pixso-rectangle-146_395501"></div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div id="146_395504" class="Pixso-frame-146_395504">
+                                    <div class="frame-content-146_395504">
+                                      <div id="146_395505" class="Pixso-frame-146_395505"></div>
+                                      <div id="146_395508" class="Pixso-frame-146_395508"></div>
+                                      <div id="146_395511" class="Pixso-frame-146_395511"></div>
+                                      <div id="146_395514" class="Pixso-frame-146_395514"></div>
+                                      <div id="146_395517" class="Pixso-frame-146_395517"></div>
+                                      <div id="146_395520" class="Pixso-frame-146_395520"></div>
+                                      <div id="146_395523" class="Pixso-frame-146_395523"></div>
+                                      <div id="146_395526" class="Pixso-frame-146_395526">
+                                        <div class="frame-content-146_395526">
+                                          <div id="146_395527" class="Pixso-rectangle-146_395527"></div>
+                                        </div>
+                                      </div>
+                                      <div id="146_395530" class="Pixso-frame-146_395530">
+                                        <div class="frame-content-146_395530">
+                                          <div id="146_395531" class="Pixso-rectangle-146_395531"></div>
+                                        </div>
+                                      </div>
+                                      <div id="146_395534" class="Pixso-frame-146_395534">
+                                        <div class="frame-content-146_395534">
+                                          <div id="146_395535" class="Pixso-rectangle-146_395535"></div>
+                                        </div>
+                                      </div>
+                                      <div id="146_395538" class="Pixso-frame-146_395538">
+                                        <div class="frame-content-146_395538">
+                                          <div id="146_395539" class="Pixso-rectangle-146_395539"></div>
+                                        </div>
+                                      </div>
+                                      <div id="146_395542" class="Pixso-frame-146_395542">
+                                        <div class="frame-content-146_395542">
+                                          <div id="146_395543" class="Pixso-rectangle-146_395543"></div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div id="146_395549" class="Pixso-frame-146_395549">
+                                <div class="frame-content-146_395549">
+                                  <div id="146_395550" class="Pixso-vector-146_395550"></div>
+                                  <p id="146_395551" class="Pixso-paragraph-146_395551 fill-场景text-colorcolor-text-placeholder-14_365618-paragraph">2-20</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="146_395655" class="Pixso-frame-146_395655">
+          <div class="frame-content-146_395655">
+            <div id="146_395656" class="Pixso-frame-146_395656">
+              <div class="frame-content-146_395656">
+                <div id="146_395657" class="Pixso-frame-146_395657">
+                  <div id="146_395658" class="Pixso-frame-146_395658">
+                    <div id="146_395659" class="Pixso-group-146_395659">
+                      <div id="146_395660" class="Pixso-group-146_395660">
+                        <div id="146_395665" class="Pixso-vector-146_395665"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <p id="146_395666" class="Pixso-paragraph-146_395666 text-ohos_id_text_size_body2regular-6_250025">管理应用</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="146_395667" class="Pixso-frame-146_395667 fill-component控件背景色comp_tab_bg-14_468137">
+        <div class="frame-content-146_395667">
+          <div id="146_395668" class="Pixso-frame-146_395668">
+            <div class="frame-content-146_395668">
+              <div id="146_395669" class="Pixso-frame-146_395669">
+                <div class="frame-content-146_395669">
+                  <div id="146_395670" class="Pixso-vector-146_395670"></div>
+                </div>
+              </div>
+              <p id="146_395674" class="Pixso-paragraph-146_395674 fill-font文本色图标色font_primary-14_365583-paragraph">首页</p>
+            </div>
+          </div>
+          <div id="146_395675" class="Pixso-frame-146_395675">
+            <div class="frame-content-146_395675">
+              <div id="146_395676" class="Pixso-frame-146_395676">
+                <div class="frame-content-146_395676">
+                  <div id="146_395677" class="vector-wrapper-146_395677">
+                    <div id="146_395677" class="Pixso-vector-146_395677"></div>
+                  </div>
+                </div>
+              </div>
+              <p id="146_395681" class="Pixso-paragraph-146_395681 fill-font文本色图标色font_primary-14_365583-paragraph">商城</p>
+            </div>
+          </div>
+          <div id="146_395682" class="Pixso-frame-146_395682">
+            <div class="frame-content-146_395682">
+              <div id="146_395683" class="Pixso-frame-146_395683">
+                <div class="frame-content-146_395683">
+                  <div id="146_395684" class="Pixso-vector-146_395684"></div>
+                </div>
+              </div>
+              <p id="146_395690" class="Pixso-paragraph-146_395690 fill-brand主色brand_normal-14_468127-paragraph">营销</p>
+            </div>
+          </div>
+          <div id="146_395691" class="Pixso-frame-146_395691">
+            <div class="frame-content-146_395691">
+              <div id="146_395692" class="Pixso-frame-146_395692">
+                <div class="frame-content-146_395692">
+                  <div id="146_395693" class="Pixso-vector-146_395693"></div>
+                </div>
+              </div>
+              <p id="146_395697" class="Pixso-paragraph-146_395697 fill-font文本色图标色font_primary-14_365583-paragraph">服务</p>
+            </div>
+          </div>
+          <div id="146_395698" class="Pixso-frame-146_395698">
+            <div class="frame-content-146_395698">
+              <div id="146_395699" class="Pixso-frame-146_395699">
+                <div class="frame-content-146_395699">
+                  <div id="146_395700" class="Pixso-vector-146_395700"></div>
+                </div>
+              </div>
+              <p id="146_395704" class="Pixso-paragraph-146_395704 fill-font文本色图标色font_primary-14_365583-paragraph">我的</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+</body>
+</html>
+```
+
+# Happy Path（顺序即用户操作顺序）
+### state_1: 管理应用初始列表页状态
+- 描述: 页面顶部为状态栏与导航标题“管理应用”，底部为固定Tab栏（营销高亮）。主体区域为应用列表，每项含应用图标、名称及右侧灰色关闭开关。右上角显示“已添加应用总数”及“新增”入口按钮。
+- 实现方法: 原始 HTML 初始快照，不做改造。
+- 下一态 (trigger 应指向): state_3 (添加组件加载处理状态)
+
+### state_3: 添加组件加载处理状态
+- 描述: 底层列表页覆盖浅灰色半透明遮罩，屏幕正中央显示白色圆形加载图标，下方配“正在添加中”文字。底层列表内容可见但处于不可操作状态，底部Tab与顶部状态栏保持可见。
+- 实现方法: 模态加载层 (Modal Loading Overlay)：浅灰色半透明背景 rgba(0,0,0,0.3) 覆盖列表区；加载指示器 (Loading Indicator)：中央 48px 圆形 Spinner，下方文本 '正在添加中' (Adding in progress)。
+- 终态（无后继，不需要 trigger）
+
+# 输出要求
+为上面 2 个 state（含 state_1）各产出一项 states[]。state_1 通常无须修改（或仅注入 trigger 让用户开始流程）。最后一个 state 是终态，可以不带 trigger。
+
+直接输出 JSON。

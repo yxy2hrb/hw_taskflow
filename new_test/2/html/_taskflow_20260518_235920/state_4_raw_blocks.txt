@@ -1,0 +1,28 @@
+{
+  "state_name": "提交中过渡态",
+  "lifecycle": "persistent",
+  "injection": { "mode": "replace", "anchor": "#confirm-button" },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "Row",
+    "props": { "gap": 8, "align": "center" },
+    "children": [
+      {
+        "type": "Spinner",
+        "props": {
+          "size": 24,
+          "color": "#191919",
+          "text": ""
+        }
+      },
+      {
+        "type": "Text",
+        "props": {
+          "text": "提交中…",
+          "size": 16,
+          "color": "#999999"
+        }
+      }
+    ]
+  }
+}

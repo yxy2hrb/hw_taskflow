@@ -1,0 +1,73 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "new-overlay",
+      "anchor": "#14_884883",
+      "instruction": "在 body 直接子级末尾（#14_884883 后）新增网络异常浮层：半透明黑色遮罩层（rgba(0,0,0,0.3)）覆盖 content 区域（不覆盖顶部状态栏与底部 Tab 栏）；中央悬浮白底圆角浮层（宽300px、高160px、圆角12px、阴影0 4px 12px rgba(0,0,0,0.1)）；浮层内顶部居中显示信号中断图标（Material Icons Round 'signal-off'，32×32px，深灰#191919）；下方文字‘网络不可用，请检查连接’（字号14px，深灰#191919，行高20px）；再下方为‘重试’按钮（蓝色底#46B1E3、白色文字、圆角6px、宽80px、高32px）。",
+      "components_needed": ["Dialog", "Button", "IconButton"],
+      "icons_needed": ["signal-off"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "OverlayMask",
+    "props": {
+      "opacity": 0.3,
+      "color": "#000"
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "borderRadius": 12,
+          "width": 300,
+          "height": 160,
+          "padding": 0,
+          "shadow": "0 4px 12px rgba(0,0,0,0.1)",
+          "align": "center",
+          "justify": "center",
+          "gap": 0
+        },
+        "children": [
+          {
+            "type": "Icon",
+            "props": {
+              "name": "signal-off",
+              "size": 32,
+              "color": "#191919"
+            }
+          },
+          {
+            "type": "Text",
+            "props": {
+              "size": 14,
+              "color": "#191919",
+              "lineHeight": 20
+            },
+            "children": "网络不可用，请检查连接"
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "重试",
+              "variant": "primary",
+              "size": "compact",
+              "block": false,
+              "width": 80,
+              "height": 32,
+              "borderRadius": 6,
+              "background": "#46B1E3",
+              "color": "#FFFFFF"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

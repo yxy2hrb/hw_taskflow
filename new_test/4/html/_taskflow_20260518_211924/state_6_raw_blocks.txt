@@ -1,0 +1,24 @@
+{
+  "state_name": "项目名称冲突校验态",
+  "lifecycle": "persistent",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "Page",
+    "props": { "background": "#FFFFFF" },
+    "children": [
+      { "type": "StatusBar" },
+      { "type": "NavBar", "props": { "title": "新建项目", "leftIcon": "arrow_back" } },
+      { "type": "Column", "props": { "gap": 16, "padding": 16 }, "children": [
+        { "type": "FormField", "props": { "label": "项目名称", "required": true, "value": "", "error": "该项目名称已存在" } },
+        { "type": "FormField", "props": { "label": "所属分类", "placeholder": "请选择", "icon": "arrow_drop_down" } },
+        { "type": "Text", "props": { "text": "设备模型", "variant": "subtitle" } },
+        { "type": "Column", "props": { "background": "#F5F5F5", "borderRadius": 8, "padding": 16, "align": "center", "justify": "center" }, "children": [
+          { "type": "Icon", "props": { "name": "device_unknown", "size": 48, "color": "#BFBFBF" } },
+          { "type": "Text", "props": { "text": "设备模型加载中", "variant": "caption", "color": "#8C8C8C" } }
+        ]},
+        { "type": "Button", "props": { "label": "确定", "variant": "primary", "block": true } }
+      ]}
+    ]
+  }
+}

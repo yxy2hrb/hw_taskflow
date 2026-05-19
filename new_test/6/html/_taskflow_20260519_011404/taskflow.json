@@ -1,0 +1,43 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "工作台首页",
+    "description": "页面为移动端竖屏布局，顶部状态栏显示时间/信号/电量，底部固定 Tab 栏（含‘首页’‘工作台’‘消息’‘我’），主内容区为‘我的工作台’标题及功能图标卡片网格；其中左上角第一张卡片为‘快速入门’按钮，含蓝色图标与居中黑体文字，背景为浅灰圆角矩形。",
+    "implementation_method": "原始 HTML 初始快照，不做改造"
+  },
+  {
+    "state_id": 2,
+    "state_name": "快速入门页全屏浮层",
+    "description": "原工作台页面整体变为半透明遮罩（opacity:0.4，背景色 rgba(243,243,243,1)），正中悬浮一张宽360px、高自动适配的白色圆角卡片（border-radius:12px，box-shadow:0 4px 12px rgba(0,0,0,0.08)）；卡片内顶部为聚焦态搜索框（高44px，浅灰边框，内嵌灰色‘搜索...’占位符文字，字体14px HarmonyHeiTi-Regular）；下方水平排列四枚标签（宽72px×高32px，浅蓝底#46B1E3、白字、圆角16px、等距居中）；再下方垂直排列7条入门条目（每条高56px，左对齐，含产品图标+中文标题+右侧‘查看’按钮，按钮为蓝底白字，圆角8px，字体14px Medium）。",
+    "implementation_method": "全屏蒙层+居中卡片 (Overlay + Centered Card)：背景遮罩为原工作台页面整体 opacity:0.4；居中卡片宽360px，白色填充，border-radius:12px，box-shadow:0 4px 12px rgba(0,0,0,0.08)；搜索框 placeholder '搜索...'（中文）、font-size:14px、color:rgba(0,0,0,0.4)；四标签文案分别为'文档中心'、'API接入'、'部署指南'、'常见问题'（中英文均不显示，仅中文）；7条条目标题如'WPS Office 快速上手'、'金山词霸 API 接入说明'等；每条右侧‘查看’按钮文案为'查看'（中文），无英文。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "文档详情页",
+    "description": "纯白背景，顶部固定标题栏高度48px，左侧返回箭头图标（深灰#191919），中间居中显示产品文档标题（如'WPS Office 快速上手'，16px HarmonyHeiTi-Medium，#191919），右侧无操作按钮；正文区域为图文混排段落，首段为加粗引导语，后续含步骤编号列表、代码块（浅灰底#F5F5F5、等宽字体）、截图缩略图（宽100%、高自适应、圆角4px）；页面底部固定‘返回工作台’按钮（蓝底#46B1E3、白字、高44px、圆角8px、居中铺满宽度）。",
+    "implementation_method": "独立文档页 (Standalone Doc Page)：顶部标题栏 height:48px，background:white，border-bottom:1px solid #EEEEEE；标题文字 'WPS Office 快速上手'（中文）、font-size:16px、font-weight:Medium；正文段落 line-height:20px、font-size:14px、color:#191919；代码块 background:#F5F5F5、padding:12px、font-family:'SF Mono','Consolas',monospace；截图区域 img width:100%、border-radius:4px；底部按钮文案 '返回工作台'（中文），无英文。",
+    "last_state": 2
+  },
+  {
+    "state_id": 4,
+    "state_name": "加载中过渡态",
+    "description": "原工作台页面整体变为半透明遮罩（opacity:0.4），正中悬浮一张宽360px白色圆角卡片（border-radius:12px），卡片内无搜索框、无标签、无条目；卡片中央显示一个32px直径的环形 spinner（stroke:#46B1E3、stroke-width:2.5px、浅灰底圆环、CSS animation:hmspin 1s linear infinite）；顶部状态栏与底部 Tab 完整可见，无其他文字或图标。",
+    "implementation_method": "全屏灰色骨架屏 (Skeleton Screen)：遮罩同 state_2；居中卡片同 state_2；内部仅含一个 32px 圆环 spinner，stroke:#46B1E3，stroke-width:2.5px，background:radial-gradient(circle, #F5F5F5 0%, #F5F5F5 70%, transparent 70%)，animation:hmspin 1s linear infinite；无任何文本、无标签、无条目、无搜索框。",
+    "last_state": 1
+  },
+  {
+    "state_id": 5,
+    "state_name": "网络失败页",
+    "description": "原工作台页面整体变为半透明遮罩（opacity:0.4），正中悬浮一张宽360px白色圆角卡片（border-radius:12px）；卡片顶部为红色感叹号图标（24px×24px，#FF6B6B），下方居中标题‘连接失败’（16px HarmonyHeiTi-Medium，#191919），再下方正文‘请检查网络后重试’（14px HarmonyHeiTi-Regular，#666666）；卡片底部居中一个大号‘重试’按钮（蓝底#46B1E3、白字、高48px、圆角8px、宽240px）；右上角有关闭叉图标（16px×16px，#999999，绝对定位 top:16px right:16px）。",
+    "implementation_method": "全屏蒙层弹窗 (Modal/Dialog)：遮罩同 state_2；卡片宽360px、white、border-radius:12px；顶部图标为 SVG 感叹号（fill:#FF6B6B）；标题 '连接失败'（中文）、font-size:16px；正文 '请检查网络后重试'（中文）、font-size:14px、color:#666666；按钮文案 '重试'（中文）、width:240px、height:48px；关闭叉 icon size:16px、fill:#999999、position:absolute top:16px right:16px。",
+    "last_state": 1
+  },
+  {
+    "state_id": 6,
+    "state_name": "权限不足提示",
+    "description": "原工作台页面完整可见（无遮罩），‘快速入门’按钮仍处于原位置；在某一条入门条目的‘查看’按钮正上方 8px 处，悬浮一个三角底小白气泡（宽140px、高32px、border-radius:6px、background:white、box-shadow:0 2px 6px rgba(0,0,0,0.08)）；气泡内居中显示文字‘暂无权限访问’（14px HarmonyHeiTi-Regular，#191919），气泡尖角指向该按钮中心；无其他动画、无自动消失效果，画面静止呈现此状态。",
+    "implementation_method": "轻量气泡提示 (Tooltip)：气泡 position:absolute，top: [按钮top - 40px]，left: [按钮left + 按钮width/2 - 70px]；气泡 background:white，border-radius:6px，width:140px，height:32px，box-shadow:0 2px 6px rgba(0,0,0,0.08)；内部文字 '暂无权限访问'（中文）、font-size:14px、color:#191919；气泡底部三角为 before 伪元素，border:6px solid transparent，border-top-color:white，top:100%，left:50%，transform:translateX(-50%)；无任何 timeout 或 fade-out 属性。",
+    "last_state": 2
+  }
+]

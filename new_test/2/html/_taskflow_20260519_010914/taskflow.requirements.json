@@ -1,0 +1,44 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "我的工作台首页",
+    "description": "页面为移动端全屏布局，顶部状态栏显示时间/信号/电量，底部固定 Tab 导航栏（含‘工作台’高亮选中态），中部为工作台内容区；‘创建项目集’按钮位于页面中部偏下位置，为白色底色、红色边框、16px 加粗黑字，居中水平排列，上下留白充分。",
+    "implementation_method": "原始 HTML 初始快照，不做改造",
+    "last_state": null
+  },
+  {
+    "state_id": 2,
+    "state_name": "创建项目集全屏页初始态",
+    "description": "全屏覆盖工作台页面，顶部状态栏与底部 Tab 导航栏完整保留且可见；页面主体为白色圆角卡片（宽360px，高约792px），居中垂直铺满，背景为浅灰透明毛玻璃（backdrop-filter: blur(24px)，rgba(245,245,245,0.8)）；卡片顶部居中显示黑色16px加粗标题‘创建项目集’；中部为名称输入框（带灰色占位符‘请输入项目集名称’）、下方并排两个单选按钮‘公司’和‘个人’（左侧圆点未选中，文字深灰#191919），再下方为‘添加项目’区域（浅灰虚线边框矩形框，内含灰色加号图标+‘点击添加项目’提示文字）；底部固定红色实心按钮‘确认’（宽100%，高52px，#E53935底色，白色16px加粗字）。",
+    "implementation_method": "全屏覆盖层 (Overlay + Card Layout)：白色圆角卡片（宽360px，高792px，背景 rgba(245,245,245,0.8)，backdrop-filter: blur(24px)）；顶部标题 '创建项目集'（16px HarmonyHeiTi-Medium，#191919）；名称输入框 placeholder='请输入项目集名称'（14px，#999）；单选按钮组含 '公司' 和 '个人'（14px，#191919，未选中时左侧圆点为空心灰色）；添加项目区为浅灰虚线矩形（#E0E0E0，2px dashed），内含 '+' 图标（18px，#999）及文字 '点击添加项目'（14px，#999）；底部按钮 '确认'（100%宽，52px高，#E53935背景，白色16px加粗字）。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "创建项目集校验失败态",
+    "description": "页面结构与 state_2 完全一致，但名称输入框下方新增一行红色14px文字‘请输入项目集名称’；属性单选按钮组右侧（或下方紧邻处）新增红色14px提示‘所选项目与属性不匹配’；‘确认’按钮变为灰色不可点击态（#BDBDBD背景，#999文字，无交互反馈）；其余所有元素（状态栏、Tab、卡片背景、标题、输入框、加号区域）保持原样不变。",
+    "implementation_method": "表单错误提示叠加 (Form Validation Overlay)：名称输入框下方红色文字 '请输入项目集名称'（14px，#E53935）；属性单选旁红色文字 '所选项目与属性不匹配'（14px，#E53935）；确认按钮背景 #BDBDBD，文字 #999，pointer-events: none；其他所有元素与 state_2 完全一致，无遮罩、无动画、无DOM移除。",
+    "last_state": 2
+  },
+  {
+    "state_id": 4,
+    "state_name": "创建项目集提交中过渡态",
+    "description": "页面结构与 state_2 完全一致，但‘确认’按钮内部替换为灰色环形加载动画（32px直径，stroke #999，stroke-width=2，CSS animation: hmspin 1s linear infinite），按钮文字由‘确认’变为‘确认中…’（16px白色加粗字，居中）；按钮仍保持可点击外观但 pointer-events: none；输入框、单选按钮、添加项目区均静止无变化；顶部状态栏与底部 Tab 完整可见，无遮罩层。",
+    "implementation_method": "按钮内嵌加载指示 (Button Inline Spinner)：确认按钮内嵌 32px 环形 spinner（stroke #999，stroke-width=2，animation: hmspin 1s linear infinite），文字 '确认中…'（16px white bold）；button 元素添加 pointer-events: none；其余所有 UI 元素与 state_2 完全一致，无新增浮层、无遮罩、无DOM删除。",
+    "last_state": 2
+  },
+  {
+    "state_id": 5,
+    "state_name": "创建项目集成功态",
+    "description": "页面结构与 state_1（我的工作台首页）完全一致，顶部状态栏下方 16px 处悬浮一条 100% 宽浅绿色横条（#4CAF50，高度44px），横条内居中显示白色16px加粗文字‘创建成功’及左侧绿色对勾图标（20px×20px）；横条不遮挡状态栏与工作台内容，底部 Tab 正常可见；‘创建项目集’按钮恢复为 state_1 的原始样式（白色底、红色边框、黑字）；无任何弹窗、抽屉或遮罩。",
+    "implementation_method": "轻量级提示 (Toast/Snackbar)：顶部状态栏下方 16px 处 100% 宽浅绿色横条（#4CAF50，高44px），内含绿色对勾图标（20px×20px，#FFFFFF）+ 文字 '创建成功'（16px HarmonyHeiTi-Medium，white，bold）；横条为独立 div 层级，z-index 高于内容但低于状态栏；画面其余部分与 last_state（state_1）完全一致，无需修改任何 DOM 结构。",
+    "last_state": 1
+  },
+  {
+    "state_id": 6,
+    "state_name": "创建项目集取消返回态",
+    "description": "页面结构与 state_1（我的工作台首页）完全一致，顶部状态栏显示时间/信号/电量，底部 Tab 导航栏‘工作台’处于高亮选中态，中部工作台内容区正常渲染，‘创建项目集’按钮为白色底色、红色边框、16px 加粗黑字，居中水平排列，上下留白充分；无任何浮层、Toast、遮罩、输入框残留或临时状态痕迹。",
+    "implementation_method": "画面与 last_state（state_1）完全一致；base 已是关闭后的样子，无需任何 DOM 改造。",
+    "last_state": 1
+  }
+]

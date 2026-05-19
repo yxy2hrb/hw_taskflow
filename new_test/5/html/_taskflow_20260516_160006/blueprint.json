@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "title": "进入虚拟体验项目",
+    "slug": "enter-virtual-experience-project",
+    "user_story": "已登录的企业管理员在‘我的工作台’点击‘我的体验项目’入口，快速进入指定虚拟体验项目 → 系统加载拓扑图与实时指标 → 用户浏览设备分布与Wi-Fi评分后离开 → 页面顶部导航显示‘虚拟体验项目’且返回图标可点击，拓扑图完整渲染、所有统计卡片数值非空且刷新时间戳可见",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "我的工作台主页面",
+      "description": "用户停留在‘我的工作台’主页面，顶部状态栏显示时间、信号强度与4G/WiFi图标，底部Tab栏含‘首页’‘工作台’‘消息’‘我的’四个标签，当前高亮‘工作台’；页面中央区域为网格布局，其中‘我的体验项目’入口卡片清晰可见，含标题文字、右侧箭头图标及浅灰分割线。",
+      "implementation_method": "原始 HTML 初始快照，不做改造。",
+      "last_state": null
+    },
+    {
+      "state_id": 2,
+      "state_name": "体验项目弹窗列表态",
+      "description": "半透明黑色遮罩（rgba(0,0,0,0.5)）覆盖全屏，背景中‘我的工作台’主页面内容模糊可见（包括顶部状态栏、底部Tab栏及网格卡片），遮罩正中悬浮白色圆角弹窗卡片（宽340px、高560px），顶部居中显示‘我的体验项目’标题（16px Medium字体，#191919），下方为垂直滚动列表，每张卡片含左侧图标、项目名称（14px Regular）、右对齐‘2小时前’类更新时间（12px Regular，#666），无底部按钮或操作区。",
+      "implementation_method": "浮层式弹窗 (Modal/Dialog)：半透明黑色遮罩 rgba(0,0,0,0.5) 覆盖全屏；居中白色卡片（#FFFFFF，圆角12px，宽340px，高560px）；顶部标题 '我的体验项目'（class='text-单行行高headline标题headline_s-14_365549'）；列表项共5条，每项含左侧图标（16×16px）、项目名文本（class='text-ohos_id_text_size_body2regular-14_886008'）、更新时间文本（class='text-fontbody_sregular-14_365555'，颜色 rgba(0,0,0,0.5)）；无遮罩外点击关闭逻辑的视觉表现。",
+      "last_state": 1
+    },
+    {
+      "state_id": 3,
+      "state_name": "全屏项目加载中态",
+      "description": "页面整体为纯白背景，顶部状态栏与底部Tab栏正常可见且未被遮挡；顶部导航栏固定显示‘虚拟体验项目’标题（16px Medium，#191919），左侧返回图标（24×24px黑色箭头SVG）、右侧依次为搜索放大镜图标（20×20px）、铃铛通知图标（20×20px）、加号图标（20×20px）；下方内容区：拓扑图区域显示三段灰色波浪线（高12px，色值 rgba(0,0,0,0.08)）与两个浅灰圆形节点（直径24px，色值 rgba(0,0,0,0.12)）；Wi-Fi评分区为两行浅灰横条（高14px，色值 rgba(0,0,0,0.08)）；设备与终端统计双卡片各为等宽浅灰矩形（高72px，色值 rgba(0,0,0,0.08)）；业务网管理模块为四块等宽浅灰矩形（高48px，色值 rgba(0,0,0,0.08)）。",
+      "implementation_method": "全白骨架屏 (Skeleton Screen)：顶部导航栏固定定位，含标题 '虚拟体验项目'、左侧返回图标（<svg> path fill='#000000'）、右侧搜索图标（<svg> path fill='#000000'）、通知图标（<svg> path fill='#000000'）、加号图标（<svg> path fill='#000000'）；拓扑图区：三条水平浅灰波浪线（class='skeleton-wave'，height:12px，background:rgba(0,0,0,0.08)）+ 两个浅灰圆点（width:24px, height:24px, background:rgba(0,0,0,0.12), border-radius:50%）；Wi-Fi评分区：两行浅灰横条（height:14px, background:rgba(0,0,0,0.08)）；统计卡片区：左右并列两块浅灰矩形（width:48%, height:72px, background:rgba(0,0,0,0.08)）；业务模块区：四块等宽浅灰矩形（width:24%, height:48px, background:rgba(0,0,0,0.08)）。",
+      "last_state": 1
+    },
+    {
+      "state_id": 4,
+      "state_name": "虚拟体验项目终态",
+      "description": "页面顶部状态栏与底部Tab栏正常可见；顶部导航栏固定显示‘虚拟体验项目’标题（16px Medium，#191919），左侧返回图标（24×24px黑色箭头SVG）、右侧依次为搜索放大镜图标（20×20px）、铃铛通知图标（20×20px）、加号图标（20×20px）；下方依次为：设备拓扑图（6个带标签的深蓝圆形节点（#46B1E3，直径32px，标签文字12px Regular #191919）、节点间带箭头连线）；Wi-Fi评分卡片（顶部分数‘86’（24px Bold #191919）、中部文字‘信号良好’（14px Regular #666）、底部运行时长‘运行 2天 4小时’（12px Regular #999））；设备与终端统计双卡片（左卡标题‘设备总数’、数值‘24’、单位‘台’；右卡标题‘在线终端’、数值‘137’、单位‘个’；均使用14px Regular字体，数值色#191919，单位色#666）；业务网管理与访问控制模块（含开关控件（on/off状态可见）、‘业务网管理’标题（14px Medium）、‘访问控制策略’子标题（12px Regular）、开关右侧文字‘已启用’（12px Regular #46B1E3））。",
+      "implementation_method": "全屏页面 (Full Page View)：顶部导航栏固定定位，标题 '虚拟体验项目'（class='text-单行行高headline标题headline_s-14_365549'）；返回图标（<svg id='146_139210'>）、搜索图标（<svg id='146_139211'>）、通知图标（<svg id='146_139212'>）、加号图标（<svg id='146_139213'>）；拓扑图区：6个圆形节点（class='Pixso-vector-146_139214'至'146_139219'，fill='#46B1E3'，直径32px）+ 连线（<path stroke='#46B1E3' stroke-width='2'）+ 标签文字（class='text-fontbody_sregular-14_365555'）；Wi-Fi评分区：分数 '86'（class='text-ohos_id_text_size_body2regular-14_886008'，font-weight:Bold）、描述 '信号良好'（class='text-fontbody_sregular-14_365555'）、运行时长 '运行 2天 4小时'（class='text-fontbody_sregular-14_365555'，color:rgba(0,0,0,0.6)）；统计卡片区：左卡含文字 '设备总数'（class='text-fontbody_sregular-14_365555'）、'24'（class='text-ohos_id_text_size_body2regular-14_886008'）、'台'（class='text-fontbody_sregular-14_365555'）；右卡含 '在线终端'、'137'、'个'；业务模块区：标题 '业务网管理'（class='text-单行行高headline标题headline_s-14_365549'）、子标题 '访问控制策略'（class='text-fontbody_sregular-14_365555'）、开关控件（<div class='Pixso-group-146_139278'>内含两个状态SVG）、文字 '已启用'（class='fill-info信息色info_1-14_365554-paragraph'）。",
+      "last_state": 1
+    },
+    {
+      "state_id": 5,
+      "state_name": "数据加载失败态",
+      "description": "页面顶部状态栏与底部Tab栏正常可见；顶部导航栏固定显示‘虚拟体验项目’标题（16px Medium，#191919），左侧返回图标（24×24px黑色箭头SVG）、右侧依次为搜索放大镜图标（20×20px）、铃铛通知图标（20×20px）、加号图标（20×20px）；下方内容区：拓扑图区域显示灰色‘暂无数据’图标（24×24px，#999）与下方文字‘网络未连接，请检查设备状态’（14px Regular，#666）；Wi-Fi评分卡片显示分数‘—’（24px Bold #999）、描述‘—’（14px Regular #999）、运行时长‘—’（12px Regular #999）；设备与终端统计双卡片均显示‘—’（14px Regular #999）及浅灰色占位边框（border:1px solid rgba(0,0,0,0.1)）；业务网管理模块显示禁用状态开关（灰色填充SVG）与文字‘数据加载失败’（12px Regular #F5222D）。",
+      "implementation_method": "全屏错误页 (Error Page)：顶部导航栏同 state_4；拓扑图区：图标 '暂无数据'（<svg id='146_139220' fill='#999'>）、文字 '网络未连接，请检查设备状态'（class='text-fontbody_sregular-14_365555'，color:rgba(0,0,0,0.6)）；Wi-Fi评分区：'—'（class='text-ohos_id_text_size_body2regular-14_886008'，color:#999）、'—'（class='text-fontbody_sregular-14_365555'，color:#999）、'—'（class='text-fontbody_sregular-14_365555'，color:#999）；统计卡片区：左右卡片均含 '—'（class='text-ohos_id_text_size_body2regular-14_886008'，color:#999）+ 浅灰边框（style='border:1px solid rgba(0,0,0,0.1)'）；业务模块区：开关SVG fill='#CCCCCC' + 文字 '数据加载失败'（class='text-fontbody_sregular-14_365555'，color:#F5222D）。",
+      "last_state": 1
+    },
+    {
+      "state_id": 6,
+      "state_name": "弹窗取消回主页态",
+      "description": "画面与‘我的工作台主页面’完全一致：顶部状态栏显示时间、信号强度与4G/WiFi图标，底部Tab栏含‘首页’‘工作台’‘消息’‘我的’四个标签，当前高亮‘工作台’；页面中央网格布局完整呈现，‘我的体验项目’入口卡片清晰可见，含标题文字、右侧箭头图标及浅灰分割线；无任何遮罩、弹窗、浮层或半透明覆盖。",
+      "implementation_method": "画面与 last_state（state_1）完全一致；base 已是关闭后的样子，无需任何 DOM 改造。",
+      "last_state": 1
+    }
+  ]
+}

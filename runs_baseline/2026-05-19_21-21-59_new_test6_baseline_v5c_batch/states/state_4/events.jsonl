@@ -1,0 +1,8 @@
+{"event":"state-start","data":{"state_id":4,"state_name":"快速入门就绪态","last_state":1,"ts":1779225920893},"ts":"2026-05-19T21:25:20.896Z"}
+{"event":"state-log","data":{"state_id":4,"msg":"[baseline] HM_BASELINE_ENABLED=1，走 baseline 一锤子路径（跳过 twoPhase / DSL / legacy）","ts":1779225920893},"ts":"2026-05-19T21:25:20.897Z"}
+{"event":"state-log","data":{"state_id":4,"msg":"[baseline] 启动 state_4 「快速入门就绪态」","ts":1779225920893},"ts":"2026-05-19T21:25:20.897Z"}
+{"event":"state-log","data":{"state_id":4,"msg":"[baseline-pre] 删除空白半透明遮罩节点 7 个","ts":1779225920894},"ts":"2026-05-19T21:25:20.897Z"}
+{"event":"state-log","data":{"state_id":4,"msg":"[baseline] prompt 28.5KB lang=zh prevHtml=84.3KB->stripped 22.1KB","ts":1779225920895},"ts":"2026-05-19T21:25:20.897Z"}
+{"event":"state-log","data":{"state_id":4,"msg":"[baseline] LLM 第 1 次返回空，重试（temp=0.2）","ts":1779225962189},"ts":"2026-05-19T21:26:02.192Z"}
+{"event":"state-log","data":{"state_id":4,"msg":"[baseline] LLM 第 2 次返回空，重试（temp=0.5）","ts":1779225994838},"ts":"2026-05-19T21:26:34.838Z"}
+{"event":"state-fail","data":{"state_id":4,"error":"LLM 返回空","elapsed_ms":73945,"ts":1779225994838},"ts":"2026-05-19T21:26:34.838Z"}

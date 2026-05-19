@@ -1,0 +1,22 @@
+{
+  "state_name": "取消创建返回工作台",
+  "lifecycle": "temporary",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "FullscreenPanel",
+    "props": { "background": "transparent" },
+    "children": [
+      {
+        "type": "OverlayMask",
+        "props": { "opacity": 0.4, "color": "#000", "blur": 0 },
+        "children": [
+          {
+            "type": "Spinner",
+            "props": { "size": 42, "text": "正在返回..." }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "state_id": 5,
+  "state_name": "创建项目集成功终态",
+  "description": "页面结构与 state_2 完全一致，顶部状态栏下方16px处固定显示绿色Toast条（宽自适应、高40px、背景#F6FFED、圆角6px、左侧绿色勾选图标+文字‘创建成功’，文字14px#52C418，无关闭按钮）；底部红色按钮、名称输入框、胶囊按钮组、项目添加区全部保持原状，无遮罩、无加载图标、无错误提示。",
+  "implementation_method": "轻量级提示 (Toast/Snackbar)：顶部状态栏下方16px处固定绿色Toast条（背景#F6FFED，圆角6px，左侧绿色勾选图标 + 文字‘创建成功’）；其余所有控件与 state_2 完全一致，无任何 DOM 改动。",
+  "last_state": 2,
+  "applied": 1,
+  "skipped": 0,
+  "elapsed_ms": 80201,
+  "failed": false,
+  "error": null
+}

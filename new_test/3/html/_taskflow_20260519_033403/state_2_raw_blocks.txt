@@ -1,0 +1,289 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "new-overlay",
+      "anchor": "#14_884367",
+      "instruction": "在 body 直接子级末尾插入内嵌弹窗浮层：顶部与状态栏下沿齐平、底部与 Tab 栏上沿齐平；内部为垂直滚动卡片列表（flex-column）；每张卡片宽 100%、高 88px、白底、1px 浅灰底边；左起依次为项目名称（16px 加粗黑字，HarmonyHeiTi-Medium）、创建时间（12px 灰字，HarmonyHeiTi-Regular，opacity=0.6）、设备类型与数量（如‘AP×3, 终端×12’，12px 灰字，HarmonyHeiTi-Regular，opacity=0.6）、状态标签（圆角矩形，蓝底白字‘运行中’或灰底白字‘已停止’，使用 fill-info信息色info_1-14_365554-paragraph 类）；右侧为操作按钮图标（三个点竖排图标，深灰，居中对齐，使用 Pixso-vector-146_139248 类）；无遮罩；所有文本使用 HarmonyHeiTi, 'HarmonyOS Sans', sans-serif 字体；禁止使用 Emoji，图标统一用 <span class=\"mi\" style=\"font-size:20px;color:rgba(0,0,0,0.8);\">more_vert</span> 表示三点图标。",
+      "components_needed": ["Card", "Column", "Row"],
+      "icons_needed": ["more_vert"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "position": "fixed",
+      "top": 32,
+      "bottom": 56,
+      "left": 0,
+      "right": 0,
+      "background": "#FFFFFF",
+      "padding": [0, 0],
+      "gap": 0,
+      "width": "100%",
+      "maxWidth": "100%",
+      "overflowY": "scroll",
+      "zIndex": 10000
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "gap": 0
+        },
+        "children": [
+          {
+            "type": "Row",
+            "props": {
+              "height": 88,
+              "align": "center",
+              "justify": "space-between",
+              "padding": [0, 16],
+              "background": "#FFFFFF",
+              "borderBottom": "1px solid rgba(0,0,0,0.10)"
+            },
+            "children": [
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 4,
+                  "align": "start"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 16,
+                      "weight": 500,
+                      "color": "rgba(0,0,0,0.90)",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "项目工作台"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 12,
+                      "weight": 400,
+                      "color": "rgba(0,0,0,0.60)",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "2024-06-12 09:30"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 12,
+                      "weight": 400,
+                      "color": "rgba(0,0,0,0.60)",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "AP×3, 终端×12"
+                  }
+                ]
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 0,
+                  "align": "center"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 12,
+                      "weight": 500,
+                      "color": "#FFFFFF",
+                      "background": "#0A59F7",
+                      "borderRadius": 8,
+                      "padding": [4, 12],
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "运行中"
+                  }
+                ]
+              },
+              {
+                "type": "Icon",
+                "props": {
+                  "name": "more_vert",
+                  "size": 20,
+                  "color": "rgba(0,0,0,0.80)"
+                }
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "height": 88,
+              "align": "center",
+              "justify": "space-between",
+              "padding": [0, 16],
+              "background": "#FFFFFF",
+              "borderBottom": "1px solid rgba(0,0,0,0.10)"
+            },
+            "children": [
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 4,
+                  "align": "start"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 16,
+                      "weight": 500,
+                      "color": "rgba(0,0,0,0.90)",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "团队工作台"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 12,
+                      "weight": 400,
+                      "color": "rgba(0,0,0,0.60)",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "2024-06-10 14:22"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 12,
+                      "weight": 400,
+                      "color": "rgba(0,0,0,0.60)",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "AP×1, 终端×8"
+                  }
+                ]
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 0,
+                  "align": "center"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 12,
+                      "weight": 500,
+                      "color": "#FFFFFF",
+                      "background": "#999999",
+                      "borderRadius": 8,
+                      "padding": [4, 12],
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "已停止"
+                  }
+                ]
+              },
+              {
+                "type": "Icon",
+                "props": {
+                  "name": "more_vert",
+                  "size": 20,
+                  "color": "rgba(0,0,0,0.80)"
+                }
+              }
+            ]
+          },
+          {
+            "type": "Row",
+            "props": {
+              "height": 88,
+              "align": "center",
+              "justify": "space-between",
+              "padding": [0, 16],
+              "background": "#FFFFFF"
+            },
+            "children": [
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 4,
+                  "align": "start"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 16,
+                      "weight": 500,
+                      "color": "rgba(0,0,0,0.90)",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "个人工作台"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 12,
+                      "weight": 400,
+                      "color": "rgba(0,0,0,0.60)",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "2024-06-08 11:05"
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 12,
+                      "weight": 400,
+                      "color": "rgba(0,0,0,0.60)",
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "AP×2, 终端×5"
+                  }
+                ]
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "gap": 0,
+                  "align": "center"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "props": {
+                      "size": 12,
+                      "weight": 500,
+                      "color": "#FFFFFF",
+                      "background": "#0A59F7",
+                      "borderRadius": 8,
+                      "padding": [4, 12],
+                      "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+                    },
+                    "children": "运行中"
+                  }
+                ]
+              },
+              {
+                "type": "Icon",
+                "props": {
+                  "name": "more_vert",
+                  "size": 20,
+                  "color": "rgba(0,0,0,0.80)"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": ["#14_884197", "#14_884214", "#14_884324", "#14_884368"],
+      "replace_at": "#14_884197",
+      "instruction": "将整个页面容器替换为网络加载失败页：背景色#fff5f5；顶部导航栏保留左侧返回图标（24×24px灰色箭头）、居中文字'虚拟体验项目'（16px Medium、深灰#191919）、右侧仅保留返回图标（无搜索/通知/加号）；导航栏下方中央区域：红色感叹号图标（48×48px、#e74c3c）、主标题'数据加载失败'（18px Medium、深灰#191919）、副标题'请检查网络后重试'（14px Regular、灰#666）；下方两个按钮水平居中：左侧'重试'（主色#46b1e3、白字、圆角6px、宽120px）、右侧'返回工作台'（#46b1e3边框、1px、白字、圆角6px、宽120px）；底部Tab栏完全隐藏（不渲染）。",
+      "components_needed": ["Button"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "background": "#FFF5F5",
+      "width": "100%",
+      "height": "100%",
+      "gap": 0,
+      "align": "stretch"
+    },
+    "children": [
+      {
+        "type": "Row",
+        "props": {
+          "background": "#FFFFFF",
+          "height": 56,
+          "padding": [0, 16],
+          "align": "center",
+          "justify": "space-between"
+        },
+        "children": [
+          {
+            "type": "Icon",
+            "props": {
+              "name": "arrow_back",
+              "size": 24,
+              "color": "rgba(0,0,0,0.60)"
+            }
+          },
+          {
+            "type": "Text",
+            "props": {
+              "variant": "body",
+              "size": 16,
+              "weight": 500,
+              "color": "#191919",
+              "align": "center"
+            },
+            "children": "虚拟体验项目"
+          },
+          {
+            "type": "Icon",
+            "props": {
+              "name": "arrow_back",
+              "size": 24,
+              "color": "rgba(0,0,0,0.60)"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "gap": 24,
+          "padding": 32,
+          "align": "center",
+          "justify": "center",
+          "flex": 1
+        },
+        "children": [
+          {
+            "type": "Icon",
+            "props": {
+              "name": "error",
+              "size": 48,
+              "color": "#E74C3C"
+            }
+          },
+          {
+            "type": "Text",
+            "props": {
+              "variant": "subtitle",
+              "size": 18,
+              "weight": 500,
+              "color": "#191919"
+            },
+            "children": "数据加载失败"
+          },
+          {
+            "type": "Text",
+            "props": {
+              "variant": "caption",
+              "size": 14,
+              "weight": 400,
+              "color": "#666"
+            },
+            "children": "请检查网络后重试"
+          },
+          {
+            "type": "Row",
+            "props": {
+              "gap": 12,
+              "justify": "center"
+            },
+            "children": [
+              {
+                "type": "Button",
+                "props": {
+                  "label": "重试",
+                  "variant": "primary",
+                  "size": "regular",
+                  "block": false,
+                  "width": 120,
+                  "borderRadius": 6,
+                  "background": "#46B1E3",
+                  "color": "#FFFFFF"
+                }
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "返回工作台",
+                  "variant": "secondary",
+                  "size": "regular",
+                  "block": false,
+                  "width": 120,
+                  "borderRadius": 6,
+                  "border": "1px solid #46B1E3",
+                  "color": "#FFFFFF"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

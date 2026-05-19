@@ -1,0 +1,8 @@
+{
+  "startedAt": "2026-05-19T21:21:57.498Z",
+  "sourceDir": "new_test/4/html",
+  "htmlPath": "new_test\\4\\html\\Index.html",
+  "htmlBytes": 98983,
+  "briefFile": "new_test/4/input.txt",
+  "brief": "用户在“我的工作台”页面点击“体验运维流程”按钮→进入全屏页，保留状态栏与底Tab→左侧填写预设的项目场景和项目名称，右侧显示三维设备模型→点击蓝色“确定”按钮提交→创建成功时提示“创建成功”，失败时提示“创建失败，请重试”。"
+}

@@ -1,0 +1,12 @@
+{
+  "state_id": 5,
+  "state_name": "弹窗取消态",
+  "description": "画面与state_2完全一致：顶部固定标题栏含返回箭头与'管理应用'文字；下方灰色小字'已添加X个'；主体为垂直滚动列表，每项含左对齐图标、应用名、右对齐开关控件（全部保持取消前一刻的状态）；底部Tab导航栏完整可见；无遮罩、无弹窗、无Toast、无任何浮层或过渡残留。",
+  "implementation_method": "画面与 last_state（state_2）完全一致；base 已是关闭后的样子，无需任何 DOM 改造。",
+  "last_state": 2,
+  "applied": 1,
+  "skipped": 0,
+  "elapsed_ms": 118862,
+  "failed": false,
+  "error": null
+}

@@ -1,0 +1,137 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": ["#14_807584", "#14_807630"],
+      "replace_at": "#14_807584",
+      "instruction": "将顶部导航区替换为左向箭头图标（24×24px，黑色）+ 右侧标题‘创建项目集’（16px、HarmonyHeiTi-Medium、#191919）；将原项目开局卡片区域（#14_807630）整体替换为居中白色卡片（宽320px、圆角12px、阴影轻微），内含：上方标题‘创建项目集’（16px）、名称输入框（占位符‘请输入项目集名称’、浅灰边框、高48px）、‘公司/个人’单选组（两个并排圆角矩形按钮，未选中时浅灰#F5F5F5，选中时深红#E53935，文字分别为‘公司’‘个人’，14px）、下方项目添加区（灰色虚线边框方框，内含‘+ 添加项目’文字，14px、#999）、底部红色实心按钮（宽100%、高52px、#E53935、白字‘确认’、圆角8px）",
+      "components_needed": ["TextInput", "Radio", "Button"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "gap": 24,
+      "padding": 24,
+      "background": "#FFFFFF",
+      "borderRadius": 12,
+      "width": 320,
+      "shadow": true,
+      "align": "stretch"
+    },
+    "children": [
+      {
+        "type": "Text",
+        "props": {
+          "variant": "subtitle",
+          "size": 16,
+          "weight": "500",
+          "color": "#191919",
+          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+        },
+        "children": "创建项目集"
+      },
+      {
+        "type": "FormField",
+        "props": {
+          "label": "",
+          "placeholder": "请输入项目集名称",
+          "value": "",
+          "size": "regular",
+          "invalid": false
+        }
+      },
+      {
+        "type": "Text",
+        "props": {
+          "variant": "caption",
+          "size": 14,
+          "color": "rgba(0,0,0,0.60)",
+          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+        },
+        "children": "公司/个人"
+      },
+      {
+        "type": "Row",
+        "props": {
+          "gap": 8,
+          "wrap": false
+        },
+        "children": [
+          {
+            "type": "Button",
+            "props": {
+              "label": "公司",
+              "variant": "secondary",
+              "size": "compact",
+              "background": "#F5F5F5",
+              "color": "#191919",
+              "borderRadius": 8,
+              "height": 32,
+              "fontSize": 14,
+              "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+            }
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "个人",
+              "variant": "secondary",
+              "size": "compact",
+              "background": "#F5F5F5",
+              "color": "#191919",
+              "borderRadius": 8,
+              "height": 32,
+              "fontSize": 14,
+              "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "border": "1px dashed rgba(0,0,0,0.10)",
+          "borderRadius": 8,
+          "padding": 16,
+          "align": "center",
+          "justify": "center",
+          "background": "transparent"
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "variant": "caption",
+              "size": 14,
+              "color": "#999999",
+              "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+            },
+            "children": "+ 添加项目"
+          }
+        ]
+      },
+      {
+        "type": "Button",
+        "props": {
+          "label": "确认",
+          "variant": "primary",
+          "size": "large",
+          "background": "#E53935",
+          "color": "#FFFFFF",
+          "borderRadius": 8,
+          "height": 52,
+          "fontSize": 16,
+          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif",
+          "weight": "500"
+        }
+      }
+    ]
+  }
+}

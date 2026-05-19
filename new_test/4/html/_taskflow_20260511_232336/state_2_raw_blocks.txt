@@ -1,0 +1,27 @@
+{
+  "state_name": "全屏运维表单页",
+  "lifecycle": "persistent",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": false,
+  "tree": {
+    "type": "Page",
+    "props": { "background": "#FFFFFF" },
+    "children": [
+      { "type": "StatusBar", "props": { "time": "08:08", "signal": "5G", "battery": 100 } },
+      { "type": "NavBar", "props": { "title": "运维流程", "leftIcon": "arrow_back" } },
+      { "type": "Row", "props": { "gap": 16, "padding": 16 }, "children": [
+        { "type": "Column", "props": { "gap": 16, "width": 360 }, "children": [
+          { "type": "FormField", "props": { "label": "项目场景", "value": "园区安防", "placeholder": "请选择", "required": false } },
+          { "type": "FormField", "props": { "label": "项目名称", "placeholder": "请输入项目名称", "required": true } }
+        ]},
+        { "type": "Column", "props": { "align": "center", "justify": "center", "width": "auto" }, "children": [
+          { "type": "Text", "props": { "text": "模型加载中", "variant": "caption", "color": "#888" } },
+          { "type": "Icon", "props": { "name": "image", "size": 48, "color": "#E0E0E0" } }
+        ]}
+      ]},
+      { "type": "Row", "props": { "justify": "center", "padding": 16, "width": "100%" }, "children": [
+        { "type": "Button", "props": { "label": "确定", "variant": "primary", "size": "regular", "block": false, "color": "#FFFFFF", "background": "#46B1E3", "weight": "medium", "size": "regular" } }
+      ]}
+    ]
+  }
+}

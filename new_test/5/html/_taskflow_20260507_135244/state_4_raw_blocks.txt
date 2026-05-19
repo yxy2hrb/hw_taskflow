@@ -1,0 +1,195 @@
+[OLD]
+<div id="146_139173" class="Pixso-frame-146_139173">
+            <div class="frame-content-146_139173">
+              <div id="146_139174" class="Pixso-frame-146_139174">
+                <p id="146_139175" class="Pixso-paragraph-146_139175 fill-text文本色图标色color_text_primary-14_290523-paragraph text-单行行高headline标题headline_s-14_365549">虚拟体验项目</p>
+              </div>
+            </div>
+          </div>
+          <div id="146_139186" class="Pixso-frame-146_139186">
+            <p id="146_139187" class="Pixso-paragraph-146_139187 fill-text文本色图标色color_text_primary-14_290523-paragraph">我的体验项目</p>
+          </div>
+          <div id="146_139188" class="Pixso-frame-146_139188">
+            <div class="frame-content-146_139188">
+              <div id="146_139189" class="Pixso-frame-146_139189">
+                <div class="frame-content-146_139189">
+                  <div id="146_139190" class="Pixso-frame-146_139190">
+                    <div id="146_139191" class="Pixso-group-146_139191">
+                      <div id="146_139192" class="Pixso-rectangle-146_139192"></div>
+                      <div id="146_139193" class="Pixso-group-146_139193">
+                        <div id="146_139200" class="Pixso-vector-146_139200"></div>
+                      </div>
+                      <div id="146_139203" class="Pixso-group-146_139203">
+                        <div id="146_139210" class="Pixso-vector-146_139210"></div>
+                      </div>
+                      <div id="146_139213" class="Pixso-group-146_139213">
+                        <div id="146_139220" class="Pixso-vector-146_139220"></div>
+                      </div>
+                      <div id="146_139223" class="Pixso-vector-146_139223"></div>
+                      <div id="146_139224" class="Pixso-vector-146_139224"></div>
+                      <div id="146_139225" class="Pixso-vector-146_139225"></div>
+                      <div id="146_139226" class="Pixso-vector-146_139226"></div>
+                      <div id="146_139227" class="Pixso-vector-146_139227"></div>
+                      <div id="146_139228" class="Pixso-vector-146_139228"></div>
+                    </div>
+                  </div>
+                  <p id="146_139236" class="Pixso-paragraph-146_139236 fill-text文本色图标色color_text_primary-14_290523-paragraph">体验开局流程</p>
+                </div>
+              </div>
+              <div id="146_139237" class="Pixso-frame-146_139237">
+                <div class="frame-content-146_139237">
+                  <div id="146_139238" class="Pixso-frame-146_139238">
+                    <div id="146_139239" class="Pixso-group-146_139239">
+                      <div id="146_139240" class="Pixso-rectangle-146_139240"></div>
+                      <div id="146_139241" class="Pixso-group-146_139241">
+                        <div id="146_139248" class="Pixso-vector-146_139248"></div>
+                      </div>
+                      <div id="146_139251" class="Pixso-group-146_139251">
+                        <div id="146_139258" class="Pixso-vector-146_139258"></div>
+                      </div>
+                      <div id="146_139261" class="Pixso-group-146_139261">
+                        <div id="146_139268" class="Pixso-vector-146_139268"></div>
+                      </div>
+                      <div id="146_139271" class="Pixso-vector-146_139271"></div>
+                      <div id="146_139272" class="Pixso-vector-146_139272"></div>
+                      <div id="146_139273" class="Pixso-vector-146_139273"></div>
+                      <div id="146_139274" class="Pixso-vector-146_139274"></div>
+                      <div id="146_139275" class="Pixso-vector-146_139275"></div>
+                      <div id="146_139276" class="Pixso-vector-146_139276"></div>
+                    </div>
+                  </div>
+                  <p id="146_139277" class="Pixso-paragraph-146_139277 fill-text文本色图标色color_text_primary-14_290523-paragraph">体验运维流程</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="146_139278" class="Pixso-group-146_139278">
+            <div id="146_139280" class="Pixso-group-146_139280">
+              <div id="146_139281" class="vector-wrapper-146_139281">
+                <div id="146_139281" class="Pixso-vector-146_139281"></div>
+              </div>
+              <div id="146_139282" class="Pixso-vector-146_139282"></div>
+              <div id="146_139283" class="vector-wrapper-146_139283">
+                <div id="146_139283" class="Pixso-vector-146_139283"></div>
+              </div>
+              <div id="146_139284" class="Pixso-rectangle-146_139284"></div>
+            </div>
+          </div>
+[NEW]
+<div id="146_139173" class="Pixso-frame-146_139173">
+            <div class="frame-content-146_139173">
+              <div id="146_139174" class="Pixso-frame-146_139174">
+                <p id="146_139175" class="Pixso-paragraph-146_139175" style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:20px;font-weight:700;line-height:1.3;color:rgba(0,0,0,0.9);margin:0;">虚拟体验项目</p>
+              </div>
+            </div>
+          </div>
+          <div id="146_139186" class="Pixso-frame-146_139186" style="display:none;">
+            <p id="146_139187" class="Pixso-paragraph-146_139187" style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:500;color:rgba(0,0,0,0.9);margin:0;">我的体验项目</p>
+          </div>
+          <div id="146_139188" class="Pixso-frame-146_139188">
+            <div class="frame-content-146_139188">
+              <div id="146_139189" class="Pixso-frame-146_139189">
+                <div class="frame-content-146_139189">
+                  <div id="146_139190" class="Pixso-frame-146_139190">
+                    <div id="146_139191" class="Pixso-group-146_139191">
+                      <div id="146_139192" class="Pixso-rectangle-146_139192" style="width:320px;height:320px;background:#F3F3F3;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,0.08);position:relative;overflow:hidden;"></div>
+                      <div id="146_139193" class="Pixso-group-146_139193" style="position:absolute;top:24px;left:24px;width:48px;height:48px;">
+                        <div class="Pixso-vector-146_139200" style="width:100%;height:100%;background:#0A59F7;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                          <span class="mi" style="font-size:24px;color:#FFFFFF;">router</span>
+                        </div>
+                      </div>
+                      <div id="146_139203" class="Pixso-group-146_139203" style="position:absolute;top:24px;right:24px;width:48px;height:48px;">
+                        <div class="Pixso-vector-146_139210" style="width:100%;height:100%;background:#0A59F7;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                          <span class="mi" style="font-size:24px;color:#FFFFFF;">ap</span>
+                        </div>
+                      </div>
+                      <div id="146_139213" class="Pixso-group-146_139213" style="position:absolute;bottom:24px;left:24px;width:48px;height:48px;">
+                        <div class="Pixso-vector-146_139220" style="width:100%;height:100%;background:#0A59F7;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                          <span class="mi" style="font-size:24px;color:#FFFFFF;">switch</span>
+                        </div>
+                      </div>
+                      <div id="146_139223" class="Pixso-vector-146_139223" style="position:absolute;top:120px;left:136px;width:24px;height:24px;background:#0A59F7;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                        <span class="mi" style="font-size:12px;color:#FFFFFF;">check_circle</span>
+                      </div>
+                      <div id="146_139224" class="Pixso-vector-146_139224" style="position:absolute;top:120px;left:136px;width:24px;height:24px;background:#0A59F7;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                        <span class="mi" style="font-size:12px;color:#FFFFFF;">check_circle</span>
+                      </div>
+                      <div id="146_139225" class="Pixso-vector-146_139225" style="position:absolute;top:120px;left:136px;width:24px;height:24px;background:#0A59F7;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                        <span class="mi" style="font-size:12px;color:#FFFFFF;">check_circle</span>
+                      </div>
+                      <div id="146_139226" class="Pixso-vector-146_139226" style="position:absolute;top:120px;left:136px;width:24px;height:24px;background:#0A59F7;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                        <span class="mi" style="font-size:12px;color:#FFFFFF;">check_circle</span>
+                      </div>
+                      <div id="146_139227" class="Pixso-vector-146_139227" style="position:absolute;top:120px;left:136px;width:24px;height:24px;background:#0A59F7;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                        <span class="mi" style="font-size:12px;color:#FFFFFF;">check_circle</span>
+                      </div>
+                      <div id="146_139228" class="Pixso-vector-146_139228" style="position:absolute;top:120px;left:136px;width:24px;height:24px;background:#0A59F7;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                        <span class="mi" style="font-size:12px;color:#FFFFFF;">check_circle</span>
+                      </div>
+                    </div>
+                  </div>
+                  <p id="146_139236" class="Pixso-paragraph-146_139236" style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:500;color:rgba(0,0,0,0.9);margin:0;margin-top:24px;">设备拓扑图</p>
+                </div>
+              </div>
+              <div id="146_139237" class="Pixso-frame-146_139237">
+                <div class="frame-content-146_139237">
+                  <div id="146_139238" class="Pixso-frame-146_139238">
+                    <div id="146_139239" class="Pixso-group-146_139239">
+                      <div id="146_139240" class="Pixso-rectangle-146_139240" style="width:320px;height:100px;background:#FFFFFF;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,0.08);padding:16px;display:flex;flex-direction:column;gap:8px;">
+                        <div style="display:flex;align-items:center;gap:8px;">
+                          <span class="mi" style="font-size:20px;color:#FFC107;">star</span>
+                          <span class="mi" style="font-size:20px;color:#FFC107;">star</span>
+                          <span class="mi" style="font-size:20px;color:#FFC107;">star</span>
+                          <span class="mi" style="font-size:20px;color:#FFC107;">star</span>
+                          <span class="mi" style="font-size:20px;color:#FFC107;">star_half</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:8px;">
+                          <span style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:500;color:rgba(0,0,0,0.9);">Wi-Fi质量评分</span>
+                          <span style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:20px;font-weight:700;color:#0A59F7;">89分</span>
+                        </div>
+                      </div>
+                      <div id="146_139241" class="Pixso-group-146_139241" style="position:absolute;top:16px;right:16px;width:24px;height:24px;">
+                        <div class="Pixso-vector-146_139248" style="width:100%;height:100%;background:#0A59F7;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                          <span class="mi" style="font-size:12px;color:#FFFFFF;">check_circle</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <p id="146_139277" class="Pixso-paragraph-146_139277" style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:500;color:rgba(0,0,0,0.9);margin:0;margin-top:24px;">运行时长</p>
+                  <div style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:500;color:rgba(0,0,0,0.9);margin-top:8px;">12天 4小时 22分</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="146_139278" class="Pixso-group-146_139278">
+            <div id="146_139280" class="Pixso-group-146_139280">
+              <div id="146_139281" class="vector-wrapper-146_139281">
+                <div id="146_139281" class="Pixso-vector-146_139281" style="width:320px;height:120px;background:#FFFFFF;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,0.08);padding:16px;display:flex;flex-direction:column;gap:12px;">
+                  <div style="display:flex;justify-content:space-between;align-items:center;">
+                    <span style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:500;color:rgba(0,0,0,0.9);">网络设备</span>
+                    <span style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:700;color:#0A59F7;">12台</span>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;align-items:center;">
+                    <span style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:500;color:rgba(0,0,0,0.9);">接入终端</span>
+                    <span style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:700;color:#0A59F7;">47台</span>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;align-items:center;">
+                    <span style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:500;color:rgba(0,0,0,0.9);">业务网管理</span>
+                    <span style="font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:700;color:#0A59F7;">8项</span>
+                  </div>
+                </div>
+              </div>
+              <div id="146_139282" class="Pixso-vector-146_139282" style="width:320px;height:120px;background:#FFFFFF;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,0.08);padding:16px;display:flex;flex-direction:column;gap:12px;margin-top:16px;">
+                <div style="display:flex;gap:12px;">
+                  <button type="button" style="flex:1;padding:12px;background:#46B1E3;border:none;border-radius:20px;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:500;color:#FFFFFF;cursor:pointer;outline:none;">配置策略</button>
+                  <button type="button" style="flex:1;padding:12px;background:#46B1E3;border:none;border-radius:20px;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:500;color:#FFFFFF;cursor:pointer;outline:none;">查看日志</button>
+                </div>
+              </div>
+              <div id="146_139283" class="vector-wrapper-146_139283">
+                <div id="146_139283" class="Pixso-vector-146_139283" style="width:320px;height:120px;background:#FFFFFF;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,0.08);padding:16px;display:flex;flex-direction:column;gap:12px;margin-top:16px;">
+                </div>
+              </div>
+              <div id="146_139284" class="Pixso-rectangle-146_139284" style="width:320px;height:120px;background:#FFFFFF;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,0.08);padding:16px;display:flex;flex-direction:column;gap:12px;margin-top:16px;">
+              </div>
+            </div>
+          </div>

@@ -1,0 +1,12 @@
+{
+  "state_id": 5,
+  "state_name": "网络拓扑图加载失败态",
+  "description": "项目详情全屏页面中，网络拓扑图区域显示为一个空白矩形边框（1px实线，#CCCCCC），内部填充灰色斜线（SVG pattern），右上角叠加红色小角标（12px×12px圆形，#FF4D4F）；其余模块正常显示：Wi-Fi评分、运行时长、设备与终端统计文字全部可见且位置未偏移，顶部导航栏完整保留，无遮罩或浮层。",
+  "implementation_method": "错误占位图 (Error Placeholder)：网络拓扑图区域替换为带灰色斜线填充的空白矩形边框（border:1px solid #CCCCCC；background-image:url('./image/error-pattern.svg')）；右上角红色小角标（Pixso-vector-146_139271，12px×12px，#FF4D4F）；Wi-Fi评分文本‘Wi-Fi评分：89分’、运行时长文本‘运行时长：2天14小时’、设备统计文本‘设备：7台’、终端统计文本‘终端：23个’全部正常渲染；顶部导航栏元素完整保留。",
+  "last_state": 3,
+  "applied": 1,
+  "skipped": 0,
+  "elapsed_ms": 74834,
+  "failed": false,
+  "error": null
+}

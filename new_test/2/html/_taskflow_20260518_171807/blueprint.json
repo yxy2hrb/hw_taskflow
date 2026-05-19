@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "title": "创建项目集任务流",
+    "slug": "create-project-set-flow",
+    "user_story": "已登录的企业成员 | 在‘我的工作台’点击‘创建项目集’按钮 | 命名项目集并指定归属类型 → 系统校验所选项目与类型一致 → 用户点击确认完成创建 | 顶部弹出‘创建成功’Toast，同时页面自动返回工作台并刷新项目集列表",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "我的工作台初始状态",
+      "description": "用户位于‘我的工作台’页面，顶部状态栏显示时间、信号与电量图标，底部 Tab 栏完整可见（含‘工作台’‘项目’‘消息’‘我’四个标签），页面中部清晰显示‘创建项目集’按钮（红色填充、圆角矩形、居中排布、文字为‘创建项目集’），其余区域为空白内容区或默认卡片占位。",
+      "implementation_method": "原始 HTML 初始快照，不做改造",
+      "last_state": null
+    },
+    {
+      "state_id": 2,
+      "state_name": "全屏项目集表单页",
+      "description": "页面全屏覆盖，顶部状态栏保持可见且未被遮挡，左上角固定显示黑色返回箭头图标（24×24px），正中央为白色圆角卡片（宽360px、高约600px、阴影柔和），卡片内顶部为标题‘创建项目集’（16px Medium 字重、深灰#191919），下方为名称输入框（浅灰底、1px浅灰边框、placeholder‘请输入项目集名称’）、公司/个人单选按钮组（横向排列、两个圆角矩形选项、当前未选中任何一项）、项目添加区（带‘+ 添加项目’文字按钮，浅蓝文字、下划线样式），底部为红色宽按钮‘确认’（#E53935 背景、白色文字、圆角、居中铺满宽度）。",
+      "implementation_method": "全屏表单页 (Full-Screen Form Page)：顶部状态栏保留；左上角返回箭头图标（SVG path，纯黑 #000000）；标题‘创建项目集’（中文 '创建项目集' / English 'Create Project Set'）；名称输入框 placeholder 中文 '请输入项目集名称' / English 'Enter project set name'；单选按钮组含两个选项，左侧为‘公司’（中文 '公司' / English 'Company'），右侧为‘个人’（中文 '个人' / English 'Personal'），均无默认选中；项目添加区按钮文字‘+ 添加项目’（中文 '+ 添加项目' / English '+ Add Project'）；底部确认按钮文字‘确认’（中文 '确认' / English 'Confirm'），背景色 #E53935，文字色 white。",
+      "last_state": 1
+    },
+    {
+      "state_id": 3,
+      "state_name": "表单校验失败状态",
+      "description": "画面与全屏项目集表单页完全一致，名称输入框底部边缘呈现2px红色实线边框，输入框右侧紧邻一个红色感叹号图标（16×16px，#D32F2F），单选按钮组下方紧贴一行红色小字提示（12px、#D32F2F、字体HarmonyHeiTi-Regular），文案为‘请选择公司类项目’或‘请选择个人类项目’（根据当前单选值动态切换），其他所有元素（返回箭头、标题、项目添加区、底部确认按钮）位置与样式均未改变。",
+      "implementation_method": "表单错误提示 (Form Validation Error State)：名称输入框底部新增2px solid #D32F2F 边框；右侧插入红色感叹号 SVG 图标（fill #D32F2F）；单选按钮组正下方添加一行红色提示文本，中文文案如'请选择公司类项目' / English 'Please select a company project'，或'请选择个人类项目' / English 'Please select a personal project'；其余 UI 元素与 state_2 完全一致，无删减、无位移、无透明度变化。",
+      "last_state": 2
+    },
+    {
+      "state_id": 4,
+      "state_name": "提交中过渡状态",
+      "description": "画面与全屏项目集表单页完全一致，底部确认按钮文字由‘确认’变为‘提交中…’，按钮内部左侧嵌入一个灰色环形加载图标（20×20px，stroke #757575，中心镂空，CSS animation:hmspin 1s linear infinite），按钮整体不可点击（pointer-events:none）、背景色与尺寸保持不变，其余所有元素（包括顶部状态栏、返回箭头、标题、输入框、单选按钮、项目添加区）均原样保留且未被遮罩或置灰。",
+      "implementation_method": "按钮加载态 (Button Loading State)：底部确认按钮文字替换为中文 '提交中…' / English 'Submitting...'；按钮内左侧嵌入环形加载 SVG（stroke #757575, stroke-width=2, radius=8px）；添加 CSS 动画声明 animation:hmspin 1s linear infinite（仅描述视觉旋转效果，不涉及时间终止）；按钮添加 pointer-events:none 属性；其余所有 UI 元素与 state_2 完全一致，无新增遮罩、无透明度调整、无尺寸缩放。",
+      "last_state": 2
+    },
+    {
+      "state_id": 5,
+      "state_name": "创建成功Toast状态",
+      "description": "画面与全屏项目集表单页完全一致，顶部状态栏下方16px处叠加一条绿色Toast横条（宽100%、高44px、圆角8px、背景#4CAF50、白色文字居中），横条内左侧为白色对勾图标（20×20px），右侧为居中文字‘创建成功’（16px Medium、HarmonyHeiTi-Medium），无关闭按钮、无阴影、无动画痕迹，底部Tab栏与页面主体全部可见且未被遮挡。",
+      "implementation_method": "轻量级提示 (Toast/Snackbar)：绿色横条（background-color: #4CAF50, height: 44px, border-radius: 8px）；横条内左侧嵌入白色对勾 SVG 图标（fill white）；右侧文字‘创建成功’（中文 '创建成功' / English 'Created successfully'），16px Medium，white；横条垂直居中于顶部状态栏下方16px（margin-top: 16px）；无遮罩层、无半透明背景、无关闭按钮；其余所有 UI 元素与 state_2 完全一致。",
+      "last_state": 2
+    },
+    {
+      "state_id": 6,
+      "state_name": "取消返回确认状态",
+      "description": "画面与我的工作台初始状态完全一致，顶部状态栏显示时间、信号与电量图标，底部 Tab 栏完整可见（含‘工作台’‘项目’‘消息’‘我’四个标签），页面中部‘创建项目集’按钮正常显示（红色填充、圆角矩形、居中排布、文字为‘创建项目集’），无任何浮层、遮罩、半透明效果，无二次确认弹窗，整个页面干净无叠加元素。",
+      "implementation_method": "画面与 last_state（state_1）完全一致；base 已是关闭后的样子，无需任何 DOM 改造。",
+      "last_state": 1
+    }
+  ]
+}

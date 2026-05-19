@@ -1,0 +1,108 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": ["#14_807630"],
+      "replace_at": "#14_807630",
+      "instruction": "将原项目开局卡片区域整段替换为创建项目集全屏页初始态的白色圆角卡片容器：宽360px、背景#FFFFFF、浅灰阴影、毛玻璃底衬（backdrop-filter: blur(54.3656005859375px)）；内含顶部‘项目集名称’输入框（input[type='text']，placeholder='请输入名称'，无边框，底部细灰线，inline style: border-bottom: 1px solid #CCCCCC；font-family: HarmonyHeiTi, 'HarmonyOS Sans', sans-serif）；中部‘公司’与‘个人’单选按钮组（横向排列，label+input[type='radio']，文案分别为'公司'和'个人'，默认未选，字体HarmonyHeiTi-Regular，14px）；下方‘添加项目’卡片区域（灰色虚线边框：border: 1px dashed #999999；中央加号图标用<span class=\"mi\" style=\"color:#999999;font-size:24px;vertical-align:middle;\">add</span>，右侧文字'点击添加项目'，14px，#666666，居中）；底部悬浮红色按钮（button，宽100%，高52px，background-color:#E62429，color:#FFFFFF，font-family: HarmonyHeiTi-Medium，16px，文字'确认'，居中）。",
+      "components_needed": ["TextInput", "Radio", "Button"],
+      "icons_needed": ["add"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "background": "#FFFFFF",
+      "borderRadius": 16,
+      "width": 360,
+      "shadow": true,
+      "padding": 24,
+      "gap": 24,
+      "style": "backdrop-filter: blur(54.3656005859375px)"
+    },
+    "children": [
+      {
+        "type": "FormField",
+        "props": {
+          "label": "项目集名称",
+          "placeholder": "请输入名称",
+          "labelWidth": 80,
+          "required": true,
+          "borderBottom": "1px solid #CCCCCC",
+          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+        }
+      },
+      {
+        "type": "Column",
+        "props": { "gap": 12 },
+        "children": [
+          { "type": "Text", "props": { "variant": "subtitle" }, "children": "公司" },
+          {
+            "type": "Row",
+            "props": { "gap": 24, "align": "center" },
+            "children": [
+              {
+                "type": "Row",
+                "props": { "gap": 8, "align": "center" },
+                "children": [
+                  { "type": "Checkbox", "props": { "checked": false, "size": 22 } },
+                  { "type": "Text", "props": { "size": 14, "weight": 400, "color": "rgba(0,0,0,0.90)", "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif" }, "children": "公司" }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": { "gap": 8, "align": "center" },
+                "children": [
+                  { "type": "Checkbox", "props": { "checked": false, "size": 22 } },
+                  { "type": "Text", "props": { "size": 14, "weight": 400, "color": "rgba(0,0,0,0.90)", "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif" }, "children": "个人" }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "background": "transparent",
+          "border": "1px dashed #999999",
+          "borderRadius": 8,
+          "padding": 16,
+          "align": "center",
+          "justify": "center",
+          "gap": 8
+        },
+        "children": [
+          {
+            "type": "Row",
+            "props": { "gap": 8, "align": "center" },
+            "children": [
+              { "type": "Icon", "props": { "name": "add", "size": 24, "color": "#999999" } },
+              { "type": "Text", "props": { "size": 14, "color": "#666666", "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif" }, "children": "点击添加项目" }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Button",
+        "props": {
+          "label": "确认",
+          "variant": "warning",
+          "size": "large",
+          "block": true,
+          "height": 52,
+          "background": "#E62429",
+          "color": "#FFFFFF",
+          "fontFamily": "HarmonyHeiTi-Medium, 'HarmonyOS Sans', sans-serif",
+          "fontSize": 16
+        }
+      }
+    ]
+  }
+}

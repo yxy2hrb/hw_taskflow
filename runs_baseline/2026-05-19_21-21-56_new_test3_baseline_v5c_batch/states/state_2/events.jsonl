@@ -1,0 +1,8 @@
+{"event":"state-start","data":{"state_id":2,"state_name":"体验项目内嵌弹窗列表","last_state":1,"ts":1779225739945},"ts":"2026-05-19T21:22:19.948Z"}
+{"event":"state-log","data":{"state_id":2,"msg":"[baseline] HM_BASELINE_ENABLED=1，走 baseline 一锤子路径（跳过 twoPhase / DSL / legacy）","ts":1779225739945},"ts":"2026-05-19T21:22:19.948Z"}
+{"event":"state-log","data":{"state_id":2,"msg":"[baseline] 启动 state_2 「体验项目内嵌弹窗列表」","ts":1779225739945},"ts":"2026-05-19T21:22:19.949Z"}
+{"event":"state-log","data":{"state_id":2,"msg":"[baseline-pre] 删除空白半透明遮罩节点 7 个","ts":1779225739946},"ts":"2026-05-19T21:22:19.949Z"}
+{"event":"state-log","data":{"state_id":2,"msg":"[baseline] prompt 31.3KB lang=zh prevHtml=96.6KB->stripped 25.1KB","ts":1779225739947},"ts":"2026-05-19T21:22:19.949Z"}
+{"event":"state-log","data":{"state_id":2,"msg":"[baseline] 生成 HTML 83.2KB（其中 LLM body=11.4KB）","ts":1779225839349},"ts":"2026-05-19T21:23:59.349Z"}
+{"event":"state-log","data":{"state_id":2,"msg":"[baseline] 成功（html 85228B applied=1）","ts":1779225839350},"ts":"2026-05-19T21:23:59.349Z"}
+{"event":"state-done","data":{"state_id":2,"state_name":"体验项目内嵌弹窗列表","file":"state_2.html","applied":1,"skipped":0,"review_ok":null,"review_applied":0,"review_issues":[],"elapsed_ms":99416,"hmExpansions":[],"hmMissing":[],"ts":1779225839361},"ts":"2026-05-19T21:23:59.363Z"}

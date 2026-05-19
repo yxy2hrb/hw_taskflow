@@ -1,0 +1,96 @@
+{
+  "sessionId": "tf_064a5de555e2",
+  "question": {
+    "id": "phase_1",
+    "phase": 1,
+    "questionText": "请从下面四个维度各选一项最贴近你意图的描述，我会把它们拼成完整的 User Story。",
+    "options": [
+      {
+        "id": "opt_a1",
+        "label": "已登录的运维工程师",
+        "rationale": "有系统账号、权限和待处理工单的现场技术人员",
+        "group": "① Actor · 主角",
+        "default": true
+      },
+      {
+        "id": "opt_a2",
+        "label": "新入职的实施助理",
+        "rationale": "刚完成培训、需通过模拟流程熟悉设备部署逻辑的新人",
+        "group": "",
+        "default": false
+      },
+      {
+        "id": "opt_a3",
+        "label": "远程支持专家",
+        "rationale": "不接触物理设备，但需快速验证客户环境配置是否合规的技术顾问",
+        "group": "",
+        "default": false
+      },
+      {
+        "id": "opt_t1",
+        "label": "在‘我的工作台’点击‘体验运维流程’按钮",
+        "rationale": "明确出现在初始描述中的唯一入口，无需额外条件",
+        "group": "② Trigger · 触发点",
+        "default": true
+      },
+      {
+        "id": "opt_t2",
+        "label": "从项目概览页右上角悬浮菜单选择",
+        "rationale": "适用于已有多个项目上下文，需快速切入某项目运维场景",
+        "group": "",
+        "default": false
+      },
+      {
+        "id": "opt_t3",
+        "label": "扫描设备二维码后自动跳转",
+        "rationale": "面向现场作业，强调软硬联动与即扫即用",
+        "group": "",
+        "default": false
+      },
+      {
+        "id": "opt_g1",
+        "label": "填写项目场景和名称 → 系统加载对应三维模型 → 用户点击确定完成创建",
+        "rationale": "严格遵循原始描述的线性三步流，无分支或校验环节",
+        "group": "③ Goal & Happy Path · 核心目标与理想路径",
+        "default": true
+      },
+      {
+        "id": "opt_g2",
+        "label": "选择预设模板 → 系统高亮模型中待配置部件 → 用户逐项确认后提交",
+        "rationale": "强调交互引导性，适合复杂设备需分步校准的场景",
+        "group": "",
+        "default": false
+      },
+      {
+        "id": "opt_g3",
+        "label": "输入项目信息 → 系统实时校验名称唯一性 → 提交后跳转至模型操作页",
+        "rationale": "增加即时反馈环节，侧重数据准确性保障",
+        "group": "",
+        "default": false
+      },
+      {
+        "id": "opt_s1",
+        "label": "页面顶部弹出‘创建成功’Toast，且底Tab保持高亮在当前页",
+        "rationale": "符合‘全屏页保留状态栏与底Tab’的约束，仅轻量反馈",
+        "group": "④ Success Criteria · 成功判定",
+        "default": true
+      },
+      {
+        "id": "opt_s2",
+        "label": "自动跳转回‘我的工作台’，并新增一条带时间戳的流程记录卡片",
+        "rationale": "强调任务闭环与可追溯性，适合需审计的运维场景",
+        "group": "",
+        "default": false
+      }
+    ],
+    "multiSelect": true,
+    "allowCustom": true,
+    "note": "四个维度各选一项，也可以在补充栏写'Actor: xxx; Trigger: xxx;' 形式覆盖。",
+    "sectionLabel": "任务流阶段 1/3",
+    "sectionProgress": {
+      "current": 1,
+      "total": 3
+    }
+  },
+  "sourceDir": ""
+}

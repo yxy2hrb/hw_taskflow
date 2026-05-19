@@ -1,0 +1,59 @@
+{
+  "meta": {
+    "title": "体验项目查看与监控流",
+    "slug": "experience-project-view-flow",
+    "user_story": "企业IT运维人员在工作台首页点击项目入口查看项目列表并筛选，系统加载卡片状态与标签后用户点击目标卡片进入详情，详情页完整加载拓扑与统计数据且无报错。",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "体验项目列表弹窗初始态",
+      "description": "工作台首页背景与底部导航栏完整可见。屏幕中央覆盖半透明遮罩，上方浮出圆角白色弹窗，内含项目卡片网格，卡片静态展示名称、时间与状态标签。",
+      "implementation_method": "原始 HTML 初始快照，不做改造。",
+      "last_state": null
+    },
+    {
+      "state_id": 2,
+      "state_name": "列表数据加载过渡态",
+      "description": "工作台背景与底部导航保持不变，中央弹窗内替换为浅灰色骨架块。标题、时间与状态标签位置以固定高度灰色矩形静态填充，无实际文本。",
+      "implementation_method": "骨架屏占位组件 (Skeleton Loader)：弹窗内容区替换为 3 行浅灰色矩形块（背景色 rgba(200,200,200,0.3)），高度分别为 16px、12px、10px，间距 8px，静态铺满卡片区域。",
+      "last_state": 1
+    },
+    {
+      "state_id": 3,
+      "state_name": "列表空状态或取消态",
+      "description": "工作台背景与底部导航完整可见，中央无弹窗。页面主体居中显示浅灰占位图标与“暂无体验项目”文本，下方静态放置“新建项目”按钮。",
+      "implementation_method": "空状态引导组件 (Empty State)：主体区域无弹窗覆盖，居中放置 48px 浅灰图标、14px 深灰文本 '暂无体验项目' (No projects) 及蓝色圆角按钮 '新建项目' (Create New)。",
+      "last_state": 1
+    },
+    {
+      "state_id": 4,
+      "state_name": "全屏详情加载过渡态",
+      "description": "页面为全屏布局，顶部固定导航栏含返回键与标题。主体浅灰背景上分布拓扑轮廓、评分卡片与表格骨架块，均以深灰矩形静态填充。",
+      "implementation_method": "骨架屏占位组件 (Skeleton Loader)：覆盖全屏，顶部导航栏保留；主体区域按网格排布深灰色矩形块模拟拓扑节点与数据面板（背景 rgba(220,220,220,0.5)），静态填充 70% 内容区高度。",
+      "last_state": 1
+    },
+    {
+      "state_id": 5,
+      "state_name": "全屏详情成功展示态",
+      "description": "全屏页面顶部导航固定。主体清晰展示彩色网络拓扑图、居中评分圆环、运行时长数字及底部统计表格，所有数据与图表静态渲染到位。",
+      "implementation_method": "数据面板组件 (Data Panel)：在 last_state（state_4）骨架位置替换为实际内容；拓扑图使用 SVG 矢量路径渲染连线与节点，评分区显示 42px 蓝色圆环与 '85' 分文本，底部表格填充 3 列设备数据。",
+      "last_state": 4
+    },
+    {
+      "state_id": 6,
+      "state_name": "全屏详情异常失败态",
+      "description": "全屏顶部导航可见，主体浅灰背景。中央静态显示红色警告图标、错误说明文本“数据加载失败”及“重新加载”按钮，无图表数据。",
+      "implementation_method": "居中错误提示组件 (Error State)：在 last_state（state_4）主体区域中央叠加 120px 宽白色圆角卡片，内含 32px 红色警告图标、14px 深灰文本 '数据加载失败' (Data load failed) 及 1 个蓝色边框按钮 '重新加载' (Reload)。",
+      "last_state": 4
+    },
+    {
+      "state_id": 7,
+      "state_name": "拓扑渲染性能风险提示态",
+      "description": "全屏详情页正常显示，下方覆盖半透明遮罩。底部固定白色半屏抽屉，内含风险说明文本与“继续渲染”、“降级显示”按钮，静态停留。",
+      "implementation_method": "底部抽屉组件 (Bottom Sheet)：在 last_state（state_5）画面上叠加半透明遮罩（rgba(0,0,0,0.3)）；屏幕底部固定白色圆角面板（高度 40vh），内含 14px 标题 '节点过多可能影响性能' (Too many nodes) 及 2 个并排按钮 '继续渲染' (Continue) / '降级显示' (Downgrade)。",
+      "last_state": 5
+    }
+  ]
+}

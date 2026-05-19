@@ -1,0 +1,45 @@
+{
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "工作台体验按钮待点击态",
+      "edits": [
+        {
+          "old": "<p id=\"146_139389\" class=\"Pixso-paragraph-146_139389 fill-text文本色图标色color_text_primary-14_290523-paragraph\">体验运维流程</p>",
+          "new": "<p id=\"146_139389\" class=\"Pixso-paragraph-146_139389 fill-text文本色图标色color_text_primary-14_290523-paragraph\" data-next-state=\"2\">体验运维流程</p>"
+        }
+      ],
+      "islands": {}
+    },
+    {
+      "state_id": 2,
+      "state_name": "全屏填单与模型预览态",
+      "edits": [
+        {
+          "old": "</body>",
+          "new": "<div data-jsx-island id=\"s2-overlay\"></div></body>"
+        }
+      ],
+      "islands": {
+        "s2-overlay": "<div style={{position:'fixed',top:0,left:0,width:'100vw',height:'100vh',background:'#f5f5f5',zIndex:100,display:'flex',flexDirection:'column'}}><div style={{flex:1,display:'flex',overflow:'hidden'}}><div style={{flex:1,background:'#fff',padding:16,overflowY:'auto'}}><h3 style={{margin:'0 0 16px',fontSize:16}}>项目信息 / Project Info</h3><div data-jsx-island id='s2-form'></div></div><div style={{flex:1,background:'#e8e8e8',display:'flex',alignItems:'center',justifyContent:'center',color:'#888'}}>3D 模型渲染区</div></div><div style={{padding:'12px 16px',background:'#fff',borderTop:'1px solid #eee'}}><div data-jsx-island id='s2-btn'></div></div></div>",
+        "s2-form": "<Form layout='vertical'><Form.Item label='项目场景 / Project Scenario' name='scenario' rules={[{required:true}]}><Input placeholder='请输入项目场景' /></Form.Item><Form.Item label='项目名称 / Project Name' name='name' rules={[{required:true}]}><Input placeholder='请输入项目名称' /></Form.Item></Form>",
+        "s2-btn": "<Button block color='primary' size='large' data-next-state={3} onClick={() => {}}>确定 / Confirm</Button>"
+      }
+    },
+    {
+      "state_id": 3,
+      "state_name": "表单必填项校验拦截态",
+      "edits": [
+        {
+          "old": "</body>",
+          "new": "<div data-jsx-island id=\"s3-overlay\"></div></body>"
+        }
+      ],
+      "islands": {
+        "s3-overlay": "<div style={{position:'fixed',top:0,left:0,width:'100vw',height:'100vh',background:'#f5f5f5',zIndex:100,display:'flex',flexDirection:'column'}}><div style={{flex:1,display:'flex',overflow:'hidden'}}><div style={{flex:1,background:'#fff',padding:16,overflowY:'auto'}}><h3 style={{margin:'0 0 16px',fontSize:16}}>项目信息 / Project Info</h3><div data-jsx-island id='s3-form'></div></div><div style={{flex:1,background:'#e8e8e8',display:'flex',alignItems:'center',justifyContent:'center',color:'#888'}}>3D 模型渲染区</div></div><div style={{padding:'12px 16px',background:'#fff',borderTop:'1px solid #eee'}}><div data-jsx-island id='s3-btn'></div></div></div>",
+        "s3-form": "<Form layout='vertical'><Form.Item label='项目场景 / Project Scenario' name='scenario' rules={[{required:true}]} validateStatus='error' extra={<span style={{color:'#FF4D4F'}}>该项为必填 / Required</span>}><Input placeholder='请输入项目场景' style={{borderColor:'#FF4D4F'}} /></Form.Item><Form.Item label='项目名称 / Project Name' name='name' rules={[{required:true}]} validateStatus='error' extra={<span style={{color:'#FF4D4F'}}>该项为必填 / Required</span>}><Input placeholder='请输入项目名称' style={{borderColor:'#FF4D4F'}} /></Form.Item></Form>",
+        "s3-btn": "<Button block color='primary' size='large' onClick={() => {}}>确定 / Confirm</Button>"
+      }
+    }
+  ]
+}

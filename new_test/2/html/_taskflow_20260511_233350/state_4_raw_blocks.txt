@@ -1,0 +1,33 @@
+{
+  "state_name": "创建中过渡态",
+  "lifecycle": "persistent",
+  "injection": { "mode": "replace", "anchor": "#confirm-button" },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "Button",
+    "props": {
+      "label": "确认",
+      "variant": "primary",
+      "block": true,
+      "disabled": true,
+      "icon": "loading"
+    },
+    "children": [
+      {
+        "type": "Row",
+        "props": { "gap": 4, "align": "center" },
+        "children": [
+          { "type": "Text", "props": { "text": "确认", "color": "#999" } },
+          {
+            "type": "Spinner",
+            "props": {
+              "size": 12,
+              "color": "#1890FF",
+              "text": ""
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

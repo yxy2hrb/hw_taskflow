@@ -1,0 +1,149 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": ["#14_807629", "#14_807630"],
+      "replace_at": "#14_807629",
+      "instruction": "把整块工作台内容替换为创建项目集全屏页：顶部留白44px（状态栏透出），中央垂直居中白色表单卡片（背景#FFFFFF、圆角12px、内边距24px）；卡片内顶部标题'创建项目集'（16px Medium、HarmonyHeiTi-Medium、#191919）；下方名称输入框（宽100%、高48px、圆角8px、边框#E5E7EB、浅灰占位符'请输入项目集名称'、字体HarmonyHeiTi-Regular 14px #999）；属性单选按钮组（'公司'与'个人'两个圆角矩形按钮，宽140px、高40px、圆角8px、未选中时背景#F5F5F5、文字#666、14px Regular；已选中项暂无）；项目添加区（宽100%、高48px、背景#F9F9F9、圆角8px、内含'+ 添加项目'文字（14px Regular、#666）与加号图标<span class=\"mi\" style=\"font-size:18px;vertical-align:-2px;color:#666;\">add</span>）；底部常驻红色确认按钮（宽100%、高48px、圆角8px、背景#FF3B30、文字'确认'、16px Medium、白色）"
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "gap": 24,
+      "padding": 24,
+      "background": "#FFFFFF",
+      "borderRadius": 12,
+      "shadow": true,
+      "width": "100%",
+      "maxWidth": 328,
+      "align": "stretch"
+    },
+    "children": [
+      {
+        "type": "Text",
+        "props": {
+          "variant": "body",
+          "size": 16,
+          "weight": "500",
+          "color": "#191919",
+          "fontFamily": "HarmonyHeiTi-Medium, 'HarmonyOS Sans', sans-serif"
+        },
+        "children": "创建项目集"
+      },
+      {
+        "type": "FormField",
+        "props": {
+          "label": "",
+          "placeholder": "请输入项目集名称",
+          "value": "",
+          "size": "regular",
+          "invalid": false
+        }
+      },
+      {
+        "type": "Text",
+        "props": {
+          "variant": "caption",
+          "size": 14,
+          "color": "rgba(0,0,0,0.40)",
+          "fontFamily": "HarmonyHeiTi-Regular, 'HarmonyOS Sans', sans-serif"
+        },
+        "children": "属性"
+      },
+      {
+        "type": "Row",
+        "props": {
+          "gap": 12,
+          "wrap": false
+        },
+        "children": [
+          {
+            "type": "Button",
+            "props": {
+              "label": "公司",
+              "variant": "secondary",
+              "size": "compact",
+              "block": false,
+              "background": "#F5F5F5",
+              "color": "#666",
+              "borderRadius": 8,
+              "height": 40,
+              "width": 140,
+              "fontFamily": "HarmonyHeiTi-Regular, 'HarmonyOS Sans', sans-serif"
+            }
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "个人",
+              "variant": "secondary",
+              "size": "compact",
+              "block": false,
+              "background": "#F5F5F5",
+              "color": "#666",
+              "borderRadius": 8,
+              "height": 40,
+              "width": 140,
+              "fontFamily": "HarmonyHeiTi-Regular, 'HarmonyOS Sans', sans-serif"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Row",
+        "props": {
+          "gap": 8,
+          "align": "center",
+          "padding": [12, 16],
+          "background": "#F9F9F9",
+          "borderRadius": 8,
+          "width": "100%",
+          "height": 48
+        },
+        "children": [
+          {
+            "type": "Icon",
+            "props": {
+              "name": "add",
+              "size": 18,
+              "color": "#666"
+            }
+          },
+          {
+            "type": "Text",
+            "props": {
+              "variant": "body",
+              "size": 14,
+              "weight": "500",
+              "color": "#666",
+              "fontFamily": "HarmonyHeiTi-Regular, 'HarmonyOS Sans', sans-serif"
+            },
+            "children": "添加项目"
+          }
+        ]
+      },
+      {
+        "type": "Button",
+        "props": {
+          "label": "确认",
+          "variant": "warning",
+          "size": "regular",
+          "block": true,
+          "background": "#FF3B30",
+          "color": "#FFFFFF",
+          "borderRadius": 8,
+          "height": 48,
+          "fontFamily": "HarmonyHeiTi-Medium, 'HarmonyOS Sans', sans-serif",
+          "weight": "500"
+        }
+      }
+    ]
+  }
+}

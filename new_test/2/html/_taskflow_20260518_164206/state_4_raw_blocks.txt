@@ -1,0 +1,39 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "new-overlay",
+      "anchor": "</body>",
+      "instruction": "在 body 末尾、</body> 标签之前插入一个顶部居中悬浮 Toast：position: fixed; top: 16px; left: 50%; transform: translateX(-50%); width: fit-content; padding: 10px 16px; background-color: #64BB5C; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); color: white; font-family: 'HarmonyHeiTi-Medium', 'HarmonyOS Sans', sans-serif; font-size: 14px; line-height: 20px; display: flex; align-items: center; gap: 8px; z-index: 1000; 无遮罩，不覆盖状态栏和底部 Tab；内含 Material Icons Round check_circle 图标（20×20px，白色）和文字'创建成功'（中文）；用 <!-- 任务节点开始: 成功终态【临时】 --> 和 <!-- 任务节点结束: 成功终态【临时】 --> 包裹整个 Toast。",
+      "components_needed": ["Toast"],
+      "icons_needed": ["check_circle"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Row",
+    "props": {
+      "background": "#64BB5C",
+      "borderRadius": 8,
+      "padding": [10, 16],
+      "gap": 8,
+      "align": "center",
+      "width": "fit-content",
+      "minWidth": "140px",
+      "position": "fixed",
+      "top": "16px",
+      "left": "50%",
+      "transform": "translateX(-50%)",
+      "shadow": "0 4px 12px rgba(0,0,0,0.06)",
+      "zIndex": 10000
+    },
+    "children": [
+      { "type": "Icon", "props": { "name": "check_circle", "size": 20, "color": "#FFFFFF" } },
+      { "type": "Text", "props": { "color": "#FFFFFF", "size": 14, "weight": 500 }, "children": "创建成功" }
+    ]
+  }
+}

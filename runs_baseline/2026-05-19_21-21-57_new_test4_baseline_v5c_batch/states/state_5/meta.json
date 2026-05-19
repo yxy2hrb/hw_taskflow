@@ -1,0 +1,12 @@
+{
+  "state_id": 5,
+  "state_name": "创建失败提示",
+  "description": "页面结构与运维流程全屏页完全一致：顶部状态栏与底部 Tab 栏正常可见；左侧表单区与右侧三维模型容器均保持原样；页面顶部状态栏正下方 16px 处，出现一条 100% 宽度、高 44px 的红色横条（#F44336），横条内居中显示白色叉号图标（SVG）与文字‘创建失败，请重试’（14px Medium、HarmonyHeiTi-Medium、#FFFFFF），无关闭按钮，横条不遮挡状态栏也不遮挡表单区。",
+  "implementation_method": "轻量级提示 (Toast/Snackbar)：top:0px + position:fixed + width:100vw + height:44px + background:#F44336 + padding:0 16px；内含 SVG 叉号图标（20px×20px、#FFFFFF）与文字 '创建失败，请重试'（14px Medium、#FFFFFF）；横条位于状态栏正下方、不重叠、不遮挡下方内容。",
+  "last_state": 2,
+  "applied": 1,
+  "skipped": 0,
+  "elapsed_ms": 79257,
+  "failed": false,
+  "error": null
+}

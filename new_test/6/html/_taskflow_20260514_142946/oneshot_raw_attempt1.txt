@@ -1,0 +1,43 @@
+```json
+{
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "工作台首页入口初始态",
+      "edits": [
+        {
+          "old": "<p id=\"146_158933\" class=\"Pixso-paragraph-146_158933 fill-text文本色图标色color_text_primary-14_800663-paragraph\">快速入门</p>",
+          "new": "<p id=\"146_158933\" class=\"Pixso-paragraph-146_158933 fill-text文本色图标色color_text_primary-14_800663-paragraph\" data-next-state=\"2\" style=\"cursor:pointer\">快速入门</p>"
+        }
+      ],
+      "islands": {}
+    },
+    {
+      "state_id": 2,
+      "state_name": "页面过渡加载等待态",
+      "edits": [
+        {
+          "old": "</body>",
+          "new": "<div data-jsx-island id=\"s2-loading-overlay\"></div></body>"
+        }
+      ],
+      "islands": {
+        "s2-loading-overlay": "<div style={{position:'fixed',top:0,left:0,width:'100%',height:'100%',backgroundColor:'rgba(243,243,243,0.85)',display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',zIndex:1000}} data-next-state=\"3\"><Spin size=\"large\" /><div style={{marginTop:8,fontSize:14,color:'#999'}}>加载中 / Loading</div></div>"
+      }
+    },
+    {
+      "state_id": 3,
+      "state_name": "快速入门核心展示态",
+      "edits": [
+        {
+          "old": "</body>",
+          "new": "<div data-jsx-island id=\"s3-modal-container\"></div></body>"
+        }
+      ],
+      "islands": {
+        "s3-modal-container": "<div style={{position:'fixed',inset:0,backgroundColor:'rgba(0,0,0,0.5)',display:'flex',alignItems:'center',justifyContent:'center',zIndex:1000}}><div style={{width:'90%',height:'85%',backgroundColor:'#fff',borderRadius:16,display:'flex',flexDirection:'column',overflow:'hidden'}}><SearchBar placeholder='搜索... / Search...' /><Tabs><Tabs.Tab title='快速入门' key='1'/><Tabs.Tab title='交付指导' key='2'/><Tabs.Tab title='运维指导' key='3'/><Tabs.Tab title='售后文档' key='4'/></Tabs><div style={{flex:1,overflowY:'auto',padding:16}}>{Array.from({length:7}).map((_,i)=><div key={i} style={{display:'flex',justifyContent:'space-between',alignItems:'center',padding:'12px 0',borderBottom:'1px solid #eee'}}><span>指南条目 {i+1}</span><Button size='mini' color='primary'>查看 / View</Button></div>)}</div></div></div>"
+      }
+    }
+  ]
+}
+```

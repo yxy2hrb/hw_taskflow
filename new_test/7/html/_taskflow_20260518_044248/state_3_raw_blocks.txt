@@ -1,0 +1,135 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#146_395655",
+      "instruction": "把管理应用按钮区域替换为：文字'管理应用'，左侧图标为'more_horiz'，文字颜色为深灰#191919，字体HarmonyHeiTi-Medium 14px；背景色为#F1F3F5，圆角12px，内边距9px 10px；整体容器宽328px，居中显示。",
+      "components_needed": ["Button"]
+    },
+    {
+      "id": "e2",
+      "type": "text-edit",
+      "anchor": "<p id=\"146_394612\" class=\"Pixso-paragraph-146_394612\">我的线索</p>",
+      "instruction": "将文字'我的线索'更新为'已添加X个'，其中X为具体数字（如'已添加7个'），字体HarmonyHeiTi-Medium 16px，颜色深灰#191919，opacity:0.9"
+    },
+    {
+      "id": "e3",
+      "type": "state-toggle",
+      "anchor": "#146_395667",
+      "instruction": "把底部Tab导航栏替换为：五个Tab项，从左至右依次为'首页'、'商城'、'营销'、'服务'、'我的'；当前高亮项为'营销'，文字红色#C7000B，其余为黑色#000000；每个Tab含图标+文字，图标使用Material Icons Round：home、shopping_cart、campaign、support_agent、person；所有文字为HarmonyOS Sans SC-Regular 10px；Tab容器背景色#FEFEFE，高度64px，带模糊背景效果；'营销'项下方有红色指示条（宽72px，高3px，圆角20px）",
+      "components_needed": ["BottomTab"],
+      "icons_needed": ["home", "shopping_cart", "campaign", "support_agent", "person"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Row",
+    "props": {
+      "background": "#F1F3F5",
+      "borderRadius": 12,
+      "padding": [9, 10],
+      "width": 328,
+      "align": "center",
+      "justify": "center",
+      "gap": 8
+    },
+    "children": [
+      {
+        "type": "Icon",
+        "props": {
+          "name": "more_horiz",
+          "size": 20,
+          "color": "#191919"
+        }
+      },
+      {
+        "type": "Text",
+        "props": {
+          "text": "管理应用",
+          "size": 14,
+          "weight": "500",
+          "color": "#191919",
+          "fontFamily": "HarmonyHeiTi, 'HarmonyOS Sans', sans-serif"
+        }
+      }
+    ]
+  }
+}
+[NEXT]
+[OLD]
+<p id="146_394612" class="Pixso-paragraph-146_394612">我的线索</p>
+[NEW]
+<p id="146_394612" class="Pixso-paragraph-146_394612" style="font-family: 'HarmonyHeiTi-Medium', sans-serif; font-size: 16px; color: #191919; opacity: 0.9;">已添加7个</p>
+[NEXT]
+{
+  "tree": {
+    "type": "Row",
+    "props": {
+      "background": "#FEFEFE",
+      "height": 64,
+      "padding": [8, 0],
+      "gap": 0,
+      "align": "center",
+      "justify": "space-around",
+      "style": "backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);"
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": { "gap": 4, "align": "center" },
+        "children": [
+          { "type": "Icon", "props": { "name": "home", "size": 24, "color": "#000000" } },
+          { "type": "Text", "props": { "text": "首页", "size": 10, "weight": 400, "color": "#000000", "fontFamily": "HarmonyOS Sans SC-Regular, 'HarmonyOS Sans', sans-serif" } }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": { "gap": 4, "align": "center" },
+        "children": [
+          { "type": "Icon", "props": { "name": "shopping_cart", "size": 24, "color": "#000000" } },
+          { "type": "Text", "props": { "text": "商城", "size": 10, "weight": 400, "color": "#000000", "fontFamily": "HarmonyOS Sans SC-Regular, 'HarmonyOS Sans', sans-serif" } }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": { "gap": 4, "align": "center" },
+        "children": [
+          { "type": "Icon", "props": { "name": "campaign", "size": 24, "color": "#C7000B" } },
+          { "type": "Text", "props": { "text": "营销", "size": 10, "weight": 400, "color": "#C7000B", "fontFamily": "HarmonyOS Sans SC-Regular, 'HarmonyOS Sans', sans-serif" } },
+          {
+            "type": "Row",
+            "props": {
+              "background": "#C7000B",
+              "width": 72,
+              "height": 3,
+              "borderRadius": 20,
+              "marginBottom": 4
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": { "gap": 4, "align": "center" },
+        "children": [
+          { "type": "Icon", "props": { "name": "support_agent", "size": 24, "color": "#000000" } },
+          { "type": "Text", "props": { "text": "服务", "size": 10, "weight": 400, "color": "#000000", "fontFamily": "HarmonyOS Sans SC-Regular, 'HarmonyOS Sans', sans-serif" } }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": { "gap": 4, "align": "center" },
+        "children": [
+          { "type": "Icon", "props": { "name": "person", "size": 24, "color": "#000000" } },
+          { "type": "Text", "props": { "text": "我的", "size": 10, "weight": 400, "color": "#000000", "fontFamily": "HarmonyOS Sans SC-Regular, 'HarmonyOS Sans', sans-serif" } }
+        ]
+      }
+    ]
+  }
+}

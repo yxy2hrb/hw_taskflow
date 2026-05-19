@@ -1,0 +1,16 @@
+{
+  "state_name": "提交中态",
+  "lifecycle": "persistent",
+  "injection": { "mode": "replace", "anchor": "#submit-button" },
+  "inherit_skeleton": false,
+  "tree": {
+    "type": "Button",
+    "props": {
+      "label": "提交中…",
+      "variant": "primary",
+      "block": true,
+      "disabled": true,
+      "icon": "spinner"
+    }
+  }
+}

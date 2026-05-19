@@ -1,0 +1,43 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "工作台首页初始态",
+    "description": "页面为全屏移动端布局，顶部状态栏显示时间/信号/电量，底部固定 Tab 栏含‘工作台’‘项目’‘消息’‘我的’四图标；中部主内容区可见‘项目开局’标题、三个功能卡片（创建开局、创建项目集、接收项目），其中‘创建项目集’按钮位于中间卡片内，文字为‘创建项目集’，背景为白色，边框圆角，无遮罩无浮层。",
+    "implementation_method": "原始 HTML 初始快照，不做改造"
+  },
+  {
+    "state_id": 2,
+    "state_name": "全屏项目集表单页",
+    "description": "页面保留顶部状态栏（时间/信号/电量）与底部 Tab 栏（四图标完整可见），其余区域被白色卡片式表单覆盖：卡片宽360px居中，顶部留白48px，内含标题‘创建项目集’（16px Medium 字体）、项目集名称输入框（带浅灰底+1px边框+placeholder‘请输入项目集名称’）、公司/个人单选按钮组（横向排列，两个圆形按钮+对应文字‘公司’‘个人’）、已添加项目列表区（空时显示灰色提示‘暂无项目’，有项目则以小卡片形式垂直堆叠，每张含项目名+删除图标）、底部红色宽按钮（#E53935，高52px，文字‘确认’，居中固定于屏幕底部安全区上方16px）。",
+    "implementation_method": "全屏表单页 (Full-Screen Form Page)：顶部状态栏与底部 Tab 栏保持原样；主体为白色卡片（#FFFFFF，圆角12px，阴影 rgba(0,0,0,0.05)）；名称输入框 placeholder='请输入项目集名称'；单选按钮组含两个选项，文案分别为‘公司’和‘个人’；已添加项目区默认为空状态文案‘暂无项目’（#999，14px）；底部按钮文字‘确认’，背景色 #E53935，文字色 white。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "表单校验失败态",
+    "description": "画面与全屏项目集表单页完全一致，仅在名称输入框下方出现红色小字提示‘请输入项目集名称’（#D32F2F，12px），在单选按钮组下方出现红色小字提示‘所选项目不匹配归属类型’（#D32F2F，12px），其余所有元素位置、颜色、状态均未改变，无遮罩、无图标、无按钮禁用、无加载动效。",
+    "implementation_method": "表单错误提示 (Form Validation Message)：名称输入框下方文本‘请输入项目集名称’（英文 'Please enter project set name'）；单选区下方文本‘所选项目不匹配归属类型’（英文 'Selected projects do not match ownership type'）；两处文案均为 #D32F2F，12px，左对齐，距上一元素间距8px；其余界面元素与 state_2 完全一致，无需 DOM 删除或隐藏。",
+    "last_state": 2
+  },
+  {
+    "state_id": 4,
+    "state_name": "提交中过渡态",
+    "description": "画面与全屏项目集表单页完全一致，仅底部红色‘确认’按钮变为灰色不可点击状态（背景色 #BDBDBD，文字色 #757575），按钮内部叠加一个顺时针旋转的16px深灰色圆环 spinner（stroke #191919，stroke-width 2px，使用 CSS animation:hmspin 1s linear infinite），其余所有区域静止，无遮罩、无浮层、无文字变更、无输入框状态变化。",
+    "implementation_method": "按钮加载态 (Button Loading State)：确认按钮背景色 #BDBDBD，文字色 #757575；按钮内嵌 SVG 圆环 spinner（尺寸16px×16px，居中，stroke #191919，stroke-width 2px，CSS animation:hmspin 1s linear infinite）；其余所有元素与 state_2 完全一致，无需 DOM 删除或隐藏。",
+    "last_state": 2
+  },
+  {
+    "state_id": 5,
+    "state_name": "创建成功终态",
+    "description": "画面与全屏项目集表单页完全一致，顶部状态栏下方16px处叠加一条绿色 Toast 横条（高度40px，背景色 #4CAF50，圆角8px，左右内边距16px），横条内左侧为白色勾选图标（SVG path，尺寸20px），右侧为文字‘创建成功’（#FFFFFF，16px Medium），无按钮、无关闭叉、无动画，底部 Tab 栏与状态栏全部可见且未被遮挡。",
+    "implementation_method": "轻量级提示 (Toast/Snackbar)：Toast 位于顶部状态栏下方16px，宽100%，高40px，背景 #4CAF50，圆角8px；内含白色勾选图标（SVG path，fill #FFFFFF，尺寸20px）+ 文字‘创建成功’（英文 'Created successfully'）；文字色 #FFFFFF，16px Medium，左对齐，图标与文字间距8px；其余所有元素与 state_2 完全一致，无需 DOM 删除或隐藏。",
+    "last_state": 2
+  },
+  {
+    "state_id": 6,
+    "state_name": "取消返回工作台态",
+    "description": "画面与工作台首页初始态完全一致：顶部状态栏显示时间/信号/电量，底部 Tab 栏含‘工作台’‘项目’‘消息’‘我的’四图标，中部主内容区可见‘项目开局’标题及三个功能卡片，‘创建项目集’按钮处于可点击状态，无遮罩、无浮层、无 Toast、无输入框残留、无任何表单元素。",
+    "implementation_method": "画面与 last_state（state_1）完全一致；base 已是关闭后的样子，无需任何 DOM 改造。",
+    "last_state": 1
+  }
+]

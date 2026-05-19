@@ -1,0 +1,66 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#14_884730",
+      "instruction": "把整个表单区域替换为带红色校验态的表单：项目场景下拉框（TextInput）添加2px solid #FF3B30边框，下方追加红色文字'请选择场景'（12px，HarmonyHeiTi-Regular，color:#FF3B30）；项目名称输入框（TextInput）添加2px solid #FF3B30边框，下方追加红色文字'请输入项目名称'（12px，HarmonyHeiTi-Regular，color:#FF3B30）；其余布局、背景、占位符、标签星号等保持不变。",
+      "components_needed": ["TextInput", "FormField"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "gap": 24,
+      "padding": 24,
+      "background": "#FFFFFF",
+      "borderRadius": 16,
+      "shadow": true
+    },
+    "children": [
+      {
+        "type": "Text",
+        "props": {
+          "variant": "title",
+          "color": "rgba(0,0,0,0.90)"
+        },
+        "children": "创建新项目"
+      },
+      {
+        "type": "FormField",
+        "props": {
+          "label": "项目场景*",
+          "required": true,
+          "placeholder": "请选择项目场景",
+          "value": "",
+          "invalid": true,
+          "error": "请选择场景"
+        }
+      },
+      {
+        "type": "FormField",
+        "props": {
+          "label": "项目名称*",
+          "required": true,
+          "placeholder": "请输入项目名称",
+          "value": "",
+          "invalid": true,
+          "error": "请输入项目名称"
+        }
+      },
+      {
+        "type": "Button",
+        "props": {
+          "label": "创建项目",
+          "variant": "primary",
+          "block": true
+        }
+      }
+    ]
+  }
+}

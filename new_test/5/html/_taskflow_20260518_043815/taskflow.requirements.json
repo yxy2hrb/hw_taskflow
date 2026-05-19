@@ -1,0 +1,44 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "工作台首页初始态",
+    "description": "屏幕为全屏白底，顶部状态栏显示时间、信号强度与4G标识，底部Tab栏含‘首页’‘工作台’‘消息’‘我的’四个图标，其中‘工作台’处于高亮选中态；页面中央区域清晰可见‘我的体验项目’文字入口卡片，卡片背景为浅灰，文字为深灰12px，无遮罩、无弹窗、无浮动元素。",
+    "implementation_method": "原始 HTML 初始快照，不做改造",
+    "last_state": null
+  },
+  {
+    "state_id": 2,
+    "state_name": "内嵌项目列表弹窗态",
+    "description": "屏幕背景为半透明黑色遮罩（rgba(0,0,0,0.4)），顶部状态栏与底部Tab栏完整保留且可交互（‘工作台’仍高亮）；居中悬浮一张宽340px、圆角8px、白底阴影的卡片，卡片顶部有16px Medium标题‘我的体验项目’，下方为可滚动垂直列表，每项为带图标+项目名称+更新时间的卡片，共5条，文字为深灰14px，行高20px。",
+    "implementation_method": "内嵌弹窗 (Bottom Sheet / Modal Overlay)：半透明黑色遮罩层（rgba(0,0,0,0.4)）覆盖全屏；白色卡片（#FFFFFF，宽340px，圆角8px，box-shadow: 0 4px 12px rgba(0,0,0,0.08)）居中；标题文字 '我的体验项目'（'My Experience Projects'），字体HarmonyHeiTi-Medium 16px；列表项每条含左侧SVG图标、主文案（如'园区无线体验V2'）、副文案‘2小时前更新’（'Updated 2 hours ago'），文字颜色rgba(25,25,25,1)，字号14px，行高20px；底部Tab与状态栏完全可见且未被遮挡。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "全屏加载骨架态",
+    "description": "屏幕为全屏白底，顶部固定导航栏高度56px，背景#FFFFFF，含左对齐返回箭头图标、居中标题‘虚拟体验项目’（16px Medium）、右对齐四个等距图标占位符（搜索、通知、加号、空位）；导航栏下方为大面积留白区域，中央垂直居中显示三段灰色骨架：上方为宽240px高160px椭圆轮廓（模拟拓扑图SVG占位），中部为宽180px高24px矩形（模拟Wi-Fi评分卡片），下方为宽200px高16px横条（模拟运行时长标签），所有骨架色值为rgba(0,0,0,0.08)，无任何真实数据或图标。",
+    "implementation_method": "全屏白底页面 (Full-Screen Page)：顶部导航栏固定定位（height: 56px, background: #FFFFFF），左图标为返回箭头（SVG path），标题文字 '虚拟体验项目'（'Virtual Experience Project'），字体HarmonyHeiTi-Medium 16px；右侧四图标区域含搜索图标（magnifying-glass）、通知图标（bell）、加号图标（plus-circle）、空位（transparent placeholder），等距排列；主体区中央：拓扑图骨架为宽240px高160px椭圆轮廓（stroke: rgba(0,0,0,0.08), stroke-width: 1px, fill: none），Wi-Fi评分骨架为宽180px高24px矩形（fill: rgba(0,0,0,0.08)），运行时长骨架为宽200px高16px横条（fill: rgba(0,0,0,0.08)）；状态栏与底部Tab均不可见（因是全屏新页，base需从state_1 wipe改造）。",
+    "last_state": 1
+  },
+  {
+    "state_id": 4,
+    "state_name": "全屏成功展示态",
+    "description": "屏幕为全屏白底，顶部固定导航栏高度56px，背景#FFFFFF，含左对齐返回箭头图标、居中标题‘虚拟体验项目’（16px Medium）、右对齐四个图标：搜索（放大镜）、通知（铃铛）、加号（圆圈加号）、空位（隐藏）；导航栏下方依次为：设备拓扑图（SVG渲染，含3个带标签的设备节点与连线）、Wi-Fi评分卡片（蓝底白字‘89分’+蓝色进度条+‘优秀’标签）、运行时长标签（‘已运行 7天12小时’，14px Regular）、设备及终端统计卡片（标题‘设备与终端’+2行统计数字+图标）、业务网管理与访问控制模块（标题‘业务网管理’+开关控件+‘访客网络’‘员工网络’列表项，所有文字为深灰14px，行高20px）。",
+    "implementation_method": "全屏页面 (Full-Screen Page)：顶部导航栏同state_3（返回箭头、标题'虚拟体验项目'/'Virtual Experience Project'、右四图标：search/magnifying-glass、notification/bell、add/plus-circle、empty/transparent）；设备拓扑图区域为SVG容器（viewBox='0 0 320 180'），含3个椭圆节点（#46B1E3填充，白字标签‘AP-01’‘SW-02’‘GW-03’）、贝塞尔连线；Wi-Fi评分卡片背景#46B1E3，圆角8px，内含文字'89分'（white, 16px Medium）、蓝色进度条（height: 4px, background: #191919）、标签'优秀'（white, 12px Regular）；运行时长文字'已运行 7天12小时'（'Running for 7 days 12 hours'），深灰14px；设备与终端统计卡片标题'设备与终端'（'Devices & Terminals'），下方两行：'在线设备 12台'（'Online Devices: 12'）、'接入终端 87个'（'Connected Terminals: 87'），均14px Regular；业务网管理模块标题'业务网管理'（'Business Network Management'），下方为开关控件（iOS风格 toggle，on/off状态可见）、列表项'访客网络'（'Guest Network'）与'员工网络'（'Staff Network'），文字深灰14px，行高20px。",
+    "last_state": 1
+  },
+  {
+    "state_id": 5,
+    "state_name": "连接中断错误态",
+    "description": "屏幕为全屏白底，顶部固定导航栏同state_4（返回箭头、标题‘虚拟体验项目’、右四图标）；导航栏下方为拓扑图区域：中央显示红色断连图标（SVG路径，#FF3B30填充，宽48px高48px），下方紧贴文字‘连接中断’（14px Medium，深灰），其余所有模块（Wi-Fi评分、运行时长、设备统计、业务网管理）全部灰显（opacity: 0.4），右上角图标区额外叠加一个红色实心圆角矩形按钮（宽64px高32px，#FF3B30，文字‘重试’，white 14px Medium），按钮位于通知图标右侧、加号图标左侧。",
+    "implementation_method": "全屏页面 (Full-Screen Page)：顶部导航栏同state_4；拓扑图区域替换为红色断连图标（SVG path, fill: #FF3B30, width: 48px, height: 48px）+下方文字'连接中断'（'Connection Interrupted'），14px Medium，深灰rgba(25,25,25,1)；Wi-Fi评分卡片、运行时长标签、设备统计卡片、业务网管理模块整体opacity: 0.4；右上角图标区新增红色按钮（background: #FF3B30, width: 64px, height: 32px, border-radius: 16px），内含文字'重试'（'Retry'），white 14px Medium，水平居中于图标区右侧1/3位置；状态栏与底部Tab不可见。",
+    "last_state": 1
+  },
+  {
+    "state_id": 6,
+    "state_name": "权限拒绝提示态",
+    "description": "屏幕为全屏白底，顶部固定导航栏同state_4（返回箭头、标题‘虚拟体验项目’、右四图标）；画面中央悬浮一张宽320px、高120px、圆角12px、浅灰半透明模态卡片（background: rgba(243,243,243,0.9)，border: 1px solid rgba(0,0,0,0.08)），卡片内垂直居中显示文字‘暂无访问权限’（16px Medium，深灰）与下方‘返回’按钮（宽120px高36px，#46B1E3填充，white 14px Medium，圆角8px），背景内容（导航栏以下区域）完全可见但不可交互（pointer-events: none）。",
+    "implementation_method": "轻量级提示 (Modal Card / Toast-like Overlay)：中央悬浮卡片（width: 320px, height: 120px, background: rgba(243,243,243,0.9), border: 1px solid rgba(0,0,0,0.08), border-radius: 12px, box-shadow: 0 4px 12px rgba(0,0,0,0.08)）；主文案'暂无访问权限'（'Access Denied'），16px Medium，深灰rgba(25,25,25,1)；下方按钮'返回'（'Back'），14px Medium，white，背景#46B1E3，宽120px高36px，圆角8px，水平居中；背景内容（导航栏以下）保持可见但添加style='pointer-events:none'；状态栏与底部Tab不可见。",
+    "last_state": 1
+  }
+]

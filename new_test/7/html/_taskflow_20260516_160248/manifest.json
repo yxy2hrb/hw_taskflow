@@ -1,0 +1,61 @@
+{
+  "title": "添加应用任务流",
+  "slug": "add-app-flow",
+  "createdAt": "2026-05-16T08:05:49.405Z",
+  "meta": {
+    "title": "添加应用任务流",
+    "slug": "add-app-flow",
+    "user_story": "已登录的企业营销运营者在营销工作台首页点击'管理应用'按钮，为当前账号添加一个新应用 → 系统提供四种可视化添加方式 → 用户选择其一并确认后立即生效 → 应用列表中对应条目开关变为开启态，总数+1，右上角弹出'添加成功'Toast",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "管理应用页初始态",
+      "description": "页面顶部显示状态栏（含时间、信号、电量图标），中部为带开关的应用列表（每项含应用图标、名称、右侧灰色圆滑开关控件），底部Tab导航栏高亮'营销'标签；列表上方显示'已添加X个应用'文字，字体14px HarmonyHeiTi-Regular，颜色rgba(25,25,25,1)；无任何遮罩、弹窗或Toast。",
+      "implementation_method": "原始 HTML 初始快照，不做改造",
+      "last_state": null,
+      "file": "state_1.html"
+    },
+    {
+      "state_id": 2,
+      "state_name": "添加方式全屏弹窗",
+      "description": "深色半透明遮罩（rgba(0,0,0,0.6)）覆盖整个屏幕，居中悬浮白色圆角卡片（宽320px，高480px，背景#FFFFFF，圆角12px），卡片内含标题'请选择添加方式'（14px HarmonyHeiTi-Medium，黑字），上方为快捷入口图标+文字'常用模板'，下方三行并列图标：小卡片（尺寸48×48，图标+‘小’）、中卡片（64×64，图标+‘中’）、大卡片（80×80，图标+‘大’），底部固定两按钮：左'取消'（14px HarmonyHeiTi-Regular，rgba(0,0,0,0.6)），右'确认'（14px HarmonyHeiTi-Medium，#C7000B）。",
+      "implementation_method": "模态弹窗 (Modal/Dialog)：深色半透明遮罩 rgba(0,0,0,0.6) 覆盖全屏；白色圆角卡片（width:320px; height:480px; background:#FFFFFF; border-radius:12px; margin:auto）；标题 '请选择添加方式'（font-size:14px; font-family:\"HarmonyHeiTi-Medium\"; color:rgba(25,25,25,1)）；快捷入口区域含图标 + 文字 '常用模板'（font-size:14px; color:rgba(0,0,0,0.8999999761581421)）；小/中/大卡片图标尺寸分别为48×48/64×64/80×80，下方标签文字分别为'小'/'中'/'大'（font-size:14px; color:rgba(25,25,25,1)）；底部按钮：'取消'（font-size:14px; font-family:\"HarmonyHeiTi-Regular\"; color:rgba(0,0,0,0.6)），'确认'（font-size:14px; font-family:\"HarmonyHeiTi-Medium\"; color:#C7000B）。",
+      "last_state": 1,
+      "file": "state_2.html"
+    },
+    {
+      "state_id": 3,
+      "state_name": "添加中过渡态",
+      "description": "列表区域保持可见，顶部状态栏与底部Tab导航栏完整显示；应用列表项右侧开关变为灰色禁用态（背景rgba(223,223,223,1)，滑块不可拖动），开关中央叠加16px旋转圆环加载图标（stroke #191919，stroke-width:2，animate:hmspin 1s linear infinite）；'已添加X个应用'数字旁右侧静态显示三个浅蓝色圆点（•••，font-size:14px，color:#4A90E2），无遮罩、无弹窗、无Toast。",
+      "implementation_method": "按钮控件 (Switch)：开关背景色改为 rgba(223,223,223,1)，移除交互属性（disabled=true），中央嵌入 SVG 圆环 spinner（viewBox=\"0 0 24 24\"，stroke=\"#191919\"，stroke-width=\"2\"，stroke-linecap=\"round\"，animation:hmspin 1s linear infinite）；文本区域：'已添加X个应用'右侧紧邻三个浅蓝圆点（•••，font-size:14px，color:#4A90E2，letter-spacing:2px）；画面其余部分与 state_1 完全一致，无新增浮层或遮罩。",
+      "last_state": 1,
+      "file": "state_3.html"
+    },
+    {
+      "state_id": 4,
+      "state_name": "添加成功态",
+      "description": "应用列表项右侧开关已切换为蓝色开启态（背景#C7000B，滑块右侧带白色对勾图标），'已添加X个应用'文字中X数值比state_1增加1；顶部状态栏下方16px处悬浮白色圆角矩形Toast（宽240px，高44px，background:#FFFFFF，border-radius:8px，box-shadow:none），内含左侧对勾图标+右侧黑字'添加成功'（font-size:14px，HarmonyHeiTi-Regular，color:rgba(25,25,25,1)），Toast无箭头、无阴影、无关闭按钮，位置固定于屏幕顶部中央。",
+      "implementation_method": "轻量级提示 (Toast/Snackbar)：白色圆角矩形（width:240px; height:44px; background:#FFFFFF; border-radius:8px; box-shadow:none；position:fixed; top:64px; left:50%; transform:translateX(-50%)）；内部左侧为对勾SVG图标（16×16），右侧文字 '添加成功'（font-size:14px; font-family:\"HarmonyHeiTi-Regular\"; color:rgba(25,25,25,1)）；开关控件：背景色#C7000B，滑块右侧嵌入白色对勾图标；'已添加X个应用'中X值更新为原值+1；其余UI与state_1完全一致。",
+      "last_state": 1,
+      "file": "state_4.html"
+    },
+    {
+      "state_id": 5,
+      "state_name": "添加失败态",
+      "description": "顶部状态栏下方16px处悬浮红色横条Toast（宽100%，高44px，background:#F44336，color:#FFFFFF，font-size:14px，HarmonyHeiTi-Regular），左对齐显示'❌ 添加失败，请重试'，右端带白色关闭X图标（16×16）；应用列表项右侧开关恢复为灰色关闭态（背景rgba(223,223,223,1)）；'已添加X个应用'数字未变化；无遮罩、无弹窗、底部Tab高亮'营销'。",
+      "implementation_method": "轻量级提示 (Toast/Snackbar)：红色横条（width:100%; height:44px; background:#F44336; position:fixed; top:64px; left:0）；内文 '❌ 添加失败，请重试'（font-size:14px; font-family:\"HarmonyHeiTi-Regular\"; color:#FFFFFF；padding-left:16px；padding-right:44px）；右端关闭X图标（16×16，color:#FFFFFF，position:absolute; right:12px; top:50%; transform:translateY(-50%)）；开关控件：背景色 rgba(223,223,223,1)，无对勾，滑块位于左侧；'已添加X个应用'数字与state_1完全一致；其余UI与state_1完全一致。",
+      "last_state": 1,
+      "file": "state_5.html"
+    },
+    {
+      "state_id": 6,
+      "state_name": "取消添加态",
+      "description": "画面与state_1完全一致：顶部状态栏正常显示，中部应用列表完整可见（所有开关均为灰色关闭态），底部Tab导航栏高亮'营销'标签，'已添加X个应用'数字未变，无遮罩、无弹窗、无Toast、无任何视觉变化。",
+      "implementation_method": "画面与 last_state（state_1）完全一致；base 已是关闭后的样子，无需任何 DOM 改造。",
+      "last_state": 1,
+      "file": "state_6.html"
+    }
+  ]
+}

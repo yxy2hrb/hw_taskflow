@@ -1,0 +1,111 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "new-overlay",
+      "anchor": "#14_884367",
+      "instruction": "在 body 直接子级末尾新增半透明黑色遮罩层（rgba(0,0,0,0.4)）覆盖全屏；其上居中悬浮一张宽340px、高自动、圆角8px、白底、带轻微阴影（box-shadow: 0 4px 12px rgba(0,0,0,0.08)）的卡片；卡片顶部为16px Medium标题‘我的体验项目’（HarmonyHeiTi-Medium，深灰 rgba(25,25,25,1)）；下方为可滚动垂直列表，含5条列表项，每项左侧为 SVG 图标（占位），主文案如‘园区无线体验V2’（14px Regular，深灰 rgba(25,25,25,1)），副文案‘2小时前更新’（14px Regular，深灰 rgba(25,25,25,1)，行高20px）；状态栏（#14_884211 及其内容）与底部 Tab 栏（#14_884324）保持完整可见且可交互；整个浮层需包裹在任务节点注释块中。",
+      "components_needed": ["Dialog", "Card", "ScrollView"],
+      "icons_needed": []
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "OverlayMask",
+    "props": {
+      "opacity": 0.4
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "borderRadius": 8,
+          "width": "auto",
+          "maxWidth": 340,
+          "padding": 24,
+          "shadow": true,
+          "gap": 16,
+          "align": "stretch"
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "variant": "title",
+              "size": 16,
+              "weight": 500,
+              "color": "rgba(25,25,25,1)",
+              "align": "left"
+            },
+            "children": "我的体验项目"
+          },
+          {
+            "type": "Column",
+            "props": {
+              "gap": 16,
+              "overflowY": "auto",
+              "maxHeight": 320
+            },
+            "children": [
+              {
+                "type": "ListItem",
+                "props": {
+                  "title": "园区无线体验V2",
+                  "subtitle": "2小时前更新",
+                  "height": 56,
+                  "divider": true,
+                  "leftIcon": "folder"
+                }
+              },
+              {
+                "type": "ListItem",
+                "props": {
+                  "title": "5G专网测试环境",
+                  "subtitle": "1天前更新",
+                  "height": 56,
+                  "divider": true,
+                  "leftIcon": "folder"
+                }
+              },
+              {
+                "type": "ListItem",
+                "props": {
+                  "title": "AI视觉质检平台",
+                  "subtitle": "3天前更新",
+                  "height": 56,
+                  "divider": true,
+                  "leftIcon": "folder"
+                }
+              },
+              {
+                "type": "ListItem",
+                "props": {
+                  "title": "边缘计算节点部署",
+                  "subtitle": "5天前更新",
+                  "height": 56,
+                  "divider": true,
+                  "leftIcon": "folder"
+                }
+              },
+              {
+                "type": "ListItem",
+                "props": {
+                  "title": "IoT设备接入沙箱",
+                  "subtitle": "1周前更新",
+                  "height": 56,
+                  "divider": false,
+                  "leftIcon": "folder"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

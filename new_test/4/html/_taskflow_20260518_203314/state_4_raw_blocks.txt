@@ -1,0 +1,184 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "new-overlay",
+      "anchor": "script",
+      "instruction": "在 body 末尾、</script> 标签之前新增一个顶部居中悬浮的 Toast：width=fit-content，left=50%，transform=translateX(-50%)，background=#64BB5C，border-radius=8px，box-shadow=0 4px 12px rgba(0,0,0,0.06)，padding=10px 16px，内含 Material Icons Round check_circle 图标（白色，font-size:16px，margin-right:8px）和中文文案'创建成功'，字体为 HarmonyHeiTi, 'HarmonyOS Sans', sans-serif，14px，font-weight:500，color:#FFFFFF；无遮罩，不覆盖顶部状态栏和底部 Tab。",
+      "components_needed": ["Toast"],
+      "icons_needed": ["check_circle"]
+    },
+    {
+      "id": "e2",
+      "type": "state-toggle",
+      "anchor": "#0_1",
+      "instruction": "将全屏页主容器替换为新结构：保留顶部状态栏（data-hm=\"StatusBar\"）与底部按钮行（data-hm=\"Row\" style=\"...height:56px...\"），但将中间内容区（原 data-hm=\"Column\" style=\"height:calc(100vh - 56px - 56px)\"）中的右侧空白容器（data-hm=\"Column\" style=\"background:#F3F3F3;width:calc(100% - 360px)\"）替换为可交互三维模型容器（占满剩余宽度，背景色保持 #F3F3F3，无占位图/骨架，仅留空容器示意模型已加载并就绪）；左侧表单区（宽360px）内容完全不变（含已选场景下拉框文字、已填项目名称输入框值）；底部'确定'按钮恢复为启用态：背景色 #0A59F7，文字'确定'，样式同初始态。",
+      "components_needed": ["ModelViewerContainer", "Button", "Dropdown", "TextInput"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+
+[NEXT]
+{
+  "tree": {
+    "type": "Page",
+    "props": {
+      "background": "#F1F3F5",
+      "width": "100%",
+      "height": "100vh"
+    },
+    "children": [
+      {
+        "type": "StatusBar",
+        "props": {
+          "time": "08:08",
+          "signal": "5G",
+          "battery": 100
+        }
+      },
+      {
+        "type": "Column",
+        "props": {
+          "gap": 0,
+          "padding": 0,
+          "align": "stretch",
+          "justify": "flex-start",
+          "height": "calc(100vh - 56px - 56px)"
+        },
+        "children": [
+          {
+            "type": "Row",
+            "props": {
+              "gap": 0,
+              "padding": 0,
+              "align": "stretch",
+              "justify": "flex-start",
+              "width": "100%"
+            },
+            "children": [
+              {
+                "type": "Column",
+                "props": {
+                  "width": 360,
+                  "background": "#FFFFFF",
+                  "borderRadius": 0,
+                  "shadow": false,
+                  "padding": 24,
+                  "gap": 24
+                },
+                "children": [
+                  {
+                    "type": "FormField",
+                    "props": {
+                      "label": "场景",
+                      "required": true,
+                      "placeholder": "请选择场景",
+                      "value": "智慧园区",
+                      "labelWidth": 64
+                    }
+                  },
+                  {
+                    "type": "FormField",
+                    "props": {
+                      "label": "项目名称",
+                      "required": true,
+                      "placeholder": "请输入项目名称",
+                      "value": "A栋三维可视化平台",
+                      "labelWidth": 64
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "Column",
+                "props": {
+                  "width": "calc(100% - 360px)",
+                  "background": "#F3F3F3",
+                  "borderRadius": 0,
+                  "shadow": false,
+                  "padding": 0
+                },
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Row",
+        "props": {
+          "background": "#FFFFFF",
+          "height": 56,
+          "padding": [0, 24],
+          "align": "center",
+          "justify": "center",
+          "width": "100%"
+        },
+        "children": [
+          {
+            "type": "Button",
+            "props": {
+              "label": "确定",
+              "variant": "primary",
+              "size": "regular",
+              "block": false
+            }
+          }
+        ]
+      },
+      {
+        "type": "OverlayMask",
+        "props": {
+          "opacity": 0.0,
+          "color": "#000000",
+          "blur": 0
+        },
+        "children": [
+          {
+            "type": "Column",
+            "props": {
+              "background": "#64BB5C",
+              "borderRadius": 8,
+              "padding": [10, 16],
+              "gap": 8,
+              "align": "center",
+              "justify": "center",
+              "width": "fit-content",
+              "minWidth": 140,
+              "shadow": true,
+              "style": {
+                "position": "absolute",
+                "top": 24,
+                "left": "50%",
+                "transform": "translateX(-50%)",
+                "boxShadow": "0 4px 12px rgba(0,0,0,0.06)"
+              }
+            },
+            "children": [
+              {
+                "type": "Icon",
+                "props": {
+                  "name": "check_circle",
+                  "size": 20,
+                  "color": "#FFFFFF"
+                }
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "color": "#FFFFFF",
+                  "weight": 500
+                },
+                "children": "操作成功"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

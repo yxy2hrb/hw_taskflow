@@ -1,0 +1,53 @@
+{
+  "state_name": "网络异常中断状态",
+  "lifecycle": "persistent",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "Page",
+    "props": { "background": "transparent" },
+    "children": [
+      { "type": "StatusBar" },
+      {
+        "type": "Row",
+        "props": { "height": 24, "background": "#FFCC00", "align": "center", "justify": "center" },
+        "children": [
+          { "type": "Text", "props": { "text": "离线中", "size": 14, "weight": "regular", "color": "#000000" } }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": { "width": "100%", "height": "100%", "align": "center", "justify": "center" },
+        "children": [
+          {
+            "type": "Row",
+            "props": { "width": "100%", "height": "100%" },
+            "children": [
+              {
+                "type": "Column",
+                "props": { "width": "30%", "height": "100%" },
+                "children": []
+              },
+              {
+                "type": "Column",
+                "props": { "width": "70%", "height": "100%" },
+                "children": [
+                  {
+                    "type": "OverlayMask",
+                    "props": { "opacity": 0.0, "blur": 0 },
+                    "children": [
+                      {
+                        "type": "Icon",
+                        "props": { "name": "cloud_off", "size": 20, "color": "#999999" }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "我的工作台首页",
+    "description": "用户位于已登录企业成员的个人工作台首页；顶部状态栏显示时间、信号与电量图标；底部固定Tab栏含‘工作台’‘项目’‘消息’‘我’四个图标，当前‘工作台’Tab高亮；页面中部有‘项目开局’标题，下方三张功能卡片：‘创建开局’‘创建项目集’‘接收项目’，其中‘创建项目集’卡片文字为深灰、带右向箭头图标。",
+    "implementation_method": "原始 HTML 初始快照，不做改造。"
+  },
+  {
+    "state_id": 2,
+    "state_name": "创建项目集全屏页初始态",
+    "description": "用户处于全屏表单页，顶部状态栏（含时间/信号/电量）与底部Tab栏（‘工作台’‘项目’‘消息’‘我’）完整可见且固定不动；中间为白色卡片式表单区：顶部标题‘创建项目集’居中显示（16px Medium字体，深灰#191919），下方是名称输入框（浅灰底+1px浅灰边框+占位符‘请输入项目集名称’），其下是‘公司’与‘个人’两个单选按钮组（圆点+文字左对齐，未选中时圆点为空心浅灰），再下方是项目列表空占位图（灰色虚线方框+中央‘+’号图标+‘添加项目’文字），底部红色实心按钮铺满宽度，文字为‘确认’（白色16px Medium字体）。",
+    "implementation_method": "全屏表单页 (Fullpage Form)：顶部状态栏与底部Tab栏保留；白色卡片背景（#FFFFFF，圆角8px，阴影1px rgba(0,0,0,0.05)）垂直居中；标题‘创建项目集’；名称输入框含占位符‘请输入项目集名称’；单选按钮组含‘公司’和‘个人’两个选项，均未选中；项目列表区为灰色虚线方框（#E0E0E0，2px dashed）+中央‘+’号图标（#999999，24px）+下方文字‘添加项目’（#666666，14px）；底部按钮背景色#FF3B30，文字‘确认’。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "创建项目集校验失败态",
+    "description": "页面结构与初始态完全一致：顶部状态栏与底部Tab栏固定可见；白色卡片式表单区完整存在；名称输入框边框变为红色（2px solid #FF3B30），下方显示红色小字‘请输入项目集名称’（12px，#FF3B30）；单选按钮组右侧出现红色叹号图标（16px，#FF3B30）；项目列表区上方显示红色提示条‘所选项目类型不匹配，请调整’（14px，#FF3B30，背景#FFF5F5，左右内边距12px，上下4px）；底部红色按钮置灰不可点击（背景#CCCCCC，文字‘确认’颜色#999999）。",
+    "implementation_method": "表单错误态 (Form Error State)：名称输入框边框改为2px solid #FF3B30，并在其正下方添加红色段落‘请输入项目集名称’；单选按钮组右侧添加红色叹号图标（SVG或Unicode ✖）；项目列表区上方插入红色提示条，含文字‘所选项目类型不匹配，请调整’；底部按钮背景色#CCCCCC、文字颜色#999999、pointer-events:none。",
+    "last_state": 2
+  },
+  {
+    "state_id": 4,
+    "state_name": "创建项目集提交中态",
+    "description": "页面结构与初始态完全一致：顶部状态栏与底部Tab栏固定可见；白色卡片式表单区完整存在；名称输入框、单选按钮组、项目列表区所有内容可见且不可交互；整个表单区域叠加半透明黑色遮罩（opacity=0.15，rgba(0,0,0,0.15)）；底部红色按钮变为灰色（#CCCCCC），内含顺时针旋转图标（20px SVG或CSS动画spinner）与文字‘提交中…’（16px Medium，#666666），按钮仍铺满宽度。",
+    "implementation_method": "加载遮罩态 (Loading Overlay)：在表单卡片容器外层新增div遮罩层（position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.15); z-index:10）；底部按钮背景#CCCCCC，文字‘提交中…’，右侧嵌入20px CSS旋转spinner（animation:hmspin 1s linear infinite）；其余所有元素保持原样式、仅禁用交互（pointer-events:none）。",
+    "last_state": 2
+  },
+  {
+    "state_id": 5,
+    "state_name": "创建项目集成功态",
+    "description": "页面结构与初始态完全一致：顶部状态栏与底部Tab栏固定可见；白色卡片式表单区完整存在；名称输入框、单选按钮组、项目列表区所有内容可见且可交互；顶部状态栏正下方悬浮绿色Toast卡片（宽328px，高44px，圆角8px，白底，1px浅灰阴影，含左对齐对勾图标（#34C759，20px）+右侧文字‘创建成功’（16px Medium，#191919）），Toast水平居中，垂直距离状态栏下边缘16px；底部红色按钮恢复可点击状态（背景#FF3B30，文字‘确认’）。",
+    "implementation_method": "轻量级提示 (Toast/Snackbar)：Toast卡片绝对定位在top:48px（状态栏高度+16px），width:328px，height:44px，background:#FFFFFF，border-radius:8px，box-shadow:0 2px 8px rgba(0,0,0,0.08)；左侧对勾图标（SVG或Unicode ✓，#34C759，20px），右侧文字‘创建成功’；无关闭按钮，不随滚动移动。",
+    "last_state": 2
+  },
+  {
+    "state_id": 6,
+    "state_name": "创建项目集取消返回态",
+    "description": "画面与 last_state（state_1）完全一致；顶部状态栏显示时间、信号与电量图标；底部固定Tab栏含‘工作台’‘项目’‘消息’‘我’四个图标，当前‘工作台’Tab高亮；页面中部有‘项目开局’标题，下方三张功能卡片：‘创建开局’‘创建项目集’‘接收项目’，其中‘创建项目集’卡片文字为深灰、带右向箭头图标；无任何叠加层、无Toast、无遮罩、无表单残留。",
+    "implementation_method": "画面与 last_state（state_1）完全一致；base 已是关闭后的样子，无需任何 DOM 改造。",
+    "last_state": 1
+  }
+]

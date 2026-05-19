@@ -1,0 +1,134 @@
+<!-- BASELINE_BODY_START -->
+<body>
+<!-- 顶部状态栏 -->
+<div class="scroll-container">
+  <div id="0_1" class="Pixso-canvas-0_1">
+    <div id="14_1030938" class="Pixso-frame-14_1030938 fill-场景background-colorcolor-bg-1-14_1031725">
+      <div id="14_1030939" class="Pixso-frame-14_1030939">
+        <div id="14_1030940" class="Pixso-vector-14_1030940"></div>
+        <div id="14_1030941" class="Pixso-vector-14_1030941"></div>
+        <div id="14_1030942" class="Pixso-vector-14_1030942"></div>
+        <div id="14_1030943" class="Pixso-vector-14_1030943"></div>
+        
+      </div>
+      <div id="14_1030952" class="Pixso-rectangle-14_1030952"></div>
+      <div id="14_1030953" class="Pixso-frame-14_1030953">
+        <div id="14_1030954" class="Pixso-frame-14_1030954">
+          <div class="frame-content-14_1030954">
+            <div id="146_171005" class="Pixso-frame-146_171005">
+              <div id="146_171006" class="Pixso-frame-146_171006">
+                <div class="frame-content-146_171006">
+                  <p id="146_171007" class="Pixso-paragraph-146_171007">08:08</p>
+                  <div id="146_171008" class="Pixso-frame-146_171008">
+                    <div id="146_171009" class="Pixso-vector-146_171009"></div>
+                    <div id="146_171021" class="Pixso-vector-146_171021"></div>
+                    <div id="146_171028" class="Pixso-vector-146_171028"></div>
+                    <div id="146_171055" class="Pixso-vector-146_171055"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 标题栏：已删除，避免残影 -->
+            <!-- 我要参会区块：已删除 -->
+            <!-- 分享获客数据区块：已删除 -->
+            <!-- 管理应用按钮：已删除 -->
+            <!-- 售后文档区块（含快速入门卡片）：已删除 -->
+          </div>
+        </div>
+        <!-- 底部导航栏：完整保留 -->
+        <div id="14_1031065" class="Pixso-frame-14_1031065">
+          <div id="14_1031066" class="Pixso-rectangle-14_1031066"></div>
+          <p id="14_1031067" class="Pixso-paragraph-14_1031067">我的</p>
+          <p id="14_1031068" class="Pixso-paragraph-14_1031068">服务</p>
+          <p id="14_1031069" class="Pixso-paragraph-14_1031069">工作台</p>
+          <p id="14_1031070" class="Pixso-paragraph-14_1031070">商城</p>
+          <p id="14_1031071" class="Pixso-paragraph-14_1031071">首页</p>
+          <div id="14_1031072" class="Pixso-group-14_1031072">
+            <div id="14_1031073" class="Pixso-vector-14_1031073"></div>
+            <div id="14_1031074" class="Pixso-group-14_1031074">
+              <div id="14_1031075" class="Pixso-vector-14_1031075"></div>
+              <div id="14_1031076" class="stroke-wrapper-14_1031076">
+                <div class="Pixso-rectangle-14_1031076"></div>
+                <div class="stroke-14_1031076"></div>
+              </div>
+            </div>
+          </div>
+          <div id="14_1031077" class="Pixso-vector-14_1031077"></div>
+          <div id="14_1031081" class="Pixso-vector-14_1031081"></div>
+          <div id="14_1031094" class="Pixso-group-14_1031094">
+            <div id="14_1031095" class="Pixso-vector-14_1031095"></div>
+            <div id="14_1031096" class="Pixso-vector-14_1031096"></div>
+          </div>
+          <div id="14_1031099" class="Pixso-group-14_1031099">
+            <div id="14_1031100" class="Pixso-vector-14_1031100"></div>
+            <div id="14_1031101" class="Pixso-group-14_1031101">
+              <div id="14_1031102" class="Pixso-vector-14_1031102"></div>
+              <div id="14_1031105" class="Pixso-vector-14_1031105"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 【任务节点开始: 快速入门加载中态【临时】】 -->
+      <!-- 全屏遮罩层：覆盖原工作台内容，不遮挡状态栏与Tab栏 -->
+      <div style="position: fixed; top: 44px; bottom: 66px; left: 0; right: 0; background: rgba(0,0,0,0.4); z-index: 50; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <!-- 中部容器：宽320px，垂直居中 -->
+        <div style="width: 320px; padding: 0 16px; box-sizing: border-box;">
+          <!-- 搜索框骨架 -->
+          <div class="skeleton-search" style="width: 320px; height: 24px; background: rgba(0,0,0,0.08); border-radius: 8px; margin-bottom: 16px;"></div>
+          <!-- 标签骨架：三行（注：需求描述为“四类标签”，但 implementation_method 明确写为“三行 div.skeleton-tag”，此处严格按 spec 执行为三行） -->
+          <div style="display: flex; justify-content: space-between; margin-bottom: 24px;">
+            <div class="skeleton-tag" style="width: 72px; height: 28px; background: rgba(0,0,0,0.08); border-radius: 8px;"></div>
+            <div class="skeleton-tag" style="width: 72px; height: 28px; background: rgba(0,0,0,0.08); border-radius: 8px;"></div>
+            <div class="skeleton-tag" style="width: 72px; height: 28px; background: rgba(0,0,0,0.08); border-radius: 8px;"></div>
+          </div>
+          <!-- 七组条目骨架 -->
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <!-- 第1组 -->
+            <div class="skeleton-item">
+              <div class="skeleton-title" style="width: 240px; height: 16px; background: rgba(0,0,0,0.08); border-radius: 4px;"></div>
+              <div class="skeleton-btn" style="width: 56px; height: 20px; background: rgba(0,0,0,0.08); border-radius: 4px; margin-top: 8px;"></div>
+            </div>
+            <!-- 第2组 -->
+            <div class="skeleton-item">
+              <div class="skeleton-title" style="width: 240px; height: 16px; background: rgba(0,0,0,0.08); border-radius: 4px;"></div>
+              <div class="skeleton-btn" style="width: 56px; height: 20px; background: rgba(0,0,0,0.08); border-radius: 4px; margin-top: 8px;"></div>
+            </div>
+            <!-- 第3组 -->
+            <div class="skeleton-item">
+              <div class="skeleton-title" style="width: 240px; height: 16px; background: rgba(0,0,0,0.08); border-radius: 4px;"></div>
+              <div class="skeleton-btn" style="width: 56px; height: 20px; background: rgba(0,0,0,0.08); border-radius: 4px; margin-top: 8px;"></div>
+            </div>
+            <!-- 第4组 -->
+            <div class="skeleton-item">
+              <div class="skeleton-title" style="width: 240px; height: 16px; background: rgba(0,0,0,0.08); border-radius: 4px;"></div>
+              <div class="skeleton-btn" style="width: 56px; height: 20px; background: rgba(0,0,0,0.08); border-radius: 4px; margin-top: 8px;"></div>
+            </div>
+            <!-- 第5组 -->
+            <div class="skeleton-item">
+              <div class="skeleton-title" style="width: 240px; height: 16px; background: rgba(0,0,0,0.08); border-radius: 4px;"></div>
+              <div class="skeleton-btn" style="width: 56px; height: 20px; background: rgba(0,0,0,0.08); border-radius: 4px; margin-top: 8px;"></div>
+            </div>
+            <!-- 第6组 -->
+            <div class="skeleton-item">
+              <div class="skeleton-title" style="width: 240px; height: 16px; background: rgba(0,0,0,0.08); border-radius: 4px;"></div>
+              <div class="skeleton-btn" style="width: 56px; height: 20px; background: rgba(0,0,0,0.08); border-radius: 4px; margin-top: 8px;"></div>
+            </div>
+            <!-- 第7组 -->
+            <div class="skeleton-item">
+              <div class="skeleton-title" style="width: 240px; height: 16px; background: rgba(0,0,0,0.08); border-radius: 4px;"></div>
+              <div class="skeleton-btn" style="width: 56px; height: 20px; background: rgba(0,0,0,0.08); border-radius: 4px; margin-top: 8px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 【任务节点结束: 快速入门加载中态【临时】】 -->
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+</script>
+</body>
+<!-- BASELINE_BODY_END -->

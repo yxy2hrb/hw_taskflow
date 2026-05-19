@@ -1,0 +1,13 @@
+{
+  "state_id": 5,
+  "state_name": "网络加载失败提示",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": true,
+    "issues": [],
+    "fixedBlocks": "",
+    "reviewMs": 10984,
+    "screenshot": 62205
+  }
+}

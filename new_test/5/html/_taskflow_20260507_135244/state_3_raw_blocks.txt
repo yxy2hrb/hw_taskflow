@@ -1,0 +1,170 @@
+[OLD]
+<div id="146_139173" class="Pixso-frame-146_139173">
+            <div class="frame-content-146_139173">
+              <div id="146_139174" class="Pixso-frame-146_139174">
+                <p id="146_139175" class="Pixso-paragraph-146_139175 fill-text文本色图标色color_text_primary-14_290523-paragraph text-单行行高headline标题headline_s-14_365549">虚拟体验项目</p>
+              </div>
+            </div>
+          </div>
+          <div id="146_139186" class="Pixso-frame-146_139186">
+            <p id="146_139187" class="Pixso-paragraph-146_139187 fill-text文本色图标色color_text_primary-14_290523-paragraph">我的体验项目</p>
+          </div>
+          <div id="146_139188" class="Pixso-frame-146_139188">
+            <div class="frame-content-146_139188">
+              <div id="146_139189" class="Pixso-frame-146_139189">
+                <div class="frame-content-146_139189">
+                  <div id="146_139190" class="Pixso-frame-146_139190">
+                    <div id="146_139191" class="Pixso-group-146_139191">
+                      <div id="146_139192" class="Pixso-rectangle-146_139192"></div>
+                      <div id="146_139193" class="Pixso-group-146_139193">
+                        <div id="146_139200" class="Pixso-vector-146_139200"></div>
+                      </div>
+                      <div id="146_139203" class="Pixso-group-146_139203">
+                        <div id="146_139210" class="Pixso-vector-146_139210"></div>
+                      </div>
+                      <div id="146_139213" class="Pixso-group-146_139213">
+                        <div id="146_139220" class="Pixso-vector-146_139220"></div>
+                      </div>
+                      <div id="146_139223" class="Pixso-vector-146_139223"></div>
+                      <div id="146_139224" class="Pixso-vector-146_139224"></div>
+                      <div id="146_139225" class="Pixso-vector-146_139225"></div>
+                      <div id="146_139226" class="Pixso-vector-146_139226"></div>
+                      <div id="146_139227" class="Pixso-vector-146_139227"></div>
+                      <div id="146_139228" class="Pixso-vector-146_139228"></div>
+                    </div>
+                  </div>
+                  <p id="146_139236" class="Pixso-paragraph-146_139236 fill-text文本色图标色color_text_primary-14_290523-paragraph">体验开局流程</p>
+                </div>
+              </div>
+              <div id="146_139237" class="Pixso-frame-146_139237">
+                <div class="frame-content-146_139237">
+                  <div id="146_139238" class="Pixso-frame-146_139238">
+                    <div id="146_139239" class="Pixso-group-146_139239">
+                      <div id="146_139240" class="Pixso-rectangle-146_139240"></div>
+                      <div id="146_139241" class="Pixso-group-146_139241">
+                        <div id="146_139248" class="Pixso-vector-146_139248"></div>
+                      </div>
+                      <div id="146_139251" class="Pixso-group-146_139251">
+                        <div id="146_139258" class="Pixso-vector-146_139258"></div>
+                      </div>
+                      <div id="146_139261" class="Pixso-group-146_139261">
+                        <div id="146_139268" class="Pixso-vector-146_139268"></div>
+                      </div>
+                      <div id="146_139271" class="Pixso-vector-146_139271"></div>
+                      <div id="146_139272" class="Pixso-vector-146_139272"></div>
+                      <div id="146_139273" class="Pixso-vector-146_139273"></div>
+                      <div id="146_139274" class="Pixso-vector-146_139274"></div>
+                      <div id="146_139275" class="Pixso-vector-146_139275"></div>
+                      <div id="146_139276" class="Pixso-vector-146_139276"></div>
+                    </div>
+                  </div>
+                  <p id="146_139277" class="Pixso-paragraph-146_139277 fill-text文本色图标色color_text_primary-14_290523-paragraph">体验运维流程</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="146_139278" class="Pixso-group-146_139278">
+            <div id="146_139280" class="Pixso-group-146_139280">
+              <div id="146_139281" class="vector-wrapper-146_139281">
+                <div id="146_139281" class="Pixso-vector-146_139281"></div>
+              </div>
+              <div id="146_139282" class="Pixso-vector-146_139282"></div>
+              <div id="146_139283" class="vector-wrapper-146_139283">
+                <div id="146_139283" class="Pixso-vector-146_139283"></div>
+              </div>
+              <div id="146_139284" class="Pixso-rectangle-146_139284"></div>
+            </div>
+          </div>
+[NEW]
+<!-- 任务节点开始: 拓扑加载中骨架屏【临时】 -->
+<div style="position:fixed; inset:0; z-index:9999; background:#FFFFFF; overflow-y:auto; font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif; box-sizing:border-box;">
+  <!-- 顶部状态栏（复用原结构） -->
+  <div id="146_170564" class="Pixso-frame-146_170564" style="height:32px; padding:0 16px; display:flex; align-items:center; justify-content:space-between;">
+    <p id="146_170566" class="Pixso-paragraph-146_170566" style="font-size:12px; color:rgba(0,0,0,0.9); margin:0;">08:08</p>
+    <div id="146_170567" class="Pixso-frame-146_170567" style="display:flex; gap:4px;">
+      <div id="146_170568" class="Pixso-vector-146_170568" style="width:16px; height:16px;"></div>
+      <div id="146_170580" class="Pixso-vector-146_170580" style="width:16px; height:16px;"></div>
+      <div id="146_170587" class="Pixso-vector-146_170587" style="width:16px; height:16px;"></div>
+      <div id="146_170614" class="Pixso-vector-146_170614" style="width:16px; height:16px;"></div>
+    </div>
+  </div>
+  <!-- 顶部导航栏 -->
+  <div id="146_170624" class="Pixso-frame-146_170624" style="height:48px; padding:0 16px; display:flex; align-items:center; gap:12px; background:#FFFFFF; border-bottom:1px solid rgba(0,0,0,0.08); position:sticky; top:32px; z-index:1;">
+    <span class="mi" style="font-size:24px; color:rgba(0,0,0,0.9);">arrow_back</span>
+    <span style="flex:1; text-align:center; font-size:18px; font-weight:600; color:rgba(0,0,0,0.9);">虚拟体验项目</span>
+    <div style="display:flex; gap:12px;">
+      <span class="mi" style="font-size:24px; color:rgba(0,0,0,0.6);">search</span>
+      <span class="mi" style="font-size:24px; color:rgba(0,0,0,0.6);">notifications</span>
+      <span class="mi" style="font-size:24px; color:rgba(0,0,0,0.6);">add</span>
+    </div>
+  </div>
+  <!-- 主体内容 -->
+  <div style="padding:24px 16px; display:flex; flex-direction:column; gap:24px; margin-top:48px;">
+    <!-- 拓扑图占位容器 -->
+    <div style="width:100%; height:320px; background:#F3F3F3; position:relative; border-radius:8px; overflow:hidden;">
+      <!-- 设备轮廓：6个灰色脉冲块，48×48px，按设计稿位置绝对定位 -->
+      <div style="position:absolute; top:64px; left:48px; width:48px; height:48px; background:#E0E0E0; border-radius:8px; animation: pulse 1.5s infinite;"></div>
+      <div style="position:absolute; top:64px; left:144px; width:48px; height:48px; background:#E0E0E0; border-radius:8px; animation: pulse 1.5s infinite;"></div>
+      <div style="position:absolute; top:160px; left:96px; width:48px; height:48px; background:#E0E0E0; border-radius:8px; animation: pulse 1.5s infinite;"></div>
+      <div style="position:absolute; top:160px; left:192px; width:48px; height:48px; background:#E0E0E0; border-radius:8px; animation: pulse 1.5s infinite;"></div>
+      <div style="position:absolute; top:256px; left:48px; width:48px; height:48px; background:#E0E0E0; border-radius:8px; animation: pulse 1.5s infinite;"></div>
+      <div style="position:absolute; top:256px; left:144px; width:48px; height:48px; background:#E0E0E0; border-radius:8px; animation: pulse 1.5s infinite;"></div>
+    </div>
+    <!-- Wi-Fi评分占位 -->
+    <div style="display:flex; align-items:center; gap:12px;">
+      <div style="width:48px; height:48px; background:#E0E0E0; border-radius:8px;"></div>
+      <div style="flex:1;">
+        <p style="font-size:14px; color:rgba(0,0,0,0.6); margin:0;">Wi-Fi质量评分</p>
+        <p style="font-size:16px; font-weight:500; color:rgba(0,0,0,0.9); margin:0;">—</p>
+      </div>
+    </div>
+    <!-- 运行时长占位 -->
+    <div style="display:flex; align-items:center; gap:12px;">
+      <div style="width:48px; height:48px; background:#E0E0E0; border-radius:8px;"></div>
+      <div style="flex:1;">
+        <p style="font-size:14px; color:rgba(0,0,0,0.6); margin:0;">运行时长</p>
+        <p style="font-size:16px; font-weight:500; color:rgba(0,0,0,0.9); margin:0;">--:--:--</p>
+      </div>
+    </div>
+    <!-- 统计卡片三列占位 -->
+    <div style="display:flex; gap:12px;">
+      <div style="flex:1; background:#F3F3F3; border-radius:8px; padding:16px;">
+        <p style="font-size:14px; color:rgba(0,0,0,0.6); margin:0;">网络设备</p>
+        <p style="font-size:16px; font-weight:500; color:rgba(0,0,0,0.9); margin:0;">—</p>
+      </div>
+      <div style="flex:1; background:#F3F3F3; border-radius:8px; padding:16px;">
+        <p style="font-size:14px; color:rgba(0,0,0,0.6); margin:0;">接入终端</p>
+        <p style="font-size:16px; font-weight:500; color:rgba(0,0,0,0.9); margin:0;">—</p>
+      </div>
+      <div style="flex:1; background:#F3F3F3; border-radius:8px; padding:16px;">
+        <p style="font-size:14px; color:rgba(0,0,0,0.6); margin:0;">业务网管理</p>
+        <p style="font-size:16px; font-weight:500; color:rgba(0,0,0,0.9); margin:0;">—</p>
+      </div>
+    </div>
+  </div>
+  <!-- 底部Tab栏（复用原结构） -->
+  <div id="14_884324" class="Pixso-frame-14_884324" style="position:fixed; bottom:0; left:0; right:0; height:56px; background:#F3F3F3; display:flex; align-items:center; justify-content:space-around; padding:0 16px; z-index:1; border-top:1px solid rgba(0,0,0,0.08);">
+    <div style="text-align:center;">
+      <div id="14_884325" class="Pixso-rectangle-14_884325" style="width:24px; height:24px; margin:0 auto 4px;"></div>
+      <p id="14_884326" class="Pixso-paragraph-14_884326" style="font-size:12px; color:rgba(0,0,0,0.9); margin:0;">我的</p>
+    </div>
+    <div style="text-align:center;">
+      <div id="14_884327" class="Pixso-paragraph-14_884327" style="width:24px; height:24px; margin:0 auto 4px;"></div>
+      <p id="14_884327" class="Pixso-paragraph-14_884327" style="font-size:12px; color:rgba(0,0,0,0.9); margin:0;">服务</p>
+    </div>
+    <div style="text-align:center;">
+      <div id="14_884328" class="Pixso-paragraph-14_884328" style="width:24px; height:24px; margin:0 auto 4px;"></div>
+      <p id="14_884328" class="Pixso-paragraph-14_884328" style="font-size:12px; color:rgba(0,0,0,0.9); margin:0;">工作台</p>
+    </div>
+    <div style="text-align:center;">
+      <div id="14_884329" class="Pixso-paragraph-14_884329" style="width:24px; height:24px; margin:0 auto 4px;"></div>
+      <p id="14_884329" class="Pixso-paragraph-14_884329" style="font-size:12px; color:rgba(0,0,0,0.9); margin:0;">商城</p>
+    </div>
+    <div style="text-align:center;">
+      <div id="14_884330" class="Pixso-paragraph-14_884330" style="width:24px; height:24px; margin:0 auto 4px;"></div>
+      <p id="14_884330" class="Pixso-paragraph-14_884330" style="font-size:12px; color:rgba(0,0,0,0.9); margin:0;">首页</p>
+    </div>
+  </div>
+</div>
+<style>@keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 0.8; } 100% { opacity: 0.4; } }</style>
+<!-- 任务节点结束: 拓扑加载中骨架屏【临时】 -->

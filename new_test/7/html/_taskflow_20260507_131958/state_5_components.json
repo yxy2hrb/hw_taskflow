@@ -1,0 +1,17 @@
+{
+  "state_id": 5,
+  "state_name": "网络失败终态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "Toast 文案未显示，截图中未见‘添加失败，请重试’的红色提示条",
+      "Toast 位置不正确，应位于页面右上角（距离顶部48px，右侧24px），但当前无该元素"
+    ],
+    "fixedBlocks": "[OLD]\n<script>\n</script>\n<!-- 任务节点开始: 网络失败终态【临时】 -->\n<div style=\"position:fixed;inset:0;z-index:9999;display:flex;align-items:flex-end;justify-content:flex-end;padding:48px 24px 16px;pointer-events:none;\">\n  <div style=\"width:260px;height:44px;background:#C7000B;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:center;box-sizing:border-box;font-family:HarmonyHeiTi,\"HarmonyOS Sans\",\"HarmonyOS Sans SC\",sans-serif;word-break:break-word;overflow-wrap:anywhere;\">\n    <span style=\"font-size:14px;font-weight:400;color:#FFFFFF;\">添加失败，请重试</span>\n  </div>\n</div>\n<!-- 任务节点结束: 网络失败终态【临时】 -->\n[NEW]\n<script>\n</script>\n<!-- 任务节点开始: 网络失败终态【临时】 -->\n<div style=\"position:fixed;top:48px;right:24px;z-index:9999;width:260px;height:44px;background:#C7000B;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:center;box-sizing:border-box;font-family:HarmonyHeiTi,\"HarmonyOS Sans\",\"HarmonyOS Sans SC\",sans-serif;word-break:break-word;overflow-wrap:anywhere;pointer-events:none;\">\n  <span style=\"font-size:14px;font-weight:400;color:#FFFFFF;\">添加失败，请重试</span>\n</div>\n<!-- 任务节点结束: 网络失败终态【临时】 -->",
+    "reviewMs": 48556,
+    "screenshot": 125973,
+    "fixedBlocksParsed": 1
+  }
+}

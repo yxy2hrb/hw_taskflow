@@ -1,0 +1,17 @@
+{
+  "state_id": 6,
+  "state_name": "权限不足提示",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "权限不足提示Toast未在截图中显示，但需求明确要求其短暂显示，属于可见性问题。",
+      "Toast元素位置设置为top:44px，理论上应避开状态栏，但实际未在截图中呈现，可能因z-index或渲染顺序导致被隐藏。"
+    ],
+    "fixedBlocks": "[OLD]\n<!-- 任务节点开始: 权限不足提示【临时】 -->\n<div style=\"position:fixed;top:44px;left:50%;transform:translateX(-50%);z-index:1000;padding:12px 16px;background:#333333;border-radius:8px;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:400;color:#FFFFFF;word-break:break-word;max-width:320px;text-align:center;box-sizing:border-box;\">\n  暂无权限查看此项目\n</div>\n<!-- 任务节点结束: 权限不足提示【临时】 -->\n[NEW]\n<!-- 任务节点开始: 权限不足提示【临时】 -->\n<div style=\"position:fixed;top:44px;left:50%;transform:translateX(-50%);z-index:1000;padding:12px 16px;background:#333333;border-radius:8px;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:400;color:#FFFFFF;word-break:break-word;max-width:320px;text-align:center;box-sizing:border-box;opacity:1;transition:opacity 0.3s ease-in-out;\">\n  暂无权限查看此项目\n</div>\n<!-- 任务节点结束: 权限不足提示【临时】 -->",
+    "reviewMs": 24180,
+    "screenshot": 52235,
+    "fixedBlocksParsed": 1
+  }
+}

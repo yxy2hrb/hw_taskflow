@@ -1,0 +1,84 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "<!-- 任务节点开始: 全屏体验页初始态【持久】 -->\n<div data-hm=\"Row\" style=\"display:flex;flex-direction:row;align-items:stretch;justify-content:flex-start;flex-wrap:wrap;width:100%;height:100%;box-sizing:border-box\"><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:24px;padding:24px;background:#FFFFFF;width:360px;box-sizing:border-box\"><div data-hm=\"FormField\" style=\"display:flex;flex-direction:column;width:100%;\">\n      <div style=\"display:flex;align-items:center;gap:12px;\">\n        <div style=\"width:80px;flex-shrink:0;\"><div data-hm=\"FormFieldLabel\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:12px;color:rgba(0,0,0,0.60);line-height:1.4;\"><span style=\"color:#E84026;margin-right:2px;\">*</span>项目场景</div></div>\n        <div style=\"flex:1;min-width:0;\"><div data-hm=\"TextInput\" style=\"display:flex;align-items:center;height:40px;padding:0 16px;background:#F7F8FA;border:1px solid rgba(0,0,0,0.08);border-radius:8px;width:100%;box-sizing:border-box;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;\">\n  \n  <input type=\"text\" value=\"\" placeholder=\"请选择项目场景\"  style=\"flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:inherit;font-size:14px;color:rgba(0,0,0,0.90);line-height:1;\">\n  \n</div></div>\n      </div>\n      \n    </div><div data-hm=\"FormField\" style=\"display:flex;flex-direction:column;width:100%;\">\n      <div style=\"display:flex;align-items:center;gap:12px;\">\n        <div style=\"width:80px;flex-shrink:0;\"><div data-hm=\"FormFieldLabel\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:12px;color:rgba(0,0,0,0.60);line-height:1.4;\"><span style=\"color:#E84026;margin-right:2px;\">*</span>项目名称</div></div>\n        <div style=\"flex:1;min-width:0;\"><div data-hm=\"TextInput\" style=\"display:flex;align-items:center;height:40px;padding:0 16px;background:#F7F8FA;border:1px solid rgba(0,0,0,0.08);border-radius:8px;width:100%;box-sizing:border-box;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;\">\n  \n  <input type=\"text\" value=\"\" placeholder=\"请输入项目名称\"  style=\"flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:inherit;font-size:14px;color:rgba(0,0,0,0.90);line-height:1;\">\n  \n</div></div>\n      </div>\n      \n    </div></div><div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:center;justify-content:center;background:#FFFFFF;width:calc(100% - 360px);box-sizing:border-box\"></div></div>\n<!-- 任务节点结束: 全屏体验页初始态【持久】 -->",
+      "instruction": "把整个任务节点替换为：左侧表单区域保持可编辑（无置灰、无禁用），右侧容器（宽=calc(100% - 360px)）内垂直水平居中显示红色感叹号图标（Material Icons Round 'error'，尺寸32×32px，fill:#FF3B30）与下方深灰色文字‘创建失败，请重试’（font-family:HarmonyHeiTi-Regular, font-size:14px, color:#191919, line-height:20px）；整体结构仍为 Row → 左 Column（360px）+ 右 Column（剩余宽度）；保留外层注释块，但将注释名更新为‘创建失败态【临时】’",
+      "components_needed": ["Icon", "Text"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Row",
+    "props": {
+      "gap": 0,
+      "width": "100%",
+      "height": "100%"
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "gap": 24,
+          "padding": 24,
+          "background": "#FFFFFF",
+          "width": 360,
+          "align": "stretch",
+          "justify": "flex-start"
+        },
+        "children": [
+          {
+            "type": "FormField",
+            "props": {
+              "label": "项目场景",
+              "required": true,
+              "placeholder": "请选择项目场景"
+            }
+          },
+          {
+            "type": "FormField",
+            "props": {
+              "label": "项目名称",
+              "required": true,
+              "placeholder": "请输入项目名称"
+            }
+          }
+        ]
+      },
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "width": "calc(100% - 360px)",
+          "align": "center",
+          "justify": "center"
+        },
+        "children": [
+          {
+            "type": "Icon",
+            "props": {
+              "name": "error",
+              "size": 32,
+              "color": "#FF3B30"
+            }
+          },
+          {
+            "type": "Text",
+            "props": {
+              "fontFamily": "HarmonyHeiTi-Regular, 'HarmonyOS Sans', sans-serif",
+              "fontSize": 14,
+              "color": "#191919",
+              "lineHeight": 20
+            },
+            "children": "创建失败，请重试"
+          }
+        ]
+      }
+    ]
+  }
+}

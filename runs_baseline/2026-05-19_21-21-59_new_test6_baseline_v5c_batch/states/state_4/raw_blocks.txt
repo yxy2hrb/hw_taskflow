@@ -1,0 +1,9 @@
+[state-fail] LLM 返回空
+
+--- state logs ---
+[baseline] HM_BASELINE_ENABLED=1，走 baseline 一锤子路径（跳过 twoPhase / DSL / legacy）
+[baseline] 启动 state_4 「快速入门就绪态」
+[baseline-pre] 删除空白半透明遮罩节点 7 个
+[baseline] prompt 28.5KB lang=zh prevHtml=84.3KB->stripped 22.1KB
+[baseline] LLM 第 1 次返回空，重试（temp=0.2）
+[baseline] LLM 第 2 次返回空，重试（temp=0.5）

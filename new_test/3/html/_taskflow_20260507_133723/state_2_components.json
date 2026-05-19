@@ -1,0 +1,20 @@
+{
+  "state_id": 2,
+  "state_name": "内嵌式项目列表弹窗",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "语言一致性问题：弹窗标题‘我的体验项目’与原页面主语言一致，但状态标签如‘路由器1/1’等应为中文描述，当前显示正常；然而，图标使用了HM Symbol字体（如󰁏、󰄯），虽符合规范，但需确认是否为系统默认图标，此处无误。",
+      "元素溢出问题：弹窗右侧的下拉箭头和三点菜单按钮在截图中未被裁切，但卡片宽度未完全适配360px画布，右边缘有轻微压缩风险，需确保内容不溢出。",
+      "可见性问题：description要求‘状态标签（置顶/个人/处理中）’，但截图中仅显示‘★’和‘•’图标，未明确标注‘置顶’或‘处理中’文字标签，不符合需求说明中的‘文本标签’要求，判为fail。",
+      "位置合理性问题：弹窗顶部与导航栏无缝对齐，视觉上融合良好，无遮挡或错位现象，位置合理。",
+      "基础样式问题：卡片背景为白色，圆角12px，阴影柔和，符合鸿蒙设计规范；文字颜色、大小均符合要求，无纯黑底/白字、超粗阴影等问题。"
+    ],
+    "fixedBlocks": "[OLD]\n<span class=\"mi hm-icon\" style=\"font-size:16px;color:rgba(0,0,0,0.6);\">󰁏</span>\n[NEW]\n<span class=\"mi hm-icon\" style=\"font-size:16px;color:rgba(0,0,0,0.6);\">arrow_drop_down</span>\n[OLD]\n<span class=\"mi hm-icon\" style=\"font-size:16px;color:rgba(0,0,0,0.6);\">󰄯</span>\n[NEW]\n<span class=\"mi hm-icon\" style=\"font-size:16px;color:rgba(0,0,0,0.6);\">more_vert</span>",
+    "reviewMs": 17205,
+    "screenshot": 197076,
+    "fixedBlocksParsed": 2
+  }
+}

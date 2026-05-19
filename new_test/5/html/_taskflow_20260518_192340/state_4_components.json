@@ -1,0 +1,13 @@
+{
+  "state_id": 4,
+  "state_name": "虚拟体验项目就绪页",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": true,
+    "issues": [],
+    "fixedBlocks": "",
+    "reviewMs": 17332,
+    "screenshot": 51273
+  }
+}

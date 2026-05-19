@@ -1,0 +1,40 @@
+{
+  "state_name": "弹窗空状态",
+  "lifecycle": "temporary",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": true,
+  "tree": {
+    "type": "FullscreenPanel",
+    "props": { "background": "#FFFFFF" },
+    "children": [
+      {
+        "type": "OverlayMask",
+        "props": { "opacity": 0.4, "color": "#000", "blur": 0 },
+        "children": [
+          {
+            "type": "Column",
+            "props": { "gap": 24, "padding": "64px 32px", "align": "center", "justify": "center" },
+            "children": [
+              {
+                "type": "Icon",
+                "props": { "name": "wifi", "size": 48, "color": "#999" }
+              },
+              {
+                "type": "Text",
+                "props": { "text": "暂无体验项目", "variant": "body", "size": 16, "weight": "bold", "align": "center" }
+              },
+              {
+                "type": "Button",
+                "props": { "label": "立即创建", "variant": "primary", "size": "regular" }
+              },
+              {
+                "type": "Text",
+                "props": { "text": "点击创建首个虚拟体验环境", "variant": "caption", "size": 12, "color": "#666", "align": "center" }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

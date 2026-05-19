@@ -1,0 +1,69 @@
+{
+  "title": "创建项目集任务流",
+  "slug": "create-project-set-flow",
+  "createdAt": "2026-05-13T22:34:35.604Z",
+  "meta": {
+    "title": "创建项目集任务流",
+    "slug": "create-project-set-flow",
+    "user_story": "已登录的企业管理员 | 在‘我的工作台’点击‘创建项目集’按钮 | 填写名称并选定归属类型 → 系统校验所选项目是否匹配该类型 → 用户点击确认后生成项目集并返回工作台 | 顶部弹出‘创建成功’Toast，同时工作台页面自动刷新并显示新项目集卡片",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "我的工作台初始态",
+      "description": "用户停留在‘我的工作台’页面，顶部状态栏可见（含信号/时间图标），底部 Tab 导航栏完整显示（含‘首页’‘工作台’‘消息’‘我的’四个标签），页面中部清晰可见‘创建项目集’红色按钮（宽320px、高48px、圆角8px、#E62A2A底色、白色16px加粗文字），其余区域为项目集卡片列表空白占位。",
+      "implementation_method": "原始 HTML 初始快照，不做改造。",
+      "last_state": null,
+      "file": "state_1.html"
+    },
+    {
+      "state_id": 2,
+      "state_name": "项目集创建全屏页",
+      "description": "全屏模态弹窗覆盖整个视口：白色背景卡片（宽360px、高792px、居中）、顶部状态栏与底部 Tab 导航栏仍保持可见；卡片顶部居中显示‘创建项目集’标题（16px HarmonyHeiTi-Medium、#191919）；下方依次为：名称输入框（宽320px、高48px、浅灰边框、内嵌14px提示文字‘请输入项目集名称’）、公司/个人单选组（两个并排圆角矩形按钮，左‘公司’右‘个人’，当前无选中态，字体14px、#191919）；项目添加区位于单选组下方，含灰色‘+ 添加项目’文字按钮（14px、#666）及空项目列表占位区；底部固定红色‘确认’按钮（宽320px、高48px、#E62A2A底色、白色16px加粗文字）。",
+      "implementation_method": "全屏模态弹窗 (Modal/Dialog)：白色卡片（rgba(255,255,255,1)、宽360px、高792px、绝对定位居中）；顶部状态栏与底部 Tab 保持原样不遮挡；标题 '创建项目集'（中文）、输入框 placeholder '请输入项目集名称'（中文）、单选按钮文案 '公司' / '个人'（中文）、添加按钮文案 '+ 添加项目'（中文）、底部按钮文案 '确认'（中文）；所有文本使用 HarmonyHeiTi-Medium 字体，字号严格按设计稿标注（标题16px、正文14px）。",
+      "last_state": 1,
+      "file": "state_2.html"
+    },
+    {
+      "state_id": 3,
+      "state_name": "校验中加载态",
+      "description": "画面与 state_2 完全一致，仅底部红色‘确认’按钮变为灰色不可点击（#BFBFBF底色）、右侧紧邻显示一个20px直径的环形加载图标（深灰描边 #191919、浅灰底色 rgba(0,0,0,0.08)、CSS animation: hmspin 1s linear infinite）；其余所有元素位置、颜色、文案均未变化；顶部状态栏与底部 Tab 正常可见。",
+      "implementation_method": "按钮控件 (Button) + 加载指示器 (Spinner)：确认按钮 background-color 改为 #BFBFBF；右侧紧邻插入 <div class='spinner'> 元素，宽高20px、border: 2px solid #191919; border-top-color: transparent; border-radius: 50%; animation: hmspin 1s linear infinite；其余所有 DOM 结构与 state_2 完全一致，仅此两处变更。",
+      "last_state": 2,
+      "file": "state_3.html"
+    },
+    {
+      "state_id": 4,
+      "state_name": "创建成功Toast态",
+      "description": "画面与 state_1 完全一致（即‘我的工作台’页面完整呈现：顶部状态栏、底部 Tab、中部‘创建项目集’红色按钮、项目集卡片列表空白占位）；顶部状态栏正下方 16px 处悬浮一条浅绿色横幅 Toast（宽100%、高44px、背景色 #E8F5E9、圆角8px、内含白色对勾图标 SVG + 文字‘创建成功’（16px HarmonyHeiTi-Medium、#191919））；无关闭按钮，无遮罩层。",
+      "implementation_method": "轻量级提示 (Toast/Snackbar)：浅绿色横幅（#E8F5E9、高44px、圆角8px、宽100%）悬浮于顶部状态栏下方16px；左侧内嵌白色对勾 SVG 图标（20px×20px）；右侧文字 '创建成功'（中文）；所有元素均叠加在 state_1 的 base HTML 上，不修改原有结构。",
+      "last_state": 1,
+      "file": "state_4.html"
+    },
+    {
+      "state_id": 5,
+      "state_name": "名称为空错误态",
+      "description": "画面与 state_2 完全一致，仅名称输入框底部出现红色提示文字‘请输入项目集名称’（12px、#E62A2A、左对齐、距输入框下边缘8px）；输入框边框变为红色（#E62A2A、2px solid）；其余所有元素（单选组、项目添加区、底部按钮）位置、颜色、文案均未变化；顶部状态栏与底部 Tab 正常可见。",
+      "implementation_method": "表单验证反馈 (Form Validation Feedback)：名称输入框 border: 2px solid #E62A2A；下方插入 <p> 元素，文字 '请输入项目集名称'（中文）、12px、#E62A2A、margin-top: 8px；其余所有 DOM 与 state_2 完全一致。",
+      "last_state": 2,
+      "file": "state_5.html"
+    },
+    {
+      "state_id": 6,
+      "state_name": "项目类型不匹配错误态",
+      "description": "画面与 state_2 完全一致，仅项目添加区下方出现红色提示文字‘所选项目类型不匹配，请检查’（12px、#E62A2A、左对齐、距项目添加区下边缘8px）；名称输入框与单选组无样式变化；底部‘确认’按钮仍为红色可点击态；顶部状态栏与底部 Tab 正常可见。",
+      "implementation_method": "表单验证反馈 (Form Validation Feedback)：项目添加区下方插入 <p> 元素，文字 '所选项目类型不匹配，请检查'（中文）、12px、#E62A2A、margin-top: 8px；其余所有 DOM 与 state_2 完全一致。",
+      "last_state": 2,
+      "file": "state_6.html"
+    },
+    {
+      "state_id": 7,
+      "state_name": "取消创建返回态",
+      "description": "画面与 state_1 完全一致：顶部状态栏可见，底部 Tab 导航栏完整显示（含‘首页’‘工作台’‘消息’‘我的’），页面中部‘创建项目集’红色按钮清晰可见，项目集卡片列表为空白占位；无任何浮层、遮罩、弹窗或新增元素。",
+      "implementation_method": "画面与 last_state（state_1）完全一致；base 已是关闭后的样子，无需任何 DOM 改造。",
+      "last_state": 1,
+      "file": "state_7.html"
+    }
+  ]
+}

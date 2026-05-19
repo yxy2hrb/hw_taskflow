@@ -1,0 +1,171 @@
+[OLD]
+<!-- 虚拟体验项目区块 -->
+      <div id="14_884368" class="Pixso-frame-14_884368">
+        <div class="frame-content-14_884368">
+          <div id="146_139173" class="Pixso-frame-146_139173">
+            <div class="frame-content-146_139173">
+              <div id="146_139174" class="Pixso-frame-146_139174">
+                <p id="146_139175" class="Pixso-paragraph-146_139175 fill-text文本色图标色color_text_primary-14_290523-paragraph text-单行行高headline标题headline_s-14_365549">虚拟体验项目</p>
+              </div>
+            </div>
+          </div>
+          <div id="146_139186" class="Pixso-frame-146_139186">
+            <p id="146_139187" class="Pixso-paragraph-146_139187 fill-text文本色图标色color_text_primary-14_290523-paragraph">我的体验项目</p>
+          </div>
+          <div id="146_139188" class="Pixso-frame-146_139188">
+            <div class="frame-content-146_139188">
+              <div id="146_139189" class="Pixso-frame-146_139189">
+                <div class="frame-content-146_139189">
+                  <div id="146_139190" class="Pixso-frame-146_139190">
+                    <div id="146_139191" class="Pixso-group-146_139191">
+                      <div id="146_139192" class="Pixso-rectangle-146_139192"></div>
+                      <div id="146_139193" class="Pixso-group-146_139193">
+                        <div id="146_139200" class="Pixso-vector-146_139200"></div>
+                      </div>
+                      <div id="146_139203" class="Pixso-group-146_139203">
+                        <div id="146_139210" class="Pixso-vector-146_139210"></div>
+                      </div>
+                      <div id="146_139213" class="Pixso-group-146_139213">
+                        <div id="146_139220" class="Pixso-vector-146_139220"></div>
+                      </div>
+                      <div id="146_139223" class="Pixso-vector-146_139223"></div>
+                      <div id="146_139224" class="Pixso-vector-146_139224"></div>
+                      <div id="146_139225" class="Pixso-vector-146_139225"></div>
+                      <div id="146_139226" class="Pixso-vector-146_139226"></div>
+                      <div id="146_139227" class="Pixso-vector-146_139227"></div>
+                      <div id="146_139228" class="Pixso-vector-146_139228"></div>
+                    </div>
+                  </div>
+                  <p id="146_139236" class="Pixso-paragraph-146_139236 fill-text文本色图标色color_text_primary-14_290523-paragraph">体验开局流程</p>
+                </div>
+              </div>
+              <div id="146_139237" class="Pixso-frame-146_139237">
+                <div class="frame-content-146_139237">
+                  <div id="146_139238" class="Pixso-frame-146_139238">
+                    <div id="146_139239" class="Pixso-group-146_139239">
+                      <div id="146_139240" class="Pixso-rectangle-146_139240"></div>
+                      <div id="146_139241" class="Pixso-group-146_139241">
+                        <div id="146_139248" class="Pixso-vector-146_139248"></div>
+                      </div>
+                      <div id="146_139251" class="Pixso-group-146_139251">
+                        <div id="146_139258" class="Pixso-vector-146_139258"></div>
+                      </div>
+                      <div id="146_139261" class="Pixso-group-146_139261">
+                        <div id="146_139268" class="Pixso-vector-146_139268"></div>
+                      </div>
+                      <div id="146_139271" class="Pixso-vector-146_139271"></div>
+                      <div id="146_139272" class="Pixso-vector-146_139272"></div>
+                      <div id="146_139273" class="Pixso-vector-146_139273"></div>
+                      <div id="146_139274" class="Pixso-vector-146_139274"></div>
+                      <div id="146_139275" class="Pixso-vector-146_139275"></div>
+                      <div id="146_139276" class="Pixso-vector-146_139276"></div>
+                    </div>
+                  </div>
+                  <p id="146_139277" class="Pixso-paragraph-146_139277 fill-text文本色图标色color_text_primary-14_290523-paragraph">体验运维流程</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="146_139278" class="Pixso-group-146_139278">
+            <div id="146_139280" class="Pixso-group-146_139280">
+              <div id="146_139281" class="vector-wrapper-146_139281">
+                <div id="146_139281" class="Pixso-vector-146_139281"></div>
+              </div>
+              <div id="146_139282" class="Pixso-vector-146_139282"></div>
+              <div id="146_139283" class="vector-wrapper-146_139283">
+                <div id="146_139283" class="Pixso-vector-146_139283"></div>
+              </div>
+              <div id="146_139284" class="Pixso-rectangle-146_139284"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+[NEW]
+<!-- 任务节点开始: 虚拟体验项目全屏页【临时】 -->
+<div style="position:fixed; inset:0; z-index:9999; background:#FFFFFF; overflow-y:auto; box-sizing:border-box; font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;">
+  <!-- 顶部状态栏（复用原结构，仅保留视觉） -->
+  <div id="hm-st4-statusbar" style="height:32px; padding:0 16px; display:flex; align-items:center; justify-content:space-between; background:#FFFFFF; border-bottom:1px solid rgba(0,0,0,0.08);">
+    <span style="font-size:12px; color:rgba(0,0,0,0.9);">08:08</span>
+    <div style="display:flex; gap:4px; align-items:center;">
+      <span class="mi" style="font-size:16px; color:rgba(0,0,0,0.6);">signal_cellular_alt</span>
+      <span class="mi" style="font-size:16px; color:rgba(0,0,0,0.6);">wifi</span>
+      <span class="mi" style="font-size:16px; color:rgba(0,0,0,0.6);">battery_full</span>
+    </div>
+  </div>
+  <!-- 顶部导航栏 -->
+  <div style="height:48px; padding:0 16px; display:flex; align-items:center; justify-content:space-between; background:#FFFFFF; border-bottom:1px solid rgba(0,0,0,0.08);">
+    <span class="mi" style="font-size:24px; color:rgba(0,0,0,0.9);">arrow_back</span>
+    <span style="font-size:18px; font-weight:600; color:rgba(0,0,0,0.9);">虚拟体验项目</span>
+    <div style="display:flex; gap:12px;">
+      <span class="mi" style="font-size:24px; color:rgba(0,0,0,0.6);">search</span>
+      <span class="mi" style="font-size:24px; color:rgba(0,0,0,0.6);">notifications</span>
+      <span class="mi" style="font-size:24px; color:#0A59F7;">add</span>
+    </div>
+  </div>
+  <!-- 内容主体 -->
+  <div style="padding:24px 16px; display:flex; flex-direction:column; gap:24px;">
+    <!-- 设备拓扑图区域 -->
+    <div style="background:#F1F3F5; border-radius:16px; padding:16px; box-shadow:0 4px 12px rgba(0,0,0,0.05);">
+      <div style="display:flex; justify-content:center; margin-bottom:12px;">
+        <span class="mi" style="font-size:24px; color:#0A59F7;">router</span>
+      </div>
+      <div style="display:flex; justify-content:center; gap:24px; margin-bottom:12px;">
+        <span class="mi" style="font-size:20px; color:rgba(0,0,0,0.6);">devices</span>
+        <span class="mi" style="font-size:20px; color:rgba(0,0,0,0.6);">devices</span>
+      </div>
+      <div style="display:flex; justify-content:center;">
+        <span class="mi" style="font-size:20px; color:rgba(0,0,0,0.6);">devices</span>
+      </div>
+      <div style="display:flex; justify-content:center; margin-top:8px;">
+        <span style="font-size:12px; color:rgba(0,0,0,0.4);">AP中心 · 终端连接拓扑</span>
+      </div>
+    </div>
+    <!-- Wi-Fi评分横幅 -->
+    <div style="background:#0A59F7; border-radius:16px; padding:16px; color:#FFFFFF;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <span style="font-size:14px; font-weight:500;">Wi-Fi评分：92分</span>
+        <span class="mi" style="font-size:16px;">check_circle</span>
+      </div>
+      <div style="height:4px; background:rgba(255,255,255,0.2); border-radius:2px; overflow:hidden;">
+        <div style="height:100%; width:92%; background:#64BB5C;"></div>
+      </div>
+    </div>
+    <!-- 运行时长提示 -->
+    <div style="display:flex; align-items:center; padding:12px 16px; background:#F1F3F5; border-radius:16px;">
+      <span class="mi" style="font-size:16px; color:rgba(0,0,0,0.6); margin-right:8px;">schedule</span>
+      <span style="font-size:14px; color:rgba(0,0,0,0.9);">已运行 7天12小时</span>
+    </div>
+    <!-- 设备及终端统计卡片组 -->
+    <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:16px;">
+      <div style="padding:16px; background:#FFFFFF; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.05); border:1px solid rgba(0,0,0,0.08);">
+        <div style="display:flex; align-items:center; margin-bottom:8px;">
+          <span class="mi" style="font-size:16px; color:#0A59F7; margin-right:8px;">device_hub</span>
+          <span style="font-size:14px; color:rgba(0,0,0,0.9);">设备总数</span>
+        </div>
+        <div style="font-size:20px; font-weight:600; color:rgba(0,0,0,0.9);">12台</div>
+      </div>
+      <div style="padding:16px; background:#FFFFFF; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.05); border:1px solid rgba(0,0,0,0.08);">
+        <div style="display:flex; align-items:center; margin-bottom:8px;">
+          <span class="mi" style="font-size:16px; color:#0A59F7; margin-right:8px;">people</span>
+          <span style="font-size:14px; color:rgba(0,0,0,0.9);">终端接入</span>
+        </div>
+        <div style="font-size:20px; font-weight:600; color:rgba(0,0,0,0.9);">86人</div>
+      </div>
+    </div>
+    <!-- 业务网管理模块 -->
+    <div style="padding:16px; background:#FFFFFF; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.05); border:1px solid rgba(0,0,0,0.08);">
+      <div style="font-size:16px; font-weight:600; color:rgba(0,0,0,0.9); margin-bottom:16px;">业务网管理</div>
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+        <span style="font-size:14px; color:rgba(0,0,0,0.9);">开启业务网</span>
+        [HM:Switch state=on]
+      </div>
+      <div style="margin-bottom:8px;">
+        <span style="font-size:14px; color:rgba(0,0,0,0.9);">访问控制策略</span>
+      </div>
+      <div style="padding:12px 16px; background:rgba(0,0,0,0.047); border-radius:8px; font-size:14px; color:rgba(0,0,0,0.6);">请选择策略</div>
+    </div>
+  </div>
+  <!-- 底部Tab栏占位（保持原高度与视觉一致） -->
+  <div style="height:56px;"></div>
+</div>
+<!-- 任务节点结束: 虚拟体验项目全屏页【临时】 -->

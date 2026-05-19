@@ -1,0 +1,460 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": ["#14_1031108", "#14_1031109"],
+      "replace_at": "#14_1031108",
+      "instruction": "将原半透明遮罩层（id='14_1031108'）和下方售后文档区块（id='14_1031109'）整体替换为快速入门浮层页就绪态：顶部状态栏与底部Tab栏保持可见；全屏覆盖半透明黑色遮罩（rgba(0,0,0,0.5)）；中央悬浮白色圆角矩形卡片（宽320px，高560px，居中，阴影0 8px 24px rgba(0,0,0,0.08)）；卡片内顶部为搜索框（浅灰边框、12px圆角、高度44px），含左侧蓝色放大镜图标（Material Icons Round: search，color:#46B1E3）和黑色占位符文本‘搜索...’（color:#191919，font-family: 'HarmonyHeiTi-Regular'）；下方为4个横向平铺的蓝色分类标签（背景色#46B1E3，文字颜色#FFFFFF，圆角12px，高32px，宽72px，文字分别为‘云存储’‘协同办公’‘安全管控’‘智能运维’，均居中垂直对齐）；再下方为7条垂直排列的入门条目（每条高64px），每条含左对齐深灰标题（color:#191919，14px，font-weight:Medium）、浅灰简述（color:rgba(0,0,0,0.6)，12px）、右对齐蓝色‘查看’按钮（文字‘查看’，color:#46B1E3，14px，font-weight:Medium）；所有文字使用HarmonyHeiTi字体；卡片区域需用 inline style 定义样式，禁止复用原 Pixso id；新增内容必须包裹在 <!-- 任务节点开始: 快速入门页就绪态【临时】 --> 和 <!-- 任务节点结束: 快速入门页就绪态【临时】 --> 注释中。",
+      "components_needed": ["Search", "Button"],
+      "icons_needed": ["search"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "OverlayMask",
+    "props": {
+      "opacity": 0.5,
+      "color": "#000"
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "borderRadius": 16,
+          "width": 320,
+          "height": 560,
+          "padding": 24,
+          "shadow": true,
+          "gap": 16,
+          "align": "stretch"
+        },
+        "children": [
+          {
+            "type": "TextInput",
+            "props": {
+              "placeholder": "搜索...",
+              "size": "regular",
+              "icon": "search",
+              "iconColor": "#46B1E3",
+              "borderRadius": 12,
+              "height": 44,
+              "borderColor": "rgba(0,0,0,0.10)",
+              "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif",
+              "color": "#191919",
+              "placeholderColor": "#191919"
+            }
+          },
+          {
+            "type": "Row",
+            "props": {
+              "gap": 8,
+              "wrap": true,
+              "align": "center"
+            },
+            "children": [
+              {
+                "type": "Button",
+                "props": {
+                  "label": "云存储",
+                  "variant": "primary",
+                  "size": "compact",
+                  "background": "#46B1E3",
+                  "color": "#FFFFFF",
+                  "borderRadius": 12,
+                  "height": 32,
+                  "width": 72,
+                  "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif"
+                }
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "协同办公",
+                  "variant": "primary",
+                  "size": "compact",
+                  "background": "#46B1E3",
+                  "color": "#FFFFFF",
+                  "borderRadius": 12,
+                  "height": 32,
+                  "width": 72,
+                  "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif"
+                }
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "安全管控",
+                  "variant": "primary",
+                  "size": "compact",
+                  "background": "#46B1E3",
+                  "color": "#FFFFFF",
+                  "borderRadius": 12,
+                  "height": 32,
+                  "width": 72,
+                  "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif"
+                }
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "label": "智能运维",
+                  "variant": "primary",
+                  "size": "compact",
+                  "background": "#46B1E3",
+                  "color": "#FFFFFF",
+                  "borderRadius": 12,
+                  "height": 32,
+                  "width": 72,
+                  "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif"
+                }
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": {
+              "gap": 8
+            },
+            "children": [
+              {
+                "type": "Row",
+                "props": {
+                  "justify": "space-between",
+                  "align": "center",
+                  "height": 64
+                },
+                "children": [
+                  {
+                    "type": "Column",
+                    "props": { "gap": 2 },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "size": 14,
+                          "weight": "medium",
+                          "color": "#191919",
+                          "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif"
+                        },
+                        "children": "开通云存储服务"
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "size": 12,
+                          "color": "rgba(0,0,0,0.6)",
+                          "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif"
+                        },
+                        "children": "一键启用对象存储，支持海量文件上传与共享"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Button",
+                    "props": {
+                      "label": "查看",
+                      "variant": "text",
+                      "size": "compact",
+                      "color": "#46B1E3",
+                      "weight": "medium",
+                      "size": 14,
+                      "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "justify": "space-between",
+                  "align": "center",
+                  "height": 64
+                },
+                "children": [
+                  {
+                    "type": "Column",
+                    "props": { "gap": 2 },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "size": 14,
+                          "weight": "medium",
+                          "color": "#191919",
+                          "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif"
+                        },
+                        "children": "创建协作空间"
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "size": 12,
+                          "color": "rgba(0,0,0,0.6)",
+                          "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif"
+                        },
+                        "children": "邀请成员加入，实时编辑文档与任务看板"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Button",
+                    "props": {
+                      "label": "查看",
+                      "variant": "text",
+                      "size": "compact",
+                      "color": "#46B1E3",
+                      "weight": "medium",
+                      "size": 14,
+                      "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "justify": "space-between",
+                  "align": "center",
+                  "height": 64
+                },
+                "children": [
+                  {
+                    "type": "Column",
+                    "props": { "gap": 2 },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "size": 14,
+                          "weight": "medium",
+                          "color": "#191919",
+                          "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif"
+                        },
+                        "children": "配置设备安全策略"
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "size": 12,
+                          "color": "rgba(0,0,0,0.6)",
+                          "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif"
+                        },
+                        "children": "设置访问权限、审计日志与异常行为告警"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Button",
+                    "props": {
+                      "label": "查看",
+                      "variant": "text",
+                      "size": "compact",
+                      "color": "#46B1E3",
+                      "weight": "medium",
+                      "size": 14,
+                      "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "justify": "space-between",
+                  "align": "center",
+                  "height": 64
+                },
+                "children": [
+                  {
+                    "type": "Column",
+                    "props": { "gap": 2 },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "size": 14,
+                          "weight": "medium",
+                          "color": "#191919",
+                          "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif"
+                        },
+                        "children": "部署智能监控看板"
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "size": 12,
+                          "color": "rgba(0,0,0,0.6)",
+                          "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif"
+                        },
+                        "children": "接入设备指标，自动生成健康度评分与趋势图"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Button",
+                    "props": {
+                      "label": "查看",
+                      "variant": "text",
+                      "size": "compact",
+                      "color": "#46B1E3",
+                      "weight": "medium",
+                      "size": 14,
+                      "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "justify": "space-between",
+                  "align": "center",
+                  "height": 64
+                },
+                "children": [
+                  {
+                    "type": "Column",
+                    "props": { "gap": 2 },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "size": 14,
+                          "weight": "medium",
+                          "color": "#191919",
+                          "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif"
+                        },
+                        "children": "启用自动化工作流"
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "size": 12,
+                          "color": "rgba(0,0,0,0.6)",
+                          "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif"
+                        },
+                        "children": "设定触发条件与执行动作，减少人工干预频次"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Button",
+                    "props": {
+                      "label": "查看",
+                      "variant": "text",
+                      "size": "compact",
+                      "color": "#46B1E3",
+                      "weight": "medium",
+                      "size": 14,
+                      "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "justify": "space-between",
+                  "align": "center",
+                  "height": 64
+                },
+                "children": [
+                  {
+                    "type": "Column",
+                    "props": { "gap": 2 },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "size": 14,
+                          "weight": "medium",
+                          "color": "#191919",
+                          "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif"
+                        },
+                        "children": "集成第三方应用"
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "size": 12,
+                          "color": "rgba(0,0,0,0.6)",
+                          "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif"
+                        },
+                        "children": "通过开放API连接CRM、ERP等企业系统"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Button",
+                    "props": {
+                      "label": "查看",
+                      "variant": "text",
+                      "size": "compact",
+                      "color": "#46B1E3",
+                      "weight": "medium",
+                      "size": 14,
+                      "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "justify": "space-between",
+                  "align": "center",
+                  "height": 64
+                },
+                "children": [
+                  {
+                    "type": "Column",
+                    "props": { "gap": 2 },
+                    "children": [
+                      {
+                        "type": "Text",
+                        "props": {
+                          "size": 14,
+                          "weight": "medium",
+                          "color": "#191919",
+                          "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif"
+                        },
+                        "children": "申请专属技术支持"
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "size": 12,
+                          "color": "rgba(0,0,0,0.6)",
+                          "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif"
+                        },
+                        "children": "提交工单，获取7×24小时专家级响应服务"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Button",
+                    "props": {
+                      "label": "查看",
+                      "variant": "text",
+                      "size": "compact",
+                      "color": "#46B1E3",
+                      "weight": "medium",
+                      "size": 14,
+                      "fontFamily": "'HarmonyHeiTi-Regular', 'HarmonyOS Sans', sans-serif"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

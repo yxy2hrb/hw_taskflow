@@ -1,0 +1,7 @@
+{"event":"state-start","data":{"state_id":5,"state_name":"文档详情页","last_state":2,"ts":1779225994839},"ts":"2026-05-19T21:26:34.841Z"}
+{"event":"state-log","data":{"state_id":5,"msg":"[baseline] HM_BASELINE_ENABLED=1，走 baseline 一锤子路径（跳过 twoPhase / DSL / legacy）","ts":1779225994839},"ts":"2026-05-19T21:26:34.841Z"}
+{"event":"state-log","data":{"state_id":5,"msg":"[baseline] 启动 state_5 「文档详情页」","ts":1779225994839},"ts":"2026-05-19T21:26:34.841Z"}
+{"event":"state-log","data":{"state_id":5,"msg":"[baseline] prompt 19.2KB lang=zh prevHtml=74.9KB->stripped 12.8KB","ts":1779225994840},"ts":"2026-05-19T21:26:34.841Z"}
+{"event":"state-log","data":{"state_id":5,"msg":"[baseline] 生成 HTML 71.8KB（其中 LLM body=9.2KB）","ts":1779226085048},"ts":"2026-05-19T21:28:05.048Z"}
+{"event":"state-log","data":{"state_id":5,"msg":"[baseline] 成功（html 73488B applied=1）","ts":1779226085048},"ts":"2026-05-19T21:28:05.048Z"}
+{"event":"state-done","data":{"state_id":5,"state_name":"文档详情页","file":"state_5.html","applied":1,"skipped":0,"review_ok":null,"review_applied":0,"review_issues":[],"elapsed_ms":90210,"hmExpansions":[],"hmMissing":[],"ts":1779226085049},"ts":"2026-05-19T21:28:05.052Z"}

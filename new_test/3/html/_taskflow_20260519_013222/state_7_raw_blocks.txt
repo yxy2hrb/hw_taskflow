@@ -1,0 +1,20 @@
+{
+  "state_name": "权限不足提示状态",
+  "lifecycle": "persistent",
+  "injection": { "mode": "overlay", "z_index": 9999 },
+  "inherit_skeleton": false,
+  "tree": {
+    "type": "Page",
+    "props": { "background": "#FFFFFF" },
+    "children": [
+      { "type": "StatusBar" },
+      { "type": "NavBar", "props": { "title": "项目详情", "leftIcon": "arrow_back" } },
+      { "type": "Column", "props": { "gap": 16, "padding": 16, "align": "center" }, "children": [
+        { "type": "Row", "props": { "background": "#FFF9C4", "height": 24, "align": "center", "justify": "center" }, "children": [
+          { "type": "Text", "props": { "text": "权限不足", "size": 14, "color": "#333", "weight": "regular" } }
+        ]},
+        { "type": "Text", "props": { "text": "您暂无权限查看该项目详情", "size": 14, "color": "#999", "align": "center", "lineHeight": 20 } }
+      ]}
+    ]
+  }
+}

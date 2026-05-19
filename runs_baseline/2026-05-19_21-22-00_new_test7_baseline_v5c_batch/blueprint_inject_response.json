@@ -1,0 +1,19 @@
+{
+  "ok": true,
+  "validation": {
+    "ok": false,
+    "issues": [
+      "states[1].implementation_method 必须显式包含\"基于 last_state + 保留/删除/新增\"三段式",
+      "states[2].implementation_method 必须显式包含\"基于 last_state + 保留/删除/新增\"三段式",
+      "states[3].implementation_method 必须显式包含\"基于 last_state + 保留/删除/新增\"三段式",
+      "states[4].implementation_method 必须显式包含\"基于 last_state + 保留/删除/新增\"三段式",
+      "states[5].implementation_method 必须显式包含\"基于 last_state + 保留/删除/新增\"三段式"
+    ]
+  },
+  "taskflow": {
+    "outDir": "E:\\任务流\\任务流\\p2p\\saved-taskflow\\20260520_052218_manage-app-switch-and-add-flow",
+    "savedInSource": false,
+    "dirName": "20260520_052218_manage-app-switch-and-add-flow",
+    "taskflowPath": "E:\\任务流\\任务流\\p2p\\saved-taskflow\\20260520_052218_manage-app-switch-and-add-flow\\taskflow.json"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "state_id": 4,
+  "state_name": "添加中过渡态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "被操作的应用项右侧开关控件未替换为静态旋转图标，仍显示为原开关状态，不符合需求中‘原开关区域替换为32px圆环spinner’的要求。",
+      "顶部状态栏与底部导航栏正常可见，但主内容区列表结构与state_2不一致，缺少‘已添加X个’计数条，且‘我的线索’卡片中的‘最新’标签位置偏移，未对齐左侧边缘。"
+    ],
+    "fixedBlocks": "[OLD]\n<div id=\"146_395682\" class=\"Pixso-frame-146_395682\">\n            <div class=\"frame-content-146_395682\">\n              <div id=\"146_395683\" class=\"Pixso-frame-146_395683\">\n                <div class=\"frame-content-146_395683\">\n                  <div id=\"146_395684\" class=\"Pixso-vector-146_395684\"></div>\n                </div>\n              </div>\n              <p id=\"146_395690\" class=\"Pixso-paragraph-146_395690 fill-brand主色brand_normal-14_468127-paragraph\">营销</p>\n            </div>\n          </div>\n[NEW]\n<div id=\"146_395682\" class=\"Pixso-frame-146_395682\">\n            <div class=\"frame-content-146_395682\">\n              <div id=\"146_395683\" class=\"Pixso-frame-146_395683\">\n                <div class=\"frame-content-146_395683\">\n                  <div id=\"146_395684\" class=\"Pixso-vector-146_395684\"></div>\n                </div>\n              </div>\n              <p id=\"146_395690\" class=\"Pixso-paragraph-146_395690 fill-brand主色brand_normal-14_468127-paragraph\">营销</p>\n              <div id=\"146_395691\" class=\"Pixso-frame-146_395691\">\n                <div class=\"frame-content-146_395691\">\n                  <div id=\"146_395692\" class=\"Pixso-frame-146_395692\">\n                    <div class=\"frame-content-146_395692\">\n                      <div id=\"146_395693\" class=\"Pixso-vector-146_395693\"></div>\n                    </div>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>",
+    "reviewMs": 52036,
+    "screenshot": 130126,
+    "fixedBlocksParsed": 1
+  }
+}

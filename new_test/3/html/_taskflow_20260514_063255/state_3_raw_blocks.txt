@@ -1,0 +1,124 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "<!-- 任务节点开始: 内嵌项目列表弹窗态【持久】 -->\n<div data-hm=\"Column\" style=\"display:flex;flex-direction:column;align-items:center;justify-content:center;background:#F1F3F5;width:100vw;box-sizing:border-box\"><span class=\"mi\" style=\"font-size:48px;color:rgba(0,0,0,0.4);line-height:1;\">visibility_off</span><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:500;color:rgba(0,0,0,0.90);text-align:left;line-height:1.4;\">内容已隐藏</span><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:12px;font-weight:400;color:rgba(0,0,0,0.60);text-align:left;line-height:1.4;\">该虚拟体验项目当前不可见</span></div>\n<!-- 任务节点结束: 内嵌项目列表弹窗态【持久】 -->",
+      "instruction": "把外层注释名改为 弹窗加载中骨架态【临时】，并将内部替换为：半透明黑色遮罩（rgba(0,0,0,0.3)）覆盖主界面；白色卡片容器（宽360px，圆角8px，#FFFFFF）居中悬浮，内部显示三行等高灰色骨架卡片（每张高120px），每张含顶部标题线（高16px，rgba(0,0,0,0.08)）、中部时间线（高14px，rgba(0,0,0,0.08)）、底部标签位（高20px圆角矩形，rgba(0,0,0,0.08)）及右侧按钮位（高24px宽64px，rgba(0,0,0,0.08)），全部居中纵向排列，间距16px；无文字、无图标、无交互元素。",
+      "components_needed": ["Card"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "OverlayMask",
+    "props": {
+      "opacity": 0.3,
+      "color": "#000"
+    },
+    "children": [
+      {
+        "type": "Column",
+        "props": {
+          "background": "#FFFFFF",
+          "borderRadius": 8,
+          "width": 360,
+          "padding": 0,
+          "shadow": true,
+          "gap": 16,
+          "align": "center",
+          "justify": "center"
+        },
+        "children": [
+          {
+            "type": "Column",
+            "props": {
+              "background": "rgba(0,0,0,0.08)",
+              "height": 120,
+              "width": "100%",
+              "borderRadius": 8,
+              "gap": 12,
+              "padding": 16
+            },
+            "children": [
+              { "type": "Row", "props": { "background": "rgba(0,0,0,0.08)", "height": 16, "borderRadius": 4, "width": "100%" } },
+              { "type": "Row", "props": { "background": "rgba(0,0,0,0.08)", "height": 14, "borderRadius": 4, "width": "100%" } },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 8,
+                  "align": "center",
+                  "justify": "space-between",
+                  "width": "100%"
+                },
+                "children": [
+                  { "type": "Row", "props": { "background": "rgba(0,0,0,0.08)", "height": 20, "borderRadius": 8, "width": "60%" } },
+                  { "type": "Row", "props": { "background": "rgba(0,0,0,0.08)", "height": 24, "width": 64, "borderRadius": 8 } }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": {
+              "background": "rgba(0,0,0,0.08)",
+              "height": 120,
+              "width": "100%",
+              "borderRadius": 8,
+              "gap": 12,
+              "padding": 16
+            },
+            "children": [
+              { "type": "Row", "props": { "background": "rgba(0,0,0,0.08)", "height": 16, "borderRadius": 4, "width": "100%" } },
+              { "type": "Row", "props": { "background": "rgba(0,0,0,0.08)", "height": 14, "borderRadius": 4, "width": "100%" } },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 8,
+                  "align": "center",
+                  "justify": "space-between",
+                  "width": "100%"
+                },
+                "children": [
+                  { "type": "Row", "props": { "background": "rgba(0,0,0,0.08)", "height": 20, "borderRadius": 8, "width": "60%" } },
+                  { "type": "Row", "props": { "background": "rgba(0,0,0,0.08)", "height": 24, "width": 64, "borderRadius": 8 } }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": {
+              "background": "rgba(0,0,0,0.08)",
+              "height": 120,
+              "width": "100%",
+              "borderRadius": 8,
+              "gap": 12,
+              "padding": 16
+            },
+            "children": [
+              { "type": "Row", "props": { "background": "rgba(0,0,0,0.08)", "height": 16, "borderRadius": 4, "width": "100%" } },
+              { "type": "Row", "props": { "background": "rgba(0,0,0,0.08)", "height": 14, "borderRadius": 4, "width": "100%" } },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 8,
+                  "align": "center",
+                  "justify": "space-between",
+                  "width": "100%"
+                },
+                "children": [
+                  { "type": "Row", "props": { "background": "rgba(0,0,0,0.08)", "height": 20, "borderRadius": 8, "width": "60%" } },
+                  { "type": "Row", "props": { "background": "rgba(0,0,0,0.08)", "height": 24, "width": 64, "borderRadius": 8 } }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,117 @@
+<!-- BASELINE_BODY_START -->
+<body>
+<!-- 顶部状态栏 -->
+<div class="scroll-container">
+  <div id="0_1" class="Pixso-canvas-0_1">
+    <div id="14_1030938" class="Pixso-frame-14_1030938 fill-场景background-colorcolor-bg-1-14_1031725">
+      <div id="14_1030939" class="Pixso-frame-14_1030939">
+        <div id="14_1030940" class="Pixso-vector-14_1030940"></div>
+        <div id="14_1030941" class="Pixso-vector-14_1030941"></div>
+        <div id="14_1030942" class="Pixso-vector-14_1030942"></div>
+        <div id="14_1030943" class="Pixso-vector-14_1030943"></div>
+        
+      </div>
+      <div id="14_1030952" class="Pixso-rectangle-14_1030952"></div>
+      <div id="14_1030953" class="Pixso-frame-14_1030953">
+        <div id="14_1030954" class="Pixso-frame-14_1030954">
+          <div class="frame-content-14_1030954">
+            <div id="146_171005" class="Pixso-frame-146_171005">
+              <div id="146_171006" class="Pixso-frame-146_171006">
+                <div class="frame-content-146_171006">
+                  <p id="146_171007" class="Pixso-paragraph-146_171007">08:08</p>
+                  <div id="146_171008" class="Pixso-frame-146_171008">
+                    <div id="146_171009" class="Pixso-vector-146_171009"></div>
+                    <div id="146_171021" class="Pixso-vector-146_171021"></div>
+                    <div id="146_171028" class="Pixso-vector-146_171028"></div>
+                    <div id="146_171055" class="Pixso-vector-146_171055"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 标题栏（已移除旧标题，仅保留状态栏结构） -->
+            <div id="146_171065" class="Pixso-frame-146_171065">
+              <div class="frame-content-146_171065">
+                <div id="146_171066" class="Pixso-frame-146_171066">
+                  <div id="146_171067" class="Pixso-frame-146_171067">
+                    <div id="146_171072" class="Pixso-frame-146_171072">
+                      <div id="146_171073" class="Pixso-frame-146_171073">
+                        <div id="146_171074" class="Pixso-frame-146_171074">
+                          <!-- 【删除】原“我的工作台”标题文字残影 -->
+                        </div>
+                        <div id="146_171081" class="Pixso-frame-146_171081">
+                          <div class="frame-content-146_171081">
+                            <div id="146_171082" class="Pixso-group-146_171082">
+                              <div id="146_171083" class="Pixso-vector-146_171083"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 【删除】全部中部卡片流：我要参会、营销物料、分享获客、管理应用、售后文档等所有功能区块 -->
+        <!-- 【删除】所有顶部装饰背景层（如彩色椭圆/渐变圆块） -->
+        <!-- 【删除】底部导航栏上方的冗余容器（如 id="14_1031028" 等） -->
+
+        <!-- 【新增】网络失败提示态【临时】浮层 -->
+        <div id="hm-network-error-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 55; display: flex; justify-content: center; align-items: center;">
+          <div id="hm-network-error-container" style="width: 320px; padding: 0 20px; box-sizing: border-box;">
+            <!-- 红色感叹号图标 -->
+            <div id="hm-error-icon" style="width: 24px; height: 24px; margin: 0 auto; background: #FF5252; mask: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDYuNzVDMTEuNjUgNi43NSAxMS4zIDcuMTcgMTEuMyA3LjYzVzExLjMgOC4xQzExLjMgOC41NiAxMS42NSA4Ljk4IDEyIDguOThDMTIuMzUgOC45OCAxMi43IDguNTYgMTIuNyA4LjFDMTIuNyA3LjYzIDEyLjM1IDcuMTcgMTIgNy4xN1oiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTEyIDExLjI1QzExLjY1IDExLjI1IDExLjMgMTEuNjcgMTEuMyAxMi4xM1YxMi42QzExLjMgMTMuMDYgMTEuNjUgMTMuNDggMTIgMTMuNDhDMTIuMzUgMTMuNDggMTIuNyAxMy4wNiAxMi43IDEyLjZDMTIuNyAxMi4xMyAxMi4zNSAxMS42NyAxMiAxMS42N1oiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTEyIDE1Ljc1QzExLjY1IDE1Ljc1IDExLjMgMTYuMTcgMTEuMyAxNi42M1YxNy4xQzExLjMgMTcuNTYgMTEuNjUgMTcuOTggMTIgMTcuOThDMTIuMzUgMTcuOThDMTIuNyAxNy41NiAxMi43IDE3LjFDMTIuNyAxNi42MyAxMi4zNSAxNi4xNyAxMiAxNi4xN1oiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==') no-repeat center / contain; -webkit-mask: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDYuNzVDMTEuNjUgNi43NSAxMS4zIDcuMTcgMTEuMyA3LjYzVzExLjMgOC4xQzExLjMgOC41NiAxMS42NSA4Ljk4IDEyIDguOThDMTIuMzUgOC45OCAxMi43IDguNTYgMTIuNyA4LjFDMTIuNyA3LjYzIDEyLjM1IDcuMTcgMTIgNy4xN1oiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTEyIDExLjI1QzExLjY1IDExLjI1IDExLjMgMTEuNjcgMTEuMyAxMi4xM1YxMi42QzExLjMgMTMuMDYgMTEuNjUgMTMuNDggMTIgMTMuNDhDMTIuMzUgMTMuNDggMTIuNyAxMy4wNiAxMi43IDEyLjZDMTIuNyAxMi4xMyAxMi4zNSAxMS42NyAxMiAxMS42N1oiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTEyIDE1Ljc1QzExLjY1IDE1Ljc1IDExLjMgMTYuMTcgMTEuMyAxNi42M1YxNy4xQzExLjMgMTcuNTYgMTEuNjUgMTcuOTggMTIgMTcuOThDMTIuMzUgMTcuOThDMTIuNyAxNy41NiAxMi43IDE3LjFDMTIuNyAxNi42MyAxMi4zNSAxNi4xNyAxMiAxNi4xN1oiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==') no-repeat center / contain;"></div>
+            <!-- 标题 -->
+            <h2 id="hm-error-title" style="margin: 16px 0 8px; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-size: 16px; font-weight: 500; color: #191919; text-align: center;">网络连接失败</h2>
+            <!-- 正文 -->
+            <p id="hm-error-message" style="margin: 0; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-size: 14px; font-weight: 400; color: #999; text-align: center; line-height: 20px;">请检查网络后重试</p>
+            <!-- 重试按钮 -->
+            <button id="hm-retry-btn" type="button" style="display: block; width: 120px; height: 44px; margin: 24px auto 0; padding: 0; border: none; border-radius: 8px; background: #46B1E3; color: #FFFFFF; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif; font-size: 14px; font-weight: 500; line-height: 1; cursor: pointer; outline: none;">重试</button>
+          </div>
+        </div>
+        <!-- 【任务节点结束: 网络失败提示态【临时】】 -->
+
+        <!-- 底部导航栏（完整保留，含高亮逻辑） -->
+        <div id="14_1031065" class="Pixso-frame-14_1031065">
+          <div id="14_1031066" class="Pixso-rectangle-14_1031066"></div>
+          <p id="14_1031067" class="Pixso-paragraph-14_1031067">我的</p>
+          <p id="14_1031068" class="Pixso-paragraph-14_1031068">服务</p>
+          <p id="14_1031069" class="Pixso-paragraph-14_1031069">工作台</p>
+          <p id="14_1031070" class="Pixso-paragraph-14_1031070">商城</p>
+          <p id="14_1031071" class="Pixso-paragraph-14_1031071">首页</p>
+          <div id="14_1031072" class="Pixso-group-14_1031072">
+            <div id="14_1031073" class="Pixso-vector-14_1031073"></div>
+            <div id="14_1031074" class="Pixso-group-14_1031074">
+              <div id="14_1031075" class="Pixso-vector-14_1031075"></div>
+              <div id="14_1031076" class="stroke-wrapper-14_1031076">
+                <div class="Pixso-rectangle-14_1031076"></div>
+                <div class="stroke-14_1031076"></div>
+              </div>
+            </div>
+          </div>
+          <div id="14_1031077" class="Pixso-vector-14_1031077"></div>
+          <div id="14_1031081" class="Pixso-vector-14_1031081"></div>
+          <div id="14_1031094" class="Pixso-group-14_1031094">
+            <div id="14_1031095" class="Pixso-vector-14_1031095"></div>
+            <div id="14_1031096" class="Pixso-vector-14_1031096"></div>
+          </div>
+          <div id="14_1031099" class="Pixso-group-14_1031099">
+            <div id="14_1031100" class="Pixso-vector-14_1031100"></div>
+            <div id="14_1031101" class="Pixso-group-14_1031101">
+              <div id="14_1031102" class="Pixso-vector-14_1031102"></div>
+              <div id="14_1031105" class="Pixso-vector-14_1031105"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+</script>
+</body>
+<!-- BASELINE_BODY_END -->

@@ -1,0 +1,93 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#146_161595",
+      "instruction": "在项目添加区（即 id='146_161595' 的容器）下方插入红色提示文字段：<p style=\"font-size:12px;font-family:'HarmonyHeiTi-Regular';line-height:16px;color:#E62A2A;margin-top:8px;\">所选项目类型不匹配，请检查</p>；其余所有 DOM 结构与 state_2 完全一致，不改动名称输入框、单选组、底部按钮及任何其他元素。",
+      "components_needed": ["TextInput", "Radio"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "gap": 16,
+      "padding": 0
+    },
+    "children": [
+      {
+        "type": "FormField",
+        "props": {
+          "label": "项目名称",
+          "placeholder": "请输入项目名称",
+          "value": "",
+          "required": true
+        }
+      },
+      {
+        "type": "Text",
+        "props": {
+          "variant": "subtitle",
+          "color": "rgba(0,0,0,0.90)",
+          "weight": 500
+        },
+        "children": "项目类型"
+      },
+      {
+        "type": "Row",
+        "props": {
+          "gap": 12,
+          "wrap": true
+        },
+        "children": [
+          {
+            "type": "Button",
+            "props": {
+              "label": "应用",
+              "variant": "secondary",
+              "size": "compact"
+            }
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "服务",
+              "variant": "secondary",
+              "size": "compact"
+            }
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "原子化服务",
+              "variant": "secondary",
+              "size": "compact"
+            }
+          }
+        ]
+      },
+      {
+        "type": "FieldError",
+        "props": {
+          "text": "所选项目类型不匹配，请检查",
+          "icon": "error",
+          "size": "sm",
+          "marginTop": 8
+        }
+      },
+      {
+        "type": "Button",
+        "props": {
+          "label": "添加项目",
+          "variant": "primary",
+          "block": true
+        }
+      }
+    ]
+  }
+}

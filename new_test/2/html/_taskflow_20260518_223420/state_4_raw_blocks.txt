@@ -1,0 +1,29 @@
+{
+  "state_name": "创建项目集提交中过渡态",
+  "lifecycle": "persistent",
+  "injection": { "mode": "replace", "anchor": "#submit-button-container" },
+  "inherit_skeleton": false,
+  "tree": {
+    "type": "Row",
+    "props": { "gap": 8, "padding": 16, "justify": "center" },
+    "children": [
+      {
+        "type": "Button",
+        "props": {
+          "label": "确认",
+          "variant": "primary",
+          "block": true,
+          "disabled": true,
+          "style": { "backgroundColor": "#BDBDBD", "color": "#757575" }
+        }
+      },
+      {
+        "type": "Spinner",
+        "props": {
+          "size": 16,
+          "color": "#191919"
+        }
+      }
+    ]
+  }
+}

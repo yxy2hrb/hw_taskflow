@@ -1,0 +1,229 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#14_807629",
+      "instruction": "将全屏遮罩容器替换为全屏项目集表单页主内容区：保留顶部状态栏（#146_168947）和底部 Tab（#14_807586）不变；在中间区域插入固定标题栏（文字'创建项目集'，16px Medium，深灰，居中），下方依次为名称输入框（浅灰边框 #D9D9D9，1px solid，12px 占位符'请输入项目集名称'，HarmonyHeiTi-Regular）、'公司/个人'单选按钮组（两个横向并排圆形按钮，左侧文字'公司'、右侧文字'个人'，均未选中，文字14px Regular，深灰），项目列表添加区（虚线边框 #D9D9D9，2px dashed，圆角 8px，内含 '+' 图标 + 文字'添加项目'，14px Regular，深灰，居中），底部悬浮红色按钮（#FF4D4F 底色、白色文字'确认'、圆角 8px、宽 320px、高 48px、居中、距底 24px）；所有文字使用 HarmonyHeiTi, 'HarmonyOS Sans', sans-serif 字体；禁止复用原 Pixso id，新元素不写 id 或使用 hm-st2- 命名空间；图标统一用 <span class=\"mi\" style=\"font-size:16px;color:#000000;\">add</span> 表示 '+'",
+      "components_needed": ["TextInput", "Radio", "Button"],
+      "icons_needed": ["add"]
+    },
+    {
+      "id": "e2",
+      "type": "state-toggle",
+      "anchor": "#14_807630",
+      "instruction": "将原项目卡片流区域（'创建开局'/'创建项目集'/'接收项目'三张卡片）整体替换为空白可滚动内容区容器，用于承载全屏表单；该容器需具备 scrollable 区域语义（height: calc(100vh - 120px)，overflow-y: auto），内部无任何子卡片，仅作为表单父容器；保持原有 id='14_807630' 的 Pixso-frame 容器结构，但子树完全清空并重置为表单布局根节点；禁止残留旧卡片 DOM",
+      "components_needed": ["ScrollView"]
+    },
+    {
+      "id": "e3",
+      "type": "text-edit",
+      "anchor": "<p id=\"146_161583\" class=\"Pixso-paragraph-146_161583 fill-text文本色图标色color_text_primary-14_290523-paragraph\">创建项目集</p>",
+      "instruction": "将文字更新为'创建项目集'（保持原样式，仅文案变更；注意：此为初始态已有文案，无需翻译，与页面语言一致）"
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "Page",
+    "props": {
+      "background": "#F1F3F5",
+      "width": "100%",
+      "height": "100%"
+    },
+    "children": [
+      {
+        "type": "StatusBar",
+        "props": {
+          "time": "08:08",
+          "signal": "5G",
+          "battery": 100
+        }
+      },
+      {
+        "type": "Column",
+        "props": {
+          "gap": 24,
+          "padding": [24, 16],
+          "align": "stretch",
+          "justify": "flex-start"
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "variant": "subtitle",
+              "size": 16,
+              "weight": 500,
+              "color": "rgba(0,0,0,0.90)",
+              "align": "center",
+              "style": "font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif;"
+            },
+            "children": "创建项目集"
+          },
+          {
+            "type": "FormField",
+            "props": {
+              "label": "",
+              "placeholder": "请输入项目集名称",
+              "labelWidth": 0,
+              "style": "font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif;"
+            }
+          },
+          {
+            "type": "Column",
+            "props": {
+              "gap": 12
+            },
+            "children": [
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "subtitle",
+                  "size": 14,
+                  "weight": 400,
+                  "color": "rgba(0,0,0,0.90)",
+                  "style": "font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif;"
+                },
+                "children": "公司/个人"
+              },
+              {
+                "type": "Row",
+                "props": {
+                  "gap": 24,
+                  "justify": "center"
+                },
+                "children": [
+                  {
+                    "type": "Row",
+                    "props": {
+                      "gap": 8,
+                      "align": "center"
+                    },
+                    "children": [
+                      {
+                        "type": "Checkbox",
+                        "props": {
+                          "checked": false,
+                          "size": 22
+                        }
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "body",
+                          "size": 14,
+                          "weight": 400,
+                          "color": "rgba(0,0,0,0.90)",
+                          "style": "font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif;"
+                        },
+                        "children": "公司"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Row",
+                    "props": {
+                      "gap": 8,
+                      "align": "center"
+                    },
+                    "children": [
+                      {
+                        "type": "Checkbox",
+                        "props": {
+                          "checked": false,
+                          "size": 22
+                        }
+                      },
+                      {
+                        "type": "Text",
+                        "props": {
+                          "variant": "body",
+                          "size": 14,
+                          "weight": 400,
+                          "color": "rgba(0,0,0,0.90)",
+                          "style": "font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif;"
+                        },
+                        "children": "个人"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "props": {
+              "background": "transparent",
+              "borderRadius": 8,
+              "border": "2px dashed #D9D9D9",
+              "padding": 24,
+              "align": "center",
+              "justify": "center",
+              "gap": 8
+            },
+            "children": [
+              {
+                "type": "Icon",
+                "props": {
+                  "name": "add",
+                  "size": 24,
+                  "color": "rgba(0,0,0,0.90)"
+                }
+              },
+              {
+                "type": "Text",
+                "props": {
+                  "variant": "body",
+                  "size": 14,
+                  "weight": 400,
+                  "color": "rgba(0,0,0,0.90)",
+                  "style": "font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif;"
+                },
+                "children": "添加项目"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Button",
+        "props": {
+          "label": "确认",
+          "variant": "warning",
+          "size": "large",
+          "block": true,
+          "width": 320,
+          "height": 48,
+          "style": "margin-top: auto; margin-bottom: 24px; border-radius: 8px; font-family: 'HarmonyHeiTi', 'HarmonyOS Sans', sans-serif;"
+        }
+      }
+    ]
+  }
+}
+[NEXT]
+{
+  "tree": {
+    "type": "Column",
+    "props": {
+      "id": "14_807630",
+      "background": "#FFFFFF",
+      "borderRadius": 0,
+      "width": "100%",
+      "height": "calc(100vh - 120px)",
+      "overflowY": "auto",
+      "padding": 0,
+      "gap": 0
+    },
+    "children": []
+  }
+}
+[NEXT]
+[OLD]
+<p id="146_161583" class="Pixso-paragraph-146_161583 fill-text文本色图标色color_text_primary-14_290523-paragraph">创建项目集</p>
+[NEW]
+<p id="146_161583" class="Pixso-paragraph-146_161583 fill-text文本色图标色color_text_primary-14_290523-paragraph">创建项目集</p>

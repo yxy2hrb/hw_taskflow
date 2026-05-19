@@ -1,0 +1,12 @@
+{
+  "state_id": 3,
+  "state_name": "快速入门加载中态",
+  "description": "顶部状态栏与底部Tab栏保持完全可见且交互正常，背景为原工作台页整体半透明蒙层（rgba(0,0,0,0.4)），中部垂直居中显示宽320px灰色圆角矩形骨架（高24px，背景色 rgba(0,0,0,0.08)），下方三行等宽浅灰标签骨架（每行宽72px×高28px，圆角8px，背景色 rgba(0,0,0,0.08)），再下方七组‘标题行+按钮行’骨架：每组含一行高16px浅灰横条（背景色 rgba(0,0,0,0.08)）和一行高20px浅灰横条（背景色 rgba(0,0,0,0.08)），所有骨架无动画、无波纹、无闪烁，呈静态灰阶视觉。",
+  "implementation_method": "全屏浮层 (Overlay Modal)：背景为 rgba(0,0,0,0.4) 半透明遮罩；中部容器宽320px，垂直居中；搜索框骨架为 div.skeleton-search（宽320px×高24px，圆角8px，背景 rgba(0,0,0,0.08)）；四类标签骨架为三行 div.skeleton-tag（宽72px×高28px，圆角8px，背景 rgba(0,0,0,0.08)）；七组条目骨架为 div.skeleton-item，每组含 div.skeleton-title（宽240px×高16px，圆角4px，背景 rgba(0,0,0,0.08)）与 div.skeleton-btn（宽56px×高20px，圆角4px，背景 rgba(0,0,0,0.08)）；所有元素无 CSS animation 或 transition。",
+  "last_state": 1,
+  "applied": 1,
+  "skipped": 0,
+  "elapsed_ms": 68244,
+  "failed": false,
+  "error": null
+}

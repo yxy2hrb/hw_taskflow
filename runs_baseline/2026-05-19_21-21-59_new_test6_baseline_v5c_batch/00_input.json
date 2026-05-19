@@ -1,0 +1,8 @@
+{
+  "startedAt": "2026-05-19T21:21:59.250Z",
+  "sourceDir": "new_test/6/html",
+  "htmlPath": "new_test\\6\\html\\Index.html",
+  "htmlBytes": 86432,
+  "briefFile": "new_test/6/input.txt",
+  "brief": "用户在“我的工作台”点击“快速入门”按钮→全屏打开新页，保留状态栏与底Tab，原页面作半透明蒙层→新页中部显示带“搜索...”提示的搜索框，下方为四类产品分类标签，再下方展示7条带“查看”按钮的入门条目→点击任一“查看”按钮即跳转至对应产品文档详情页。"
+}

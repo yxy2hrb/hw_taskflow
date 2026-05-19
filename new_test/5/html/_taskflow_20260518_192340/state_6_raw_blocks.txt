@@ -1,0 +1,87 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "#14_884368",
+      "instruction": "把虚拟体验项目区块整段替换为权限不足全屏页：顶部导航栏仅保留返回图标（SVG 箭头）与文字'虚拟体验项目'（16px Medium，#191919）；中央区域含 Unicode 锁图标'🔒'（font-size:48px，color:#46B1E3），主文案'暂无访问权限'（16px Medium，#191919），副文案'请联系管理员开通体验项目查看权限'（14px Regular，#666），下方居中按钮'联系管理员'（14px Medium，#46B1E3，text-decoration:underline）；所有元素垂直居中，上下留白相等；无拓扑图、无统计卡片、无业务网模块。",
+      "components_needed": ["IconButton", "Button"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "FullscreenPanel",
+    "props": {
+      "background": "#F1F3F5"
+    },
+    "children": [
+      {
+        "type": "NavBar",
+        "props": {
+          "title": "虚拟体验项目",
+          "leftIcon": "arrow_back",
+          "align": "left"
+        }
+      },
+      {
+        "type": "Column",
+        "props": {
+          "gap": 24,
+          "padding": 32,
+          "align": "center",
+          "justify": "center",
+          "height": "100vh",
+          "width": "100%",
+          "maxWidth": 360
+        },
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "size": 48,
+              "weight": "normal",
+              "color": "#46B1E3",
+              "align": "center",
+              "style": "font-family: 'HarmonyOS Sans', sans-serif;"
+            },
+            "children": "🔒"
+          },
+          {
+            "type": "Text",
+            "props": {
+              "variant": "body",
+              "weight": "500",
+              "color": "#191919",
+              "align": "center"
+            },
+            "children": "暂无访问权限"
+          },
+          {
+            "type": "Text",
+            "props": {
+              "variant": "caption",
+              "weight": "400",
+              "color": "#666666",
+              "align": "center"
+            },
+            "children": "请联系管理员开通体验项目查看权限"
+          },
+          {
+            "type": "Button",
+            "props": {
+              "label": "联系管理员",
+              "variant": "text",
+              "size": "compact",
+              "color": "#46B1E3",
+              "style": "text-decoration: underline;"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

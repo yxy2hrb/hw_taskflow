@@ -1,0 +1,143 @@
+{
+  "noop": false,
+  "edits": [
+    {
+      "id": "e1",
+      "type": "state-toggle",
+      "anchor": "<div data-hm=\"ListItem\" style=\"min-height:64px;padding:12px 16px;display:flex;align-items:center;gap:12px;background:#FFFFFF;border-bottom:1px solid rgba(0,0,0,0.05);box-sizing:border-box;\">\n  <div style=\"width:40px;height:40px;border-radius:9999px;background:#F1F3F5;display:flex;align-items:center;justify-content:center;flex-shrink:0;\">\n        <span class=\"mi\" style=\"font-size:22px;color:rgba(0,0,0,0.90);\">email</span>\n      </div>\n  <div style=\"flex:1;min-width:0;\">\n    <div style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:500;color:rgba(0,0,0,0.90);line-height:1.3;\">邮件</div>\n    \n  </div>\n  <div style=\"flex-shrink:0;display:flex;align-items:center;\"><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:500;color:#191919;text-align:left;line-height:1.4;\">1. 标题</span></div>\n</div>",
+      "instruction": "将该应用项右侧开关控件替换为中间过渡态：轨道背景色#DFDFDF，圆点背景色#9E9E9E，圆点水平居中（transform: translateX(50%)），无文字变化；其余所有元素保持不变",
+      "components_needed": ["Switch"]
+    },
+    {
+      "id": "e2",
+      "type": "state-toggle",
+      "anchor": "<div data-hm=\"ListItem\" style=\"min-height:64px;padding:12px 16px;display:flex;align-items:center;gap:12px;background:#FFFFFF;border-bottom:1px solid rgba(0,0,0,0.05);box-sizing:border-box;\">\n  <div style=\"width:40px;height:40px;border-radius:9999px;background:#F1F3F5;display:flex;align-items:center;justify-content:center;flex-shrink:0;\">\n        <span class=\"mi\" style=\"font-size:22px;color:rgba(0,0,0,0.90);\">calendar_today</span>\n      </div>\n  <div style=\"flex:1;min-width:0;\">\n    <div style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:500;color:rgba(0,0,0,0.90);line-height:1.3;\">日历</div>\n    \n  </div>\n  <div style=\"flex-shrink:0;display:flex;align-items:center;\"><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:500;color:#191919;text-align:left;line-height:1.4;\">2. 标题</span></div>\n</div>",
+      "instruction": "将该应用项右侧开关控件替换为中间过渡态：轨道背景色#DFDFDF，圆点背景色#9E9E9E，圆点水平居中（transform: translateX(50%)），无文字变化；其余所有元素保持不变",
+      "components_needed": ["Switch"]
+    },
+    {
+      "id": "e3",
+      "type": "state-toggle",
+      "anchor": "<div data-hm=\"ListItem\" style=\"min-height:64px;padding:12px 16px;display:flex;align-items:center;gap:12px;background:#FFFFFF;box-sizing:border-box;\">\n  <div style=\"width:40px;height:40px;border-radius:9999px;background:#F1F3F5;display:flex;align-items:center;justify-content:center;flex-shrink:0;\">\n        <span class=\"mi\" style=\"font-size:22px;color:rgba(0,0,0,0.90);\">contacts</span>\n      </div>\n  <div style=\"flex:1;min-width:0;\">\n    <div style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:16px;font-weight:500;color:rgba(0,0,0,0.90);line-height:1.3;\">联系人</div>\n    \n  </div>\n  <div style=\"flex-shrink:0;display:flex;align-items:center;\"><span data-hm=\"Text\" style=\"font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;font-size:14px;font-weight:500;color:#191919;text-align:left;line-height:1.4;\">3. 标题</span></div>\n</div>",
+      "instruction": "将该应用项右侧开关控件替换为中间过渡态：轨道背景色#DFDFDF，圆点背景色#9E9E9E，圆点水平居中（transform: translateX(50%)），无文字变化；其余所有元素保持不变",
+      "components_needed": ["Switch"]
+    }
+  ]
+}
+
+--- skill2 outputs ---
+{
+  "tree": {
+    "type": "ListItem",
+    "props": {
+      "title": "邮件",
+      "subtitle": "",
+      "leftIcon": "email"
+    },
+    "children": [
+      {
+        "type": "Row",
+        "props": {
+          "gap": 8,
+          "align": "center"
+        },
+        "children": [
+          {
+            "type": "Column",
+            "props": {
+              "background": "#DFDFDF",
+              "borderRadius": 20,
+              "width": 44,
+              "height": 24,
+              "justify": "center"
+            },
+            "children": [
+              {
+                "type": "Column",
+                "props": {
+                  "background": "#9E9E9E",
+                  "borderRadius": 9999,
+                  "width": 16,
+                  "height": 16,
+                  "align": "center",
+                  "justify": "center"
+                },
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+[NEXT]
+{
+  "tree": {
+    "type": "ListItem",
+    "props": {
+      "title": "日历",
+      "subtitle": "2. 标题",
+      "leftIcon": "calendar_today",
+      "height": 64,
+      "divider": true
+    }
+  }
+}
+[NEXT]
+{
+  "tree": {
+    "type": "ListItem",
+    "props": {
+      "title": "联系人",
+      "leftIcon": "contacts",
+      "height": 64
+    },
+    "children": [
+      {
+        "type": "Row",
+        "props": {
+          "gap": 8,
+          "align": "center"
+        },
+        "children": [
+          {
+            "type": "Column",
+            "props": {
+              "background": "#DFDFDF",
+              "borderRadius": 20,
+              "width": 44,
+              "height": 24,
+              "justify": "center"
+            },
+            "children": [
+              {
+                "type": "Column",
+                "props": {
+                  "background": "#9E9E9E",
+                  "borderRadius": 9999,
+                  "width": 16,
+                  "height": 16,
+                  "align": "center",
+                  "justify": "center"
+                },
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "Text",
+            "props": {
+              "variant": "body",
+              "size": 14,
+              "weight": 500,
+              "color": "#191919",
+              "align": "left"
+            },
+            "children": "3. 标题"
+          }
+        ]
+      }
+    ]
+  }
+}
