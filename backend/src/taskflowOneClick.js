@@ -33,11 +33,17 @@ const {
   enforceOverlayTopLimit,
   enforceOverlayZIndex,
   buildPatchPrompt,
+  detectLanguage,
 } = require("./taskflowPatch");
 
 const { expandHmTags, injectIconFontIfNeeded } = require("./integrations/hmComponentExpander");
 const assetCache = require("./integrations/pixsoAssetCache");
 const { reviewAndFix } = require("./patchReview");
+const {
+  validateBlueprint,
+  validateStateHtml,
+  writeFinalScreenshot,
+} = require("./taskflowQuality");
 
 // HM 组件 DSL 路径（feature flag 控制，**默认开启**；设置 HM_DSL_ENABLED=0 可关掉）
 const HM_DSL_ENABLED = process.env.HM_DSL_ENABLED !== "0";
@@ -63,6 +69,9 @@ const { patchOneStateViaBaseline: hmPatchViaBaseline, isBaselineEnabled } =
 // （v37 前的现象：很多 state 看似 twoPhase 修好了，其实是 DSL 接管的）。
 // 关闭：HM_TWOPHASE_STRICT=0 → 恢复旧的级联兜底行为
 const TWOPHASE_STRICT = process.env.HM_TWOPHASE_STRICT !== "0";
+
+const BLUEPRINT_INTENT_PASS_SCORE = Number(process.env.BLUEPRINT_INTENT_PASS_SCORE || 75);
+const BLUEPRINT_INTENT_REPAIR_ACCEPT_SCORE = Number(process.env.BLUEPRINT_INTENT_REPAIR_ACCEPT_SCORE || 65);
 
 // antdOneShot 路径（feature flag，默认关闭）：跳过 per-state 循环，
 // 改用单次 LLM 调用产出 happy path 上所有 state 的 OLD/NEW + antd-mobile JSX islands，
@@ -117,6 +126,260 @@ async function callPhase(phase, seed, qaHistory) {
   return null;
 }
 
+async function repairBlueprintOnce({ phase, seed, qaHistory, blueprint, issues }) {
+  if (!llmDeps?.callJSON) return null;
+  const basePrompt = buildPhasePrompt(phase, {
+    seedHtml: seed.html,
+    seedImageHint: seed.imageName || (seed.hasImage ? "已上传参考图" : "无"),
+    seedBrief: seed.brief,
+    qaHistory,
+  });
+  const repairPrompt = `${basePrompt}
+
+==================【蓝图校验失败，必须重生成】==================
+上一次输出的 blueprint 未通过后端硬校验，禁止解释，禁止只修局部片段。请重新输出完整 JSON：
+{
+  "action": "done",
+  "blueprint": { "meta": {...}, "states": [...] }
+}
+
+硬性要求：
+- states 至少 2 个；
+- state_1 必须是 state_id=1，last_state 为 null 或缺省；
+- 非 state_1 的 last_state 必须是此前已经出现的 state_id，禁止 null / 缺省；
+- implementation_method 必须包含"基于 last_state + 保留/删除/新增"三段式。
+
+校验错误：
+${issues.map((it, i) => `${i + 1}. ${it}`).join("\n")}
+
+上一次无效 blueprint：
+${JSON.stringify(blueprint, null, 2)}
+`;
+  const raw = await llmDeps.callJSON(TASKFLOW_INTENT_SYSTEM_PROMPT, repairPrompt, { temperature: 0.4 });
+  return normalizePhaseResponse(raw, phase);
+}
+
+function normalizeIntentReview(raw, fallback = {}) {
+  const safe = raw && typeof raw === "object" ? raw : {};
+  const scoreNum = Number(safe.score);
+  const score = Number.isFinite(scoreNum)
+    ? Math.max(0, Math.min(100, Math.round(scoreNum)))
+    : (Number.isFinite(fallback.score) ? fallback.score : 75);
+  const majorIssues = Array.isArray(safe.majorIssues) ? safe.majorIssues.map(String).filter(Boolean) : (fallback.majorIssues || []);
+  const minorIssues = Array.isArray(safe.minorIssues) ? safe.minorIssues.map(String).filter(Boolean) : (fallback.minorIssues || []);
+  const coverage = safe.coverage && typeof safe.coverage === "object" ? safe.coverage : (fallback.coverage || {});
+  const decision = score >= BLUEPRINT_INTENT_PASS_SCORE ? "pass" : "repair_once";
+  return {
+    ok: score >= BLUEPRINT_INTENT_PASS_SCORE,
+    score,
+    decision,
+    majorIssues,
+    minorIssues,
+    coverage,
+    source: safe.source || fallback.source || "unknown",
+  };
+}
+
+function heuristicBlueprintIntentReview({ seed, blueprint }) {
+  const brief = String(seed?.brief || "");
+  const bpText = JSON.stringify(blueprint || {});
+  const lang = detectLanguage(seed?.html || "");
+  let score = 100;
+  const majorIssues = [];
+  const minorIssues = [];
+  const coverage = {
+    coreAction: true,
+    targetState: true,
+    interactionPattern: true,
+    language: true,
+    stateChain: true,
+    noContradiction: true,
+  };
+
+  if (/(确认|confirm|submit|apply|刷新|refresh|结果|result)/i.test(brief) && !/(确认|confirm|submit|apply|刷新|refresh|结果|result)/i.test(bpText)) {
+    score -= 25;
+    coverage.targetState = false;
+    majorIssues.push("brief 提到确认/应用/刷新/结果态，但 blueprint 没有明显覆盖该关键结果。");
+  }
+  if (/(底部抽屉|底部弹窗|bottom\s*sheet)/i.test(brief) && !/(底部|贴底|bottom\s*sheet|align-items\s*:\s*flex-end)/i.test(bpText)) {
+    score -= 30;
+    coverage.interactionPattern = false;
+    majorIssues.push("brief 要求底部抽屉/底部弹窗，但 blueprint 未体现贴底或 bottom sheet 形态。");
+  }
+  if (/(无遮罩|无弹窗|no\s+overlay|without\s+overlay|no\s+modal)/i.test(brief) && /(遮罩|modal|rgba\(0,0,0|rgba\(25,25,25)/i.test(bpText)) {
+    score -= 30;
+    coverage.noContradiction = false;
+    majorIssues.push("brief 明确要求无遮罩/无弹窗，但 blueprint 规划了遮罩或 modal。");
+  }
+  if (lang.primary === "en") {
+    const cnUiTerms = bpText.match(/(最新到最早|降序|升序|取消|确认|筛选|弹窗|遮罩|底部抽屉)/g) || [];
+    if (cnUiTerms.length >= 2) {
+      score -= Math.min(20, 8 + cnUiTerms.length * 2);
+      coverage.language = false;
+      minorIssues.push(`原页面主语言为英文，但 blueprint 中含中文 UI 文案/控件词：${Array.from(new Set(cnUiTerms)).slice(0, 8).join("、")}。`);
+    }
+  }
+  const states = Array.isArray(blueprint?.states) ? blueprint.states : [];
+  if (states.length <= 2 && /(确认|confirm|submit|apply|刷新|refresh|结果|result)/i.test(brief) && /(弹出|展开|open|show|panel|dialog|sheet)/i.test(brief)) {
+    score -= 12;
+    minorIssues.push("brief 同时包含展开与确认/结果语义，但 blueprint 只有 2 个 state，可能缺少确认后的结果态。");
+  }
+  return normalizeIntentReview({ score, majorIssues, minorIssues, coverage, source: "heuristic" });
+}
+
+async function reviewBlueprintIntent({ seed, blueprint }) {
+  const fallback = heuristicBlueprintIntentReview({ seed, blueprint });
+  if (!llmDeps?.callJSON) return fallback;
+
+  const lang = detectLanguage(seed?.html || "");
+  const prompt = `你是任务流 blueprint 的意图一致性评审员。你不是视觉走查员，不检查字号、圆角、阴影、间距等细节。
+
+请对 blueprint 是否覆盖用户 brief 的核心交互意图打 0-100 分。不要吹毛求疵：主路径完整、交互形态一致时，即使有小文案或样式瑕疵，也应给 75 分以上。
+
+评分只关注：
+1. coreAction：是否覆盖用户的核心动作；
+2. targetState：是否覆盖关键结果态；
+3. interactionPattern：弹窗/底部抽屉/全屏页/无遮罩等交互形态是否匹配；
+4. language：页面主语言与新增 UI 文案是否明显冲突；
+5. stateChain：状态依赖链是否语义合理；
+6. noContradiction：是否与 brief 明确要求冲突。
+
+输出严格 JSON：
+{
+  "score": 0-100,
+  "majorIssues": ["只写会导致方向错误或关键状态缺失的问题"],
+  "minorIssues": ["只写非阻断的小风险"],
+  "coverage": {
+    "coreAction": true,
+    "targetState": true,
+    "interactionPattern": true,
+    "language": true,
+    "stateChain": true,
+    "noContradiction": true
+  }
+}
+
+页面主语言检测：${lang.primary}（中文字符 ${lang.cn}, 英文词块 ${lang.en}）
+
+【用户 brief】
+${seed?.brief || ""}
+
+【blueprint】
+${JSON.stringify(blueprint, null, 2)}
+`;
+  try {
+    const raw = await llmDeps.callJSON("", prompt, { temperature: 0.2 });
+    const reviewed = normalizeIntentReview({ ...raw, source: "llm" }, fallback);
+    // LLM 分数异常偏低但没有 major issue 时，按启发式结果兜住，避免过严卡交付。
+    if (reviewed.score < BLUEPRINT_INTENT_PASS_SCORE && reviewed.majorIssues.length === 0 && fallback.score >= BLUEPRINT_INTENT_PASS_SCORE) {
+      return { ...fallback, source: "heuristic_guarded", minorIssues: [...fallback.minorIssues, ...reviewed.minorIssues] };
+    }
+    return reviewed;
+  } catch (e) {
+    return { ...fallback, source: "heuristic_fallback", minorIssues: [...fallback.minorIssues, `LLM intent review failed: ${e.message}`] };
+  }
+}
+
+async function repairBlueprintIntentOnce({ phase, seed, qaHistory, blueprint, intentReview }) {
+  if (!llmDeps?.callJSON) return null;
+  const basePrompt = buildPhasePrompt(phase, {
+    seedHtml: seed.html,
+    seedImageHint: seed.imageName || (seed.hasImage ? "已上传参考图" : "无"),
+    seedBrief: seed.brief,
+    qaHistory,
+  });
+  const repairPrompt = `${basePrompt}
+
+==================【blueprint 意图一致性分数偏低，修复一次】==================
+上一次 blueprint 的意图一致性评分为 ${intentReview.score}/100，低于通过阈值 ${BLUEPRINT_INTENT_PASS_SCORE}。
+请重新输出完整 JSON：{ "action": "done", "blueprint": { "meta": {...}, "states": [...] } }
+
+只修正会导致方向错误或关键状态缺失的问题；不要因为字号、圆角、阴影、间距等细节重写整个方案。
+如果原页面主语言为英文，新增 UI 文案应使用英文。
+
+主要问题：
+${(intentReview.majorIssues || []).map((it, i) => `${i + 1}. ${it}`).join("\n") || "无"}
+
+次要风险：
+${(intentReview.minorIssues || []).map((it, i) => `${i + 1}. ${it}`).join("\n") || "无"}
+
+上一次 blueprint：
+${JSON.stringify(blueprint, null, 2)}
+`;
+  const raw = await llmDeps.callJSON(TASKFLOW_INTENT_SYSTEM_PROMPT, repairPrompt, { temperature: 0.45 });
+  return normalizePhaseResponse(raw, phase);
+}
+
+async function acceptGeneratedBlueprint({ session, raw, phase }) {
+  if (!raw || raw.action !== "done" || !raw.blueprint) {
+    const err = new Error("生成蓝图失败");
+    err.raw = raw;
+    throw err;
+  }
+
+  let blueprint = raw.blueprint;
+  let validation = validateBlueprint(blueprint);
+  let repaired = false;
+  if (!validation.ok) {
+    const retry = await repairBlueprintOnce({
+      phase,
+      seed: session.seed,
+      qaHistory: session.qaHistory,
+      blueprint,
+      issues: validation.issues,
+    });
+    if (retry?.action === "done" && retry.blueprint) {
+      blueprint = retry.blueprint;
+      validation = validateBlueprint(blueprint);
+      repaired = true;
+    }
+  }
+
+  if (!validation.ok) {
+    const err = new Error(`blueprint invalid: ${validation.issues.join("; ")}`);
+    err.validation = validation;
+    throw err;
+  }
+
+  let intentReview = await reviewBlueprintIntent({ seed: session.seed, blueprint });
+  let intentRepaired = false;
+  if (intentReview.score < BLUEPRINT_INTENT_PASS_SCORE) {
+    const retry = await repairBlueprintIntentOnce({
+      phase,
+      seed: session.seed,
+      qaHistory: session.qaHistory,
+      blueprint,
+      intentReview,
+    });
+    if (retry?.action === "done" && retry.blueprint) {
+      const retryValidation = validateBlueprint(retry.blueprint);
+      if (retryValidation.ok) {
+        const retryIntentReview = await reviewBlueprintIntent({ seed: session.seed, blueprint: retry.blueprint });
+        if (retryIntentReview.score >= BLUEPRINT_INTENT_REPAIR_ACCEPT_SCORE || retryIntentReview.score >= intentReview.score) {
+          blueprint = retry.blueprint;
+          validation = retryValidation;
+          intentReview = retryIntentReview;
+          intentRepaired = true;
+        }
+      }
+    }
+  }
+  intentReview = {
+    ...intentReview,
+    ok: intentReview.score >= BLUEPRINT_INTENT_PASS_SCORE,
+    repaired: intentRepaired,
+    continuedWithRisk: intentReview.score < BLUEPRINT_INTENT_PASS_SCORE,
+    passScore: BLUEPRINT_INTENT_PASS_SCORE,
+    repairAcceptScore: BLUEPRINT_INTENT_REPAIR_ACCEPT_SCORE,
+    decision: intentReview.score >= BLUEPRINT_INTENT_PASS_SCORE ? "pass" : "continue_with_risk",
+  };
+
+  session.blueprint = blueprint;
+  session.blueprintIntentReview = intentReview;
+  const saved = await persistTaskflowJson(session);
+  return { blueprint, validation, repaired, intentReview, saved };
+}
+
 /**
  * 把 LLM 偶尔"少包一层"的输出归一化。
  *   - phase 4 期望: { action: "done", blueprint: { meta, states } }
@@ -147,7 +410,9 @@ function shapeQuestion(rawAsk, phase) {
     label: String(o.label || o.text || `选项${i + 1}`),
     rationale: String(o.rationale || o.reason || ""),
     group: o.group ? String(o.group) : "",
-    default: o.default === true,
+    // Phase 2 是“要生成哪些 state 页面”，产品语义上默认应保留全部候选；
+    // 避免 LLM 漏打 default 导致前端/脚本只选第一个 state。
+    default: phase === 2 ? true : o.default === true,
   })) : [];
   return {
     id: `phase_${phase}`,
@@ -163,51 +428,6 @@ function shapeQuestion(rawAsk, phase) {
 }
 
 // ─────────────────────────────────────────────────────────────
-//  Blueprint validation (taskflow.json 约定)
-// ─────────────────────────────────────────────────────────────
-function validateBlueprint(bp) {
-  const issues = [];
-  if (!bp || typeof bp !== "object") return { ok: false, issues: ["blueprint missing"] };
-  if (!bp.meta) issues.push("meta missing");
-  if (!Array.isArray(bp.states) || bp.states.length < 2) issues.push("states must be >= 2");
-
-  const ids = new Set();
-  const seenByStateId = new Map();
-  (bp.states || []).forEach((s, i) => {
-    if (typeof s.state_id !== "number") issues.push(`states[${i}].state_id must be number`);
-    if (!s.state_name) issues.push(`states[${i}].state_name missing`);
-    if (!s.description) issues.push(`states[${i}].description missing`);
-    if (!s.implementation_method) issues.push(`states[${i}].implementation_method missing`);
-    if (i > 0 && s && typeof s.implementation_method === "string") {
-      const impl = s.implementation_method;
-      const hasBase = /基于\s*last_state|based\s*on\s*last_state|last_state\s*=\s*state_\d+/i.test(impl);
-      const hasKeep = /保留[:：]|keep[:：]/i.test(impl);
-      const hasDelete = /删除[:：]|remove[:：]/i.test(impl);
-      const hasAdd = /新增[:：]|add[:：]/i.test(impl);
-      if (!(hasBase && hasKeep && hasDelete && hasAdd)) {
-        issues.push(`states[${i}].implementation_method 必须显式包含"基于 last_state + 保留/删除/新增"三段式`);
-      }
-    }
-    if (typeof s.state_id === "number") {
-      if (seenByStateId.has(s.state_id)) {
-        issues.push(`duplicate state_id=${s.state_id} at states[${seenByStateId.get(s.state_id)}] and states[${i}]`);
-      } else {
-        seenByStateId.set(s.state_id, i);
-      }
-    }
-    if (i === 0 && (s.state_id !== 1 || s.last_state)) issues.push(`states[0] must be state_id=1 last_state=null`);
-    if (i > 0) {
-      if (!ids.has(s.last_state)) issues.push(`states[${i}].last_state=${s.last_state} not in prior states`);
-      if (typeof s.state_id === "number" && typeof s.last_state === "number" && s.last_state >= s.state_id) {
-        issues.push(`states[${i}].last_state=${s.last_state} must be smaller than state_id=${s.state_id}`);
-      }
-    }
-    ids.add(s.state_id);
-  });
-  return { ok: issues.length === 0, issues };
-}
-
-// ─────────────────────────────────────────────────────────────
 //  把 blueprint 转成 taskflow.json（扁平数组格式）
 // ─────────────────────────────────────────────────────────────
 function blueprintToTaskflowArray(blueprint) {
@@ -219,8 +439,9 @@ function blueprintToTaskflowArray(blueprint) {
       description: s.description,
       implementation_method: s.implementation_method,
     };
-    // 对齐参考样例：state_1 不写 last_state 字段；其它写具体前序 id
-    if (s.state_id !== 1) entry.last_state = s.last_state == null ? 1 : s.last_state;
+    // 对齐参考样例：state_1 不写 last_state 字段；其它写真实前序 id。
+    // 不再把缺失 last_state 静默兜底成 1，非法蓝图必须在生成前失败。
+    if (s.state_id !== 1) entry.last_state = s.last_state;
     return entry;
   });
 }
@@ -232,6 +453,12 @@ function blueprintToTaskflowArray(blueprint) {
 async function persistTaskflowJson(session) {
   const { blueprint, seed } = session;
   if (!blueprint) return null;
+  const validation = validateBlueprint(blueprint);
+  if (!validation.ok) {
+    const err = new Error(`blueprint invalid: ${validation.issues.join("; ")}`);
+    err.validation = validation;
+    throw err;
+  }
 
   let outDir, savedInSource = false, sourceDir = null;
   if (session.generation?.outDir) {
@@ -593,11 +820,16 @@ function dedupeDuplicateIds(html, currentReq, log) {
  */
 function enforceOpaqueFullscreenPanel(html, currentReq, log) {
   const text = `${currentReq?.state_name || ""} ${currentReq?.description || ""} ${currentReq?.implementation_method || ""}`;
+  const isModalOverlay =
+    /(遮罩|半透|居中|卡片|弹窗|对话框|dialog|modal|popup|toast|snackbar|tooltip)/i.test(text) ||
+    /(bottom\s*sheet|底部抽屉|底部弹窗)/i.test(text);
+  if (isModalOverlay) return html;
+
   const isFullscreenPanel =
-    /(全屏|fullscreen)/i.test(text) && /(面板|选项|列表|选择|偏好|设置|筛选|新页面|panel|sheet|list)/i.test(text)
+    /(全屏|fullscreen)/i.test(text) && /(面板|选项|列表|选择|偏好|设置|新页面|panel|list)/i.test(text)
     || /(独立页|独立全屏|全新页面|进入.*?页)/i.test(text);
   if (!isFullscreenPanel) return html;
-  const looksLikeDialog = /(弹窗|对话框|dialog|toast|snackbar|tooltip|popup)/i.test(text);
+  const looksLikeDialog = /(弹窗|对话框|dialog|toast|snackbar|tooltip|popup|modal|遮罩|半透|居中|卡片)/i.test(text);
   if (looksLikeDialog) return html;
 
   const blockRe = /(<!--\s*任务节点开始:[^>]*?(?:【临时】|【持久】)\s*-->)([\s\S]*?)(<!--\s*任务节点结束:[^>]*?(?:【临时】|【持久】)\s*-->)/g;
@@ -889,7 +1121,15 @@ async function patchOneState({ prevHtml, currentReq, allRequirements, platformHi
     hmExpansions = expanded.expansions || [];
     hmMissing = expanded.missing || [];
 
-    // ⑥ Vision Review（可选；仅当 callVisionJSON + reviewBaseDir 都提供时启用）
+    // ⑥ ⑦ ⑧ 语义级硬约束
+    patched = ensureLoadingIndicator(patched, currentReq, log);
+    patched = enforceOpaqueErrorOverlay(patched, currentReq, log);
+    patched = enforceOpaqueFullscreenPanel(patched, currentReq, log);
+    // ⑨ ⑩ 语法 fix + id 去重
+    patched = fixCssSyntaxErrors(patched, log);
+    patched = dedupeDuplicateIds(patched, currentReq, log);
+
+    // ⑪ Vision Review（可选；仅评审不自动修复，避免 review 越改越差）
     if (llmDeps?.callVisionJSON && reviewBaseDir) {
       try {
         const r = await reviewAndFix({
@@ -902,20 +1142,12 @@ async function patchOneState({ prevHtml, currentReq, allRequirements, platformHi
           screenshotPath: reviewSavePath,
         });
         reviewMeta = r.review || null;
-        reviewApplied = r.applied || 0;
+        reviewApplied = 0;
         patched = r.html;
       } catch (e) {
         log && log(`[review] 异常跳过：${e.message}`);
       }
     }
-
-    // ⑦ ⑧ ⑨ 语义级硬约束
-    patched = ensureLoadingIndicator(patched, currentReq, log);
-    patched = enforceOpaqueErrorOverlay(patched, currentReq, log);
-    patched = enforceOpaqueFullscreenPanel(patched, currentReq, log);
-    // ⑩ ⑪ 语法 fix + id 去重
-    patched = fixCssSyntaxErrors(patched, log);
-    patched = dedupeDuplicateIds(patched, currentReq, log);
   } else {
     log && log(`[postproc] HM_LEGACY_POSTPROC_ENABLED=0，跳过全部 11 步后处理（基线评估模式）`);
   }
@@ -941,6 +1173,10 @@ async function patchOneState({ prevHtml, currentReq, allRequirements, platformHi
 async function runPatchPipeline(session, emit) {
   const { blueprint, seed } = session;
   if (!blueprint) throw new Error("blueprint missing");
+  const blueprintValidation = validateBlueprint(blueprint);
+  if (!blueprintValidation.ok) {
+    throw new Error(`blueprint invalid: ${blueprintValidation.issues.join("; ")}`);
+  }
 
   // ── antdOneShot 路径（HM_ANTD_ENABLED=1）─────────────────────────
   // 单次 LLM 调用产出 happy path 上所有 state 的 OLD/NEW + antd-mobile JSX islands。
@@ -1012,17 +1248,49 @@ async function runPatchPipeline(session, emit) {
   //  - 存到 outDir 下：必须注入 <base href="../"> 让 <img src="image.png"> 指向 sourceDir
   const stateHtmlMap = {}; // state_id → full HTML (in-memory)
   stateHtmlMap[1] = baselineSanitized;
+  const stateQualityMap = new Map();
 
   // 写 state_1 文件（可直接预览）
   const state1FilePath = path.join(outDir, `state_1.html`);
   await fs.writeFile(state1FilePath, withBaseHref(baselineSanitized, savedInSource), "utf-8");
-  emit("state-done", {
+  const state1Final = await writeFinalScreenshot({
+    html: withBaseHref(baselineSanitized, savedInSource),
+    htmlFilePath: state1FilePath,
+    outPath: path.join(outDir, "state_1_final.png"),
+    baseDir: outDir,
+  });
+  const state1Validation = await validateStateHtml({
+    html: withBaseHref(baselineSanitized, savedInSource),
+    htmlFilePath: state1FilePath,
+    state: states[0] || { state_id: 1, state_name: "初始态" },
+    baseDir: outDir,
+    includeViewport: true,
+  });
+  stateQualityMap.set(1, {
+    finalScreenshot: state1Final.ok ? state1Final.file : null,
+    finalScreenshotOk: state1Final.ok,
+    finalScreenshotError: state1Final.reason || null,
+    reviewOk: null,
+    reviewStatus: "not_applicable",
+    reviewIssues: [],
+    validationOk: state1Validation.ok,
+    validationIssues: state1Validation.issues,
+    assetWarnings: state1Validation.assetWarnings,
+    quality_failed: !state1Final.ok || !state1Validation.ok,
+  });
+  const state1Event = {
     state_id: 1,
     state_name: states[0]?.state_name || "初始态",
     file: path.relative(outDir, state1FilePath).replace(/\\/g, "/"),
+    finalScreenshot: state1Final.ok ? state1Final.file : null,
+    validation_ok: state1Validation.ok,
+    validation_issues: state1Validation.issues,
+    asset_warnings: state1Validation.assetWarnings,
+    quality_failed: !state1Final.ok || !state1Validation.ok,
     applied: 0,
     skipped: 0,
-  });
+  };
+  emit(state1Event.quality_failed ? "state-fail" : "state-done", state1Event);
 
   const allRequirements = states.map(s => ({
     state_id: s.state_id,
@@ -1035,7 +1303,11 @@ async function runPatchPipeline(session, emit) {
   // 按 state_id 升序串行（支持 last_state 依赖链）
   for (const st of states) {
     if (st.state_id === 1) continue;
-    const lastId = st.last_state || 1;
+    if (st.last_state === null || st.last_state === undefined) {
+      emit("state-fail", { state_id: st.state_id, error: "last_state 缺失" });
+      continue;
+    }
+    const lastId = st.last_state;
     const prevHtml = stateHtmlMap[lastId];
     if (!prevHtml) {
       emit("state-fail", { state_id: st.state_id, error: `last_state=${lastId} 尚未生成` });
@@ -1052,7 +1324,7 @@ async function runPatchPipeline(session, emit) {
       // 注入了 <base href="../"> → 用 sourceDir 作为 baseDir 让相对资源 (image.png / css/...)
       // 能解析；非 savedInSource 时直接用 outDir。
       const reviewBaseDir = savedInSource && session.seed.sourceDir ? session.seed.sourceDir : outDir;
-      const reviewSavePath = path.join(outDir, `state_${st.state_id}_review.png`);
+      const reviewSavePath = path.join(outDir, `state_${st.state_id}_review_before.png`);
 
       const { html, applied, skipped, raw, hmExpansions, hmMissing, review, reviewApplied } = await patchOneState({
         prevHtml,
@@ -1091,20 +1363,61 @@ async function runPatchPipeline(session, emit) {
 
       stateHtmlMap[st.state_id] = html;
       const filePath = path.join(outDir, `state_${st.state_id}.html`);
-      await fs.writeFile(filePath, withBaseHref(html, savedInSource), "utf-8");
+      const persistedHtml = withBaseHref(html, savedInSource);
+      await fs.writeFile(filePath, persistedHtml, "utf-8");
 
-      emit("state-done", {
+      const finalShot = await writeFinalScreenshot({
+        html: persistedHtml,
+        htmlFilePath: filePath,
+        outPath: path.join(outDir, `state_${st.state_id}_final.png`),
+        baseDir: outDir,
+      });
+      const stateValidation = await validateStateHtml({
+        html: persistedHtml,
+        htmlFilePath: filePath,
+        state: st,
+        baseDir: outDir,
+        includeViewport: true,
+      });
+      const reviewStatus = review
+        ? (review.ok === true ? "ok" : "failed")
+        : (llmDeps?.callVisionJSON ? "review_unavailable" : "review_unavailable");
+      const reviewIssues = review?.issues || (reviewStatus === "review_unavailable" ? ["review_unavailable"] : []);
+      const qualityFailed = !finalShot.ok || !stateValidation.ok || reviewStatus !== "ok";
+      const quality = {
+        finalScreenshot: finalShot.ok ? finalShot.file : null,
+        finalScreenshotOk: finalShot.ok,
+        finalScreenshotError: finalShot.reason || null,
+        reviewOk: review ? !!review.ok : false,
+        reviewStatus,
+        reviewIssues,
+        validationOk: stateValidation.ok,
+        validationIssues: stateValidation.issues,
+        assetWarnings: stateValidation.assetWarnings,
+        quality_failed: qualityFailed,
+      };
+      stateQualityMap.set(st.state_id, quality);
+
+      const eventPayload = {
         state_id: st.state_id,
         state_name: st.state_name,
         file: path.relative(outDir, filePath).replace(/\\/g, "/"),
         applied, skipped,
-        review_ok: review ? !!review.ok : null,
+        review_ok: quality.reviewOk,
+        review_status: reviewStatus,
         review_applied: reviewApplied || 0,
-        review_issues: review?.issues || [],
+        review_issues: reviewIssues,
+        validation_ok: stateValidation.ok,
+        validation_issues: stateValidation.issues,
+        asset_warnings: stateValidation.assetWarnings,
+        finalScreenshot: quality.finalScreenshot,
         elapsed_ms: Date.now() - t0,
         hmExpansions: hmExpansions || [],
         hmMissing: hmMissing || [],
-      });
+        quality_failed: qualityFailed,
+      };
+
+      emit(qualityFailed ? "state-fail" : "state-done", qualityFailed ? { ...eventPayload, error: "quality validation failed" } : eventPayload);
     } catch (e) {
       emit("state-fail", { state_id: st.state_id, error: e.message, elapsed_ms: Date.now() - t0 });
       // 失败态也落盘调试日志，确保可追溯：至少包含 error + state-log 全量。
@@ -1129,13 +1442,24 @@ async function runPatchPipeline(session, emit) {
     slug,
     createdAt: new Date().toISOString(),
     meta: blueprint.meta,
+    blueprintValidation,
+    blueprintIntentReview: session.blueprintIntentReview || null,
+    blueprintIntentRisk: !!session.blueprintIntentReview?.continuedWithRisk,
     states: states.map(s => ({
       state_id: s.state_id,
       state_name: s.state_name,
       description: s.description,
       implementation_method: s.implementation_method,
-      last_state: s.last_state || null,
+      last_state: s.last_state ?? null,
       file: `state_${s.state_id}.html`,
+      ...(stateQualityMap.get(s.state_id) || {
+        finalScreenshot: null,
+        reviewOk: false,
+        reviewIssues: ["state_not_generated"],
+        validationOk: false,
+        assetWarnings: [],
+        quality_failed: true,
+      }),
     })),
   };
   await fs.writeFile(path.join(outDir, "manifest.json"), JSON.stringify(manifest, null, 2), "utf-8");
@@ -1235,9 +1559,16 @@ function registerRoutes(app, deps) {
         const raw = await callPhase(nextPhase, session.seed, session.qaHistory);
         if (!raw) return res.status(500).json({ message: "LLM 返回空" });
         if (raw.action === "done" && raw.blueprint) {
-          session.blueprint = raw.blueprint;
-          const saved = await persistTaskflowJson(session).catch(e => { console.warn("[oneclick/answer] persist fail:", e.message); return null; });
-          return res.json({ sessionId, blueprint: raw.blueprint, validation: validateBlueprint(raw.blueprint), done: true, taskflow: saved });
+          const accepted = await acceptGeneratedBlueprint({ session, raw, phase: nextPhase });
+          return res.json({
+            sessionId,
+            blueprint: accepted.blueprint,
+            validation: accepted.validation,
+            intentReview: accepted.intentReview,
+            repaired: accepted.repaired,
+            done: true,
+            taskflow: accepted.saved,
+          });
         }
         const q = shapeQuestion(raw, nextPhase);
         session.lastQuestion = q;
@@ -1246,24 +1577,49 @@ function registerRoutes(app, deps) {
 
       // Phase 4 = 产出最终蓝图
       const raw = await callPhase(4, session.seed, session.qaHistory);
-      if (!raw || raw.action !== "done" || !raw.blueprint) return res.status(500).json({ message: "生成蓝图失败", raw });
-      session.blueprint = raw.blueprint;
-      const saved = await persistTaskflowJson(session).catch(e => { console.warn("[oneclick/answer] persist fail:", e.message); return null; });
-      return res.json({ sessionId, blueprint: raw.blueprint, validation: validateBlueprint(raw.blueprint), done: true, taskflow: saved });
+      const accepted = await acceptGeneratedBlueprint({ session, raw, phase: 4 });
+      return res.json({
+        sessionId,
+        blueprint: accepted.blueprint,
+        validation: accepted.validation,
+        intentReview: accepted.intentReview,
+        repaired: accepted.repaired,
+        done: true,
+        taskflow: accepted.saved,
+      });
     } catch (e) {
       console.error("[oneclick/answer]", e);
-      res.status(500).json({ message: e.message });
+      res.status(500).json({ message: e.message, validation: e.validation || null, raw: e.raw || undefined });
     }
   });
 
   app.post("/api/oneclick/blueprint", async (req, res) => {
-    const { sessionId, blueprint } = req.body || {};
-    const session = sessions.get(sessionId);
-    if (!session) return res.status(404).json({ message: "会话不存在" });
-    session.blueprint = blueprint;
-    // 手动覆盖蓝图时同样落盘新的 taskflow.json（复用已存在的 outDir）
-    const saved = await persistTaskflowJson(session).catch(e => { console.warn("[oneclick/blueprint] persist fail:", e.message); return null; });
-    return res.json({ ok: true, validation: validateBlueprint(blueprint), taskflow: saved });
+    try {
+      const { sessionId, blueprint } = req.body || {};
+      const session = sessions.get(sessionId);
+      if (!session) return res.status(404).json({ message: "会话不存在" });
+      const validation = validateBlueprint(blueprint);
+      if (!validation.ok) {
+        return res.status(400).json({ ok: false, message: "blueprint invalid", validation });
+      }
+      const intentReview = await reviewBlueprintIntent({ seed: session.seed, blueprint });
+      session.blueprintIntentReview = {
+        ...intentReview,
+        ok: intentReview.score >= BLUEPRINT_INTENT_PASS_SCORE,
+        repaired: false,
+        continuedWithRisk: intentReview.score < BLUEPRINT_INTENT_PASS_SCORE,
+        passScore: BLUEPRINT_INTENT_PASS_SCORE,
+        repairAcceptScore: BLUEPRINT_INTENT_REPAIR_ACCEPT_SCORE,
+        decision: intentReview.score >= BLUEPRINT_INTENT_PASS_SCORE ? "pass" : "continue_with_risk",
+      };
+      session.blueprint = blueprint;
+      // 手动覆盖蓝图时同样落盘新的 taskflow.json（复用已存在的 outDir）
+      const saved = await persistTaskflowJson(session);
+      return res.json({ ok: true, validation, intentReview: session.blueprintIntentReview, taskflow: saved });
+    } catch (e) {
+      console.error("[oneclick/blueprint]", e);
+      return res.status(500).json({ ok: false, message: e.message, validation: e.validation || null });
+    }
   });
 
   app.get("/api/oneclick/session/:id", (req, res) => {
@@ -1273,6 +1629,7 @@ function registerRoutes(app, deps) {
       id: s.id, phase: s.phase,
       qaHistory: s.qaHistory,
       blueprint: s.blueprint,
+      blueprintIntentReview: s.blueprintIntentReview || null,
       lastQuestion: s.lastQuestion || null,
       generation: s.generation ? { slug: s.generation.slug, dirName: s.generation.dirName, savedInSource: s.generation.savedInSource } : null,
       sourceDir: s.seed.sourceDir,

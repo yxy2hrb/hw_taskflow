@@ -1,0 +1,52 @@
+# Dependencies
+node_modules/
+backend/node_modules/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+generate_stream.log
+
+# Runtime / build caches
+.cache/
+.tmp/
+tmp/
+temp/
+.DS_Store
+Thumbs.db
+
+# Taskflow generated outputs
+saved-taskflow/
+# **/_taskflow_*/
+quality_report.json
+
+# Batch/generated evaluation artifacts
+runs_baseline/
+*_batch/
+_batch_summary.json
+
+# Browser / download leftovers
+*.crdownload
+*.download
+
+# Editor / local tooling
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# AGENT
+AGENTS.md
+
+README_ME.md

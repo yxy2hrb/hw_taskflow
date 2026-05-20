@@ -546,6 +546,12 @@ function buildPatchPrompt({ currentReq, html, allRequirements, bodyOnlyMode = fa
     timeSeqPrevName = s.state_name || timeSeqPrevName;
   }
   const isCancelOrResetState = /取消|恢复初始|dismiss|cancel|关闭弹窗|关闭浮层|返回原页/.test(`${currentReq?.state_name || ""} ${currentReq?.description || ""}`);
+  const layoutIntentText = `${currentReq?.state_name || ""} ${currentReq?.description || ""} ${currentReq?.implementation_method || ""}`;
+  const layoutIntent = /(底部抽屉|底部弹窗|bottom\s*sheet|sheet)/i.test(layoutIntentText)
+    ? "Bottom Sheet"
+    : /(全屏|full\s*screen|page|页面|panel)/i.test(layoutIntentText)
+      ? "Full Screen Page"
+      : "Centered Dialog";
 
   // ── 取消/恢复初始态的专门提示
   let cancelHint = "";
@@ -590,6 +596,8 @@ ${bodyOnlyMode ? "（为节省 token，已只喂给你 <body>...</body> 片段�
 ${langInfo.hint}
 （自动检测：中文字符 ${langInfo.cn}, 英文词块 ${langInfo.en}, 主语言=${langInfo.primary}）
 ❌ 不要把"中文页面"中的按钮翻译成英文，也不要在英文页面里突然出现中文文案。
+❌ 主语言=en 时，筛选项 / 排序项 / 状态标签必须用英文，例如 "Newest first" / "Oldest first" / "Descending"，禁止出现"最新到最早 / 降序 / 确认 / 取消"等中文。
+❌ 图标 ligature 名称（close / check_circle / arrow_back / wifi / qr_code 等）不得作为普通可见文本残留；若不能保证字体渲染，改用内联 SVG 或纯 CSS 图形兜底。
 
 ==================【弹窗 / Toast 文案长度 - 硬约束】==================
 - 单行文案在 max-width=280px（按钮内）/ 320px（弹窗正文）下要能完整显示，否则**必须换行或缩短**。
@@ -637,8 +645,11 @@ ${HARMONY_PATCH_GUIDE}
 ==================【弹窗 / 浮层 硬约束】==================
 - 所有弹窗/浮层/overlay 只能作为 <body> 的最后一个直接子元素（在末尾 <script> 之前）；
 - [OLD] 必须包含现有 <script>...</script> 的完整原文；
-- 弹窗根节点：position: fixed; inset: 0; z-index ≥ 9999；
-- 弹窗根节点必须有 background: rgba(0,0,0,0.40) 遮罩；内容居中（display:flex; align-items:center; justify-content:center）；
+- 本 state 推荐布局类型：${layoutIntent}。必须按语义选择布局，禁止把所有浮层都强行写成居中遮罩弹窗。
+- Centered Dialog：根节点 position:fixed; inset:0; z-index≥9999; background:rgba(0,0,0,0.40); display:flex; align-items:center; justify-content:center；内部白底卡片 max-width:328px。
+- Bottom Sheet：当描述含"底部抽屉 / 底部弹窗 / bottom sheet"时，根节点必须 position:fixed; inset:0; z-index≥9999; display:flex; align-items:flex-end; justify-content:center；面板贴底，width:100%，max-width:360px，顶部圆角 24px/32px，底部安全区留白；禁止 align-items:center。
+- Full Screen Page：当语义是全屏页 / 独立页面 / 全屏面板时，根节点必须 position:fixed; inset:0; z-index≥9999; background:#FFFFFF 或 #F1F3F5 完全不透明；不要使用半透明遮罩。
+- 如果 description / implementation_method 明确写"无遮罩 / 无弹窗 / no overlay / no modal"，禁止生成 rgba(0,0,0,0.40) 遮罩或 position:fixed; inset:0 的 modal 根节点。
 - 禁止出现 top > 200px；禁止沿用设计稿里的大绝对坐标；
 - 移动端画布内的弹窗必须使用移动端字号，宽度不得超出画布；
 - 对话框正文必须按"标题→正文→按钮组"三段式垂直排版，每段之间至少 12px 间距；

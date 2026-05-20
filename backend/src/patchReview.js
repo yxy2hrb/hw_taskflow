@@ -1,28 +1,21 @@
 "use strict";
 /**
- * 截图 → Vision 评审 → 必要时让模型输出修订 [OLD]/[NEW] 块 → 重新 apply 的修复循环。
+ * 截图 → Vision 评审。
  *
  * 在 patchOneState 完成首轮 apply 后调用：
  *   1) 把当前已应用补丁的完整 HTML 渲染成 PNG（默认 360×780, fullPage）
  *   2) 把截图（base64）+ 当前 state 描述 + LLM 原始 [OLD]/[NEW] 输出，喂给 qwen-vl-max
  *   3) 评审模型返回 JSON: { ok, issues, fixedBlocks }
- *      - ok=true  → 通过，啥也不做
- *      - ok=false → fixedBlocks 是若干 [OLD]/[NEW] 块（[OLD] 必须是当前 HTML 中的逐字片段），
- *                   解析后重新 apply 到当前 HTML。
- *   4) 最多迭代 maxRounds 次（默认 1 次，避免无限循环）。
+ *      - ok=true  → 通过；
+ *      - ok=false → 只记录 issues / fixedBlocks 建议，不再自动修改 HTML。
  *
- * 这是"防溢出 / 防语言不一致 / 防视觉异常"的最后一道关。
+ * 这是"防溢出 / 防语言不一致 / 防视觉异常"的评审关；是否修复交给后续人工或单独策略。
  */
 
 const fs = require("fs");
 const path = require("path");
 const { screenshotHtmlString } = require("./integrations/htmlScreenshot");
-const {
-  parseBlocks,
-  applyReplacementsInMemory,
-  stripCodeFences,
-  detectLanguage,
-} = require("./taskflowPatch");
+const { detectLanguage } = require("./taskflowPatch");
 
 const REVIEW_SYSTEM = `你是一名资深移动端 UI 设计师 + QA 评审员，熟悉 HarmonyOS Design 规范。
 你只会输出严格的 JSON 对象，不写任何自然语言解释。`;
@@ -126,31 +119,26 @@ async function reviewAndFix({ html, currentReq, prevBlocksRaw, baseDir, deps, lo
   const reviewMs = Date.now() - t0;
 
   if (!result || typeof result !== "object") {
-    log && log(`[review] 模型未返回有效 JSON（${reviewMs}ms），按通过处理`);
+    log && log(`[review] 模型未返回有效 JSON（${reviewMs}ms），标记 review_unavailable`);
     return { html, applied: 0, skipped: 0, review: null, screenshotBytes: shot.buffer.length };
   }
   log && log(`[review] ok=${result.ok} issues=${(result.issues || []).length} (${reviewMs}ms)`);
   if (Array.isArray(result.issues)) result.issues.forEach((it, i) => log && log(`  · ${i + 1}. ${it}`));
 
-  if (result.ok === true || !result.fixedBlocks) {
-    return { html, applied: 0, skipped: 0, review: { ...result, reviewMs, screenshot: shot.buffer.length } };
+  if (result.ok !== true && result.fixedBlocks) {
+    log && log("[review] 模型给出了 fixedBlocks，但当前策略为 review-only，忽略自动修改");
   }
-
-  // 解析修订块并重新 apply
-  const blocks = parseBlocks(stripCodeFences(String(result.fixedBlocks)));
-  log && log(`[review] 解析到 ${blocks.length} 个修订替换块`);
-  if (!blocks.length) {
-    return { html, applied: 0, skipped: 0, review: { ...result, reviewMs, screenshot: shot.buffer.length } };
-  }
-
-  const { html: patched, appliedCount, skippedCount } = applyReplacementsInMemory(html, blocks, {
-    log: (m) => log && log(`  [review-apply] ${m}`),
-  });
   return {
-    html: patched,
-    applied: appliedCount,
-    skipped: skippedCount,
-    review: { ...result, reviewMs, screenshot: shot.buffer.length, fixedBlocksParsed: blocks.length },
+    html,
+    applied: 0,
+    skipped: 0,
+    review: {
+      ...result,
+      reviewMs,
+      screenshot: shot.buffer.length,
+      reviewOnly: true,
+      fixedBlocksIgnored: !!(result.ok !== true && result.fixedBlocks),
+    },
   };
 }
 

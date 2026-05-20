@@ -48,6 +48,13 @@ async function getContext(viewport = DEFAULT_VIEWPORT) {
   return { browser: _browser, context: _context, viewport };
 }
 
+async function closeScreenshotBrowser() {
+  try { if (_context) await _context.close(); } catch {}
+  try { if (_browser) await _browser.close(); } catch {}
+  _context = null;
+  _browser = null;
+}
+
 /**
  * 对一个 HTML 字符串截图。
  *  - 如果 baseDir 提供，使用 page.setContent + page.route("**", ...) 拦截相对路径
@@ -101,4 +108,4 @@ async function screenshotHtmlString(html, opts = {}) {
   }
 }
 
-module.exports = { screenshotHtmlString, getContext, DEFAULT_VIEWPORT };
+module.exports = { screenshotHtmlString, getContext, closeScreenshotBrowser, DEFAULT_VIEWPORT };
