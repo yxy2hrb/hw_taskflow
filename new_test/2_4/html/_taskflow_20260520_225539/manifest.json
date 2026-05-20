@@ -1,0 +1,101 @@
+{
+  "title": "行业资讯筛选流程",
+  "slug": "industry-news-filter-flow",
+  "createdAt": "2026-05-20T14:57:24.129Z",
+  "meta": {
+    "title": "行业资讯筛选流程",
+    "slug": "industry-news-filter-flow",
+    "user_story": "已登录的行业资讯读者在行业资讯页点击右上角“筛选”图标后，通过遮罩式面板调整排序与标签，确认后刷新列表。",
+    "platform": "mobile"
+  },
+  "blueprintValidation": {
+    "ok": true,
+    "issues": []
+  },
+  "blueprintIntentReview": {
+    "ok": true,
+    "score": 95,
+    "decision": "pass",
+    "majorIssues": [],
+    "minorIssues": [
+      "Content 标签组描述为‘横向滚动区域’且仅‘All’有下划线选中态，但 brief 要求‘多项标签’可选，blueprint 未明确说明多选交互反馈（如选中态视觉变化、已选项保留逻辑），属小风险；",
+      "确认后‘刷新列表b’中的‘b’疑似笔误（应为‘列表’），blueprint 未显式声明刷新行为触发机制（如 loading 状态、列表重载动画或数据请求时机），但 stateChain 中隐含‘确认→列表更新’语义，不构成阻断"
+    ],
+    "coverage": {
+      "coreAction": true,
+      "targetState": true,
+      "interactionPattern": true,
+      "language": true,
+      "stateChain": true,
+      "noContradiction": true
+    },
+    "source": "llm",
+    "repaired": false,
+    "continuedWithRisk": false,
+    "passScore": 75,
+    "repairAcceptScore": 65
+  },
+  "blueprintIntentRisk": false,
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "行业资讯首页初始态",
+      "description": "页面为垂直滚动列表，顶部有状态栏（显示时间/信号/电量），中部为行业资讯卡片流（每张含标题、摘要、发布时间、来源图标），底部固定 Tab 导航栏（含‘首页’‘分类’‘我的’三图标）；右上角操作栏内嵌一个未填充的筛选图标（SVG 矢量，线条色 #191919，尺寸 24×24px），无任何浮层或遮罩。",
+      "implementation_method": "原始 HTML 初始快照，不做改造。",
+      "last_state": null,
+      "file": "state_1.html",
+      "finalScreenshot": "state_1_final.png",
+      "finalScreenshotOk": true,
+      "finalScreenshotError": null,
+      "reviewOk": null,
+      "reviewStatus": "not_applicable",
+      "reviewIssues": [],
+      "validationOk": false,
+      "validationIssues": [
+        "element overflows viewport: <div#6_29799> left=434 right=505",
+        "element overflows viewport: <div#6_29800> left=434 right=505",
+        "element overflows viewport: <div#6_29801> left=434 right=505",
+        "element overflows viewport: <div#6_29802> left=454 right=503",
+        "element overflows viewport: <div#6_29803> left=443 right=496"
+      ],
+      "assetWarnings": [
+        "missing asset: %23grad",
+        "missing asset: ./image/Boolean_operation_136_720218.png"
+      ],
+      "quality_failed": true
+    },
+    {
+      "state_id": 2,
+      "state_name": "筛选面板展开态",
+      "description": "全屏覆盖一层半透明黑色遮罩（background-color: rgba(25, 25, 25, 0.3)），其上居中悬浮一张白色圆角卡片（宽 343px，高 480px，border-radius: 16px，box-shadow: 0 8px 24px rgba(0,0,0,0.08)）；卡片顶部居中显示‘筛选’标题（HarmonyOS Sans SC-Medium，20px，#191919）；下方依次排列三组控件：Time 单选按钮组（两行文字‘最新到最早’‘最早到最新’，左侧带实心圆点选中态）、Popularity 单选按钮组（同结构，文案‘降序’‘升序’）、Content 多选标签组（横向滚动区域，含 8 个浅灰底圆角标签，当前仅‘All’为深灰文字+下划线，其余为 #777777 常规文字）；卡片底部固定两个按钮：左‘取消’（12px Medium，#777777）、右‘确认’（12px Medium，#191919）。",
+      "implementation_method": "基于 last_state=state_1：保留顶部状态栏、底部 Tab 导航栏、主内容容器及所有资讯卡片结构；删除无；新增全屏半透遮罩层（class='fill-场景background-colorcolor-bg-mask-6_30741'）与居中白色圆角筛选卡片（含标题、三组控件、底部双按钮）。",
+      "last_state": 1,
+      "file": "state_2.html",
+      "finalScreenshot": "state_2_final.png",
+      "finalScreenshotOk": true,
+      "finalScreenshotError": null,
+      "reviewOk": false,
+      "reviewStatus": "failed",
+      "reviewIssues": [
+        "语言一致性：截图中弹窗标题和按钮使用英文（Filter, Cancel, Confirm），但原页面主语言为en，此部分符合要求；然而，弹窗内'Content'标签下的标签文字如'Enterprise', 'Real Estate'等未在HTML中正确渲染为英文，且'All'标签的下划线样式与描述不符，存在样式不一致问题。",
+        "元素溢出：弹窗卡片宽度设置为328px，但在实际显示中，右侧的'Education'、'Healthcare'等标签被裁切，导致内容溢出，违反了设计规范中关于横向滚动区域应完整展示的要求。",
+        "可见性：description中要求的三组控件（Time、Popularity、Content）均可见，但'Content'多选标签组中的标签文字未完全显示，尤其是'Digital Government'和'Smart Manufacturing'被截断，不符合预期。",
+        "位置合理性：弹窗居中覆盖全屏，遮罩层存在，整体位置合理。但弹窗底部按钮'Cancel'和'Confirm'间距过大，视觉上不协调，且'Confirm'按钮背景色为蓝色，但HTML中定义为#0A59F7，实际颜色偏深蓝，与鸿蒙规范建议的主色略有偏差。",
+        "基础样式：弹窗边框圆角为16px，阴影为0 8px 24px rgba(0,0,0,0.08)，符合规范。但'Content'标签组的背景色为#F1F3F5，而HTML中定义为浅灰底，实际效果接近白色，需调整以确保对比度。"
+      ],
+      "validationOk": false,
+      "validationIssues": [
+        "element overflows viewport: <div#6_29799> left=434 right=505",
+        "element overflows viewport: <div#6_29800> left=434 right=505",
+        "element overflows viewport: <div#6_29801> left=434 right=505",
+        "element overflows viewport: <div#6_29802> left=454 right=503",
+        "element overflows viewport: <div#6_29803> left=443 right=496"
+      ],
+      "assetWarnings": [
+        "missing asset: %23grad",
+        "missing asset: ./image/Boolean_operation_136_720218.png"
+      ],
+      "quality_failed": true
+    }
+  ]
+}

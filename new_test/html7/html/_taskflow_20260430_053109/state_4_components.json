@@ -1,0 +1,20 @@
+{
+  "state_id": 4,
+  "state_name": "保存成功终态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "语言一致性：截图中弹窗文字‘保存成功’为中文，主语言为zh，符合要求，但原页面‘姓名’字段仍显示‘李华’而非新输入内容‘李四’，未体现‘原姓名项更新’的预期变化。",
+      "元素溢出：弹窗宽度超出328px限制，实际视觉上已接近画布边缘，且背景遮罩层（rgba(0,0,0,0.4)）覆盖整个屏幕，导致下方内容不可见，不符合‘不遮挡顶部状态栏与底部任何内容’的要求。",
+      "可见性：description要求Toast提示浮出并显示‘保存成功’，但截图中显示的是一个蓝色按钮式弹窗而非轻量级Toast，形态不符，属于Dialog而非Toast，判fail。",
+      "位置合理性：弹窗居中显示，位置合理，但其样式和交互方式不符合Toast规范，应为非模态、短暂显示的轻提示，当前实现为全屏遮罩+按钮，破坏了原有页面交互层级。",
+      "基础样式：弹窗使用了纯蓝底白字，虽颜色正确，但整体结构为带遮罩的Dialog样式，不符合‘浅蓝底、圆角矩形、上下留白、2秒后淡出’的Toast定义；同时存在明显阴影和大尺寸，违反鸿蒙轻提示设计规范。"
+    ],
+    "fixedBlocks": "[OLD]\n<div style=\"position:fixed;inset:0;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;z-index:1000;pointer-events:none;\">\n  <div style=\"width:calc(100% - 32px);max-width:328px;padding:12px 20px;border-radius:8px;background:#2196F3;box-shadow:0 4px 12px rgba(0,0,0,0.06);font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;word-break:break-word;overflow-wrap:anywhere;display:flex;align-items:center;justify-content:center;\">\n    <span style=\"font-size:14px;font-weight:400;line-height:20px;color:#FFFFFF;\">保存成功</span>\n  </div>\n</div>\n[NEW]\n<div style=\"position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:1000;width:calc(100% - 32px);max-width:328px;padding:12px 20px;border-radius:8px;background:#2196F3;color:#FFFFFF;font-family:'HarmonyOS Sans SC';font-size:14px;line-height:20px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,0.06);white-space:nowrap;opacity:1;transition:opacity 0.3s ease-in-out;pointer-events:none;\">\n  保存成功\n</div>",
+    "reviewMs": 28652,
+    "screenshot": 63954,
+    "fixedBlocksParsed": 1
+  }
+}

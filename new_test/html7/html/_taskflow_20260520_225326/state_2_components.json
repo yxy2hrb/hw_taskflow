@@ -1,0 +1,21 @@
+{
+  "state_id": 2,
+  "state_name": "全屏编辑页",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "输入框边框颜色不符：需求要求浅灰边框 #F3F3F3，但截图中边框为默认灰色（接近 #D9D9D9），未达到指定色值。",
+      "输入框内边距不匹配：需求要求内边距16px，但实际视觉上上下内边距明显小于16px（约12px），导致文字与边框间距偏紧。",
+      "输入框宽度不足：需求要求宽320px，但截图中输入框宽度明显小于320px，未占满预期空间。",
+      "标题栏高度不符：需求要求48px高，但截图中标题栏高度略大于48px，且顶部状态栏与标题栏之间存在额外间隙。",
+      "保存按钮样式偏差：需求要求背景色#F5F6F8，但截图中按钮背景色更浅，接近#F9F9F9，颜色未准确还原。",
+      "输入框未获得焦点：需求明确指出‘已获得焦点，光标在末尾闪烁’，但截图中无光标闪烁，未体现焦点状态。"
+    ],
+    "fixedBlocks": "[OLD]\n<input type=\"text\" value=\"张三\" placeholder=\"请输入姓名\" style=\"width:100%; padding:12px 16px; border:1px solid rgba(0,0,0,0.12); border-radius:8px; font-size:14px; color:rgba(0,0,0,0.9); box-sizing:border-box; outline:none; background-color:#FFFFFF;\">\n[NEW]\n<input type=\"text\" value=\"张三\" placeholder=\"请输入姓名\" style=\"width:320px; padding:16px; border:1px solid #F3F3F3; border-radius:8px; font-size:14px; color:rgba(0,0,0,0.9); box-sizing:border-box; outline:none; background-color:#FFFFFF; caret-color:rgba(0,0,0,0.9);\">",
+    "reviewMs": 13118,
+    "screenshot": 18778,
+    "fixedBlocksParsed": 1
+  }
+}

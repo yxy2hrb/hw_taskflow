@@ -1,0 +1,18 @@
+{
+  "state_id": 3,
+  "state_name": "保存成功反馈态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "Toast 提示位置错误：需求要求 Toast 在状态栏下方 16px 处，但截图中 Toast 显示在顶部状态栏区域（与标题‘个人信息’重叠），且未居中对齐，位置不合理。",
+      "Toast 内容显示异常：截图中 Toast 的绿色勾选图标和文字‘保存成功’被截断或部分遮挡，无法完整显示，存在元素溢出问题。",
+      "Toast 样式不一致：HTML 中定义的 Toast 宽度为 280px，但在截图中实际宽度明显小于该值，导致内容被压缩或裁切，违反尺寸规范。"
+    ],
+    "fixedBlocks": "[OLD]\n<div style=\"position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;\">\n  <div style=\"position:fixed;top:48px;left:50%;transform:translateX(-50%);width:280px;height:44px;padding:0 16px;background:#FFFFFF;border-radius:6px;box-shadow:0 4px 12px rgba(0,0,0,0.06);display:flex;align-items:center;gap:12px;box-sizing:border-box;font-family:HarmonyHeiTi,&quot;HarmonyOS Sans&quot;,sans-serif;word-break:break-word;overflow-wrap:anywhere;\">\n    <span class=\"mi\" style=\"font-size:20px;color:#64BB5C;\">check_circle</span>\n    <span style=\"font-size:14px;font-weight:400;line-height:1.5;color:rgba(0,0,0,0.9);\">保存成功</span>\n  </div>\n</div>\n[NEW]\n<div style=\"position:fixed;top:64px;left:50%;transform:translateX(-50%);width:280px;height:44px;padding:0 16px;background:#FFFFFF;border-radius:6px;box-shadow:0 4px 12px rgba(0,0,0,0.06);display:flex;align-items:center;gap:12px;box-sizing:border-box;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;word-break:break-word;overflow-wrap:anywhere;z-index:9999;\">\n  <span class=\"mi\" style=\"font-size:20px;color:#64BB5C;\">check_circle</span>\n  <span style=\"font-size:14px;font-weight:400;line-height:1.5;color:rgba(0,0,0,0.9);\">保存成功</span>\n</div>",
+    "reviewMs": 16616,
+    "screenshot": 72095,
+    "fixedBlocksParsed": 1
+  }
+}

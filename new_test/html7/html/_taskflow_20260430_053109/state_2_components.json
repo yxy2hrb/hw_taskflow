@@ -1,0 +1,13 @@
+{
+  "state_id": 2,
+  "state_name": "全屏姓名编辑页",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": true,
+    "issues": [],
+    "fixedBlocks": "",
+    "reviewMs": 9742,
+    "screenshot": 19095
+  }
+}

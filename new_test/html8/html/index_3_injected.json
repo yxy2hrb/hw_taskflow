@@ -1,0 +1,16 @@
+{
+  "taskflow_description": "Structured requirement for 3",
+  "ui_analysis": [
+    {
+      "image": "3",
+      "description": "用户确认移除后，目标卡片（此处为“分享获客”卡片）从界面消失，下方卡片（如“短视频能力中心”）自动上移填补空缺。",
+      "raw_requirement": {
+        "state_id": 4,
+        "state_name": "移除后工作台状态",
+        "description": "用户确认移除后，目标卡片（此处为“分享获客”卡片）从界面消失，下方卡片（如“短视频能力中心”）自动上移填补空缺。",
+        "implementation_method": "UI刷新/重排 (Layout Reflow)：从视图列表中删除指定组件，剩余组件自适应向上对齐。"
+      },
+      "design_spec": []
+    }
+  ]
+}

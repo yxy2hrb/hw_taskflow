@@ -1,0 +1,13 @@
+{
+  "state_id": 3,
+  "state_name": "点击移除后确认对话框态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": true,
+    "issues": [],
+    "fixedBlocks": "",
+    "reviewMs": 9195,
+    "screenshot": 108957
+  }
+}

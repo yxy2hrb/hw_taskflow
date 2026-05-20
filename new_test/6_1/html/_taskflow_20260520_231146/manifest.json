@@ -1,0 +1,186 @@
+{
+  "title": "快速入门任务流",
+  "slug": "quick-start-flow",
+  "createdAt": "2026-05-20T15:19:18.399Z",
+  "meta": {
+    "title": "快速入门任务流",
+    "slug": "quick-start-flow",
+    "user_story": "已登录的普通员工在‘我的工作台’点击‘快速入门’按钮，找到适合当前角色的产品入门路径 → 系统按岗位/场景聚合分类标签 → 用户点击‘查看’进入目标文档页",
+    "platform": "desktop"
+  },
+  "blueprintValidation": {
+    "ok": true,
+    "issues": []
+  },
+  "blueprintIntentReview": {
+    "ok": true,
+    "score": 95,
+    "decision": "pass",
+    "majorIssues": [],
+    "minorIssues": [
+      "加载中过渡态（state_3）虽合理，但 brief 未要求加载态，属额外设计，且其占位结构（3行标签+6条目）与正式态的‘分类标签栏+6张卡片’语义对齐稍弱，存在轻微状态链冗余；权限不足页（state_6）主标题‘暂未开放’与 brief 中‘跳转至对应产品文档详情页’隐含的‘可访问性前提’无直接冲突，但文案未体现‘该条目不可查看’的上下文，属微弱语言一致性偏差"
+    ],
+    "coverage": {
+      "coreAction": true,
+      "targetState": true,
+      "interactionPattern": true,
+      "language": true,
+      "stateChain": true,
+      "noContradiction": true
+    },
+    "source": "llm",
+    "repaired": false,
+    "continuedWithRisk": false,
+    "passScore": 75,
+    "repairAcceptScore": 65
+  },
+  "blueprintIntentRisk": false,
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "工作台首页",
+      "description": "页面为全屏白底，顶部导航栏含用户头像与消息图标，中央主区域显示‘我的工作台’标题及卡片式功能模块；右上角固定位置可见蓝色‘快速入门’按钮（文字+向右箭头图标），按钮背景色#46B1E3、文字白色、圆角8px、内边距12px 16px。",
+      "implementation_method": "原始 HTML 初始快照，不做改造。",
+      "last_state": null,
+      "file": "state_1.html",
+      "finalScreenshot": "state_1_final.png",
+      "finalScreenshotOk": true,
+      "finalScreenshotError": null,
+      "reviewOk": null,
+      "reviewStatus": "not_applicable",
+      "reviewIssues": [],
+      "validationOk": false,
+      "validationIssues": [
+        "element overflows viewport: <div#14_1030940> left=-64 right=123",
+        "element overflows viewport: <div#14_1030942> left=-61 right=46"
+      ],
+      "assetWarnings": [],
+      "quality_failed": true
+    },
+    {
+      "state_id": 2,
+      "state_name": "快速入门页全屏态",
+      "description": "页面全屏展开，背景为浅灰#F3F3F3；顶部留白高度64px，中部居中显示宽480px搜索框（高40px、圆角8px、边框#D9D9D9、内部左侧灰色搜索图标+右侧‘搜索...’灰色提示文字#999）；下方横向滚动分类标签栏（每项为圆角矩形、浅蓝#46B1E3背景、白色文字、间距8px、字体14px Medium）；再下方垂直排列6张卡片式入门条目（每张宽480px、高72px、白底、圆角6px、阴影，含左对齐标题（16px Medium）、副标题（14px Regular #666）、右对齐蓝色‘查看’按钮（14px Medium #46B1E3））。",
+      "implementation_method": "基于 last_state=state_1：保留顶部导航栏结构（头像/消息图标区域）；删除原页面所有功能卡片与‘快速入门’按钮；新增全屏浅灰背景容器、顶部留白区、居中搜索框、横向分类标签栏（含‘前端’‘后端’‘测试’‘运维’‘设计’‘产品’六项）、6张垂直排列入门卡片（每张含标题‘前端开发入门’、副标题‘从零搭建Vue项目并部署上线’、右对齐‘查看’按钮）。",
+      "last_state": 1,
+      "file": "state_2.html",
+      "finalScreenshot": "state_2_final.png",
+      "finalScreenshotOk": true,
+      "finalScreenshotError": null,
+      "reviewOk": false,
+      "reviewStatus": "failed",
+      "reviewIssues": [
+        "搜索框内图标为'Q'，但需求要求为'search'图标；定位：搜索框左侧图标",
+        "分类标签栏中'产品'标签被裁切，未完整显示；定位：横向滚动标签栏最右侧",
+        "入门卡片的标题文字未左对齐，存在轻微偏移；定位：所有6张卡片的标题区域",
+        "顶部留白区高度不足64px，实际视觉高度小于预期；定位：搜索框上方空白区域"
+      ],
+      "validationOk": false,
+      "validationIssues": [
+        "element overflows viewport: <div#14_1030940> left=-64 right=123",
+        "element overflows viewport: <div#14_1030942> left=-61 right=46",
+        "element overflows viewport: <div> left=0 right=480",
+        "element overflows viewport: <span> left=37 right=467",
+        "element overflows viewport: <div> left=0 right=480"
+      ],
+      "assetWarnings": [],
+      "quality_failed": true
+    },
+    {
+      "state_id": 3,
+      "state_name": "加载中过渡态",
+      "description": "页面全屏浅灰#F3F3F3背景；顶部留白区存在但无搜索框；中部1/2高度为3行等宽浅灰椭圆占位块（宽120px、高32px、圆角16px、rgba(0,0,0,0.08)）；底部1/4高度为6条等高浅灰条目占位块（高48px、宽480px、圆角4px、rgba(0,0,0,0.04)），每条右侧有‘查看’文字占位（14px Medium #999）；无任何交互元素，无文字内容。",
+      "implementation_method": "基于 last_state=state_2：保留全屏浅灰背景与顶部留白区结构；删除搜索框、分类标签栏、所有入门卡片；新增3行标签占位块（浅灰椭圆）、6条条目占位块（浅灰矩形+右侧‘查看’占位文字）。",
+      "last_state": 2,
+      "file": "state_3.html",
+      "finalScreenshot": "state_3_final.png",
+      "finalScreenshotOk": true,
+      "finalScreenshotError": null,
+      "reviewOk": true,
+      "reviewStatus": "ok",
+      "reviewIssues": [],
+      "validationOk": false,
+      "validationIssues": [
+        "element overflows viewport: <div#14_1030940> left=-64 right=123",
+        "element overflows viewport: <div#14_1030942> left=-61 right=46",
+        "element overflows viewport: <div> left=0 right=480",
+        "element overflows viewport: <div> left=0 right=480",
+        "element overflows viewport: <div> left=16 right=464"
+      ],
+      "assetWarnings": [],
+      "quality_failed": true
+    },
+    {
+      "state_id": 4,
+      "state_name": "文档详情页",
+      "description": "页面全屏白底；顶部固定导航栏（高56px、深灰#191919背景、左侧白色←返回按钮、中间居中显示文档标题‘前端开发入门’（16px Medium 白色）、右侧空白）；正文区域单栏布局（最大宽800px、左右居中、上下padding 40px 24px），含标题‘1. 环境准备’（18px Medium #191919）、段落文字（14px Regular #333）、代码块（黑底#1E1E1E、浅绿#7CFC00文字、13px Monaco字体）、有序列表（数字+文本，14px Regular）、一张内嵌图片（宽100%、高auto、圆角4px、阴影）；底部固定区域含‘上一篇：环境安装’‘下一篇：项目初始化’两个文字按钮（14px Medium #46B1E3，间距24px）。",
+      "implementation_method": "基于 last_state=state_2：保留全屏白底与基础容器结构；删除搜索框、分类标签栏、所有入门卡片；新增顶部固定导航栏（含←图标+标题）、单栏富文本正文（含标题、段落、代码块、有序列表、图片）、底部‘上一篇’‘下一篇’按钮。",
+      "last_state": 2,
+      "file": "state_4.html",
+      "finalScreenshot": "state_4_final.png",
+      "finalScreenshotOk": true,
+      "finalScreenshotError": null,
+      "reviewOk": true,
+      "reviewStatus": "ok",
+      "reviewIssues": [],
+      "validationOk": false,
+      "validationIssues": [
+        "icon ligature visible as text: \"wifi\"",
+        "icon ligature visible as text: \"arrow_back\"",
+        "element overflows viewport: <div#14_1030940> left=-64 right=123",
+        "element overflows viewport: <div#14_1030942> left=-61 right=46"
+      ],
+      "assetWarnings": [],
+      "quality_failed": true
+    },
+    {
+      "state_id": 5,
+      "state_name": "网络失败页",
+      "description": "页面全屏浅红#FFF5F5背景；中央白色卡片（宽520px、高240px、圆角12px、阴影0 4px 12px rgba(0,0,0,0.08)），卡片内顶部居中显示红色感叹号图标（24x24px）、主标题‘网络连接失败’（18px Medium #E53935）、副标题‘请检查网络后点击重试’（14px Regular #666）；卡片底部居中一个蓝色‘重试’按钮（14px Medium #46B1E3、圆角6px、内边距10px 24px、宽120px）；无其他UI元素。",
+      "implementation_method": "基于 last_state=state_2：保留全屏浅灰背景改为浅红#FFF5F5；删除搜索框、分类标签栏、所有入门卡片；新增中央白色卡片（含感叹号图标、主副标题、蓝色‘重试’按钮）。",
+      "last_state": 2,
+      "file": "state_5.html",
+      "finalScreenshot": "state_5_final.png",
+      "finalScreenshotOk": true,
+      "finalScreenshotError": null,
+      "reviewOk": false,
+      "reviewStatus": "failed",
+      "reviewIssues": [
+        "背景色错误：需求要求全屏浅红#FFF5F5，但截图显示为白色（#FFFFFF），未达到预期的浅红色调。",
+        "图标样式不符：需求要求红色感叹号图标（24x24px），但截图中图标为红色三角形警告标志，非标准感叹号，且尺寸疑似不匹配。",
+        "按钮宽度不一致：需求规定按钮宽120px，但截图中按钮宽度明显小于120px，视觉上偏窄，可能影响点击区域。",
+        "卡片阴影过弱：需求阴影为0 4px 12px rgba(0,0,0,0.08)，但截图中阴影几乎不可见，缺乏层次感，不符合鸿蒙设计规范。"
+      ],
+      "validationOk": false,
+      "validationIssues": [
+        "element overflows viewport: <div#14_1030940> left=-64 right=123",
+        "element overflows viewport: <div#14_1030942> left=-61 right=46",
+        "element overflows viewport: <div> left=-80 right=440"
+      ],
+      "assetWarnings": [],
+      "quality_failed": true
+    },
+    {
+      "state_id": 6,
+      "state_name": "权限不足页",
+      "description": "页面全屏浅灰#F5F5F5背景；中央白色卡片（宽480px、高180px、圆角8px、阴影0 2px 8px rgba(0,0,0,0.06)），卡片内顶部居中显示灰色锁形图标（20x20px）、主标题‘暂未开放’（18px Medium #333）、副标题‘您当前角色无权访问该文档’（14px Regular #666）；卡片底部居中一个‘返回入门页’文字按钮（14px Medium #46B1E3）；无其他UI元素。",
+      "implementation_method": "基于 last_state=state_2：保留全屏浅灰背景（#F5F5F5）；删除搜索框、分类标签栏、所有入门卡片；新增中央白色卡片（含锁形图标、主副标题、‘返回入门页’文字按钮）。",
+      "last_state": 2,
+      "file": "state_6.html",
+      "finalScreenshot": "state_6_final.png",
+      "finalScreenshotOk": true,
+      "finalScreenshotError": null,
+      "reviewOk": true,
+      "reviewStatus": "ok",
+      "reviewIssues": [],
+      "validationOk": false,
+      "validationIssues": [
+        "element overflows viewport: <div#14_1030940> left=-64 right=123",
+        "element overflows viewport: <div#14_1030942> left=-61 right=46",
+        "element overflows viewport: <div> left=-60 right=420"
+      ],
+      "assetWarnings": [],
+      "quality_failed": true
+    }
+  ]
+}

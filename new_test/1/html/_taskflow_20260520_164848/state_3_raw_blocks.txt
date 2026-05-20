@@ -1,0 +1,39 @@
+[OLD]
+<script>
+
+</script>
+[NEW]
+<script>
+
+</script>
+<!-- 任务节点开始: 开局方式选择弹窗【临时】 -->
+<div style="position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;">
+  <div style="width:328px;max-width:328px;padding:24px 24px 16px;background:#FFFFFF;border-radius:32px;box-shadow:0 8px 24px rgba(0,0,0,0.08);box-sizing:border-box;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
+      <span class="mi" style="font-size:24px;color:rgba(0,0,0,0.9);">arrow_back</span>
+      <span style="font-size:20px;font-weight:700;line-height:1.3;color:rgba(0,0,0,0.9);">开局方式</span>
+    </div>
+    <p style="font-size:16px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.6);margin-bottom:24px;">开局成功后设备将自动完成登记与激活</p>
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <label style="display:flex;align-items:center;gap:12px;padding:12px;cursor:pointer;border-radius:20px;background:rgba(0,0,0,0.05);">
+        <div style="width:16px;height:16px;border:1.5px solid #D9D9D9;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+          <div style="width:8px;height:8px;border-radius:50%;background:#0A59F7;"></div>
+        </div>
+        <span style="font-size:16px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.9);">Wi-Fi开局</span>
+      </label>
+      <label style="display:flex;align-items:center;gap:12px;padding:12px;cursor:pointer;border-radius:20px;">
+        <div style="width:16px;height:16px;border:1.5px solid #D9D9D9;border-radius:50%;"></div>
+        <span style="font-size:16px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.9);">扫码开局</span>
+      </label>
+      <label style="display:flex;align-items:center;gap:12px;padding:12px;cursor:pointer;border-radius:20px;">
+        <div style="width:16px;height:16px;border:1.5px solid #D9D9D9;border-radius:50%;"></div>
+        <span style="font-size:16px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.9);">体验开局流程</span>
+      </label>
+      <label style="display:flex;align-items:center;gap:12px;padding:12px;cursor:pointer;border-radius:20px;">
+        <div style="width:16px;height:16px;border:1.5px solid #D9D9D9;border-radius:50%;"></div>
+        <span style="font-size:16px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.9);">虚拟运维体验</span>
+      </label>
+    </div>
+  </div>
+</div>
+<!-- 任务节点结束: 开局方式选择弹窗【临时】 -->

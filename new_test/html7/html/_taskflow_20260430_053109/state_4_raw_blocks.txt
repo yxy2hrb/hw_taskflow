@@ -1,0 +1,15 @@
+[OLD]
+<script>
+
+</script>
+[NEW]
+<script>
+
+</script>
+<!-- 任务节点开始: 保存成功终态【临时】 -->
+<div style="position:fixed;inset:0;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;z-index:1000;pointer-events:none;">
+  <div style="width:calc(100% - 32px);max-width:328px;padding:12px 20px;border-radius:8px;background:#2196F3;box-shadow:0 4px 12px rgba(0,0,0,0.06);font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;word-break:break-word;overflow-wrap:anywhere;display:flex;align-items:center;justify-content:center;">
+    <span style="font-size:14px;font-weight:400;line-height:20px;color:#FFFFFF;">保存成功</span>
+  </div>
+</div>
+<!-- 任务节点结束: 保存成功终态【临时】 -->

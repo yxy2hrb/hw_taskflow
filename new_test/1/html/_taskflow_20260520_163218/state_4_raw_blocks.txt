@@ -1,0 +1,14 @@
+[OLD]
+<script>
+
+</script>
+[NEW]
+<script>
+
+</script>
+<!-- 任务节点开始: 开局配置成功Toast【临时】 -->
+<div style="position:fixed; top:48px; left:50%; transform:translateX(-50%); z-index:9999; width:280px; height:44px; padding:0 16px; background:#FFFFFF; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); display:flex; align-items:center; justify-content:flex-start; font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;">
+  <span class="mi" style="font-size:20px; color:#64BB5C; margin-right:12px;">check_circle</span>
+  <span style="font-size:16px; font-weight:500; line-height:1.5; color:rgba(0,0,0,0.9); word-break:break-word; overflow-wrap:anywhere;">开局配置成功</span>
+</div>
+<!-- 任务节点结束: 开局配置成功Toast【临时】 -->

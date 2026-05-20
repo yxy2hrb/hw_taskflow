@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixso HTML</title>
+  <link rel="stylesheet" href="css/font.css">
+  <script src="js/animation.js"></script>
+  <style>
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body { 
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color: white;
+}
+    
+span {
+  word-break: break-word;
+}
+
+.fill-背景色页面-11_285436 {
+        background-color: rgba(245, 246, 248, 1)
+      }
+.text-font-body-1-11_285437 {
+        font-size: 12px;
+font-family: HarmonyOS Sans SC;
+line-height: 20px
+      }
+.text-font-headline-4-9_468618 {
+        font-size: 18px;
+font-family: HarmonyOS Sans SC;
+line-height: 26px
+      }
+.text-font-body-2-11_285438 {
+        font-size: 14px;
+font-family: HarmonyOS Sans SC;
+line-height: 22px
+      }
+.stroke-borderseparator-sbutle-11_285566 {
+        border-width: 0px;
+box-sizing: border-box;
+border-style: solid;
+border-color: rgba(243, 243, 243, 1)
+      }
+
+.scroll-container-0_1 {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+.canvas-0_1 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame-11_285097 {
+  width: 360px;
+  height: 850px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame-11_285098 {
+  width: 24px;
+  height: 222px;
+  position: absolute;
+  left: 336px;
+  top: 276px;
+  display: none;
+}
+
+.text-126_40491 {
+  font-size: 10px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0px;
+  line-height: 12px;
+  font-feature-settings: "frac" 1;
+  text-decoration: none;
+  color: rgba(51, 51, 51, 1);
+  width: 11px;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 12px;
+  transform: translateX(calc(-50% + -3.5px));
+}
+
+.frame-11_285099 {
+  width: 24px;
+  height: 222px;
+  position: absolute;
+  left: 1214px;
+  top: 287px;
+}
+
+.frame-11_285100 {
+  width: 11px;
+  height: auto;
+  position: absolute;
+  left: 3px;
+  top: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.text-11_285101 {
+  font-weight: 400;
+  text-align: center;
+  color: rgba(102, 102, 102, 1);
+  width: 11px;
+  height: 20px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.text-11_285102 {
+  font-weight: 400;
+  text-align: center;
+  color: rgba(102, 102, 102, 1);
+  width: 11px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-11_285103 {
+  font-weight: 400;
+  text-align: center;
+  color: rgba(102, 102, 102, 1);
+  width: 11px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-11_285104 {
+  font-weight: 400;
+  text-align: center;
+  color: rgba(102, 102, 102, 1);
+  width: 11px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-11_285105 {
+  font-weight: 400;
+  text-align: center;
+  color: rgba(102, 102, 102, 1);
+  width: 11px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-11_285106 {
+  font-weight: 400;
+  text-align: center;
+  color: rgba(102, 102, 102, 1);
+  width: 11px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-11_285107 {
+  font-weight: 400;
+  text-align: center;
+  color: rgba(102, 102, 102, 1);
+  width: 11px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-11_285108 {
+  font-weight: 400;
+  text-align: center;
+  color: rgba(102, 102, 102, 1);
+  width: 11px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-11_285109 {
+  font-weight: 400;
+  text-align: center;
+  color: rgba(102, 102, 102, 1);
+  width: 11px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-11_285110 {
+  font-weight: 400;
+  text-align: center;
+  color: rgba(102, 102, 102, 1);
+  width: 11px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-11_285111 {
+  font-weight: 400;
+  text-align: center;
+  color: rgba(102, 102, 102, 1);
+  width: 11px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-11_285112 {
+  font-weight: 400;
+  text-align: center;
+  color: rgba(102, 102, 102, 1);
+  width: 11px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-11_285113 {
+  font-weight: 400;
+  text-align: center;
+  color: rgba(102, 102, 102, 1);
+  width: 11px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-11_285114 {
+  font-weight: 400;
+  text-align: center;
+  color: rgba(102, 102, 102, 1);
+  width: 11px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-11_285115 {
+  font-weight: 400;
+  text-align: center;
+  color: rgba(102, 102, 102, 1);
+  width: 11px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-11_285116 {
+  font-weight: 400;
+  text-align: center;
+  color: rgba(102, 102, 102, 1);
+  width: 11px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-11_285117 {
+  font-weight: 400;
+  text-align: center;
+  color: rgba(102, 102, 102, 1);
+  width: 11px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-11_285118 {
+  font-weight: 400;
+  text-align: center;
+  color: rgba(102, 102, 102, 1);
+  width: 11px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-11_285119 {
+  font-weight: 400;
+  text-align: center;
+  color: rgba(102, 102, 102, 1);
+  width: 11px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-11_285120 {
+  font-weight: 400;
+  text-align: center;
+  color: rgba(102, 102, 102, 1);
+  width: 11px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-11_285121 {
+  font-weight: 400;
+  text-align: center;
+  color: rgba(102, 102, 102, 1);
+  width: 11px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-11_285122 {
+  font-weight: 400;
+  text-align: center;
+  color: rgba(102, 102, 102, 1);
+  width: 11px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-11_285123 {
+  font-weight: 400;
+  text-align: center;
+  color: rgba(102, 102, 102, 1);
+  width: 11px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-11_285124 {
+  font-weight: 400;
+  text-align: center;
+  color: rgba(102, 102, 102, 1);
+  width: 11px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-11_285125 {
+  font-weight: 400;
+  text-align: center;
+  color: rgba(102, 102, 102, 1);
+  width: 11px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.text-11_285126 {
+  font-weight: 400;
+  text-align: center;
+  color: rgba(102, 102, 102, 1);
+  width: 11px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.frame-11_285127 {
+  width: calc(100% - 14px);
+  height: 10px;
+  position: absolute;
+  left: 3px;
+  right: 11px;
+  top: 0px;
+  display: none;
+}
+
+.vector-11_285128 {
+  width: 83.94%;
+  height: 83.33%;
+  background-image: url(./image/Vector_11_285128.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 8.02%;
+  right: 8.04%;
+  top: 8.33%;
+  bottom: 8.34%;
+}
+
+.frame-11_285129 {
+  width: 360px;
+  height: auto;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.frame-11_285130 {
+  width: 360px;
+  height: 24px;
+  position: relative;
+  flex-shrink: 0;
+  background-color: transparent;
+}
+
+.vector-126_26473 {
+  width: 57.59984588623047px;
+  height: 9.084039688110352px;
+  background-image: url(./image/Boolean_operation_126_26473.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 17.40027618408203px;
+  top: 50%;
+  transform: translateY(calc(-50% + 0.02587890625px));
+}
+
+.vector-126_26486 {
+  width: 57.72635269165039px;
+  height: 11px;
+  background-image: url(./image/Boolean_operation_126_26486.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 20.273542404174805px;
+  top: 50%;
+  transform: translateY(calc(-50% + 0px));
+}
+
+.frame-11_285131 {
+  width: 360px;
+  height: 44px;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.frame-126_371660 {
+  width: 90px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 10px 10px 10px;
+}
+
+.frame-126_371661 {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.vector-126_371662 {
+  width: 100%;
+  height: 100%;
+  background-image: url(./image/Vector_126_371662.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.vector-126_371663 {
+  width: 72.92%;
+  height: 39.58%;
+  background-image: url(./image/Vector_126_371663.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 13.54%;
+  right: 13.54%;
+  top: 30.21%;
+  bottom: 30.21%;
+}
+
+.text-126_371693 {
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0px;
+  font-feature-settings: "frac" 1;
+  text-decoration: none;
+  color: rgba(51, 51, 51, 1);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 1;
+  flex-grow: 1;
+}
+
+.frame-126_371694 {
+  width: 90px;
+  height: 44px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 7px 10px 7px 0px;
+}
+
+.frame-126_371695 {
+  width: 80px;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 3px 8px 3px 8px;
+  border-radius: 30px 30px 30px 30px;
+  background-color: rgba(255, 255, 255, 0.30000001192092896);
+}
+
+.center-stroke-126_371695 {
+  z-index: 99;
+  position: absolute;
+  inset: 0px;
+  border-radius: 30px 30px 30px 30px;
+  border-width: 0.5px 0.5px 0.5px 0.5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.20000000298023224);
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.rectangle-126_371696 {
+  width: 0.5px;
+  height: 16px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(calc(-50% + 0.25px)) translateY(calc(-50% + 0px));
+  border-radius: 1px 1px 1px 1px;
+  background-color: rgba(0, 0, 0, 0.20000000298023224);
+}
+
+.vector-126_371697 {
+  width: 24px;
+  height: 24px;
+  background-image: url(./image/Frame_126_371697.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame-126_371702 {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.vector-126_371703 {
+  width: 75%;
+  height: 75%;
+  background-image: url(./image/Boolean_operation_126_371703.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 12.5%;
+  right: 12.5%;
+  top: 12.5%;
+  bottom: 12.5%;
+}
+
+.frame-11_285132 {
+  width: 360px;
+  height: auto;
+  position: absolute;
+  left: 0px;
+  top: 138px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-11_285133 {
+  width: 360px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-11_285134 {
+  width: 360px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 16px 10px 16px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.text-11_285135 {
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  width: 76px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.text-11_285136 {
+  font-weight: 400;
+  text-align: right;
+  color: rgba(153, 153, 153, 1);
+  width: 222px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame-11_285137 {
+  width: 18px;
+  height: 18px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.vector-11_285138 {
+  width: 25%;
+  height: 50%;
+  background-image: url(./image/Vector_11_285138.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 39.58%;
+  right: 35.42%;
+  top: 25%;
+  bottom: 25%;
+}
+
+.frame-11_285139 {
+  width: 360px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-11_285140 {
+  width: 360px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 16px 10px 16px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.text-11_285141 {
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  width: 76px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.text-11_285142 {
+  font-weight: 400;
+  text-align: right;
+  color: rgba(153, 153, 153, 1);
+  width: 222px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame-11_285143 {
+  width: 18px;
+  height: 18px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.vector-11_285144 {
+  width: 25%;
+  height: 50%;
+  background-image: url(./image/Vector_11_285144.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 39.58%;
+  right: 35.42%;
+  top: 25%;
+  bottom: 25%;
+}
+
+.frame-11_285145 {
+  width: 360px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-11_285146 {
+  width: 360px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 16px 10px 16px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.text-11_285147 {
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  width: 76px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.text-11_285148 {
+  font-weight: 400;
+  text-align: right;
+  color: rgba(153, 153, 153, 1);
+  width: 222px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame-11_285149 {
+  width: 18px;
+  height: 18px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.vector-11_285150 {
+  width: 25%;
+  height: 50%;
+  background-image: url(./image/Vector_11_285150.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 39.58%;
+  right: 35.42%;
+  top: 25%;
+  bottom: 25%;
+}
+
+.frame-11_285151 {
+  width: 359.9990234375px;
+  height: auto;
+  position: absolute;
+  left: 0px;
+  top: 78px;
+  display: flex;
+  flex-direction: row;
+  gap: 36px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 12px 16px 12px 16px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.frame-11_285152 {
+  width: 232px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-11_285153 {
+  width: 232px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.text-11_285154 {
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 1;
+  flex-grow: 1;
+}
+
+.frame-11_285155 {
+  width: 36px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+}
+
+.frame-11_285156 {
+  width: 36px;
+  height: 36px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.rectangle-11_285157 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  border-radius: 7.199999809265137px 7.199999809265137px 7.199999809265137px 7.199999809265137px;
+  background-color: rgba(234, 240, 254, 1);
+}
+
+.text-11_285158 {
+  font-size: 16.19999885559082px;
+  font-family: HarmonyHeiTi;
+  font-weight: 400;
+  text-align: center;
+  color: rgba(56, 114, 250, 1);
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: 26.39%;
+  right: 26.39%;
+  top: 20%;
+  bottom: 21.67%;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.frame-11_285159 {
+  width: 18px;
+  height: 18px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  display: none;
+}
+
+.vector-11_285160 {
+  width: 25%;
+  height: 50%;
+  background-image: url(./image/Vector_11_285160.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 39.58%;
+  right: 35.42%;
+  top: 25%;
+  bottom: 25%;
+}
+
+.frame-11_285161 {
+  width: 360px;
+  height: auto;
+  position: absolute;
+  left: 0px;
+  top: 274px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-11_285162 {
+  width: 360px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 16px 10px 16px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.text-11_285163 {
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  width: 76px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.text-11_285164 {
+  font-weight: 400;
+  text-align: right;
+  color: rgba(153, 153, 153, 1);
+  width: 222px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame-11_285165 {
+  width: 18px;
+  height: 18px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  display: none;
+}
+
+.vector-11_285166 {
+  width: 25%;
+  height: 50%;
+  background-image: url(./image/Vector_11_285166.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 39.58%;
+  right: 35.42%;
+  top: 25%;
+  bottom: 25%;
+}
+
+.frame-11_285167 {
+  width: 360px;
+  height: auto;
+  position: absolute;
+  left: 0px;
+  top: 326px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.frame-11_285168 {
+  width: 360px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 16px 10px 16px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.text-11_285169 {
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  width: 76px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.text-11_285170 {
+  font-weight: 400;
+  text-align: right;
+  color: rgba(153, 153, 153, 1);
+  width: 222px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame-11_285171 {
+  width: 18px;
+  height: 18px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  display: none;
+}
+
+.vector-11_285172 {
+  width: 25%;
+  height: 50%;
+  background-image: url(./image/Vector_11_285172.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 39.58%;
+  right: 35.42%;
+  top: 25%;
+  bottom: 25%;
+}
+
+.frame-11_285173 {
+  width: 360px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 16px 10px 16px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.text-11_285174 {
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  width: 76px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.text-11_285175 {
+  font-weight: 400;
+  text-align: right;
+  color: rgba(153, 153, 153, 1);
+  width: 222px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame-11_285176 {
+  width: 18px;
+  height: 18px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  display: none;
+}
+
+.vector-11_285177 {
+  width: 25%;
+  height: 50%;
+  background-image: url(./image/Vector_11_285177.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 39.58%;
+  right: 35.42%;
+  top: 25%;
+  bottom: 25%;
+}
+
+.frame-11_285178 {
+  width: 360px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 16px 10px 16px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.text-11_285179 {
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  width: 76px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.text-11_285180 {
+  font-weight: 400;
+  text-align: right;
+  color: rgba(153, 153, 153, 1);
+  width: 222px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame-11_285181 {
+  width: 18px;
+  height: 18px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  display: none;
+}
+
+.vector-11_285182 {
+  width: 25%;
+  height: 50%;
+  background-image: url(./image/Vector_11_285182.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 39.58%;
+  right: 35.42%;
+  top: 25%;
+  bottom: 25%;
+}
+
+.frame-11_285183 {
+  width: 360px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 16px 10px 16px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.text-11_285184 {
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  width: 76px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.text-11_285185 {
+  font-weight: 400;
+  text-align: right;
+  color: rgba(153, 153, 153, 1);
+  width: 222px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame-11_285186 {
+  width: 18px;
+  height: 18px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  display: none;
+}
+
+.vector-11_285187 {
+  width: 25%;
+  height: 50%;
+  background-image: url(./image/Vector_11_285187.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 39.58%;
+  right: 35.42%;
+  top: 25%;
+  bottom: 25%;
+}
+
+.frame-11_285188 {
+  width: 360px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 16px 10px 16px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.text-11_285189 {
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  width: 76px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.text-11_285190 {
+  font-weight: 400;
+  text-align: right;
+  color: rgba(153, 153, 153, 1);
+  width: 222px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame-11_285191 {
+  width: 18px;
+  height: 18px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  display: none;
+}
+
+.vector-11_285192 {
+  width: 25%;
+  height: 50%;
+  background-image: url(./image/Vector_11_285192.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 39.58%;
+  right: 35.42%;
+  top: 25%;
+  bottom: 25%;
+}
+
+.frame-11_285193 {
+  width: 360px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 16px 10px 16px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.text-11_285194 {
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  width: 76px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.text-11_285195 {
+  font-weight: 400;
+  text-align: right;
+  color: rgba(153, 153, 153, 1);
+  width: 222px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.frame-11_285196 {
+  width: 18px;
+  height: 18px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  display: none;
+}
+
+.vector-11_285197 {
+  width: 25%;
+  height: 50%;
+  background-image: url(./image/Vector_11_285197.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 39.58%;
+  right: 35.42%;
+  top: 25%;
+  bottom: 25%;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.container > * {
+  width: 100%;
+  height: 100%;
+}
+
+  </style>
+</head>
+<body>
+<!-- 页面整体滚动容器：承载个人信息页面的全部内容，可垂直滚动浏览 -->
+<div class="scroll-container-0_1">
+  <!-- 画布容器：单个页面画布区域 -->
+  <div id="0_1" class="canvas-0_1">
+    <!-- 页面主内容容器：个人信息页面背景与布局主框架 -->
+    <div id="11_285097" class="frame-11_285097 fill-背景色页面-11_285436">
+      <!-- 左侧字母索引栏：用于展示竖排字母索引，辅助快速定位联系人或条目（当前为装饰/示例） -->
+      <div id="11_285098" class="frame-11_285098">
+        <span id="126_40491" class="text-126_40491">A<br>B<br>G<br>H<br>L<br>J<br>K<br>M<br>N<br>O<br>P<br>Q<br>R<br>S<br>T</span>
+      </div>
+      <!-- 右侧字母索引及滚动条区域：A-Z 字母水平索引 + 右侧滚动条指示，用于快速浏览或跳转列表位置 -->
+      <div id="11_285099" class="frame-11_285099">
+        <!-- 字母索引行：展示 A-Z 全部字母，用于匹配不同首字母的联系人/伙伴 -->
+        <div id="11_285100" class="frame-11_285100">
+          <span id="11_285101" class="text-11_285101 text-font-body-1-11_285437">A</span>
+          <span id="11_285102" class="text-11_285102 text-font-body-1-11_285437">B</span>
+          <span id="11_285103" class="text-11_285103 text-font-body-1-11_285437">C</span>
+          <span id="11_285104" class="text-11_285104 text-font-body-1-11_285437">D</span>
+          <span id="11_285105" class="text-11_285105 text-font-body-1-11_285437">E</span>
+          <span id="11_285106" class="text-11_285106 text-font-body-1-11_285437">F</span>
+          <span id="11_285107" class="text-11_285107 text-font-body-1-11_285437">G</span>
+          <span id="11_285108" class="text-11_285108 text-font-body-1-11_285437">H</span>
+          <span id="11_285109" class="text-11_285109 text-font-body-1-11_285437">I</span>
+          <span id="11_285110" class="text-11_285110 text-font-body-1-11_285437">J</span>
+          <span id="11_285111" class="text-11_285111 text-font-body-1-11_285437">K</span>
+          <span id="11_285112" class="text-11_285112 text-font-body-1-11_285437">L</span>
+          <span id="11_285113" class="text-11_285113 text-font-body-1-11_285437">M</span>
+          <span id="11_285114" class="text-11_285114 text-font-body-1-11_285437">N</span>
+          <span id="11_285115" class="text-11_285115 text-font-body-1-11_285437">O</span>
+          <span id="11_285116" class="text-11_285116 text-font-body-1-11_285437">P</span>
+          <span id="11_285117" class="text-11_285117 text-font-body-1-11_285437">Q</span>
+          <span id="11_285118" class="text-11_285118 text-font-body-1-11_285437">R</span>
+          <span id="11_285119" class="text-11_285119 text-font-body-1-11_285437">S</span>
+          <span id="11_285120" class="text-11_285120 text-font-body-1-11_285437">T</span>
+          <span id="11_285121" class="text-11_285121 text-font-body-1-11_285437">U</span>
+          <span id="11_285122" class="text-11_285122 text-font-body-1-11_285437">V</span>
+          <span id="11_285123" class="text-11_285123 text-font-body-1-11_285437">W</span>
+          <span id="11_285124" class="text-11_285124 text-font-body-1-11_285437">X</span>
+          <span id="11_285125" class="text-11_285125 text-font-body-1-11_285437">Y</span>
+          <span id="11_285126" class="text-11_285126 text-font-body-1-11_285437">Z</span>
+        </div>
+        <!-- 右侧滚动条/指示条：用于提示当前滚动位置的辅助视觉元素 -->
+        <div id="11_285127" class="frame-11_285127">
+          <div id="11_285128" class="vector-11_285128"></div>
+        </div>
+      </div>
+      <!-- 导航与标题区：包含返回按钮、页面标题“个人信息”以及更多/编辑操作入口 -->
+      <div id="11_285129" class="frame-11_285129">
+        <!-- 左侧返回按钮：由两个矢量图形组合成的左箭头，用于返回上一级页面 -->
+        <div id="11_285130" class="frame-11_285130">
+          <div id="126_26473" class="vector-126_26473"></div>
+          <div id="126_26486" class="vector-126_26486"></div>
+        </div>
+        <!-- 标题与右侧操作区域：展示页面标题“个人信息”及右侧更多/编辑操作 -->
+        <div id="11_285131" class="frame-11_285131">
+          <!-- 右侧“更多操作”图标：由两笔画组成，表现为三个点/菜单图标 -->
+          <div id="126_371660" class="frame-126_371660">
+            <div id="126_371661" class="frame-126_371661">
+              <div id="126_371662" class="vector-126_371662"></div>
+              <div id="126_371663" class="vector-126_371663"></div>
+            </div>
+          </div>
+          <!-- 页面主标题：个人信息 -->
+          <span id="126_371693" class="text-126_371693 text-font-headline-4-9_468618">个人信息</span>
+          <!-- 右侧编辑按钮：包含圆形背景与铅笔图标，用于进入编辑个人信息的功能入口 -->
+          <div id="126_371694" class="frame-126_371694">
+            <div id="126_371695" class="frame-126_371695">
+              <div class="center-stroke-126_371695"></div>
+              <div id="126_371696" class="rectangle-126_371696"></div>
+              <div id="126_371697" class="vector-126_371697"></div>
+              <div id="126_371702" class="frame-126_371702">
+                <div id="126_371703" class="vector-126_371703"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 任务节点开始: 编辑页-待保存状态【临时】 -->
+      <!-- 个人基本联系方式区：包含姓名、邮箱、手机号三项，可点击进入详情或编辑 -->
+      <div id="11_285132" class="frame-11_285132" style="display: none;">
+        <!-- 姓名行：字段名“姓名” + 输入框显示已输入内容“李飞” + 右侧“清除”图标 -->
+        <div id="11_285133" class="frame-11_285133">
+          <div id="11_285134" class="frame-11_285134" style="background-color: rgba(245, 246, 248, 1); border: 1px solid rgba(56, 114, 250, 1);">
+            <span id="11_285135" class="text-11_285135 text-font-body-2-11_285438">姓名</span>
+            <span id="11_285136" class="text-11_285136 text-font-body-1-11_285437" style="color: rgba(51, 51, 51, 1);">李飞</span>
+            <!-- 右侧“清除”图标：X 形状，用于清空输入内容 -->
+            <div id="11_285137" class="frame-11_285137">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; left: 0; top: 0;">
+                <path d="M18 6L6 18" stroke="#999999" stroke-width="2" stroke-linecap="round"/>
+                <path d="M6 6L18 18" stroke="#999999" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <!-- 邮箱行：字段名“邮箱” + 字段值 + 右侧箭头表示可编辑邮箱信息 -->
+        <div id="11_285139" class="frame-11_285139">
+          <div id="11_285140" class="frame-11_285140">
+            <span id="11_285141" class="text-11_285141 text-font-body-2-11_285438">邮箱</span>
+            <span id="11_285142" class="text-11_285142 text-font-body-1-11_285437">312381491238@qq.com</span>
+            <!-- 右侧箭头：进入邮箱编辑或详情页面 -->
+            <div id="11_285143" class="frame-11_285143">
+              <div id="11_285144" class="vector-11_285144"></div>
+            </div>
+          </div>
+        </div>
+        <!-- 手机号行：字段名“手机号” + 字段值 + 右侧箭头表示可编辑手机号 -->
+        <div id="11_285145" class="frame-11_285145">
+          <div id="11_285146" class="frame-11_285146">
+            <span id="11_285147" class="text-11_285147 text-font-body-2-11_285438">手机号</span>
+            <span id="11_285148" class="text-11_285148 text-font-body-1-11_285437">13231131231</span>
+            <!-- 右侧箭头：进入手机号编辑或详情页面 -->
+            <div id="11_285149" class="frame-11_285149">
+              <div id="11_285150" class="vector-11_285150"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 底部保存按钮（启用态） -->
+      <div style="position: absolute; left: 0px; top: 780px; width: 360px; height: 50px; display: flex; justify-content: center; align-items: center; background-color: rgba(245, 246, 248, 1);">
+        <button style="width: 328px; height: 44px; border-radius: 8px; background-color: rgba(56, 114, 250, 1); color: white; font-size: 16px; font-family: HarmonyOS Sans SC; border: none;">保存</button>
+      </div>
+      <!-- 任务节点结束: 编辑页-待保存状态【临时】 -->
+      <!-- 头像行：展示用户头像缩略图及编辑入口，带分割线的单独卡片 -->
+      <div id="11_285151" class="frame-11_285151 stroke-borderseparator-sbutle-11_285566">
+        <div id="11_285152" class="frame-11_285152">
+          <div id="11_285153" class="frame-11_285153">
+            <span id="11_285154" class="text-11_285154 text-font-body-2-11_285438">头像</span>
+          </div>
+        </div>
+        <!-- 头像内容区域：显示蓝色背景方块头像，内含汉字“华”，右侧带有编辑/跳转箭头 -->
+        <div id="11_285155" class="frame-11_285155">
+          <!-- 头像缩略图：矩形背景 + 字符“华”代表用户首字 -->
+          <div id="11_285156" class="frame-11_285156">
+            <div id="11_285157" class="rectangle-11_285157"></div>
+            <span id="11_285158" class="text-11_285158">华</span>
+          </div>
+          <!-- 右侧箭头：提示用户可点击更换头像/查看大图 -->
+          <div id="11_285159" class="frame-11_285159">
+            <div id="11_285160" class="vector-11_285160"></div>
+          </div>
+        </div>
+      </div>
+<!-- 账号行：展示系统内唯一账号标识，可作为登录或内部识别用 -->
+        <div id="11_285161" class="frame-11_285161">
+          <div id="11_285162" class="frame-11_285162">
+            <span id="11_285163" class="text-11_285163 text-font-body-2-11_285438">账号</span>
+            <span id="11_285164" class="text-11_285164 text-font-body-1-11_285437">87965235</span>
+            <!-- 右侧图标：分隔或箭头，提示该字段可复制或用于更多操作 -->
+            <div id="11_285165" class="frame-11_285165">
+              <div id="11_285166" class="vector-11_285166"></div>
+            </div>
+          </div>
+        </div>      <!-- 工作相关信息区：展示所属公司、地址、职务、岗位类别及负责行业/区域等企业信息 -->
+      <div id="11_285167" class="frame-11_285167">
+        <!-- 所属公司行：显示用户所在公司名称 -->
+        <div id="11_285168" class="frame-11_285168">
+          <span id="11_285169" class="text-11_285169 text-font-body-2-11_285438">所属公司</span>
+          <span id="11_285170" class="text-11_285170 text-font-body-1-11_285437">深圳金华威数码科技有限公司</span>
+          <!-- 右侧分隔/箭头：可进入公司详情或选择其他公司 -->
+          <div id="11_285171" class="frame-11_285171">
+            <div id="11_285172" class="vector-11_285172"></div>
+          </div>
+        </div>
+        <!-- 公司地址行：展示详细公司地址信息 -->
+        <div id="11_285173" class="frame-11_285173">
+          <span id="11_285174" class="text-11_285174 text-font-body-2-11_285438">公司地址</span>
+          <span id="11_285175" class="text-11_285175 text-font-body-1-11_285437">深圳市龙岗区20000号</span>
+          <!-- 右侧图标：可进入地址编辑或地图定位 -->
+          <div id="11_285176" class="frame-11_285176">
+            <div id="11_285177" class="vector-11_285177"></div>
+          </div>
+        </div>
+        <!-- 职务行：展示用户在公司中的具体职务 -->
+        <div id="11_285178" class="frame-11_285178">
+          <span id="11_285179" class="text-11_285179 text-font-body-2-11_285438">职务</span>
+          <span id="11_285180" class="text-11_285180 text-font-body-1-11_285437">报价人员</span>
+          <!-- 右侧图标：可点击调整职务信息 -->
+          <div id="11_285181" class="frame-11_285181">
+            <div id="11_285182" class="vector-11_285182"></div>
+          </div>
+        </div>
+        <!-- 岗位类别行：展示该用户的岗位分类，如售前类、售后类等 -->
+        <div id="11_285183" class="frame-11_285183">
+          <span id="11_285184" class="text-11_285184 text-font-body-2-11_285438">岗位类别</span>
+          <span id="11_285185" class="text-11_285185 text-font-body-1-11_285437">售前类</span>
+          <!-- 右侧图标：提示可修改岗位类别配置 -->
+          <div id="11_285186" class="frame-11_285186">
+            <div id="11_285187" class="vector-11_285187"></div>
+          </div>
+        </div>
+        <!-- 负责行业行：展示该伙伴当前负责的行业信息（此处为暂无“-”） -->
+        <div id="11_285188" class="frame-11_285188">
+          <span id="11_285189" class="text-11_285189 text-font-body-2-11_285438">负责行业</span>
+          <span id="11_285190" class="text-11_285190 text-font-body-1-11_285437">-</span>
+          <!-- 右侧图标：可进入行业选择界面 -->
+          <div id="11_285191" class="frame-11_285191">
+            <div id="11_285192" class="vector-11_285192"></div>
+          </div>
+        </div>
+        <!-- 负责区域行：展示该伙伴负责的区域信息（此处为暂无“-”） -->
+        <div id="11_285193" class="frame-11_285193">
+          <span id="11_285194" class="text-11_285194 text-font-body-2-11_285438">负责区域</span>
+          <span id="11_285195" class="text-11_285195 text-font-body-1-11_285437">-</span>
+          <!-- 右侧图标：可进入区域配置或选择页面 -->
+          <div id="11_285196" class="frame-11_285196">
+            <div id="11_285197" class="vector-11_285197"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- 任务节点开始: 保存成功/结果反馈状态【临时】 -->
+      <!-- 轻量级 Toast 提示：居中显示“保存成功” -->
+      <div style="position: fixed; inset: 0; z-index: 9999; display: flex; justify-content: center; align-items: flex-start; padding-top: 40vh;">
+        <div style="background-color: rgba(0, 0, 0, 0.8); color: white; padding: 12px 24px; border-radius: 8px; font-size: 14px; font-family: HarmonyOS Sans SC; line-height: 22px;">
+          保存成功
+        </div>
+      </div>
+      <!-- 任务节点结束: 保存成功/结果反馈状态【临时】 -->
+</div>
+
+
+<script>
+
+</script>
+
+</body>
+
+</html>

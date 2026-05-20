@@ -1,0 +1,15 @@
+{
+  "state_id": 3,
+  "state_name": "加载中过渡态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": true,
+    "issues": [],
+    "fixedBlocks": "",
+    "reviewMs": 5992,
+    "screenshot": 9908,
+    "reviewOnly": true,
+    "fixedBlocksIgnored": false
+  }
+}

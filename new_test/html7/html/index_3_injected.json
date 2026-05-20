@@ -1,0 +1,25 @@
+{
+  "taskflow_description": "Structured requirement for 3",
+  "ui_analysis": [
+    {
+      "image": "3",
+      "description": "输入框内有有效内容，底部保存按钮变为高亮颜色，表示可以提交。",
+      "raw_requirement": {
+        "state_id": 4,
+        "state_name": "编辑页-待保存状态",
+        "last_state": 2,
+        "description": "输入框内有有效内容，底部保存按钮变为高亮颜色，表示可以提交。",
+        "implementation_method": "底部按钮 (Button) 样式变为品牌色/蓝色 (Active/Primary Color)，文字为白色 '保存'。【底部按钮 (Button) 样式变为品牌色/蓝色 (Active/Primary Color)，文字为白色 '保存'。匹配到标准组件\"emphasize_button\"，用\"emphasize_button\"标准组件生成，仅替换内容/文案】"
+      },
+      "design_spec": [
+        {
+          "component_type": "Button",
+          "component_name": "主操作按钮（保存）",
+          "matched_component_id": "emphasize_button",
+          "component_html": "<style>\n/* =========================================\n       组件样式开始 (已做隔离处理)\n       所有样式都以 .pixso-btn-component 开头\n       ========================================= */\n\n    /* 1. 这是一个\"壳子\"，确保组件以行内块显示，方便你在页面中排版 */\n    .pixso-btn-component {\n      display: inline-block;\n      position: relative;\n      /* 如果组件有固定宽高，可以在这里限制，或者由内容撑开 */\n      width: 120px; \n      height: 40px;\n      vertical-align: middle;\n    }\n\n    /* 2. 只重置这个组件内部的盒模型，不影响外部 */\n    .pixso-btn-component * {\n      box-sizing: border-box;\n      margin: 0;\n      padding: 0;\n    }\n\n    /* 3. 原始样式迁移 - 注意前面都加了 .pixso-btn-component */\n    \n    .pixso-btn-component .fill-lightcomp_background_emphasize-602_9414 {\n      background-color: rgba(10, 89, 247, 1);\n    }\n    \n    .pixso-btn-component .fill-lightfont_on_primary-602_9443-text {\n      color: rgba(255, 255, 255, 1);\n    }\n    \n    .pixso-btn-component .text-fontbody_lmedium-602_9659 {\n      font-size: 16px;\n      font-family: HarmonyHeiTi, sans-serif; /* 加个备选字体防止报错 */\n      line-height: 1px;\n    }\n\n    /* 删除了 .scroll-container 和 .canvas 的绝对定位，\n       改为让它们填满我们的\"壳子\" */\n    .pixso-btn-component .frame-3177_10712 {\n      width: 120px;\n      height: 40px;\n      position: relative;\n      flex-shrink: 0;\n    }\n\n    .pixso-btn-component .symbol-3177_10458 {\n      width: 100%; /* 填满壳子 */\n      height: 100%;\n      position: absolute;\n      left: 0;\n      top: 0;\n      /* 原本的居中逻辑保留 */\n      display: flex;\n      flex-direction: row;\n      gap: 8px;\n      justify-content: center;\n      align-items: center;\n      padding: 9px 16px;\n      border-radius: 20px;\n      mix-blend-mode: normal;\n      cursor: pointer; /* 加个手型，像个按钮 */\n    }\n\n    .pixso-btn-component .text-3177_10459 {\n      text-align: center;\n      width: auto; /* 让文字宽度自适应，或者保持 88px */\n      position: relative;\n      flex-shrink: 0;\n    }\n\n    .pixso-btn-component .paragraph-3177_10459_0 {\n      line-height: 21.328px;\n      position: relative;\n    }\n\n    .pixso-btn-component .span-3177_10459_0_1 {\n      font-weight: 400;\n      color: rgba(255, 255, 255, 1);\n    }\n</style>\n<div class=\"pixso-btn-component\">\n      <div class=\"frame-3177_10712\">\n        <div class=\"symbol-3177_10458 fill-lightcomp_background_emphasize-602_9414\">\n          <div class=\"text-3177_10459 fill-lightfont_on_primary-602_9443-text text-fontbody_lmedium-602_9659\">\n            <p class=\"paragraph-3177_10459_0\">\n              <span class=\"span-3177_10459_0_1 text-fontbody_lmedium-602_9659\">aaaaaaaaaaaaaaa</span>\n            </p>\n          </div>\n        </div>\n      </div>\n    </div>"
+        }
+      ],
+      "compose_plan": []
+    }
+  ]
+}

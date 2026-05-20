@@ -1,0 +1,23 @@
+[OLD]
+<script>
+
+</script>
+[NEW]
+<script>
+
+</script>
+<!-- 任务节点开始: 长按触发悬浮菜单态【临时】 -->
+<div style="position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.5); display:flex; align-items:center; justify-content:center; font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;">
+  <div style="width:calc(100% - 48px); max-width:328px; padding:24px; border-radius:12px; background:#FFFFFF; box-shadow:0 4px 12px rgba(0,0,0,0.08); display:flex; flex-direction:column; align-items:center; gap:16px;">
+    <button type="button" style="width:100%; padding:12px; background:transparent; border:none; outline:none; text-align:center; font-size:14px; font-weight:500; color:#C7000B; line-height:1.5; cursor:pointer;">
+      移除
+    </button>
+    <button type="button" style="width:100%; padding:12px; background:transparent; border:none; outline:none; text-align:center; font-size:14px; font-weight:500; color:rgba(0,0,0,0.6); line-height:1.5; cursor:pointer;">
+      编辑
+    </button>
+    <button type="button" style="width:100%; padding:12px; background:transparent; border:none; outline:none; text-align:center; font-size:14px; font-weight:500; color:rgba(0,0,0,0.6); line-height:1.5; cursor:pointer;">
+      取消
+    </button>
+  </div>
+</div>
+<!-- 任务节点结束: 长按触发悬浮菜单态【临时】 -->

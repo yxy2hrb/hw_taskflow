@@ -1,0 +1,19 @@
+{
+  "state_id": 4,
+  "state_name": "开局配置成功Toast",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "Toast 被遮罩层覆盖，导致页面主体内容（含‘项目开局’标题与三张卡片）被置灰，违反需求中‘页面主体内容完全可见且未被遮罩或置灰’的要求。",
+      "Toast 的位置在截图中显示为顶部状态栏下方16px处，但实际视觉上被误判为覆盖了状态栏区域，且其背景为白色，与状态栏颜色冲突，不符合‘不遮挡状态栏’的规范。",
+      "弹窗样式中文字‘开局配置成功’未使用指定字体 HarmonyHeiTi 或 HarmonyOS Sans，而是默认系统字体，可能影响一致性。",
+      "底部 Tab 和顶部状态栏正常显示，但 Toast 的阴影和圆角在截图中表现模糊，疑似渲染问题。"
+    ],
+    "fixedBlocks": "[OLD]\n<div style=\"position:fixed; top:48px; left:50%; transform:translateX(-50%); z-index:9999; width:280px; height:44px; padding:0 16px; background:#FFFFFF; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); display:flex; align-items:center; justify-content:flex-start; font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;\">\n  <span class=\"mi\" style=\"font-size:20px; color:#64BB5C; margin-right:12px;\">check_circle</span>\n  <span style=\"font-size:16px; font-weight:500; line-height:1.5; color:rgba(0,0,0,0.9); word-break:break-word; overflow-wrap:anywhere;\">开局配置成功</span>\n</div>\n[NEW]\n<div style=\"position:fixed; top:48px; left:50%; transform:translateX(-50%); z-index:9999; width:280px; height:44px; padding:0 16px; background:#FFFFFF; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); display:flex; align-items:center; justify-content:flex-start; font-family:'HarmonyOS Sans', sans-serif;\">\n  <span class=\"mi\" style=\"font-size:20px; color:#64BB5C; margin-right:12px;\">check_circle</span>\n  <span style=\"font-size:16px; font-weight:500; line-height:20px; color:#191919; word-break:break-word; overflow-wrap:anywhere;\">开局配置成功</span>\n</div>",
+    "reviewMs": 22052,
+    "screenshot": 57402,
+    "fixedBlocksParsed": 1
+  }
+}

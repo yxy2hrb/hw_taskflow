@@ -1,0 +1,20 @@
+{
+  "state_id": 2,
+  "state_name": "快速入门页全屏态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "搜索框内图标为'Q'，但需求要求为'search'图标；定位：搜索框左侧图标",
+      "分类标签栏中'产品'标签被裁切，未完整显示；定位：横向滚动标签栏最右侧",
+      "入门卡片的标题文字未左对齐，存在轻微偏移；定位：所有6张卡片的标题区域",
+      "顶部留白区高度不足64px，实际视觉高度小于预期；定位：搜索框上方空白区域"
+    ],
+    "fixedBlocks": "[OLD]\n<span class=\"mi\" style=\"font-size:16px; color:rgba(0,0,0,0.4);\">search</span>\n[NEW]\n<span class=\"mi\" style=\"font-size:16px; color:rgba(0,0,0,0.4);\">search</span>\n[OLD]\n<div style=\"display:inline-flex; align-items:center; justify-content:center; padding:6px 12px; background:#46B1E3; border-radius:20px; margin-right:8px; font-size:14px; font-weight:500; color:#FFFFFF;\">产品</div>\n[NEW]\n<div style=\"display:inline-flex; align-items:center; justify-content:center; padding:6px 12px; background:#46B1E3; border-radius:20px; margin-right:8px; font-size:14px; font-weight:500; color:#FFFFFF;\">产品</div>\n[OLD]\n<div style=\"height:64px;\"></div>\n[NEW]\n<div style=\"height:64px;\"></div>",
+    "reviewMs": 14329,
+    "screenshot": 92661,
+    "reviewOnly": true,
+    "fixedBlocksIgnored": true
+  }
+}

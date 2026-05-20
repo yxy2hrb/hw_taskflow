@@ -1,0 +1,38 @@
+[OLD]
+<script>
+
+</script>
+[NEW]
+<script>
+
+</script>
+<!-- 任务节点开始: 部署方式配置页【临时】 -->
+<div style="position:fixed;inset:0;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;z-index:9999;">
+  <div style="width:calc(100% - 32px);max-width:328px;padding:24px;border-radius:32px;background:#FFFFFF;box-shadow:0 8px 24px rgba(0,0,0,0.08);font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;box-sizing:border-box;">
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <label style="display:flex;align-items:center;gap:12px;cursor:pointer;">
+          <span style="width:20px;height:20px;border:1.5px solid rgba(0,0,0,0.4);border-radius:50%;flex-shrink:0;"></span>
+          <span style="font-size:16px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.9);">Wi-Fi</span>
+        </label>
+        <label style="display:flex;align-items:center;gap:12px;cursor:pointer;">
+          <span style="width:20px;height:20px;border:1.5px solid rgba(0,0,0,0.4);border-radius:50%;flex-shrink:0;"></span>
+          <span style="font-size:16px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.9);">扫码</span>
+        </label>
+        <label style="display:flex;align-items:center;gap:12px;cursor:pointer;">
+          <span style="width:20px;height:20px;border:1.5px solid rgba(0,0,0,0.4);border-radius:50%;flex-shrink:0;"></span>
+          <span style="font-size:16px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.9);">体验</span>
+        </label>
+        <label style="display:flex;align-items:center;gap:12px;cursor:pointer;">
+          <span style="width:20px;height:20px;border:1.5px solid rgba(0,0,0,0.4);border-radius:50%;flex-shrink:0;"></span>
+          <span style="font-size:16px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.9);">虚拟运维</span>
+        </label>
+      </div>
+      <div style="display:flex;gap:12px;">
+        <button type="button" style="flex:1;height:40px;padding:0 16px;background:rgba(0,0,0,0.05);color:#0A59F7;border:none;border-radius:20px;font-size:16px;font-weight:500;line-height:1.5;letter-spacing:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">取消</button>
+        <button type="button" style="flex:1;height:40px;padding:0 16px;background:#0A59F7;color:#FFFFFF;border:none;border-radius:20px;font-size:16px;font-weight:500;line-height:1.5;letter-spacing:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">确认</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 任务节点结束: 部署方式配置页【临时】 -->

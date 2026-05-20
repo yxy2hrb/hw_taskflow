@@ -1,0 +1,20 @@
+{
+  "state_id": 2,
+  "state_name": "开局类型选择弹窗",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "语言一致性：弹窗中‘SOHO’为英文，但主语言为中文，应使用中文标签（如‘自由职业’或‘SOHO模式’）",
+      "元素溢出：弹窗宽度360px，但实际显示区域未完全居中且顶部有‘项目开局’标题，超出预期设计范围；底部按钮文字‘下一步’未被裁切，但整体布局偏移",
+      "可见性：description要求‘全屏半透明黑色遮罩层（rgba(0,0,0,0.5)）’，但截图中遮罩层颜色为rgba(0,0,0,0.4)，透明度不足，视觉上不一致",
+      "位置合理性：弹窗未完全居中，顶部‘项目开局’标题与弹窗主体分离，造成层级混乱；原需求未提及此标题，属于额外内容，应移除",
+      "基础样式：弹窗圆角为32px，但鸿蒙规范建议不超过16px，过度圆角不符合设计规范"
+    ],
+    "fixedBlocks": "[OLD]\n<div style=\"position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;\">\n  <div style=\"width:calc(100% - 32px);max-width:328px;padding:24px 24px 16px;background:#FFFFFF;border-radius:32px;box-shadow:0 8px 24px rgba(0,0,0,0.08);box-sizing:border-box;\">\n    <div style=\"display:flex;flex-direction:column;gap:24px;\">\n      <div style=\"display:flex;align-items:center;gap:12px;\">\n        <span class=\"mi\" style=\"font-size:20px;color:#0A59F7;\">radio_button_checked</span>\n        <span style=\"font-size:16px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.9);\">SOHO</span>\n      </div>\n      <button type=\"button\" style=\"height:44px;padding:0 16px;background:#0A59F7;border:none;border-radius:8px;color:#FFFFFF;font-size:16px;font-weight:500;line-height:1.5;letter-spacing:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;justify-content:center;\">\n        下一步\n      </button>\n    </div>\n  </div>\n</div>\n[NEW]\n<div style=\"position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;\">\n  <div style=\"width:360px;height:228px;background:#FFFFFF;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,0.08);box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;\">\n    <div style=\"display:flex;align-items:center;gap:12px;\">\n      <span class=\"mi\" style=\"font-size:20px;color:#0A59F7;\">radio_button_checked</span>\n      <span style=\"font-size:16px;font-weight:500;line-height:1.5;color:#191919;\">自由职业</span>\n    </div>\n    <button type=\"button\" style=\"height:44px;padding:0 16px;background:#1E6EFF;border:none;border-radius:8px;color:#FFFFFF;font-size:16px;font-weight:500;line-height:1.5;letter-spacing:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;justify-content:center;margin-top:24px;\">\n      下一步\n    </button>\n  </div>\n</div>",
+    "reviewMs": 36701,
+    "screenshot": 51252,
+    "fixedBlocksParsed": 1
+  }
+}

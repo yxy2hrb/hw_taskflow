@@ -1,0 +1,95 @@
+.scroll-container-0_1 { position: relative !important; width: 100%; height: auto !important; overflow: visible !important; }
+
+.Pixso-canvas-0_1 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.Pixso-vector-3188_387 {
+  position: absolute;
+  inset: -39.473684210526315% -26.785714285714285% -39.473684210526315% -26.785714285714285% ;
+  background-image: url(./image/Frame_3188_387.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.vector-wrapper-3188_387 {
+  position: relative;
+  width: 224px;
+  height: auto;
+  top: undefined;
+  left: undefined;
+  transform: undefined;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.fill-lightcomp_background_tertiary-602_9420 {
+        background-color: rgba(0, 0, 0, 0.0470588244497776)
+      }
+.fill-lightwarning-602_9524-text {
+        color: rgba(232, 64, 38, 1)
+      }
+.text-fontbody_lmedium-602_9659 {
+        font-size: 16px;
+font-family: HarmonyHeiTi;
+line-height: 1px
+      }
+
+.scroll-container-0_1 { position: relative !important; width: 100%; height: auto !important; overflow: visible !important; }
+
+.canvas-0_1 { position: relative !important; width: auto !important; height: auto !important; flex-shrink: 0; }
+
+.frame-3177_10710 {
+  width: 120px;
+  height: 40px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.symbol-3177_10687 {
+  width: 120px;
+  height: 40px;
+  position: relative !important; left: auto !important; top: auto !important; transform: none !important; margin: 0 auto !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 9px 16px 9px 16px;
+  border-radius: 20px 20px 20px 20px;
+  mix-blend-mode: normal;
+}
+
+.text-3177_10688 {
+  text-align: center;
+  width: 88px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  mix-blend-mode: normal;
+}
+
+.paragraph-3177_10688_0 {
+  line-height: 21.328001022338867px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.span-3177_10688_0_1 {
+  font-weight: 400;
+  color: rgba(232, 64, 38, 1);
+  position: relative;
+  flex-shrink: 0;
+  mix-blend-mode: normal;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}

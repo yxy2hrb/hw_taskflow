@@ -1,0 +1,110 @@
+[OLD]
+<div id="146_158926" class="Pixso-rectangle-146_158926"></div>
+<div id="146_158927" class="Pixso-frame-146_158927">
+  <div id="146_158928" class="Pixso-frame-146_158928">
+    <div class="frame-content-146_158928">
+      <div id="146_158929" class="Pixso-frame-146_158929">
+        <div id="146_158930" class="Pixso-rectangle-146_158930"></div>
+        <div id="146_158931" class="Pixso-vector-146_158931"></div>
+      </div>
+      <p id="146_158933" class="Pixso-paragraph-146_158933 fill-text文本色图标色color_text_primary-14_800663-paragraph">快速入门</p>
+    </div>
+  </div>
+  <div id="146_158934" class="Pixso-frame-146_158934">
+    <div class="frame-content-146_158934">
+      <div id="146_158935" class="Pixso-frame-146_158935">
+        <div id="146_158937" class="Pixso-vector-146_158937"></div>
+      </div>
+      <p id="146_158938" class="Pixso-paragraph-146_158938 fill-text文本色图标色color_text_primary-14_800663-paragraph">交付指导</p>
+    </div>
+  </div>
+  <div id="146_158939" class="Pixso-frame-146_158939">
+    <div class="frame-content-146_158939">
+      <div id="146_158940" class="Pixso-frame-146_158940">
+        <div id="146_158942" class="Pixso-vector-146_158942"></div>
+      </div>
+      <p id="146_158943" class="Pixso-paragraph-146_158943 fill-text文本色图标色color_text_primary-14_800663-paragraph">运维指导</p>
+    </div>
+  </div>
+</div>
+<div id="146_158944" class="Pixso-frame-146_158944">
+  <div class="frame-content-146_158944">
+    <p id="146_158945" class="Pixso-paragraph-146_158945 fill-text文本色图标色color_text_primary-14_800663-paragraph text-单行行高headline标题headline_s-14_800661">售后文档</p>
+  </div>
+</div>
+[NEW]
+<!-- 任务节点开始: 快速入门页全屏态【临时】 -->
+<div style="position:fixed; inset:0; z-index:9999; background:#F3F3F3; overflow-y:auto; font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif; box-sizing:border-box;">
+  <!-- 顶部留白区 -->
+  <div style="height:64px;"></div>
+  <!-- 搜索框 -->
+  <div style="width:480px; height:40px; margin:0 auto; padding:0 12px; display:flex; align-items:center; gap:8px; border:1px solid #D9D9D9; border-radius:8px; background:#FFFFFF; box-sizing:border-box;">
+    <span class="mi" style="font-size:16px; color:rgba(0,0,0,0.4);">search</span>
+    <span style="font-size:14px; color:#999; flex:1;">搜索...</span>
+  </div>
+  <!-- 分类标签栏（横向滚动） -->
+  <div style="width:480px; margin:24px auto 0; overflow-x:auto; white-space:nowrap; padding-bottom:8px; -webkit-overflow-scrolling:touch;">
+    <div style="display:inline-block; vertical-align:top; padding:0 4px;">
+      <div style="display:inline-flex; align-items:center; justify-content:center; padding:6px 12px; background:#46B1E3; border-radius:20px; margin-right:8px; font-size:14px; font-weight:500; color:#FFFFFF;">前端</div>
+      <div style="display:inline-flex; align-items:center; justify-content:center; padding:6px 12px; background:#46B1E3; border-radius:20px; margin-right:8px; font-size:14px; font-weight:500; color:#FFFFFF;">后端</div>
+      <div style="display:inline-flex; align-items:center; justify-content:center; padding:6px 12px; background:#46B1E3; border-radius:20px; margin-right:8px; font-size:14px; font-weight:500; color:#FFFFFF;">测试</div>
+      <div style="display:inline-flex; align-items:center; justify-content:center; padding:6px 12px; background:#46B1E3; border-radius:20px; margin-right:8px; font-size:14px; font-weight:500; color:#FFFFFF;">运维</div>
+      <div style="display:inline-flex; align-items:center; justify-content:center; padding:6px 12px; background:#46B1E3; border-radius:20px; margin-right:8px; font-size:14px; font-weight:500; color:#FFFFFF;">设计</div>
+      <div style="display:inline-flex; align-items:center; justify-content:center; padding:6px 12px; background:#46B1E3; border-radius:20px; margin-right:8px; font-size:14px; font-weight:500; color:#FFFFFF;">产品</div>
+    </div>
+  </div>
+  <!-- 入门卡片列表 -->
+  <div style="width:480px; margin:24px auto 0; display:flex; flex-direction:column; gap:16px; padding:0 16px;">
+    <div style="width:100%; height:72px; background:#FFFFFF; border-radius:6px; box-shadow:0 1px 6px rgba(0,0,0,0.05); padding:12px 16px; display:flex; align-items:center; justify-content:space-between;">
+      <div style="flex:1; min-width:0;">
+        <p style="font-size:16px; font-weight:500; color:rgba(0,0,0,0.9); line-height:1.5; margin:0;">前端开发入门</p>
+        <p style="font-size:14px; font-weight:400; color:#666; line-height:1.5; margin:4px 0 0; word-break:break-word;">从零搭建Vue项目并部署上线</p>
+      </div>
+      <button type="button" style="padding:6px 12px; background:#46B1E3; border:none; border-radius:20px; font-size:14px; font-weight:500; color:#FFFFFF; cursor:pointer;">查看</button>
+    </div>
+    <div style="width:100%; height:72px; background:#FFFFFF; border-radius:6px; box-shadow:0 1px 6px rgba(0,0,0,0.05); padding:12px 16px; display:flex; align-items:center; justify-content:space-between;">
+      <div style="flex:1; min-width:0;">
+        <p style="font-size:16px; font-weight:500; color:rgba(0,0,0,0.9); line-height:1.5; margin:0;">后端开发入门</p>
+        <p style="font-size:14px; font-weight:400; color:#666; line-height:1.5; margin:4px 0 0; word-break:break-word;">Spring Boot微服务架构实战</p>
+      </div>
+      <button type="button" style="padding:6px 12px; background:#46B1E3; border:none; border-radius:20px; font-size:14px; font-weight:500; color:#FFFFFF; cursor:pointer;">查看</button>
+    </div>
+    <div style="width:100%; height:72px; background:#FFFFFF; border-radius:6px; box-shadow:0 1px 6px rgba(0,0,0,0.05); padding:12px 16px; display:flex; align-items:center; justify-content:space-between;">
+      <div style="flex:1; min-width:0;">
+        <p style="font-size:16px; font-weight:500; color:rgba(0,0,0,0.9); line-height:1.5; margin:0;">测试工程师入门</p>
+        <p style="font-size:14px; font-weight:400; color:#666; line-height:1.5; margin:4px 0 0; word-break:break-word;">自动化测试框架与CI/CD集成</p>
+      </div>
+      <button type="button" style="padding:6px 12px; background:#46B1E3; border:none; border-radius:20px; font-size:14px; font-weight:500; color:#FFFFFF; cursor:pointer;">查看</button>
+    </div>
+    <div style="width:100%; height:72px; background:#FFFFFF; border-radius:6px; box-shadow:0 1px 6px rgba(0,0,0,0.05); padding:12px 16px; display:flex; align-items:center; justify-content:space-between;">
+      <div style="flex:1; min-width:0;">
+        <p style="font-size:16px; font-weight:500; color:rgba(0,0,0,0.9); line-height:1.5; margin:0;">运维工程师入门</p>
+        <p style="font-size:14px; font-weight:400; color:#666; line-height:1.5; margin:4px 0 0; word-break:break-word;">Linux系统管理与容器编排</p>
+      </div>
+      <button type="button" style="padding:6px 12px; background:#46B1E3; border:none; border-radius:20px; font-size:14px; font-weight:500; color:#FFFFFF; cursor:pointer;">查看</button>
+    </div>
+    <div style="width:100%; height:72px; background:#FFFFFF; border-radius:6px; box-shadow:0 1px 6px rgba(0,0,0,0.05); padding:12px 16px; display:flex; align-items:center; justify-content:space-between;">
+      <div style="flex:1; min-width:0;">
+        <p style="font-size:16px; font-weight:500; color:rgba(0,0,0,0.9); line-height:1.5; margin:0;">UI/UX设计入门</p>
+        <p style="font-size:14px; font-weight:400; color:#666; line-height:1.5; margin:4px 0 0; word-break:break-word;">Figma协作与设计系统构建</p>
+      </div>
+      <button type="button" style="padding:6px 12px; background:#46B1E3; border:none; border-radius:20px; font-size:14px; font-weight:500; color:#FFFFFF; cursor:pointer;">查看</button>
+    </div>
+    <div style="width:100%; height:72px; background:#FFFFFF; border-radius:6px; box-shadow:0 1px 6px rgba(0,0,0,0.05); padding:12px 16px; display:flex; align-items:center; justify-content:space-between;">
+      <div style="flex:1; min-width:0;">
+        <p style="font-size:16px; font-weight:500; color:rgba(0,0,0,0.9); line-height:1.5; margin:0;">产品经理入门</p>
+        <p style="font-size:14px; font-weight:400; color:#666; line-height:1.5; margin:4px 0 0; word-break:break-word;">需求分析与敏捷产品规划</p>
+      </div>
+      <button type="button" style="padding:6px 12px; background:#46B1E3; border:none; border-radius:20px; font-size:14px; font-weight:500; color:#FFFFFF; cursor:pointer;">查看</button>
+    </div>
+  </div>
+</div>
+<!-- 任务节点结束: 快速入门页全屏态【临时】 -->
+[OLD]
+<script>
+
+</script>
+[NEW]
+<script>
+
+</script>

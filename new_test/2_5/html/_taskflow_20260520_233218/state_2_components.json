@@ -1,0 +1,15 @@
+{
+  "state_id": 2,
+  "state_name": "创建项目集全屏页",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": true,
+    "issues": [],
+    "fixedBlocks": "",
+    "reviewMs": 3183,
+    "screenshot": 33712,
+    "reviewOnly": true,
+    "fixedBlocksIgnored": false
+  }
+}

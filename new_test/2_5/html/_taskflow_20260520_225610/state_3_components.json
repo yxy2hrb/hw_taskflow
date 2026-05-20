@@ -1,0 +1,19 @@
+{
+  "state_id": 3,
+  "state_name": "创建成功提示状态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "Toast 提示位置偏移：需求要求 Toast 位于卡片顶部边缘下方 16px 处，且在卡片垂直居中线正上方；但截图中 Toast 位于卡片上方较远位置（约 20px 左右），未满足‘下方 16px’的定位要求。",
+      "Toast 宽度不一致：需求要求 Toast 宽 320px，但截图中实际宽度明显小于 320px，导致内容与边距比例失衡，视觉上不够对齐。",
+      "Toast 圆角半径不符：需求要求 4px 圆角，但截图中圆角更接近 8px，不符合规范。",
+      "Toast 内容文字换行异常：‘项目集创建成功’在截图中显示正常，但若文本较长可能触发换行，而当前样式未设置 `overflow-wrap: break-word` 或 `white-space: normal`，存在潜在溢出风险。"
+    ],
+    "fixedBlocks": "[OLD]\n<div style=\"position:absolute; top:-60px; left:50%; transform:translateX(-50%); width:320px; height:44px; padding:0 12px; background:#FFFFFF; border-radius:4px; box-shadow:0 4px 12px rgba(0,0,0,0.06); display:flex; align-items:center; justify-content:center; gap:8px; word-break:break-word; overflow-wrap:anywhere;\">\n  <span class=\"mi\" style=\"font-size:16px; color:#64BB5C;\">check_circle</span>\n  <span style=\"font-size:14px; font-weight:500; color:#191919; line-height:1.5;\">项目集创建成功</span>\n</div>\n[NEW]\n<div style=\"position:absolute; top:-16px; left:50%; transform:translateX(-50%); width:320px; height:44px; padding:0 12px; background:#FFFFFF; border-radius:4px; box-shadow:0 4px 12px rgba(0,0,0,0.06); display:flex; align-items:center; justify-content:center; gap:8px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">\n  <span class=\"mi\" style=\"font-size:16px; color:#64BB5C;\">check_circle</span>\n  <span style=\"font-size:14px; font-weight:500; color:#191919; line-height:1.5;\">项目集创建成功</span>\n</div>",
+    "reviewMs": 18933,
+    "screenshot": 75501,
+    "fixedBlocksParsed": 1
+  }
+}

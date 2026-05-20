@@ -1,0 +1,49 @@
+[OLD]
+      <!-- 输入区域：使用标准组件 text_input_default，提示文本为“请输入姓名” -->
+      <div style="padding: 16px;">
+        <div id="3193_13" class="Pixso-frame-3193_13 fill-lightcomp_background_list_card-602_9416" style="width: 100%; height: auto !important; padding: 8px 16px;">
+          <p id="3193_14" class="Pixso-paragraph-3193_14 fill-lightfont_secondary-602_9447-paragraph text-fontbody_lregular-602_9658" style="font-size: 16px; color: rgba(0,0,0,0.6); margin: 0; width: 100%;">请输入姓名</p>
+          <div id="3193_15" class="Pixso-frame-3193_15" style="display: none;">
+            <div id="3193_16" class="Pixso-frame-3193_16">
+              <p id="3193_17" class="Pixso-paragraph-3193_17 fill-lighticon_primary-602_9459-paragraph">󰄠</p>
+            </div>
+          </div>
+        </div>
+      </div>
+[NEW]
+      <!-- 输入区域：使用标准组件 text_input_active，显示已输入内容“李飞”并展示清除图标 -->
+      <div style="padding: 16px;">
+        <div id="3193_18" class="Pixso-frame-3193_18 fill-lightcomp_background_list_card-602_9416">
+          <div id="3193_19" class="Pixso-frame-3193_19">
+            <div id="3193_20" class="Pixso-rectangle-3193_20 fill-lightfont_emphasize-602_9440"></div>
+            <p id="3193_21" class="Pixso-paragraph-3193_21 fill-lightfont_secondary-602_9447-paragraph text-fontbody_lregular-602_9658" style="font-size: 16px; color: rgba(0,0,0,0.898); margin: 0; width: 100%;">李飞</p>
+          </div>
+          <div id="3193_22" class="Pixso-frame-3193_22">
+            <div id="3193_23" class="Pixso-frame-3193_23">
+              <p id="3193_24" class="Pixso-paragraph-3193_24 fill-lighticon_primary-602_9459-paragraph">󰄠</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+[OLD]
+</div>
+<!-- 任务节点结束: 编辑页-无内容/按钮禁用状态【临时】 -->
+
+
+<script>
+
+</script>
+[NEW]
+</div>
+<!-- 任务节点结束: 编辑页-无内容/按钮禁用状态【临时】 -->
+
+<!-- 任务节点开始: 编辑页-输入中状态【临时】 -->
+<div style="position: fixed; bottom: 0; left: 0; width: 100%; height: 300px; background: #f0f0f0; border-top: 1px solid #ddd; z-index: 9998;">
+  <!-- 模拟系统软键盘占位 -->
+</div>
+<!-- 任务节点结束: 编辑页-输入中状态【临时】 -->
+
+<script>
+
+</script>

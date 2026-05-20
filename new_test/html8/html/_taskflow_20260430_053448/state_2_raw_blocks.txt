@@ -1,0 +1,187 @@
+[OLD]
+<!-- 分享获客区：展示新增访客、兴趣访客、互动访客等周数据及同比变化 -->
+<div id="126_395835" class="frame-126_395835">
+  <div id="126_395836" class="frame-126_395836">
+    <div id="126_395837" class="rectangle-126_395837"></div>
+    <div id="126_395838" class="frame-126_395838">
+      <!-- 分享获客标题与更多按钮 -->
+      <span id="126_395839" class="text-126_395839 fill-text文本色图标色color_text_secondary-14_468126-text text-单行行高headline标题headline_xs-14_290524">更多</span>
+      <div id="126_395840" class="frame-126_395840">
+        <div id="126_395841" class="frame-126_395841">
+          <div id="126_395842" class="frame-126_395842">
+            <div id="126_395843" class="rectangle-126_395843"></div>
+            <div id="126_395844" class="vector-126_395844"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 分享获客数据项：新增访客(周)、兴趣访客(周)、互动访客(周) -->
+    <div id="126_395849" class="frame-126_395849">
+      <!-- 新增访客 (周) -->
+      <div id="126_395850" class="frame-126_395850">
+        <div id="126_395851" class="group-126_395851">
+          <span id="126_395852" class="text-126_395852">99999+</span>
+        </div>
+        <div id="126_395853" class="frame-126_395853">
+          <div id="126_395854" class="frame-126_395854">
+            <span id="126_395855" class="text-126_395855">新增访客 (周)</span>
+          </div>
+          <div id="126_395856" class="frame-126_395856">
+            <div id="126_395857" class="frame-126_395857">
+              <span id="126_395858" class="text-126_395858">同比</span>
+              <div id="126_395859" class="frame-126_395859">
+                <div id="126_395860" class="vector-126_395860"></div>
+              </div>
+              <span id="126_395861" class="text-126_395861">2.6%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 兴趣访客 (周) -->
+      <div id="126_395862" class="frame-126_395862">
+        <div id="126_395863" class="group-126_395863">
+          <span id="126_395864" class="text-126_395864">26728</span>
+        </div>
+        <div id="126_395865" class="frame-126_395865">
+          <div id="126_395866" class="frame-126_395866">
+            <span id="126_395867" class="text-126_395867">兴趣访客 (周)</span>
+          </div>
+          <div id="126_395868" class="frame-126_395868">
+            <div id="126_395869" class="frame-126_395869">
+              <span id="126_395870" class="text-126_395870">同比</span>
+              <div id="126_395871" class="frame-126_395871">
+                <div id="126_395872" class="vector-126_395872"></div>
+              </div>
+              <span id="126_395873" class="text-126_395873">2.6%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 互动访客 (周) -->
+      <div id="126_395874" class="frame-126_395874">
+        <div id="126_395875" class="group-126_395875">
+          <span id="126_395876" class="text-126_395876">26000</span>
+        </div>
+        <div id="126_395877" class="frame-126_395877">
+          <div id="126_395878" class="frame-126_395878">
+            <span id="126_395879" class="text-126_395879">互动访客 (周)</span>
+          </div>
+          <div id="126_395880" class="frame-126_395880">
+            <div id="126_395881" class="frame-126_395881">
+              <span id="126_395882" class="text-126_395882">同比</span>
+              <div id="126_395883" class="frame-126_395883">
+                <div id="126_395884" class="vector-126_395884"></div>
+              </div>
+              <span id="126_395885" class="text-126_395885">2.6%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 区域标题：分享获客 -->
+    <div id="126_395886" class="frame-126_395886">
+      <span id="126_395906" class="text-126_395906">分享获客</span>
+    </div>
+  </div>
+</div>
+[NEW]
+<!-- 分享获客区：展示新增访客、兴趣访客、互动访客等周数据及同比变化 -->
+<div id="126_395835" class="frame-126_395835">
+  <div id="126_395836" class="frame-126_395836">
+    <div id="126_395837" class="rectangle-126_395837"></div>
+    <div id="126_395838" class="frame-126_395838">
+      <!-- 分享获客标题与更多按钮 -->
+      <span id="126_395839" class="text-126_395839 fill-text文本色图标色color_text_secondary-14_468126-text text-单行行高headline标题headline_xs-14_290524">更多</span>
+      <div id="126_395840" class="frame-126_395840">
+        <div id="126_395841" class="frame-126_395841">
+          <div id="126_395842" class="frame-126_395842">
+            <div id="126_395843" class="rectangle-126_395843"></div>
+            <div id="126_395844" class="vector-126_395844"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 分享获客数据项：新增访客(周)、兴趣访客(周)、互动访客(周) -->
+    <div id="126_395849" class="frame-126_395849">
+      <!-- 新增访客 (周) -->
+      <div id="126_395850" class="frame-126_395850">
+        <div id="126_395851" class="group-126_395851">
+          <span id="126_395852" class="text-126_395852">99999+</span>
+        </div>
+        <div id="126_395853" class="frame-126_395853">
+          <div id="126_395854" class="frame-126_395854">
+            <span id="126_395855" class="text-126_395855">新增访客 (周)</span>
+          </div>
+          <div id="126_395856" class="frame-126_395856">
+            <div id="126_395857" class="frame-126_395857">
+              <span id="126_395858" class="text-126_395858">同比</span>
+              <div id="126_395859" class="frame-126_395859">
+                <div id="126_395860" class="vector-126_395860"></div>
+              </div>
+              <span id="126_395861" class="text-126_395861">2.6%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 兴趣访客 (周) -->
+      <div id="126_395862" class="frame-126_395862">
+        <div id="126_395863" class="group-126_395863">
+          <span id="126_395864" class="text-126_395864">26728</span>
+        </div>
+        <div id="126_395865" class="frame-126_395865">
+          <div id="126_395866" class="frame-126_395866">
+            <span id="126_395867" class="text-126_395867">兴趣访客 (周)</span>
+          </div>
+          <div id="126_395868" class="frame-126_395868">
+            <div id="126_395869" class="frame-126_395869">
+              <span id="126_395870" class="text-126_395870">同比</span>
+              <div id="126_395871" class="frame-126_395871">
+                <div id="126_395872" class="vector-126_395872"></div>
+              </div>
+              <span id="126_395873" class="text-126_395873">2.6%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 互动访客 (周) -->
+      <div id="126_395874" class="frame-126_395874">
+        <div id="126_395875" class="group-126_395875">
+          <span id="126_395876" class="text-126_395876">26000</span>
+        </div>
+        <div id="126_395877" class="frame-126_395877">
+          <div id="126_395878" class="frame-126_395878">
+            <span id="126_395879" class="text-126_395879">互动访客 (周)</span>
+          </div>
+          <div id="126_395880" class="frame-126_395880">
+            <div id="126_395881" class="frame-126_395881">
+              <span id="126_395882" class="text-126_395882">同比</span>
+              <div id="126_395883" class="frame-126_395883">
+                <div id="126_395884" class="vector-126_395884"></div>
+              </div>
+              <span id="126_395885" class="text-126_395885">2.6%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 区域标题：分享获客 -->
+    <div id="126_395886" class="frame-126_395886">
+      <span id="126_395906" class="text-126_395906">分享获客</span>
+    </div>
+  </div>
+</div>
+<!-- 任务节点开始: 长按激活悬浮菜单【临时】 -->
+<div style="position:fixed;inset:0;z-index:999;pointer-events:none;">
+  <div id="126_395835_mask" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);pointer-events:auto;" data-mask-for="126_395835"></div>
+  <div id="126_395835_popover" style="position:absolute;top:12px;right:12px;z-index:1000;pointer-events:auto;">
+    <div style="padding:8px;background:#FFFFFF;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);display:flex;gap:8px;align-items:center;min-width:80px;">
+      <button type="button" style="width:32px;height:32px;background:#F5F5F5;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;outline:none;border:none;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;">
+        <span style="font-size:20px;color:#666;">−</span>
+      </button>
+      <button type="button" style="width:32px;height:32px;background:#F5F5F5;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;outline:none;border:none;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;">
+        <span style="font-size:20px;color:#666;">↔</span>
+      </button>
+    </div>
+  </div>
+</div>
+<!-- 任务节点结束: 长按激活悬浮菜单【临时】 -->

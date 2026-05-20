@@ -1,0 +1,115 @@
+{
+  "title": "创建项目集任务流",
+  "slug": "create-project-set-flow",
+  "createdAt": "2026-05-20T14:59:07.914Z",
+  "meta": {
+    "title": "创建项目集任务流",
+    "slug": "create-project-set-flow",
+    "user_story": "已登录的企业协作者在工作台首页点击‘创建项目集’按钮，完成项目集新建流程",
+    "platform": "desktop"
+  },
+  "blueprintValidation": {
+    "ok": true,
+    "issues": []
+  },
+  "blueprintIntentReview": {
+    "ok": true,
+    "score": 90,
+    "decision": "pass",
+    "majorIssues": [],
+    "minorIssues": [
+      "Toast文案中混入英文'Project set created successfully'，与页面主语言zh（中文字符33，英文词块0）冲突，属language轻微不一致；但因中文文案'项目集创建成功'已明确传达核心语义，且为Toast次要辅助文案，不构成阻断或歧义，故归为minor"
+    ],
+    "coverage": {
+      "coreAction": true,
+      "targetState": true,
+      "interactionPattern": true,
+      "language": false,
+      "stateChain": true,
+      "noContradiction": true
+    },
+    "source": "llm",
+    "repaired": false,
+    "continuedWithRisk": false,
+    "passScore": 75,
+    "repairAcceptScore": 65
+  },
+  "blueprintIntentRisk": false,
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "我的工作台首页",
+      "description": "页面为全屏白色背景，顶部有导航栏（含用户头像、消息图标、设置图标），中央区域显示‘我的工作台’标题与项目卡片网格；右上角固定悬浮红色圆形按钮，内含加号图标，按钮下方文字为‘创建项目集’。",
+      "implementation_method": "原始 HTML 初始快照，不做改造。",
+      "last_state": null,
+      "file": "state_1.html",
+      "finalScreenshot": "state_1_final.png",
+      "finalScreenshotOk": true,
+      "finalScreenshotError": null,
+      "reviewOk": null,
+      "reviewStatus": "not_applicable",
+      "reviewIssues": [],
+      "validationOk": false,
+      "validationIssues": [
+        "element overflows viewport: <div#14_807571> left=-64 right=123",
+        "element overflows viewport: <div#14_807573> left=-61 right=46"
+      ],
+      "assetWarnings": [],
+      "quality_failed": true
+    },
+    {
+      "state_id": 2,
+      "state_name": "创建项目集全屏页",
+      "description": "全屏模态弹窗覆盖整个视口，背景为半透明黑色遮罩（rgba(0,0,0,0.5)）；白色圆角卡片居中，宽360px、高约792px，顶部有深灰色标题‘创建项目集’（16px Medium 字体，行高20px）；下方依次为：名称输入框（带占位符‘请输入项目集名称’）、公司/个人单选组（两个水平排列的圆形单选按钮，左侧标‘公司’、右侧标‘个人’，默认未选中）、项目添加区（浅灰底色容器，内含‘+ 添加项目’文字按钮与向下箭头图标）；底部固定红色按钮（#E53935，宽100%，高48px，文字‘确认’居中，16px Medium 白色）。",
+      "implementation_method": "基于 last_state=state_1：保留顶部导航栏与页面主体容器结构；删除原页面所有内容子节点（包括项目卡片网格与右上角创建按钮）；新增全屏遮罩层 + 居中白色卡片（含标题、输入框、单选组、项目添加区、底部红色确认按钮）。",
+      "last_state": 1,
+      "file": "state_2.html",
+      "finalScreenshot": "state_2_final.png",
+      "finalScreenshotOk": true,
+      "finalScreenshotError": null,
+      "reviewOk": false,
+      "reviewStatus": "failed",
+      "reviewIssues": [
+        "语言一致性：弹窗内‘项目集名称’、‘归属类型’等标签为中文，符合主语言zh要求，但‘+ 添加项目’按钮文字未使用规范中文表达（应为‘添加项目’），且图标与文字间距不一致，视觉上不协调。",
+        "元素溢出：弹窗宽度为360px，卡片内容在截图中显示正常，无明显溢出；但底部红色确认按钮高度48px，实际渲染略高，可能因边距或padding导致轻微超出预期尺寸。",
+        "可见性：description中要求的标题‘创建项目集’、输入框、单选组、项目添加区、底部确认按钮均可见，符合预期。",
+        "位置合理性：弹窗居中覆盖全屏，遮罩层存在且透明度合理，整体位置居中，符合规范。",
+        "基础样式：弹窗圆角过大（32px）不符合鸿蒙OS设计规范推荐值（通常建议16px或24px），且输入框和单选按钮的边框颜色过浅，对比度不足，影响可读性。此外，‘+ 添加项目’按钮中的加号图标与文字间距异常，应统一为标准间距。"
+      ],
+      "validationOk": false,
+      "validationIssues": [
+        "element overflows viewport: <div#14_807571> left=-64 right=123",
+        "element overflows viewport: <div#14_807573> left=-61 right=46"
+      ],
+      "assetWarnings": [],
+      "quality_failed": true
+    },
+    {
+      "state_id": 3,
+      "state_name": "创建成功提示状态",
+      "description": "全屏遮罩层与白色卡片仍保持可见；卡片顶部边缘下方16px处悬浮一个Toast提示：白底圆角矩形（4px圆角），宽320px、高44px，含绿色对勾图标（16×16px）与文字‘项目集创建成功’（14px Medium，#191919），无按钮，位于卡片垂直居中线正上方；其余界面元素（标题、输入框、单选组、项目区、确认按钮）全部保持原状且可交互。",
+      "implementation_method": "基于 last_state=state_2：保留全屏遮罩层、白色卡片及其全部子元素（标题、输入框、单选组、项目添加区、确认按钮）；删除无；新增顶部Toast提示（白底圆角矩形，含绿色对勾图标 + 中文文案‘项目集创建成功’、英文文案‘Project set created successfully’）。",
+      "last_state": 2,
+      "file": "state_3.html",
+      "finalScreenshot": "state_3_final.png",
+      "finalScreenshotOk": true,
+      "finalScreenshotError": null,
+      "reviewOk": false,
+      "reviewStatus": "failed",
+      "reviewIssues": [
+        "Toast 提示位置偏移：需求要求 Toast 位于卡片顶部边缘下方 16px 处，且在卡片垂直居中线正上方；但截图中 Toast 位于卡片上方较远位置（约 20px 左右），未满足‘下方 16px’的定位要求。",
+        "Toast 宽度不一致：需求要求 Toast 宽 320px，但截图中实际宽度明显小于 320px，导致内容与边距比例失衡，视觉上不够对齐。",
+        "Toast 圆角半径不符：需求要求 4px 圆角，但截图中圆角更接近 8px，不符合规范。",
+        "Toast 内容文字换行异常：‘项目集创建成功’在截图中显示正常，但若文本较长可能触发换行，而当前样式未设置 `overflow-wrap: break-word` 或 `white-space: normal`，存在潜在溢出风险。"
+      ],
+      "validationOk": false,
+      "validationIssues": [
+        "icon ligature visible as text: \"check_circle\"",
+        "element overflows viewport: <div#14_807571> left=-64 right=123",
+        "element overflows viewport: <div#14_807573> left=-61 right=46"
+      ],
+      "assetWarnings": [],
+      "quality_failed": true
+    }
+  ]
+}

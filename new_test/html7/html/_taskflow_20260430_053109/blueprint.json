@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "title": "编辑姓名并保存",
+    "slug": "edit-name-save-flow",
+    "user_story": "已登录的普通员工 | 在个人信息页点击姓名右侧箭头 | 修改姓名 → 系统实时校验输入有效性 → 用户点击底部保存按钮提交 | 个人信息页中‘姓名’文字更新为新内容，且中部弹出‘保存成功’Toast",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "个人信息展示页",
+      "description": "用户位于个人信息主页面，页面顶部为状态栏，主体为垂直列表；‘姓名’项居列表首位，左侧为‘姓名’文字标签，右侧为当前姓名值‘张三’及一个右向导航箭头图标；其余信息如所属公司、职务等按顺序排列，整体布局完整无遮罩。",
+      "implementation_method": "原始 HTML 初始快照，不做改造",
+      "last_state": null
+    },
+    {
+      "state_id": 2,
+      "state_name": "全屏姓名编辑页",
+      "description": "用户点击‘姓名’右侧导航箭头后，系统全屏覆盖跳转至新页面：纯白背景，顶部左侧显示返回箭头图标，中间区域为单行输入框（上方有灰色‘姓名’标签文字，框内显示浅灰色提示文案‘请输入姓名’），底部固定悬浮品牌色‘保存’按钮，初始为禁用态（低透明度、无文字或显示‘保存’但不可点击）。",
+      "implementation_method": "全屏覆盖页 (Full-Screen Overlay)：顶部左侧返回箭头（SVG 向左三角形）；中间输入框含标签 '姓名'（font-size: 14px, color: #666）、输入框本身（border: 1px solid #f3f3f3, padding: 12px 16px, font-size: 16px）、内部 placeholder 文案 '请输入姓名'（color: #999）；底部按钮宽100%、高52px、背景色#007AFF、文字'保存'（white, 16px bold），初始 opacity: 0.4 且 pointer-events: none。",
+      "last_state": 1
+    },
+    {
+      "state_id": 3,
+      "state_name": "编辑中态",
+      "description": "用户在输入框中输入至少一个字符后，输入框右侧立即出现可点击的清除图标（×），软键盘自动弹出；底部保存按钮同步变为高亮品牌色（opacity: 1）、文字显示为‘保存’、可点击；页面其他区域无变化，顶部返回箭头和标签文字保持可见。",
+      "implementation_method": "全屏覆盖页 (Full-Screen Overlay)：输入框右侧实时显示清除图标（×，18×18px，color: #999，点击后清空内容并隐藏自身）；底部按钮 opacity: 1、background-color: #007AFF、文字'保存'（white, 16px bold, font-weight: 600）；软键盘触发由 input:focus 自动唤起，无需额外控件。",
+      "last_state": 2
+    },
+    {
+      "state_id": 4,
+      "state_name": "保存成功终态",
+      "description": "用户点击保存按钮后，系统返回个人信息展示页，原‘姓名’项中的文字值已更新为新输入内容（如‘李四’），页面中部浮出 Toast 提示：浅蓝底（#2196F3）、白色文字、圆角矩形、上下留白，显示‘保存成功’，2秒后自动淡出消失，不遮挡顶部状态栏与底部任何内容。",
+      "implementation_method": "轻量级提示 (Toast/Snackbar)：浅蓝色背景 #2196F3、圆角 8px、内边距 12px 20px、白色文字 '保存成功'（14px, HarmonyOS Sans SC, line-height: 20px），绝对定位居中（top: 50%, transform: translateY(-50%)），z-index: 1000，2秒后 opacity 从1→0过渡并移除DOM。",
+      "last_state": 1
+    }
+  ]
+}

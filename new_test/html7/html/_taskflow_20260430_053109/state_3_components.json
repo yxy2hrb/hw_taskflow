@@ -1,0 +1,18 @@
+{
+  "state_id": 3,
+  "state_name": "编辑中态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "清除图标样式错误：截图中显示为三角形播放按钮（▶），而非需求中的×图标；定位在输入框右侧，应为18×18px、color:#999的×符号。",
+      "清除图标颜色不符：需求要求 color: #999，但截图中图标颜色偏深灰接近黑色，不符合规范。",
+      "底部保存按钮背景色不匹配：需求要求 background-color: #007AFF，但截图中为 #0A59F7，存在轻微偏差，影响品牌一致性。"
+    ],
+    "fixedBlocks": "[OLD]\n<span class=\"mi hm-icon\" style=\"position:absolute; right:16px; top:50%; transform:translateY(-50%); font-size:18px; color:rgba(0,0,0,0.6); cursor:pointer;\">󰂴</span>\n[NEW]\n<span class=\"mi hm-icon\" style=\"position:absolute; right:16px; top:50%; transform:translateY(-50%); font-size:18px; color:#999; cursor:pointer;\">󰂴</span>\n[OLD]\n<button style=\"width:100%; padding:12px; background:#0A59F7; color:#FFFFFF; border:none; border-radius:24px; font-size:16px; font-weight:600; cursor:pointer;\">保存</button>\n[NEW]\n<button style=\"width:100%; padding:12px; background:#007AFF; color:#FFFFFF; border:none; border-radius:24px; font-size:16px; font-weight:600; cursor:pointer;\">保存</button>",
+    "reviewMs": 17259,
+    "screenshot": 17498,
+    "fixedBlocksParsed": 2
+  }
+}

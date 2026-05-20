@@ -1,0 +1,15 @@
+{
+  "state_id": 5,
+  "state_name": "创建失败验证态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": true,
+    "issues": [],
+    "fixedBlocks": "",
+    "reviewMs": 3294,
+    "screenshot": 42460,
+    "reviewOnly": true,
+    "fixedBlocksIgnored": false
+  }
+}

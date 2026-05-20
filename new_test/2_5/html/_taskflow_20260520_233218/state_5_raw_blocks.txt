@@ -1,0 +1,21 @@
+[OLD]
+<label for="project-name-input" style="display:block;font-size:14px;font-family:'HarmonyHeiTi-Regular';font-weight:400;color:rgba(0,0,0,0.6);margin-bottom:8px;">项目集名称</label>
+<input id="project-name-input" type="text" placeholder="请输入项目集名称" value="" style="width:100%;padding:12px 16px;border:1px solid rgba(0,0,0,0.12);border-radius:8px;font-size:16px;font-family:'HarmonyHeiTi-Regular';color:rgba(0,0,0,0.9);box-sizing:border-box;outline:none;">
+[NEW]
+<label for="project-name-input" style="display:block;font-size:14px;font-family:'HarmonyHeiTi-Regular';font-weight:400;color:rgba(0,0,0,0.6);margin-bottom:8px;">项目集名称</label>
+<input id="project-name-input" type="text" placeholder="请输入项目集名称" value="" style="width:100%;padding:12px 16px;border:1px solid rgba(0,0,0,0.12);border-radius:8px;font-size:16px;font-family:'HarmonyHeiTi-Regular';color:rgba(0,0,0,0.9);box-sizing:border-box;outline:none;">
+<p style="font-size:12px;font-family:'HarmonyHeiTi-Regular';font-weight:400;color:#FF4D4F;margin-top:8px;margin-bottom:0;">请输入项目集名称</p>
+
+[OLD]
+<label style="display:block;font-size:14px;font-family:'HarmonyHeiTi-Regular';font-weight:400;color:rgba(0,0,0,0.6);margin-bottom:8px;">归属类型</label>
+<div style="display:flex;gap:12px;">
+  <button type="button" style="flex:1;height:40px;padding:0 16px;border:1px solid #D9D9D9;border-radius:20px;font-size:16px;font-family:'HarmonyHeiTi-Regular';font-weight:500;color:rgba(0,0,0,0.9);background:#FFFFFF;outline:none;cursor:pointer;">公司</button>
+  <button type="button" style="flex:1;height:40px;padding:0 16px;border:1px solid #D9D9D9;border-radius:20px;font-size:16px;font-family:'HarmonyHeiTi-Regular';font-weight:500;color:rgba(0,0,0,0.9);background:#FFFFFF;outline:none;cursor:pointer;">个人</button>
+</div>
+[NEW]
+<label style="display:block;font-size:14px;font-family:'HarmonyHeiTi-Regular';font-weight:400;color:rgba(0,0,0,0.6);margin-bottom:8px;">归属类型</label>
+<div style="display:flex;gap:12px;">
+  <button type="button" style="flex:1;height:40px;padding:0 16px;border:1px solid #D9D9D9;border-radius:20px;font-size:16px;font-family:'HarmonyHeiTi-Regular';font-weight:500;color:rgba(0,0,0,0.9);background:#FFFFFF;outline:none;cursor:pointer;">公司</button>
+  <button type="button" style="flex:1;height:40px;padding:0 16px;border:1px solid #D9D9D9;border-radius:20px;font-size:16px;font-family:'HarmonyHeiTi-Regular';font-weight:500;color:rgba(0,0,0,0.9);background:#FFFFFF;outline:none;cursor:pointer;">个人</button>
+</div>
+<p style="font-size:12px;font-family:'HarmonyHeiTi-Regular';font-weight:400;color:#FF4D4F;margin-top:8px;margin-bottom:0;">所选项目与类型不匹配</p>

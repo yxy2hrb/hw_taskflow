@@ -1,0 +1,44 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "我的工作台首页",
+    "description": "页面为移动端全屏布局，顶部状态栏显示时间与信号图标，中部主内容区为浅灰背景（#F3F3F3），包含标题‘我的工作台’及下方多个功能卡片；右下角固定悬浮圆形按钮，内含加号图标，按钮文案为‘创建项目集’，文字为深灰（rgba(25,25,25,1)），字体为HarmonyHeiTi-Medium 16px。",
+    "implementation_method": "原始 HTML 初始快照，不做改造。",
+    "last_state": null
+  },
+  {
+    "state_id": 2,
+    "state_name": "创建项目集全屏页",
+    "description": "全屏覆盖式页面，顶部固定导航栏高56px，居中显示白色文字‘创建项目集’，字体HarmonyHeiTi-Medium 16px；中部白色圆角卡片（#FFFFFF）宽360px，垂直居中，含：顶部名称输入框（占位符‘请输入项目集名称’，深灰字）、中部单选组‘公司’/‘个人’按钮（水平排列，未选中时边框1px #D9D9D9，选中后边框2px #FF4D4F，文字深灰），底部项目添加区为浅灰底（#F5F5F5）带加号图标与‘添加项目’文字；页面底部红色宽按钮（#FF4D4F，高48px），文字‘确认’，白色HarmonyHeiTi-Medium 16px，居中显示。",
+    "implementation_method": "基于 last_state=state_1：保留顶部状态栏与信号时间显示；删除原工作台所有卡片与悬浮按钮；新增全屏覆盖层（position:fixed;z-index:1000），内含顶部导航栏、中部白色表单卡片、底部红色确认按钮。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "创建中加载态",
+    "description": "全屏覆盖层保持不变，顶部导航栏文字变为蓝色‘正在创建’（#1890FF，HarmonyHeiTi-Medium 16px），中部表单区域整体禁用（input与button opacity:0.5），底部红色按钮文字替换为‘提交中…’，按钮右侧嵌入水平加载条（高度4px，蓝色#1890FF，宽度从0%线性填充至100%，无动画帧描述，仅呈现满载静止态），页面其余部分（状态栏、导航栏、表单结构）均可见且位置未偏移。",
+    "implementation_method": "基于 last_state=state_2：保留顶部导航栏、中部表单卡片结构、底部按钮容器；删除原按钮文字与加号图标；新增蓝色文字‘正在创建’于导航栏、禁用态透明度样式、按钮内‘提交中…’文本、以及满载态水平加载条（width:100%;background:#1890FF;height:4px;）。",
+    "last_state": 2
+  },
+  {
+    "state_id": 4,
+    "state_name": "创建成功提示态",
+    "description": "全屏覆盖层与表单结构完全保留，顶部状态栏下方紧贴出现绿色半透明横条（#52C418，opacity:0.9，高度48px，宽度100%），横条内居中显示白色勾选图标（SVG路径或Unicode ✅）与文字‘创建成功’，字体HarmonyHeiTi-Medium 16px，无按钮，无关闭叉号，横条上下无留白，其余区域（导航栏、表单、底部按钮）全部正常可见且未被遮挡。",
+    "implementation_method": "基于 last_state=state_2：保留顶部导航栏、中部表单卡片、底部按钮容器；删除无；新增绿色半透明横条（position:absolute;top:56px;left:0;width:100%;height:48px;background:rgba(82,196,24,0.9);display:flex;align-items:center;justify-content:center;），内含白色勾选图标与文字‘创建成功’。",
+    "last_state": 2
+  },
+  {
+    "state_id": 5,
+    "state_name": "创建失败验证态",
+    "description": "全屏覆盖层与表单结构完全保留，名称输入框下方显示红色小字‘请输入项目集名称’（#FF4D4F，12px，HarmonyHeiTi-Regular），归属类型单选区下方显示红色小字‘所选项目与类型不匹配’（#FF4D4F，12px），两段文字均左对齐、距上一控件间距8px；项目添加区保持原样（浅灰底+加号图标+‘添加项目’文字）；顶部导航栏、底部按钮均未变化。",
+    "implementation_method": "基于 last_state=state_2：保留顶部导航栏、中部表单卡片整体结构、底部按钮容器；删除无；新增名称输入框下方红色提示文字‘请输入项目集名称’、归属类型单选区下方红色提示文字‘所选项目与类型不匹配’，均为12px HarmonyHeiTi-Regular，颜色#FF4D4F。",
+    "last_state": 2
+  },
+  {
+    "state_id": 6,
+    "state_name": "取消创建返回态",
+    "description": "画面与 state_1 完全一致：顶部状态栏显示时间与信号图标，中部主内容区为浅灰背景（#F3F3F3），标题‘我的工作台’清晰可见，右下角悬浮圆形按钮含加号图标与‘创建项目集’文字，所有字体、颜色、间距、层级均与初始工作台快照完全相同，无任何叠加浮层、无遮罩、无临时提示。",
+    "implementation_method": "基于 last_state=state_1：保留原画面全部骨架；删除无；新增无（画面与 last_state 完全一致）。",
+    "last_state": 1
+  }
+]

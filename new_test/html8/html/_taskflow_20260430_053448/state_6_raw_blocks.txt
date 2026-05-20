@@ -1,0 +1,21 @@
+[OLD]
+<!-- 任务节点开始: 确认移除模态对话框【临时】 -->
+<div style="position:fixed;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:1000;">
+  <div style="width:320px;height:168px;padding:0;box-sizing:border-box;background:#FFFFFF;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.12);display:flex;flex-direction:column;overflow:hidden;">
+    <div style="padding:24px 24px 0 24px;">
+      <div style="font-size:16px;font-weight:700;color:rgba(0,0,0,0.9);line-height:1.3;">是否移除该应用卡片？</div>
+    </div>
+    <div style="padding:16px 24px 0 24px;flex:1;">
+      <div style="font-size:14px;color:rgba(0,0,0,0.6);line-height:20px;">移除后将不再显示在工作台，可随时在应用中心重新添加。</div>
+    </div>
+    <div style="padding:0 24px 16px 24px;display:flex;gap:12px;">
+      <button type="button" style="width:104px;height:36px;background:#F5F5F5;color:#333;border:none;border-radius:8px;font-size:16px;font-weight:500;cursor:pointer;">取消</button>
+      <button type="button" style="width:104px;height:36px;background:#C7000B;color:#FFFFFF;border:none;border-radius:8px;font-size:16px;font-weight:500;cursor:pointer;">移除</button>
+    </div>
+  </div>
+</div>
+<!-- 任务节点结束: 确认移除模态对话框【临时】 -->
+[NEW]
+<!-- 任务节点开始: 取消恢复初始状态【临时】 -->
+<!-- 无内容：模态框与蒙层已淡出，悬浮菜单与遮罩层已立即隐藏，界面完全复原至长按前初始状态 -->
+<!-- 任务节点结束: 取消恢复初始状态【临时】 -->

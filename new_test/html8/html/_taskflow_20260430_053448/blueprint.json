@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "title": "长按移除工作台卡片",
+    "slug": "longpress-remove-workbench-card",
+    "user_story": "已登录的企业营销人员 | 在工作台卡片列表中长按‘分享获客’卡片 | 移除不需要的应用卡片 → 系统保持布局连续性 → 用户确认后卡片即时消失且下方卡片上移填补 | ‘分享获客’卡片从 DOM 中移除，其下方所有卡片位置上移且无空白间隙",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "工作台初始卡片列表",
+      "description": "用户打开工作台，页面完整展示垂直排列的卡片列表，‘分享获客’卡片位于顶部区域（第2张），包含图标、标题‘分享获客’及副标题‘快速裂变拉新’；顶部有状态栏，底部为5项Tab导航栏（首页/商城/营销/服务/我的），当前‘营销’Tab高亮显示红色主色。",
+      "implementation_method": "原始 HTML 初始快照，不做改造",
+      "last_state": null
+    },
+    {
+      "state_id": 2,
+      "state_name": "长按激活悬浮菜单",
+      "description": "用户长按‘分享获客’卡片后，该卡片区域叠加一层深灰半透明遮罩（opacity: 0.4），同时从卡片右上角弹出气泡式悬浮菜单，含两个圆角小按钮：左侧减号图标按钮（灰色#666）、右侧切换尺寸图标按钮（灰色#666）；其余界面元素（状态栏、Tab栏、其他卡片）保持可见且未交互禁用。",
+      "implementation_method": "轻量级悬浮菜单 (Popover/Context Menu)：深灰半透遮罩层（z-index=999）覆盖卡片区域；气泡容器为白色圆角矩形（padding: 8px，border-radius: 8px，box-shadow: 0 2px 8px rgba(0,0,0,0.1)），内含两个并排圆角按钮（32×32px，背景色#F5F5F5，图标居中）；左按钮图标为减号（'−'），右按钮图标为双向箭头（↔）；无文字标签。",
+      "last_state": 1
+    },
+    {
+      "state_id": 3,
+      "state_name": "确认移除模态对话框",
+      "description": "用户点击悬浮菜单中的减号按钮后，全屏叠加深灰半透蒙层（opacity: 0.5，z-index=1000），居中弹出白色圆角模态卡片（宽320px，高168px，border-radius: 12px，阴影柔和），顶部为加粗标题‘是否移除该应用卡片？’，中部左对齐说明文案‘移除后将不再显示在工作台，可随时在应用中心重新添加。’，底部右侧为红色‘移除’按钮，左侧为灰色‘取消’按钮；状态栏与底部Tab栏仍可见但不可点。",
+      "implementation_method": "模态弹窗 (Modal/Dialog)：深灰半透蒙层（background-color: rgba(0,0,0,0.5)）；白色圆角卡片（background-color: #FFFFFF，border-radius: 12px，box-shadow: 0 4px 16px rgba(0,0,0,0.12)）；标题 '是否移除该应用卡片？'（font-weight: 700，16px）；说明文案 '移除后将不再显示在工作台，可随时在应用中心重新添加。'（14px，color: #666，line-height: 20px）；底部按钮组：左按钮 '取消'（background-color: #F5F5F5，color: #333），右按钮 '移除'（background-color: #C7000B，color: #FFFFFF）；按钮宽104px，高36px，圆角8px，水平居中对齐。",
+      "last_state": 1
+    },
+    {
+      "state_id": 4,
+      "state_name": "卡片移除执行动画",
+      "description": "用户点击‘移除’按钮后，‘分享获客’卡片开始平滑淡出（opacity→0）并同步向上缩放至高度0（transform: scale(1,0)），同时其正下方所有卡片（如‘短视频能力中心’‘智能投放工具’等）以300ms缓动动画整体向上位移并轻微缩放补位（scale(1.02→1)），滚动容器高度实时收缩，无空白间隙；蒙层与模态框同步淡出，状态栏与Tab栏始终可见。",
+      "implementation_method": "CSS 动画序列 (Animated Transition Sequence)：卡片元素添加 transition: all 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94)；移除卡片 transform: scale(1,0) + opacity: 0；下方卡片群组使用 transform: translateY(-Xpx) + scale(1.02→1)，X为被删卡片原始高度；蒙层与模态框 opacity: 1→0 同步过渡；滚动容器 height 自动重算，scrollbar 长度实时更新。",
+      "last_state": 1
+    },
+    {
+      "state_id": 5,
+      "state_name": "移除成功无缝布局",
+      "description": "动画结束后，‘分享获客’卡片完全从DOM中移除，原位置被‘短视频能力中心’卡片无缝填补；列表整体上移，滚动条长度缩短，用户当前可视区域保持不变；所有卡片间距一致，无错位或空白；顶部状态栏4G标识、底部Tab栏‘营销’高亮状态均未变化，界面响应正常可继续滚动。",
+      "implementation_method": "原始 HTML 初始快照，不做改造",
+      "last_state": 1
+    },
+    {
+      "state_id": 6,
+      "state_name": "取消恢复初始状态",
+      "description": "用户点击模态框‘取消’按钮或蒙层后，模态框与深灰蒙层同步淡出（opacity→0），悬浮菜单与卡片遮罩层立即消失，‘分享获客’卡片恢复原始不透明度与尺寸，位置与样式完全复原；状态栏、Tab栏、其他卡片均无任何变化，界面回到长按前的初始浏览状态。",
+      "implementation_method": "CSS 过渡收起 (Fade-out Transition)：模态框与蒙层 transition: opacity 200ms ease-out；悬浮菜单与遮罩层 visibility: hidden + opacity: 0（无过渡，即刻隐藏）；卡片自身无额外动效，仅还原初始 class 与 style；Tab栏高亮、滚动位置、焦点状态全部维持原样。",
+      "last_state": 1
+    }
+  ]
+}

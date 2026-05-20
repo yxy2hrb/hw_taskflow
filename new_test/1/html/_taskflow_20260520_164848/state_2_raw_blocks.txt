@@ -1,0 +1,60 @@
+[OLD]
+<script>
+</script>
+[NEW]
+<script>
+</script>
+<!-- 任务节点开始: 开局产品选择弹窗【临时】 -->
+<div style="position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;">
+  <div style="width:328px;max-width:328px;padding:24px 24px 16px;background:#FFFFFF;border-radius:32px;box-shadow:0 8px 24px rgba(0,0,0,0.08);box-sizing:border-box;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:24px;">
+      <span class="mi" style="font-size:24px;color:rgba(0,0,0,0.9);">arrow_back</span>
+      <span style="font-size:20px;font-weight:700;line-height:1.3;color:rgba(0,0,0,0.9);">选择开局产品</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;">
+      <div style="border-radius:16px;background:#1E6EFF;padding:16px;display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="width:48px;height:48px;background:rgba(255,255,255,0.2);border-radius:12px;display:flex;align-items:center;justify-content:center;">
+          <span class="mi" style="font-size:24px;color:#FFFFFF;">home</span>
+        </div>
+        <span style="font-size:16px;font-weight:500;line-height:1.5;color:#FFFFFF;">SOHO</span>
+        <span style="font-size:12px;font-weight:400;line-height:1.5;color:rgba(255,255,255,0.8);">默认</span>
+        <span style="font-size:14px;font-weight:400;line-height:1.5;color:#FFFFFF;text-align:center;">面向小型办公室/家庭办公场景</span>
+      </div>
+      <div style="border-radius:16px;background:#FFFFFF;padding:16px;display:flex;flex-direction:column;align-items:center;gap:8px;box-shadow:0 1px 6px rgba(0,0,0,0.05);">
+        <div style="width:48px;height:48px;background:#F1F3F5;border-radius:12px;display:flex;align-items:center;justify-content:center;">
+          <span class="mi" style="font-size:24px;color:rgba(0,0,0,0.9);">fiber_new</span>
+        </div>
+        <span style="font-size:16px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.9);">光接入</span>
+        <span style="font-size:12px;font-weight:400;line-height:1.5;color:rgba(0,0,0,0.4);">—</span>
+        <span style="font-size:14px;font-weight:400;line-height:1.5;color:rgba(0,0,0,0.9);text-align:center;">光纤网络接入解决方案</span>
+      </div>
+      <div style="border-radius:16px;background:#FFFFFF;padding:16px;display:flex;flex-direction:column;align-items:center;gap:8px;box-shadow:0 1px 6px rgba(0,0,0,0.05);">
+        <div style="width:48px;height:48px;background:#F1F3F5;border-radius:12px;display:flex;align-items:center;justify-content:center;">
+          <span class="mi" style="font-size:24px;color:rgba(0,0,0,0.9);">storage</span>
+        </div>
+        <span style="font-size:16px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.9);">存储</span>
+        <span style="font-size:12px;font-weight:400;line-height:1.5;color:rgba(0,0,0,0.4);">—</span>
+        <span style="font-size:14px;font-weight:400;line-height:1.5;color:rgba(0,0,0,0.9);text-align:center;">企业级数据存储与管理</span>
+      </div>
+      <div style="border-radius:16px;background:#FFFFFF;padding:16px;display:flex;flex-direction:column;align-items:center;gap:8px;box-shadow:0 1px 6px rgba(0,0,0,0.05);">
+        <div style="width:48px;height:48px;background:#F1F3F5;border-radius:12px;display:flex;align-items:center;justify-content:center;">
+          <span class="mi" style="font-size:24px;color:rgba(0,0,0,0.9);">security</span>
+        </div>
+        <span style="font-size:16px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.9);">数通网络安全</span>
+        <span style="font-size:12px;font-weight:400;line-height:1.5;color:rgba(0,0,0,0.4);">—</span>
+        <span style="font-size:14px;font-weight:400;line-height:1.5;color:rgba(0,0,0,0.9);text-align:center;">路由器、防火墙等网络设备</span>
+      </div>
+    </div>
+    <div style="margin-top:16px;text-align:center;">
+      <div style="border-radius:16px;background:#FFFFFF;padding:16px;display:flex;flex-direction:column;align-items:center;gap:8px;box-shadow:0 1px 6px rgba(0,0,0,0.05);">
+        <div style="width:48px;height:48px;background:#F1F3F5;border-radius:12px;display:flex;align-items:center;justify-content:center;">
+          <span class="mi" style="font-size:24px;color:rgba(0,0,0,0.9);">smart_display</span>
+        </div>
+        <span style="font-size:16px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.9);">智能安防</span>
+        <span style="font-size:12px;font-weight:400;line-height:1.5;color:rgba(0,0,0,0.4);">—</span>
+        <span style="font-size:14px;font-weight:400;line-height:1.5;color:rgba(0,0,0,0.9);text-align:center;">视频监控、门禁系统等</span>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 任务节点结束: 开局产品选择弹窗【临时】 -->

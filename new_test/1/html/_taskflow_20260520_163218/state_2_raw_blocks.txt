@@ -1,0 +1,21 @@
+[OLD]
+<script>
+</script>
+[NEW]
+<script>
+</script>
+<!-- 任务节点开始: 开局类型选择弹窗【临时】 -->
+<div style="position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;">
+  <div style="width:calc(100% - 32px);max-width:328px;padding:24px 24px 16px;background:#FFFFFF;border-radius:32px;box-shadow:0 8px 24px rgba(0,0,0,0.08);box-sizing:border-box;">
+    <div style="display:flex;flex-direction:column;gap:24px;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span class="mi" style="font-size:20px;color:#0A59F7;">radio_button_checked</span>
+        <span style="font-size:16px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.9);">SOHO</span>
+      </div>
+      <button type="button" style="height:44px;padding:0 16px;background:#0A59F7;border:none;border-radius:8px;color:#FFFFFF;font-size:16px;font-weight:500;line-height:1.5;letter-spacing:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;justify-content:center;">
+        下一步
+      </button>
+    </div>
+  </div>
+</div>
+<!-- 任务节点结束: 开局类型选择弹窗【临时】 -->

@@ -1,0 +1,137 @@
+{
+  "dir": "/home/stycycle/workspace/hw_taskflow/new_test/6_1/html/_taskflow_20260520_231146",
+  "blueprint": {
+    "ok": true,
+    "issues": []
+  },
+  "blueprintIntentReview": {
+    "ok": true,
+    "score": 95,
+    "decision": "pass",
+    "majorIssues": [],
+    "minorIssues": [
+      "加载中过渡态（state_3）虽合理，但 brief 未要求加载态，属额外设计，且其占位结构（3行标签+6条目）与正式态的‘分类标签栏+6张卡片’语义对齐稍弱，存在轻微状态链冗余；权限不足页（state_6）主标题‘暂未开放’与 brief 中‘跳转至对应产品文档详情页’隐含的‘可访问性前提’无直接冲突，但文案未体现‘该条目不可查看’的上下文，属微弱语言一致性偏差"
+    ],
+    "coverage": {
+      "coreAction": true,
+      "targetState": true,
+      "interactionPattern": true,
+      "language": true,
+      "stateChain": true,
+      "noContradiction": true
+    },
+    "source": "llm",
+    "repaired": false,
+    "continuedWithRisk": false,
+    "passScore": 75,
+    "repairAcceptScore": 65
+  },
+  "blueprintIntentRisk": false,
+  "states": [
+    {
+      "state_id": 1,
+      "file": "state_1.html",
+      "finalScreenshotOk": true,
+      "finalScreenshot": "state_1_final.png",
+      "reviewOk": null,
+      "reviewIssues": [],
+      "validationOk": false,
+      "validationIssues": [
+        "element overflows viewport: <div#14_1030940> left=-64 right=123",
+        "element overflows viewport: <div#14_1030942> left=-61 right=46"
+      ],
+      "assetWarnings": []
+    },
+    {
+      "state_id": 2,
+      "file": "state_2.html",
+      "finalScreenshotOk": true,
+      "finalScreenshot": "state_2_final.png",
+      "reviewOk": false,
+      "reviewIssues": [
+        "搜索框内图标为'Q'，但需求要求为'search'图标；定位：搜索框左侧图标",
+        "分类标签栏中'产品'标签被裁切，未完整显示；定位：横向滚动标签栏最右侧",
+        "入门卡片的标题文字未左对齐，存在轻微偏移；定位：所有6张卡片的标题区域",
+        "顶部留白区高度不足64px，实际视觉高度小于预期；定位：搜索框上方空白区域"
+      ],
+      "validationOk": false,
+      "validationIssues": [
+        "element overflows viewport: <div#14_1030940> left=-64 right=123",
+        "element overflows viewport: <div#14_1030942> left=-61 right=46",
+        "element overflows viewport: <div> left=0 right=480",
+        "element overflows viewport: <span> left=37 right=467",
+        "element overflows viewport: <div> left=0 right=480"
+      ],
+      "assetWarnings": []
+    },
+    {
+      "state_id": 3,
+      "file": "state_3.html",
+      "finalScreenshotOk": true,
+      "finalScreenshot": "state_3_final.png",
+      "reviewOk": true,
+      "reviewIssues": [],
+      "validationOk": false,
+      "validationIssues": [
+        "element overflows viewport: <div#14_1030940> left=-64 right=123",
+        "element overflows viewport: <div#14_1030942> left=-61 right=46",
+        "element overflows viewport: <div> left=0 right=480",
+        "element overflows viewport: <div> left=0 right=480",
+        "element overflows viewport: <div> left=16 right=464"
+      ],
+      "assetWarnings": []
+    },
+    {
+      "state_id": 4,
+      "file": "state_4.html",
+      "finalScreenshotOk": true,
+      "finalScreenshot": "state_4_final.png",
+      "reviewOk": true,
+      "reviewIssues": [],
+      "validationOk": false,
+      "validationIssues": [
+        "icon ligature visible as text: \"wifi\"",
+        "icon ligature visible as text: \"arrow_back\"",
+        "element overflows viewport: <div#14_1030940> left=-64 right=123",
+        "element overflows viewport: <div#14_1030942> left=-61 right=46"
+      ],
+      "assetWarnings": []
+    },
+    {
+      "state_id": 5,
+      "file": "state_5.html",
+      "finalScreenshotOk": true,
+      "finalScreenshot": "state_5_final.png",
+      "reviewOk": false,
+      "reviewIssues": [
+        "背景色错误：需求要求全屏浅红#FFF5F5，但截图显示为白色（#FFFFFF），未达到预期的浅红色调。",
+        "图标样式不符：需求要求红色感叹号图标（24x24px），但截图中图标为红色三角形警告标志，非标准感叹号，且尺寸疑似不匹配。",
+        "按钮宽度不一致：需求规定按钮宽120px，但截图中按钮宽度明显小于120px，视觉上偏窄，可能影响点击区域。",
+        "卡片阴影过弱：需求阴影为0 4px 12px rgba(0,0,0,0.08)，但截图中阴影几乎不可见，缺乏层次感，不符合鸿蒙设计规范。"
+      ],
+      "validationOk": false,
+      "validationIssues": [
+        "element overflows viewport: <div#14_1030940> left=-64 right=123",
+        "element overflows viewport: <div#14_1030942> left=-61 right=46",
+        "element overflows viewport: <div> left=-80 right=440"
+      ],
+      "assetWarnings": []
+    },
+    {
+      "state_id": 6,
+      "file": "state_6.html",
+      "finalScreenshotOk": true,
+      "finalScreenshot": "state_6_final.png",
+      "reviewOk": true,
+      "reviewIssues": [],
+      "validationOk": false,
+      "validationIssues": [
+        "element overflows viewport: <div#14_1030940> left=-64 right=123",
+        "element overflows viewport: <div#14_1030942> left=-61 right=46",
+        "element overflows viewport: <div> left=-60 right=420"
+      ],
+      "assetWarnings": []
+    }
+  ],
+  "ok": false
+}

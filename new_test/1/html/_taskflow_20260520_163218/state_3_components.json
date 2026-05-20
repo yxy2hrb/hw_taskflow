@@ -1,0 +1,20 @@
+{
+  "state_id": 3,
+  "state_name": "部署方式配置页",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "语言一致性：弹窗中的 'Wi-Fi' 使用英文，而原页面主语言为中文，应统一使用中文 'Wi-Fi'。",
+      "基础样式：确认按钮背景色为 #0A59F7（蓝色），但需求中要求为 #1E6EFF，颜色不匹配。",
+      "基础样式：取消按钮文字颜色为 #0A59F7（蓝色），但需求中要求为 #999，颜色不匹配。",
+      "基础样式：取消按钮边框颜色为 #0A59F7（蓝色），但需求中要求为 #999，颜色不匹配。",
+      "元素溢出：弹窗宽度为 328px，但容器内内容未完全居中对齐，且底部按钮高度为 40px，与需求中规定的 44px 不符。"
+    ],
+    "fixedBlocks": "[OLD]\n<button type=\"button\" style=\"flex:1;height:40px;padding:0 16px;background:rgba(0,0,0,0.05);color:#0A59F7;border:none;border-radius:20px;font-size:16px;font-weight:500;line-height:1.5;letter-spacing:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">取消</button>\n[NEW]\n<button type=\"button\" style=\"flex:1;height:44px;padding:0 16px;background:rgba(0,0,0,0.05);color:#999;border:1px solid #999;border-radius:8px;font-size:16px;font-weight:500;line-height:1.5;letter-spacing:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">取消</button>\n[OLD]\n<button type=\"button\" style=\"flex:1;height:40px;padding:0 16px;background:#0A59F7;color:#FFFFFF;border:none;border-radius:20px;font-size:16px;font-weight:500;line-height:1.5;letter-spacing:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">确认</button>\n[NEW]\n<button type=\"button\" style=\"flex:1;height:44px;padding:0 16px;background:#1E6EFF;color:#FFFFFF;border:none;border-radius:8px;font-size:16px;font-weight:500;line-height:1.5;letter-spacing:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">确认</button>\n[OLD]\n<span style=\"font-size:16px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.9);\">Wi-Fi</span>\n[NEW]\n<span style=\"font-size:16px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.9);\">Wi-Fi</span>",
+    "reviewMs": 26971,
+    "screenshot": 63154,
+    "fixedBlocksParsed": 3
+  }
+}

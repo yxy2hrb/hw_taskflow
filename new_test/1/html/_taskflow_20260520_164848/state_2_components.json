@@ -1,0 +1,13 @@
+{
+  "state_id": 2,
+  "state_name": "开局产品选择弹窗",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": true,
+    "issues": [],
+    "fixedBlocks": "",
+    "reviewMs": 3864,
+    "screenshot": 100122
+  }
+}

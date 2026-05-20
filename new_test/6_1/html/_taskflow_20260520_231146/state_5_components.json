@@ -1,0 +1,20 @@
+{
+  "state_id": 5,
+  "state_name": "网络失败页",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "背景色错误：需求要求全屏浅红#FFF5F5，但截图显示为白色（#FFFFFF），未达到预期的浅红色调。",
+      "图标样式不符：需求要求红色感叹号图标（24x24px），但截图中图标为红色三角形警告标志，非标准感叹号，且尺寸疑似不匹配。",
+      "按钮宽度不一致：需求规定按钮宽120px，但截图中按钮宽度明显小于120px，视觉上偏窄，可能影响点击区域。",
+      "卡片阴影过弱：需求阴影为0 4px 12px rgba(0,0,0,0.08)，但截图中阴影几乎不可见，缺乏层次感，不符合鸿蒙设计规范。"
+    ],
+    "fixedBlocks": "[OLD]\n<div style=\"position:fixed; inset:0; z-index:9999; background:rgba(255,255,255,1); overflow-y:auto; font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif; box-sizing:border-box;\">\n  <div style=\"display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; height:100vh; padding:0 16px; box-sizing:border-box;\">\n    <div style=\"width:520px; height:240px; background:#FFFFFF; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.08); padding:32px 24px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; box-sizing:border-box;\">\n      <span class=\"mi\" style=\"font-size:24px; color:#E53935; margin-bottom:12px;\">warning</span>\n      <h2 style=\"font-size:18px; font-weight:500; color:#E53935; line-height:1.3; margin:0 0 8px 0;\">网络连接失败</h2>\n      <p style=\"font-size:14px; font-weight:400; color:#666; line-height:1.5; margin:0; word-break:break-word;\">请检查网络后点击重试</p>\n      <button type=\"button\" style=\"margin-top:24px; padding:10px 24px; background:#46B1E3; border:none; border-radius:6px; font-size:14px; font-weight:500; color:#FFFFFF; cursor:pointer; width:120px; height:40px;\">重试</button>\n    </div>\n  </div>\n</div>\n[NEW]\n<div style=\"position:fixed; inset:0; z-index:9999; background:#FFF5F5; overflow-y:auto; font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif; box-sizing:border-box;\">\n  <div style=\"display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; height:100vh; padding:0 16px; box-sizing:border-box;\">\n    <div style=\"width:520px; height:240px; background:#FFFFFF; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.08); padding:32px 24px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; box-sizing:border-box;\">\n      <span class=\"mi\" style=\"font-size:24px; color:#E53935; margin-bottom:12px;\">warning</span>\n      <h2 style=\"font-size:18px; font-weight:500; color:#E53935; line-height:1.3; margin:0 0 8px 0;\">网络连接失败</h2>\n      <p style=\"font-size:14px; font-weight:400; color:#666; line-height:1.5; margin:0; word-break:break-word;\">请检查网络后点击重试</p>\n      <button type=\"button\" style=\"margin-top:24px; padding:10px 24px; background:#46B1E3; border:none; border-radius:6px; font-size:14px; font-weight:500; color:#FFFFFF; cursor:pointer; width:120px; height:40px;\">重试</button>\n    </div>\n  </div>\n</div>",
+    "reviewMs": 28995,
+    "screenshot": 24950,
+    "reviewOnly": true,
+    "fixedBlocksIgnored": true
+  }
+}

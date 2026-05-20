@@ -1,0 +1,18 @@
+{
+  "state_id": 4,
+  "state_name": "创建成功提示态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "成功提示横条的 top 值应为 56px（顶部导航栏高度），但当前设置为 32px，导致横条与状态栏重叠，视觉上不正确。",
+      "成功提示横条的背景色应为 #52C418，opacity:0.9，但截图中显示为纯绿色，未体现半透明效果，不符合规范要求。"
+    ],
+    "fixedBlocks": "[OLD]\n<div style=\"position:absolute;top:32px;left:0;width:100%;height:48px;background:rgba(82,196,24,0.9);display:flex;align-items:center;justify-content:center;z-index:1001;\">\n  <span class=\"mi\" style=\"font-size:24px;color:#FFFFFF;vertical-align:middle;margin-right:8px;\">check_circle</span>\n  <span style=\"font-size:16px;font-family:'HarmonyHeiTi-Medium';font-weight:500;color:#FFFFFF;vertical-align:middle;\">创建成功</span>\n</div>\n[NEW]\n<div style=\"position:absolute;top:56px;left:0;width:100%;height:48px;background:rgba(82,196,24,0.9);display:flex;align-items:center;justify-content:center;z-index:1001;\">\n  <span class=\"mi\" style=\"font-size:24px;color:#FFFFFF;vertical-align:middle;margin-right:8px;\">check_circle</span>\n  <span style=\"font-size:16px;font-family:'HarmonyHeiTi-Medium';font-weight:500;color:#FFFFFF;vertical-align:middle;\">创建成功</span>\n</div]",
+    "reviewMs": 11967,
+    "screenshot": 39431,
+    "reviewOnly": true,
+    "fixedBlocksIgnored": true
+  }
+}

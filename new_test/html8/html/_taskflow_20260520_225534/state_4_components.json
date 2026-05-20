@@ -1,0 +1,13 @@
+{
+  "state_id": 4,
+  "state_name": "卡片移除后布局重排态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": true,
+    "issues": [],
+    "fixedBlocks": "",
+    "reviewMs": 9382,
+    "screenshot": 124589
+  }
+}

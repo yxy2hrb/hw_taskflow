@@ -1,0 +1,13 @@
+{
+  "state_id": 2,
+  "state_name": "长按触发悬浮菜单态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": true,
+    "issues": [],
+    "fixedBlocks": "",
+    "reviewMs": 9247,
+    "screenshot": 97295
+  }
+}

@@ -1,0 +1,15 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "行业资讯首页初始态",
+    "description": "页面为垂直滚动列表，顶部有状态栏（显示时间/信号/电量），中部为行业资讯卡片流（每张含标题、摘要、发布时间、来源图标），底部固定 Tab 导航栏（含‘首页’‘分类’‘我的’三图标）；右上角操作栏内嵌一个未填充的筛选图标（SVG 矢量，线条色 #191919，尺寸 24×24px），无任何浮层或遮罩。",
+    "implementation_method": "原始 HTML 初始快照，不做改造。"
+  },
+  {
+    "state_id": 2,
+    "state_name": "筛选面板展开态",
+    "description": "全屏覆盖一层半透明黑色遮罩（background-color: rgba(25, 25, 25, 0.3)），其上居中悬浮一张白色圆角卡片（宽 343px，高 480px，border-radius: 16px，box-shadow: 0 8px 24px rgba(0,0,0,0.08)）；卡片顶部居中显示‘筛选’标题（HarmonyOS Sans SC-Medium，20px，#191919）；下方依次排列三组控件：Time 单选按钮组（两行文字‘最新到最早’‘最早到最新’，左侧带实心圆点选中态）、Popularity 单选按钮组（同结构，文案‘降序’‘升序’）、Content 多选标签组（横向滚动区域，含 8 个浅灰底圆角标签，当前仅‘All’为深灰文字+下划线，其余为 #777777 常规文字）；卡片底部固定两个按钮：左‘取消’（12px Medium，#777777）、右‘确认’（12px Medium，#191919）。",
+    "implementation_method": "基于 last_state=state_1：保留顶部状态栏、底部 Tab 导航栏、主内容容器及所有资讯卡片结构；删除无；新增全屏半透遮罩层（class='fill-场景background-colorcolor-bg-mask-6_30741'）与居中白色圆角筛选卡片（含标题、三组控件、底部双按钮）。",
+    "last_state": 1
+  }
+]

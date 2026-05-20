@@ -1,0 +1,15 @@
+{
+  "state_id": 6,
+  "state_name": "权限不足页",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": true,
+    "issues": [],
+    "fixedBlocks": "",
+    "reviewMs": 5950,
+    "screenshot": 20205,
+    "reviewOnly": true,
+    "fixedBlocksIgnored": false
+  }
+}

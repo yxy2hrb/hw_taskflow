@@ -1,0 +1,36 @@
+[
+    {
+      "state_id": 1,
+      "state_name": "个人信息展示状态 (初始)",
+      "description": "页面展示用户当前的个人信息列表，其中“姓名”栏显示当前名字（李华），右侧有箭头指示可点击编辑。",
+      "implementation_method": "列表项 (List Item)：显示标签 '姓名'、当前值 '李华' 及右向导航箭头 (Chevron Right)。"
+    },
+    {
+      "state_id": 2,
+      "state_name": "编辑页-无内容/按钮禁用状态",
+      "last_state": 1,
+      "description": "进入编辑页面，如果输入框为空（或用户清空了内容），底部保存按钮置灰，不可点击。",
+      "implementation_method": "输入框 (Input Field) 显示提示文本 '请输入姓名'；底部按钮 (Button) 样式为灰色/禁用态 (Disabled)。"
+    },
+    {
+      "state_id": 3,
+      "state_name": "编辑页-输入中状态",
+      "last_state": 2,
+      "description": "用户正在输入新名称（李飞），软键盘弹出，输入框获得焦点，右侧出现“清除”图标。",
+      "implementation_method": "输入框 (Input Field) 处于激活态，显示光标及清除按钮 (Clear/X Icon)；底部弹出系统9键键盘。"
+    },
+    {
+      "state_id": 4,
+      "state_name": "编辑页-待保存状态",
+      "last_state": 2,
+      "description": "输入框内有有效内容，底部保存按钮变为高亮颜色，表示可以提交。",
+      "implementation_method": "底部按钮 (Button) 样式变为品牌色/蓝色 (Active/Primary Color)，文字为白色 '保存'。"
+    },
+    {
+      "state_id": 5,
+      "state_name": "保存成功/结果反馈状态",
+      "last_state": 1,
+      "description": "用户点击保存后返回个人信息页，系统弹出成功提示，且姓名栏内容已更新为新名称（李飞）。",
+      "implementation_method": "组合反馈：1. 轻量级提示 (Toast) 居中显示 '保存成功'；2. 列表项文本更新为 '李飞'。"
+    }
+  ]

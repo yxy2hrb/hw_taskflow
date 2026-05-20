@@ -1,0 +1,78 @@
+[OLD]
+<script>
+
+</script>
+[NEW]
+<script>
+
+</script>
+<!-- 任务节点开始: 筛选面板展开态【临时】 -->
+<div style="position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;font-family:HarmonyHeiTi,&quot;HarmonyOS Sans&quot;,sans-serif;">
+  <div style="max-width:328px;width:calc(100% - 32px);padding:24px;box-sizing:border-box;background:#FFFFFF;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,0.08);word-break:break-word;overflow-wrap:anywhere;">
+    <h2 style="font-size:20px;font-weight:700;line-height:1.3;color:rgba(0,0,0,0.9);text-align:center;margin:0 0 24px 0;">Filter</h2>
+    <div style="margin-bottom:24px;">
+      <h3 style="font-size:16px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.9);margin:0 0 12px 0;">Time</h3>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <label style="display:flex;align-items:center;gap:12px;padding:8px 0;cursor:pointer;">
+          <span style="width:20px;height:20px;border:1.5px solid rgba(0,0,0,0.6);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+            <span style="width:10px;height:10px;background:#0A59F7;border-radius:50%;"></span>
+          </span>
+          <span style="font-size:16px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.9);">Newest first</span>
+        </label>
+        <label style="display:flex;align-items:center;gap:12px;padding:8px 0;cursor:pointer;">
+          <span style="width:20px;height:20px;border:1.5px solid rgba(0,0,0,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;"></span>
+          <span style="font-size:16px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.6);">Oldest first</span>
+        </label>
+      </div>
+    </div>
+    <div style="margin-bottom:24px;">
+      <h3 style="font-size:16px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.9);margin:0 0 12px 0;">Popularity</h3>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <label style="display:flex;align-items:center;gap:12px;padding:8px 0;cursor:pointer;">
+          <span style="width:20px;height:20px;border:1.5px solid rgba(0,0,0,0.6);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+            <span style="width:10px;height:10px;background:#0A59F7;border-radius:50%;"></span>
+          </span>
+          <span style="font-size:16px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.9);">Descending</span>
+        </label>
+        <label style="display:flex;align-items:center;gap:12px;padding:8px 0;cursor:pointer;">
+          <span style="width:20px;height:20px;border:1.5px solid rgba(0,0,0,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;"></span>
+          <span style="font-size:16px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.6);">Ascending</span>
+        </label>
+      </div>
+    </div>
+    <div style="margin-bottom:24px;">
+      <h3 style="font-size:16px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.9);margin:0 0 12px 0;">Content</h3>
+      <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch;">
+        <div style="flex-shrink:0;padding:6px 12px;background:#F1F3F5;border-radius:8px;">
+          <span style="font-size:14px;font-weight:500;line-height:1.5;color:#0A59F7;text-decoration:underline;">All</span>
+        </div>
+        <div style="flex-shrink:0;padding:6px 12px;background:#F1F3F5;border-radius:8px;">
+          <span style="font-size:14px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.6);">Enterprise</span>
+        </div>
+        <div style="flex-shrink:0;padding:6px 12px;background:#F1F3F5;border-radius:8px;">
+          <span style="font-size:14px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.6);">Real Estate</span>
+        </div>
+        <div style="flex-shrink:0;padding:6px 12px;background:#F1F3F5;border-radius:8px;">
+          <span style="font-size:14px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.6);">Education</span>
+        </div>
+        <div style="flex-shrink:0;padding:6px 12px;background:#F1F3F5;border-radius:8px;">
+          <span style="font-size:14px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.6);">Healthcare</span>
+        </div>
+        <div style="flex-shrink:0;padding:6px 12px;background:#F1F3F5;border-radius:8px;">
+          <span style="font-size:14px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.6);">Finance</span>
+        </div>
+        <div style="flex-shrink:0;padding:6px 12px;background:#F1F3F5;border-radius:8px;">
+          <span style="font-size:14px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.6);">Digital Government</span>
+        </div>
+        <div style="flex-shrink:0;padding:6px 12px;background:#F1F3F5;border-radius:8px;">
+          <span style="font-size:14px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.6);">Smart Manufacturing</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:12px;">
+      <button type="button" style="flex:1;height:40px;padding:0 16px;background:rgba(0,0,0,0.05);color:#0A59F7;border:none;border-radius:20px;font-size:16px;font-weight:500;line-height:1.5;cursor:pointer;">Cancel</button>
+      <button type="button" style="flex:1;height:40px;padding:0 16px;background:#0A59F7;color:#FFFFFF;border:none;border-radius:20px;font-size:16px;font-weight:500;line-height:1.5;cursor:pointer;">Confirm</button>
+    </div>
+  </div>
+</div>
+<!-- 任务节点结束: 筛选面板展开态【临时】 -->
