@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "title": "创建项目集全流程",
+    "slug": "create-project-set-flow",
+    "user_story": "已登录的企业协作者 | 在‘我的工作台’页面点击‘创建项目集’按钮 | 填写名称并指定归属类型 → 系统校验所选项目是否匹配该类型 → 用户点击确认后生成项目集 | 顶部弹出‘创建成功’Toast，且页面自动跳转回工作台列表",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "我的工作台列表页",
+      "description": "页面为全屏移动端布局，顶部状态栏显示时间与信号图标，中央区域为卡片式项目集列表；右上角悬浮红色圆形按钮，内含加号图标；底部无 Tab 栏；背景为浅灰（#F3F3F3）；按钮文字不可见，仅以图标标识。",
+      "implementation_method": "原始 HTML 初始快照，不做改造",
+      "last_state": null
+    },
+    {
+      "state_id": 2,
+      "state_name": "创建项目集全屏页初始态",
+      "description": "全屏覆盖原工作台页，顶部固定深灰返回箭头（左对齐，宽24px、高24px，颜色rgba(0,0,0,0.899)），正中显示黑色标题‘创建项目集’（16px Medium 字体）；下方依次为：白色圆角输入框（占宽90%，高44px，placeholder‘请输入项目集名称’）、归属类型单选组（横向排列‘公司’/‘个人’按钮，均未选中，灰色边框+灰色文字）、项目添加区（浅灰底色，高120px，中央带+号图标与‘添加项目’文字）；底部红色实心按钮（宽90%、高48px、圆角8px、文字‘确认’居中白色）。",
+      "implementation_method": "基于 last_state=state_1：保留顶部状态栏；删除工作台列表所有卡片及右上角红色按钮；新增全屏覆盖层（浅灰背景#F5F5F5@0.8 blur(24px)），内含返回箭头、标题、表单三段结构及底部红色按钮。",
+      "last_state": 1
+    },
+    {
+      "state_id": 3,
+      "state_name": "填写后校验失败态",
+      "description": "画面结构与 state_2 完全一致，但名称输入框下方显示红色提示文字‘请输入项目集名称’（14px，rgba(235,74,74,1)）；归属类型单选组中两个选项均未高亮，文字呈灰色（rgba(0,0,0,0.6)），右侧无选中标记；项目添加区整体置灰（opacity:0.4），+号图标与‘添加项目’文字变浅（rgba(0,0,0,0.3)），区域下方无任何项目条目；底部红色‘确认’按钮仍为可点击态（未禁用）。",
+      "implementation_method": "基于 last_state=state_2：保留全部骨架（返回箭头、标题、输入框、单选组、添加区、底部按钮）；删除无；新增名称输入框下方红色提示文字‘请输入项目集名称’（'Please enter project set name'）；新增归属类型区域无选中态视觉反馈；新增项目添加区 opacity:0.4 及内部元素降权样式。",
+      "last_state": 2
+    },
+    {
+      "state_id": 4,
+      "state_name": "创建中过渡态",
+      "description": "画面结构与 state_2 完全一致，但底部红色‘确认’按钮变为禁用态（背景色#E0E0E0，文字颜色rgba(0,0,0,0.3)，不可点击），按钮内文字改为‘创建中…’（16px Medium），右侧紧邻静态三像素点连线加载图标（三个10px圆点，水平排列，间距8px，颜色#191919）；其余所有区域（输入框、单选组、添加区）保持可读状态，无遮罩，无动画效果；顶部返回箭头仍可见但不可点击。",
+      "implementation_method": "基于 last_state=state_2：保留全部骨架（返回箭头、标题、输入框、单选组、添加区）；删除无；新增底部按钮禁用态样式（背景#E0E0E0 + 文字‘创建中…’ + 静态三像素点加载图标（'Creating...' + three-dot static loader））。",
+      "last_state": 2
+    },
+    {
+      "state_id": 5,
+      "state_name": "创建成功终态",
+      "description": "画面与 state_1 完全一致：顶部状态栏正常显示，中央为项目集卡片列表，右上角红色加号按钮可见；顶部状态栏下方 64px 处悬浮绿色 Toast 条（宽80%、高44px、圆角8px、背景#4CAF50、左侧带白色勾选图标、文字‘创建成功’居中，右侧有关闭图标）；无遮罩、无浮层、无弹窗；底部无 Tab 栏。",
+      "implementation_method": "基于 last_state=state_1：保留顶部状态栏、项目集列表、右上角红色按钮；删除无；新增顶部 Toast 条（'Created successfully'，green background #4CAF50，white checkmark icon，close icon on right）。",
+      "last_state": 1
+    },
+    {
+      "state_id": 6,
+      "state_name": "取消创建态",
+      "description": "画面与 state_1 完全一致：顶部状态栏显示时间与信号图标，中央为项目集卡片列表，右上角悬浮红色圆形加号按钮，内含加号图标；背景为浅灰（#F3F3F3）；无任何遮罩、浮层、弹窗或表单残留；所有元素位置、颜色、尺寸与 state_1 初始快照完全相同。",
+      "implementation_method": "基于 last_state=state_1：保留原画面全部骨架；删除无；新增无（画面与 last_state 完全一致）。",
+      "last_state": 1
+    }
+  ]
+}

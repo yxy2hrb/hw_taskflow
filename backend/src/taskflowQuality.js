@@ -175,12 +175,35 @@ async function detectViewportOverflow(html, baseDir) {
     const probe = await page.evaluate((viewport) => {
       const vw = viewport.width;
       const bad = [];
+      function hasClippingAncestor(el, rect) {
+        let parent = el.parentElement;
+        while (parent && parent !== document.body && parent !== document.documentElement) {
+          const style = window.getComputedStyle(parent);
+          const overflow = `${style.overflow} ${style.overflowX} ${style.overflowY}`;
+          if (/(hidden|clip|auto|scroll)/.test(overflow)) {
+            const pr = parent.getBoundingClientRect();
+            if (rect.left < pr.left - 1 || rect.right > pr.right + 1) return true;
+          }
+          parent = parent.parentElement;
+        }
+        return false;
+      }
       for (const el of Array.from(document.body.querySelectorAll("*"))) {
         const style = window.getComputedStyle(el);
         if (style.display === "none" || style.visibility === "hidden" || Number(style.opacity) === 0) continue;
         const r = el.getBoundingClientRect();
         if (r.width < 4 || r.height < 4) continue;
-        if (r.left < -12 || r.right > vw + 12) {
+        const leftOverflow = Math.max(0, -r.left);
+        const rightOverflow = Math.max(0, r.right - vw);
+        if (leftOverflow <= 12 && rightOverflow <= 12) continue;
+        if (hasClippingAncestor(el, r)) continue;
+
+        // D2C HTML often contains side ornaments or mask fragments with negative
+        // coordinates. Treat them as noise unless they are large enough to be a
+        // likely primary container, or they create real horizontal scroll.
+        const severe = Math.max(leftOverflow, rightOverflow) > vw * 0.25;
+        const structural = r.width > vw * 0.75;
+        if (severe || structural) {
           bad.push({
             tag: el.tagName.toLowerCase(),
             id: el.id || "",

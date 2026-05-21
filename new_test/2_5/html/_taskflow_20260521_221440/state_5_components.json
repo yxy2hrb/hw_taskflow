@@ -1,0 +1,21 @@
+{
+  "state_id": 5,
+  "state_name": "创建成功终态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "语言一致性：截图中主语言为中文，但 Toast 文案‘创建成功’虽为中文，其左侧图标应为白色勾选（check_circle），而截图中显示为绿色圆圈内白勾，符合规范；右侧关闭图标为 X，符合要求。整体语言一致，无英文混入，此项通过。",
+      "元素溢出：Toast 宽度设置为 80%（288px）且 max-width:288px，在 360px 画布内未超出边界；文字‘创建成功’居中显示，未被裁切；左右图标均完整可见，无溢出问题，此项通过。",
+      "可见性：description 要求顶部状态栏下方 64px 处悬浮绿色 Toast 条，截图中 Toast 确实存在且位于状态栏下方，但实际位置偏上（约 16px），与需求中的 'top:64px' 不符，导致位置偏差 → fail。",
+      "位置合理性：Toast 应在顶部状态栏下方 64px 处，但当前实际 top:16px，视觉上过于靠近状态栏，不符合 HarmonyOS 设计规范中关于 Toast 的标准间距（通常为 64px 或以上），位置不合理 → fail。",
+      "基础样式：Toast 背景色 #4CAF50、圆角 8px、阴影 0 4px 12px rgba(0,0,0,0.06) 均符合鸿蒙规范；字体 HarmonyHeiTi 与系统一致；颜色对比度良好；无纯黑底/纯白字、超粗阴影等问题，此项通过。"
+    ],
+    "fixedBlocks": "[OLD]\n<div style=\"position:fixed; top:16px; left:50%; transform:translateX(-50%); width:80%; max-width:288px; height:44px; padding:0 12px; background:#4CAF50; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.06); display:flex; align-items:center; justify-content:space-between; z-index:9999; font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif; color:#FFFFFF; font-size:16px; font-weight:500; line-height:1.5; word-break:break-word; overflow-wrap:anywhere;\">\n  <span class=\"mi\" style=\"font-size:20px;\">check_circle</span>\n  <span style=\"flex:1; text-align:center;\">创建成功</span>\n  <span class=\"mi\" style=\"font-size:20px;\">close</span>\n</div>\n[NEW]\n<div style=\"position:fixed; top:64px; left:50%; transform:translateX(-50%); width:80%; max-width:288px; height:44px; padding:0 12px; background:#4CAF50; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.06); display:flex; align-items:center; justify-content:space-between; z-index:9999; font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif; color:#FFFFFF; font-size:16px; font-weight:500; line-height:1.5; word-break:break-word; overflow-wrap:anywhere;\">\n  <span class=\"mi\" style=\"font-size:20px;\">check_circle</span>\n  <span style=\"flex:1; text-align:center;\">创建成功</span>\n  <span class=\"mi\" style=\"font-size:20px;\">close</span>\n</div>",
+    "reviewMs": 22976,
+    "screenshot": 57980,
+    "reviewOnly": true,
+    "fixedBlocksIgnored": true
+  }
+}

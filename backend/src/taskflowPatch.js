@@ -478,7 +478,7 @@ const HARMONY_PATCH_GUIDE = `
   - 文字与图标必须 vertical-align center（用 flex + align-items: center）；
   - 不允许出现裸 <button> / <input> / <hr> 默认外观；
   - 弹窗关闭区域用透明遮罩，不写 "点击空白关闭" 文字提示；
-  - 任何"覆盖"位置使用 position:fixed; inset:0; 不沿用设计稿的绝对坐标。
+  - Dialog / Bottom Sheet 的遮罩使用 position:fixed; inset:0；全屏业务页默认只覆盖状态栏以下内容区，使用 top:32px; left:0; right:0; bottom:0。
 `;
 
 // ───────── 语言检测 ─────────
@@ -648,7 +648,10 @@ ${HARMONY_PATCH_GUIDE}
 - 本 state 推荐布局类型：${layoutIntent}。必须按语义选择布局，禁止把所有浮层都强行写成居中遮罩弹窗。
 - Centered Dialog：根节点 position:fixed; inset:0; z-index≥9999; background:rgba(0,0,0,0.40); display:flex; align-items:center; justify-content:center；内部白底卡片 max-width:328px。
 - Bottom Sheet：当描述含"底部抽屉 / 底部弹窗 / bottom sheet"时，根节点必须 position:fixed; inset:0; z-index≥9999; display:flex; align-items:flex-end; justify-content:center；面板贴底，width:100%，max-width:360px，顶部圆角 24px/32px，底部安全区留白；禁止 align-items:center。
-- Full Screen Page：当语义是全屏页 / 独立页面 / 全屏面板时，根节点必须 position:fixed; inset:0; z-index≥9999; background:#FFFFFF 或 #F1F3F5 完全不透明；不要使用半透明遮罩。
+- Full Screen Page：当语义是全屏页 / 独立页面 / 全屏面板时，默认理解为"覆盖 app 内容区"，不是隐藏系统状态栏。
+  根节点必须 position:fixed; top:32px; left:0; right:0; bottom:0; z-index≥9999; background:#FFFFFF 或 #F1F3F5 完全不透明；不要使用半透明遮罩。
+  只有 description / implementation_method 明确写"沉浸式 / 隐藏状态栏 / 覆盖状态栏 / splash / 图片预览全屏"时，才允许 position:fixed; inset:0。
+  如果 description / implementation_method 写"保留顶部状态栏 / 保留时间信号 / keep status bar"，严禁 inset:0，必须从 top:32px 开始覆盖。
 - 如果 description / implementation_method 明确写"无遮罩 / 无弹窗 / no overlay / no modal"，禁止生成 rgba(0,0,0,0.40) 遮罩或 position:fixed; inset:0 的 modal 根节点。
 - 禁止出现 top > 200px；禁止沿用设计稿里的大绝对坐标；
 - 移动端画布内的弹窗必须使用移动端字号，宽度不得超出画布；
@@ -704,7 +707,7 @@ ${HARMONY_PATCH_GUIDE}
 1. [OLD] = 选某个 body 内合适的锚点（如某个 frame 容器开头的注释行），**只占 1~2 行**；
 2. [NEW] = 复述 [OLD] 锚点 + 紧跟一个 \`<!-- 任务节点开始: <name>【临时】 -->\` 包裹的**绝对定位全屏覆盖层**：
    \`\`\`
-   <div style="position:fixed; inset:0; z-index:9999; background:#FFFFFF; overflow-y:auto; box-sizing:border-box; font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;">
+   <div style="position:fixed; top:32px; left:0; right:0; bottom:0; z-index:9999; background:#FFFFFF; overflow-y:auto; box-sizing:border-box; font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;">
      <!-- 顶部导航栏 -->
      <div style="position:sticky; top:0; height:56px; padding:0 16px; display:flex; align-items:center; gap:12px; background:#FFFFFF; border-bottom:1px solid rgba(0,0,0,0.08); z-index:1;">
        <span class="mi" style="font-size:24px; color:rgba(0,0,0,0.9);">arrow_back</span>
@@ -727,8 +730,9 @@ ${HARMONY_PATCH_GUIDE}
      </div>
    </div>
    \`\`\`
-3. **关键**：覆盖层根节点必须 \`position:fixed; inset:0; z-index:9999; background:#FFFFFF; overflow-y:auto;\`，
-   这样原页面所有内容都会被遮住，不需要去精确找"整个主页根容器"作为 [OLD]。
+3. **关键**：覆盖层根节点默认必须 \`position:fixed; top:32px; left:0; right:0; bottom:0; z-index:9999; background:#FFFFFF; overflow-y:auto;\`，
+   这样原页面 app 内容会被遮住，但系统状态栏仍沿用原页面；不需要去精确找"整个主页根容器"作为 [OLD]。
+   只有明确要求隐藏状态栏 / 沉浸式全屏时，才改成 \`inset:0\`。
 
 ✅ 替代做法 - 整体替换（更彻底，但需要找到正确的根容器）：
 - [OLD] 为整个主页 \`<div id="某根" class="某类">…\` 完整拷贝；
@@ -888,12 +892,12 @@ D2C 设计稿常把多状态的 frame 都展开成 DOM，浮层背后的原元�
 
 ==================【共享视觉骨架 - 全屏新页面继承规则（重点！）】==================
 什么叫"全屏新页面"？description 含"独立全屏页 / 进入 X 页面 / 全新设置页 / 独立 list 页"等，且
-implementation_method 提到"position:fixed; inset:0 / 全屏覆盖 / 100% 高度新页面" → 算"全屏新页面"。
+implementation_method 提到"position:fixed / 全屏覆盖 / 100% 高度新页面" → 算"全屏新页面"。
 
 这种 state **必须**自带与原页面一致的"系统级骨架"，否则会显得页面被截掉一块：
 1) **顶部状态栏（Status Bar）**：原 HTML 顶部含时间 / 信号 / 4G / 电量 100% 那条窄条，
-   新页面**必须**在自己的根 div 顶部复用相同结构（直接复制原代码顶部状态栏的 HTML 进来），
-   或至少保留 \`padding-top:32px\` 给系统状态栏让位；
+   默认必须保留在覆盖层外面：覆盖层根节点用 \`top:32px; left:0; right:0; bottom:0\`，不要用 \`inset:0\` 把状态栏盖住。
+   只有 brief 明确说"隐藏状态栏 / 沉浸式 / 覆盖状态栏"时，才可以 \`inset:0\` 并在覆盖层里重画状态栏；
 2) **顶部导航栏（Nav Bar）**：原 HTML 主页面顶部含"← + 标题 + 右上图标"那条横栏，
    全屏新页面通常需要自己的 nav bar（"← + 新页面标题"），但必须保持**视觉同构**
    （高度、字号、左右内边距、返回箭头位置都要和原页面一致）；
@@ -904,9 +908,8 @@ implementation_method 提到"position:fixed; inset:0 / 全屏覆盖 / 100% 高�
 ❌ 严禁全屏 \`position:fixed; inset:0\` 直接占满，里面只画"列表+按钮"，让顶部状态栏和导航栏完全消失。
 ✅ 正例：state_3 是"独立兴趣选择页"
    [NEW]
-   <div style="position:fixed; inset:0; z-index:9999; background:#fff; display:flex; flex-direction:column;">
-     <!-- ① 复制原页面顶部状态栏（08:08 / 4G / 电量），保持系统骨架不变 -->
-     <div class="status-bar" style="height:32px; ...">…原状态栏 HTML…</div>
+   <div style="position:fixed; top:32px; left:0; right:0; bottom:0; z-index:9999; background:#fff; display:flex; flex-direction:column;">
+     <!-- ① 原页面顶部状态栏仍在覆盖层外可见，不要重画粗糙状态栏 -->
      <!-- ② 新页面自带的 nav bar（与原 nav bar 视觉同构） -->
      <div class="nav-bar" style="height:48px; padding:0 16px; display:flex; align-items:center;">
        <span class="mi" style="font-size:24px;">arrow_back</span>
@@ -917,7 +920,7 @@ implementation_method 提到"position:fixed; inset:0 / 全屏覆盖 / 100% 高�
    </div>
 
 ==================【全屏面板/Panel 不透明 - 硬约束（重点！防止 base 透出来）】==================
-当 [NEW] 写"全屏 panel / 全屏覆盖页 / 全屏选择面板 / 全屏新页面"（任何 \`position:fixed; inset:0\` 占满整屏的容器）时：
+当 [NEW] 写"全屏 panel / 全屏覆盖页 / 全屏选择面板 / 全屏新页面"（任何 \`position:fixed\` 覆盖主体画布的容器）时：
 
 ❌ 严禁：根容器 background 用半透明色（\`rgba(0,0,0,0.x)\` / \`rgba(255,255,255,0.x)\` / \`transparent\`）。
    半透明背景会让 base D2C 内容**像素级穿透**到 panel 上——你以为画了 7 张卡片，截图里看到的是

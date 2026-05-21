@@ -1,0 +1,19 @@
+{
+  "state_id": 2,
+  "state_name": "快速入门页初始态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "分类标签栏中'数通'标签的下划线未按需求显示为蓝色，实际为默认颜色；定位：分类标签栏区域",
+      "卡片式条目中的说明文字在截图中存在换行不一致问题，如'了解SOHO网关基础配置与常见问题处理'应为单行但实际折行；定位：第一行卡片说明文本",
+      "顶部导航栏右侧分享图标背景色应为#F1F3F5，但截图中显示为浅灰偏白，不符合规范；定位：顶部导航栏右侧分享图标"
+    ],
+    "fixedBlocks": "[OLD]\n<div style=\"padding:6px 12px; border-bottom:2px solid #0A59F7; display:flex; align-items:center; gap:4px;\">\n  <span style=\"font-size:12px; font-weight:500; color:#0A59F7;\">数通</span>\n</div>\n[NEW]\n<div style=\"padding:6px 12px; border-bottom:2px solid #0A59F7; display:flex; align-items:center; gap:4px;\">\n  <span style=\"font-size:12px; font-weight:500; color:#0A59F7;\">数通</span>\n</div>\n[OLD]\n<div style=\"font-size:12px; color:rgba(0,0,0,0.6); line-height:1.5; margin-top:4px;\">了解SOHO网关基础配置与常见问题处理</div>\n[NEW]\n<div style=\"font-size:12px; color:rgba(0,0,0,0.6); line-height:1.5; margin-top:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:200px;\">了解SOHO网关基础配置与常见问题处理</div>\n[OLD]\n<span class=\"mi\" style=\"font-size:24px; color:rgba(0,0,0,0.6); background:#F1F3F5; width:32px; height:32px; border-radius:16px; display:flex; align-items:center; justify-content:center;\">share</span>\n[NEW]\n<span class=\"mi\" style=\"font-size:24px; color:rgba(0,0,0,0.6); background:#F1F3F5; width:32px; height:32px; border-radius:16px; display:flex; align-items:center; justify-content:center;\">share</span>",
+    "reviewMs": 25593,
+    "screenshot": 87844,
+    "reviewOnly": true,
+    "fixedBlocksIgnored": true
+  }
+}

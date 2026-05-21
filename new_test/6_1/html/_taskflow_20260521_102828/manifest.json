@@ -1,0 +1,164 @@
+{
+  "title": "售后文档快速入门",
+  "slug": "after-sales-docs-quick-start",
+  "createdAt": "2026-05-21T02:35:24.069Z",
+  "meta": {
+    "title": "售后文档快速入门",
+    "slug": "after-sales-docs-quick-start",
+    "user_story": "已登录的售后技术支持人员在‘我的工作台’卡片中点击‘快速入门’按钮，快速找到某类产品（如SOHO网关）的入门文档，系统默认聚焦该分类并展示条目，用户点击‘查看’进入详情页",
+    "platform": "mobile"
+  },
+  "blueprintValidation": {
+    "ok": true,
+    "issues": []
+  },
+  "blueprintIntentReview": {
+    "ok": true,
+    "score": 92,
+    "decision": "pass",
+    "majorIssues": [],
+    "minorIssues": [
+      "state_4（产品文档详情页）的标题文案为‘SOHO网关入门指南’，但 brief 要求跳转至‘对应产品文档详情页’，未体现动态性；虽属合理默认示例，但若 blueprint 无变量占位或说明，存在轻微状态泛化不足风险",
+      "state_2 副标题文案为‘产品知识快速入门’，与 brief 完全一致；但 state_4 导航栏中副标题被省略，而 brief 未要求移除副标题——不过 brief 仅明确初始快速入门页含副标题，未约束详情页，故此项仅为风格延续性小瑕疵，不构成 contradiction"
+    ],
+    "coverage": {
+      "coreAction": true,
+      "targetState": true,
+      "interactionPattern": true,
+      "language": true,
+      "stateChain": true,
+      "noContradiction": true
+    },
+    "source": "llm",
+    "repaired": false,
+    "continuedWithRisk": false,
+    "passScore": 75,
+    "repairAcceptScore": 65
+  },
+  "blueprintIntentRisk": false,
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "工作台首页",
+      "description": "纯白背景页面，顶部状态栏显示时间、信号与电量图标；中部可见‘售后文档’卡片，卡片内含标题‘售后文档’、副标题‘产品知识快速入门’及右对齐蓝色‘快速入门’按钮；底部 Tab 栏完整可见，当前选中‘我的工作台’标签。",
+      "implementation_method": "原始 HTML 初始快照，不做改造。",
+      "last_state": null,
+      "file": "state_1.html",
+      "finalScreenshot": "state_1_final.png",
+      "finalScreenshotOk": true,
+      "finalScreenshotError": null,
+      "reviewOk": null,
+      "reviewStatus": "not_applicable",
+      "reviewIssues": [],
+      "validationOk": true,
+      "validationIssues": [],
+      "assetWarnings": [],
+      "quality_failed": false
+    },
+    {
+      "state_id": 2,
+      "state_name": "快速入门页初始态",
+      "description": "全屏浅灰背景（#F3F3F3），顶部固定导航栏：左侧黑色返回箭头图标、右侧分享图标（灰色圆圈内白色转发符号）、居中大号标题‘快速入门’（16px Medium 字体，#000000 89%）、下方小号副标题‘产品知识快速入门’（14px Regular，#191919）；中部全宽搜索框（浅灰底、无边框、内含灰色‘搜索...’提示文字）；下方横向滚动分类标签栏（SOHO网关标签高亮蓝底+白色文字+下划线，其余标签为#666文字+无背景）；再下方三行卡片式条目，每张含左对齐 48×48px 缩略图、右侧产品名（14px Medium）、简短说明（12px Regular，#666）、右对齐蓝色‘查看’按钮（12px Medium，#46B1E3）。",
+      "implementation_method": "基于 last_state=state_1：保留顶部状态栏与底部 Tab 栏；删除‘售后文档’卡片及所有原内容区域；新增全屏快速入门页骨架（固定导航栏+搜索框+分类标签栏+三行卡片式条目）。",
+      "last_state": 1,
+      "file": "state_2.html",
+      "finalScreenshot": "state_2_final.png",
+      "finalScreenshotOk": true,
+      "finalScreenshotError": null,
+      "reviewOk": false,
+      "reviewStatus": "failed",
+      "reviewIssues": [
+        "分类标签栏中'数通'标签的下划线未按需求显示为蓝色，实际为默认颜色；定位：分类标签栏区域",
+        "卡片式条目中的说明文字在截图中存在换行不一致问题，如'了解SOHO网关基础配置与常见问题处理'应为单行但实际折行；定位：第一行卡片说明文本",
+        "顶部导航栏右侧分享图标背景色应为#F1F3F5，但截图中显示为浅灰偏白，不符合规范；定位：顶部导航栏右侧分享图标"
+      ],
+      "validationOk": false,
+      "validationIssues": [
+        "icon ligature visible as text: \"arrow_back\"",
+        "icon ligature visible as text: \"check_circle\""
+      ],
+      "assetWarnings": [],
+      "quality_failed": true
+    },
+    {
+      "state_id": 3,
+      "state_name": "快速入门页加载中",
+      "description": "全屏浅灰背景（#F3F3F3），顶部固定导航栏、搜索框、分类标签栏视觉与初始态完全一致；条目区域替换为三行灰色骨架占位块：每行由上方 48×48px 浅灰矩形（rgba(0,0,0,0.08)）、中间两段等长浅灰横条（高16px，rgba(0,0,0,0.08)，间距8px）、下方等宽浅灰‘查看’按钮占位块（高32px，圆角4px，rgba(0,0,0,0.08)）组成；无图标、无文字、无交互态。",
+      "implementation_method": "基于 last_state=state_2：保留顶部固定导航栏、搜索框、分类标签栏；删除三行卡片式条目；新增三行骨架占位块（48×48px 矩形 + 两条16px横条 + 32px按钮占位块，全部 rgba(0,0,0,0.08)）。",
+      "last_state": 2,
+      "file": "state_3.html",
+      "finalScreenshot": "state_3_final.png",
+      "finalScreenshotOk": true,
+      "finalScreenshotError": null,
+      "reviewOk": true,
+      "reviewStatus": "ok",
+      "reviewIssues": [],
+      "validationOk": false,
+      "validationIssues": [
+        "icon ligature visible as text: \"arrow_back\"",
+        "icon ligature visible as text: \"check_circle\""
+      ],
+      "assetWarnings": [],
+      "quality_failed": true
+    },
+    {
+      "state_id": 4,
+      "state_name": "产品文档详情页",
+      "description": "纯白背景页面，顶部固定导航栏仅保留左侧返回箭头图标与居中标题‘SOHO网关入门指南’（16px Medium，#000000 89%），无分享图标与副标题；正文区从上到下依次为：主图横幅（宽100%、高160px、浅灰底+虚线边框）、产品型号标题（18px Medium，#191919）、分段式文档内容（含加粗小标题14px Medium、正文段落14px Regular、代码块浅灰底+等宽字体、示意图占位框 200×120px 浅灰底+虚线边框）；底部固定栏含‘下载PDF’（14px Medium，#46B1E3）与‘分享’（14px Medium，#666）按钮，左右留白各16px。",
+      "implementation_method": "基于 last_state=state_1：保留顶部状态栏与底部 Tab 栏；删除‘售后文档’卡片及所有原内容区域；新增全屏详情页结构（固定导航栏+主图横幅+分段内容+底部固定按钮栏）。",
+      "last_state": 1,
+      "file": "state_4.html",
+      "finalScreenshot": "state_4_final.png",
+      "finalScreenshotOk": true,
+      "finalScreenshotError": null,
+      "reviewOk": true,
+      "reviewStatus": "ok",
+      "reviewIssues": [],
+      "validationOk": false,
+      "validationIssues": [
+        "icon ligature visible as text: \"arrow_back\""
+      ],
+      "assetWarnings": [],
+      "quality_failed": true
+    },
+    {
+      "state_id": 5,
+      "state_name": "网络失败页",
+      "description": "全屏浅灰背景（#F3F3F3），中央白色卡片（宽320px、圆角8px、阴影rgba(0,0,0,0.08)）：顶部居中感叹号图标（24×24px，#46B1E3）、主标题‘网络连接失败’（16px Medium，#191919）、副标题‘请检查网络后重试’（14px Regular，#666）、下方一个蓝色实心‘重试’按钮（宽120px、高36px、圆角4px、#46B1E3 背景+白色文字、14px Medium），按钮左右留白各16px；无其他元素，顶部状态栏与底部 Tab 栏正常可见。",
+      "implementation_method": "基于 last_state=state_2：保留顶部状态栏与底部 Tab 栏；删除搜索框、分类标签栏、条目区域；新增全屏失败提示卡片（含感叹号图标、双行文本、蓝色重试按钮）。",
+      "last_state": 2,
+      "file": "state_5.html",
+      "finalScreenshot": "state_5_final.png",
+      "finalScreenshotOk": true,
+      "finalScreenshotError": null,
+      "reviewOk": true,
+      "reviewStatus": "ok",
+      "reviewIssues": [],
+      "validationOk": true,
+      "validationIssues": [],
+      "assetWarnings": [],
+      "quality_failed": false
+    },
+    {
+      "state_id": 6,
+      "state_name": "空结果页",
+      "description": "全屏浅灰背景（#F3F3F3），顶部固定导航栏、搜索框、分类标签栏视觉与初始态完全一致；条目区域中央显示放大镜图标（24×24px，#666）、正下方文字‘没有找到相关入门文档’（14px Medium，#191919）、再下方配提示‘换个关键词试试’（12px Regular，#666）；无按钮、无缩略图、无分类标签交互反馈；顶部状态栏与底部 Tab 栏正常可见。",
+      "implementation_method": "基于 last_state=state_2：保留顶部固定导航栏、搜索框、分类标签栏；删除三行卡片式条目；新增中央空结果提示（放大镜图标+主文案+辅助提示）。",
+      "last_state": 2,
+      "file": "state_6.html",
+      "finalScreenshot": "state_6_final.png",
+      "finalScreenshotOk": true,
+      "finalScreenshotError": null,
+      "reviewOk": true,
+      "reviewStatus": "ok",
+      "reviewIssues": [],
+      "validationOk": false,
+      "validationIssues": [
+        "icon ligature visible as text: \"arrow_back\"",
+        "icon ligature visible as text: \"check_circle\""
+      ],
+      "assetWarnings": [],
+      "quality_failed": true
+    }
+  ]
+}

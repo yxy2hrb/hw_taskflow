@@ -1,0 +1,85 @@
+[OLD]
+<!-- 任务节点开始: 创建项目集全屏页初始态【临时】 -->
+<div style="position:fixed; top:32px; left:0; right:0; bottom:0; z-index:9999; background:#F5F5F5; overflow-y:auto; box-sizing:border-box; font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;">
+  <!-- 顶部导航栏 -->
+  <div style="position:sticky; top:0; height:48px; padding:0 16px; display:flex; align-items:center; gap:12px; background:#FFFFFF; border-bottom:1px solid rgba(0,0,0,0.08); z-index:1;">
+    <span class="mi" style="font-size:24px; color:rgba(0,0,0,0.899);">arrow_back</span>
+    <span style="flex:1; text-align:center; font-size:16px; font-weight:500; color:rgba(0,0,0,0.9);">创建项目集</span>
+    <span style="width:24px;"></span>
+  </div>
+  <!-- 内容主体 -->
+  <div style="padding:24px 16px; display:flex; flex-direction:column; gap:24px;">
+    <div>
+      <input type="text" placeholder="请输入项目集名称" value=""
+        style="width:90%; height:44px; padding:0 16px; border:1px solid rgba(0,0,0,0.12); border-radius:8px;
+               font-size:16px; color:rgba(0,0,0,0.9); box-sizing:border-box; outline:none; background:#FFFFFF;">
+    </div>
+    <div style="display:flex; gap:12px;">
+      <button style="flex:1; height:40px; padding:0 16px; background:#F1F3F5; border:1px solid rgba(0,0,0,0.1); border-radius:20px;
+                     font-size:16px; font-weight:500; color:rgba(0,0,0,0.6); box-sizing:border-box; outline:none; cursor:pointer;">
+        公司
+      </button>
+      <button style="flex:1; height:40px; padding:0 16px; background:#F1F3F5; border:1px solid rgba(0,0,0,0.1); border-radius:20px;
+                     font-size:16px; font-weight:500; color:rgba(0,0,0,0.6); box-sizing:border-box; outline:none; cursor:pointer;">
+        个人
+      </button>
+    </div>
+    <div style="width:90%; height:120px; background:#F1F3F5; border-radius:8px; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:8px;">
+      <span class="mi" style="font-size:24px; color:rgba(0,0,0,0.6);">add</span>
+      <span style="font-size:14px; font-weight:400; color:rgba(0,0,0,0.6);">添加项目</span>
+    </div>
+  </div>
+  <!-- 底部固定确认按钮 -->
+  <div style="position:fixed; bottom:0; left:0; right:0; padding:16px; background:#FFFFFF; box-shadow:0 -1px 6px rgba(0,0,0,0.05);">
+    <button style="width:90%; height:48px; padding:0; background:#0A59F7; border:none; border-radius:8px;
+                   font-size:16px; font-weight:500; color:#FFFFFF; box-sizing:border-box; outline:none; cursor:pointer;">
+      确认
+    </button>
+  </div>
+</div>
+<!-- 任务节点结束: 创建项目集全屏页初始态【临时】 -->
+[NEW]
+<!-- 任务节点开始: 创建中过渡态【临时】 -->
+<div style="position:fixed; top:32px; left:0; right:0; bottom:0; z-index:9999; background:#F5F5F5; overflow-y:auto; box-sizing:border-box; font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;">
+  <!-- 顶部导航栏 -->
+  <div style="position:sticky; top:0; height:48px; padding:0 16px; display:flex; align-items:center; gap:12px; background:#FFFFFF; border-bottom:1px solid rgba(0,0,0,0.08); z-index:1;">
+    <span class="mi" style="font-size:24px; color:rgba(0,0,0,0.899);">arrow_back</span>
+    <span style="flex:1; text-align:center; font-size:16px; font-weight:500; color:rgba(0,0,0,0.9);">创建项目集</span>
+    <span style="width:24px;"></span>
+  </div>
+  <!-- 内容主体 -->
+  <div style="padding:24px 16px; display:flex; flex-direction:column; gap:24px;">
+    <div>
+      <input type="text" placeholder="请输入项目集名称" value=""
+        style="width:90%; height:44px; padding:0 16px; border:1px solid rgba(0,0,0,0.12); border-radius:8px;
+               font-size:16px; color:rgba(0,0,0,0.9); box-sizing:border-box; outline:none; background:#FFFFFF;">
+    </div>
+    <div style="display:flex; gap:12px;">
+      <button style="flex:1; height:40px; padding:0 16px; background:#F1F3F5; border:1px solid rgba(0,0,0,0.1); border-radius:20px;
+                     font-size:16px; font-weight:500; color:rgba(0,0,0,0.6); box-sizing:border-box; outline:none; cursor:pointer;">
+        公司
+      </button>
+      <button style="flex:1; height:40px; padding:0 16px; background:#F1F3F5; border:1px solid rgba(0,0,0,0.1); border-radius:20px;
+                     font-size:16px; font-weight:500; color:rgba(0,0,0,0.6); box-sizing:border-box; outline:none; cursor:pointer;">
+        个人
+      </button>
+    </div>
+    <div style="width:90%; height:120px; background:#F1F3F5; border-radius:8px; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:8px;">
+      <span class="mi" style="font-size:24px; color:rgba(0,0,0,0.6);">add</span>
+      <span style="font-size:14px; font-weight:400; color:rgba(0,0,0,0.6);">添加项目</span>
+    </div>
+  </div>
+  <!-- 底部固定确认按钮 -->
+  <div style="position:fixed; bottom:0; left:0; right:0; padding:16px; background:#FFFFFF; box-shadow:0 -1px 6px rgba(0,0,0,0.05);">
+    <button style="width:90%; height:48px; padding:0 16px; background:#E0E0E0; border:none; border-radius:8px;
+                   font-size:16px; font-weight:500; color:rgba(0,0,0,0.3); box-sizing:border-box; outline:none; cursor:not-allowed; display:flex; align-items:center; justify-content:center; gap:4px;">
+      创建中…
+      <span style="display:flex; gap:4px;">
+        <span style="width:10px; height:10px; border-radius:50%; background:#191919;"></span>
+        <span style="width:10px; height:10px; border-radius:50%; background:#191919;"></span>
+        <span style="width:10px; height:10px; border-radius:50%; background:#191919;"></span>
+      </span>
+    </button>
+  </div>
+</div>
+<!-- 任务节点结束: 创建中过渡态【临时】 -->

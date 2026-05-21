@@ -1,0 +1,15 @@
+{
+  "state_id": 6,
+  "state_name": "空结果页",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": true,
+    "issues": [],
+    "fixedBlocks": "",
+    "reviewMs": 6722,
+    "screenshot": 52761,
+    "reviewOnly": true,
+    "fixedBlocksIgnored": false
+  }
+}

@@ -860,6 +860,86 @@ function enforceOpaqueFullscreenPanel(html, currentReq, log) {
   return out;
 }
 
+/**
+ * 全屏业务页默认只覆盖 app 内容区，保留原 D2C 顶部系统状态栏。
+ * LLM 很容易把"全屏页"机械写成 inset:0，导致原状态栏被盖掉后只能手写粗糙状态栏。
+ * 当 state 明确要求保留状态栏/时间信号时，把新增任务块的 fixed inset:0 改为 top:32px 覆盖。
+ */
+function enforcePreservedStatusBarForFullscreen(html, currentReq, log) {
+  const text = `${currentReq?.state_name || ""} ${currentReq?.description || ""} ${currentReq?.implementation_method || ""}`;
+  const wantsStatusBar = /(保留|沿用|继承|keep|preserve).{0,12}(状态栏|时间|信号|电量|status\s*bar)|状态栏.{0,12}(保留|沿用|继承|keep|preserve)/i.test(text);
+  if (!wantsStatusBar) return html;
+  const hasContradictoryImmersive = /(隐藏状态栏|覆盖状态栏|沉浸式|immersive|hide\s+status\s*bar|cover\s+status\s*bar)/i.test(text);
+  if (hasContradictoryImmersive && log) log("[fullscreen-statusbar] state 同时声明保留/隐藏状态栏，按业务页默认保留状态栏处理");
+
+  const blockRe = /(<!--\s*任务节点开始:[^>]*?(?:【临时】|【持久】)\s*-->)([\s\S]*?)(<!--\s*任务节点结束:[^>]*?(?:【临时】|【持久】)\s*-->)/g;
+  let touched = 0;
+  const out = html.replace(blockRe, (full, openCmt, inner, closeCmt) => {
+    let blockTouched = 0;
+    const newInner = inner.replace(/<div\b[^>]*style="([^"]*)"[^>]*>/gi, (tag, styleStr) => {
+      if (!/position\s*:\s*fixed/i.test(styleStr)) return tag;
+      const isInset0 = /inset\s*:\s*0/i.test(styleStr);
+      const isTop0Full = /top\s*:\s*0/i.test(styleStr) && /left\s*:\s*0/i.test(styleStr) && /right\s*:\s*0/i.test(styleStr) && /bottom\s*:\s*0/i.test(styleStr);
+      if (!isInset0 && !isTop0Full) return tag;
+      let newStyle = styleStr;
+      if (isInset0) {
+        newStyle = newStyle.replace(/(?:^|;)\s*inset\s*:\s*0\s*;?/i, match => {
+          const prefix = match.trim().startsWith(";") ? ";" : "";
+          return `${prefix}top:32px;left:0;right:0;bottom:0;`;
+        });
+      } else {
+        newStyle = newStyle.replace(/top\s*:\s*0/i, "top:32px");
+      }
+      if (newStyle === styleStr) return tag;
+      blockTouched++;
+      return tag.replace(`style="${styleStr}"`, `style="${newStyle}"`);
+    });
+    if (blockTouched === 0) return full;
+    touched += blockTouched;
+    return `${openCmt}${newInner}${closeCmt}`;
+  });
+  if (touched > 0 && log) log(`[fullscreen-statusbar] 保留状态栏：将 ${touched} 个全屏 inset:0 覆盖层改为 top:32px`);
+  return out;
+}
+
+/**
+ * 保留状态栏的全屏业务页从 top:32px 开始覆盖，状态栏区域会露出 base 页面。
+ * 如果 base 页面本身带有一层全屏暗色遮罩（常见于 D2C 导出的弹出卡片/半屏浮层背景），
+ * 状态栏就会被压暗。这里只在"全屏业务页 + 保留状态栏"语义下隐藏这种 base 暗遮罩。
+ * Dialog / Bottom Sheet / 明确遮罩语义不调用此规则，避免误删弹窗遮罩。
+ */
+function suppressBaseDarkMaskForPreservedStatusBarFullscreen(html, currentReq, log) {
+  const text = `${currentReq?.state_name || ""} ${currentReq?.description || ""} ${currentReq?.implementation_method || ""}`;
+  const wantsStatusBar = /(保留|沿用|继承|keep|preserve).{0,12}(状态栏|时间|信号|电量|status\s*bar)|状态栏.{0,12}(保留|沿用|继承|keep|preserve)/i.test(text);
+  const isFullscreenPage = /(全屏|fullscreen|独立页|新页面|全新页面|page|panel)/i.test(text);
+  const isModal = /(弹窗|对话框|dialog|modal|popup|bottom\s*sheet|底部抽屉|底部弹窗)/i.test(text);
+  if (!wantsStatusBar || !isFullscreenPage || isModal) return html;
+
+  const cleanedHtml = html.replace(/\n?<style\b[^>]*\bid=["']hm-fullscreen-hide-base-mask["'][^>]*>[\s\S]*?<\/style>\n?/gi, "\n");
+  const firstTaskIdx = cleanedHtml.search(/<!--\s*任务节点开始:/i);
+  const baseHtml = firstTaskIdx >= 0 ? cleanedHtml.slice(0, firstTaskIdx) : cleanedHtml;
+  const darkMaskClasses = new Set();
+  const styleRuleRe = /\.([A-Za-z0-9_-]+)\s*\{([\s\S]*?)\}/g;
+  let m;
+  while ((m = styleRuleRe.exec(cleanedHtml)) !== null) {
+    const cls = m[1];
+    const body = m[2] || "";
+    const appearsInBaseDom = new RegExp(`class=["'][^"']*\\b${cls.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b[^"']*["']`, "i").test(baseHtml);
+    if (!appearsInBaseDom) continue;
+    const hasDarkBg = /background(?:-color)?\s*:\s*rgba\(\s*(?:0|25)\s*,\s*(?:0|25)\s*,\s*(?:0|25)\s*,\s*0?\.[2-6][0-9]*\s*\)/i.test(body);
+    const positioned = /position\s*:\s*(?:absolute|fixed)/i.test(body);
+    const fullWidth = /width\s*:\s*(?:100%|100vw|3[0-9]{2}px)/i.test(body);
+    const fullHeight = /height\s*:\s*(?:100%|100vh|7[0-9]{2}px|8[0-9]{2}px|9[0-9]{2}px)/i.test(body);
+    if (hasDarkBg && positioned && fullWidth && fullHeight) darkMaskClasses.add(cls);
+  }
+  if (darkMaskClasses.size === 0) return cleanedHtml;
+
+  const css = `\n<style id="hm-fullscreen-hide-base-mask">\n${Array.from(darkMaskClasses).map(cls => `.${cls}{display:none !important;}`).join("\n")}\n</style>\n`;
+  const out = /<\/head>/i.test(cleanedHtml) ? cleanedHtml.replace(/<\/head>/i, `${css}</head>`) : cleanedHtml.replace(/<\/body>/i, `${css}</body>`);
+  if (log) log(`[fullscreen-statusbar] 隐藏全屏业务页下方遗留暗遮罩：${Array.from(darkMaskClasses).join(", ")}`);
+  return out;
+}
+
 function ensureLoadingIndicator(html, currentReq, log) {
   const text = `${currentReq?.state_name || ""} ${currentReq?.description || ""} ${currentReq?.implementation_method || ""}`.toLowerCase();
   const isLoadingState = /(加载|loading|processing|submitting|提交中|等待|进行中|处理中)/i.test(text);
@@ -941,7 +1021,7 @@ function reassembleHtml(fullHtml, patchedFragment, bodyMatch, useBodyOnly) {
  *   3) （可选）vision review：截图 → qwen-vl-max 评审 → 必要时让模型给修订块再次 apply
  *      只有在 deps.callVisionJSON 可用、且 reviewBaseDir 提供时才启用
  */
-async function patchOneState({ prevHtml, currentReq, allRequirements, platformHint, log, assetPrefix, reviewBaseDir, reviewSavePath }) {
+async function patchOneState({ prevHtml, currentReq, allRequirements, platformHint, log, assetPrefix, reviewBaseDir }) {
   // ─── baseline 路径（feature flag 控制；最高优先级；命中即短路，绝不回落） ──
   // 用作 twoPhase 的对照组：一锤子整页 HTML 重写。HM_BASELINE_ENABLED=1 时启用。
   if (isBaselineEnabled()) {
@@ -1125,6 +1205,8 @@ async function patchOneState({ prevHtml, currentReq, allRequirements, platformHi
     patched = ensureLoadingIndicator(patched, currentReq, log);
     patched = enforceOpaqueErrorOverlay(patched, currentReq, log);
     patched = enforceOpaqueFullscreenPanel(patched, currentReq, log);
+    patched = enforcePreservedStatusBarForFullscreen(patched, currentReq, log);
+    patched = suppressBaseDarkMaskForPreservedStatusBarFullscreen(patched, currentReq, log);
     // ⑨ ⑩ 语法 fix + id 去重
     patched = fixCssSyntaxErrors(patched, log);
     patched = dedupeDuplicateIds(patched, currentReq, log);
@@ -1139,7 +1221,6 @@ async function patchOneState({ prevHtml, currentReq, allRequirements, platformHi
           baseDir: reviewBaseDir,
           deps: { callVisionJSON: llmDeps.callVisionJSON },
           log,
-          screenshotPath: reviewSavePath,
         });
         reviewMeta = r.review || null;
         reviewApplied = 0;
@@ -1324,7 +1405,6 @@ async function runPatchPipeline(session, emit) {
       // 注入了 <base href="../"> → 用 sourceDir 作为 baseDir 让相对资源 (image.png / css/...)
       // 能解析；非 savedInSource 时直接用 outDir。
       const reviewBaseDir = savedInSource && session.seed.sourceDir ? session.seed.sourceDir : outDir;
-      const reviewSavePath = path.join(outDir, `state_${st.state_id}_review_before.png`);
 
       const { html, applied, skipped, raw, hmExpansions, hmMissing, review, reviewApplied } = await patchOneState({
         prevHtml,
@@ -1340,7 +1420,6 @@ async function runPatchPipeline(session, emit) {
         log,
         assetPrefix,
         reviewBaseDir,
-        reviewSavePath,
       });
 
       // 保存调试输出
