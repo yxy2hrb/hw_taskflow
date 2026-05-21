@@ -1,0 +1,21 @@
+{
+  "state_id": 6,
+  "state_name": "工作台刷新后列表页",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "语言一致性：截图中‘新创建的项目集’和‘更新于 今天 08:08’等文案为中文，符合主语言 zh 要求，但 HTML 中使用了 span class='mi' 的 'folder' 图标标签，虽为图标而非文字，但其语义应与中文保持一致；不过此处无实际文本错误，暂不判 fail。",
+      "元素溢出：列表项中的‘新创建的项目集’文字未被裁切，但‘更新于 今天 08:08’字体过小且与上方标题间距不足，视觉上略显拥挤，存在轻微布局压迫感，但未超出边界，不构成严重溢出。",
+      "可见性：description 要求‘底部 Tab 栏高亮‘工作台’’，截图中‘工作台’确实高亮（红色），符合预期；右上角悬浮圆形加号按钮在截图中缺失，而需求明确要求‘仍在原位’，因此该按钮未显示 → fail。",
+      "位置合理性：右上角加号按钮应在页面右上角，但当前截图中完全缺失，不符合‘仍在原位’的要求；此外，项目集卡片位于中部偏上，位置合理，无遮挡问题。",
+      "基础样式：卡片背景为白色，边框圆角 16px，阴影柔和，符合鸿蒙规范；文字颜色、大小、行高均正常，无纯黑底白字或超粗阴影等问题。"
+    ],
+    "fixedBlocks": "[OLD]\n<div id=\"14_807630\" class=\"Pixso-frame-14_807630\">\n  <div id=\"146_161533\" class=\"Pixso-rectangle-146_161533\" style=\"background-color:#FFFFFF;box-shadow:0 8px 24px rgba(0,0,0,0.08);border-radius:16px;\"></div>\n  <div id=\"146_161534\" class=\"Pixso-frame-146_161534\" style=\"position:absolute;left:12px;top:40px;display:flex;flex-direction:column;gap:16px;width:328px;\">\n    <div style=\"display:flex;flex-direction:row;gap:16px;align-items:flex-start;\">\n      <div style=\"width:80px;height:80px;border-radius:12px;background:#F1F3F5;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;\">\n        <span class=\"mi\" style=\"font-size:32px;color:#0A59F7;\">folder</span>\n      </div>\n      <div style=\"flex:1;display:flex;flex-direction:column;gap:4px;\">\n        <p style=\"font-size:16px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.9);margin:0;\">新创建的项目集</p>\n        <p style=\"font-size:12px;font-weight:400;line-height:1.5;color:rgba(0,0,0,0.4);margin:0;\">更新于 今天 08:08</p>\n      </div>\n    </div>\n  </div>\n  <div id=\"146_161595\" class=\"Pixso-frame-146_161595\" style=\"position:absolute;left:12px;top:0px;padding:12px 0 8px 0;width:328px;\">\n    <div class=\"frame-content-146_161595\" style=\"display:flex;flex-direction:row;align-items:center;\">\n      <div id=\"146_161596\" class=\"Pixso-frame-146_161596\" style=\"display:flex;flex-direction:column;gap:2px;\">\n        <p style=\"font-size:16px;font-weight:600;line-height:1.5;color:rgba(0,0,0,0.9);margin:0;\">我的项目集</p>\n      </div>\n    </div>\n  </div>\n</div>\n[NEW]\n<div id=\"14_807630\" class=\"Pixso-frame-14_807630\">\n  <div id=\"146_161533\" class=\"Pixso-rectangle-146_161533\" style=\"background-color:#FFFFFF;box-shadow:0 8px 24px rgba(0,0,0,0.08);border-radius:16px;\"></div>\n  <div id=\"146_161534\" class=\"Pixso-frame-146_161534\" style=\"position:absolute;left:12px;top:40px;display:flex;flex-direction:column;gap:16px;width:328px;\">\n    <div style=\"display:flex;flex-direction:row;gap:16px;align-items:flex-start;\">\n      <div style=\"width:80px;height:80px;border-radius:12px;background:#F1F3F5;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;\">\n        <span class=\"mi\" style=\"font-size:32px;color:#0A59F7;\">folder</span>\n      </div>\n      <div style=\"flex:1;display:flex;flex-direction:column;gap:4px;\">\n        <p style=\"font-size:16px;font-weight:500;line-height:1.5;color:rgba(0,0,0,0.9);margin:0;\">新创建的项目集</p>\n        <p style=\"font-size:12px;font-weight:400;line-height:1.5;color:rgba(0,0,0,0.4);margin:0;\">更新于 今天 08:08</p>\n      </div>\n    </div>\n  </div>\n  <div id=\"146_161595\" class=\"Pixso-frame-146_161595\" style=\"position:absolute;left:12px;top:0px;padding:12px 0 8px 0;width:328px;\">\n    <div class=\"frame-content-146_161595\" style=\"display:flex;flex-direction:row;align-items:center;\">\n      <div id=\"146_161596\" class=\"Pixso-frame-146_161596\" style=\"display:flex;flex-direction:column;gap:2px;\">\n        <p style=\"font-size:16px;font-weight:600;line-height:1.5;color:rgba(0,0,0,0.9);margin:0;\">我的项目集</p>\n      </div>\n    </div>\n  </div>\n</div>",
+    "reviewMs": 51162,
+    "screenshot": 62644,
+    "reviewOnly": true,
+    "fixedBlocksIgnored": true
+  }
+}

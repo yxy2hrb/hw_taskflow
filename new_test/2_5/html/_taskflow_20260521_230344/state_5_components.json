@@ -1,0 +1,15 @@
+{
+  "state_id": 5,
+  "state_name": "创建项目集成功提示状态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": true,
+    "issues": [],
+    "fixedBlocks": "",
+    "reviewMs": 3525,
+    "screenshot": 45499,
+    "reviewOnly": true,
+    "fixedBlocksIgnored": false
+  }
+}

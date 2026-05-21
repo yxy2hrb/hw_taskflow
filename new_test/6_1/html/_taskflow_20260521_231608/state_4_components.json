@@ -1,0 +1,15 @@
+{
+  "state_id": 4,
+  "state_name": "快速入门页内容就绪态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": true,
+    "issues": [],
+    "fixedBlocks": "",
+    "reviewMs": 6292,
+    "screenshot": 90873,
+    "reviewOnly": true,
+    "fixedBlocksIgnored": false
+  }
+}

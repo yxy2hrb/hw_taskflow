@@ -1,0 +1,9 @@
+[OLD]
+    <button style="width:100%; padding:12px; background:#E31D1A; color:#FFFFFF; border:none; border-radius:8px;
+                   font-size:16px; font-weight:500; cursor:pointer;">确认</button>
+[NEW]
+    <button style="width:100%; padding:12px; background:#BFBFBF; color:#FFFFFF; border:none; border-radius:8px;
+                   font-size:16px; font-weight:500; cursor:not-allowed; display:flex; align-items:center; justify-content:center; gap:8px;">
+      <span style="width:16px; height:16px; border:2px solid rgba(0,0,0,0.2); border-top-color:#BFBFBF; border-radius:50%; animation:hmspin 1s linear infinite;"></span>
+      <span>提交中…</span>
+    </button>

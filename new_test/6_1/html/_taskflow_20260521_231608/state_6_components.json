@@ -1,0 +1,18 @@
+{
+  "state_id": 6,
+  "state_name": "网络失败提示页",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "按钮颜色错误：需求要求‘重试’按钮主色为#46B1E3（蓝色），但截图中显示为#0A59F7（深蓝/紫色），不符合规范",
+      "图标样式不符：需求要求24×24px红色感叹号图标（#FF6B6B），但截图中为红色三角形警告标志，非标准感叹号图标"
+    ],
+    "fixedBlocks": "[OLD]\n<button type=\"button\" style=\"width:120px; height:36px; margin-top:24px; padding:0 16px; background:#0A59F7; border:none; border-radius:8px; font-size:16px; font-weight:500; color:#FFFFFF; cursor:pointer;\">重试</button>\n[NEW]\n<button type=\"button\" style=\"width:120px; height:36px; margin-top:24px; padding:0 16px; background:#46B1E3; border:none; border-radius:8px; font-size:16px; font-weight:500; color:#FFFFFF; cursor:pointer;\">重试</button>\n[OLD]\n<span class=\"mi\" style=\"font-size:24px; color:#FF6B6B; margin-bottom:12px;\">warning</span>\n[NEW]\n<span class=\"mi\" style=\"font-size:24px; color:#FF6B6B; margin-bottom:12px;\">exclamation_mark</span>",
+    "reviewMs": 13301,
+    "screenshot": 29554,
+    "reviewOnly": true,
+    "fixedBlocksIgnored": true
+  }
+}

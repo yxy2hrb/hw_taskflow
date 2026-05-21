@@ -1,0 +1,15 @@
+{
+  "state_id": 4,
+  "state_name": "创建项目集中提交过渡态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": true,
+    "issues": [],
+    "fixedBlocks": "",
+    "reviewMs": 3900,
+    "screenshot": 43523,
+    "reviewOnly": true,
+    "fixedBlocksIgnored": false
+  }
+}

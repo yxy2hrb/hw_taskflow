@@ -1,0 +1,15 @@
+{
+  "state_id": 3,
+  "state_name": "创建项目集校验中状态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": true,
+    "issues": [],
+    "fixedBlocks": "",
+    "reviewMs": 3496,
+    "screenshot": 40810,
+    "reviewOnly": true,
+    "fixedBlocksIgnored": false
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "state_id": 4,
+  "state_name": "创建项目集校验失败状态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": true,
+    "issues": [],
+    "fixedBlocks": "",
+    "reviewMs": 4711,
+    "screenshot": 46578,
+    "reviewOnly": true,
+    "fixedBlocksIgnored": false
+  }
+}

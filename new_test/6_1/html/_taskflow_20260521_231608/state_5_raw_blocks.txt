@@ -1,0 +1,139 @@
+[OLD]
+<div id="14_1031109" class="Pixso-frame-14_1031109">
+        <div id="146_158926" class="Pixso-rectangle-146_158926"></div>
+        <div id="146_158927" class="Pixso-frame-146_158927">
+          <div id="146_158928" class="Pixso-frame-146_158928">
+            <div class="frame-content-146_158928">
+              <div id="146_158929" class="Pixso-frame-146_158929">
+                <div id="146_158930" class="Pixso-rectangle-146_158930"></div>
+                <div id="146_158931" class="Pixso-vector-146_158931"></div>
+              </div>
+              <p id="146_158933" class="Pixso-paragraph-146_158933 fill-text文本色图标色color_text_primary-14_800663-paragraph">快速入门</p>
+            </div>
+          </div>
+          <div id="146_158934" class="Pixso-frame-146_158934">
+            <div class="frame-content-146_158934">
+              <div id="146_158935" class="Pixso-frame-146_158935">
+                <div id="146_158937" class="Pixso-vector-146_158937"></div>
+              </div>
+              <p id="146_158938" class="Pixso-paragraph-146_158938 fill-text文本色图标色color_text_primary-14_800663-paragraph">交付指导</p>
+            </div>
+          </div>
+          <div id="146_158939" class="Pixso-frame-146_158939">
+            <div class="frame-content-146_158939">
+              <div id="146_158940" class="Pixso-frame-146_158940">
+                <div id="146_158942" class="Pixso-vector-146_158942"></div>
+              </div>
+              <p id="146_158943" class="Pixso-paragraph-146_158943 fill-text文本色图标色color_text_primary-14_800663-paragraph">运维指导</p>
+            </div>
+          </div>
+        </div>
+        <div id="146_158944" class="Pixso-frame-146_158944">
+          <div class="frame-content-146_158944">
+            <p id="146_158945" class="Pixso-paragraph-146_158945 fill-text文本色图标色color_text_primary-14_800663-paragraph text-单行行高headline标题headline_s-14_800661">售后文档</p>
+          </div>
+        </div>
+      </div>
+[NEW]
+<div id="14_1031109" class="Pixso-frame-14_1031109" style="display:none;">
+        <div id="146_158926" class="Pixso-rectangle-146_158926"></div>
+        <div id="146_158927" class="Pixso-frame-146_158927">
+          <div id="146_158928" class="Pixso-frame-146_158928">
+            <div class="frame-content-146_158928">
+              <div id="146_158929" class="Pixso-frame-146_158929">
+                <div id="146_158930" class="Pixso-rectangle-146_158930"></div>
+                <div id="146_158931" class="Pixso-vector-146_158931"></div>
+              </div>
+              <p id="146_158933" class="Pixso-paragraph-146_158933 fill-text文本色图标色color_text_primary-14_800663-paragraph">快速入门</p>
+            </div>
+          </div>
+          <div id="146_158934" class="Pixso-frame-146_158934">
+            <div class="frame-content-146_158934">
+              <div id="146_158935" class="Pixso-frame-146_158935">
+                <div id="146_158937" class="Pixso-vector-146_158937"></div>
+              </div>
+              <p id="146_158938" class="Pixso-paragraph-146_158938 fill-text文本色图标色color_text_primary-14_800663-paragraph">交付指导</p>
+            </div>
+          </div>
+          <div id="146_158939" class="Pixso-frame-146_158939">
+            <div class="frame-content-146_158939">
+              <div id="146_158940" class="Pixso-frame-146_158940">
+                <div id="146_158942" class="Pixso-vector-146_158942"></div>
+              </div>
+              <p id="146_158943" class="Pixso-paragraph-146_158943 fill-text文本色图标色color_text_primary-14_800663-paragraph">运维指导</p>
+            </div>
+          </div>
+        </div>
+        <div id="146_158944" class="Pixso-frame-146_158944">
+          <div class="frame-content-146_158944">
+            <p id="146_158945" class="Pixso-paragraph-146_158945 fill-text文本色图标色color_text_primary-14_800663-paragraph text-单行行高headline标题headline_s-14_800661">售后文档</p>
+          </div>
+        </div>
+      </div>
+<!-- 任务节点开始: 产品文档详情页【临时】 -->
+<div style="position:fixed; top:32px; left:0; right:0; bottom:0; z-index:9999; background:#FFFFFF; overflow-y:auto; box-sizing:border-box; font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;">
+  <!-- 顶部导航栏 -->
+  <div style="position:sticky; top:0; height:56px; padding:0 16px; display:flex; align-items:center; gap:12px; background:#FFFFFF; border-bottom:1px solid rgba(0,0,0,0.08); z-index:1;">
+    <span class="mi" style="font-size:24px; color:rgba(0,0,0,0.9);">arrow_back</span>
+    <span style="flex:1; text-align:center; font-size:18px; font-weight:600; color:rgba(0,0,0,0.9);">产品文档详情</span>
+    <span style="width:24px;"></span>
+  </div>
+  <!-- 内容主体 -->
+  <div style="padding:24px 16px; display:flex; flex-direction:column; gap:24px;">
+    <!-- 产品大图 -->
+    <div style="width:100%; height:192px; background:#F1F3F5; border-radius:8px; display:flex; align-items:center; justify-content:center; color:rgba(0,0,0,0.4); font-size:14px;">产品示意图</div>
+    <!-- 型号标题 -->
+    <h1 style="font-size:20px; font-weight:500; line-height:1.2; color:rgba(0,0,0,0.9); margin:0;">华为坤灵协作平板 SOHO 版</h1>
+    <!-- 分段式文档内容 -->
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <!-- 小标题 -->
+      <h2 style="font-size:16px; font-weight:500; color:rgba(0,0,0,0.9); margin:0;">一、设备概述</h2>
+      <!-- 正文 -->
+      <p style="font-size:14px; line-height:1.5; color:rgba(0,0,0,0.6); margin:0;">本设备专为中小型企业办公场景设计，支持多点触控、无线投屏、智能会议管理等功能。</p>
+      <!-- 代码块 -->
+      <div style="padding:12px; background:#F1F3F5; border-radius:4px; font-family:'Courier New', monospace; font-size:12px; color:rgba(0,0,0,0.9); overflow-x:auto;">
+        <pre style="margin:0; white-space:pre; word-wrap:normal;"># 初始化设备
+device.init({
+  mode: 'SOHO',
+  network: 'auto'
+});</pre>
+      </div>
+      <!-- 表格 -->
+      <table style="width:100%; border-collapse:collapse; font-size:14px; color:rgba(0,0,0,0.6);">
+        <thead>
+          <tr style="background:#F1F3F5;">
+            <th style="padding:8px 12px; text-align:left; border-bottom:1px solid rgba(0,0,0,0.08);">参数</th>
+            <th style="padding:8px 12px; text-align:left; border-bottom:1px solid rgba(0,0,0,0.08);">值</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:8px 12px; border-bottom:1px solid rgba(0,0,0,0.04);">屏幕尺寸</td>
+            <td style="padding:8px 12px; border-bottom:1px solid rgba(0,0,0,0.04);">55英寸</td>
+          </tr>
+          <tr>
+            <td style="padding:8px 12px; border-bottom:1px solid rgba(0,0,0,0.04);">分辨率</td>
+            <td style="padding:8px 12px; border-bottom:1px solid rgba(0,0,0,0.04);">3840×2160</td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- 小标题 -->
+      <h2 style="font-size:16px; font-weight:500; color:rgba(0,0,0,0.9); margin:0;">二、快速上手</h2>
+      <!-- 正文 -->
+      <p style="font-size:14px; line-height:1.5; color:rgba(0,0,0,0.6); margin:0;">首次开机后，按提示完成 Wi-Fi 配置与账号绑定，即可使用全部功能。</p>
+    </div>
+  </div>
+  <!-- 底部通栏按钮 -->
+  <div style="position:fixed; bottom:0; left:0; right:0; padding:16px; background:#FFFFFF; box-shadow:0 -1px 6px rgba(0,0,0,0.05);">
+    <button style="width:100%; height:48px; background:#0A59F7; color:#FFFFFF; border:none; border-radius:8px; font-size:16px; font-weight:500; cursor:pointer;">下载PDF</button>
+  </div>
+</div>
+<!-- 任务节点结束: 产品文档详情页【临时】 -->
+[OLD]
+<script>
+
+</script>
+[NEW]
+<script>
+
+</script>

@@ -1,0 +1,79 @@
+[OLD]
+<!-- 任务节点开始: 创建项目集全屏表单页【临时】 -->
+<div style="position:fixed; top:32px; left:0; right:0; bottom:0; z-index:9999; background:#FFFFFF; overflow-y:auto; box-sizing:border-box; font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;">
+  <div style="position:sticky; top:0; height:56px; padding:0 16px; display:flex; align-items:center; gap:12px; background:#FFFFFF; border-bottom:1px solid rgba(0,0,0,0.08); z-index:1;">
+    <span class="mi" style="font-size:24px; color:rgba(0,0,0,0.9);">arrow_back</span>
+    <span style="flex:1; text-align:center; font-size:18px; font-weight:600; color:rgba(0,0,0,0.9);">创建项目集</span>
+    <span style="width:24px;"></span>
+  </div>
+  <div style="padding:24px 16px; display:flex; flex-direction:column; gap:24px;">
+    <div>
+      <label style="font-size:14px; color:rgba(0,0,0,0.6); display:block; margin-bottom:8px;">项目集名称</label>
+      <input type="text" placeholder="请输入项目集名称" value="" style="width:100%; padding:12px 16px; border:1px solid rgba(0,0,0,0.12); border-radius:8px; font-size:16px; color:rgba(0,0,0,0.9); box-sizing:border-box; outline:none;">
+    </div>
+    <div style="display:flex; gap:16px;">
+      <div style="display:flex; flex-direction:column; align-items:center; flex:1;">
+        <div style="width:48px; height:48px; border:2px solid rgba(0,0,0,0.12); border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:4px;">
+          <span class="mi" style="font-size:20px; color:rgba(0,0,0,0.12);">radio_button_unchecked</span>
+        </div>
+        <span style="font-size:14px; color:rgba(0,0,0,0.9);">公司</span>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center; flex:1;">
+        <div style="width:48px; height:48px; border:2px solid rgba(0,0,0,0.12); border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:4px;">
+          <span class="mi" style="font-size:20px; color:rgba(0,0,0,0.12);">radio_button_unchecked</span>
+        </div>
+        <span style="font-size:14px; color:rgba(0,0,0,0.9);">个人</span>
+      </div>
+    </div>
+    <div style="width:100%; height:56px; background:#F1F3F5; border-radius:12px; display:flex; align-items:center; padding:0 16px; cursor:pointer;">
+      <span class="mi" style="font-size:20px; color:#0A59F7;">add</span>
+      <span style="font-size:16px; color:rgba(0,0,0,0.9); margin-left:8px; flex:1;">添加项目</span>
+      <span class="mi" style="font-size:20px; color:rgba(0,0,0,0.6);">chevron_right</span>
+    </div>
+  </div>
+  <div style="position:fixed; bottom:0; left:0; right:0; padding:16px; background:#FFFFFF; box-shadow:0 -1px 6px rgba(0,0,0,0.05);">
+    <button style="width:100%; padding:12px; background:#D32F2F; color:#FFFFFF; border:none; border-radius:24px; font-size:16px; font-weight:500; cursor:pointer;">确认</button>
+  </div>
+</div>
+<!-- 任务节点结束: 创建项目集全屏表单页【临时】 -->
+[NEW]
+<!-- 任务节点开始: 创建项目集校验中状态【临时】 -->
+<div style="position:fixed; top:32px; left:0; right:0; bottom:0; z-index:9999; background:#FFFFFF; overflow-y:auto; box-sizing:border-box; font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;">
+  <div style="position:sticky; top:0; height:56px; padding:0 16px; display:flex; align-items:center; gap:12px; background:#FFFFFF; border-bottom:1px solid rgba(0,0,0,0.08); z-index:1;">
+    <span class="mi" style="font-size:24px; color:rgba(0,0,0,0.9);">arrow_back</span>
+    <span style="flex:1; text-align:center; font-size:18px; font-weight:600; color:rgba(0,0,0,0.9);">创建项目集</span>
+    <span style="width:24px;"></span>
+  </div>
+  <div style="padding:24px 16px; display:flex; flex-direction:column; gap:24px;">
+    <div>
+      <label style="font-size:14px; color:rgba(0,0,0,0.6); display:block; margin-bottom:8px;">项目集名称</label>
+      <input type="text" placeholder="请输入项目集名称" value="" style="width:100%; padding:12px 16px; border:1px solid rgba(0,0,0,0.12); border-radius:8px; font-size:16px; color:rgba(0,0,0,0.9); box-sizing:border-box; outline:none;">
+    </div>
+    <div style="display:flex; gap:16px;">
+      <div style="display:flex; flex-direction:column; align-items:center; flex:1;">
+        <div style="width:48px; height:48px; border:2px solid rgba(0,0,0,0.12); border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:4px;">
+          <span class="mi" style="font-size:20px; color:rgba(0,0,0,0.12);">radio_button_unchecked</span>
+        </div>
+        <span style="font-size:14px; color:rgba(0,0,0,0.9);">公司</span>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center; flex:1;">
+        <div style="width:48px; height:48px; border:2px solid rgba(0,0,0,0.12); border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:4px;">
+          <span class="mi" style="font-size:20px; color:rgba(0,0,0,0.12);">radio_button_unchecked</span>
+        </div>
+        <span style="font-size:14px; color:rgba(0,0,0,0.9);">个人</span>
+      </div>
+    </div>
+    <div style="width:100%; height:56px; background:#F1F3F5; border-radius:12px; display:flex; align-items:center; padding:0 16px; cursor:pointer;">
+      <span class="mi" style="font-size:20px; color:#0A59F7;">add</span>
+      <span style="font-size:16px; color:rgba(0,0,0,0.9); margin-left:8px; flex:1;">添加项目</span>
+      <span class="mi" style="font-size:20px; color:rgba(0,0,0,0.6);">chevron_right</span>
+    </div>
+  </div>
+  <div style="position:fixed; bottom:0; left:0; right:0; padding:16px; background:#FFFFFF; box-shadow:0 -1px 6px rgba(0,0,0,0.05);">
+    <button style="width:100%; padding:12px; background:#E0E0E0; color:#9E9E9E; border:none; border-radius:24px; font-size:16px; font-weight:500; cursor:not-allowed; pointer-events:none;" disabled>确认</button>
+  </div>
+  <div style="position:fixed; top:16px; right:16px; width:16px; height:16px; z-index:10000;">
+    <span class="mi" style="font-size:16px; color:#191919; animation:hmspin 1s linear infinite;">progress_activity</span>
+  </div>
+</div>
+<!-- 任务节点结束: 创建项目集校验中状态【临时】 -->

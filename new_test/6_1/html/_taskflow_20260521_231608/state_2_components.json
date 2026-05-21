@@ -1,0 +1,20 @@
+{
+  "state_id": 2,
+  "state_name": "快速入门页初始态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "分类标签栏中'安全防护'标签被裁切，右侧超出容器边界",
+      "条目列表中的说明文字在'远程管理与云平台接入'和'故障排查与日志分析'项中出现换行折到不合理位置，导致阅读体验差",
+      "搜索框内提示文字'搜索...'颜色为rgba(0,0,0,0.4)，但根据鸿蒙规范应使用更浅的灰色（如rgba(0,0,0,0.3)）以保持弱化状态",
+      "顶部导航栏左侧返回图标和右侧分享图标未使用24×24px的SVG，而是使用了mi类字体图标，可能影响清晰度"
+    ],
+    "fixedBlocks": "[OLD]\n<div style=\"padding:0 16px 16px; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch;\">\n  <div style=\"display:inline-flex; gap:8px; padding:4px 0;\">\n    <div style=\"height:32px; padding:0 16px; background:#0A59F7; border-radius:16px; display:flex; align-items:center; justify-content:center;\">\n      <span style=\"font-size:14px; font-weight:500; color:#FFFFFF;\">SOHO网关</span>\n    </div>\n    <div style=\"height:32px; padding:0 16px; background:#F3F3F3; border-radius:16px; display:flex; align-items:center; justify-content:center;\">\n      <span style=\"font-size:14px; font-weight:500; color:rgba(0,0,0,0.9);\">企业路由</span>\n    </div>\n    <div style=\"height:32px; padding:0 16px; background:#F3F3F3; border-radius:16px; display:flex; align-items:center; justify-content:center;\">\n      <span style=\"font-size:14px; font-weight:500; color:rgba(0,0,0,0.9);\">Wi-Fi 6</span>\n    </div>\n    <div style=\"height:32px; padding:0 16px; background:#F3F3F3; border-radius:16px; display:flex; align-items:center; justify-content:center;\">\n      <span style=\"font-size:14px; font-weight:500; color:rgba(0,0,0,0.9);\">云管理</span>\n    </div>\n    <div style=\"height:32px; padding:0 16px; background:#F3F3F3; border-radius:16px; display:flex; align-items:center; justify-content:center;\">\n      <span style=\"font-size:14px; font-weight:500; color:rgba(0,0,0,0.9);\">安全防护</span>\n    </div>\n  </div>\n</div>\n[NEW]\n<div style=\"padding:0 16px 16px; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch;\">\n  <div style=\"display:inline-flex; gap:8px; padding:4px 0;\">\n    <div style=\"height:32px; padding:0 16px; background:#0A59F7; border-radius:16px; display:flex; align-items:center; justify-content:center;\">\n      <span style=\"font-size:14px; font-weight:500; color:#FFFFFF;\">SOHO网关</span>\n    </div>\n    <div style=\"height:32px; padding:0 16px; background:#F3F3F3; border-radius:16px; display:flex; align-items:center; justify-content:center;\">\n      <span style=\"font-size:14px; font-weight:500; color:rgba(0,0,0,0.9);\">企业路由</span>\n    </div>\n    <div style=\"height:32px; padding:0 16px; background:#F3F3F3; border-radius:16px; display:flex; align-items:center; justify-content:center;\">\n      <span style=\"font-size:14px; font-weight:500; color:rgba(0,0,0,0.9);\">Wi-Fi 6</span>\n    </div>\n    <div style=\"height:32px; padding:0 16px; background:#F3F3F3; border-radius:16px; display:flex; align-items:center; justify-content:center;\">\n      <span style=\"font-size:14px; font-weight:500; color:rgba(0,0,0,0.9);\">云管理</span>\n    </div>\n    <div style=\"height:32px; padding:0 16px; background:#F3F3F3; border-radius:16px; display:flex; align-items:center; justify-content:center;\">\n      <span style=\"font-size:14px; font-weight:500; color:rgba(0,0,0,0.9);\">安全防护</span>\n    </div>\n  </div>\n</div]\n[OLD]\n<div style=\"height:44px; padding:0 16px; background:#F1F3F5; border-radius:8px; display:flex; align-items:center; border:1px solid rgba(0,0,0,0.08);\">\n  <span class=\"mi\" style=\"font-size:16px; color:rgba(0,0,0,0.4); margin-right:8px;\">search</span>\n  <span style=\"font-size:14px; color:rgba(0,0,0,0.4);\">搜索...</span>\n</div>\n[NEW]\n<div style=\"height:44px; padding:0 16px; background:#F1F3F5; border-radius:8px; display:flex; align-items:center; border:1px solid rgba(0,0,0,0.08);\">\n  <span class=\"mi\" style=\"font-size:16px; color:rgba(0,0,0,0.3); margin-right:8px;\">search</span>\n  <span style=\"font-size:14px; color:rgba(0,0,0,0.3);\">搜索...</span>\n</div]",
+    "reviewMs": 39395,
+    "screenshot": 84304,
+    "reviewOnly": true,
+    "fixedBlocksIgnored": true
+  }
+}

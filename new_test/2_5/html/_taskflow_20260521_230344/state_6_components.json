@@ -1,0 +1,21 @@
+{
+  "state_id": 6,
+  "state_name": "工作台列表刷新成功页",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "语言一致性问题：截图中‘项目集B’和‘项目集C’等文字未在HTML中正确渲染，且‘新项目集’的角标‘新’字在截图中显示不完整，疑似被裁切；同时主语言为zh，但部分文案如‘用于跨部…’被截断，不符合中文阅读习惯。",
+      "元素溢出问题：‘项目集A’下方的‘项目集B’文字被裁切，超出容器边界；‘新项目集’的橙色角标‘新’字右上角位置偏移，可能因绝对定位未对齐导致视觉错位。",
+      "可见性问题：description要求显示N+1项列表，但截图中仅显示3个项目集（项目集A、B、C），而‘新项目集’未完全展示，且底部‘+’按钮缺失，与需求不符。",
+      "位置合理性问题：‘新项目集’的橙色角标‘新’位于右上角，但实际在截图中位置偏下，不符合‘右上角绝对定位’的要求。",
+      "基础样式问题：‘新项目集’的角标背景色#FF9800虽符合规范，但字体大小12px在截图中显得过小，且无清晰边框或阴影，视觉辨识度不足。"
+    ],
+    "fixedBlocks": "[OLD]\n<div id=\"146_161595\" class=\"Pixso-frame-146_161595\" style=\"top:120px;\">\n  <div class=\"frame-content-146_161595\">\n    <div id=\"146_161596\" class=\"Pixso-frame-146_161596\">\n      <p id=\"146_161597\" class=\"Pixso-paragraph-146_161597 fill-text文本色图标色color_text_primary-14_290523-paragraph text-单行行高headline标题headline_s-14_365549\" style=\"font-size:16px;font-weight:600;line-height:1.5;\">项目集B</p>\n    </div>\n  </div>\n</div>\n[NEW]\n<div id=\"146_161595\" class=\"Pixso-frame-146_161595\" style=\"top:120px;\">\n  <div class=\"frame-content-146_161595\">\n    <div id=\"146_161596\" class=\"Pixso-frame-146_161596\">\n      <p id=\"146_161597\" class=\"Pixso-paragraph-146_161597 fill-text文本色图标色color_text_primary-14_290523-paragraph text-单行行高headline标题headline_s-14_365549\" style=\"font-size:16px;font-weight:600;line-height:1.5;max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\">项目集B</p>\n    </div>\n  </div>\n</div>\n[OLD]\n<div id=\"146_161595\" class=\"Pixso-frame-146_161595\" style=\"top:360px;\">\n  <div class=\"frame-content-146_161595\">\n    <div id=\"146_161596\" class=\"Pixso-frame-146_161596\">\n      <p id=\"146_161597\" class=\"Pixso-paragraph-146_161597 fill-text文本色图标色color_text_primary-14_290523-paragraph text-单行行高headline标题headline_s-14_365549\" style=\"font-size:16px;font-weight:600;line-height:1.5;\">新项目集</p>\n      <div style=\"position:absolute;top:-8px;right:-8px;width:24px;height:16px;background-color:#FF9800;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:12px;color:white;font-weight:500;\">新</div>\n    </div>\n  </div>\n</div>\n[NEW]\n<div id=\"146_161595\" class=\"Pixso-frame-146_161595\" style=\"top:360px;\">\n  <div class=\"frame-content-146_161595\">\n    <div id=\"146_161596\" class=\"Pixso-frame-146_161596\">\n      <p id=\"146_161597\" class=\"Pixso-paragraph-146_161597 fill-text文本色图标色color_text_primary-14_290523-paragraph text-单行行高headline标题headline_s-14_365549\" style=\"font-size:16px;font-weight:600;line-height:1.5;max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\">新项目集</p>\n      <div style=\"position:absolute;top:-8px;right:-8px;width:24px;height:16px;background-color:#FF9800;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:12px;color:white;font-weight:500;transform:translate(0,0);\">新</div>\n    </div>\n  </div>\n</div>",
+    "reviewMs": 37392,
+    "screenshot": 60178,
+    "reviewOnly": true,
+    "fixedBlocksIgnored": true
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "state_id": 5,
+  "state_name": "创建成功Toast提示页",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "绿色横条高度为32px，但截图中实际高度明显大于32px，且圆角未设置为0，不符合规范",
+      "绿色横条应居中宽度328px，但截图中横条宽度超出容器边界，右侧被裁切",
+      "绿色横条顶部距离状态栏应为16px，但截图中实际距离为48px（状态栏下方有额外空白），位置偏移"
+    ],
+    "fixedBlocks": "[OLD]\n<div style=\"position:fixed; top:48px; left:50%; transform:translateX(-50%); width:328px; height:32px; background:#52C418; z-index:10000; display:flex; align-items:center; justify-content:center; box-sizing:border-box; font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;\">\n  <span class=\"mi\" style=\"font-size:20px; color:#FFFFFF; margin-right:8px;\">check_circle</span>\n  <span style=\"font-size:16px; font-weight:500; color:#FFFFFF;\">创建成功</span>\n</div>\n[NEW]\n<div style=\"position:fixed; top:16px; left:50%; transform:translateX(-50%); width:328px; height:32px; background:#52C418; z-index:10000; display:flex; align-items:center; justify-content:center; box-sizing:border-box; font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif; border-radius:0;\">\n  <span class=\"mi\" style=\"font-size:20px; color:#FFFFFF; margin-right:8px;\">check_circle</span>\n  <span style=\"font-size:16px; font-weight:500; color:#FFFFFF;\">创建成功</span>\n</div>",
+    "reviewMs": 17142,
+    "screenshot": 44986,
+    "reviewOnly": true,
+    "fixedBlocksIgnored": true
+  }
+}

@@ -1,0 +1,64 @@
+[OLD]
+<!-- 任务节点开始: 创建项目集全屏空白表单页【临时】 -->
+<div style="position:fixed; top:32px; left:0; right:0; bottom:0; z-index:9999; background:#FFFFFF; overflow-y:auto; box-sizing:border-box; font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;">
+  <div style="padding:24px 16px; display:flex; flex-direction:column; gap:24px;">
+    <h1 style="font-size:16px; font-weight:500; color:rgba(0,0,0,0.9); text-align:center; margin:0;">创建项目集</h1>
+    <div>
+      <label style="font-size:14px; color:rgba(0,0,0,0.6); display:block; margin-bottom:8px;">名称</label>
+      <input type="text" placeholder="请输入项目集名称" value=""
+        style="width:100%; padding:12px 16px; border:1px solid rgba(0,0,0,0.12); border-radius:8px;
+               font-size:16px; color:rgba(0,0,0,0.9); box-sizing:border-box; outline:none;">
+    </div>
+    <div>
+      <label style="font-size:14px; color:rgba(0,0,0,0.6); display:block; margin-bottom:8px;">归属</label>
+      <div style="display:flex; gap:12px;">
+        <button style="flex:1; padding:12px; background:#F1F3F5; color:rgba(0,0,0,0.9); border:none; border-radius:20px;
+                       font-size:16px; font-weight:500; cursor:pointer;">公司</button>
+        <button style="flex:1; padding:12px; background:#F1F3F5; color:rgba(0,0,0,0.9); border:none; border-radius:20px;
+                       font-size:16px; font-weight:500; cursor:pointer;">个人</button>
+      </div>
+    </div>
+    <div style="padding:32px 0; text-align:center;">
+      <p style="font-size:14px; color:rgba(0,0,0,0.4); margin:0;">暂无项目，点击添加</p>
+    </div>
+  </div>
+  <div style="position:fixed; bottom:0; left:0; right:0; padding:16px; background:#FFFFFF; box-shadow:0 -1px 6px rgba(0,0,0,0.05);">
+    <button style="width:100%; padding:12px; background:#E31D1A; color:#FFFFFF; border:none; border-radius:8px;
+                   font-size:16px; font-weight:500; cursor:pointer;">确认</button>
+  </div>
+</div>
+<!-- 任务节点结束: 创建项目集全屏空白表单页【临时】 -->
+[NEW]
+<!-- 任务节点开始: 创建成功Toast提示页【临时】 -->
+<div style="position:fixed; top:32px; left:0; right:0; bottom:0; z-index:9999; background:#FFFFFF; overflow-y:auto; box-sizing:border-box; font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;">
+  <div style="padding:24px 16px; display:flex; flex-direction:column; gap:24px;">
+    <h1 style="font-size:16px; font-weight:500; color:rgba(0,0,0,0.9); text-align:center; margin:0;">创建项目集</h1>
+    <div>
+      <label style="font-size:14px; color:rgba(0,0,0,0.6); display:block; margin-bottom:8px;">名称</label>
+      <input type="text" placeholder="请输入项目集名称" value=""
+        style="width:100%; padding:12px 16px; border:1px solid rgba(0,0,0,0.12); border-radius:8px;
+               font-size:16px; color:rgba(0,0,0,0.9); box-sizing:border-box; outline:none;">
+    </div>
+    <div>
+      <label style="font-size:14px; color:rgba(0,0,0,0.6); display:block; margin-bottom:8px;">归属</label>
+      <div style="display:flex; gap:12px;">
+        <button style="flex:1; padding:12px; background:#F1F3F5; color:rgba(0,0,0,0.9); border:none; border-radius:20px;
+                       font-size:16px; font-weight:500; cursor:pointer;">公司</button>
+        <button style="flex:1; padding:12px; background:#F1F3F5; color:rgba(0,0,0,0.9); border:none; border-radius:20px;
+                       font-size:16px; font-weight:500; cursor:pointer;">个人</button>
+      </div>
+    </div>
+    <div style="padding:32px 0; text-align:center;">
+      <p style="font-size:14px; color:rgba(0,0,0,0.4); margin:0;">暂无项目，点击添加</p>
+    </div>
+  </div>
+  <div style="position:fixed; bottom:0; left:0; right:0; padding:16px; background:#FFFFFF; box-shadow:0 -1px 6px rgba(0,0,0,0.05);">
+    <button style="width:100%; padding:12px; background:#E31D1A; color:#FFFFFF; border:none; border-radius:8px;
+                   font-size:16px; font-weight:500; cursor:pointer;">确认</button>
+  </div>
+</div>
+<!-- 任务节点结束: 创建成功Toast提示页【临时】 -->
+<div style="position:fixed; top:48px; left:50%; transform:translateX(-50%); width:328px; height:32px; background:#52C418; z-index:10000; display:flex; align-items:center; justify-content:center; box-sizing:border-box; font-family:HarmonyHeiTi,'HarmonyOS Sans',sans-serif;">
+  <span class="mi" style="font-size:20px; color:#FFFFFF; margin-right:8px;">check_circle</span>
+  <span style="font-size:16px; font-weight:500; color:#FFFFFF;">创建成功</span>
+</div>

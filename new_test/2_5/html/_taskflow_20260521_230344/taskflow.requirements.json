@@ -1,0 +1,44 @@
+[
+  {
+    "state_id": 1,
+    "state_name": "我的工作台项目集列表页",
+    "description": "页面为全屏移动端布局，顶部状态栏显示时间与信号图标，中部为项目集列表（每项含标题、描述、更新时间），底部导航栏高亮‘工作台’图标；右上角无悬浮按钮，列表区域下方居中显示蓝色圆形‘+’按钮，按钮内嵌加号图标，文字为‘创建项目集’。",
+    "implementation_method": "原始 HTML 初始快照，不做改造。",
+    "last_state": null
+  },
+  {
+    "state_id": 2,
+    "state_name": "创建项目集全屏表单页",
+    "description": "页面为全屏模态页，顶部状态栏可见（时间+信号图标），无导航栏；顶部有左对齐黑色返回箭头图标，正中显示大号黑体标题‘创建项目集’；中部为垂直表单区：上方是带灰色边框的文本输入框（占宽90%，高48px，placeholder为‘请输入项目集名称’），下方是两组并排圆形单选按钮（左侧标‘公司’，右侧标‘个人’，默认未选中），再下方是浅灰底色卡片式‘添加项目’入口（宽90%，高56px，内含‘+ 添加项目’文字及右向箭头图标）；底部固定红色长条按钮（宽90%，高52px，文字‘确认’，居中白色粗体，背景色#D32F2F）。",
+    "implementation_method": "基于 last_state=state_1：保留顶部状态栏；删除底部导航栏与列表区域全部内容；新增全屏模态页结构（含返回箭头、标题、名称输入框、公司/个人单选组、添加项目入口、底部红色确认按钮）。",
+    "last_state": 1
+  },
+  {
+    "state_id": 3,
+    "state_name": "创建项目集校验中状态",
+    "description": "页面结构与 state_2 完全一致，但名称输入框保持原样（无边框变色），公司/个人单选组保持原样（无选项高亮），添加项目入口保持原样；底部红色确认按钮变为禁用态（背景色#E0E0E0，文字‘确认’为灰色#9E9E9E，不可点击）；右上角（靠近返回箭头侧）悬浮一个16px直径的旋转加载图标（深灰#191919，CSS animation:hmspin 1s linear infinite）。",
+    "implementation_method": "基于 last_state=state_2：保留全部骨架（状态栏、返回箭头、标题、输入框、单选组、添加入口、底部按钮位置）；删除右上角可能存在的其他图标（如关闭按钮）；新增16px旋转加载图标（深灰#191919，位于右上角距顶部16px、距右边缘16px，CSS animation:hmspin 1s linear infinite）；将底部确认按钮设为禁用态（background-color:#E0E0E0; color:#9E9E9E; pointer-events:none）。",
+    "last_state": 2
+  },
+  {
+    "state_id": 4,
+    "state_name": "创建项目集校验失败状态",
+    "description": "页面结构与 state_2 完全一致，名称输入框带有2px红色下划线边框（其余边透明），其正下方紧贴一行12px红色小字提示‘所选项目不匹配公司属性’；公司/个人单选组保持原样（两个选项均未选中，无高亮）；添加项目入口保持原样；底部红色确认按钮仍为启用态（背景色#D32F2F，文字‘确认’为白色）。",
+    "implementation_method": "基于 last_state=state_2：保留全部骨架；删除右上角加载图标（若存在）；新增红色下划线边框（border-bottom:2px solid #D32F2F）于名称输入框；新增红色提示文字（color:#D32F2F; font-size:12px; margin-top:4px）紧贴输入框下方；文字内容为‘所选项目不匹配公司属性’。",
+    "last_state": 2
+  },
+  {
+    "state_id": 5,
+    "state_name": "创建项目集成功提示状态",
+    "description": "页面结构与 state_2 完全一致，顶部状态栏下方16px处悬浮一条绿色横条（宽100%，高48px，背景色#4CAF50，圆角8px），横条内左侧为白色勾选图标（✅），中间为白色16px中文字‘创建成功’，右侧为白色16px‘×’关闭按钮；其余所有元素（返回箭头、标题、输入框、单选组、添加入口、底部确认按钮）均正常可见且未被遮挡。",
+    "implementation_method": "基于 last_state=state_2：保留全部骨架（状态栏、返回箭头、标题、输入框、单选组、添加入口、底部确认按钮）；删除右上角加载图标（若存在）；新增顶部绿色Toast横条（width:100%; height:48px; background-color:#4CAF50; border-radius:8px; position:fixed; top:calc(44px + 16px); left:0; display:flex; align-items:center; padding:0 16px; justify-content:space-between）；横条内含左侧‘✅’、中间‘创建成功’、右侧‘×’，均为白色16px。",
+    "last_state": 2
+  },
+  {
+    "state_id": 6,
+    "state_name": "工作台列表刷新成功页",
+    "description": "页面为全屏移动端布局，顶部状态栏显示时间与信号图标，中部为项目集列表（共N+1项），最后一项为新创建的项目集：标题加粗显示，右侧带橙色‘新’角标（底色#FF9800，文字‘新’为白色12px，右上角绝对定位）；列表下方仍居中显示蓝色圆形‘+’按钮（‘创建项目集’）；底部导航栏高亮‘工作台’图标；无任何浮层、弹窗或Toast。",
+    "implementation_method": "基于 last_state=state_1：保留顶部状态栏、底部导航栏、+按钮；删除原列表全部DOM节点；新增N+1项列表，其中最后一项含标题、描述、更新时间，并在右上角绝对定位添加橙色‘新’角标（background-color:#FF9800; color:white; font-size:12px; width:24px; height:16px; border-radius:2px; display:flex; align-items:center; justify-content:center）；角标文案为‘新’。",
+    "last_state": 1
+  }
+]

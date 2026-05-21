@@ -939,6 +939,62 @@ function suppressBaseDarkMaskForPreservedStatusBarFullscreen(html, currentReq, l
   return out;
 }
 
+/**
+ * 状态栏图标保留，但状态栏背后的颜色应属于当前全屏业务页，而不是露出上一页的
+ * D2C 背景装饰。这里只清理 base DOM 里的大尺寸顶部背景/装饰层，不碰小尺寸
+ * 时间、信号、电量图标。
+ */
+function normalizePreservedStatusBarBackgroundForFullscreen(html, currentReq, log) {
+  const text = `${currentReq?.state_name || ""} ${currentReq?.description || ""} ${currentReq?.implementation_method || ""}`;
+  const wantsStatusBar = /(保留|沿用|继承|keep|preserve).{0,12}(状态栏|时间|信号|电量|status\s*bar)|状态栏.{0,12}(保留|沿用|继承|keep|preserve)/i.test(text);
+  const isFullscreenPage = /(全屏|fullscreen|独立页|新页面|全新页面|page|panel)/i.test(text);
+  const isModal = /(弹窗|对话框|dialog|modal|popup|bottom\s*sheet|底部抽屉|底部弹窗)/i.test(text);
+  if (!wantsStatusBar || !isFullscreenPage || isModal) return html;
+
+  const cleanedHtml = html.replace(/\n?<style\b[^>]*\bid=["']hm-fullscreen-statusbar-bg["'][^>]*>[\s\S]*?<\/style>\n?/gi, "\n");
+  const taskRoot = cleanedHtml.match(/<!--\s*任务节点开始:[\s\S]*?<div\b[^>]*style="([^"]*position\s*:\s*fixed[^"]*top\s*:\s*32px[^"]*)"[^>]*>/i);
+  const taskStyle = taskRoot?.[1] || "";
+  const bgMatch = taskStyle.match(/background(?:-color)?\s*:\s*(#[0-9a-f]{3,8}\b|rgba?\([^)]+\)|white|black|[a-z]+)\s*;?/i);
+  const pageBg = bgMatch?.[1] || "#FFFFFF";
+  const baseHtml = cleanedHtml.replace(/<!--\s*任务节点开始:[\s\S]*?<!--\s*任务节点结束:[\s\S]*?-->/gi, "");
+  const classes = new Set();
+  const parsePx = (body, prop) => {
+    const m = body.match(new RegExp(`${prop}\\s*:\\s*(-?\\d+(?:\\.\\d+)?)px`, "i"));
+    return m ? Number(m[1]) : null;
+  };
+  const isWide = (body) => {
+    const w = parsePx(body, "width");
+    return w == null ? /width\s*:\s*100vw/i.test(body) : w >= 100;
+  };
+  const isTall = (body) => {
+    const h = parsePx(body, "height");
+    return h == null ? /height\s*:\s*100vh/i.test(body) : h >= 80;
+  };
+  const styleRuleRe = /\.([A-Za-z0-9_-]+)\s*\{([\s\S]*?)\}/g;
+  let m;
+  while ((m = styleRuleRe.exec(cleanedHtml)) !== null) {
+    const cls = m[1];
+    const body = m[2] || "";
+    const appearsInBaseDom = new RegExp(`class=["'][^"']*\\b${cls.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b[^"']*["']`, "i").test(baseHtml);
+    if (!appearsInBaseDom) continue;
+    const positioned = /position\s*:\s*(?:absolute|fixed|relative)/i.test(body);
+    const top = parsePx(body, "top");
+    const nearTop = top == null || top <= 32;
+    const visualBg = /background(?:-color|-image)?\s*:/i.test(body) || /backdrop-filter\s*:/i.test(body);
+    if (positioned && nearTop && isWide(body) && isTall(body) && visualBg) classes.add(cls);
+  }
+  if (classes.size === 0) return cleanedHtml;
+
+  const rules = [
+    `html,body{background-color:${pageBg} !important;}`,
+    ...Array.from(classes).map(cls => `.${cls}{background-color:${pageBg} !important;background-image:none !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important;}`),
+  ].join("\n");
+  const css = `\n<style id="hm-fullscreen-statusbar-bg">\n${rules}\n</style>\n`;
+  const out = /<\/head>/i.test(cleanedHtml) ? cleanedHtml.replace(/<\/head>/i, `${css}</head>`) : cleanedHtml.replace(/<\/body>/i, `${css}</body>`);
+  if (log) log(`[fullscreen-statusbar] 状态栏背景统一为当前全屏页背景 ${pageBg}：${Array.from(classes).join(", ")}`);
+  return out;
+}
+
 function ensureLoadingIndicator(html, currentReq, log) {
   const text = `${currentReq?.state_name || ""} ${currentReq?.description || ""} ${currentReq?.implementation_method || ""}`.toLowerCase();
   const isLoadingState = /(加载|loading|processing|submitting|提交中|等待|进行中|处理中)/i.test(text);
@@ -1206,6 +1262,7 @@ async function patchOneState({ prevHtml, currentReq, allRequirements, platformHi
     patched = enforceOpaqueFullscreenPanel(patched, currentReq, log);
     patched = enforcePreservedStatusBarForFullscreen(patched, currentReq, log);
     patched = suppressBaseDarkMaskForPreservedStatusBarFullscreen(patched, currentReq, log);
+    patched = normalizePreservedStatusBarBackgroundForFullscreen(patched, currentReq, log);
     // ⑨ ⑩ 语法 fix + id 去重
     patched = fixCssSyntaxErrors(patched, log);
     patched = dedupeDuplicateIds(patched, currentReq, log);
