@@ -916,8 +916,7 @@ function suppressBaseDarkMaskForPreservedStatusBarFullscreen(html, currentReq, l
   if (!wantsStatusBar || !isFullscreenPage || isModal) return html;
 
   const cleanedHtml = html.replace(/\n?<style\b[^>]*\bid=["']hm-fullscreen-hide-base-mask["'][^>]*>[\s\S]*?<\/style>\n?/gi, "\n");
-  const firstTaskIdx = cleanedHtml.search(/<!--\s*任务节点开始:/i);
-  const baseHtml = firstTaskIdx >= 0 ? cleanedHtml.slice(0, firstTaskIdx) : cleanedHtml;
+  const baseHtml = cleanedHtml.replace(/<!--\s*任务节点开始:[\s\S]*?<!--\s*任务节点结束:[\s\S]*?-->/gi, "");
   const darkMaskClasses = new Set();
   const styleRuleRe = /\.([A-Za-z0-9_-]+)\s*\{([\s\S]*?)\}/g;
   let m;
