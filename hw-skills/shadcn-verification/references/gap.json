@@ -1,0 +1,89 @@
+{
+  "format": "spacing-spec-json",
+  "version": 1,
+  "description": "间距规范（padding / margin / gap）。供大模型/校验器读取：每个 spacing 属性必须使用 allowedValues 中的值。规则：值需为 4 或 8 的倍数，允许 2 的存在。",
+  "rules": {
+    "unit": "px",
+    "allowedValues": [0, 2, 4, 8, 12, 16, 20, 24, 32, 40, 48, 56, 64],
+    "constraintsCN": [
+      "所有 spacing（padding/margin/gap）取值必须在 allowedValues 内",
+      "allowedValues 满足：除 2 以外均为 4 的倍数（因此也覆盖 8 的倍数体系）"
+    ],
+    "constraintsEN": [
+      "All spacing (padding/margin/gap) values must be one of allowedValues",
+      "Values follow a 4px step scale, with an extra allowed value: 2px"
+    ]
+  },
+  "properties": [
+    {
+      "property": "paddingLeft",
+      "nameCN": "左内边距",
+      "category": "padding",
+      "axis": "horizontal",
+      "description": "容器内容区到左边界的距离（内边距）。"
+    },
+    {
+      "property": "paddingRight",
+      "nameCN": "右内边距",
+      "category": "padding",
+      "axis": "horizontal",
+      "description": "容器内容区到右边界的距离（内边距）。"
+    },
+    {
+      "property": "paddingTop",
+      "nameCN": "上内边距",
+      "category": "padding",
+      "axis": "vertical",
+      "description": "容器内容区到上边界的距离（内边距）。"
+    },
+    {
+      "property": "paddingBottom",
+      "nameCN": "下内边距",
+      "category": "padding",
+      "axis": "vertical",
+      "description": "容器内容区到下边界的距离（内边距）。"
+    },
+    {
+      "property": "marginLeft",
+      "nameCN": "左外边距",
+      "category": "margin",
+      "axis": "horizontal",
+      "description": "元素外边界到左侧相邻元素/容器边界的距离（外边距）。"
+    },
+    {
+      "property": "marginRight",
+      "nameCN": "右外边距",
+      "category": "margin",
+      "axis": "horizontal",
+      "description": "元素外边界到右侧相邻元素/容器边界的距离（外边距）。"
+    },
+    {
+      "property": "marginTop",
+      "nameCN": "上外边距",
+      "category": "margin",
+      "axis": "vertical",
+      "description": "元素外边界到上方相邻元素/容器边界的距离（外边距）。"
+    },
+    {
+      "property": "marginBottom",
+      "nameCN": "下外边距",
+      "category": "margin",
+      "axis": "vertical",
+      "description": "元素外边界到下方相邻元素/容器边界的距离（外边距）。"
+    },
+    {
+      "property": "gapHorizontal",
+      "nameCN": "元素间横向间距（gap）",
+      "category": "gap",
+      "axis": "horizontal",
+      "description": "同一行/水平排列的相邻元素之间的间距（不含元素自身宽度）。"
+    },
+    {
+      "property": "gapVertical",
+      "nameCN": "元素间纵向间距",
+      "category": "gap",
+      "axis": "vertical",
+      "description": "同一列/垂直排列的相邻元素之间的间距（不含元素自身高度）。"
+    }
+  ]
+}

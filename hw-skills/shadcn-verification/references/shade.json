@@ -1,0 +1,517 @@
+{
+  "format": "pixso-inset-json",
+  "version": 1,
+  "source": "https://pixso.cn/app/design/TJB3XguX3utaESStZ5NJqA?page-id=3182:10192",
+  "pageId": "3182:10192",
+  "exportedAt": "2026-05-11T06:39:27.423049+00:00",
+  "description": "从 Pixso EFFECT 样式导出：投影偏移/模糊半径/扩散与颜色，供 ArkUI shadow / 背景模糊等参数对照。",
+  "insetCount": 23,
+  "insets": [
+    {
+      "id": "1:343",
+      "pixsoName": "Light/Blur/COMPONENT_REGULAR",
+      "name": "light_blur_component_regular",
+      "effectType": "BACKGROUND_BLUR",
+      "offsetVp": {
+        "x": 0,
+        "y": 0
+      },
+      "blurRadiusVp": 120,
+      "spreadVp": 0,
+      "visible": true,
+      "showShadowBehindNode": false,
+      "shadowColorRgba": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0.25098039215686274
+      },
+      "shadowColorHex": "#40000000",
+      "arkuiHint": ".backdropBlur(radius) 或 BlurStyle（需按设计语义映射）"
+    },
+    {
+      "id": "1:345",
+      "pixsoName": "Light/Blur/COMPONENT_THICK",
+      "name": "light_blur_component_thick",
+      "effectType": "BACKGROUND_BLUR",
+      "offsetVp": {
+        "x": 0,
+        "y": 0
+      },
+      "blurRadiusVp": 80,
+      "spreadVp": 0,
+      "visible": true,
+      "showShadowBehindNode": false,
+      "shadowColorRgba": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0.25098039215686274
+      },
+      "shadowColorHex": "#40000000",
+      "arkuiHint": ".backdropBlur(radius) 或 BlurStyle（需按设计语义映射）"
+    },
+    {
+      "id": "1:341",
+      "pixsoName": "Light/Blur/COMPONENT_THIN",
+      "name": "light_blur_component_thin",
+      "effectType": "BACKGROUND_BLUR",
+      "offsetVp": {
+        "x": 0,
+        "y": 0
+      },
+      "blurRadiusVp": 80,
+      "spreadVp": 0,
+      "visible": true,
+      "showShadowBehindNode": false,
+      "shadowColorRgba": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0.25098039215686274
+      },
+      "shadowColorHex": "#40000000",
+      "arkuiHint": ".backdropBlur(radius) 或 BlurStyle（需按设计语义映射）"
+    },
+    {
+      "id": "1:347",
+      "pixsoName": "Light/Blur/COMPONENT_ULTRA_THICK",
+      "name": "light_blur_component_ultra_thick",
+      "effectType": "BACKGROUND_BLUR",
+      "offsetVp": {
+        "x": 0,
+        "y": 0
+      },
+      "blurRadiusVp": 80,
+      "spreadVp": 0,
+      "visible": true,
+      "showShadowBehindNode": false,
+      "shadowColorRgba": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0.25098039215686274
+      },
+      "shadowColorHex": "#40000000",
+      "arkuiHint": ".backdropBlur(radius) 或 BlurStyle（需按设计语义映射）"
+    },
+    {
+      "id": "1:339",
+      "pixsoName": "Light/Blur/COMPONENT_ULTRA_THIN",
+      "name": "light_blur_component_ultra_thin",
+      "effectType": "BACKGROUND_BLUR",
+      "offsetVp": {
+        "x": 0,
+        "y": 0
+      },
+      "blurRadiusVp": 120,
+      "spreadVp": 0,
+      "visible": true,
+      "showShadowBehindNode": false,
+      "shadowColorRgba": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0.25098039215686274
+      },
+      "shadowColorHex": "#40000000",
+      "arkuiHint": ".backdropBlur(radius) 或 BlurStyle（需按设计语义映射）"
+    },
+    {
+      "id": "1:363",
+      "pixsoName": "Light/Blur/Navigation_THIN",
+      "name": "light_blur_navigation_thin",
+      "effectType": "BACKGROUND_BLUR",
+      "offsetVp": {
+        "x": 0,
+        "y": 0
+      },
+      "blurRadiusVp": 135.91400146484375,
+      "spreadVp": 0,
+      "visible": true,
+      "showShadowBehindNode": false,
+      "shadowColorRgba": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0.25098039215686274
+      },
+      "shadowColorHex": "#40000000",
+      "arkuiHint": ".backdropBlur(radius) 或 BlurStyle（需按设计语义映射）"
+    },
+    {
+      "id": "1136:11269",
+      "pixsoName": "Light/PCShadow/defaultShadowL",
+      "name": "light_pcshadow_defaultshadowl",
+      "effectType": "DROP_SHADOW",
+      "offsetVp": {
+        "x": 0,
+        "y": 20
+      },
+      "blurRadiusVp": 60,
+      "spreadVp": 0,
+      "visible": true,
+      "showShadowBehindNode": false,
+      "shadowColorRgba": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0.2
+      },
+      "shadowColorHex": "#33000000",
+      "arkuiHint": ".shadow({ radius, color, offsetX, offsetY, fill })"
+    },
+    {
+      "id": "1136:11267",
+      "pixsoName": "Light/PCShadow/defaultShadowM",
+      "name": "light_pcshadow_defaultshadowm",
+      "effectType": "DROP_SHADOW",
+      "offsetVp": {
+        "x": 0,
+        "y": 10
+      },
+      "blurRadiusVp": 30,
+      "spreadVp": 0,
+      "visible": true,
+      "showShadowBehindNode": false,
+      "shadowColorRgba": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0.2
+      },
+      "shadowColorHex": "#33000000",
+      "arkuiHint": ".shadow({ radius, color, offsetX, offsetY, fill })"
+    },
+    {
+      "id": "1136:10550",
+      "pixsoName": "Light/PCShadow/defaultShadowS",
+      "name": "light_pcshadow_defaultshadows",
+      "effectType": "DROP_SHADOW",
+      "offsetVp": {
+        "x": 0,
+        "y": 0
+      },
+      "blurRadiusVp": 16,
+      "spreadVp": 0,
+      "visible": true,
+      "showShadowBehindNode": false,
+      "shadowColorRgba": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0.2
+      },
+      "shadowColorHex": "#33000000",
+      "arkuiHint": ".shadow({ radius, color, offsetX, offsetY, fill })"
+    },
+    {
+      "id": "1136:11265",
+      "pixsoName": "Light/PCShadow/defaultShadowXS",
+      "name": "light_pcshadow_defaultshadowxs",
+      "effectType": "DROP_SHADOW",
+      "offsetVp": {
+        "x": 0,
+        "y": 0
+      },
+      "blurRadiusVp": 4,
+      "spreadVp": 0,
+      "visible": true,
+      "showShadowBehindNode": false,
+      "shadowColorRgba": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0.10196078431372549
+      },
+      "shadowColorHex": "#1A000000",
+      "arkuiHint": ".shadow({ radius, color, offsetX, offsetY, fill })"
+    },
+    {
+      "id": "1136:10540",
+      "pixsoName": "Light/PCShadow/floatingShadowM",
+      "name": "light_pcshadow_floatingshadowm",
+      "effectType": "DROP_SHADOW",
+      "offsetVp": {
+        "x": 0,
+        "y": 20
+      },
+      "blurRadiusVp": 60,
+      "spreadVp": 0,
+      "visible": true,
+      "showShadowBehindNode": false,
+      "shadowColorRgba": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0.2
+      },
+      "shadowColorHex": "#33000000",
+      "arkuiHint": ".shadow({ radius, color, offsetX, offsetY, fill })"
+    },
+    {
+      "id": "1136:10542",
+      "pixsoName": "Light/PCShadow/floatingShadowS",
+      "name": "light_pcshadow_floatingshadows",
+      "effectType": "DROP_SHADOW",
+      "offsetVp": {
+        "x": 0,
+        "y": 10
+      },
+      "blurRadiusVp": 16,
+      "spreadVp": 0,
+      "visible": true,
+      "showShadowBehindNode": false,
+      "shadowColorRgba": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0.2
+      },
+      "shadowColorHex": "#33000000",
+      "arkuiHint": ".shadow({ radius, color, offsetX, offsetY, fill })"
+    },
+    {
+      "id": "1:322",
+      "pixsoName": "Light/PNGResource/edit text",
+      "name": "light_pngresource_edit_text",
+      "effectType": "DROP_SHADOW",
+      "offsetVp": {
+        "x": 0,
+        "y": 0
+      },
+      "blurRadiusVp": 60,
+      "spreadVp": 0,
+      "visible": true,
+      "showShadowBehindNode": false,
+      "shadowColorRgba": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0.2
+      },
+      "shadowColorHex": "#33000000",
+      "arkuiHint": ".shadow({ radius, color, offsetX, offsetY, fill })"
+    },
+    {
+      "id": "1:174",
+      "pixsoName": "Light/PNGResource/FABShadow",
+      "name": "light_pngresource_fabshadow",
+      "effectType": "DROP_SHADOW",
+      "offsetVp": {
+        "x": 0,
+        "y": 25
+      },
+      "blurRadiusVp": 30,
+      "spreadVp": -6,
+      "visible": true,
+      "showShadowBehindNode": false,
+      "shadowColorRgba": {
+        "r": 10,
+        "g": 89,
+        "b": 247,
+        "a": 0.30196078431372547
+      },
+      "shadowColorHex": "#4D0A59F7",
+      "arkuiHint": ".shadow({ radius, color, offsetX, offsetY, fill })"
+    },
+    {
+      "id": "1:121",
+      "pixsoName": "Light/PNGResource/menu",
+      "name": "light_pngresource_menu",
+      "effectType": "DROP_SHADOW",
+      "offsetVp": {
+        "x": 0,
+        "y": 0
+      },
+      "blurRadiusVp": 60,
+      "spreadVp": 0,
+      "visible": true,
+      "showShadowBehindNode": false,
+      "shadowColorRgba": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0.2
+      },
+      "shadowColorHex": "#33000000",
+      "arkuiHint": ".shadow({ radius, color, offsetX, offsetY, fill })"
+    },
+    {
+      "id": "1:261",
+      "pixsoName": "Light/PNGResource/OUTER_DEFAULT_LG",
+      "name": "light_pngresource_outer_default_lg",
+      "effectType": "DROP_SHADOW",
+      "offsetVp": {
+        "x": 0,
+        "y": 20
+      },
+      "blurRadiusVp": 120,
+      "spreadVp": 0,
+      "visible": true,
+      "showShadowBehindNode": true,
+      "shadowColorRgba": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0.2
+      },
+      "shadowColorHex": "#33000000",
+      "arkuiHint": ".shadow({ radius, color, offsetX, offsetY, fill })"
+    },
+    {
+      "id": "1:166",
+      "pixsoName": "Light/PNGResource/OUTER_DEFAULT_MD",
+      "name": "light_pngresource_outer_default_md",
+      "effectType": "DROP_SHADOW",
+      "offsetVp": {
+        "x": 0,
+        "y": 10
+      },
+      "blurRadiusVp": 60,
+      "spreadVp": 0,
+      "visible": true,
+      "showShadowBehindNode": true,
+      "shadowColorRgba": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0.2
+      },
+      "shadowColorHex": "#33000000",
+      "arkuiHint": ".shadow({ radius, color, offsetX, offsetY, fill })"
+    },
+    {
+      "id": "1:139",
+      "pixsoName": "Light/PNGResource/OUTER_DEFAULT_SM",
+      "name": "light_pngresource_outer_default_sm",
+      "effectType": "DROP_SHADOW",
+      "offsetVp": {
+        "x": 0,
+        "y": 10
+      },
+      "blurRadiusVp": 16,
+      "spreadVp": 0,
+      "visible": true,
+      "showShadowBehindNode": true,
+      "shadowColorRgba": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0.1
+      },
+      "shadowColorHex": "#1A000000",
+      "arkuiHint": ".shadow({ radius, color, offsetX, offsetY, fill })"
+    },
+    {
+      "id": "1:222",
+      "pixsoName": "Light/PNGResource/OUTER_DEFAULT_XS",
+      "name": "light_pngresource_outer_default_xs",
+      "effectType": "DROP_SHADOW",
+      "offsetVp": {
+        "x": 0,
+        "y": 4
+      },
+      "blurRadiusVp": 8,
+      "spreadVp": 0,
+      "visible": true,
+      "showShadowBehindNode": true,
+      "shadowColorRgba": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0.1
+      },
+      "shadowColorHex": "#1A000000",
+      "arkuiHint": ".shadow({ radius, color, offsetX, offsetY, fill })"
+    },
+    {
+      "id": "1:221",
+      "pixsoName": "Light/PNGResource/OUTER_FLOATING_MD",
+      "name": "light_pngresource_outer_floating_md",
+      "effectType": "DROP_SHADOW",
+      "offsetVp": {
+        "x": 0,
+        "y": 20
+      },
+      "blurRadiusVp": 160,
+      "spreadVp": 0,
+      "visible": true,
+      "showShadowBehindNode": false,
+      "shadowColorRgba": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0.4
+      },
+      "shadowColorHex": "#66000000",
+      "arkuiHint": ".shadow({ radius, color, offsetX, offsetY, fill })"
+    },
+    {
+      "id": "1:94",
+      "pixsoName": "Light/PNGResource/OUTER_FLOATING_SM",
+      "name": "light_pngresource_outer_floating_sm",
+      "effectType": "DROP_SHADOW",
+      "offsetVp": {
+        "x": 0,
+        "y": 20
+      },
+      "blurRadiusVp": 160,
+      "spreadVp": 0,
+      "visible": true,
+      "showShadowBehindNode": true,
+      "shadowColorRgba": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0.2
+      },
+      "shadowColorHex": "#33000000",
+      "arkuiHint": ".shadow({ radius, color, offsetX, offsetY, fill })"
+    },
+    {
+      "id": "1:31",
+      "pixsoName": "Light/PNGResource/Tips",
+      "name": "light_pngresource_tips",
+      "effectType": "DROP_SHADOW",
+      "offsetVp": {
+        "x": 0,
+        "y": 0
+      },
+      "blurRadiusVp": 60,
+      "spreadVp": 0,
+      "visible": true,
+      "showShadowBehindNode": false,
+      "shadowColorRgba": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0.2
+      },
+      "shadowColorHex": "#33000000",
+      "arkuiHint": ".shadow({ radius, color, offsetX, offsetY, fill })"
+    },
+    {
+      "id": "1:170",
+      "pixsoName": "Light/PNGResource/Toast",
+      "name": "light_pngresource_toast",
+      "effectType": "DROP_SHADOW",
+      "offsetVp": {
+        "x": 0,
+        "y": 20
+      },
+      "blurRadiusVp": 120,
+      "spreadVp": 0,
+      "visible": true,
+      "showShadowBehindNode": false,
+      "shadowColorRgba": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0.2
+      },
+      "shadowColorHex": "#33000000",
+      "arkuiHint": ".shadow({ radius, color, offsetX, offsetY, fill })"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "format": "rounded-spec-json",
+  "version": 1,
+  "description": "圆角规范（border radius）。供大模型/校验器读取：每个圆角属性必须使用 allowedValues 中的值。规则：值需为 4 或 8 的倍数。",
+  "rules": {
+    "unit": "px",
+    "allowedValues": [0, 4, 8, 12, 16, 24, 32],
+    "constraintsCN": [
+      "所有圆角（border radius）取值必须在 allowedValues 内",
+      "allowedValues 全部为 4 的倍数（因此也覆盖 8 的倍数体系）"
+    ],
+    "constraintsEN": [
+      "All border radius values must be one of allowedValues",
+      "Values follow a 4px step scale"
+    ]
+  },
+  "tokens": [
+    {
+      "name": "rounded_none",
+      "value": 0
+    },
+    {
+      "name": "rounded_xs",
+      "value": 4
+    },
+    {
+      "name": "rounded_sm",
+      "value": 8
+    },
+    {
+      "name": "rounded_md",
+      "value": 12
+    },
+    {
+      "name": "rounded_lg",
+      "value": 16
+    },
+    {
+      "name": "rounded_xl",
+      "value": 24
+    },
+    {
+      "name": "rounded_2xl",
+      "value": 32
+    }
+  ],
+  "properties": [
+    {
+      "property": "borderRadius",
+      "nameCN": "统一圆角",
+      "description": "四个角使用相同的圆角半径。"
+    },
+    {
+      "property": "borderTopLeftRadius",
+      "nameCN": "左上圆角",
+      "description": "仅左上角的圆角半径。"
+    },
+    {
+      "property": "borderTopRightRadius",
+      "nameCN": "右上圆角",
+      "description": "仅右上角的圆角半径。"
+    },
+    {
+      "property": "borderBottomLeftRadius",
+      "nameCN": "左下圆角",
+      "description": "仅左下角的圆角半径。"
+    },
+    {
+      "property": "borderBottomRightRadius",
+      "nameCN": "右下圆角",
+      "description": "仅右下角的圆角半径。"
+    }
+  ]
+}

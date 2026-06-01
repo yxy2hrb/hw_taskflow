@@ -1,0 +1,121 @@
+{
+  "format": "outline-spec-json",
+  "version": 1,
+  "description": "描边规范（outline/border）。供大模型与校验器读取：描边宽度必须使用离散刻度，样式仅允许预定义值，颜色优先引用 color.json 中的 token。",
+  "rules": {
+    "widthUnit": "px",
+    "allowedWidthValues": [0, 1, 2, 4, 8],
+    "allowedStyleValues": ["none", "solid", "dashed", "dotted"],
+    "colorReference": {
+      "preferTokenSource": "css_styles_specification/color.json",
+      "tokenPattern": "^(light|dark)_[a-z0-9_]+$",
+      "fallbackHexPattern": "^#([0-9A-Fa-f]{8}|[0-9A-Fa-f]{6})$"
+    },
+    "constraintsCN": [
+      "描边宽度（outlineWidth / borderWidth 及四向宽度）必须在 allowedWidthValues 内",
+      "描边样式（outlineStyle / borderStyle）必须在 allowedStyleValues 内",
+      "描边颜色（outlineColor / borderColor）优先使用 color.json 中的 token 名称",
+      "若确需写死颜色，必须符合 ARGB/RGB 十六进制格式"
+    ],
+    "constraintsEN": [
+      "Stroke width values must be one of allowedWidthValues",
+      "Stroke style values must be one of allowedStyleValues",
+      "Use color tokens from color.json for stroke color whenever possible",
+      "If hardcoded color is required, use valid ARGB/RGB hex format"
+    ]
+  },
+  "tokens": {
+    "width": [
+      {
+        "name": "outline_none",
+        "value": 0
+      },
+      {
+        "name": "outline_xs",
+        "value": 1
+      },
+      {
+        "name": "outline_sm",
+        "value": 2
+      },
+      {
+        "name": "outline_md",
+        "value": 4
+      },
+      {
+        "name": "outline_lg",
+        "value": 8
+      }
+    ],
+    "style": [
+      {
+        "name": "outline_style_none",
+        "value": "none"
+      },
+      {
+        "name": "outline_style_solid",
+        "value": "solid"
+      },
+      {
+        "name": "outline_style_dashed",
+        "value": "dashed"
+      },
+      {
+        "name": "outline_style_dotted",
+        "value": "dotted"
+      }
+    ]
+  },
+  "properties": [
+    {
+      "property": "outlineWidth",
+      "nameCN": "外轮廓宽度",
+      "description": "组件外轮廓线宽度。"
+    },
+    {
+      "property": "outlineStyle",
+      "nameCN": "外轮廓样式",
+      "description": "外轮廓线样式（none/solid/dashed/dotted）。"
+    },
+    {
+      "property": "outlineColor",
+      "nameCN": "外轮廓颜色",
+      "description": "优先引用 color.json 的语义色 token。"
+    },
+    {
+      "property": "borderWidth",
+      "nameCN": "边框宽度",
+      "description": "统一边框线宽。"
+    },
+    {
+      "property": "borderTopWidth",
+      "nameCN": "上边框宽度",
+      "description": "仅上边框线宽。"
+    },
+    {
+      "property": "borderRightWidth",
+      "nameCN": "右边框宽度",
+      "description": "仅右边框线宽。"
+    },
+    {
+      "property": "borderBottomWidth",
+      "nameCN": "下边框宽度",
+      "description": "仅下边框线宽。"
+    },
+    {
+      "property": "borderLeftWidth",
+      "nameCN": "左边框宽度",
+      "description": "仅左边框线宽。"
+    },
+    {
+      "property": "borderStyle",
+      "nameCN": "边框样式",
+      "description": "统一边框样式。"
+    },
+    {
+      "property": "borderColor",
+      "nameCN": "边框颜色",
+      "description": "优先使用语义色 token，避免硬编码。"
+    }
+  ]
+}
