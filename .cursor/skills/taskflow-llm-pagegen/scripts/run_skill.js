@@ -144,14 +144,16 @@ async function main() {
   };
 
   const preprocessOut = path.join(runDir, "preprocess");
-  await runNode([
+  const preprocessArgs = [
     path.join(PREPROCESS_DIR, "scripts", "run_preprocess.js"),
     rel(inputDir),
     "--html", rel(htmlPath),
     "--out", rel(preprocessOut),
     "--width", width,
     "--height", height,
-  ], "preprocess");
+  ];
+  if (imagePath) preprocessArgs.push("--image", rel(imagePath));
+  await runNode(preprocessArgs, "preprocess");
 
   const registryPath = path.join(preprocessOut, "semantic_registry.json");
   const anchorsPath = path.join(preprocessOut, "semantic_anchors.js");
@@ -234,6 +236,7 @@ async function main() {
     run_dir: rel(runDir),
     preprocess_dir: rel(preprocessOut),
     preprocessed_html: rel(path.join(preprocessOut, "Index.preprocessed.html")),
+    page_dsl: rel(path.join(preprocessOut, "spec.used.json")),
     semantic_registry: rel(registryPath),
     semantic_anchors: rel(anchorsPath),
     blueprint: rel(blueprintInputPath),

@@ -2,6 +2,7 @@
 "use strict";
 
 // run_preprocess.js - pre-process pipeline runner
+// Stage0: generate/reuse spec.json page DSL (Qwen VL when missing)
 // Stage1: build_div_bbox.js (playwright, no LLM)
 // Stage2: Qwen semantic annotation (LLM, text model)
 // Stage3: replace_body.py (script)
@@ -39,6 +40,70 @@ function tryParseJson(text) {
   let s2 = clean.indexOf("{"), e3 = clean.lastIndexOf("}");
   if (s2 !== -1 && e3 > s2) { try { return JSON.parse(clean.slice(s2, e3 + 1)); } catch(e) {} }
   return null;
+}
+
+function imageToDataUrl(file) {
+  const buf = fs.readFileSync(file);
+  const ext = path.extname(file).slice(1).toLowerCase() || "png";
+  const mime = ext === "jpg" ? "jpeg" : ext;
+  return `data:image/${mime};base64,${buf.toString("base64")}`;
+}
+
+async function generateSpecWithQwenVl(apiKey, imagePath) {
+  if (!apiKey) throw new Error("Missing DASHSCOPE_API_KEY/QWEN_API_KEY for spec.json generation");
+  if (!fs.existsSync(imagePath)) throw new Error("spec.json not found and screenshot not found: " + imagePath);
+
+  const prompt = [
+    "请分析这张应用页面截图，输出中文 JSON 格式的 UI Spec。",
+    "结构必须包含以下字段：UI整体描述、页面构成、视觉风格、各个区域组件信息分述。",
+    "要求：",
+    "- 页面构成按从上到下、从左到右列出所有功能区块名。",
+    "- 各个区域组件信息分述中列出所有可见组件，包含组件类型、承担的功能、承载的信息、组件的配色样式和布局、组件所处的位置。",
+    "- 承载的信息必须使用截图里真实可见的文案、数字或状态。",
+    "- 不要写 px、颜色十六进制、代码或解释。",
+    "- 只输出 JSON 对象本身，不要 markdown。"
+  ].join("\n");
+
+  const payload = {
+    model: "qwen-vl-max",
+    input: {
+      messages: [
+        {
+          role: "user",
+          content: [
+            { image: imageToDataUrl(imagePath) },
+            { text: prompt },
+          ],
+        },
+      ],
+    },
+    parameters: { temperature: 0.2, max_tokens: 2400 },
+  };
+
+  let lastErr;
+  for (let attempt = 1; attempt <= 4; attempt++) {
+    try {
+      const resp = await fetch("https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer " + apiKey },
+        body: JSON.stringify(payload),
+      });
+      const body = await resp.text();
+      if (!resp.ok) throw new Error("Qwen VL " + resp.status + ": " + body.slice(0, 1000));
+      const data = JSON.parse(body);
+      const content = data?.output?.choices?.[0]?.message?.content;
+      const text = Array.isArray(content)
+        ? (content.find((item) => item && typeof item.text === "string")?.text || "")
+        : (typeof content === "string" ? content : (data?.output?.text || ""));
+      const parsed = tryParseJson(text);
+      if (!parsed || Array.isArray(parsed)) throw new Error("Qwen VL returned non-object JSON");
+      return parsed;
+    } catch (err) {
+      lastErr = err;
+      if (attempt < 4) await new Promise((resolve) => setTimeout(resolve, attempt * 3000));
+    }
+  }
+  throw lastErr;
 }
 
 function isLikelyEmptyDiv(bodyHtml, id) {
@@ -269,23 +334,24 @@ function removeMaskAnnotatedDivs(bodyHtml, semanticItems, bboxItems) {
 
 async function main() {
   const args = process.argv.slice(2);
-  let inputDir = null, htmlPathArg = null, outputDirArg = null;
+  let inputDir = null, htmlPathArg = null, imagePathArg = null, outputDirArg = null;
   let widthArg = null, heightArg = null;
   for (let i = 0; i < args.length; i++) {
     if (args[i] === "--html")        { htmlPathArg  = args[++i]; }
+    else if (args[i] === "--image")  { imagePathArg = args[++i]; }
     else if (args[i] === "--out")    { outputDirArg = args[++i]; }
     else if (args[i] === "--width")  { widthArg     = args[++i]; }
     else if (args[i] === "--height") { heightArg    = args[++i]; }
     else if (!inputDir) { inputDir = args[i]; }
   }
   if (!inputDir) {
-    console.error("Usage: node run_preprocess.js <inputDir> [--html <path>] [--out <dir>] [--width W] [--height H]");
+    console.error("Usage: node run_preprocess.js <inputDir> [--html <path>] [--image <pngPath>] [--out <dir>] [--width W] [--height H]");
     process.exit(1);
   }
 
   const htmlPath = htmlPathArg || path.join(inputDir, "html", "Index.original.html");
   const specPath = path.join(inputDir, "spec.json");
-  const imagePath = path.join(inputDir, "wps_doc_0.png");
+  const imagePath = imagePathArg || path.join(inputDir, "wps_doc_0.png");
   const bboxDir = path.join(inputDir, ".result_bbox");
   const outputDir = outputDirArg || path.join(inputDir, ".preprocess");
   ensureDir(outputDir);
@@ -295,13 +361,27 @@ async function main() {
   console.log("=== pre-process pipeline ===");
   console.log("  inputDir : " + inputDir);
   console.log("  htmlPath : " + htmlPath);
+  console.log("  imagePath: " + imagePath);
   console.log("  outputDir: " + outputDir);
   if (widthArg && heightArg) console.log("  viewport : " + widthArg + "x" + heightArg + " (explicit)");
-  if (!apiKey) console.warn("  [WARN] no QWEN_API_KEY - Stage2 will be skipped");
+  if (!apiKey) console.warn("  [WARN] no QWEN_API_KEY - Stage0/Stage2 LLM calls may be skipped or fail");
 
   const viewportW = widthArg || "360";
   const viewportH = heightArg || "792";
-  const spec = fs.existsSync(specPath) ? JSON.parse(readUtf8(specPath)) : null;
+  let specSource = "existing";
+  let spec = null;
+  if (fs.existsSync(specPath)) {
+    spec = JSON.parse(readUtf8(specPath));
+    console.log("\n[Stage 0] reuse existing spec.json");
+  } else {
+    console.log("\n[Stage 0] spec.json missing, generating from screenshot with Qwen VL ...");
+    spec = await generateSpecWithQwenVl(apiKey, imagePath);
+    writeUtf8(specPath, JSON.stringify(spec, null, 2));
+    writeUtf8(path.join(outputDir, "spec.generated.json"), JSON.stringify(spec, null, 2));
+    specSource = "qwen-vl-max";
+    console.log("[Stage 0] done -> " + specPath);
+  }
+  writeUtf8(path.join(outputDir, "spec.used.json"), JSON.stringify(spec, null, 2));
 
   let bboxJson = null;
   let annotatedBodyBboxPath = null;
@@ -332,7 +412,6 @@ async function main() {
     if (!apiKey) break;
 
     console.log("\n[Stage 2] calling Qwen for semantic annotation (attempt " + (attempt + 1) + ") ...");
-    if (!spec) throw new Error("spec.json not found: " + specPath);
     const divBbox = bboxJson.div_bbox || [];
     const body = extractBlock(readUtf8(htmlPath), "body");
     const divsInfo = divBbox.map(function(d) {
@@ -438,6 +517,12 @@ async function main() {
     ok: true,
     input: { inputDir, htmlPath, specPath },
     stages: {
+      stage0_spec: {
+        source: specSource,
+        imagePath,
+        specPath,
+        generated: specSource !== "existing",
+      },
       stage1_bbox: {
         source: "playwright",
         bboxCount: (bboxJson.div_bbox || []).length,
@@ -454,6 +539,8 @@ async function main() {
     outputs: {
       annotated_body_bbox: annotatedBodyBboxPath,
       annotated_body_semantic: annotatedBodySemanticPath,
+      spec_used: path.join(outputDir, "spec.used.json"),
+      spec_generated: specSource !== "existing" ? path.join(outputDir, "spec.generated.json") : null,
       output_html: outputHtmlPath,
     },
   };
