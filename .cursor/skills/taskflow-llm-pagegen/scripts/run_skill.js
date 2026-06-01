@@ -5,12 +5,12 @@ const fs = require("fs");
 const fsp = require("fs/promises");
 const path = require("path");
 const { spawnSync } = require("child_process");
+const { injectStateKeyNavIntoFile } = require("./inject_state_key_nav");
 
 const ROOT = path.resolve(__dirname, "../../../..");
 const SKILL_ROOT = path.resolve(__dirname, "..");
 const PREPROCESS_DIR = path.join(SKILL_ROOT, "sub-skills", "preprocess");
 const BLUEPRINT_DIR = path.join(SKILL_ROOT, "sub-skills", "blueprint");
-const CODEGEN_DIR = path.join(SKILL_ROOT, "sub-skills", "codegen");
 
 function rel(file) {
   return path.relative(ROOT, file).replace(/\\/g, "/");
@@ -22,6 +22,10 @@ function exists(file) {
 
 function readJson(file) {
   return JSON.parse(fs.readFileSync(file, "utf8"));
+}
+
+function readUtf8(file) {
+  return fs.readFileSync(file, "utf8");
 }
 
 function readPngSize(file) {
@@ -41,6 +45,14 @@ function writeJson(file, value) {
 function argValue(args, name, fallback) {
   const idx = args.indexOf(name);
   return idx >= 0 ? args[idx + 1] : fallback;
+}
+
+function resolveCodegenDir(name) {
+  const allowed = new Set(["codegen", "code_gen2"]);
+  if (!allowed.has(name)) throw new Error(`Invalid --codegen ${name}. Expected codegen or code_gen2.`);
+  const dir = path.join(SKILL_ROOT, "sub-skills", name);
+  if (!exists(dir)) throw new Error(`Missing codegen skill directory: ${dir}`);
+  return dir;
 }
 
 function stamp() {
@@ -107,12 +119,15 @@ async function main() {
   const imageArg = argValue(args, "--image", "");
   const inputArg = argValue(args, "--input", "");
   if (!targetArg && (!htmlArg || !inputArg)) {
-    throw new Error("Usage: node .cursor/skills/taskflow-llm-pagegen/scripts/run_skill.js <inputDir> [--image image.png] [--html Index.original.html] [--input input.txt] [--width W --height H]");
+    throw new Error("Usage: node .cursor/skills/taskflow-llm-pagegen/scripts/run_skill.js <inputDir> [--image image.png] [--html Index.original.html] [--input input.txt] [--width W --height H] [--codegen codegen|code_gen2]");
   }
 
   loadDotEnv(path.join(ROOT, "backend", ".env"));
   const inputDir = path.resolve(ROOT, targetArg || path.dirname(path.dirname(path.resolve(ROOT, htmlArg))));
   const model = argValue(args, "--model", "qwen3.7-max");
+  const codegenName = argValue(args, "--codegen", "codegen");
+  const codegenDir = resolveCodegenDir(codegenName);
+  const codegenPrefix = codegenName === "code_gen2" ? "code_gen2_" : "";
   const imagePath = imageArg ? path.resolve(ROOT, imageArg) : "";
   const inferredSize = readPngSize(imagePath);
   const width = argValue(args, "--width", inferredSize ? String(inferredSize.width) : "360");
@@ -126,6 +141,7 @@ async function main() {
     image_path: imagePath ? rel(imagePath) : null,
     html_path: rel(htmlPath),
     input_txt_path: rel(inputPath),
+    codegen: codegenName,
     viewport: {
       width: Number(width),
       initial_height: Number(height),
@@ -138,6 +154,7 @@ async function main() {
     ok: false,
     input_dir: rel(inputDir),
     model,
+    codegen: codegenName,
     stamp: runStamp,
     outputs: {},
     checks: {},
@@ -187,7 +204,7 @@ async function main() {
 
   const stateOut = path.join(runDir, "state_implementation", "state_implementation_model.llm.json");
   await runNode([
-    path.join(CODEGEN_DIR, "sub-skills", "state-implementation-model", "scripts", "run_skill.js"),
+    path.join(codegenDir, "sub-skills", "state-implementation-model", "scripts", "run_skill.js"),
     rel(inputDir),
     "--model", model,
     "--blueprint", rel(blueprintInputPath),
@@ -197,22 +214,22 @@ async function main() {
     "--height", height,
   ], "state implementation model");
 
-  const componentOut = path.join(runDir, "component_codegen");
+  const componentOut = path.join(runDir, `${codegenPrefix}component_codegen`);
   const componentGenerated = path.join(componentOut, "component_codegen.generated.json");
   await runNode([
-    path.join(CODEGEN_DIR, "sub-skills", "component-codegen", "scripts", "run_skill.js"),
+    path.join(codegenDir, "sub-skills", "component-codegen", "scripts", "run_skill.js"),
     rel(inputDir),
     "--model", model,
     "--state-model", rel(stateOut),
     "--out-dir", rel(componentOut),
     "--width", width,
     "--height", height,
-  ], "component codegen");
+  ], `${codegenName} component codegen`);
 
-  const llmLayerOut = path.join(runDir, "llm_layer_codegen");
-  const llmLayerHtml = path.join(inputDir, "html", "Index.state-model.llm-layers.html");
+  const llmLayerOut = path.join(runDir, `${codegenPrefix}llm_layer_codegen`);
+  const llmLayerHtml = path.join(inputDir, "html", codegenName === "code_gen2" ? "Index.state-model.code-gen2-layers.html" : "Index.state-model.llm-layers.html");
   await runNode([
-    path.join(CODEGEN_DIR, "sub-skills", "page-layer", "scripts", "run_skill.js"),
+    path.join(codegenDir, "sub-skills", "page-layer", "scripts", "run_skill.js"),
     rel(inputDir),
     "--model", model,
     "--html", rel(path.join(preprocessOut, "Index.preprocessed.html")),
@@ -224,7 +241,13 @@ async function main() {
     "--out-html", rel(llmLayerHtml),
     "--width", width,
     "--height", height,
-  ], "LLM static state layers");
+  ], `${codegenName} static state layers`);
+
+  const postprocessChanged = injectStateKeyNavIntoFile(llmLayerHtml);
+  const postprocess = {
+    state_key_nav_present: readUtf8(llmLayerHtml).includes("tf-state-key-nav"),
+    state_key_nav_changed: postprocessChanged,
+  };
 
   const preprocessReport = readJson(path.join(preprocessOut, "report.json"));
   const registry = readJson(registryPath);
@@ -234,6 +257,7 @@ async function main() {
 
   report.outputs = {
     run_dir: rel(runDir),
+    codegen: codegenName,
     preprocess_dir: rel(preprocessOut),
     preprocessed_html: rel(path.join(preprocessOut, "Index.preprocessed.html")),
     page_dsl: rel(path.join(preprocessOut, "spec.used.json")),
@@ -245,6 +269,7 @@ async function main() {
     llm_layer_html: rel(llmLayerHtml),
     llm_layer_dir: rel(llmLayerOut),
     state_layers_report: rel(path.join(llmLayerOut, "auto_shots", "state_layers_report.json")),
+    postprocess,
   };
   report.checks = {
     preprocess_ok: preprocessReport.ok === true,

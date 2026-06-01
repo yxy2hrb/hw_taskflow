@@ -25,6 +25,12 @@ Unified input form:
 node .cursor/skills/taskflow-llm-pagegen/scripts/run_skill.js new_test/2 --image new_test/2/wps_doc_0.png --html new_test/2/html/Index.original.html --input new_test/2/input.txt --width 360 --height 792
 ```
 
+Switch code generation implementation:
+
+```bash
+node .cursor/skills/taskflow-llm-pagegen/scripts/run_skill.js new_test/2 --width 360 --height 792 --codegen code_gen2
+```
+
 Inputs:
 
 - `--image`: source screenshot path. Used to infer viewport size when `--width/--height` are omitted.
@@ -32,6 +38,8 @@ Inputs:
 - `--input`: taskflow brief text path.
 - `--width`: optional viewport width. Width is locked throughout generation.
 - `--height`: optional initial viewport height. Generated pages may be taller if content does not fit.
+- `--codegen`: optional codegen implementation. Use `codegen` for the default
+  static pipeline or `code_gen2` for the React-first component pipeline.
 
 The top-level runner only coordinates sub-skills and writes the final run report.
 
@@ -52,10 +60,11 @@ The top-level runner only coordinates sub-skills and writes the final run report
      - `sub-skills/blueprint/sub-skills/implementation-plan/SKILL.md`
      - `sub-skills/blueprint/sub-skills/blueprint-builder/SKILL.md`
 
-3. `sub-skills/codegen`
+3. `sub-skills/codegen` or `sub-skills/code_gen2`
    - Generates state implementation model.
    - Generates static page layers.
    - Performs HTML post-processing and screenshot validation.
+   - Selected by `--codegen codegen|code_gen2`.
    - Uses nested prompt sub-skills:
      - `sub-skills/codegen/sub-skills/state-implementation-model/SKILL.md`
      - `sub-skills/codegen/sub-skills/page-layer/SKILL.md`
