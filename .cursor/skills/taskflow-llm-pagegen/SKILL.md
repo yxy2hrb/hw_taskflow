@@ -38,6 +38,7 @@ The top-level runner only coordinates sub-skills and writes the final run report
 ## Sub-skill Structure
 
 1. `sub-skills/preprocess`
+   - Generates `spec.json` page DSL from the source screenshot when missing.
    - Collects div bbox data.
    - Generates div semantic annotations.
    - Replaces HTML body with semantic comments.
@@ -62,6 +63,7 @@ The top-level runner only coordinates sub-skills and writes the final run report
 ## Outputs
 
 - `.run_skill/<stamp>/preprocess`
+- `spec.json` when the input case does not already provide page DSL
 - `.run_skill/<stamp>/blueprint`
 - `.run_skill/<stamp>/state_implementation`
 - `.run_skill/<stamp>/llm_layer_codegen`
