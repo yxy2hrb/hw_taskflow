@@ -28,7 +28,14 @@ Thumbs.db
 
 # Taskflow generated outputs
 saved-taskflow/
-# **/_taskflow_*/
+**/_taskflow_*/
+**/_run_skills_*/
+**/.run_skill/
+**/_run_skill*/
+**/.result_bbox*/
+**/output/
+**/Index.state-model.llm-layers.html
+new_test/*_summary.json
 quality_report.json
 
 # Batch/generated evaluation artifacts
@@ -45,6 +52,9 @@ _batch_summary.json
 .vscode/
 *.swp
 *.swo
+
+# Claude Code internal
+.claude/
 
 # AGENT
 AGENTS.md
