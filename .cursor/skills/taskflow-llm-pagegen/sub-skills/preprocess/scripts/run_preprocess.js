@@ -371,8 +371,19 @@ async function main() {
   let specSource = "existing";
   let spec = null;
   if (fs.existsSync(specPath)) {
-    spec = JSON.parse(readUtf8(specPath));
-    console.log("\n[Stage 0] reuse existing spec.json");
+    try {
+      spec = JSON.parse(readUtf8(specPath));
+      console.log("\n[Stage 0] reuse existing spec.json");
+    } catch (err) {
+      const invalidSpec = readUtf8(specPath);
+      writeUtf8(path.join(outputDir, "spec.invalid.txt"), invalidSpec);
+      console.warn("\n[Stage 0] existing spec.json is invalid JSON; regenerating from screenshot");
+      spec = await generateSpecWithQwenVl(apiKey, imagePath);
+      writeUtf8(specPath, JSON.stringify(spec, null, 2));
+      writeUtf8(path.join(outputDir, "spec.generated.json"), JSON.stringify(spec, null, 2));
+      specSource = "qwen-vl-max";
+      console.log("[Stage 0] regenerated -> " + specPath);
+    }
   } else {
     console.log("\n[Stage 0] spec.json missing, generating from screenshot with Qwen VL ...");
     spec = await generateSpecWithQwenVl(apiKey, imagePath);
