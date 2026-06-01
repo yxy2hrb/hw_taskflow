@@ -1,0 +1,11 @@
+{
+  "image_path": null,
+  "html_path": "new_test/1/html/Index.original.html",
+  "input_txt_path": "new_test/1/input.txt",
+  "viewport": {
+    "width": 360,
+    "initial_height": 792,
+    "width_locked": true,
+    "height_may_expand": true
+  }
+}

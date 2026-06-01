@@ -1,0 +1,14 @@
+{
+  "model": "qwen3.7-max",
+  "skill": "taskflow-state-enumeration",
+  "stamp": "20260601110332",
+  "results": [
+    {
+      "testDir": "new_test/1",
+      "outDir": "/Users/fqqz/Desktop/zju/lab/hw_taskflow/new_test/1/html/_run_skills_qwen3.7-max_20260601110332_phase2",
+      "phase": "phase2_state_enumeration",
+      "ok": true,
+      "states": 6
+    }
+  ]
+}

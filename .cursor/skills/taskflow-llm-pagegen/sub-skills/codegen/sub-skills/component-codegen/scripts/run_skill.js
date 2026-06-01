@@ -112,6 +112,34 @@ async function main() {
 
   const stateModel = readJson(stateModelPath);
   const skill = readUtf8(path.resolve(__dirname, "..", "SKILL.md"));
+
+  const resourcesDir = path.resolve(__dirname, "../../../../resources");
+  const globalCssPath = path.join(resourcesDir, "global.css");
+  const componentsDir = path.join(resourcesDir, "components");
+  let componentLibSection = "";
+  if (exists(globalCssPath) && exists(componentsDir)) {
+    const cssVars = readUtf8(globalCssPath)
+      .replace(/@import[^\n]+\n/g, "")
+      .replace(/@tailwind[^\n]+\n/g, "");
+    const tsxFiles = fs.readdirSync(componentsDir, { withFileTypes: true, recursive: true })
+      .filter(e => e.isFile() && e.name.endsWith(".tsx"))
+      .map(e => path.join(e.parentPath || e.path, e.name));
+    const componentCode = tsxFiles.map(f =>
+      `// ${path.relative(componentsDir, f)}\n${readUtf8(f)}`
+    ).join("\n\n---\n\n");
+    componentLibSection = [
+      "\n\n## Design System CSS Variables (use these CSS custom properties in your output)",
+      "```css",
+      cssVars.trim(),
+      "```",
+      "\n## Reference Components (React/Tailwind source — translate visual structure to static HTML/CSS)",
+      "```tsx",
+      componentCode,
+      "```",
+    ].join("\n");
+  }
+
+  const systemPrompt = `${skill}${componentLibSection}\n\nIn the "notes" field, list which reference components and CSS variables you used (e.g. "used TopNav, --color-primary, --radius-md"). Return JSON only.`;
   const generatedById = {};
   const components = [];
   const rawDir = path.join(outDir, "raw");
@@ -128,7 +156,7 @@ async function main() {
       if (useFallback) {
         parsed = fallbackComponent({ component, operation: "create" });
       } else {
-        raw = await callLLM({ model: modelName, system: `${skill}\n\nReturn JSON only.`, user: JSON.stringify(input), maxTokens });
+        raw = await callLLM({ model: modelName, system: systemPrompt, user: JSON.stringify(input), maxTokens });
         parsed = extractJson(raw);
       }
       const issues = validateComponent(parsed, id);
@@ -148,7 +176,7 @@ async function main() {
       if (useFallback) {
         parsed = fallbackComponent({ component, operation: "update", originalComponent });
       } else {
-        raw = await callLLM({ model: modelName, system: `${skill}\n\nReturn JSON only.`, user: JSON.stringify(input), maxTokens });
+        raw = await callLLM({ model: modelName, system: systemPrompt, user: JSON.stringify(input), maxTokens });
         parsed = extractJson(raw);
       }
       const issues = validateComponent(parsed, id);

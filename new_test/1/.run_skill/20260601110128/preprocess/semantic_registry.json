@@ -1,0 +1,705 @@
+{
+  "generated_at": "2026-06-01T11:02:48.869Z",
+  "source": "new_test/1/.run_skill/20260601110128/preprocess/annotated_body_semantic.html",
+  "semantic_dom_registry": {
+    "页面根容器与浅灰背景-整个页面": {
+      "name": "页面根容器与浅灰背景-整个页面",
+      "selector": "#14_807507",
+      "id": "14_807507",
+      "area": "全屏背景",
+      "component": "页面根容器与浅灰背景",
+      "element": "整个页面",
+      "bbox": [
+        0,
+        0,
+        360,
+        792
+      ],
+      "confidence": "高",
+      "text": "",
+      "inheritance_policy": "hideable"
+    },
+    "顶部背景装饰图形组-顶部靠上": {
+      "name": "顶部背景装饰图形组-顶部靠上",
+      "selector": "#14_807508",
+      "id": "14_807508",
+      "area": "顶部区域",
+      "component": "顶部背景装饰图形组",
+      "element": "顶部靠上",
+      "bbox": [
+        0,
+        0,
+        360,
+        228
+      ],
+      "confidence": "中",
+      "text": "",
+      "inheritance_policy": "hideable"
+    },
+    "顶部状态栏-屏幕最顶端": {
+      "name": "顶部状态栏-屏幕最顶端",
+      "selector": "#146_169682",
+      "id": "146_169682",
+      "area": "顶部区域",
+      "component": "顶部状态栏",
+      "element": "屏幕最顶端",
+      "bbox": [
+        0,
+        0,
+        360,
+        36
+      ],
+      "confidence": "高",
+      "text": "08:08",
+      "inheritance_policy": "persistent-or-hideable"
+    },
+    "顶部导航栏-状态栏下方": {
+      "name": "顶部导航栏-状态栏下方",
+      "selector": "#146_169742",
+      "id": "146_169742",
+      "area": "顶部区域",
+      "component": "顶部导航栏",
+      "element": "状态栏下方",
+      "bbox": [
+        0,
+        36,
+        360,
+        56
+      ],
+      "confidence": "高",
+      "text": "我的 工作台",
+      "inheritance_policy": "persistent-or-hideable"
+    },
+    "底部导航栏-屏幕底端固定": {
+      "name": "底部导航栏-屏幕底端固定",
+      "selector": "#14_807524",
+      "id": "14_807524",
+      "area": "底部区域",
+      "component": "底部导航栏",
+      "element": "屏幕底端固定",
+      "bbox": [
+        0,
+        728,
+        360,
+        64
+      ],
+      "confidence": "高",
+      "text": "我的 服务 工作台 商城 首页",
+      "inheritance_policy": "persistent-or-hideable"
+    },
+    "项目开局卡片区域-页面中部偏上": {
+      "name": "项目开局卡片区域-页面中部偏上",
+      "selector": "#14_807568",
+      "id": "14_807568",
+      "area": "全屏背景",
+      "component": "项目开局卡片区域",
+      "element": "页面中部偏上",
+      "bbox": [
+        16,
+        289,
+        328,
+        156
+      ],
+      "confidence": "高",
+      "text": "创建开局 创建项目集 接收项目 项目开局",
+      "inheritance_policy": "hideable"
+    },
+    "创建开局操作按钮-卡片内部左侧": {
+      "name": "创建开局操作按钮-卡片内部左侧",
+      "selector": "#146_161460",
+      "id": "146_161460",
+      "area": "主体内容区域",
+      "component": "创建开局操作按钮",
+      "element": "卡片内部左侧",
+      "bbox": [
+        28,
+        329,
+        96,
+        104
+      ],
+      "confidence": "高",
+      "text": "创建开局",
+      "inheritance_policy": "replaceable"
+    },
+    "创建项目集操作按钮-卡片内部中间": {
+      "name": "创建项目集操作按钮-卡片内部中间",
+      "selector": "#146_161484",
+      "id": "146_161484",
+      "area": "主体内容区域",
+      "component": "创建项目集操作按钮",
+      "element": "卡片内部中间",
+      "bbox": [
+        132,
+        329,
+        96,
+        104
+      ],
+      "confidence": "高",
+      "text": "创建项目集",
+      "inheritance_policy": "replaceable"
+    },
+    "接收项目操作按钮-卡片内部右侧": {
+      "name": "接收项目操作按钮-卡片内部右侧",
+      "selector": "#146_161509",
+      "id": "146_161509",
+      "area": "主体内容区域",
+      "component": "接收项目操作按钮",
+      "element": "卡片内部右侧",
+      "bbox": [
+        236,
+        329,
+        96,
+        104
+      ],
+      "confidence": "高",
+      "text": "接收项目",
+      "inheritance_policy": "replaceable"
+    },
+    "卡片标题文本容器-卡片顶部": {
+      "name": "卡片标题文本容器-卡片顶部",
+      "selector": "#146_161520",
+      "id": "146_161520",
+      "area": "主体内容区域",
+      "component": "卡片标题文本容器",
+      "element": "卡片顶部",
+      "bbox": [
+        28,
+        289,
+        304,
+        40
+      ],
+      "confidence": "高",
+      "text": "项目开局",
+      "inheritance_policy": "replaceable"
+    },
+    "0808-文本": {
+      "name": "0808-文本",
+      "selector": "#146_169684",
+      "id": "146_169684",
+      "area": "content-area",
+      "component": "text",
+      "element": "08:08",
+      "bbox": [
+        0,
+        0,
+        360,
+        36
+      ],
+      "confidence": "high",
+      "text": "08:08",
+      "inheritance_policy": "hideable"
+    },
+    "顶部导航栏-文本-我的": {
+      "name": "顶部导航栏-文本-我的",
+      "selector": "#146_169753",
+      "id": "146_169753",
+      "area": "content-area",
+      "component": "text",
+      "element": "我的",
+      "bbox": [
+        0,
+        36,
+        360,
+        56
+      ],
+      "confidence": "high",
+      "text": "我的",
+      "inheritance_policy": "hideable"
+    },
+    "顶部导航栏-文本-工作台": {
+      "name": "顶部导航栏-文本-工作台",
+      "selector": "#146_169757",
+      "id": "146_169757",
+      "area": "content-area",
+      "component": "text",
+      "element": "工作台",
+      "bbox": [
+        0,
+        36,
+        360,
+        56
+      ],
+      "confidence": "high",
+      "text": "工作台",
+      "inheritance_policy": "hideable"
+    },
+    "底部导航栏-文本-我的": {
+      "name": "底部导航栏-文本-我的",
+      "selector": "#14_807526",
+      "id": "14_807526",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "我的",
+      "bbox": [
+        0,
+        728,
+        360,
+        64
+      ],
+      "confidence": "high",
+      "text": "我的",
+      "inheritance_policy": "hideable"
+    },
+    "底部导航栏-文本-服务": {
+      "name": "底部导航栏-文本-服务",
+      "selector": "#14_807527",
+      "id": "14_807527",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "服务",
+      "bbox": [
+        0,
+        728,
+        360,
+        64
+      ],
+      "confidence": "high",
+      "text": "服务",
+      "inheritance_policy": "hideable"
+    },
+    "底部导航栏-文本-工作台": {
+      "name": "底部导航栏-文本-工作台",
+      "selector": "#14_807528",
+      "id": "14_807528",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "工作台",
+      "bbox": [
+        0,
+        728,
+        360,
+        64
+      ],
+      "confidence": "high",
+      "text": "工作台",
+      "inheritance_policy": "hideable"
+    },
+    "底部导航栏-文本-商城": {
+      "name": "底部导航栏-文本-商城",
+      "selector": "#14_807529",
+      "id": "14_807529",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "商城",
+      "bbox": [
+        0,
+        728,
+        360,
+        64
+      ],
+      "confidence": "high",
+      "text": "商城",
+      "inheritance_policy": "hideable"
+    },
+    "底部导航栏-文本-首页": {
+      "name": "底部导航栏-文本-首页",
+      "selector": "#14_807530",
+      "id": "14_807530",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "首页",
+      "bbox": [
+        0,
+        728,
+        360,
+        64
+      ],
+      "confidence": "high",
+      "text": "首页",
+      "inheritance_policy": "hideable"
+    },
+    "创建开局操作按钮-文本-创建开局": {
+      "name": "创建开局操作按钮-文本-创建开局",
+      "selector": "#146_161483",
+      "id": "146_161483",
+      "area": "content-area",
+      "component": "text",
+      "element": "创建开局",
+      "bbox": [
+        28,
+        329,
+        96,
+        104
+      ],
+      "confidence": "high",
+      "text": "创建开局",
+      "inheritance_policy": "hideable"
+    },
+    "创建项目集操作按钮-文本-创建项目集": {
+      "name": "创建项目集操作按钮-文本-创建项目集",
+      "selector": "#146_161508",
+      "id": "146_161508",
+      "area": "content-area",
+      "component": "text",
+      "element": "创建项目集",
+      "bbox": [
+        132,
+        329,
+        96,
+        104
+      ],
+      "confidence": "high",
+      "text": "创建项目集",
+      "inheritance_policy": "hideable"
+    },
+    "接收项目操作按钮-文本-接收项目": {
+      "name": "接收项目操作按钮-文本-接收项目",
+      "selector": "#146_161519",
+      "id": "146_161519",
+      "area": "content-area",
+      "component": "text",
+      "element": "接收项目",
+      "bbox": [
+        236,
+        329,
+        96,
+        104
+      ],
+      "confidence": "high",
+      "text": "接收项目",
+      "inheritance_policy": "hideable"
+    },
+    "项目开局-文本": {
+      "name": "项目开局-文本",
+      "selector": "#146_161522",
+      "id": "146_161522",
+      "area": "content-area",
+      "component": "text",
+      "element": "项目开局",
+      "bbox": [
+        28,
+        301,
+        65,
+        20
+      ],
+      "confidence": "high",
+      "text": "项目开局",
+      "inheritance_policy": "hideable"
+    }
+  },
+  "semanticAnchors": {
+    "页面根容器与浅灰背景-整个页面": "#14_807507",
+    "顶部背景装饰图形组-顶部靠上": "#14_807508",
+    "顶部状态栏-屏幕最顶端": "#146_169682",
+    "顶部导航栏-状态栏下方": "#146_169742",
+    "底部导航栏-屏幕底端固定": "#14_807524",
+    "项目开局卡片区域-页面中部偏上": "#14_807568",
+    "创建开局操作按钮-卡片内部左侧": "#146_161460",
+    "创建项目集操作按钮-卡片内部中间": "#146_161484",
+    "接收项目操作按钮-卡片内部右侧": "#146_161509",
+    "卡片标题文本容器-卡片顶部": "#146_161520",
+    "0808-文本": "#146_169684",
+    "顶部导航栏-文本-我的": "#146_169753",
+    "顶部导航栏-文本-工作台": "#146_169757",
+    "底部导航栏-文本-我的": "#14_807526",
+    "底部导航栏-文本-服务": "#14_807527",
+    "底部导航栏-文本-工作台": "#14_807528",
+    "底部导航栏-文本-商城": "#14_807529",
+    "底部导航栏-文本-首页": "#14_807530",
+    "创建开局操作按钮-文本-创建开局": "#146_161483",
+    "创建项目集操作按钮-文本-创建项目集": "#146_161508",
+    "接收项目操作按钮-文本-接收项目": "#146_161519",
+    "项目开局-文本": "#146_161522"
+  },
+  "semantic_dom_tree": {
+    "roots": [
+      "页面根容器与浅灰背景-整个页面"
+    ],
+    "nodes": {
+      "页面根容器与浅灰背景-整个页面": {
+        "name": "页面根容器与浅灰背景-整个页面",
+        "selector": "#14_807507",
+        "id": "14_807507",
+        "area": "全屏背景",
+        "semantic": "页面根容器与浅灰背景",
+        "range": "整个页面",
+        "text": "",
+        "confidence": "高",
+        "parent": null,
+        "children": [
+          "顶部背景装饰图形组-顶部靠上",
+          "顶部状态栏-屏幕最顶端",
+          "顶部导航栏-状态栏下方",
+          "底部导航栏-屏幕底端固定",
+          "项目开局卡片区域-页面中部偏上"
+        ]
+      },
+      "顶部背景装饰图形组-顶部靠上": {
+        "name": "顶部背景装饰图形组-顶部靠上",
+        "selector": "#14_807508",
+        "id": "14_807508",
+        "area": "顶部区域",
+        "semantic": "顶部背景装饰图形组",
+        "range": "顶部靠上",
+        "text": "",
+        "confidence": "中",
+        "parent": "页面根容器与浅灰背景-整个页面",
+        "children": []
+      },
+      "顶部状态栏-屏幕最顶端": {
+        "name": "顶部状态栏-屏幕最顶端",
+        "selector": "#146_169682",
+        "id": "146_169682",
+        "area": "顶部区域",
+        "semantic": "顶部状态栏",
+        "range": "屏幕最顶端",
+        "text": "08:08",
+        "confidence": "高",
+        "parent": "页面根容器与浅灰背景-整个页面",
+        "children": [
+          "0808-文本"
+        ]
+      },
+      "顶部导航栏-状态栏下方": {
+        "name": "顶部导航栏-状态栏下方",
+        "selector": "#146_169742",
+        "id": "146_169742",
+        "area": "顶部区域",
+        "semantic": "顶部导航栏",
+        "range": "状态栏下方",
+        "text": "我的 工作台",
+        "confidence": "高",
+        "parent": "页面根容器与浅灰背景-整个页面",
+        "children": [
+          "顶部导航栏-文本-我的",
+          "顶部导航栏-文本-工作台"
+        ]
+      },
+      "底部导航栏-屏幕底端固定": {
+        "name": "底部导航栏-屏幕底端固定",
+        "selector": "#14_807524",
+        "id": "14_807524",
+        "area": "底部区域",
+        "semantic": "底部导航栏",
+        "range": "屏幕底端固定",
+        "text": "我的 服务 工作台 商城 首页",
+        "confidence": "高",
+        "parent": "页面根容器与浅灰背景-整个页面",
+        "children": [
+          "底部导航栏-文本-我的",
+          "底部导航栏-文本-服务",
+          "底部导航栏-文本-工作台",
+          "底部导航栏-文本-商城",
+          "底部导航栏-文本-首页"
+        ]
+      },
+      "项目开局卡片区域-页面中部偏上": {
+        "name": "项目开局卡片区域-页面中部偏上",
+        "selector": "#14_807568",
+        "id": "14_807568",
+        "area": "全屏背景",
+        "semantic": "项目开局卡片区域",
+        "range": "页面中部偏上",
+        "text": "创建开局 创建项目集 接收项目 项目开局",
+        "confidence": "高",
+        "parent": "页面根容器与浅灰背景-整个页面",
+        "children": [
+          "创建开局操作按钮-卡片内部左侧",
+          "创建项目集操作按钮-卡片内部中间",
+          "接收项目操作按钮-卡片内部右侧",
+          "卡片标题文本容器-卡片顶部"
+        ]
+      },
+      "创建开局操作按钮-卡片内部左侧": {
+        "name": "创建开局操作按钮-卡片内部左侧",
+        "selector": "#146_161460",
+        "id": "146_161460",
+        "area": "主体内容区域",
+        "semantic": "创建开局操作按钮",
+        "range": "卡片内部左侧",
+        "text": "创建开局",
+        "confidence": "高",
+        "parent": "项目开局卡片区域-页面中部偏上",
+        "children": [
+          "创建开局操作按钮-文本-创建开局"
+        ]
+      },
+      "创建项目集操作按钮-卡片内部中间": {
+        "name": "创建项目集操作按钮-卡片内部中间",
+        "selector": "#146_161484",
+        "id": "146_161484",
+        "area": "主体内容区域",
+        "semantic": "创建项目集操作按钮",
+        "range": "卡片内部中间",
+        "text": "创建项目集",
+        "confidence": "高",
+        "parent": "项目开局卡片区域-页面中部偏上",
+        "children": [
+          "创建项目集操作按钮-文本-创建项目集"
+        ]
+      },
+      "接收项目操作按钮-卡片内部右侧": {
+        "name": "接收项目操作按钮-卡片内部右侧",
+        "selector": "#146_161509",
+        "id": "146_161509",
+        "area": "主体内容区域",
+        "semantic": "接收项目操作按钮",
+        "range": "卡片内部右侧",
+        "text": "接收项目",
+        "confidence": "高",
+        "parent": "项目开局卡片区域-页面中部偏上",
+        "children": [
+          "接收项目操作按钮-文本-接收项目"
+        ]
+      },
+      "卡片标题文本容器-卡片顶部": {
+        "name": "卡片标题文本容器-卡片顶部",
+        "selector": "#146_161520",
+        "id": "146_161520",
+        "area": "主体内容区域",
+        "semantic": "卡片标题文本容器",
+        "range": "卡片顶部",
+        "text": "项目开局",
+        "confidence": "高",
+        "parent": "项目开局卡片区域-页面中部偏上",
+        "children": [
+          "项目开局-文本"
+        ]
+      },
+      "0808-文本": {
+        "name": "0808-文本",
+        "selector": "#146_169684",
+        "id": "146_169684",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "08:08",
+        "text": "08:08",
+        "confidence": "high",
+        "parent": "顶部状态栏-屏幕最顶端",
+        "children": []
+      },
+      "顶部导航栏-文本-我的": {
+        "name": "顶部导航栏-文本-我的",
+        "selector": "#146_169753",
+        "id": "146_169753",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "我的",
+        "text": "我的",
+        "confidence": "high",
+        "parent": "顶部导航栏-状态栏下方",
+        "children": []
+      },
+      "顶部导航栏-文本-工作台": {
+        "name": "顶部导航栏-文本-工作台",
+        "selector": "#146_169757",
+        "id": "146_169757",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "工作台",
+        "text": "工作台",
+        "confidence": "high",
+        "parent": "顶部导航栏-状态栏下方",
+        "children": []
+      },
+      "底部导航栏-文本-我的": {
+        "name": "底部导航栏-文本-我的",
+        "selector": "#14_807526",
+        "id": "14_807526",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "我的",
+        "text": "我的",
+        "confidence": "high",
+        "parent": "底部导航栏-屏幕底端固定",
+        "children": []
+      },
+      "底部导航栏-文本-服务": {
+        "name": "底部导航栏-文本-服务",
+        "selector": "#14_807527",
+        "id": "14_807527",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "服务",
+        "text": "服务",
+        "confidence": "high",
+        "parent": "底部导航栏-屏幕底端固定",
+        "children": []
+      },
+      "底部导航栏-文本-工作台": {
+        "name": "底部导航栏-文本-工作台",
+        "selector": "#14_807528",
+        "id": "14_807528",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "工作台",
+        "text": "工作台",
+        "confidence": "high",
+        "parent": "底部导航栏-屏幕底端固定",
+        "children": []
+      },
+      "底部导航栏-文本-商城": {
+        "name": "底部导航栏-文本-商城",
+        "selector": "#14_807529",
+        "id": "14_807529",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "商城",
+        "text": "商城",
+        "confidence": "high",
+        "parent": "底部导航栏-屏幕底端固定",
+        "children": []
+      },
+      "底部导航栏-文本-首页": {
+        "name": "底部导航栏-文本-首页",
+        "selector": "#14_807530",
+        "id": "14_807530",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "首页",
+        "text": "首页",
+        "confidence": "high",
+        "parent": "底部导航栏-屏幕底端固定",
+        "children": []
+      },
+      "创建开局操作按钮-文本-创建开局": {
+        "name": "创建开局操作按钮-文本-创建开局",
+        "selector": "#146_161483",
+        "id": "146_161483",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "创建开局",
+        "text": "创建开局",
+        "confidence": "high",
+        "parent": "创建开局操作按钮-卡片内部左侧",
+        "children": []
+      },
+      "创建项目集操作按钮-文本-创建项目集": {
+        "name": "创建项目集操作按钮-文本-创建项目集",
+        "selector": "#146_161508",
+        "id": "146_161508",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "创建项目集",
+        "text": "创建项目集",
+        "confidence": "high",
+        "parent": "创建项目集操作按钮-卡片内部中间",
+        "children": []
+      },
+      "接收项目操作按钮-文本-接收项目": {
+        "name": "接收项目操作按钮-文本-接收项目",
+        "selector": "#146_161519",
+        "id": "146_161519",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "接收项目",
+        "text": "接收项目",
+        "confidence": "high",
+        "parent": "接收项目操作按钮-卡片内部右侧",
+        "children": []
+      },
+      "项目开局-文本": {
+        "name": "项目开局-文本",
+        "selector": "#146_161522",
+        "id": "146_161522",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "项目开局",
+        "text": "项目开局",
+        "confidence": "high",
+        "parent": "卡片标题文本容器-卡片顶部",
+        "children": []
+      }
+    }
+  }
+}

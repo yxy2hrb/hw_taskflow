@@ -1,0 +1,1 @@
+{"id":"overlay_mask","html":"<div data-component-id=\"overlay_mask\" class=\"tf-component tf-cg-overlay\" style=\"left:0px;top:36px;width:360px;height:756px\"></div>","css":".tf-cg-overlay{position:absolute;background:rgba(0,0,0,0.55);z-index:100;}","notes":"used Overlay, --color-mask-bg"}

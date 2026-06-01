@@ -1,0 +1,1121 @@
+{
+  "viewport": {
+    "width": 360,
+    "initial_height": 792,
+    "width_locked": true,
+    "height_may_expand": true
+  },
+  "blueprint": {
+    "states": [
+      {
+        "state_id": 1,
+        "state_name": "工作台初始页面",
+        "description": "触发条件：无，任务流起点。\n展示信息：“我的工作台”页面，包含顶部状态栏、导航栏、功能图标区、“项目开局”卡片（含“创建开局”按钮）及底部导航栏。\n继承信息：无。"
+      },
+      {
+        "state_id": 2,
+        "state_name": "产品选择弹窗态",
+        "description": "触发条件：用户在工作台点击“创建开局”按钮。\n展示信息：全屏遮罩式弹窗，首屏展示SOHO、光接入等5个产品选项（含图标、名称、标签及描述），SOHO默认选中，底部显示“下一步”按钮。\n继承信息：继承 state_1 的顶部状态栏；主体区域覆盖全屏遮罩及弹窗内容。"
+      },
+      {
+        "state_id": 3,
+        "state_name": "开局方式选择态",
+        "description": "触发条件：用户在产品选择弹窗中点击“下一步”按钮。\n展示信息：弹窗进入第二步，顶部显示设备自动登记与激活说明文案，下方展示Wi-Fi开局等4种开局方式单选列表，底部显示“确认”按钮。\n继承信息：继承 state_2 的全屏遮罩和弹窗骨架；主体内容切换为第二步说明文案和开局方式列表。"
+      },
+      {
+        "state_id": 4,
+        "state_name": "已选方式可提交态",
+        "description": "触发条件：用户在第二步弹窗中单选其中一种开局方式。\n展示信息：弹窗第二步内容，某一种开局方式处于选中状态，底部“确认”按钮高亮且明确可点击。\n继承信息：继承 state_3 的弹窗骨架、说明文案和开局方式列表；更新单选框选中状态及底部按钮样式。"
+      },
+      {
+        "state_id": 5,
+        "state_name": "配置提交中状态",
+        "description": "触发条件：用户点击“确认”按钮提交开局配置。\n展示信息：弹窗保持当前视图，“确认”按钮进入 loading 或 disabled 状态，页面显示提交中反馈。\n继承信息：继承 state_4 的弹窗内容和选中状态；“确认”按钮变为 loading 禁用态。"
+      },
+      {
+        "state_id": 6,
+        "state_name": "配置成功提示态",
+        "description": "触发条件：系统校验通过并提交完成，开局配置成功。\n展示信息：“我的工作台”页面，弹窗已消失，页面顶部浮现“开局配置成功”的 Toast 提示。\n继承信息：跳转回 state_1 的工作台页面；在顶部新增“开局配置成功”Toast 提示。"
+      }
+    ]
+  },
+  "semantic_registry": {
+    "页面根容器与浅灰背景-整个页面": {
+      "selector": "#14_807507",
+      "bbox": [
+        0,
+        0,
+        360,
+        792
+      ],
+      "area": "全屏背景",
+      "component": "页面根容器与浅灰背景",
+      "text": "",
+      "policy": "hideable"
+    },
+    "顶部背景装饰图形组-顶部靠上": {
+      "selector": "#14_807508",
+      "bbox": [
+        0,
+        0,
+        360,
+        228
+      ],
+      "area": "顶部区域",
+      "component": "顶部背景装饰图形组",
+      "text": "",
+      "policy": "hideable"
+    },
+    "顶部状态栏-屏幕最顶端": {
+      "selector": "#146_169682",
+      "bbox": [
+        0,
+        0,
+        360,
+        36
+      ],
+      "area": "顶部区域",
+      "component": "顶部状态栏",
+      "text": "08:08",
+      "policy": "persistent-or-hideable"
+    },
+    "顶部导航栏-状态栏下方": {
+      "selector": "#146_169742",
+      "bbox": [
+        0,
+        36,
+        360,
+        56
+      ],
+      "area": "顶部区域",
+      "component": "顶部导航栏",
+      "text": "我的 工作台",
+      "policy": "persistent-or-hideable"
+    },
+    "底部导航栏-屏幕底端固定": {
+      "selector": "#14_807524",
+      "bbox": [
+        0,
+        728,
+        360,
+        64
+      ],
+      "area": "底部区域",
+      "component": "底部导航栏",
+      "text": "我的 服务 工作台 商城 首页",
+      "policy": "persistent-or-hideable"
+    },
+    "项目开局卡片区域-页面中部偏上": {
+      "selector": "#14_807568",
+      "bbox": [
+        16,
+        289,
+        328,
+        156
+      ],
+      "area": "全屏背景",
+      "component": "项目开局卡片区域",
+      "text": "创建开局 创建项目集 接收项目 项目开局",
+      "policy": "hideable"
+    },
+    "创建开局操作按钮-卡片内部左侧": {
+      "selector": "#146_161460",
+      "bbox": [
+        28,
+        329,
+        96,
+        104
+      ],
+      "area": "主体内容区域",
+      "component": "创建开局操作按钮",
+      "text": "创建开局",
+      "policy": "replaceable"
+    },
+    "创建项目集操作按钮-卡片内部中间": {
+      "selector": "#146_161484",
+      "bbox": [
+        132,
+        329,
+        96,
+        104
+      ],
+      "area": "主体内容区域",
+      "component": "创建项目集操作按钮",
+      "text": "创建项目集",
+      "policy": "replaceable"
+    },
+    "接收项目操作按钮-卡片内部右侧": {
+      "selector": "#146_161509",
+      "bbox": [
+        236,
+        329,
+        96,
+        104
+      ],
+      "area": "主体内容区域",
+      "component": "接收项目操作按钮",
+      "text": "接收项目",
+      "policy": "replaceable"
+    },
+    "卡片标题文本容器-卡片顶部": {
+      "selector": "#146_161520",
+      "bbox": [
+        28,
+        289,
+        304,
+        40
+      ],
+      "area": "主体内容区域",
+      "component": "卡片标题文本容器",
+      "text": "项目开局",
+      "policy": "replaceable"
+    },
+    "0808-文本": {
+      "selector": "#146_169684",
+      "bbox": [
+        0,
+        0,
+        360,
+        36
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "08:08",
+      "policy": "hideable"
+    },
+    "顶部导航栏-文本-我的": {
+      "selector": "#146_169753",
+      "bbox": [
+        0,
+        36,
+        360,
+        56
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "我的",
+      "policy": "hideable"
+    },
+    "顶部导航栏-文本-工作台": {
+      "selector": "#146_169757",
+      "bbox": [
+        0,
+        36,
+        360,
+        56
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "工作台",
+      "policy": "hideable"
+    },
+    "底部导航栏-文本-我的": {
+      "selector": "#14_807526",
+      "bbox": [
+        0,
+        728,
+        360,
+        64
+      ],
+      "area": "bottom-area",
+      "component": "text",
+      "text": "我的",
+      "policy": "hideable"
+    },
+    "底部导航栏-文本-服务": {
+      "selector": "#14_807527",
+      "bbox": [
+        0,
+        728,
+        360,
+        64
+      ],
+      "area": "bottom-area",
+      "component": "text",
+      "text": "服务",
+      "policy": "hideable"
+    },
+    "底部导航栏-文本-工作台": {
+      "selector": "#14_807528",
+      "bbox": [
+        0,
+        728,
+        360,
+        64
+      ],
+      "area": "bottom-area",
+      "component": "text",
+      "text": "工作台",
+      "policy": "hideable"
+    },
+    "底部导航栏-文本-商城": {
+      "selector": "#14_807529",
+      "bbox": [
+        0,
+        728,
+        360,
+        64
+      ],
+      "area": "bottom-area",
+      "component": "text",
+      "text": "商城",
+      "policy": "hideable"
+    },
+    "底部导航栏-文本-首页": {
+      "selector": "#14_807530",
+      "bbox": [
+        0,
+        728,
+        360,
+        64
+      ],
+      "area": "bottom-area",
+      "component": "text",
+      "text": "首页",
+      "policy": "hideable"
+    },
+    "创建开局操作按钮-文本-创建开局": {
+      "selector": "#146_161483",
+      "bbox": [
+        28,
+        329,
+        96,
+        104
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "创建开局",
+      "policy": "hideable"
+    },
+    "创建项目集操作按钮-文本-创建项目集": {
+      "selector": "#146_161508",
+      "bbox": [
+        132,
+        329,
+        96,
+        104
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "创建项目集",
+      "policy": "hideable"
+    },
+    "接收项目操作按钮-文本-接收项目": {
+      "selector": "#146_161519",
+      "bbox": [
+        236,
+        329,
+        96,
+        104
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "接收项目",
+      "policy": "hideable"
+    },
+    "项目开局-文本": {
+      "selector": "#146_161522",
+      "bbox": [
+        28,
+        301,
+        65,
+        20
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "项目开局",
+      "policy": "hideable"
+    }
+  },
+  "state_implementation_model": {
+    "states": [
+      {
+        "id": "state_1",
+        "label": "工作台初始页面",
+        "ui_intent": "展示我的工作台页面，包含顶部状态栏、导航栏、功能图标区、项目开局卡片及底部导航栏",
+        "parent_state": null,
+        "trigger": {
+          "event": "click",
+          "anchor": "创建开局操作按钮-卡片内部左侧",
+          "action": "goto:state_2"
+        },
+        "inheritance": {
+          "keep": [
+            "页面根容器与浅灰背景-整个页面",
+            "顶部背景装饰图形组-顶部靠上",
+            "顶部状态栏-屏幕最顶端",
+            "0808-文本",
+            "顶部导航栏-状态栏下方",
+            "顶部导航栏-文本-我的",
+            "顶部导航栏-文本-工作台",
+            "底部导航栏-屏幕底端固定",
+            "底部导航栏-文本-我的",
+            "底部导航栏-文本-服务",
+            "底部导航栏-文本-工作台",
+            "底部导航栏-文本-商城",
+            "底部导航栏-文本-首页",
+            "项目开局卡片区域-页面中部偏上",
+            "卡片标题文本容器-卡片顶部",
+            "项目开局-文本",
+            "创建开局操作按钮-卡片内部左侧",
+            "创建开局操作按钮-文本-创建开局",
+            "创建项目集操作按钮-卡片内部中间",
+            "创建项目集操作按钮-文本-创建项目集",
+            "接收项目操作按钮-卡片内部右侧",
+            "接收项目操作按钮-文本-接收项目"
+          ],
+          "create": [],
+          "update": []
+        },
+        "patches": [
+          {
+            "type": "bind",
+            "id": "创建开局操作按钮-卡片内部左侧",
+            "goto": "state_2"
+          }
+        ]
+      },
+      {
+        "id": "state_2",
+        "label": "产品选择弹窗态",
+        "ui_intent": "弹出全屏遮罩与产品选择弹窗，展示5个开局产品选项且SOHO默认选中，底部提供下一步按钮",
+        "parent_state": "state_1",
+        "trigger": {
+          "anchor": "创建开局操作按钮-卡片内部左侧",
+          "action": "goto:state_3"
+        },
+        "inheritance": {
+          "keep": [
+            "顶部状态栏-屏幕最顶端",
+            "0808-文本"
+          ],
+          "create": [
+            {
+              "type": "create",
+              "id": "overlay_mask",
+              "component": "Overlay",
+              "bbox": [
+                0,
+                36,
+                360,
+                756
+              ]
+            },
+            {
+              "type": "create",
+              "id": "modal_container",
+              "component": "Modal",
+              "bbox": [
+                0,
+                36,
+                360,
+                756
+              ]
+            },
+            {
+              "type": "create",
+              "id": "modal_header",
+              "component": "ModalHeader",
+              "bbox": [
+                0,
+                36,
+                360,
+                56
+              ],
+              "text": "选择开局产品"
+            },
+            {
+              "type": "create",
+              "id": "product_list",
+              "component": "List",
+              "bbox": [
+                0,
+                92,
+                360,
+                580
+              ]
+            },
+            {
+              "type": "create",
+              "id": "modal_footer_btn",
+              "component": "Button",
+              "bbox": [
+                16,
+                700,
+                328,
+                44
+              ],
+              "text": "下一步",
+              "mount": "modal_container"
+            }
+          ],
+          "update": []
+        },
+        "patches": [
+          {
+            "type": "bind",
+            "id": "modal_footer_btn",
+            "goto": "state_3"
+          }
+        ]
+      },
+      {
+        "id": "state_3",
+        "label": "开局方式选择态",
+        "ui_intent": "弹窗进入第二步，展示设备自动登记与激活说明文案及4种开局方式单选列表，确认按钮默认禁用",
+        "parent_state": "state_2",
+        "trigger": {
+          "anchor": "modal_footer_btn",
+          "action": "goto:state_4"
+        },
+        "inheritance": {
+          "keep": [
+            "overlay_mask",
+            "modal_container"
+          ],
+          "create": [
+            {
+              "type": "create",
+              "id": "info_card",
+              "component": "Card",
+              "bbox": [
+                16,
+                108,
+                328,
+                60
+              ],
+              "text": "开局成功后，设备将自动完成登记与激活"
+            },
+            {
+              "type": "create",
+              "id": "method_list",
+              "component": "RadioGroup",
+              "bbox": [
+                0,
+                184,
+                360,
+                400
+              ]
+            }
+          ],
+          "update": [
+            {
+              "type": "update",
+              "id": "modal_header",
+              "text": "选择开局方式"
+            },
+            {
+              "type": "update",
+              "id": "modal_footer_btn",
+              "text": "确认",
+              "disabled": true
+            }
+          ]
+        },
+        "patches": [
+          {
+            "type": "bind",
+            "id": "method_list",
+            "goto": "state_4"
+          }
+        ]
+      },
+      {
+        "id": "state_4",
+        "label": "已选方式可提交态",
+        "ui_intent": "用户选中某种开局方式，列表项高亮，底部确认按钮解除禁用并变为主色调",
+        "parent_state": "state_3",
+        "trigger": {
+          "anchor": "method_list",
+          "action": "goto:state_5"
+        },
+        "inheritance": {
+          "keep": [
+            "overlay_mask",
+            "modal_container",
+            "modal_header",
+            "info_card",
+            "method_list"
+          ],
+          "create": [],
+          "update": [
+            {
+              "type": "update",
+              "id": "method_list",
+              "selected": true
+            },
+            {
+              "type": "update",
+              "id": "modal_footer_btn",
+              "disabled": false,
+              "styleType": "primary"
+            }
+          ]
+        },
+        "patches": [
+          {
+            "type": "bind",
+            "id": "modal_footer_btn",
+            "goto": "state_5"
+          }
+        ]
+      },
+      {
+        "id": "state_5",
+        "label": "配置提交中状态",
+        "ui_intent": "用户点击确认后，按钮进入loading禁用态，防止重复提交",
+        "parent_state": "state_4",
+        "trigger": {
+          "anchor": "modal_footer_btn"
+        },
+        "inheritance": {
+          "keep": [
+            "overlay_mask",
+            "modal_container",
+            "modal_header",
+            "info_card",
+            "method_list"
+          ],
+          "create": [],
+          "update": [
+            {
+              "type": "update",
+              "id": "modal_footer_btn",
+              "text": "提交中...",
+              "loading": true,
+              "disabled": true
+            }
+          ]
+        },
+        "patches": []
+      },
+      {
+        "id": "state_6",
+        "label": "配置成功提示态",
+        "ui_intent": "弹窗消失，恢复工作台页面，顶部浮现开局配置成功的Toast提示",
+        "parent_state": "state_5",
+        "trigger": {
+          "type": "system",
+          "event": "submit_success"
+        },
+        "inheritance": {
+          "keep": [
+            "页面根容器与浅灰背景-整个页面",
+            "顶部背景装饰图形组-顶部靠上",
+            "顶部状态栏-屏幕最顶端",
+            "0808-文本",
+            "顶部导航栏-状态栏下方",
+            "顶部导航栏-文本-我的",
+            "顶部导航栏-文本-工作台",
+            "底部导航栏-屏幕底端固定",
+            "底部导航栏-文本-我的",
+            "底部导航栏-文本-服务",
+            "底部导航栏-文本-工作台",
+            "底部导航栏-文本-商城",
+            "底部导航栏-文本-首页",
+            "项目开局卡片区域-页面中部偏上",
+            "卡片标题文本容器-卡片顶部",
+            "项目开局-文本",
+            "创建开局操作按钮-卡片内部左侧",
+            "创建开局操作按钮-文本-创建开局",
+            "创建项目集操作按钮-卡片内部中间",
+            "创建项目集操作按钮-文本-创建项目集",
+            "接收项目操作按钮-卡片内部右侧",
+            "接收项目操作按钮-文本-接收项目"
+          ],
+          "create": [
+            {
+              "type": "create",
+              "id": "toast_success",
+              "component": "Toast",
+              "bbox": [
+                40,
+                120,
+                280,
+                44
+              ],
+              "text": "开局配置成功"
+            }
+          ],
+          "update": []
+        },
+        "patches": []
+      }
+    ]
+  },
+  "component_codegen": {
+    "ok": true,
+    "source_state_model": "new_test/1/.run_skill/20260601110128/state_implementation/state_implementation_model.llm.json",
+    "components": [
+      {
+        "state_id": "state_2",
+        "operation": "create",
+        "component": {
+          "id": "overlay_mask",
+          "html": "<div data-component-id=\"overlay_mask\" class=\"tf-component tf-cg-overlay\" style=\"left:0px;top:36px;width:360px;height:756px\"></div>",
+          "css": ".tf-cg-overlay{position:absolute;background:rgba(0,0,0,0.55);z-index:100;}",
+          "notes": "used Overlay, --color-mask-bg"
+        },
+        "input": {
+          "operation": "create",
+          "viewport": {
+            "width": 360,
+            "initial_height": 792
+          },
+          "state_context": {
+            "id": "state_2",
+            "label": "产品选择弹窗态",
+            "ui_intent": "弹出全屏遮罩与产品选择弹窗，展示5个开局产品选项且SOHO默认选中，底部提供下一步按钮",
+            "parent_state": "state_1"
+          },
+          "component": {
+            "type": "create",
+            "id": "overlay_mask",
+            "component": "Overlay",
+            "bbox": [
+              0,
+              36,
+              360,
+              756
+            ]
+          }
+        },
+        "issues": []
+      },
+      {
+        "state_id": "state_2",
+        "operation": "create",
+        "component": {
+          "id": "modal_container",
+          "html": "<div data-component-id=\"modal_container\" class=\"tf-component tf-cg-modal-overlay\" style=\"left:0px;top:36px;width:360px;height:756px\"><div class=\"tf-cg-modal-backdrop\"></div><div class=\"tf-cg-modal-content\"><div class=\"tf-cg-modal-header\"><div class=\"tf-cg-modal-title\">选择开局产品</div><div class=\"tf-cg-modal-close\">×</div></div><div class=\"tf-cg-modal-body\"><div class=\"tf-cg-product-list\"><div class=\"tf-cg-product-item tf-cg-product-selected\"><div class=\"tf-cg-product-icon\">🏢</div><div class=\"tf-cg-product-name\">SOHO</div></div><div class=\"tf-cg-product-item\"><div class=\"tf-cg-product-icon\">🏬</div><div class=\"tf-cg-product-name\">企业版</div></div><div class=\"tf-cg-product-item\"><div class=\"tf-cg-product-icon\">🏪</div><div class=\"tf-cg-product-name\">商户版</div></div><div class=\"tf-cg-product-item\"><div class=\"tf-cg-product-icon\">🏭</div><div class=\"tf-cg-product-name\">工厂版</div></div><div class=\"tf-cg-product-item\"><div class=\"tf-cg-product-icon\">🏗️</div><div class=\"tf-cg-product-name\">项目版</div></div></div></div><div class=\"tf-cg-modal-footer\"><button class=\"tf-cg-btn-primary\">下一步</button></div></div></div>",
+          "css": ".tf-cg-modal-overlay{position:absolute;display:flex;align-items:center;justify-content:center}.tf-cg-modal-backdrop{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5)}.tf-cg-modal-content{position:relative;width:320px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.15);overflow:hidden}.tf-cg-modal-header{display:flex;align-items:center;justify-content:space-between;padding:16px;border-bottom:1px solid #f0f0f0}.tf-cg-modal-title{font-size:16px;font-weight:500;color:#333}.tf-cg-modal-close{font-size:20px;color:#999;cursor:pointer}.tf-cg-modal-body{padding:16px}.tf-cg-product-list{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.tf-cg-product-item{display:flex;flex-direction:column;align-items:center;padding:12px 8px;border:1px solid #e8e8e8;border-radius:8px;cursor:pointer;transition:all 0.2s}.tf-cg-product-item:hover{border-color:#1890ff}.tf-cg-product-selected{border-color:#1890ff;background:#e6f7ff}.tf-cg-product-icon{font-size:24px;margin-bottom:8px}.tf-cg-product-name{font-size:12px;color:#333;text-align:center}.tf-cg-modal-footer{padding:16px;border-top:1px solid #f0f0f0}.tf-cg-btn-primary{width:100%;height:40px;background:#1890ff;color:#fff;border:none;border-radius:8px;font-size:14px;cursor:pointer}.tf-cg-btn-primary:hover{background:#40a9ff}",
+          "notes": "used Modal, --color-primary (#1890ff), --radius-md (8px), --radius-lg (12px)"
+        },
+        "input": {
+          "operation": "create",
+          "viewport": {
+            "width": 360,
+            "initial_height": 792
+          },
+          "state_context": {
+            "id": "state_2",
+            "label": "产品选择弹窗态",
+            "ui_intent": "弹出全屏遮罩与产品选择弹窗，展示5个开局产品选项且SOHO默认选中，底部提供下一步按钮",
+            "parent_state": "state_1"
+          },
+          "component": {
+            "type": "create",
+            "id": "modal_container",
+            "component": "Modal",
+            "bbox": [
+              0,
+              36,
+              360,
+              756
+            ]
+          }
+        },
+        "issues": []
+      },
+      {
+        "state_id": "state_2",
+        "operation": "create",
+        "component": {
+          "id": "modal_header",
+          "html": "<div data-component-id=\"modal_header\" class=\"tf-component tf-cg-modal-header\" style=\"left:0px;top:36px;width:360px;height:56px\"><div class=\"tf-cg-modal-header-title\">选择开局产品</div></div>",
+          "css": ".tf-cg-modal-header{position:absolute;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0}.tf-cg-modal-header-title{font-size:18px;font-weight:500;color:#333}",
+          "notes": "used ModalHeader, --color-text, --font-size-lg"
+        },
+        "input": {
+          "operation": "create",
+          "viewport": {
+            "width": 360,
+            "initial_height": 792
+          },
+          "state_context": {
+            "id": "state_2",
+            "label": "产品选择弹窗态",
+            "ui_intent": "弹出全屏遮罩与产品选择弹窗，展示5个开局产品选项且SOHO默认选中，底部提供下一步按钮",
+            "parent_state": "state_1"
+          },
+          "component": {
+            "type": "create",
+            "id": "modal_header",
+            "component": "ModalHeader",
+            "bbox": [
+              0,
+              36,
+              360,
+              56
+            ],
+            "text": "选择开局产品"
+          }
+        },
+        "issues": []
+      },
+      {
+        "state_id": "state_2",
+        "operation": "create",
+        "component": {
+          "id": "product_list",
+          "html": "<div data-component-id=\"product_list\" class=\"tf-component tf-cg-list\" style=\"left:0px;top:92px;width:360px;height:580px\"><div class=\"tf-cg-list-item tf-cg-list-item--selected\"><div class=\"tf-cg-list-item-content\"><div class=\"tf-cg-list-item-title\">SOHO</div><div class=\"tf-cg-list-item-desc\">适合小型办公室或家庭办公</div></div><div class=\"tf-cg-list-item-check\"></div></div><div class=\"tf-cg-list-item\"><div class=\"tf-cg-list-item-content\"><div class=\"tf-cg-list-item-title\">初创企业</div><div class=\"tf-cg-list-item-desc\">适合10人以内初创团队</div></div></div><div class=\"tf-cg-list-item\"><div class=\"tf-cg-list-item-content\"><div class=\"tf-cg-list-item-title\">成长型企业</div><div class=\"tf-cg-list-item-desc\">适合10-50人规模企业</div></div></div><div class=\"tf-cg-list-item\"><div class=\"tf-cg-list-item-content\"><div class=\"tf-cg-list-item-title\">中大型企业</div><div class=\"tf-cg-list-item-desc\">适合50-200人规模企业</div></div></div><div class=\"tf-cg-list-item\"><div class=\"tf-cg-list-item-content\"><div class=\"tf-cg-list-item-title\">集团企业</div><div class=\"tf-cg-list-item-desc\">适合200人以上大型集团</div></div></div></div>",
+          "css": ".tf-cg-list{background:#fff;overflow-y:auto;padding:8px 16px;box-sizing:border-box}.tf-cg-list-item{display:flex;align-items:center;justify-content:space-between;padding:16px;margin-bottom:8px;background:#f7f8fa;border-radius:8px;border:1px solid transparent}.tf-cg-list-item--selected{background:#e6f7ff;border-color:#1677ff}.tf-cg-list-item-content{flex:1}.tf-cg-list-item-title{font-size:15px;font-weight:500;color:#333;margin-bottom:4px}.tf-cg-list-item-desc{font-size:12px;color:#999}.tf-cg-list-item-check{width:20px;height:20px;background:#1677ff;border-radius:50%;position:relative}.tf-cg-list-item-check::after{content:'';position:absolute;left:6px;top:3px;width:6px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}",
+          "notes": "used List component pattern, --color-primary (#1677ff), --radius-md (8px), --color-text (#333), --color-text-secondary (#999), --color-bg-container (#f7f8fa)"
+        },
+        "input": {
+          "operation": "create",
+          "viewport": {
+            "width": 360,
+            "initial_height": 792
+          },
+          "state_context": {
+            "id": "state_2",
+            "label": "产品选择弹窗态",
+            "ui_intent": "弹出全屏遮罩与产品选择弹窗，展示5个开局产品选项且SOHO默认选中，底部提供下一步按钮",
+            "parent_state": "state_1"
+          },
+          "component": {
+            "type": "create",
+            "id": "product_list",
+            "component": "List",
+            "bbox": [
+              0,
+              92,
+              360,
+              580
+            ]
+          }
+        },
+        "issues": []
+      },
+      {
+        "state_id": "state_2",
+        "operation": "create",
+        "component": {
+          "id": "modal_footer_btn",
+          "html": "<div data-component-id=\"modal_footer_btn\" class=\"tf-component tf-cg-modal-footer-btn\" style=\"left:16px;top:700px;width:328px;height:44px\"><button class=\"tf-cg-btn-primary\">下一步</button></div>",
+          "css": ".tf-cg-modal-footer-btn{position:absolute;display:flex;align-items:center;justify-content:center}.tf-cg-modal-footer-btn .tf-cg-btn-primary{width:100%;height:100%;background:#1677ff;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:500;cursor:pointer;box-shadow:0 2px 8px rgba(22,119,255,0.2)}",
+          "notes": "used Button, --color-primary (#1677ff), --radius-md (8px)"
+        },
+        "input": {
+          "operation": "create",
+          "viewport": {
+            "width": 360,
+            "initial_height": 792
+          },
+          "state_context": {
+            "id": "state_2",
+            "label": "产品选择弹窗态",
+            "ui_intent": "弹出全屏遮罩与产品选择弹窗，展示5个开局产品选项且SOHO默认选中，底部提供下一步按钮",
+            "parent_state": "state_1"
+          },
+          "component": {
+            "type": "create",
+            "id": "modal_footer_btn",
+            "component": "Button",
+            "bbox": [
+              16,
+              700,
+              328,
+              44
+            ],
+            "text": "下一步",
+            "mount": "modal_container"
+          }
+        },
+        "issues": []
+      },
+      {
+        "state_id": "state_3",
+        "operation": "create",
+        "component": {
+          "id": "info_card",
+          "html": "<div data-component-id=\"info_card\" class=\"tf-component tf-cg-card\" style=\"left:16px;top:108px;width:328px;height:60px\"><div class=\"tf-cg-card-content\">开局成功后，设备将自动完成登记与激活</div></div>",
+          "css": ".tf-cg-card{background:#fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.06);display:flex;align-items:center;padding:0 16px;box-sizing:border-box}.tf-cg-card-content{font-size:14px;color:#333;line-height:1.5}",
+          "notes": "used Card component, --color-text, --radius-md"
+        },
+        "input": {
+          "operation": "create",
+          "viewport": {
+            "width": 360,
+            "initial_height": 792
+          },
+          "state_context": {
+            "id": "state_3",
+            "label": "开局方式选择态",
+            "ui_intent": "弹窗进入第二步，展示设备自动登记与激活说明文案及4种开局方式单选列表，确认按钮默认禁用",
+            "parent_state": "state_2"
+          },
+          "component": {
+            "type": "create",
+            "id": "info_card",
+            "component": "Card",
+            "bbox": [
+              16,
+              108,
+              328,
+              60
+            ],
+            "text": "开局成功后，设备将自动完成登记与激活"
+          }
+        },
+        "issues": []
+      },
+      {
+        "state_id": "state_3",
+        "operation": "create",
+        "component": {
+          "id": "method_list",
+          "html": "<div data-component-id=\"method_list\" class=\"tf-component tf-cg-radiogroup\" style=\"left:0px;top:184px;width:360px;height:400px\"><div class=\"tf-cg-title\">请选择开局方式</div><div class=\"tf-cg-list\"><label class=\"tf-cg-item\"><span class=\"tf-cg-radio\"></span><span class=\"tf-cg-text\">扫码开局</span></label><label class=\"tf-cg-item\"><span class=\"tf-cg-radio\"></span><span class=\"tf-cg-text\">配置开局</span></label><label class=\"tf-cg-item\"><span class=\"tf-cg-radio\"></span><span class=\"tf-cg-text\">蓝牙开局</span></label><label class=\"tf-cg-item\"><span class=\"tf-cg-radio\"></span><span class=\"tf-cg-text\">NFC开局</span></label></div></div>",
+          "css": ".tf-cg-radiogroup{background:#fff;padding:16px;box-sizing:border-box;display:flex;flex-direction:column;gap:16px}.tf-cg-title{font-size:16px;font-weight:500;color:#333}.tf-cg-list{display:flex;flex-direction:column;gap:12px}.tf-cg-item{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid #eee;border-radius:8px;cursor:pointer}.tf-cg-radio{width:20px;height:20px;border:2px solid #ccc;border-radius:50%;flex-shrink:0}.tf-cg-text{font-size:14px;color:#333}",
+          "notes": "used RadioGroup, --color-text, --radius-md"
+        },
+        "input": {
+          "operation": "create",
+          "viewport": {
+            "width": 360,
+            "initial_height": 792
+          },
+          "state_context": {
+            "id": "state_3",
+            "label": "开局方式选择态",
+            "ui_intent": "弹窗进入第二步，展示设备自动登记与激活说明文案及4种开局方式单选列表，确认按钮默认禁用",
+            "parent_state": "state_2"
+          },
+          "component": {
+            "type": "create",
+            "id": "method_list",
+            "component": "RadioGroup",
+            "bbox": [
+              0,
+              184,
+              360,
+              400
+            ]
+          }
+        },
+        "issues": []
+      },
+      {
+        "state_id": "state_3",
+        "operation": "update",
+        "original_component_id": "modal_header",
+        "component": {
+          "id": "modal_header",
+          "html": "<div data-component-id=\"modal_header\" class=\"tf-component tf-cg-modal-header\" style=\"left:0px;top:36px;width:360px;height:56px\"><div class=\"tf-cg-modal-header-title\">选择开局方式</div></div>",
+          "css": ".tf-cg-modal-header{position:absolute;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0}.tf-cg-modal-header-title{font-size:18px;font-weight:500;color:#333}",
+          "notes": "updated text to '选择开局方式', used ModalHeader, --color-text, --font-size-lg"
+        },
+        "input": {
+          "operation": "update",
+          "viewport": {
+            "width": 360,
+            "initial_height": 792
+          },
+          "state_context": {
+            "id": "state_3",
+            "label": "开局方式选择态",
+            "ui_intent": "弹窗进入第二步，展示设备自动登记与激活说明文案及4种开局方式单选列表，确认按钮默认禁用",
+            "parent_state": "state_2"
+          },
+          "component": {
+            "type": "update",
+            "id": "modal_header",
+            "text": "选择开局方式"
+          },
+          "original_component": {
+            "id": "modal_header",
+            "html": "<div data-component-id=\"modal_header\" class=\"tf-component tf-cg-modal-header\" style=\"left:0px;top:36px;width:360px;height:56px\"><div class=\"tf-cg-modal-header-title\">选择开局产品</div></div>",
+            "css": ".tf-cg-modal-header{position:absolute;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0}.tf-cg-modal-header-title{font-size:18px;font-weight:500;color:#333}",
+            "notes": "used ModalHeader, --color-text, --font-size-lg"
+          }
+        },
+        "issues": []
+      },
+      {
+        "state_id": "state_3",
+        "operation": "update",
+        "original_component_id": "modal_footer_btn",
+        "component": {
+          "id": "modal_footer_btn",
+          "html": "<div data-component-id=\"modal_footer_btn\" class=\"tf-component tf-cg-modal-footer-btn\" style=\"left:16px;top:700px;width:328px;height:44px\"><button class=\"tf-cg-btn-primary tf-cg-btn-disabled\" disabled>确认</button></div>",
+          "css": ".tf-cg-modal-footer-btn{position:absolute;display:flex;align-items:center;justify-content:center}.tf-cg-modal-footer-btn .tf-cg-btn-primary{width:100%;height:100%;background:#1677ff;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:500;cursor:pointer;box-shadow:0 2px 8px rgba(22,119,255,0.2)}.tf-cg-modal-footer-btn .tf-cg-btn-disabled{background:#f5f5f5;color:#bfbfbf;cursor:not-allowed;box-shadow:none}",
+          "notes": "updated text to '确认', added disabled state using --color-bg-disabled (#f5f5f5) and --color-text-disabled (#bfbfbf)"
+        },
+        "input": {
+          "operation": "update",
+          "viewport": {
+            "width": 360,
+            "initial_height": 792
+          },
+          "state_context": {
+            "id": "state_3",
+            "label": "开局方式选择态",
+            "ui_intent": "弹窗进入第二步，展示设备自动登记与激活说明文案及4种开局方式单选列表，确认按钮默认禁用",
+            "parent_state": "state_2"
+          },
+          "component": {
+            "type": "update",
+            "id": "modal_footer_btn",
+            "text": "确认",
+            "disabled": true
+          },
+          "original_component": {
+            "id": "modal_footer_btn",
+            "html": "<div data-component-id=\"modal_footer_btn\" class=\"tf-component tf-cg-modal-footer-btn\" style=\"left:16px;top:700px;width:328px;height:44px\"><button class=\"tf-cg-btn-primary\">下一步</button></div>",
+            "css": ".tf-cg-modal-footer-btn{position:absolute;display:flex;align-items:center;justify-content:center}.tf-cg-modal-footer-btn .tf-cg-btn-primary{width:100%;height:100%;background:#1677ff;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:500;cursor:pointer;box-shadow:0 2px 8px rgba(22,119,255,0.2)}",
+            "notes": "used Button, --color-primary (#1677ff), --radius-md (8px)"
+          }
+        },
+        "issues": []
+      },
+      {
+        "state_id": "state_4",
+        "operation": "update",
+        "original_component_id": "method_list",
+        "component": {
+          "id": "method_list",
+          "html": "<div data-component-id=\"method_list\" class=\"tf-component tf-cg-radiogroup\" style=\"left:0px;top:184px;width:360px;height:400px\"><div class=\"tf-cg-title\">请选择开局方式</div><div class=\"tf-cg-list\"><label class=\"tf-cg-item tf-cg-item-selected\"><span class=\"tf-cg-radio tf-cg-radio-selected\"></span><span class=\"tf-cg-text\">扫码开局</span></label><label class=\"tf-cg-item\"><span class=\"tf-cg-radio\"></span><span class=\"tf-cg-text\">配置开局</span></label><label class=\"tf-cg-item\"><span class=\"tf-cg-radio\"></span><span class=\"tf-cg-text\">蓝牙开局</span></label><label class=\"tf-cg-item\"><span class=\"tf-cg-radio\"></span><span class=\"tf-cg-text\">NFC开局</span></label></div></div>",
+          "css": ".tf-cg-radiogroup{background:#fff;padding:16px;box-sizing:border-box;display:flex;flex-direction:column;gap:16px}.tf-cg-title{font-size:16px;font-weight:500;color:#333}.tf-cg-list{display:flex;flex-direction:column;gap:12px}.tf-cg-item{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid #eee;border-radius:8px;cursor:pointer}.tf-cg-item-selected{border-color:#1677ff;background:rgba(22,119,255,0.05)}.tf-cg-radio{width:20px;height:20px;border:2px solid #ccc;border-radius:50%;flex-shrink:0;box-sizing:border-box}.tf-cg-radio-selected{border-color:#1677ff;background:#1677ff;display:flex;align-items:center;justify-content:center}.tf-cg-radio-selected::after{content:'';width:8px;height:8px;background:#fff;border-radius:50%}.tf-cg-text{font-size:14px;color:#333}",
+          "notes": "used RadioGroup, --color-primary, --color-bg-container, added selected state styles"
+        },
+        "input": {
+          "operation": "update",
+          "viewport": {
+            "width": 360,
+            "initial_height": 792
+          },
+          "state_context": {
+            "id": "state_4",
+            "label": "已选方式可提交态",
+            "ui_intent": "用户选中某种开局方式，列表项高亮，底部确认按钮解除禁用并变为主色调",
+            "parent_state": "state_3"
+          },
+          "component": {
+            "type": "update",
+            "id": "method_list",
+            "selected": true
+          },
+          "original_component": {
+            "id": "method_list",
+            "html": "<div data-component-id=\"method_list\" class=\"tf-component tf-cg-radiogroup\" style=\"left:0px;top:184px;width:360px;height:400px\"><div class=\"tf-cg-title\">请选择开局方式</div><div class=\"tf-cg-list\"><label class=\"tf-cg-item\"><span class=\"tf-cg-radio\"></span><span class=\"tf-cg-text\">扫码开局</span></label><label class=\"tf-cg-item\"><span class=\"tf-cg-radio\"></span><span class=\"tf-cg-text\">配置开局</span></label><label class=\"tf-cg-item\"><span class=\"tf-cg-radio\"></span><span class=\"tf-cg-text\">蓝牙开局</span></label><label class=\"tf-cg-item\"><span class=\"tf-cg-radio\"></span><span class=\"tf-cg-text\">NFC开局</span></label></div></div>",
+            "css": ".tf-cg-radiogroup{background:#fff;padding:16px;box-sizing:border-box;display:flex;flex-direction:column;gap:16px}.tf-cg-title{font-size:16px;font-weight:500;color:#333}.tf-cg-list{display:flex;flex-direction:column;gap:12px}.tf-cg-item{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid #eee;border-radius:8px;cursor:pointer}.tf-cg-radio{width:20px;height:20px;border:2px solid #ccc;border-radius:50%;flex-shrink:0}.tf-cg-text{font-size:14px;color:#333}",
+            "notes": "used RadioGroup, --color-text, --radius-md"
+          }
+        },
+        "issues": []
+      },
+      {
+        "state_id": "state_4",
+        "operation": "update",
+        "original_component_id": "modal_footer_btn",
+        "component": {
+          "id": "modal_footer_btn",
+          "html": "<div data-component-id=\"modal_footer_btn\" class=\"tf-component tf-cg-modal-footer-btn\" style=\"left:16px;top:700px;width:328px;height:44px\"><button class=\"tf-cg-btn-primary\">确认</button></div>",
+          "css": ".tf-cg-modal-footer-btn{position:absolute;display:flex;align-items:center;justify-content:center}.tf-cg-modal-footer-btn .tf-cg-btn-primary{width:100%;height:100%;background:#1677ff;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:500;cursor:pointer;box-shadow:0 2px 8px rgba(22,119,255,0.2)}",
+          "notes": "Removed disabled attribute and tf-cg-btn-disabled class to enable the primary button, using --color-primary (#1677ff)."
+        },
+        "input": {
+          "operation": "update",
+          "viewport": {
+            "width": 360,
+            "initial_height": 792
+          },
+          "state_context": {
+            "id": "state_4",
+            "label": "已选方式可提交态",
+            "ui_intent": "用户选中某种开局方式，列表项高亮，底部确认按钮解除禁用并变为主色调",
+            "parent_state": "state_3"
+          },
+          "component": {
+            "type": "update",
+            "id": "modal_footer_btn",
+            "disabled": false,
+            "styleType": "primary"
+          },
+          "original_component": {
+            "id": "modal_footer_btn",
+            "html": "<div data-component-id=\"modal_footer_btn\" class=\"tf-component tf-cg-modal-footer-btn\" style=\"left:16px;top:700px;width:328px;height:44px\"><button class=\"tf-cg-btn-primary tf-cg-btn-disabled\" disabled>确认</button></div>",
+            "css": ".tf-cg-modal-footer-btn{position:absolute;display:flex;align-items:center;justify-content:center}.tf-cg-modal-footer-btn .tf-cg-btn-primary{width:100%;height:100%;background:#1677ff;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:500;cursor:pointer;box-shadow:0 2px 8px rgba(22,119,255,0.2)}.tf-cg-modal-footer-btn .tf-cg-btn-disabled{background:#f5f5f5;color:#bfbfbf;cursor:not-allowed;box-shadow:none}",
+            "notes": "updated text to '确认', added disabled state using --color-bg-disabled (#f5f5f5) and --color-text-disabled (#bfbfbf)"
+          }
+        },
+        "issues": []
+      },
+      {
+        "state_id": "state_5",
+        "operation": "update",
+        "original_component_id": "modal_footer_btn",
+        "component": {
+          "id": "modal_footer_btn",
+          "html": "<div data-component-id=\"modal_footer_btn\" class=\"tf-component tf-cg-modal-footer-btn\" style=\"left:16px;top:700px;width:328px;height:44px\"><button class=\"tf-cg-btn-primary tf-cg-btn-disabled tf-cg-btn-loading\" disabled><span class=\"tf-cg-spinner\"></span>提交中...</button></div>",
+          "css": ".tf-cg-modal-footer-btn{position:absolute;display:flex;align-items:center;justify-content:center}.tf-cg-modal-footer-btn .tf-cg-btn-primary{width:100%;height:100%;background:#1677ff;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:500;cursor:pointer;box-shadow:0 2px 8px rgba(22,119,255,0.2);display:flex;align-items:center;justify-content:center}.tf-cg-modal-footer-btn .tf-cg-btn-primary.tf-cg-btn-disabled{opacity:0.65;cursor:not-allowed;box-shadow:none}.tf-cg-spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;margin-right:6px;animation:tf-spin 1s linear infinite}@keyframes tf-spin{to{transform:rotate(360deg)}}",
+          "notes": "Updated button to loading and disabled state with text '提交中...'. Added a CSS spinner and reduced opacity to indicate disabled loading state, using --color-primary (#1677ff), --radius-md (8px)."
+        },
+        "input": {
+          "operation": "update",
+          "viewport": {
+            "width": 360,
+            "initial_height": 792
+          },
+          "state_context": {
+            "id": "state_5",
+            "label": "配置提交中状态",
+            "ui_intent": "用户点击确认后，按钮进入loading禁用态，防止重复提交",
+            "parent_state": "state_4"
+          },
+          "component": {
+            "type": "update",
+            "id": "modal_footer_btn",
+            "text": "提交中...",
+            "loading": true,
+            "disabled": true
+          },
+          "original_component": {
+            "id": "modal_footer_btn",
+            "html": "<div data-component-id=\"modal_footer_btn\" class=\"tf-component tf-cg-modal-footer-btn\" style=\"left:16px;top:700px;width:328px;height:44px\"><button class=\"tf-cg-btn-primary\">确认</button></div>",
+            "css": ".tf-cg-modal-footer-btn{position:absolute;display:flex;align-items:center;justify-content:center}.tf-cg-modal-footer-btn .tf-cg-btn-primary{width:100%;height:100%;background:#1677ff;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:500;cursor:pointer;box-shadow:0 2px 8px rgba(22,119,255,0.2)}",
+            "notes": "Removed disabled attribute and tf-cg-btn-disabled class to enable the primary button, using --color-primary (#1677ff)."
+          }
+        },
+        "issues": []
+      },
+      {
+        "state_id": "state_6",
+        "operation": "create",
+        "component": {
+          "id": "toast_success",
+          "html": "<div data-component-id=\"toast_success\" class=\"tf-component tf-cg-toast\" style=\"left:40px;top:120px;width:280px;height:44px\"><div class=\"tf-cg-toast-content\"><span class=\"tf-cg-toast-icon\">✓</span><span class=\"tf-cg-toast-text\">开局配置成功</span></div></div>",
+          "css": ".tf-cg-toast{position:absolute;display:flex;align-items:center;justify-content:center;z-index:1000}.tf-cg-toast-content{display:flex;align-items:center;gap:8px;padding:0 16px;height:44px;background:rgba(0,0,0,0.75);border-radius:22px;box-shadow:0 4px 12px rgba(0,0,0,0.15)}.tf-cg-toast-icon{color:#fff;font-size:16px;font-weight:bold}.tf-cg-toast-text{color:#fff;font-size:14px;line-height:20px;white-space:nowrap}",
+          "notes": "used Toast component pattern, --color-text-inverse (white), --radius-full (22px), --shadow-md"
+        },
+        "input": {
+          "operation": "create",
+          "viewport": {
+            "width": 360,
+            "initial_height": 792
+          },
+          "state_context": {
+            "id": "state_6",
+            "label": "配置成功提示态",
+            "ui_intent": "弹窗消失，恢复工作台页面，顶部浮现开局配置成功的Toast提示",
+            "parent_state": "state_5"
+          },
+          "component": {
+            "type": "create",
+            "id": "toast_success",
+            "component": "Toast",
+            "bbox": [
+              40,
+              120,
+              280,
+              44
+            ],
+            "text": "开局配置成功"
+          }
+        },
+        "issues": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,1541 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixso HTML</title>
+  <link rel="stylesheet" href="css/font.css">
+  <script src="js/animation.js"></script>
+  <style>
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ol,ul,menu {
+  padding-inline-start: 0;
+  list-style: none;
+}
+
+ol li::marker, ul li::before {
+  letter-spacing: 0;
+}
+
+.scroll-container > div {
+  width: 100%;
+}
+
+.container > div {
+  width: 100%;
+}
+
+.Pixso-canvas-0_1 > div {
+  width: 100%;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body { 
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color: white;
+}
+    
+span {
+  word-break: break-word;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.fill-场景background-colorcolor-bg-1-14_809175 {
+        background-color: rgba(243, 243, 243, 1)
+      }
+.fill-场景text-colorcolor-text-primary-6_11379-paragraph {
+        color: rgba(25, 25, 25, 1)
+      }
+.fill-text文本色图标色color_text_primary-14_290523-paragraph {
+        color: rgba(0, 0, 0, 0.8999999761581421)
+      }
+.text-单行行高headline标题headline_s-14_365549 {
+        font-size: 16px;
+font-family: "HarmonyHeiTi-Medium";
+font-weight: Medium;
+line-height: 20px;
+font-feature-settings: "kern" 0
+      }
+
+.scroll-container {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+.Pixso-canvas-0_1 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.Pixso-frame-14_807507 {
+  width: 100%;
+  height: 792px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.Pixso-frame-14_807508 {
+  width: 360px;
+  height: 228px;
+  overflow: hidden;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background-color: transparent;
+}
+
+.Pixso-vector-14_807509 {
+  width: 186.5107421875px;
+  height: 180.70587158203125px;
+  background-image: url(./image/Ellipse_14_807509.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: -63.91015625px;
+  top: -85.70538330078125px;
+}
+
+.Pixso-vector-14_807510 {
+  width: 146.40625px;
+  height: 144.19873046875px;
+  background-image: url(./image/Ellipse_14_807510.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 38px;
+  top: -48.999755859375px;
+}
+
+.Pixso-vector-14_807511 {
+  width: 107.0009765625px;
+  height: 105.38763427734375px;
+  background-image: url(./image/Ellipse_14_807511.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: -61px;
+  top: 0.00006103515625px;
+}
+
+.Pixso-vector-14_807512 {
+  width: 201px;
+  height: 166px;
+  background-image: url(./image/Ellipse_14_807512.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 165px;
+  top: -51px;
+}
+
+.Pixso-rectangle-14_807513 {
+  width: 360px;
+  height: 200px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  backdrop-filter: blur(24px);
+  background-color: rgba(245, 245, 245, 0.800000011920929);
+}
+
+.Pixso-rectangle-14_807521 {
+  width: 360px;
+  height: 24px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background-color: transparent;
+}
+
+.Pixso-frame-14_807522 {
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+}
+
+.Pixso-frame-14_807523 {
+  width: 360px;
+  height: 92px;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+  mix-blend-mode: normal;
+}
+
+.frame-content-14_807523 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.Pixso-frame-146_169682 {
+  width: 360px;
+  height: 36px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-146_169683 {
+  width: 360px;
+  height: 36px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  mix-blend-mode: normal;
+}
+
+.frame-content-146_169683 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 24px 8px 24px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.Pixso-paragraph-146_169684 {
+  font-size: 15px;
+  font-family: "HarmonyOS Sans SC-Medium";
+  font-weight: Medium;
+  text-align: left;
+  letter-spacing: 0px;
+  line-height: 22px;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 1);
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  white-space: pre;
+  flex-grow: 0;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-146_169685 {
+  width: 96px;
+  height: 13px;
+  position: relative;
+  flex-shrink: 0;
+  mix-blend-mode: normal;
+}
+
+.Pixso-vector-146_169686 {
+  width: 25.75px;
+  height: 13px;
+  background-image: url(./image/cell.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: -0.000030517578125px;
+  top: 50%;
+  transform: translateY(calc(-50% + 0px));
+}
+
+.Pixso-vector-146_169698 {
+  width: 17.5px;
+  height: 12.00030517578125px;
+  background-image: url(./image/dualcard.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 31.101547241210938px;
+  top: 50%;
+  transform: translateY(calc(-50% + 0.29677581787109375px));
+}
+
+.Pixso-vector-146_169705 {
+  width: 15.3515625px;
+  height: 12.006103515625px;
+  background-image: url(./image/wifi.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 80.25494384765625px;
+  top: 50%;
+  transform: translateY(calc(-50% + 0.2965250015258789px));
+}
+
+.Pixso-vector-146_169732 {
+  width: 21.5px;
+  height: 12.0003662109375px;
+  background-image: url(./image/singlecard.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 53.10203552246094px;
+  top: 50%;
+  transform: translateY(calc(-50% + 0.29681396484375px));
+}
+
+.Pixso-frame-146_169742 {
+  width: 360px;
+  height: 56px;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  mix-blend-mode: normal;
+}
+
+.frame-content-146_169742 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 16px 0px 16px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.Pixso-frame-146_169743 {
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-146_169744 {
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-146_169749 {
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-146_169750 {
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-146_169751 {
+  width: auto;
+  height: 32px;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+  mix-blend-mode: normal;
+}
+
+.frame-content-146_169751 {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100%;
+  position: relative;
+}
+
+.Pixso-frame-146_169752 {
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+  mix-blend-mode: normal;
+}
+
+.Pixso-paragraph-146_169753 {
+  font-size: 24px;
+  font-family: "HarmonyOS Sans SC-Bold";
+  font-weight: Bold;
+  text-align: left;
+  letter-spacing: 0px;
+  line-height: 32px;
+  text-decoration: none;
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  white-space: pre;
+  flex-grow: 0;
+  mix-blend-mode: normal;
+}
+
+.Pixso-paragraph-146_169757 {
+  font-size: 24px;
+  font-family: "HarmonyOS Sans SC-Bold";
+  font-weight: Bold;
+  text-align: left;
+  letter-spacing: 0px;
+  line-height: 32px;
+  text-decoration: none;
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  white-space: pre;
+  flex-grow: 0;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-146_169758 {
+  width: 12px;
+  height: 12px;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  mix-blend-mode: normal;
+}
+
+.frame-content-146_169758 {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.Pixso-group-146_169759 {
+  width: 9.998786926269531px;
+  height: 6.999256134033203px;
+  position: relative;
+  flex-shrink: 0;
+  mix-blend-mode: normal;
+}
+
+.Pixso-vector-146_169760 {
+  width: 100%;
+  height: 100%;
+  background-image: url(./image/SpinnerFocus.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+.Pixso-frame-14_807524 {
+  width: 360px;
+  height: 64px;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+}
+
+.Pixso-rectangle-14_807525 {
+  width: 360px;
+  height: 64px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.Pixso-paragraph-14_807526 {
+  font-size: 10px;
+  font-family: "HarmonyHeiTi-Regular";
+  font-weight: Regular;
+  text-align: center;
+  line-height: 100%;
+  color: rgba(0, 0, 0, 1);
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: 314px;
+  top: 42px;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.Pixso-paragraph-14_807527 {
+  font-size: 10px;
+  font-family: "HarmonyHeiTi-Regular";
+  font-weight: Regular;
+  text-align: center;
+  line-height: 100%;
+  color: rgba(0, 0, 0, 1);
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: 242px;
+  top: 42px;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.Pixso-paragraph-14_807528 {
+  font-size: 10px;
+  font-family: "HarmonyHeiTi-Bold";
+  font-weight: Bold;
+  text-align: center;
+  line-height: 100%;
+  color: rgba(199, 0, 11, 1);
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: 165px;
+  top: 42px;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.Pixso-paragraph-14_807529 {
+  font-size: 10px;
+  font-family: "HarmonyHeiTi-Regular";
+  font-weight: Regular;
+  text-align: center;
+  line-height: 100%;
+  color: rgba(0, 0, 0, 1);
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: 98px;
+  top: 42px;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.Pixso-paragraph-14_807530 {
+  font-size: 10px;
+  font-family: "HarmonyHeiTi-Regular";
+  font-weight: Regular;
+  text-align: center;
+  line-height: 100%;
+  color: rgba(0, 0, 0, 1);
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: 26px;
+  top: 42px;
+  white-space: pre;
+  flex-grow: 0;
+}
+
+.Pixso-group-14_807531 {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 93px;
+  top: 10px;
+}
+
+.Pixso-vector-14_807532 {
+  width: 30px;
+  height: 30px;
+  background-image: url(./image/Fill2.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.Pixso-group-14_807533 {
+  width: 18px;
+  height: 17px;
+  position: absolute;
+  left: 6px;
+  top: 6.5px;
+}
+
+.Pixso-vector-14_807534 {
+  width: 7.400390625px;
+  height: 4.400001525878906px;
+  background-image: url(./image/Vector_14_807534.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 5.298828125px;
+  top: 3.7998046875px;
+}
+
+.Pixso-rectangle-14_807535 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 1.9199999570846558px 1.9199999570846558px 1.9199999570846558px 1.9199999570846558px;
+  background-color: transparent;
+}
+
+.stroke-wrapper-14_807535 {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 18px;
+  height: 17px;
+}
+
+.stroke-14_807535 {
+  position: absolute;
+  inset: -0.75px -0.75px -0.75px -0.75px;
+  border-radius: 1.9199999570846558px 1.9199999570846558px 1.9199999570846558px 1.9199999570846558px;
+  pointer-events: none;
+  border-width: 1.5px 1.5px 1.5px 1.5px;
+  border-style: solid;
+  box-sizing: border-box;
+  border-color: rgba(0, 0, 0, 1);
+}
+
+.Pixso-vector-14_807536 {
+  width: 30px;
+  height: 30px;
+  background-image: url(./image/_line0.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 21px;
+  top: 10px;
+}
+
+.Pixso-vector-14_807540 {
+  width: 30px;
+  height: 30px;
+  background-image: url(./image/_line.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 165px;
+  top: 10px;
+}
+
+.Pixso-group-14_807553 {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 237px;
+  top: 10px;
+}
+
+.Pixso-vector-14_807554 {
+  width: 30px;
+  height: 30px;
+  background-image: url(./image/Fill4.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.Pixso-vector-14_807555 {
+  width: 19.900390625px;
+  height: 19.900020599365234px;
+  background-image: url(./image/Group_14_807555.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 5.05078125px;
+  top: 5.0498046875px;
+}
+
+.Pixso-group-14_807558 {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 309px;
+  top: 10px;
+}
+
+.Pixso-vector-14_807559 {
+  width: 30px;
+  height: 30px;
+  background-image: url(./image/Fill5.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.Pixso-group-14_807560 {
+  width: 21px;
+  height: 21px;
+  position: absolute;
+  left: 4.5px;
+  top: 4.5px;
+}
+
+.Pixso-vector-14_807561 {
+  width: 21px;
+  height: 21px;
+  background-image: url(./image/Group_14_807561.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.Pixso-vector-14_807564 {
+  width: 7.2021484375px;
+  height: 2.940000534057617px;
+  background-image: url(./image/Boolean_operation_14_807564.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 5.455703258514404px;
+  top: 7.030702590942383px;
+}
+
+.Pixso-frame-14_807567 {
+  width: 360px;
+  height: 792px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(calc(-50% + 0px)) translateY(calc(-50% + 0px));
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 0px 0px 28px 0px;
+  background-color: rgba(0, 0, 0, 0.2955135107040405);
+}
+
+.Pixso-frame-14_807568 {
+  width: 91.12%;
+  height: 19.7%;
+  overflow: hidden;
+  position: absolute;
+  left: 4.44%;
+  right: 4.44%;
+  top: 36.49%;
+  bottom: 43.81%;
+  mix-blend-mode: normal;
+}
+
+.Pixso-rectangle-146_161458 {
+  width: 328px;
+  height: 156px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  border-radius: 16px 16px 16px 16px;
+  backdrop-filter: blur(54.3656005859375px);
+  background-color: rgba(255, 254.74501037597656, 254.74501037597656, 1);
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-146_161459 {
+  width: auto;
+  height: 104px;
+  position: absolute;
+  left: 12px;
+  top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+  mix-blend-mode: normal;
+}
+
+.frame-content-146_161459 {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100%;
+  position: relative;
+}
+
+.Pixso-frame-146_161460 {
+  width: 96px;
+  height: 104px;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 12px 12px 12px 12px;
+  background-color: rgba(247, 247, 247, 1);
+  mix-blend-mode: normal;
+}
+
+.frame-content-146_161460 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.Pixso-frame-146_161461 {
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  mix-blend-mode: normal;
+}
+
+.Pixso-group-146_161477 {
+  width: 79.16%;
+  height: 79.16%;
+  position: absolute;
+  left: 10.42%;
+  right: 10.42%;
+  top: 10.42%;
+  bottom: 10.42%;
+  mix-blend-mode: normal;
+}
+
+.Pixso-rectangle-146_161478 {
+  width: 100%;
+  height: 63.16%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 36.84%;
+  bottom: 0%;
+  border-radius: 2.6666667461395264px 2.6666667461395264px 2.6666667461395264px 2.6666667461395264px;
+  background-color: rgba(10, 89, 247, 1);
+  mix-blend-mode: normal;
+}
+
+.Pixso-vector-146_161479 {
+  width: 12px;
+  height: 2.666656494140625px;
+  background-image: url(./image/Vector_146_161479.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 2px;
+  top: 16px;
+}
+
+.Pixso-vector-146_161480 {
+  width: 8.880859375px;
+  height: 2.898162841796875px;
+  background-image: url(./image/Vector_146_161480.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 8.226033210754395px;
+  top: 3.9998373985290527px;
+}
+
+.Pixso-vector-146_161481 {
+  width: 14.5380859375px;
+  height: 4.069732666015625px;
+  background-image: url(./image/Vector_146_161481.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 5.397624492645264px;
+  top: 0px;
+}
+
+.Pixso-vector-146_161482 {
+  width: 2px;
+  height: 2.666656494140625px;
+  background-image: url(./image/Vector_146_161482.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 11.666666984558105px;
+  top: 6.6666669845581055px;
+}
+
+.Pixso-paragraph-146_161483 {
+  font-size: 14px;
+  font-family: "HarmonyHeiTi-Regular";
+  font-weight: Regular;
+  text-align: center;
+  letter-spacing: 0px;
+  line-height: 18px;
+  text-decoration: none;
+  width: 80px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-146_161484 {
+  width: 96px;
+  height: 104px;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 12px 12px 12px 12px;
+  background-color: rgba(247, 247, 247, 1);
+  mix-blend-mode: normal;
+}
+
+.frame-content-146_161484 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.Pixso-frame-146_161485 {
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  mix-blend-mode: normal;
+}
+
+.Pixso-vector-146_161501 {
+  width: 75%;
+  height: 75%;
+  background-image: url(./image/Group_146_161501.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 12.5%;
+  right: 12.5%;
+  top: 12.5%;
+  bottom: 12.5%;
+}
+
+.Pixso-paragraph-146_161508 {
+  font-size: 14px;
+  font-family: "HarmonyHeiTi-Regular";
+  font-weight: Regular;
+  text-align: center;
+  letter-spacing: 0px;
+  line-height: 18px;
+  text-decoration: none;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  width: 80px;
+  height: 18px;
+  position: relative;
+  flex-shrink: 0;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-146_161509 {
+  width: 96px;
+  height: 104px;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 12px 12px 12px 12px;
+  background-color: rgba(247, 247, 247, 1);
+  mix-blend-mode: normal;
+}
+
+.frame-content-146_161509 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.Pixso-frame-146_161510 {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  flex-shrink: 0;
+  background-color: transparent;
+  mix-blend-mode: normal;
+}
+
+.Pixso-vector-146_161511 {
+  width: 62.5%;
+  height: 72.92%;
+  background-image: url(./image/Boolean_operation_146_161511.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 16.67%;
+  right: 20.83%;
+  top: 12.5%;
+  bottom: 14.58%;
+}
+
+.Pixso-vector-146_161515 {
+  width: 37.5%;
+  height: 37.5%;
+  background-image: url(./image/path0.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 45.83%;
+  right: 16.67%;
+  top: 50%;
+  bottom: 12.5%;
+}
+
+.Pixso-vector-146_161516 {
+  width: 20.83%;
+  height: 25%;
+  background-image: url(./image/path.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 54.17%;
+  right: 25%;
+  top: 56.25%;
+  bottom: 18.75%;
+}
+
+.Pixso-rectangle-146_161517 {
+  width: 37.5%;
+  height: 4.17%;
+  position: absolute;
+  left: 27.08%;
+  right: 35.42%;
+  top: 25%;
+  bottom: 70.83%;
+  border-radius: 12px 12px 12px 12px;
+  background-color: rgba(254.74501037597656, 255, 255, 1);
+  mix-blend-mode: normal;
+}
+
+.Pixso-rectangle-146_161518 {
+  width: 20.84%;
+  height: 4.17%;
+  position: absolute;
+  left: 27.08%;
+  right: 52.08%;
+  top: 37.5%;
+  bottom: 58.33%;
+  border-radius: 12px 12px 12px 12px;
+  background-color: rgba(254.74501037597656, 255, 255, 1);
+  mix-blend-mode: normal;
+}
+
+.Pixso-paragraph-146_161519 {
+  font-size: 14px;
+  font-family: "HarmonyHeiTi-Regular";
+  font-weight: Regular;
+  text-align: center;
+  letter-spacing: 0px;
+  line-height: 18px;
+  text-decoration: none;
+  width: 80px;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+  mix-blend-mode: normal;
+}
+
+.Pixso-frame-146_161520 {
+  width: 304px;
+  height: auto;
+  position: absolute;
+  left: 12px;
+  top: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+  mix-blend-mode: normal;
+}
+
+.frame-content-146_161520 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 12px 0px 8px 0px;
+  width: 100%;
+  position: relative;
+}
+
+.Pixso-frame-146_161521 {
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+  mix-blend-mode: normal;
+}
+
+.Pixso-paragraph-146_161522 {
+  text-align: left;
+  letter-spacing: 0px;
+  text-decoration: none;
+  width: auto;
+  height: auto;
+  position: relative;
+  flex-shrink: 0;
+  white-space: pre;
+  flex-grow: 0;
+  mix-blend-mode: normal;
+}
+
+
+  </style>
+</head>
+<body>
+<div id="app-root">
+<div class="scroll-container">
+  <!-- bbox: key=id:0_1 | x=0 y=0 w=360 h=792 -->
+<div id="0_1" class="Pixso-canvas-0_1">
+    <!-- bbox: key=id:14_807507 | x=0 y=0 w=360 h=792 -->
+<!-- semantic: area=全屏背景 | range=整个页面 | semantic=页面根容器与浅灰背景 | bbox=0,0,360,792 | confidence=高 -->
+<div id="14_807507" class="Pixso-frame-14_807507 fill-场景background-colorcolor-bg-1-14_809175">
+      <!-- bbox: key=id:14_807508 | x=0 y=0 w=360 h=228 -->
+<!-- semantic: area=顶部区域 | range=顶部靠上 | semantic=顶部背景装饰图形组 | bbox=0,0,360,228 | confidence=中 -->
+<div id="14_807508" class="Pixso-frame-14_807508">
+        <!-- bbox: key=id:14_807509 | x=-64 y=-86 w=187 h=181 -->
+<div id="14_807509" class="Pixso-vector-14_807509"></div>
+        <!-- bbox: key=id:14_807510 | x=38 y=-49 w=146 h=144 -->
+<div id="14_807510" class="Pixso-vector-14_807510"></div>
+        <!-- bbox: key=id:14_807511 | x=-61 y=0 w=107 h=105 -->
+<div id="14_807511" class="Pixso-vector-14_807511"></div>
+        <!-- bbox: key=id:14_807512 | x=165 y=-51 w=201 h=166 -->
+<div id="14_807512" class="Pixso-vector-14_807512"></div>
+        <!-- bbox: key=id:14_807513 | x=0 y=0 w=360 h=200 -->
+<div id="14_807513" class="Pixso-rectangle-14_807513"></div>
+      </div>
+      <!-- bbox: key=id:14_807521 | x=0 y=0 w=360 h=24 -->
+<div id="14_807521" class="Pixso-rectangle-14_807521"></div>
+      <!-- bbox: key=id:14_807522 | x=0 y=0 w=360 h=92 -->
+<div id="14_807522" class="Pixso-frame-14_807522">
+        <!-- bbox: key=id:14_807523 | x=0 y=0 w=360 h=92 -->
+<div id="14_807523" class="Pixso-frame-14_807523">
+          <div class="frame-content-14_807523">
+            <!-- bbox: key=id:146_169682 | x=0 y=0 w=360 h=36 -->
+<!-- semantic: area=顶部区域 | range=屏幕最顶端 | semantic=顶部状态栏 | text=08:08 | bbox=0,0,360,36 | confidence=高 -->
+<div id="146_169682" class="Pixso-frame-146_169682">
+              <!-- bbox: key=id:146_169683 | x=0 y=0 w=360 h=36 -->
+<div id="146_169683" class="Pixso-frame-146_169683">
+                <div class="frame-content-146_169683">
+                  <p id="146_169684" class="Pixso-paragraph-146_169684">08:08</p>
+                  <div id="146_169685" class="Pixso-frame-146_169685">
+                    <div id="146_169686" class="Pixso-vector-146_169686"></div>
+                    <div id="146_169698" class="Pixso-vector-146_169698"></div>
+                    <div id="146_169705" class="Pixso-vector-146_169705"></div>
+                    <div id="146_169732" class="Pixso-vector-146_169732"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- bbox: key=id:146_169742 | x=0 y=36 w=360 h=56 -->
+<!-- semantic: area=顶部区域 | range=状态栏下方 | semantic=顶部导航栏 | text=我的 工作台 | bbox=0,36,360,56 | confidence=高 -->
+<div id="146_169742" class="Pixso-frame-146_169742">
+              <div class="frame-content-146_169742">
+                <div id="146_169743" class="Pixso-frame-146_169743">
+                  <div id="146_169744" class="Pixso-frame-146_169744">
+                    <div id="146_169749" class="Pixso-frame-146_169749">
+                      <div id="146_169750" class="Pixso-frame-146_169750">
+                        <div id="146_169751" class="Pixso-frame-146_169751">
+                          <div class="frame-content-146_169751">
+                            <div id="146_169752" class="Pixso-frame-146_169752">
+                              <p id="146_169753" class="Pixso-paragraph-146_169753 fill-场景text-colorcolor-text-primary-6_11379-paragraph">我的</p>
+                            </div>
+                            <p id="146_169757" class="Pixso-paragraph-146_169757 fill-场景text-colorcolor-text-primary-6_11379-paragraph">工作台</p>
+                          </div>
+                        </div>
+                        <div id="146_169758" class="Pixso-frame-146_169758">
+                          <div class="frame-content-146_169758">
+                            <div id="146_169759" class="Pixso-group-146_169759">
+                              <div id="146_169760" class="Pixso-vector-146_169760"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- bbox: key=id:14_807524 | x=0 y=728 w=360 h=64 -->
+<!-- semantic: area=底部区域 | range=屏幕底端固定 | semantic=底部导航栏 | text=我的 服务 工作台 商城 首页 | bbox=0,728,360,64 | confidence=高 -->
+<div id="14_807524" class="Pixso-frame-14_807524">
+        <!-- bbox: key=id:14_807525 | x=0 y=728 w=360 h=64 -->
+<div id="14_807525" class="Pixso-rectangle-14_807525"></div>
+        <p id="14_807526" class="Pixso-paragraph-14_807526">我的</p>
+        <p id="14_807527" class="Pixso-paragraph-14_807527">服务</p>
+        <p id="14_807528" class="Pixso-paragraph-14_807528">工作台</p>
+        <p id="14_807529" class="Pixso-paragraph-14_807529">商城</p>
+        <p id="14_807530" class="Pixso-paragraph-14_807530">首页</p>
+        <!-- bbox: key=id:14_807531 | x=93 y=738 w=30 h=30 -->
+<div id="14_807531" class="Pixso-group-14_807531">
+          <!-- bbox: key=id:14_807532 | x=93 y=738 w=30 h=30 -->
+<div id="14_807532" class="Pixso-vector-14_807532"></div>
+          <!-- bbox: key=id:14_807533 | x=99 y=745 w=18 h=17 -->
+<div id="14_807533" class="Pixso-group-14_807533">
+            <!-- bbox: key=id:14_807534 | x=104 y=748 w=7 h=4 -->
+<div id="14_807534" class="Pixso-vector-14_807534"></div>
+            <!-- bbox: key=id:14_807535 | x=99 y=745 w=18 h=17 -->
+<div id="14_807535" class="stroke-wrapper-14_807535">
+              <div class="Pixso-rectangle-14_807535"></div>
+              <div class="stroke-14_807535"></div>
+            </div>
+          </div>
+        </div>
+        <!-- bbox: key=id:14_807536 | x=21 y=738 w=30 h=30 -->
+<div id="14_807536" class="Pixso-vector-14_807536"></div>
+        <!-- bbox: key=id:14_807540 | x=165 y=738 w=30 h=30 -->
+<div id="14_807540" class="Pixso-vector-14_807540"></div>
+        <!-- bbox: key=id:14_807553 | x=237 y=738 w=30 h=30 -->
+<div id="14_807553" class="Pixso-group-14_807553">
+          <!-- bbox: key=id:14_807554 | x=237 y=738 w=30 h=30 -->
+<div id="14_807554" class="Pixso-vector-14_807554"></div>
+          <!-- bbox: key=id:14_807555 | x=242 y=743 w=20 h=20 -->
+<div id="14_807555" class="Pixso-vector-14_807555"></div>
+        </div>
+        <!-- bbox: key=id:14_807558 | x=309 y=738 w=30 h=30 -->
+<div id="14_807558" class="Pixso-group-14_807558">
+          <!-- bbox: key=id:14_807559 | x=309 y=738 w=30 h=30 -->
+<div id="14_807559" class="Pixso-vector-14_807559"></div>
+          <!-- bbox: key=id:14_807560 | x=314 y=743 w=21 h=21 -->
+<div id="14_807560" class="Pixso-group-14_807560">
+            <!-- bbox: key=id:14_807561 | x=314 y=743 w=21 h=21 -->
+<div id="14_807561" class="Pixso-vector-14_807561"></div>
+            <!-- bbox: key=id:14_807564 | x=319 y=750 w=7 h=3 -->
+<div id="14_807564" class="Pixso-vector-14_807564"></div>
+          </div>
+        </div>
+      </div>
+      <!-- bbox: key=id:14_807567 | x=0 y=0 w=360 h=792 -->
+<!-- semantic: area=全屏背景 | range=整个页面 | semantic=全屏半透明遮罩层 | bbox=0,0,360,792 | confidence=高 -->
+      <!-- bbox: key=id:14_807568 | x=16 y=289 w=328 h=156 -->
+<!-- semantic: area=主体内容区域 | range=页面中部偏上 | semantic=项目开局卡片区域 | text=创建开局 创建项目集 接收项目 项目开局 | bbox=16,289,328,156 | confidence=高 -->
+<div id="14_807568" class="Pixso-frame-14_807568">
+        <!-- bbox: key=id:146_161458 | x=16 y=289 w=328 h=156 -->
+<div id="146_161458" class="Pixso-rectangle-146_161458"></div>
+        <!-- bbox: key=id:146_161459 | x=28 y=329 w=304 h=104 -->
+<div id="146_161459" class="Pixso-frame-146_161459">
+          <div class="frame-content-146_161459">
+            <!-- bbox: key=id:146_161460 | x=28 y=329 w=96 h=104 -->
+<!-- semantic: area=主体内容区域 | range=卡片内部左侧 | semantic=创建开局操作按钮 | text=创建开局 | bbox=28,329,96,104 | confidence=高 -->
+<div id="146_161460" class="Pixso-frame-146_161460">
+              <div class="frame-content-146_161460">
+                <div id="146_161461" class="Pixso-frame-146_161461">
+                  <div id="146_161477" class="Pixso-group-146_161477">
+                    <div id="146_161478" class="Pixso-rectangle-146_161478"></div>
+                    <div id="146_161479" class="Pixso-vector-146_161479"></div>
+                    <div id="146_161480" class="Pixso-vector-146_161480"></div>
+                    <div id="146_161481" class="Pixso-vector-146_161481"></div>
+                    <div id="146_161482" class="Pixso-vector-146_161482"></div>
+                  </div>
+                </div>
+                <p id="146_161483" class="Pixso-paragraph-146_161483 fill-text文本色图标色color_text_primary-14_290523-paragraph">创建开局</p>
+              </div>
+            </div>
+            <!-- bbox: key=id:146_161484 | x=132 y=329 w=96 h=104 -->
+<!-- semantic: area=主体内容区域 | range=卡片内部中间 | semantic=创建项目集操作按钮 | text=创建项目集 | bbox=132,329,96,104 | confidence=高 -->
+<div id="146_161484" class="Pixso-frame-146_161484">
+              <div class="frame-content-146_161484">
+                <div id="146_161485" class="Pixso-frame-146_161485">
+                  <div id="146_161501" class="Pixso-vector-146_161501"></div>
+                </div>
+                <p id="146_161508" class="Pixso-paragraph-146_161508 fill-text文本色图标色color_text_primary-14_290523-paragraph">创建项目集</p>
+              </div>
+            </div>
+            <!-- bbox: key=id:146_161509 | x=236 y=329 w=96 h=104 -->
+<!-- semantic: area=主体内容区域 | range=卡片内部右侧 | semantic=接收项目操作按钮 | text=接收项目 | bbox=236,329,96,104 | confidence=高 -->
+<div id="146_161509" class="Pixso-frame-146_161509">
+              <div class="frame-content-146_161509">
+                <div id="146_161510" class="Pixso-frame-146_161510">
+                  <div id="146_161511" class="Pixso-vector-146_161511"></div>
+                  <div id="146_161515" class="Pixso-vector-146_161515"></div>
+                  <div id="146_161516" class="Pixso-vector-146_161516"></div>
+                  <div id="146_161517" class="Pixso-rectangle-146_161517"></div>
+                  <div id="146_161518" class="Pixso-rectangle-146_161518"></div>
+                </div>
+                <p id="146_161519" class="Pixso-paragraph-146_161519 fill-text文本色图标色color_text_primary-14_290523-paragraph">接收项目</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- bbox: key=id:146_161520 | x=28 y=289 w=304 h=40 -->
+<!-- semantic: area=主体内容区域 | range=卡片顶部 | semantic=卡片标题文本容器 | text=项目开局 | bbox=28,289,304,40 | confidence=高 -->
+<div id="146_161520" class="Pixso-frame-146_161520">
+          <div class="frame-content-146_161520">
+            <!-- bbox: key=id:146_161521 | x=28 y=301 w=65 h=20 -->
+<div id="146_161521" class="Pixso-frame-146_161521">
+              <p id="146_161522" class="Pixso-paragraph-146_161522 fill-text文本色图标色color_text_primary-14_290523-paragraph text-单行行高headline标题headline_s-14_365549">项目开局</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+</script>
+
+</div>
+<div id="tf-layer-root"><section id="tf-state-2" class="tf-state-layer tf-llm-layer" style="display:none"><div class="tf-keep-placeholder" data-keep-anchor="顶部状态栏-屏幕最顶端"></div><div class="tf-keep-placeholder" data-keep-anchor="0808-文本"></div><div data-component-id="overlay_mask" class="tf-component tf-cg-overlay" style="left:0px;top:36px;width:360px;height:756px"></div><div data-component-id="modal_container" class="tf-component tf-cg-modal-overlay" style="left:0px;top:36px;width:360px;height:756px"><div class="tf-cg-modal-content"><div data-component-id="modal_header" class="tf-cg-modal-header"><div class="tf-cg-modal-title">选择开局产品</div><div class="tf-cg-modal-close">×</div></div><div class="tf-cg-modal-body"><div data-component-id="product_list" class="tf-component tf-cg-list"><div class="tf-cg-list-item tf-cg-list-item--selected"><div class="tf-cg-list-item-content"><div class="tf-cg-list-item-title">SOHO</div><div class="tf-cg-list-item-desc">适合小型办公室或家庭办公</div></div><div class="tf-cg-list-item-check"></div></div><div class="tf-cg-list-item"><div class="tf-cg-list-item-content"><div class="tf-cg-list-item-title">初创企业</div><div class="tf-cg-list-item-desc">适合10人以内初创团队</div></div></div><div class="tf-cg-list-item"><div class="tf-cg-list-item-content"><div class="tf-cg-list-item-title">成长型企业</div><div class="tf-cg-list-item-desc">适合10-50人规模企业</div></div></div><div class="tf-cg-list-item"><div class="tf-cg-list-item-content"><div class="tf-cg-list-item-title">中大型企业</div><div class="tf-cg-list-item-desc">适合50-200人规模企业</div></div></div><div class="tf-cg-list-item"><div class="tf-cg-list-item-content"><div class="tf-cg-list-item-title">集团企业</div><div class="tf-cg-list-item-desc">适合200人以上大型集团</div></div></div></div></div><div class="tf-cg-modal-footer"><div data-component-id="modal_footer_btn" class="tf-component tf-cg-modal-footer-btn" style="width:100%;height:44px"><button class="tf-cg-btn-primary">下一步</button></div></div></div></div></section><section id="tf-state-3" class="tf-state-layer tf-llm-layer" style="display:none"><div class="tf-keep-placeholder" data-keep-anchor="顶部状态栏-屏幕最顶端"></div><div class="tf-keep-placeholder" data-keep-anchor="0808-文本"></div><div data-component-id="overlay_mask" class="tf-component tf-cg-overlay" style="left:0px;top:36px;width:360px;height:756px"></div><div data-component-id="modal_container" class="tf-component tf-cg-modal-overlay" style="left:0px;top:36px;width:360px;height:756px"><div class="tf-cg-modal-content"><div data-component-id="modal_header" class="tf-cg-modal-header"><div class="tf-cg-modal-title">选择开局方式</div><div class="tf-cg-modal-close">×</div></div><div class="tf-cg-modal-body"><div data-component-id="info_card" class="tf-component tf-cg-card" style="width:100%;height:60px;margin-bottom:16px"><div class="tf-cg-card-content">开局成功后，设备将自动完成登记与激活</div></div><div data-component-id="method_list" class="tf-component tf-cg-radiogroup" style="width:100%"><div class="tf-cg-title">请选择开局方式</div><div class="tf-cg-radio-list"><label class="tf-cg-item"><span class="tf-cg-radio"></span><span class="tf-cg-text">扫码开局</span></label><label class="tf-cg-item"><span class="tf-cg-radio"></span><span class="tf-cg-text">配置开局</span></label><label class="tf-cg-item"><span class="tf-cg-radio"></span><span class="tf-cg-text">蓝牙开局</span></label><label class="tf-cg-item"><span class="tf-cg-radio"></span><span class="tf-cg-text">NFC开局</span></label></div></div></div><div class="tf-cg-modal-footer"><div data-component-id="modal_footer_btn" class="tf-component tf-cg-modal-footer-btn" style="width:100%;height:44px"><button class="tf-cg-btn-primary tf-cg-btn-disabled" disabled>确认</button></div></div></div></div></section><section id="tf-state-4" class="tf-state-layer tf-llm-layer" style="display:none"><div class="tf-keep-placeholder" data-keep-anchor="顶部状态栏-屏幕最顶端"></div><div class="tf-keep-placeholder" data-keep-anchor="0808-文本"></div><div data-component-id="overlay_mask" class="tf-component tf-cg-overlay" style="left:0px;top:36px;width:360px;height:756px"></div><div data-component-id="modal_container" class="tf-component tf-cg-modal-overlay" style="left:0px;top:36px;width:360px;height:756px"><div class="tf-cg-modal-content"><div data-component-id="modal_header" class="tf-cg-modal-header"><div class="tf-cg-modal-title">选择开局方式</div><div class="tf-cg-modal-close">×</div></div><div class="tf-cg-modal-body"><div data-component-id="info_card" class="tf-component tf-cg-card" style="width:100%;height:60px;margin-bottom:16px"><div class="tf-cg-card-content">开局成功后，设备将自动完成登记与激活</div></div><div data-component-id="method_list" class="tf-component tf-cg-radiogroup" style="width:100%"><div class="tf-cg-title">请选择开局方式</div><div class="tf-cg-radio-list"><label class="tf-cg-item tf-cg-item-selected"><span class="tf-cg-radio tf-cg-radio-selected"></span><span class="tf-cg-text">扫码开局</span></label><label class="tf-cg-item"><span class="tf-cg-radio"></span><span class="tf-cg-text">配置开局</span></label><label class="tf-cg-item"><span class="tf-cg-radio"></span><span class="tf-cg-text">蓝牙开局</span></label><label class="tf-cg-item"><span class="tf-cg-radio"></span><span class="tf-cg-text">NFC开局</span></label></div></div></div><div class="tf-cg-modal-footer"><div data-component-id="modal_footer_btn" class="tf-component tf-cg-modal-footer-btn" style="width:100%;height:44px"><button class="tf-cg-btn-primary">确认</button></div></div></div></div></section><section id="tf-state-5" class="tf-state-layer tf-llm-layer" style="display:none"><div class="tf-keep-placeholder" data-keep-anchor="顶部状态栏-屏幕最顶端"></div><div class="tf-keep-placeholder" data-keep-anchor="0808-文本"></div><div data-component-id="overlay_mask" class="tf-component tf-cg-overlay" style="left:0px;top:36px;width:360px;height:756px"></div><div data-component-id="modal_container" class="tf-component tf-cg-modal-overlay" style="left:0px;top:36px;width:360px;height:756px"><div class="tf-cg-modal-content"><div data-component-id="modal_header" class="tf-cg-modal-header"><div class="tf-cg-modal-title">选择开局方式</div><div class="tf-cg-modal-close">×</div></div><div class="tf-cg-modal-body"><div data-component-id="info_card" class="tf-component tf-cg-card" style="width:100%;height:60px;margin-bottom:16px"><div class="tf-cg-card-content">开局成功后，设备将自动完成登记与激活</div></div><div data-component-id="method_list" class="tf-component tf-cg-radiogroup" style="width:100%"><div class="tf-cg-title">请选择开局方式</div><div class="tf-cg-radio-list"><label class="tf-cg-item tf-cg-item-selected"><span class="tf-cg-radio tf-cg-radio-selected"></span><span class="tf-cg-text">扫码开局</span></label><label class="tf-cg-item"><span class="tf-cg-radio"></span><span class="tf-cg-text">配置开局</span></label><label class="tf-cg-item"><span class="tf-cg-radio"></span><span class="tf-cg-text">蓝牙开局</span></label><label class="tf-cg-item"><span class="tf-cg-radio"></span><span class="tf-cg-text">NFC开局</span></label></div></div></div><div class="tf-cg-modal-footer"><div data-component-id="modal_footer_btn" class="tf-component tf-cg-modal-footer-btn" style="width:100%;height:44px"><button class="tf-cg-btn-primary tf-cg-btn-disabled tf-cg-btn-loading" disabled><span class="tf-cg-spinner"></span>提交中...</button></div></div></div></div></section><section id="tf-state-6" class="tf-state-layer tf-llm-layer" style="display:none"><div class="tf-keep-placeholder" data-keep-anchor="页面根容器与浅灰背景-整个页面"></div><div class="tf-keep-placeholder" data-keep-anchor="顶部背景装饰图形组-顶部靠上"></div><div class="tf-keep-placeholder" data-keep-anchor="顶部状态栏-屏幕最顶端"></div><div class="tf-keep-placeholder" data-keep-anchor="0808-文本"></div><div class="tf-keep-placeholder" data-keep-anchor="顶部导航栏-状态栏下方"></div><div class="tf-keep-placeholder" data-keep-anchor="顶部导航栏-文本-我的"></div><div class="tf-keep-placeholder" data-keep-anchor="顶部导航栏-文本-工作台"></div><div class="tf-keep-placeholder" data-keep-anchor="底部导航栏-屏幕底端固定"></div><div class="tf-keep-placeholder" data-keep-anchor="底部导航栏-文本-我的"></div><div class="tf-keep-placeholder" data-keep-anchor="底部导航栏-文本-服务"></div><div class="tf-keep-placeholder" data-keep-anchor="底部导航栏-文本-工作台"></div><div class="tf-keep-placeholder" data-keep-anchor="底部导航栏-文本-商城"></div><div class="tf-keep-placeholder" data-keep-anchor="底部导航栏-文本-首页"></div><div class="tf-keep-placeholder" data-keep-anchor="项目开局卡片区域-页面中部偏上"></div><div class="tf-keep-placeholder" data-keep-anchor="卡片标题文本容器-卡片顶部"></div><div class="tf-keep-placeholder" data-keep-anchor="项目开局-文本"></div><div class="tf-keep-placeholder" data-keep-anchor="创建开局操作按钮-卡片内部左侧"></div><div class="tf-keep-placeholder" data-keep-anchor="创建开局操作按钮-文本-创建开局"></div><div class="tf-keep-placeholder" data-keep-anchor="创建项目集操作按钮-卡片内部中间"></div><div class="tf-keep-placeholder" data-keep-anchor="创建项目集操作按钮-文本-创建项目集"></div><div class="tf-keep-placeholder" data-keep-anchor="接收项目操作按钮-卡片内部右侧"></div><div class="tf-keep-placeholder" data-keep-anchor="接收项目操作按钮-文本-接收项目"></div><div data-component-id="toast_success" class="tf-component tf-cg-toast" style="left:40px;top:120px;width:280px;height:44px"><div class="tf-cg-toast-content"><span class="tf-cg-toast-icon">✓</span><span class="tf-cg-toast-text">开局配置成功</span></div></div></section></div>
+<style id="tf-llm-base-style">
+.tf-state-layer{position:fixed;left:0;top:0;width:360px;min-height:792px;z-index:9999;background:#f5f5f5;color:#1f1f1f;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;overflow-y:auto;overflow-x:hidden}
+.tf-llm-layer *{box-sizing:border-box}
+.tf-keep-placeholder{position:absolute;overflow:hidden;pointer-events:none}
+.tf-keep-placeholder>.tf-keep-crop{position:absolute;pointer-events:none}
+.tf-llm-layer{position:absolute;top:0;left:0;width:360px;min-height:792px;}.tf-keep-placeholder{position:absolute;width:0;height:0;overflow:hidden;}.tf-cg-overlay{position:absolute;background:rgba(0,0,0,0.55);z-index:100;}.tf-cg-modal-overlay{position:absolute;display:flex;align-items:center;justify-content:center;z-index:101;}.tf-cg-modal-content{position:relative;width:320px;max-height:90%;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.15);overflow:hidden;display:flex;flex-direction:column;}.tf-cg-modal-header{display:flex;align-items:center;justify-content:space-between;padding:16px;border-bottom:1px solid #f0f0f0;}.tf-cg-modal-title{font-size:16px;font-weight:500;color:#333;}.tf-cg-modal-close{font-size:20px;color:#999;cursor:pointer;}.tf-cg-modal-body{padding:16px;flex:1;overflow-y:auto;}.tf-cg-modal-footer{padding:16px;border-top:1px solid #f0f0f0;}.tf-cg-list{background:#fff;overflow-y:auto;padding:0;box-sizing:border-box;}.tf-cg-list-item{display:flex;align-items:center;justify-content:space-between;padding:16px;margin-bottom:8px;background:#f7f8fa;border-radius:8px;border:1px solid transparent;}.tf-cg-list-item--selected{background:#e6f7ff;border-color:#1677ff;}.tf-cg-list-item-content{flex:1;}.tf-cg-list-item-title{font-size:15px;font-weight:500;color:#333;margin-bottom:4px;}.tf-cg-list-item-desc{font-size:12px;color:#999;}.tf-cg-list-item-check{width:20px;height:20px;background:#1677ff;border-radius:50%;position:relative;flex-shrink:0;}.tf-cg-list-item-check::after{content:'';position:absolute;left:6px;top:3px;width:6px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg);}.tf-cg-card{background:#fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.06);display:flex;align-items:center;padding:0 16px;box-sizing:border-box;}.tf-cg-card-content{font-size:14px;color:#333;line-height:1.5;}.tf-cg-radiogroup{background:#fff;padding:0;box-sizing:border-box;display:flex;flex-direction:column;gap:16px;}.tf-cg-title{font-size:16px;font-weight:500;color:#333;}.tf-cg-radio-list{display:flex;flex-direction:column;gap:12px;}.tf-cg-item{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid #eee;border-radius:8px;cursor:pointer;}.tf-cg-item-selected{border-color:#1677ff;background:rgba(22,119,255,0.05);}.tf-cg-radio{width:20px;height:20px;border:2px solid #ccc;border-radius:50%;flex-shrink:0;box-sizing:border-box;}.tf-cg-radio-selected{border-color:#1677ff;background:#1677ff;display:flex;align-items:center;justify-content:center;}.tf-cg-radio-selected::after{content:'';width:8px;height:8px;background:#fff;border-radius:50%;}.tf-cg-text{font-size:14px;color:#333;}.tf-cg-modal-footer-btn{display:flex;align-items:center;justify-content:center;}.tf-cg-btn-primary{width:100%;height:100%;background:#1677ff;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:500;cursor:pointer;box-shadow:0 2px 8px rgba(22,119,255,0.2);display:flex;align-items:center;justify-content:center;}.tf-cg-btn-disabled{background:#f5f5f5 !important;color:#bfbfbf !important;cursor:not-allowed;box-shadow:none !important;}.tf-cg-btn-loading{opacity:0.65;cursor:not-allowed;box-shadow:none !important;}.tf-cg-spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;margin-right:6px;animation:tf-spin 1s linear infinite;}@keyframes tf-spin{to{transform:rotate(360deg);}}.tf-cg-toast{position:absolute;display:flex;align-items:center;justify-content:center;z-index:1000;}.tf-cg-toast-content{display:flex;align-items:center;gap:8px;padding:0 16px;height:44px;background:rgba(0,0,0,0.75);border-radius:22px;box-shadow:0 4px 12px rgba(0,0,0,0.15);}.tf-cg-toast-icon{color:#fff;font-size:16px;font-weight:bold;}.tf-cg-toast-text{color:#fff;font-size:14px;line-height:20px;white-space:nowrap;}
+</style>
+<script>
+window.__TF_REGISTRY__={"页面根容器与浅灰背景-整个页面":{"name":"页面根容器与浅灰背景-整个页面","selector":"#14_807507","id":"14_807507","area":"全屏背景","component":"页面根容器与浅灰背景","element":"整个页面","bbox":[0,0,360,792],"confidence":"高","text":"","inheritance_policy":"hideable"},"顶部背景装饰图形组-顶部靠上":{"name":"顶部背景装饰图形组-顶部靠上","selector":"#14_807508","id":"14_807508","area":"顶部区域","component":"顶部背景装饰图形组","element":"顶部靠上","bbox":[0,0,360,228],"confidence":"中","text":"","inheritance_policy":"hideable"},"顶部状态栏-屏幕最顶端":{"name":"顶部状态栏-屏幕最顶端","selector":"#146_169682","id":"146_169682","area":"顶部区域","component":"顶部状态栏","element":"屏幕最顶端","bbox":[0,0,360,36],"confidence":"高","text":"08:08","inheritance_policy":"persistent-or-hideable"},"顶部导航栏-状态栏下方":{"name":"顶部导航栏-状态栏下方","selector":"#146_169742","id":"146_169742","area":"顶部区域","component":"顶部导航栏","element":"状态栏下方","bbox":[0,36,360,56],"confidence":"高","text":"我的 工作台","inheritance_policy":"persistent-or-hideable"},"底部导航栏-屏幕底端固定":{"name":"底部导航栏-屏幕底端固定","selector":"#14_807524","id":"14_807524","area":"底部区域","component":"底部导航栏","element":"屏幕底端固定","bbox":[0,728,360,64],"confidence":"高","text":"我的 服务 工作台 商城 首页","inheritance_policy":"persistent-or-hideable"},"项目开局卡片区域-页面中部偏上":{"name":"项目开局卡片区域-页面中部偏上","selector":"#14_807568","id":"14_807568","area":"全屏背景","component":"项目开局卡片区域","element":"页面中部偏上","bbox":[16,289,328,156],"confidence":"高","text":"创建开局 创建项目集 接收项目 项目开局","inheritance_policy":"hideable"},"创建开局操作按钮-卡片内部左侧":{"name":"创建开局操作按钮-卡片内部左侧","selector":"#146_161460","id":"146_161460","area":"主体内容区域","component":"创建开局操作按钮","element":"卡片内部左侧","bbox":[28,329,96,104],"confidence":"高","text":"创建开局","inheritance_policy":"replaceable"},"创建项目集操作按钮-卡片内部中间":{"name":"创建项目集操作按钮-卡片内部中间","selector":"#146_161484","id":"146_161484","area":"主体内容区域","component":"创建项目集操作按钮","element":"卡片内部中间","bbox":[132,329,96,104],"confidence":"高","text":"创建项目集","inheritance_policy":"replaceable"},"接收项目操作按钮-卡片内部右侧":{"name":"接收项目操作按钮-卡片内部右侧","selector":"#146_161509","id":"146_161509","area":"主体内容区域","component":"接收项目操作按钮","element":"卡片内部右侧","bbox":[236,329,96,104],"confidence":"高","text":"接收项目","inheritance_policy":"replaceable"},"卡片标题文本容器-卡片顶部":{"name":"卡片标题文本容器-卡片顶部","selector":"#146_161520","id":"146_161520","area":"主体内容区域","component":"卡片标题文本容器","element":"卡片顶部","bbox":[28,289,304,40],"confidence":"高","text":"项目开局","inheritance_policy":"replaceable"},"0808-文本":{"name":"0808-文本","selector":"#146_169684","id":"146_169684","area":"content-area","component":"text","element":"08:08","bbox":[0,0,360,36],"confidence":"high","text":"08:08","inheritance_policy":"hideable"},"顶部导航栏-文本-我的":{"name":"顶部导航栏-文本-我的","selector":"#146_169753","id":"146_169753","area":"content-area","component":"text","element":"我的","bbox":[0,36,360,56],"confidence":"high","text":"我的","inheritance_policy":"hideable"},"顶部导航栏-文本-工作台":{"name":"顶部导航栏-文本-工作台","selector":"#146_169757","id":"146_169757","area":"content-area","component":"text","element":"工作台","bbox":[0,36,360,56],"confidence":"high","text":"工作台","inheritance_policy":"hideable"},"底部导航栏-文本-我的":{"name":"底部导航栏-文本-我的","selector":"#14_807526","id":"14_807526","area":"bottom-area","component":"text","element":"我的","bbox":[0,728,360,64],"confidence":"high","text":"我的","inheritance_policy":"hideable"},"底部导航栏-文本-服务":{"name":"底部导航栏-文本-服务","selector":"#14_807527","id":"14_807527","area":"bottom-area","component":"text","element":"服务","bbox":[0,728,360,64],"confidence":"high","text":"服务","inheritance_policy":"hideable"},"底部导航栏-文本-工作台":{"name":"底部导航栏-文本-工作台","selector":"#14_807528","id":"14_807528","area":"bottom-area","component":"text","element":"工作台","bbox":[0,728,360,64],"confidence":"high","text":"工作台","inheritance_policy":"hideable"},"底部导航栏-文本-商城":{"name":"底部导航栏-文本-商城","selector":"#14_807529","id":"14_807529","area":"bottom-area","component":"text","element":"商城","bbox":[0,728,360,64],"confidence":"high","text":"商城","inheritance_policy":"hideable"},"底部导航栏-文本-首页":{"name":"底部导航栏-文本-首页","selector":"#14_807530","id":"14_807530","area":"bottom-area","component":"text","element":"首页","bbox":[0,728,360,64],"confidence":"high","text":"首页","inheritance_policy":"hideable"},"创建开局操作按钮-文本-创建开局":{"name":"创建开局操作按钮-文本-创建开局","selector":"#146_161483","id":"146_161483","area":"content-area","component":"text","element":"创建开局","bbox":[28,329,96,104],"confidence":"high","text":"创建开局","inheritance_policy":"hideable"},"创建项目集操作按钮-文本-创建项目集":{"name":"创建项目集操作按钮-文本-创建项目集","selector":"#146_161508","id":"146_161508","area":"content-area","component":"text","element":"创建项目集","bbox":[132,329,96,104],"confidence":"high","text":"创建项目集","inheritance_policy":"hideable"},"接收项目操作按钮-文本-接收项目":{"name":"接收项目操作按钮-文本-接收项目","selector":"#146_161519","id":"146_161519","area":"content-area","component":"text","element":"接收项目","bbox":[236,329,96,104],"confidence":"high","text":"接收项目","inheritance_policy":"hideable"},"项目开局-文本":{"name":"项目开局-文本","selector":"#146_161522","id":"146_161522","area":"content-area","component":"text","element":"项目开局","bbox":[28,301,65,20],"confidence":"high","text":"项目开局","inheritance_policy":"hideable"}};
+window.__TF_ANCHORS__={"页面根容器与浅灰背景-整个页面":"#14_807507","顶部背景装饰图形组-顶部靠上":"#14_807508","顶部状态栏-屏幕最顶端":"#146_169682","顶部导航栏-状态栏下方":"#146_169742","底部导航栏-屏幕底端固定":"#14_807524","项目开局卡片区域-页面中部偏上":"#14_807568","创建开局操作按钮-卡片内部左侧":"#146_161460","创建项目集操作按钮-卡片内部中间":"#146_161484","接收项目操作按钮-卡片内部右侧":"#146_161509","卡片标题文本容器-卡片顶部":"#146_161520","0808-文本":"#146_169684","顶部导航栏-文本-我的":"#146_169753","顶部导航栏-文本-工作台":"#146_169757","底部导航栏-文本-我的":"#14_807526","底部导航栏-文本-服务":"#14_807527","底部导航栏-文本-工作台":"#14_807528","底部导航栏-文本-商城":"#14_807529","底部导航栏-文本-首页":"#14_807530","创建开局操作按钮-文本-创建开局":"#146_161483","创建项目集操作按钮-文本-创建项目集":"#146_161508","接收项目操作按钮-文本-接收项目":"#146_161519","项目开局-文本":"#146_161522"};
+window.__TF_STATE_MODEL__={"states":[{"id":"state_1","label":"工作台初始页面","ui_intent":"展示我的工作台页面，包含顶部状态栏、导航栏、功能图标区、项目开局卡片及底部导航栏","parent_state":null,"trigger":{"event":"click","anchor":"创建开局操作按钮-卡片内部左侧","action":"goto:state_2"},"inheritance":{"keep":["页面根容器与浅灰背景-整个页面","顶部背景装饰图形组-顶部靠上","顶部状态栏-屏幕最顶端","0808-文本","顶部导航栏-状态栏下方","顶部导航栏-文本-我的","顶部导航栏-文本-工作台","底部导航栏-屏幕底端固定","底部导航栏-文本-我的","底部导航栏-文本-服务","底部导航栏-文本-工作台","底部导航栏-文本-商城","底部导航栏-文本-首页","项目开局卡片区域-页面中部偏上","卡片标题文本容器-卡片顶部","项目开局-文本","创建开局操作按钮-卡片内部左侧","创建开局操作按钮-文本-创建开局","创建项目集操作按钮-卡片内部中间","创建项目集操作按钮-文本-创建项目集","接收项目操作按钮-卡片内部右侧","接收项目操作按钮-文本-接收项目"],"create":[],"update":[]},"patches":[{"type":"bind","id":"创建开局操作按钮-卡片内部左侧","goto":"state_2"}]},{"id":"state_2","label":"产品选择弹窗态","ui_intent":"弹出全屏遮罩与产品选择弹窗，展示5个开局产品选项且SOHO默认选中，底部提供下一步按钮","parent_state":"state_1","trigger":{"anchor":"创建开局操作按钮-卡片内部左侧","action":"goto:state_3"},"inheritance":{"keep":["顶部状态栏-屏幕最顶端","0808-文本"],"create":[{"type":"create","id":"overlay_mask","component":"Overlay","bbox":[0,36,360,756]},{"type":"create","id":"modal_container","component":"Modal","bbox":[0,36,360,756]},{"type":"create","id":"modal_header","component":"ModalHeader","bbox":[0,36,360,56],"text":"选择开局产品"},{"type":"create","id":"product_list","component":"List","bbox":[0,92,360,580]},{"type":"create","id":"modal_footer_btn","component":"Button","bbox":[16,700,328,44],"text":"下一步","mount":"modal_container"}],"update":[]},"patches":[{"type":"bind","id":"modal_footer_btn","goto":"state_3"}]},{"id":"state_3","label":"开局方式选择态","ui_intent":"弹窗进入第二步，展示设备自动登记与激活说明文案及4种开局方式单选列表，确认按钮默认禁用","parent_state":"state_2","trigger":{"anchor":"modal_footer_btn","action":"goto:state_4"},"inheritance":{"keep":["overlay_mask","modal_container"],"create":[{"type":"create","id":"info_card","component":"Card","bbox":[16,108,328,60],"text":"开局成功后，设备将自动完成登记与激活"},{"type":"create","id":"method_list","component":"RadioGroup","bbox":[0,184,360,400]}],"update":[{"type":"update","id":"modal_header","text":"选择开局方式"},{"type":"update","id":"modal_footer_btn","text":"确认","disabled":true}]},"patches":[{"type":"bind","id":"method_list","goto":"state_4"}]},{"id":"state_4","label":"已选方式可提交态","ui_intent":"用户选中某种开局方式，列表项高亮，底部确认按钮解除禁用并变为主色调","parent_state":"state_3","trigger":{"anchor":"method_list","action":"goto:state_5"},"inheritance":{"keep":["overlay_mask","modal_container","modal_header","info_card","method_list"],"create":[],"update":[{"type":"update","id":"method_list","selected":true},{"type":"update","id":"modal_footer_btn","disabled":false,"styleType":"primary"}]},"patches":[{"type":"bind","id":"modal_footer_btn","goto":"state_5"}]},{"id":"state_5","label":"配置提交中状态","ui_intent":"用户点击确认后，按钮进入loading禁用态，防止重复提交","parent_state":"state_4","trigger":{"anchor":"modal_footer_btn"},"inheritance":{"keep":["overlay_mask","modal_container","modal_header","info_card","method_list"],"create":[],"update":[{"type":"update","id":"modal_footer_btn","text":"提交中...","loading":true,"disabled":true}]},"patches":[]},{"id":"state_6","label":"配置成功提示态","ui_intent":"弹窗消失，恢复工作台页面，顶部浮现开局配置成功的Toast提示","parent_state":"state_5","trigger":{"type":"system","event":"submit_success"},"inheritance":{"keep":["页面根容器与浅灰背景-整个页面","顶部背景装饰图形组-顶部靠上","顶部状态栏-屏幕最顶端","0808-文本","顶部导航栏-状态栏下方","顶部导航栏-文本-我的","顶部导航栏-文本-工作台","底部导航栏-屏幕底端固定","底部导航栏-文本-我的","底部导航栏-文本-服务","底部导航栏-文本-工作台","底部导航栏-文本-商城","底部导航栏-文本-首页","项目开局卡片区域-页面中部偏上","卡片标题文本容器-卡片顶部","项目开局-文本","创建开局操作按钮-卡片内部左侧","创建开局操作按钮-文本-创建开局","创建项目集操作按钮-卡片内部中间","创建项目集操作按钮-文本-创建项目集","接收项目操作按钮-卡片内部右侧","接收项目操作按钮-文本-接收项目"],"create":[{"type":"create","id":"toast_success","component":"Toast","bbox":[40,120,280,44],"text":"开局配置成功"}],"update":[]},"patches":[]}]};
+function tfNum(id){
+  const match=String(id||"").match(/(\d+)/);
+  return match?Number(match[1]):0;
+}
+function tfCssEscape(value){
+  if(window.CSS && typeof window.CSS.escape==="function") return window.CSS.escape(String(value));
+  return String(value).replace(/[^a-zA-Z0-9_-]/g,"\\$&");
+}
+function tfPx(value){
+  const n=Number(value||0);
+  return Number.isFinite(n)?n:0;
+}
+function tfStyleNumber(el,name){
+  if(!el) return NaN;
+  const inline=el.style && el.style[name];
+  if(inline) return parseFloat(inline);
+  const computed=window.getComputedStyle?window.getComputedStyle(el):null;
+  return computed ? parseFloat(computed[name]) : NaN;
+}
+function tfStateById(id){
+  const model=window.__TF_STATE_MODEL__ || {};
+  return (model.states||[]).find(function(state){ return state.id===id; }) || null;
+}
+function tfSourceSpec(state, anchor){
+  if(!state || !state.inheritance) return null;
+  const lists=[state.inheritance.create||[],state.inheritance.update||[]];
+  for(const list of lists){
+    const hit=list.find(function(item){ return item && item.id===anchor; });
+    if(hit) return hit;
+  }
+  return null;
+}
+function tfAncestorStates(stateNumber){
+  const out=[];
+  let state=tfStateById("state_"+stateNumber);
+  const seen=new Set();
+  while(state && state.parent_state && !seen.has(state.parent_state)){
+    seen.add(state.parent_state);
+    const parent=tfStateById(state.parent_state);
+    if(!parent) break;
+    out.push(parent);
+    state=parent;
+  }
+  return out;
+}
+function tfFindVirtualNode(sourceLayer, anchor, spec){
+  if(!sourceLayer) return null;
+  const escaped=tfCssEscape(anchor);
+  const direct=sourceLayer.querySelector("#"+escaped+",[data-component-id='"+String(anchor).replace(/'/g,"\\'")+"']");
+  if(direct) return direct;
+  if(spec && Array.isArray(spec.bbox)){
+    const bbox=spec.bbox.map(tfPx);
+    const candidates=sourceLayer.querySelectorAll("[style]");
+    for(const node of candidates){
+      const left=tfStyleNumber(node,"left");
+      const top=tfStyleNumber(node,"top");
+      const width=tfStyleNumber(node,"width");
+      const height=tfStyleNumber(node,"height");
+      if(Math.abs(left-bbox[0])<=1 && Math.abs(top-bbox[1])<=1 && Math.abs(width-bbox[2])<=1 && Math.abs(height-bbox[3])<=1) {
+        return node;
+      }
+    }
+  }
+  if(spec && /app_bar|nav_bar|navbar|header/i.test(String(spec.component||""))) {
+    return sourceLayer.querySelector(".tf-llm-appbar,.tf-appbar,.tf-app_bar,.tf-navbar,.tf-nav_bar,.tf-header");
+  }
+  return null;
+}
+function tfFillVirtualKeep(slot, layer, anchor){
+  const stateNumber=tfNum(layer && layer.id);
+  const ancestors=tfAncestorStates(stateNumber);
+  for(const state of ancestors){
+    const spec=tfSourceSpec(state, anchor);
+    if(!spec) continue;
+    const sourceLayer=document.getElementById("tf-state-"+tfNum(state.id));
+    const source=tfFindVirtualNode(sourceLayer, anchor, spec);
+    if(!source) continue;
+    const bbox=Array.isArray(spec.bbox) ? spec.bbox.map(tfPx) : [
+      tfStyleNumber(source,"left"),
+      tfStyleNumber(source,"top"),
+      tfStyleNumber(source,"width"),
+      tfStyleNumber(source,"height"),
+    ];
+    if(bbox.some(function(n){ return !Number.isFinite(n); })) return false;
+    slot.style.left=bbox[0]+"px";
+    slot.style.top=bbox[1]+"px";
+    slot.style.width=bbox[2]+"px";
+    slot.style.height=bbox[3]+"px";
+    const clone=source.cloneNode(true);
+    clone.removeAttribute("id");
+    clone.style.position="absolute";
+    clone.style.left="0px";
+    clone.style.top="0px";
+    clone.style.width=bbox[2]+"px";
+    clone.style.height=bbox[3]+"px";
+    slot.appendChild(clone);
+    return true;
+  }
+  return false;
+}
+function tfFillKeepPlaceholders(layer){
+  if(!layer) return;
+  const appRoot=document.getElementById("app-root");
+  layer.querySelectorAll("[data-keep-anchor]").forEach(function(slot){
+    const anchor=slot.getAttribute("data-keep-anchor");
+    const registry=window.__TF_REGISTRY__ || {};
+    const bbox=registry[anchor] && registry[anchor].bbox;
+    slot.innerHTML="";
+    if(!Array.isArray(bbox) || !appRoot) {
+      tfFillVirtualKeep(slot, layer, anchor);
+      return;
+    }
+    slot.style.left=Number(bbox[0]||0)+"px";
+    slot.style.top=Number(bbox[1]||0)+"px";
+    slot.style.width=Number(bbox[2]||0)+"px";
+    slot.style.height=Number(bbox[3]||0)+"px";
+    const crop=document.createElement("div");
+    crop.className="tf-keep-crop";
+    crop.style.left=(-Number(bbox[0]||0))+"px";
+    crop.style.top=(-Number(bbox[1]||0))+"px";
+    crop.style.width="360px";
+    crop.style.height="792px";
+    Array.prototype.forEach.call(appRoot.childNodes,function(node){ crop.appendChild(node.cloneNode(true)); });
+    slot.appendChild(crop);
+  });
+}
+function tfInstallGoto(){
+  window.TF={current:1,goto:function(id){
+    const n=Number(String(id).replace(/\D/g,""))||1;
+    this.current=n;
+    document.querySelectorAll(".tf-state-layer").forEach(function(layer){layer.style.display="none";});
+    if(n===1) return;
+    const layer=document.getElementById("tf-state-"+n);
+    if(layer){ tfFillKeepPlaceholders(layer); layer.style.display="block"; }
+  }};
+}
+tfInstallGoto();
+window.__TF_LLM_READY__=true;
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "ok": true,
+  "input_dir": "new_test/1",
+  "model": "qwen3.7-max",
+  "stamp": "20260601110128",
+  "outputs": {
+    "run_dir": "new_test/1/.run_skill/20260601110128",
+    "preprocess_dir": "new_test/1/.run_skill/20260601110128/preprocess",
+    "preprocessed_html": "new_test/1/.run_skill/20260601110128/preprocess/Index.preprocessed.html",
+    "semantic_registry": "new_test/1/.run_skill/20260601110128/preprocess/semantic_registry.json",
+    "semantic_anchors": "new_test/1/.run_skill/20260601110128/preprocess/semantic_anchors.js",
+    "blueprint": "new_test/1/.run_skill/20260601110128/blueprint/phase4/stages/blueprint_builder_input.json",
+    "state_implementation_model": "new_test/1/.run_skill/20260601110128/state_implementation/state_implementation_model.llm.json",
+    "component_codegen": "new_test/1/.run_skill/20260601110128/component_codegen/component_codegen.generated.json",
+    "llm_layer_html": "new_test/1/html/Index.state-model.llm-layers.html",
+    "llm_layer_dir": "new_test/1/.run_skill/20260601110128/llm_layer_codegen",
+    "state_layers_report": "new_test/1/.run_skill/20260601110128/llm_layer_codegen/auto_shots/state_layers_report.json"
+  },
+  "checks": {
+    "preprocess_ok": true,
+    "semantic_anchor_count": 22,
+    "state_model_states": 6,
+    "state_model_issues": [],
+    "llm_layers_ok": true,
+    "screenshot_summary": {
+      "total_states": 6,
+      "force_pass": 6,
+      "issues_found": []
+    }
+  }
+}

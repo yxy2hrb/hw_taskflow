@@ -1,0 +1,16 @@
+{
+  "model": "qwen3.7-max",
+  "skill": "taskflow-blueprint-builder",
+  "stamp": "20260601110544",
+  "results": [
+    {
+      "testDir": "new_test/1",
+      "outDir": "/Users/fqqz/Desktop/zju/lab/hw_taskflow/new_test/1/html/_run_skills_qwen3.7-max_20260601110544_phase4",
+      "phase": "phase4_blueprint_builder_input",
+      "ok": true,
+      "states": 6,
+      "implementations": 5,
+      "issues": []
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "ok": true,
+  "input": {
+    "inputDir": "new_test/1",
+    "htmlPath": "new_test/1/html/Index.original.html",
+    "specPath": "new_test/1/spec.json"
+  },
+  "stages": {
+    "stage1_bbox": {
+      "source": "playwright",
+      "bboxCount": 50,
+      "adaptiveDepth": {
+        "target_ratio": 0.6,
+        "selected_depth": 9,
+        "forced_depth": null,
+        "coverage_ratio": 0.6098,
+        "total_div_count": 82,
+        "selected_div_count": 50
+      }
+    },
+    "stage2_semantic": {
+      "source": "qwen",
+      "attempts": [
+        {
+          "attempt": 1,
+          "bboxDir": "new_test/1/.result_bbox",
+          "annotated": 11,
+          "validation": {
+            "targets": [
+              "顶部状态栏",
+              "状态栏",
+              "顶部导航栏",
+              "底部导航栏",
+              "项目开局",
+              "项目集",
+              "卡片",
+              "按钮",
+              "顶部功能图标区",
+              "项目开局卡片区域"
+            ],
+            "missing": [
+              "顶部功能图标区"
+            ],
+            "ok": false
+          },
+          "coverage_check": {
+            "needs_deeper_depth": false,
+            "missing_targets": [
+              "顶部功能图标区(摄像头/对话气泡/用户头像)"
+            ]
+          }
+        }
+      ],
+      "validation": {
+        "targets": [
+          "顶部状态栏",
+          "状态栏",
+          "顶部导航栏",
+          "底部导航栏",
+          "项目开局",
+          "项目集",
+          "卡片",
+          "按钮",
+          "顶部功能图标区",
+          "项目开局卡片区域"
+        ],
+        "missing": [
+          "顶部功能图标区"
+        ],
+        "ok": false
+      },
+      "annotatedCount": 11
+    },
+    "stage3_replace": {
+      "ok": true
+    }
+  },
+  "outputs": {
+    "annotated_body_bbox": "new_test/1/.result_bbox/annotated_body_bbox.html",
+    "annotated_body_semantic": "new_test/1/.run_skill/20260601110128/preprocess/annotated_body_semantic.html",
+    "output_html": "new_test/1/.run_skill/20260601110128/preprocess/Index.preprocessed.html"
+  }
+}

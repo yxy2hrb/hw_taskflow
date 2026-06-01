@@ -1,0 +1,276 @@
+{
+  "states": [
+    {
+      "id": "state_1",
+      "label": "工作台初始页面",
+      "ui_intent": "展示我的工作台页面，包含顶部状态栏、导航栏、功能图标区、项目开局卡片及底部导航栏",
+      "parent_state": null,
+      "trigger": null,
+      "inheritance": {
+        "keep": [
+          "页面根容器与浅灰背景-整个页面",
+          "顶部背景装饰图形组-顶部靠上",
+          "顶部状态栏-屏幕最顶端",
+          "0808-文本",
+          "顶部导航栏-状态栏下方",
+          "顶部导航栏-文本-我的",
+          "顶部导航栏-文本-工作台",
+          "底部导航栏-屏幕底端固定",
+          "底部导航栏-文本-我的",
+          "底部导航栏-文本-服务",
+          "底部导航栏-文本-工作台",
+          "底部导航栏-文本-商城",
+          "底部导航栏-文本-首页",
+          "项目开局卡片区域-页面中部偏上",
+          "卡片标题文本容器-卡片顶部",
+          "项目开局-文本",
+          "创建开局操作按钮-卡片内部左侧",
+          "创建开局操作按钮-文本-创建开局",
+          "创建项目集操作按钮-卡片内部中间",
+          "创建项目集操作按钮-文本-创建项目集",
+          "接收项目操作按钮-卡片内部右侧",
+          "接收项目操作按钮-文本-接收项目"
+        ],
+        "create": [],
+        "update": []
+      },
+      "data_state": {},
+      "patches": [
+        {
+          "type": "bind",
+          "id": "创建开局操作按钮-卡片内部左侧",
+          "goto": "state_2"
+        }
+      ]
+    },
+    {
+      "id": "state_2",
+      "label": "产品选择弹窗态",
+      "ui_intent": "弹出全屏遮罩与产品选择弹窗，展示5个开局产品选项且SOHO默认选中，底部提供下一步按钮",
+      "parent_state": "state_1",
+      "trigger": {
+        "anchor": "创建开局操作按钮-卡片内部左侧"
+      },
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-屏幕最顶端",
+          "0808-文本"
+        ],
+        "create": [
+          {
+            "type": "create",
+            "id": "overlay_mask",
+            "component": "Overlay",
+            "bbox": [0, 36, 360, 756]
+          },
+          {
+            "type": "create",
+            "id": "modal_container",
+            "component": "Modal",
+            "bbox": [0, 36, 360, 756]
+          },
+          {
+            "type": "create",
+            "id": "modal_header",
+            "component": "ModalHeader",
+            "bbox": [0, 36, 360, 56],
+            "text": "选择开局产品"
+          },
+          {
+            "type": "create",
+            "id": "product_list",
+            "component": "List",
+            "bbox": [0, 92, 360, 580]
+          },
+          {
+            "type": "create",
+            "id": "modal_footer_btn",
+            "component": "Button",
+            "bbox": [16, 700, 328, 44],
+            "text": "下一步",
+            "mount": "modal_container"
+          }
+        ],
+        "update": []
+      },
+      "data_state": {},
+      "patches": [
+        {
+          "type": "bind",
+          "id": "modal_footer_btn",
+          "goto": "state_3"
+        }
+      ]
+    },
+    {
+      "id": "state_3",
+      "label": "开局方式选择态",
+      "ui_intent": "弹窗进入第二步，展示设备自动登记与激活说明文案及4种开局方式单选列表，确认按钮默认禁用",
+      "parent_state": "state_2",
+      "trigger": {
+        "anchor": "modal_footer_btn"
+      },
+      "inheritance": {
+        "keep": [
+          "overlay_mask",
+          "modal_container"
+        ],
+        "create": [
+          {
+            "type": "create",
+            "id": "info_card",
+            "component": "Card",
+            "bbox": [16, 108, 328, 60],
+            "text": "开局成功后，设备将自动完成登记与激活"
+          },
+          {
+            "type": "create",
+            "id": "method_list",
+            "component": "RadioGroup",
+            "bbox": [0, 184, 360, 400]
+          }
+        ],
+        "update": [
+          {
+            "type": "update",
+            "id": "modal_header",
+            "text": "选择开局方式"
+          },
+          {
+            "type": "update",
+            "id": "modal_footer_btn",
+            "text": "确认",
+            "disabled": true
+          }
+        ]
+      },
+      "data_state": {},
+      "patches": [
+        {
+          "type": "bind",
+          "id": "method_list",
+          "goto": "state_4"
+        }
+      ]
+    },
+    {
+      "id": "state_4",
+      "label": "已选方式可提交态",
+      "ui_intent": "用户选中某种开局方式，列表项高亮，底部确认按钮解除禁用并变为主色调",
+      "parent_state": "state_3",
+      "trigger": {
+        "anchor": "method_list"
+      },
+      "inheritance": {
+        "keep": [
+          "overlay_mask",
+          "modal_container",
+          "modal_header",
+          "info_card",
+          "method_list"
+        ],
+        "create": [],
+        "update": [
+          {
+            "type": "update",
+            "id": "method_list",
+            "selected": true
+          },
+          {
+            "type": "update",
+            "id": "modal_footer_btn",
+            "disabled": false,
+            "styleType": "primary"
+          }
+        ]
+      },
+      "data_state": {},
+      "patches": [
+        {
+          "type": "bind",
+          "id": "modal_footer_btn",
+          "goto": "state_5"
+        }
+      ]
+    },
+    {
+      "id": "state_5",
+      "label": "配置提交中状态",
+      "ui_intent": "用户点击确认后，按钮进入loading禁用态，防止重复提交",
+      "parent_state": "state_4",
+      "trigger": {
+        "anchor": "modal_footer_btn"
+      },
+      "inheritance": {
+        "keep": [
+          "overlay_mask",
+          "modal_container",
+          "modal_header",
+          "info_card",
+          "method_list"
+        ],
+        "create": [],
+        "update": [
+          {
+            "type": "update",
+            "id": "modal_footer_btn",
+            "text": "提交中...",
+            "loading": true,
+            "disabled": true
+          }
+        ]
+      },
+      "data_state": {},
+      "patches": []
+    },
+    {
+      "id": "state_6",
+      "label": "配置成功提示态",
+      "ui_intent": "弹窗消失，恢复工作台页面，顶部浮现开局配置成功的Toast提示",
+      "parent_state": "state_5",
+      "trigger": {
+        "type": "system",
+        "event": "submit_success"
+      },
+      "inheritance": {
+        "keep": [
+          "页面根容器与浅灰背景-整个页面",
+          "顶部背景装饰图形组-顶部靠上",
+          "顶部状态栏-屏幕最顶端",
+          "0808-文本",
+          "顶部导航栏-状态栏下方",
+          "顶部导航栏-文本-我的",
+          "顶部导航栏-文本-工作台",
+          "底部导航栏-屏幕底端固定",
+          "底部导航栏-文本-我的",
+          "底部导航栏-文本-服务",
+          "底部导航栏-文本-工作台",
+          "底部导航栏-文本-商城",
+          "底部导航栏-文本-首页",
+          "项目开局卡片区域-页面中部偏上",
+          "卡片标题文本容器-卡片顶部",
+          "项目开局-文本",
+          "创建开局操作按钮-卡片内部左侧",
+          "创建开局操作按钮-文本-创建开局",
+          "创建项目集操作按钮-卡片内部中间",
+          "创建项目集操作按钮-文本-创建项目集",
+          "接收项目操作按钮-卡片内部右侧",
+          "接收项目操作按钮-文本-接收项目"
+        ],
+        "create": [
+          {
+            "type": "create",
+            "id": "toast_success",
+            "component": "Toast",
+            "bbox": [40, 120, 280, 44],
+            "text": "开局配置成功"
+          }
+        ],
+        "update": []
+      },
+      "data_state": {},
+      "patches": []
+    }
+  ],
+  "validation_notes": []
+}

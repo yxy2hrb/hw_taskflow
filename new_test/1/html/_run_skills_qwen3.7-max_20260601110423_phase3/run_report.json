@@ -1,0 +1,9 @@
+{
+  "source_dir": "new_test/1",
+  "model": "qwen3.7-max",
+  "phase": "phase3_implementation_plan",
+  "phase1_source": "/Users/fqqz/Desktop/zju/lab/hw_taskflow/new_test/1/html/_run_skills_qwen3.7-max_20260601110248_phase1/stages/phase1_user_story.json",
+  "phase2_source": "/Users/fqqz/Desktop/zju/lab/hw_taskflow/new_test/1/html/_run_skills_qwen3.7-max_20260601110332_phase2/stages/phase2_state_enumeration.json",
+  "options": 10,
+  "output": "/Users/fqqz/Desktop/zju/lab/hw_taskflow/new_test/1/html/_run_skills_qwen3.7-max_20260601110423_phase3/stages/phase3_implementation_plan.json"
+}
