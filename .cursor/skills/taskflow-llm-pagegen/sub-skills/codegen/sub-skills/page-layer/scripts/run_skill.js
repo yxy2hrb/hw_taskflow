@@ -145,6 +145,43 @@ function validateGenerated(parsed) {
   return issues;
 }
 
+function escapeAttr(value) {
+  return String(value || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function bboxTop(record) {
+  const bbox = record?.input?.component?.bbox;
+  return Array.isArray(bbox) ? Number(bbox[1] || 0) : 0;
+}
+
+function buildFallbackGenerated(stateModel, componentCodegen) {
+  const components = Array.isArray(componentCodegen?.components) ? componentCodegen.components : [];
+  const html = [];
+  const css = [];
+
+  for (const state of stateModel.states || []) {
+    if (stateNum(state.id) <= 1) continue;
+    const parts = [];
+    for (const anchor of state.inheritance?.keep || []) {
+      parts.push(`<div class="tf-keep-placeholder" data-keep-anchor="${escapeAttr(anchor)}"></div>`);
+    }
+    const records = components
+      .filter((record) => record.state_id === state.id && record.component?.html)
+      .sort((a, b) => bboxTop(a) - bboxTop(b));
+    for (const record of records) {
+      parts.push(record.component.html);
+      if (record.component.css) css.push(record.component.css);
+    }
+    html.push(`<section id="tf-state-${stateNum(state.id)}" class="tf-state-layer tf-llm-layer" style="display:none">${parts.join("")}</section>`);
+  }
+
+  return {
+    html: html.join(""),
+    css: Array.from(new Set(css)).join("\n"),
+    validation_notes: "fallback deterministic layer assembly from state model and component_codegen",
+  };
+}
+
 function buildHtml({ originalHtml, registry, generated, stateModel, width, height }) {
   const head = extractBlock(originalHtml, "head") || "<head><meta charset=\"utf-8\"></head>";
   const body = extractBodyInner(originalHtml);
@@ -161,6 +198,10 @@ ${head}
 .tf-keep-placeholder{position:absolute;overflow:hidden;pointer-events:none}
 .tf-keep-placeholder>.tf-keep-crop{position:absolute;pointer-events:none}
 ${generated.css || ""}
+.tf-state-layer.tf-llm-layer{position:fixed!important;left:0!important;top:0!important;width:${width}px!important;min-height:${height}px!important;z-index:9999!important;overflow-y:auto;overflow-x:hidden}
+.tf-state-layer.tf-llm-layer>.tf-component{position:absolute}
+.tf-state-layer .tf-keep-placeholder{display:block!important;visibility:visible!important}
+.tf-state-layer .tf-keep-placeholder>.tf-keep-crop{display:block!important;visibility:visible!important}
 </style>
 <script>
 window.__TF_REGISTRY__=${JSON.stringify(registry.semantic_dom_registry || {})};
@@ -348,6 +389,7 @@ async function main() {
   const width = Number(argValue(args, "--width", "360"));
   const height = Number(argValue(args, "--height", "792"));
   const maxTokens = Number(argValue(args, "--max-tokens", "16000"));
+  const useFallback = args.includes("--fallback");
 
   const originalHtml = readUtf8(htmlPath);
   const registry = readJson(registryPath);
@@ -364,9 +406,9 @@ async function main() {
     "Follow the SKILL.md above exactly.",
     "Return strict JSON only.",
   ].join("\n");
-  const raw = await callLLM({ model: modelName, system, user: JSON.stringify(promptInput), maxTokens });
-  writeUtf8(path.join(outDir, "llm_layer.raw.txt"), raw);
-  const generated = extractJson(raw);
+  const raw = useFallback ? "" : await callLLM({ model: modelName, system, user: JSON.stringify(promptInput), maxTokens });
+  if (raw) writeUtf8(path.join(outDir, "llm_layer.raw.txt"), raw);
+  const generated = useFallback ? buildFallbackGenerated(stateModel, componentCodegen) : extractJson(raw);
   const issues = validateGenerated(generated);
   writeJson(path.join(outDir, "llm_layer.generated.json"), generated);
   writeJson(path.join(outDir, "llm_layer.validation.json"), { issues });

@@ -108,6 +108,33 @@ function patchAnchor(patch) {
   return ownString(patch, "target_anchor") || ownString(patch, "anchor") || ownString(patch, "target") || ownString(patch, "id") || null;
 }
 
+function componentKind(patch) {
+  return String(patch?.component || patch?.type || "").toLowerCase();
+}
+
+function mountParentId(patch) {
+  const mount = ownString(patch, "mount");
+  const match = mount && mount.match(/^inside:(.+)$/i);
+  return match ? match[1].trim() : null;
+}
+
+function removeListInternalActionCreates(create) {
+  const byId = new Map();
+  for (const patch of create) {
+    const id = patch?.id || patch?.name;
+    if (id) byId.set(id, patch);
+  }
+
+  return create.filter((patch) => {
+    const parent = byId.get(mountParentId(patch));
+    if (!parent) return true;
+    const parentKind = componentKind(parent);
+    const childKind = componentKind(patch);
+    if (!/(^|[^a-z])(list|grid|cardlist|cards)([^a-z]|$)/i.test(parentKind)) return true;
+    return !/(^|[^a-z])(button|link|action)([^a-z]|$)/i.test(childKind);
+  });
+}
+
 function normalizeModel(model) {
   delete model.semanticAnchors;
   delete model.semantic_registry;
@@ -138,7 +165,7 @@ function normalizeModel(model) {
       if (gotoAction) state.trigger.action = gotoAction;
     }
 
-    state.inheritance = { keep: [...keep], create, update };
+    state.inheritance = { keep: [...keep], create: removeListInternalActionCreates(create), update };
     state.patches = patchList.filter((patch) => patch?.type !== "hide" && patch?.type !== "replace");
   }
 

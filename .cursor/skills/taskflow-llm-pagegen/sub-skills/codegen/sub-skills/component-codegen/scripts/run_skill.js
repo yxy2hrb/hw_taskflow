@@ -80,7 +80,7 @@ function fallbackComponent({ component, operation, originalComponent }) {
   const bbox = Array.isArray(component.bbox) ? component.bbox : [0, 0, 120, 40];
   const kind = String(component.component || "component").toLowerCase();
   const text = componentText(component) || (operation === "update" && originalComponent?.text) || "";
-  const style = `left:${Number(bbox[0] || 0)}px;top:${Number(bbox[1] || 0)}px;width:${Number(bbox[2] || 0)}px;height:${Number(bbox[3] || 0)}px;`;
+  const style = `position:absolute;left:${Number(bbox[0] || 0)}px;top:${Number(bbox[1] || 0)}px;width:${Number(bbox[2] || 0)}px;height:${Number(bbox[3] || 0)}px;`;
   const cls = kind.includes("button") ? "tf-cg-button" : kind.includes("input") ? "tf-cg-input" : kind.includes("toast") ? "tf-cg-toast" : "tf-cg-card";
   return {
     id,
