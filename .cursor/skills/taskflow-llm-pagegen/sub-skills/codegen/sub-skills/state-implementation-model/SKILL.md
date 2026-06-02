@@ -118,6 +118,11 @@ anchor, it must have been created by an earlier state.
     elevation.
 12. Preserve Gestalt design principles: related elements should be close,
     aligned, visually similar, and grouped with clear hierarchy.
+13. Do not split repeated list-row actions into separate top-level components.
+    If a `List`/`Grid`/`CardList` item contains a visible action such as
+    "查看", "详情", "编辑", or "删除", describe that action inside the parent
+    list component's visible text/props instead of adding a separate Button
+    create patch mounted inside the list.
 
 ## Patch Types
 

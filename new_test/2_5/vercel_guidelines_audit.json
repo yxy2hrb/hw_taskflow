@@ -1,0 +1,113 @@
+{
+  "meta": {
+    "tool": "vercel-labs/web-interface-guidelines",
+    "source": "https://github.com/vercel-labs/agent-skills/tree/main/skills/web-design-guidelines",
+    "rules_source": "https://raw.githubusercontent.com/vercel-labs/web-interface-guidelines/main/command.md",
+    "audited_file": "new_test/2_5/html/Index.state-model.llm-layers.html",
+    "scope": "LLM-generated tf-llm-layer sections only (line 1394+)",
+    "date": "2026-06-02"
+  },
+  "summary": {
+    "total_issues": 8,
+    "high": 4,
+    "medium": 4,
+    "low": 0,
+    "passed": 5
+  },
+  "passed": [
+    {
+      "rule": "Accessibility › `<button>` for actions",
+      "note": "确认/提交按钮使用了真正的 <button> 元素"
+    },
+    {
+      "rule": "Forms › correct input element",
+      "note": "<input type=\"text\"> 正确使用"
+    },
+    {
+      "rule": "Forms › labels clickable",
+      "note": "<label> 包裹了 radio icon + text，点击区域正确"
+    },
+    {
+      "rule": "Accessibility › disabled state",
+      "note": "disabled 按钮有明确的 CSS 视觉区分（background:#85b8ff）"
+    },
+    {
+      "rule": "Content Handling › loading state feedback",
+      "note": "提交中状态有 spinner + 文字双重反馈"
+    }
+  ],
+  "issues": [
+    {
+      "severity": "high",
+      "category": "Accessibility",
+      "rule": "Icon-only buttons need `aria-label`",
+      "location": ".tf-cg-appbar-back (line ~1394)",
+      "element": "<div class=\"tf-cg-appbar-back\"><svg ...></svg></div>",
+      "problem": "返回按钮只有 SVG 箭头图标，无 aria-label，屏幕阅读器无法识别",
+      "fix": "添加 aria-label=\"返回\" 或改为 <button aria-label=\"返回\">"
+    },
+    {
+      "severity": "high",
+      "category": "Accessibility",
+      "rule": "Form controls need semantic input + label association",
+      "location": ".tf-cg-radio-item (line ~1400)",
+      "element": "<label class=\"tf-cg-radio-item\"><span class=\"tf-cg-radio-icon\"></span>...</label>",
+      "problem": "radio 选项用纯 CSS <span> 模拟，不是真正的 <input type=\"radio\">，键盘无法操作，屏幕阅读器不可用",
+      "fix": "改为 <label><input type=\"radio\" name=\"属性\" value=\"公司\"><span>公司</span></label>"
+    },
+    {
+      "severity": "high",
+      "category": "Accessibility",
+      "rule": "Decorative icons need `aria-hidden=\"true\"`",
+      "location": ".tf-cg-list-arrow SVG (line ~1400)",
+      "element": "<svg class=\"tf-cg-list-arrow\" viewBox=\"0 0 1024 1024\">...</svg>",
+      "problem": "列表行的装饰性箭头 SVG 没有 aria-hidden=\"true\"，屏幕阅读器会读出无意义内容",
+      "fix": "添加 aria-hidden=\"true\" 到所有装饰性 SVG 图标"
+    },
+    {
+      "severity": "high",
+      "category": "Accessibility",
+      "rule": "Async updates need `aria-live=\"polite\"`",
+      "location": "state_4 loading state (line ~1394)",
+      "element": "<button ... disabled><span class=\"tf-cg-spinner\"></span><span>提交中</span></button>",
+      "problem": "提交状态切换为 loading 时无 aria-live 通知，辅助技术用户感知不到状态变化",
+      "fix": "在状态切换区域添加 <div aria-live=\"polite\" aria-atomic=\"true\"> 包裹或 role=\"status\""
+    },
+    {
+      "severity": "medium",
+      "category": "Animation",
+      "rule": "Honor `prefers-reduced-motion`",
+      "location": ".tf-cg-spinner @keyframes tf-cg-spin (line ~1400)",
+      "element": ".tf-cg-spinner { animation: tf-cg-spin 1s linear infinite }",
+      "problem": "spinner 旋转动画没有 prefers-reduced-motion 回退，对前庭障碍用户可能造成不适",
+      "fix": "@media (prefers-reduced-motion: reduce) { .tf-cg-spinner { animation: none; border-top-color: #fff; opacity: 0.6; } }"
+    },
+    {
+      "severity": "medium",
+      "category": "Focus States",
+      "rule": "Interactive elements need visible focus: `:focus-visible`",
+      "location": "tf-llm-base-style (line 1395-1401)",
+      "element": "整个 base style 无任何 :focus-visible 定义",
+      "problem": "所有可交互元素（button、input、label）均无可见焦点环，键盘导航时无视觉反馈",
+      "fix": ".tf-cg-btn:focus-visible, .tf-cg-input-field:focus-visible { outline: 2px solid #1677ff; outline-offset: 2px; }"
+    },
+    {
+      "severity": "medium",
+      "category": "Forms",
+      "rule": "Inputs need `autocomplete` and meaningful `name`",
+      "location": ".tf-cg-input-field (line ~1394)",
+      "element": "<input type=\"text\" placeholder=\"请输入名称\" class=\"tf-cg-input-field\">",
+      "problem": "input 缺少 name 属性和 autocomplete 属性",
+      "fix": "添加 name=\"project-name\" autocomplete=\"off\"（或合适的 autocomplete 值）"
+    },
+    {
+      "severity": "medium",
+      "category": "Accessibility",
+      "rule": "`<button>` for actions, not `<p>` or `<div>`",
+      "location": "D2C base HTML 底部导航 (line 1273-1277)",
+      "element": "<p id=\"14_807588\" class=\"...\">我的</p>",
+      "problem": "底部导航 Tab（首页/商城/工作台/服务/我的）使用 <p> 标签，通过 keep-placeholder 透传到所有 state，无法键盘操作",
+      "note": "此问题来自 D2C 原始导出，非 LLM 生成部分，但影响所有 state"
+    }
+  ]
+}
