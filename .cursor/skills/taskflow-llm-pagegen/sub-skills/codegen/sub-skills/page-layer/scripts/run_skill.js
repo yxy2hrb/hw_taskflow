@@ -344,6 +344,41 @@ function tfInstallGoto(){
   }};
 }
 tfInstallGoto();
+function tfInstallBindings(){
+  var model=window.__TF_STATE_MODEL__;
+  var reg=window.__TF_REGISTRY__;
+  if(!model||!reg) return;
+  function stateNum(id){return Number(String(id||"").replace(/\\D/g,""))||1;}
+  function findEl(anchor){
+    var entry=reg[anchor];
+    if(entry&&entry.selector){
+      try{var el=document.querySelector(entry.selector);if(el) return el;}catch(e){}
+    }
+    if(entry&&entry.id){var el2=document.querySelector('[id="'+entry.id+'"]');if(el2) return el2;}
+    return document.querySelector('[data-component-id="'+anchor+'"]');
+  }
+  (model.states||[]).forEach(function(state){
+    (state.patches||[]).forEach(function(patch){
+      if(patch.type!=="bind"||patch.action!=="click") return;
+      var el=findEl(patch.anchor);
+      if(!el) return;
+      el.style.cursor="pointer";
+      el.addEventListener("click",function(e){e.stopPropagation();TF.goto(stateNum(patch.goto));});
+    });
+    var parentNum=state.parent_state?stateNum(state.parent_state):null;
+    if(!parentNum) return;
+    ((state.inheritance&&state.inheritance.create)||[]).forEach(function(c){
+      if(c.component!=="Overlay"&&!/overlay|mask/i.test(c.id||"")) return;
+      var el=findEl(c.id);
+      if(!el) return;
+      el.style.cursor="pointer";
+      el.addEventListener("click",function(e){
+        if(TF.current===stateNum(state.id)){e.stopPropagation();TF.goto(parentNum);}
+      });
+    });
+  });
+}
+tfInstallBindings();
 window.__TF_LLM_READY__=true;
 </script>
 </body>
