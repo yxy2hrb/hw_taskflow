@@ -1,0 +1,6 @@
+{
+  "id": "detail_info_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"detail_info_card\"\n      style={{\n        position: 'absolute',\n        left: 12,\n        top: 408,\n        width: 336,\n        height: 260,\n      }}\n    >\n      <SectionLayout variant=\"card\" title=\"产品信息\">\n        <p\n          className=\"font-body-m\"\n          style={{\n            fontSize: 'var(--font-body-14)',\n            lineHeight: '22px',\n            color: 'var(--color-text-primary)',\n            whiteSpace: 'pre-line',\n            margin: 0,\n          }}\n        >\n          {`IdeaHub B2 Base-75寸\\n部件编码：EOS\\n金牌价：¥32,900.00\\n厂商：华为\\n核心参数：1080P高清云会议，光学防蓝光`}\n        </p>\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used SectionLayout, font-body-m, --font-body-14, --color-text-primary"
+}

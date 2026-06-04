@@ -1,0 +1,6 @@
+{
+  "id": "tools_grid",
+  "reactCode": "import React from 'react';\nimport IconGrid from '@/components/IconGrid';\nimport { Calculator, FileText, Wrench, Headphones } from 'lucide-react';\n\nexport default function GeneratedComponent() {\n  const items = [\n    { icon: Calculator, label: '报价计算', color: '#1677ff' },\n    { icon: FileText, label: '产品手册', color: '#52c41a' },\n    { icon: Wrench, label: '安装指导', color: '#faad14' },\n    { icon: Headphones, label: '售后报修', color: '#ff4d4f' },\n  ];\n\n  return (\n    <div \n      data-component-id=\"tools_grid\" \n      style={{ \n        position: 'absolute', \n        left: 24, \n        top: 960, \n        width: 312, \n        height: 100 \n      }}\n    >\n      <IconGrid cols={4} variant=\"plain\" items={items} />\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used IconGrid, Calculator, FileText, Wrench, Headphones from lucide-react"
+}

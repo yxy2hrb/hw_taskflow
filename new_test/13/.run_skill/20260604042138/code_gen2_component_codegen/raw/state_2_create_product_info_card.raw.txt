@@ -1,0 +1,6 @@
+{
+  "id": "product_info_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"product_info_card\"\n      style={{\n        position: 'absolute',\n        left: 12,\n        top: 464,\n        width: 336,\n        minHeight: 300\n      }}\n    >\n      <SectionLayout variant=\"card\" title=\"产品信息\">\n        <div style={{ height: 200 }} />\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used SectionLayout, absolute positioning with bbox"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "after_sales_item",
+  "reactCode": "import React from 'react';\n\nexport default function AfterSalesItem() {\n  return (\n    <div data-component-id=\"after_sales_item\">\n      <span\n        className=\"font-body-m\"\n        style={{\n          fontSize: 'var(--font-body-14)',\n          lineHeight: 'var(--line-height-20)',\n          fontWeight: 'var(--font-weight-regular)',\n          color: 'var(--color-text-secondary)',\n        }}\n      >\n        保修政策：3年质保，提供上门服务\n      </span>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used font-body-m class, --font-body-14, --line-height-20, --font-weight-regular, --color-text-secondary"
+}

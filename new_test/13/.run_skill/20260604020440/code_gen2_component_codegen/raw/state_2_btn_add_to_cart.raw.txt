@@ -1,0 +1,6 @@
+{
+  "id": "btn_add_to_cart",
+  "reactCode": "import React from 'react';\nimport { CapsuleButton } from '@/components/ui/Button';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"btn_add_to_cart\"\n      style={{\n        position: 'absolute',\n        left: 132,\n        top: 1116,\n        width: 100,\n        height: 40,\n      }}\n    >\n      <CapsuleButton variant=\"secondary\" size=\"large\" className=\"w-full h-full tf-cg-btn-cart\">\n        <span className=\"font-headline-xs\" style={{ fontSize: 'var(--font-headline-14)', fontWeight: 'var(--font-weight-medium)', color: 'var(--color-text-primary)' }}>\n          加入采购单\n        </span>\n      </CapsuleButton>\n    </div>\n  );\n}",
+  "css": ".tf-cg-btn-cart {\n  padding-left: var(--spacing-md) !important;\n  padding-right: var(--spacing-md) !important;\n}\n.tf-cg-btn-cart span {\n  white-space: nowrap;\n}",
+  "notes": "used CapsuleButton, --font-headline-14, --font-weight-medium, --color-text-primary, absolute bbox positioning"
+}

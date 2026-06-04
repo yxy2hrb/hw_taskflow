@@ -1,0 +1,6 @@
+{
+  "id": "input_plan_name",
+  "reactCode": "import React from 'react';\nimport InputDemo from '@/components/InputDemo';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"input_plan_name\"\n      className=\"tf-cg-input-plan-name\"\n    >\n      <InputDemo\n        label=\"配单名称\"\n        placeholder=\"请输入配单名称\"\n      />\n    </div>\n  );\n}",
+  "css": ".tf-cg-input-plan-name {\n  position: absolute;\n  left: 12px;\n  top: 900px;\n  width: 336px;\n  height: 72px;\n}",
+  "notes": "used InputDemo, absolute positioning based on bbox"
+}

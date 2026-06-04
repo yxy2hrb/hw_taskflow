@@ -1,0 +1,6 @@
+{
+  "id": "detail_bottom_action_bar_2",
+  "reactCode": "import React from 'react';\nimport { CapsuleButton } from '@/components/ui/Button';\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"detail_bottom_action_bar_2\" \n      style={{\n        position: 'absolute',\n        left: 0,\n        top: 1024,\n        width: 360,\n        height: 64,\n        zIndex: 40,\n        backgroundColor: 'var(--color-bg-card)',\n        display: 'flex',\n        alignItems: 'center',\n        justifyContent: 'center',\n        padding: '0 var(--spacing-xl)',\n        boxSizing: 'border-box',\n        boxShadow: '0 -4px 12px rgba(0,0,0,0.04)'\n      }}\n    >\n      <div style={{ display: 'flex', gap: 'var(--spacing-lg)', width: '100%' }}>\n        <div style={{ flex: 1 }}>\n          <CapsuleButton size=\"large\" variant=\"secondary\" className=\"w-full\">\n            分享配单\n          </CapsuleButton>\n        </div>\n        <div style={{ flex: 1 }}>\n          <CapsuleButton size=\"large\" variant=\"primary\" className=\"w-full\">\n            联系服务商\n          </CapsuleButton>\n        </div>\n      </div>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used CapsuleButton, --color-bg-card, --spacing-xl, --spacing-lg"
+}

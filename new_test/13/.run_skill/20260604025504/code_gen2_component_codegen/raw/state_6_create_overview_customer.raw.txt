@@ -1,0 +1,6 @@
+{
+  "id": "overview_customer",
+  "reactCode": "import React from 'react';\n\nexport default function OverviewCustomer() {\n  return (\n    <div\n      data-component-id=\"overview_customer\"\n      style={{\n        position: 'absolute',\n        left: 24,\n        top: 148,\n        width: 312,\n        height: 20,\n        display: 'flex',\n        alignItems: 'center',\n      }}\n    >\n      <span\n        className=\"font-body-m\"\n        style={{\n          fontSize: 'var(--font-body-14)',\n          color: 'var(--color-text-secondary)',\n        }}\n      >\n        客户类型：中小企业\n      </span>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used Text, font-body-m, --font-body-14, --color-text-secondary"
+}

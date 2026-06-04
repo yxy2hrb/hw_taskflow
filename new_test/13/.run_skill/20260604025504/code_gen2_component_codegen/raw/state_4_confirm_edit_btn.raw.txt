@@ -1,0 +1,6 @@
+{
+  "id": "confirm_edit_btn",
+  "reactCode": "import React from 'react';\nimport { CapsuleButton } from '@/components/ui/Button';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"confirm_edit_btn\"\n      className=\"tf-cg-confirm-edit-btn\"\n    >\n      <CapsuleButton\n        variant=\"primary\"\n        size=\"large\"\n        className=\"w-full\"\n        onClick={() => {}}\n      >\n        确定\n      </CapsuleButton>\n    </div>\n  );\n}",
+  "css": ".tf-cg-confirm-edit-btn {\n  position: absolute;\n  left: 16px;\n  top: 1276px;\n  width: 328px;\n  height: 48px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}",
+  "notes": "used CapsuleButton from @/components/ui/Button, absolute bbox positioning, primary variant, large size, w-full utility."
+}

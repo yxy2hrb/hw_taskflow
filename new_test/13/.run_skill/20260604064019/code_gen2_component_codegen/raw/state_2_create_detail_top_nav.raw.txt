@@ -1,0 +1,6 @@
+{
+  "id": "detail_top_nav",
+  "reactCode": "import React from 'react';\nimport TopNav from '@/components/TopNav';\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"detail_top_nav\" \n      style={{ \n        position: 'absolute', \n        top: 36, \n        left: 0, \n        width: 360, \n        zIndex: 10 \n      }}\n    >\n      <TopNav\n        variant=\"title\"\n        onBack={() => {}}\n        title=\"\"\n        actions={[\"cart\", \"profile\", \"grid\"]}\n      />\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used TopNav, bbox for absolute positioning, zIndex from props"
+}

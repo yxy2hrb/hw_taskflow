@@ -1,0 +1,6 @@
+{
+  "id": "detail_bottom_bar",
+  "reactCode": "import React from 'react';\nimport ButtonBar from '@/components/ButtonBar';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"detail_bottom_bar\"\n      className=\"tf-cg-bottom-bar\"\n      style={{\n        position: 'absolute',\n        left: 0,\n        top: 872,\n        width: 360,\n        height: 64,\n        backgroundColor: 'var(--color-bg-card)',\n        display: 'flex',\n        alignItems: 'center',\n        justifyContent: 'center',\n        boxShadow: '0 -1px 4px rgba(0,0,0,0.06)',\n      }}\n    >\n      <ButtonBar\n        variant=\"dual\"\n        secondaryLabel=\"联系客服\"\n        primaryLabel=\"加入配单\"\n        width={360}\n      />\n    </div>\n  );\n}",
+  "css": ".tf-cg-bottom-bar{box-sizing:border-box;z-index:10;}",
+  "notes": "used ButtonBar (dual variant), --color-bg-card; bottom action bar for product detail page with '联系客服' secondary + '加入配单' primary buttons"
+}

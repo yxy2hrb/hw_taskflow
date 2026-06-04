@@ -1,0 +1,6 @@
+{
+  "id": "config_detail_nav",
+  "reactCode": "import React from 'react';\nimport TopNav from '@/components/TopNav';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"config_detail_nav\"\n      style={{\n        position: 'absolute',\n        left: 0,\n        top: 36,\n        width: 360,\n        height: 56,\n      }}\n    >\n      <TopNav\n        variant=\"title\"\n        title=\"配单详情\"\n        onBack={() => {}}\n        actions={['message']}\n        onMessage={() => {}}\n      />\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "Used TopNav component with variant='title', title='配单详情', onBack enabled, actions=['message']. Applied bbox positioning [0,36,360,56]. Text style uses font-headline-s class from design system."
+}

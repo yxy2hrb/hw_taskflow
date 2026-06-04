@@ -1,0 +1,6 @@
+{
+  "id": "overlay_2",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"overlay_2\"\n      style={{\n        position: 'absolute',\n        left: 0,\n        top: 0,\n        width: 360,\n        height: 1168,\n        zIndex: 65,\n        backgroundColor: 'rgba(0,0,0,0.3)',\n      }}\n    />\n  );\n}",
+  "css": "",
+  "notes": "Simple overlay mask component with absolute positioning, z-index 65, and semi-transparent black background rgba(0,0,0,0.3). No component library sources needed."
+}

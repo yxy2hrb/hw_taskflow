@@ -1,0 +1,6 @@
+{
+  "id": "dialog_btn_confirm",
+  "reactCode": "import React from 'react';\nimport { CapsuleButton } from '@/components/ui/Button';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"dialog_btn_confirm\"\n      style={{\n        position: 'absolute',\n        left: 200,\n        top: 600,\n        width: 100,\n        height: 40,\n        display: 'flex',\n        alignItems: 'center',\n        justifyContent: 'center',\n      }}\n    >\n      <CapsuleButton\n        size=\"large\"\n        variant=\"primary\"\n        onClick={() => {}}\n        className=\"tf-cg-confirm-btn\"\n      >\n        移除\n      </CapsuleButton>\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"dialog_btn_confirm\"] .tf-cg-confirm-btn {\n  width: 100%;\n  height: 40px;\n  padding-left: 0;\n  padding-right: 0;\n  min-width: 0;\n  font-size: var(--font-headline-16);\n  line-height: var(--line-height-20);\n}",
+  "notes": "used CapsuleButton from ui/Button with variant='primary' (red #C7000B), --font-headline-16, --line-height-20; absolute positioned per bbox [200,600,100,40]"
+}

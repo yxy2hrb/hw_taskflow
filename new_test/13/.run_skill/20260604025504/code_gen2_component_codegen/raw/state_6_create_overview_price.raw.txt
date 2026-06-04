@@ -1,0 +1,6 @@
+{
+  "id": "overview_price",
+  "reactCode": "import React from 'react';\n\nexport default function OverviewPrice() {\n  return (\n    <div\n      data-component-id=\"overview_price\"\n      className=\"tf-cg-overview-price\"\n      style={{\n        position: 'absolute',\n        left: '24px',\n        top: '184px',\n        width: '150px',\n        height: '24px',\n        display: 'flex',\n        alignItems: 'center',\n      }}\n    >\n      <span\n        className=\"font-headline-s\"\n        style={{\n          fontSize: 'var(--font-headline-16)',\n          fontWeight: 'var(--font-weight-bold)',\n          color: 'var(--color-primary)',\n          lineHeight: '24px',\n          whiteSpace: 'nowrap',\n        }}\n      >\n        总报价：¥32,900.00\n      </span>\n    </div>\n  );\n}",
+  "css": ".tf-cg-overview-price {\n  pointer-events: none;\n}",
+  "notes": "used Text, --font-headline-16, --font-weight-bold, --color-primary, font-headline-s"
+}

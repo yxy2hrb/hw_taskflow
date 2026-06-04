@@ -1,0 +1,6 @@
+{
+  "id": "sheet_overlay_1",
+  "reactCode": "import React from 'react';\n\nexport default function SheetOverlay() {\n  return (\n    <div\n      data-component-id=\"sheet_overlay_1\"\n      className=\"tf-cg-overlay\"\n      style={{ zIndex: 50 }}\n    />\n  );\n}",
+  "css": ".tf-cg-overlay {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 360px;\n  height: 1360px;\n  background-color: rgba(0, 0, 0, 0.5);\n  pointer-events: auto;\n}",
+  "notes": "Custom Overlay component. Used --color-mask equivalent rgba(0,0,0,0.5) as specified in props.backgroundColor, z-index 50 from props.zIndex, absolute positioning with bbox [0,0,360,1360]."
+}

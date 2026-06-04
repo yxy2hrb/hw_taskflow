@@ -1,0 +1,469 @@
+{
+  "action": "ask",
+  "phase": 3,
+  "options": [
+    {
+      "id": "state_2::opt_a",
+      "implementation_plan": "采用经典长页面滚动布局。保留系统状态栏，顶部使用 TopNav 提供返回、购物车、清单和分享入口；紧接产品图片轮播区。中部从上到下依次排列四个独立 SectionLayout(card) 卡片：产品信息大卡（含名称、参数、价格等）、售后信息卡、工具入口卡和评论问答卡。底部固定 ButtonBar，左侧放置“产品对比”和“咨询”图标按钮，中间为“加入采购单”次按钮，右侧为红色“加入配单”主按钮。页面高度随内容扩展。",
+      "component_plan": [
+        {
+          "component": "TopNav",
+          "purpose": "顶部导航与操作入口",
+          "content_structure": [
+            "返回按钮",
+            "购物车图标",
+            "清单图标",
+            "分享图标"
+          ],
+          "layout": "顶部 360x56 横向导航",
+          "bbox_or_size_policy": "固定高度 56，宽度 360",
+          "props_hint": {
+            "variant": "title",
+            "onBack": true,
+            "actions": [
+              "cart",
+              "profile",
+              "message"
+            ]
+          }
+        },
+        {
+          "component": "SectionLayout",
+          "purpose": "承载四个独立信息卡片",
+          "content_structure": [
+            "卡片标题",
+            "产品信息/售后/工具/评论内容区"
+          ],
+          "layout": "垂直排列，每个卡片带 12px 圆角和内部 padding",
+          "bbox_or_size_policy": "宽度 360，高度随内容自适应",
+          "props_hint": {
+            "variant": "card",
+            "title": "产品信息"
+          }
+        },
+        {
+          "component": "ButtonBar",
+          "purpose": "底部固定操作栏",
+          "content_structure": [
+            "产品对比图标",
+            "咨询图标",
+            "加入采购单按钮",
+            "加入配单按钮"
+          ],
+          "layout": "底部固定，左侧图标组，中间次按钮，右侧主按钮",
+          "bbox_or_size_policy": "固定高度 64，宽度 360，贴底",
+          "props_hint": {
+            "variant": "triple",
+            "primaryLabel": "加入配单",
+            "secondaryLabel": "加入采购单"
+          }
+        }
+      ],
+      "height_policy": "内容完整优先；长页面允许 state height 超出 initial_height 并支持垂直滚动",
+      "typography_policy": "卡片标题 font-headline-16，正文 font-body-14，辅助参数 font-caption-12，主按钮 font-headline-14",
+      "rationale": "最符合主流电商详情页的浏览习惯，信息层级清晰，适合承载大量产品参数与多媒体内容。",
+      "group": "state_2 · 产品详情页面状态",
+      "default": true
+    },
+    {
+      "id": "state_2::opt_b",
+      "implementation_plan": "采用沉浸式头部详情页布局。顶部图片区占满屏幕上半部，TopNav 初始透明悬浮于图片上，向下滚动时背景渐变为白色。中部四个信息卡片采用无边距的 SectionLayout 拼接，减少卡片间隙以提升信息密度。底部操作栏使用悬浮胶囊按钮组，左侧图标组与右侧红色“加入配单”主按钮分离，中间留白，突出核心转化操作。",
+      "component_plan": [
+        {
+          "component": "TopNav",
+          "purpose": "沉浸式顶部导航",
+          "content_structure": [
+            "返回按钮",
+            "购物车",
+            "清单",
+            "分享"
+          ],
+          "layout": "顶部 360x56，初始透明背景",
+          "bbox_or_size_policy": "固定高度 56，宽度 360",
+          "props_hint": {
+            "variant": "title",
+            "onBack": true,
+            "actions": [
+              "cart",
+              "profile",
+              "message"
+            ]
+          }
+        },
+        {
+          "component": "SectionLayout",
+          "purpose": "紧凑信息卡片",
+          "content_structure": [
+            "标题",
+            "内容区"
+          ],
+          "layout": "垂直排列，无外边距，仅保留内边距",
+          "bbox_or_size_policy": "宽度 360，高度自适应",
+          "props_hint": {
+            "variant": "card"
+          }
+        }
+      ],
+      "height_policy": "内容完整优先；允许超出初始高度，头部图片区固定比例，下方内容滚动",
+      "typography_policy": "卡片标题 font-headline-16，正文 font-body-14，辅助信息 font-caption-12",
+      "rationale": "视觉冲击力更强，适合以产品外观和场景图为核心卖点的商品展示。",
+      "group": "state_2 · 产品详情页面状态",
+      "default": false
+    },
+    {
+      "id": "state_3::opt_a",
+      "implementation_plan": "采用标准 BottomSheet 半模态弹窗，高度占屏幕 60%。背景使用灰色遮罩弱化 state_2。弹窗顶部为 Header，包含“产品清单”标题、右侧“全部清空”文本按钮和关闭图标。Body 区域支持滚动，顶部固定橙色风险提示条，下方为已选产品列表（每项含缩略图、型号、价格及数量加减控件），底部提供推荐配件入口。Footer 区域固定，左侧展示合计金额，右侧为红色“去配单”主按钮。",
+      "component_plan": [
+        {
+          "component": "BottomSheet",
+          "purpose": "半模态配单弹窗",
+          "content_structure": [
+            "Header",
+            "Body",
+            "Footer"
+          ],
+          "layout": "从底部滑入，高度 60vh，圆角顶部",
+          "bbox_or_size_policy": "宽度 360，高度 60vh，zIndex=60",
+          "props_hint": {
+            "zIndex": 60
+          }
+        },
+        {
+          "component": "ProductSelectionListItem",
+          "purpose": "已选产品列表项",
+          "content_structure": [
+            "缩略图",
+            "型号说明",
+            "价格",
+            "数量加减控件"
+          ],
+          "layout": "左图右文，右侧数量控件，行高 72",
+          "bbox_or_size_policy": "宽度 328，高度 72",
+          "props_hint": {}
+        },
+        {
+          "component": "CapsuleButton",
+          "purpose": "去配单主按钮",
+          "content_structure": [
+            "文案"
+          ],
+          "layout": "Footer 右侧",
+          "bbox_or_size_policy": "宽度自适应，高度 40",
+          "props_hint": {
+            "variant": "primary",
+            "size": "large",
+            "children": "去配单"
+          }
+        }
+      ],
+      "height_policy": "固定 60vh 高度；内部 Body 区域超出时支持垂直滚动，Footer 固定底部",
+      "typography_policy": "弹窗标题 font-headline-18，列表主标题 font-headline-14，价格/副文案 font-body-14，合计金额 font-headline-16",
+      "rationale": "标准的半模态交互，既能展示足够的清单信息，又不会完全遮挡底层产品详情页，方便用户对比。",
+      "group": "state_3 · 产品清单半模态弹窗态",
+      "default": true
+    },
+    {
+      "id": "state_3::opt_b",
+      "implementation_plan": "采用抽屉式 BottomSheet，顶部带有明显的拖拽指示条。内部使用 SectionLayout 将内容分为“已选产品”和“推荐配件”两个独立区块。风险提示条以 Toast 形式悬浮在列表顶部。底部操作栏采用全宽红色主按钮，合计金额展示在按钮上方，视觉重心更集中于“去配单”操作。",
+      "component_plan": [
+        {
+          "component": "BottomSheet",
+          "purpose": "抽屉式配单弹窗",
+          "content_structure": [
+            "拖拽指示条",
+            "Header",
+            "Body",
+            "Footer"
+          ],
+          "layout": "底部滑入，高度 60vh",
+          "bbox_or_size_policy": "宽度 360，高度 60vh，zIndex=60",
+          "props_hint": {
+            "zIndex": 60
+          }
+        },
+        {
+          "component": "SectionLayout",
+          "purpose": "内容分组",
+          "content_structure": [
+            "已选产品区块",
+            "推荐配件区块"
+          ],
+          "layout": "垂直排列，带标题",
+          "bbox_or_size_policy": "宽度 360，高度自适应",
+          "props_hint": {
+            "variant": "browse",
+            "title": "已选产品"
+          }
+        }
+      ],
+      "height_policy": "固定 60vh 高度；内部滚动，拖拽指示条占用 16px 高度",
+      "typography_policy": "区块标题 font-headline-16，列表项 font-body-14，金额 font-headline-18",
+      "rationale": "通过分组和全宽按钮强化操作引导，适合已选产品较多且需要明确区分主配件的场景。",
+      "group": "state_3 · 产品清单半模态弹窗态",
+      "default": false
+    },
+    {
+      "id": "state_4::opt_a",
+      "implementation_plan": "采用轻量级 BottomSheet 底部弹窗，高度约 30vh。背景保持 state_3 的遮罩状态。弹窗顶部展示“编辑配单信息”标题和关闭按钮。Body 区域居中放置 InputDemo 输入框，标签为“配单名称”，占位符为“请输入配单名称”，支持清空和错误提示。Footer 区域固定底部，放置全宽红色“确定”主按钮。整体布局紧凑，聚焦于名称编辑。",
+      "component_plan": [
+        {
+          "component": "BottomSheet",
+          "purpose": "编辑配单弹窗",
+          "content_structure": [
+            "Header",
+            "Body",
+            "Footer"
+          ],
+          "layout": "底部滑入，高度 30vh",
+          "bbox_or_size_policy": "宽度 360，高度 30vh，zIndex=70",
+          "props_hint": {
+            "zIndex": 70
+          }
+        },
+        {
+          "component": "InputDemo",
+          "purpose": "配单名称输入",
+          "content_structure": [
+            "Label",
+            "Input",
+            "Error"
+          ],
+          "layout": "垂直排列，输入框高 40",
+          "bbox_or_size_policy": "宽度 328，高度 72",
+          "props_hint": {
+            "label": "配单名称",
+            "placeholder": "请输入配单名称"
+          }
+        },
+        {
+          "component": "CapsuleButton",
+          "purpose": "确定按钮",
+          "content_structure": [
+            "文案"
+          ],
+          "layout": "Footer 全宽",
+          "bbox_or_size_policy": "宽度 328，高度 40",
+          "props_hint": {
+            "variant": "primary",
+            "size": "large",
+            "children": "确定"
+          }
+        }
+      ],
+      "height_policy": "使用初始高度或自适应内容高度；不超出 40vh，避免遮挡过多背景",
+      "typography_policy": "弹窗标题 font-headline-18，输入标签 font-body-14，输入文本 font-headline-16，按钮 font-headline-14",
+      "rationale": "轻量级表单弹窗，交互路径最短，适合仅需修改单一字段的场景。",
+      "group": "state_4 · 编辑配单弹窗初始态",
+      "default": true
+    },
+    {
+      "id": "state_4::opt_b",
+      "implementation_plan": "采用带辅助说明的 BottomSheet 弹窗。在输入框上方增加一段灰色辅助文案，说明配单命名的规范或用途。输入框使用带下划线的 Text field 样式，获取焦点时高亮。底部“确定”按钮在输入框为空时保持禁用状态，输入内容后激活，提供更明确的表单校验反馈。",
+      "component_plan": [
+        {
+          "component": "BottomSheet",
+          "purpose": "带说明的编辑弹窗",
+          "content_structure": [
+            "Header",
+            "说明文案",
+            "Body",
+            "Footer"
+          ],
+          "layout": "底部滑入，高度 35vh",
+          "bbox_or_size_policy": "宽度 360，高度 35vh，zIndex=70",
+          "props_hint": {
+            "zIndex": 70
+          }
+        },
+        {
+          "component": "InputDemo",
+          "purpose": "名称输入",
+          "content_structure": [
+            "Label",
+            "Input",
+            "HelperText"
+          ],
+          "layout": "垂直排列",
+          "bbox_or_size_policy": "宽度 328，高度 80",
+          "props_hint": {
+            "label": "配单名称",
+            "placeholder": "例如：XX公司会议室配单"
+          }
+        }
+      ],
+      "height_policy": "自适应内容高度；包含辅助文案时适当增加高度",
+      "typography_policy": "辅助文案 font-caption-12，输入文本 font-headline-16",
+      "rationale": "提供更丰富的上下文提示和校验反馈，适合对配单命名有规范要求的业务场景。",
+      "group": "state_4 · 编辑配单弹窗初始态",
+      "default": false
+    },
+    {
+      "id": "state_5::opt_a",
+      "implementation_plan": "采用按钮 Loading 态反馈。继承 state_4 的弹窗和遮罩背景，Body 区域保持不变。Footer 区域的“确定”按钮进入 loading 禁用状态，按钮内部显示 CircularProgress 动画，文案变为“提交中...”。此方案轻量且不打断用户当前视觉焦点，防止重复点击。",
+      "component_plan": [
+        {
+          "component": "CapsuleButton",
+          "purpose": "提交中状态按钮",
+          "content_structure": [
+            "Loading图标",
+            "文案"
+          ],
+          "layout": "Footer 全宽",
+          "bbox_or_size_policy": "宽度 328，高度 40",
+          "props_hint": {
+            "variant": "primary",
+            "size": "large",
+            "disabled": true,
+            "children": "提交中..."
+          }
+        }
+      ],
+      "height_policy": "保持与 state_4 相同的高度；不改变布局结构",
+      "typography_policy": "按钮文案 font-headline-14，颜色使用 text-white",
+      "rationale": "最轻量的加载反馈方式，适合网络请求较快、无需长时间等待的提交操作。",
+      "group": "state_5 · 配单信息提交中状态",
+      "default": true
+    },
+    {
+      "id": "state_5::opt_b",
+      "implementation_plan": "采用弹窗内全局 Loading 覆盖。继承 state_4 的弹窗结构，在 Body 和 Footer 上方叠加一层半透明白色遮罩，中心显示较大的 CircularProgress 和“正在生成配单方案...”文案。底部按钮隐藏或完全禁用。适合后端处理时间较长、需要明确告知用户系统正在忙碌的场景。",
+      "component_plan": [
+        {
+          "component": "LoadingOverlay",
+          "purpose": "弹窗内加载遮罩",
+          "content_structure": [
+            "半透明背景",
+            "ProgressIndicator",
+            "提示文案"
+          ],
+          "layout": "绝对定位覆盖弹窗内容区，居中显示",
+          "bbox_or_size_policy": "宽高 100% 覆盖弹窗 Body，zIndex=80",
+          "props_hint": {
+            "zIndex": 80
+          }
+        }
+      ],
+      "height_policy": "保持与 state_4 相同的高度；遮罩层自适应弹窗尺寸",
+      "typography_policy": "提示文案 font-body-14，颜色 text-secondary",
+      "rationale": "强阻断式加载反馈，能有效防止用户在长耗时操作中误触或关闭弹窗。",
+      "group": "state_5 · 配单信息提交中状态",
+      "default": false
+    },
+    {
+      "id": "state_6::opt_a",
+      "implementation_plan": "采用长页面多卡片滚动布局。顶部 TopNav 包含返回、配单详情标题和分享入口。主体区域依次排列五个 SectionLayout(card) 卡片：配单概览（含名称、编辑、报价）、风险提示（含缺失设备警告及添加入口）、产品清单（列表展示）、方案特色和服务商信息。底部固定 ButtonBar，采用 triple 布局，放置“点位图”、“采购咨询”和红色“导出”主按钮。页面高度随卡片内容扩展。",
+      "component_plan": [
+        {
+          "component": "TopNav",
+          "purpose": "详情页顶部导航",
+          "content_structure": [
+            "返回按钮",
+            "标题",
+            "分享图标"
+          ],
+          "layout": "顶部 360x56",
+          "bbox_or_size_policy": "固定高度 56，宽度 360",
+          "props_hint": {
+            "variant": "title",
+            "title": "配单详情",
+            "onBack": true,
+            "actions": [
+              "message"
+            ]
+          }
+        },
+        {
+          "component": "SectionLayout",
+          "purpose": "承载五张信息卡片",
+          "content_structure": [
+            "概览",
+            "风险提示",
+            "产品清单",
+            "方案特色",
+            "服务商"
+          ],
+          "layout": "垂直排列，带圆角和阴影",
+          "bbox_or_size_policy": "宽度 360，高度自适应",
+          "props_hint": {
+            "variant": "card"
+          }
+        },
+        {
+          "component": "ButtonBar",
+          "purpose": "底部固定操作栏",
+          "content_structure": [
+            "点位图",
+            "采购咨询",
+            "导出"
+          ],
+          "layout": "底部固定，三列布局",
+          "bbox_or_size_policy": "固定高度 64，宽度 360，贴底",
+          "props_hint": {
+            "variant": "triple",
+            "primaryLabel": "导出",
+            "secondaryLabel": "采购咨询",
+            "thirdLabel": "点位图"
+          }
+        }
+      ],
+      "height_policy": "内容完整优先；长页面允许 state height 超出 initial_height 并支持垂直滚动",
+      "typography_policy": "卡片标题 font-headline-16，概览数据 font-headline-24，正文 font-body-14，辅助信息 font-caption-12",
+      "rationale": "结构清晰的标准详情页，完整呈现配单方案的所有维度信息，底部操作栏明确支持最终导出。",
+      "group": "state_6 · 配单详情页面成功态",
+      "default": true
+    },
+    {
+      "id": "state_6::opt_b",
+      "implementation_plan": "采用带锚点导航的长页面布局。在 TopNav 下方增加 UnderlineTabs，提供“概览、清单、特色、服务”四个锚点，支持点击快速滚动到对应卡片区域。卡片内部采用更丰富的数据可视化，如概览卡片使用进度条展示成本占比。底部操作栏将“导出”按钮放大并置于右侧，左侧两个次要操作使用文本按钮，进一步突出导出意图。",
+      "component_plan": [
+        {
+          "component": "UnderlineTabs",
+          "purpose": "锚点快速导航",
+          "content_structure": [
+            "概览",
+            "清单",
+            "特色",
+            "服务"
+          ],
+          "layout": "TopNav 下方，横向排列",
+          "bbox_or_size_policy": "宽度 360，高度 44",
+          "props_hint": {
+            "tabs": [
+              {
+                "id": "1",
+                "label": "概览"
+              },
+              {
+                "id": "2",
+                "label": "清单"
+              }
+            ],
+            "activeId": "1"
+          }
+        },
+        {
+          "component": "SectionLayout",
+          "purpose": "锚点对应卡片",
+          "content_structure": [
+            "标题",
+            "可视化内容"
+          ],
+          "layout": "垂直排列",
+          "bbox_or_size_policy": "宽度 360，高度自适应",
+          "props_hint": {
+            "variant": "card"
+          }
+        }
+      ],
+      "height_policy": "内容完整优先；允许超出初始高度，锚点导航可吸顶",
+      "typography_policy": "Tab 标签 font-headline-14，卡片标题 font-headline-16，数据可视化 font-headline-20",
+      "rationale": "适合卡片内容极长、用户需要频繁在不同信息模块间跳转查看的复杂配单方案。",
+      "group": "state_6 · 配单详情页面成功态",
+      "default": false
+    }
+  ],
+  "multiSelect": true,
+  "allowCustom": true,
+  "questionText": "我给每个页面列了几种实现方式，你可以保留默认选择直接提交；想换方案就在对应分组里换一个。",
+  "note": "每个分组选一种即可；如需自定义可在补充栏写一句话描述。"
+}

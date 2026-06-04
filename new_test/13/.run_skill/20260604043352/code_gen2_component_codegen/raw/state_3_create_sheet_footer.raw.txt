@@ -1,0 +1,6 @@
+{
+  "id": "sheet_footer",
+  "reactCode": "import React from 'react';\n\nexport default function SheetFooter() {\n  return (\n    <div\n      data-component-id=\"sheet_footer\"\n      className=\"tf-cg-sheet-footer\"\n      style={{\n        position: 'absolute',\n        left: 0,\n        top: 1280,\n        width: 360,\n        height: 80,\n      }}\n    />\n  );\n}",
+  "css": ".tf-cg-sheet-footer {\n  background-color: var(--color-bg-card);\n  border-top: 1px solid var(--color-border-subtle);\n  box-shadow: 0 -4px 12px 0 rgba(0, 0, 0, 0.05);\n  box-sizing: border-box;\n}",
+  "notes": "used SheetFooter empty shell, --color-bg-card, --color-border-subtle"
+}

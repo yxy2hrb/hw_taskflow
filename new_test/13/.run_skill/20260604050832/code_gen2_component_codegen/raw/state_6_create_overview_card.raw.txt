@@ -1,0 +1,6 @@
+{
+  "id": "overview_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_ov_name from './ov_name';\nimport Child_ov_price from './ov_price';\n\nexport default function OverviewCard() {\n  return (\n    <div data-component-id=\"overview_card\" className=\"tf-cg-overview-card\">\n      <SectionLayout variant=\"card\" title=\"配单概览\">\n        <Child_ov_name />\n        <Child_ov_price />\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": ".tf-cg-overview-card {\n  width: 100%;\n}",
+  "notes": "used SectionLayout with variant='card', imported Child_ov_name and Child_ov_price as children. Title uses font-headline-s from SectionTitle internally."
+}

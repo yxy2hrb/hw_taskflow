@@ -1,0 +1,6 @@
+{
+  "id": "overview_cost",
+  "reactCode": "import React from 'react';\n\nexport default function OverviewCost() {\n  return (\n    <div\n      data-component-id=\"overview_cost\"\n      style={{\n        position: 'absolute',\n        left: '24px',\n        top: '216px',\n        width: '150px',\n        height: '20px',\n        display: 'flex',\n        alignItems: 'center',\n      }}\n    >\n      <span\n        className=\"font-body-m\"\n        style={{\n          fontSize: 'var(--font-body-14)',\n          color: 'var(--color-text-secondary)',\n          whiteSpace: 'nowrap',\n        }}\n      >\n        总成本价：¥21,999.00\n      </span>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used Text, font-body-m, --font-body-14, --color-text-secondary, absolute bbox positioning"
+}

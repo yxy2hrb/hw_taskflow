@@ -1,0 +1,6 @@
+{
+  "id": "action_add_list",
+  "reactCode": "import React from 'react';\nimport { CapsuleButton } from '@/components/ui/Button';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"action_add_list\"\n      style={{\n        position: 'absolute',\n        left: 244,\n        top: 1308,\n        width: 100,\n        height: 40,\n      }}\n    >\n      <CapsuleButton variant=\"primary\" size=\"large\">\n        加入配单\n      </CapsuleButton>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used CapsuleButton, absolute bbox positioning, primary variant, large size, font-headline-s"
+}

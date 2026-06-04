@@ -1,0 +1,6 @@
+{
+  "id": "config_risk_pill",
+  "reactCode": "import React from 'react';\nimport StatusPill from '@/components/StatusPill';\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"config_risk_pill\" \n      style={{ \n        position: 'absolute', \n        left: 16, \n        top: 240, \n        width: 120, \n        height: 24,\n        display: 'flex',\n        alignItems: 'center'\n      }}\n    >\n      <StatusPill \n        text=\"缺少关键设备\" \n        colorMap={{\n          '缺少关键设备': { color: 'var(--color-warning)', bgColor: 'rgba(249, 115, 22, 0.1)' }\n        }} \n      />\n    </div>\n  );\n}",
+  "css": ".tf-cg-risk-pill{box-sizing:border-box;}",
+  "notes": "used StatusPill, --color-warning"
+}

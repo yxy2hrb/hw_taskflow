@@ -1,0 +1,6 @@
+{
+  "id": "qa_summary",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <span\n      data-component-id=\"qa_summary\"\n      className=\"tf-cg-qa-summary font-caption-m\"\n      style={{\n        fontSize: 'var(--font-caption-12)',\n        color: 'var(--color-text-secondary)'\n      }}\n    >\n      98%好评率 · 128条评价 · 35个问答\n    </span>\n  );\n}",
+  "css": ".tf-cg-qa-summary {\n  display: inline;\n}",
+  "notes": "used Text, font-caption-m, --font-caption-12, --color-text-secondary"
+}

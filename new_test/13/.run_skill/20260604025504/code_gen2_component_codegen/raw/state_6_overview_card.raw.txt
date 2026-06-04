@@ -1,0 +1,6 @@
+{
+  "id": "overview_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport { TextButton } from '@/components/ui/Button';\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"overview_card\" \n      style={{ \n        position: 'absolute', \n        left: 12, \n        top: 104, \n        width: 336, \n        height: 180 \n      }}\n    >\n      <SectionLayout\n        variant=\"card\"\n        title=\"配单概览\"\n        headerRightAction={\n          <TextButton size=\"medium\" variant=\"primary\" onClick={() => {}}>\n            编辑\n          </TextButton>\n        }\n      >\n        <div style={{ flex: 1 }} />\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"overview_card\"] {\n  width: 336px;\n  height: 180px;\n}",
+  "notes": "used SectionLayout, TextButton, --spacing-lg, --radius-lg, --color-text-primary"
+}

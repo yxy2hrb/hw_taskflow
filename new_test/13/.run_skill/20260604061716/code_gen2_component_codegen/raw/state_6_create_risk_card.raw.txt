@@ -1,0 +1,6 @@
+{
+  "id": "risk_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_risk_text from './risk_text';\nimport Child_risk_add from './risk_add';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"risk_card\">\n      <SectionLayout variant=\"card\" title=\"风险提示\">\n        <div className=\"flex flex-col\" style={{ gap: 'var(--spacing-lg)' }}>\n          <Child_risk_text />\n          <Child_risk_add />\n        </div>\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used SectionLayout, Child_risk_text, Child_risk_add, --spacing-lg"
+}

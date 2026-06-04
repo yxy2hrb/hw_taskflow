@@ -1,0 +1,6 @@
+{
+  "id": "risk_add_btn",
+  "reactCode": "import React from 'react';\nimport { TextButton } from '@/components/ui/Button';\n\nexport default function RiskAddBtn() {\n  return (\n    <div\n      data-component-id=\"risk_add_btn\"\n      style={{\n        position: 'absolute',\n        left: 252,\n        top: 316,\n        width: 80,\n        height: 24,\n        display: 'flex',\n        alignItems: 'center',\n        justifyContent: 'center',\n      }}\n    >\n      <TextButton variant=\"primary\" size=\"medium\">\n        去添加 &gt;\n      </TextButton>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used TextButton, absolute bbox positioning"
+}

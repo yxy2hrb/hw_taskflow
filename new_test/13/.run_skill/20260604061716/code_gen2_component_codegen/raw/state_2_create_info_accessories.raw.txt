@@ -1,0 +1,6 @@
+{
+  "id": "info_accessories",
+  "reactCode": "import React from 'react'\nimport { TextButton } from '@/components/ui/Button'\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"info_accessories\">\n      <TextButton variant=\"primary\">查看相关配件</TextButton>\n    </div>\n  )\n}",
+  "css": "[data-component-id=\"info_accessories\"] {\n  display: inline-flex;\n}",
+  "notes": "used TextButton from @/components/ui/Button with variant='primary', --color-primary applied via TextButton internals"
+}

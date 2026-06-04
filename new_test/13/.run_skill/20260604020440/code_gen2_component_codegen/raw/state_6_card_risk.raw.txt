@@ -1,0 +1,6 @@
+{
+  "id": "card_risk",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"card_risk\"\n      style={{\n        position: 'absolute',\n        left: 12,\n        top: 276,\n        width: 336,\n        height: 100,\n      }}\n    >\n      <SectionLayout variant=\"card\" title=\"风险提示\">\n        <p\n          className=\"font-caption-m\"\n          style={{\n            color: '#FF8F1F',\n            lineHeight: 'var(--line-height-18)',\n            margin: 0,\n          }}\n        >\n          当前方案可能缺少 UPS、路由器、防火墙等关键设备\n        </p>\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "Used SectionLayout (variant='card') for the container. Applied font-caption-m class with custom warning color #FF8F1F and overridden line-height."
+}

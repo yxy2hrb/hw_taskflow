@@ -1,0 +1,6 @@
+{
+  "id": "prod_code",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <span\n      data-component-id=\"prod_code\"\n      className=\"font-caption-m tf-cg-prod-code\"\n      style={{ fontSize: 'var(--font-caption-12)', color: 'var(--color-text-secondary)' }}\n    >\n      部件编码：EOS-B2-75\n    </span>\n  );\n}",
+  "css": ".tf-cg-prod-code {\n  display: inline-block;\n}",
+  "notes": "used Text, font-caption-m, --font-caption-12, --color-text-secondary"
+}

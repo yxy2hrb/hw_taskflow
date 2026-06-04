@@ -1,0 +1,3319 @@
+{
+  "div_bbox": [
+    {
+      "key": "auto:1",
+      "id": null,
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "w": 360,
+        "h": 1248
+      },
+      "text_snippet": "08:08 营销 工作台 70 待接收 16 跟进中 99+ 全部 最新 线索 LEB1234567890 客户公司名称 南京松海科技有限公司 我的线索 快捷入口 创建会议 分析看板 JMF JMF管",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:0_1",
+      "id": "0_1",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "w": 360,
+        "h": 1248
+      },
+      "text_snippet": "08:08 营销 工作台 70 待接收 16 跟进中 99+ 全部 最新 线索 LEB1234567890 客户公司名称 南京松海科技有限公司 我的线索 快捷入口 创建会议 分析看板 JMF JMF管",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_399527",
+      "id": "126_399527",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "w": 366,
+        "h": 1248
+      },
+      "text_snippet": "08:08 营销 工作台 70 待接收 16 跟进中 99+ 全部 最新 线索 LEB1234567890 客户公司名称 南京松海科技有限公司 我的线索 快捷入口 创建会议 分析看板 JMF JMF管",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgb(255, 255, 255)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:14_527266",
+      "id": "14_527266",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "w": 360,
+        "h": 1248
+      },
+      "text_snippet": "08:08 营销 工作台 70 待接收 16 跟进中 99+ 全部 最新 线索 LEB1234567890 客户公司名称 南京松海科技有限公司 我的线索 快捷入口 创建会议 分析看板 JMF JMF管",
+      "total_child_count": 5,
+      "style_summary": {
+        "background": "rgb(243, 243, 243)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395411",
+      "id": "126_395411",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "w": 360,
+        "h": 228
+      },
+      "text_snippet": "",
+      "total_child_count": 5,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395412",
+      "id": "126_395412",
+      "bbox": {
+        "x": -43,
+        "y": -55,
+        "w": 144,
+        "h": 120
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395413",
+      "id": "126_395413",
+      "bbox": {
+        "x": 57,
+        "y": -27,
+        "w": 109,
+        "h": 100
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395414",
+      "id": "126_395414",
+      "bbox": {
+        "x": -47,
+        "y": 16,
+        "w": 80,
+        "h": 73
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395415",
+      "id": "126_395415",
+      "bbox": {
+        "x": 165,
+        "y": -51,
+        "w": 201,
+        "h": 166
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395416",
+      "id": "126_395416",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "w": 360,
+        "h": 200
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(245, 245, 245, 0.8)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395424",
+      "id": "126_395424",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "w": 360,
+        "h": 24
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395425",
+      "id": "126_395425",
+      "bbox": {
+        "x": 0,
+        "y": 712,
+        "w": 360,
+        "h": 80
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395426",
+      "id": "126_395426",
+      "bbox": {
+        "x": 0,
+        "y": 712,
+        "w": 360,
+        "h": 52
+      },
+      "text_snippet": "",
+      "total_child_count": 5,
+      "style_summary": {
+        "background": "rgb(243, 243, 243)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395427",
+      "id": "126_395427",
+      "bbox": {
+        "x": 24,
+        "y": 718,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(25, 25, 25, 0.05)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395428",
+      "id": "126_395428",
+      "bbox": {
+        "x": 92,
+        "y": 718,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgb(223, 223, 223)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395429",
+      "id": "126_395429",
+      "bbox": {
+        "x": 160,
+        "y": 718,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(25, 25, 25, 0.05)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395430",
+      "id": "126_395430",
+      "bbox": {
+        "x": 228,
+        "y": 718,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(25, 25, 25, 0.05)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395431",
+      "id": "126_395431",
+      "bbox": {
+        "x": 296,
+        "y": 718,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(25, 25, 25, 0.05)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395434",
+      "id": "126_395434",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "w": 360,
+        "h": 1168
+      },
+      "text_snippet": "08:08 营销 工作台 70 待接收 16 跟进中 99+ 全部 最新 线索 LEB1234567890 客户公司名称 南京松海科技有限公司 我的线索 快捷入口 创建会议 分析看板 JMF JMF管",
+      "total_child_count": 3,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395435",
+      "id": "126_395435",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "w": 360,
+        "h": 92
+      },
+      "text_snippet": "08:08 营销 工作台",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395436",
+      "id": "126_395436",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "w": 360,
+        "h": 36
+      },
+      "text_snippet": "08:08",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395437",
+      "id": "126_395437",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "w": 360,
+        "h": 36
+      },
+      "text_snippet": "08:08",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395439",
+      "id": "126_395439",
+      "bbox": {
+        "x": 240,
+        "y": 12,
+        "w": 96,
+        "h": 13
+      },
+      "text_snippet": "",
+      "total_child_count": 4,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395440",
+      "id": "126_395440",
+      "bbox": {
+        "x": 310,
+        "y": 12,
+        "w": 26,
+        "h": 13
+      },
+      "text_snippet": "",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395441",
+      "id": "126_395441",
+      "bbox": {
+        "x": 310,
+        "y": 12,
+        "w": 26,
+        "h": 13
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395444",
+      "id": "126_395444",
+      "bbox": {
+        "x": 313,
+        "y": 14,
+        "w": 18,
+        "h": 8
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395452",
+      "id": "126_395452",
+      "bbox": {
+        "x": 287,
+        "y": 12,
+        "w": 18,
+        "h": 12
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395453",
+      "id": "126_395453",
+      "bbox": {
+        "x": 290,
+        "y": 12,
+        "w": 15,
+        "h": 12
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395459",
+      "id": "126_395459",
+      "bbox": {
+        "x": 240,
+        "y": 12,
+        "w": 15,
+        "h": 12
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395460",
+      "id": "126_395460",
+      "bbox": {
+        "x": 240,
+        "y": 12,
+        "w": 15,
+        "h": 12
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395486",
+      "id": "126_395486",
+      "bbox": {
+        "x": 261,
+        "y": 12,
+        "w": 22,
+        "h": 12
+      },
+      "text_snippet": "",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395487",
+      "id": "126_395487",
+      "bbox": {
+        "x": 261,
+        "y": 20,
+        "w": 5,
+        "h": 4
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395490",
+      "id": "126_395490",
+      "bbox": {
+        "x": 268,
+        "y": 12,
+        "w": 15,
+        "h": 12
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395496",
+      "id": "126_395496",
+      "bbox": {
+        "x": 0,
+        "y": 36,
+        "w": 360,
+        "h": 56
+      },
+      "text_snippet": "营销 工作台",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395497",
+      "id": "126_395497",
+      "bbox": {
+        "x": 16,
+        "y": 48,
+        "w": 140,
+        "h": 32
+      },
+      "text_snippet": "营销 工作台",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395498",
+      "id": "126_395498",
+      "bbox": {
+        "x": 16,
+        "y": 48,
+        "w": 140,
+        "h": 32
+      },
+      "text_snippet": "营销 工作台",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395503",
+      "id": "126_395503",
+      "bbox": {
+        "x": 16,
+        "y": 48,
+        "w": 140,
+        "h": 32
+      },
+      "text_snippet": "营销 工作台",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395504",
+      "id": "126_395504",
+      "bbox": {
+        "x": 16,
+        "y": 48,
+        "w": 120,
+        "h": 32
+      },
+      "text_snippet": "营销 工作台",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395505",
+      "id": "126_395505",
+      "bbox": {
+        "x": 16,
+        "y": 48,
+        "w": 48,
+        "h": 38
+      },
+      "text_snippet": "营销",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395511",
+      "id": "126_395511",
+      "bbox": {
+        "x": 144,
+        "y": 58,
+        "w": 12,
+        "h": 12
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395512",
+      "id": "126_395512",
+      "bbox": {
+        "x": 145,
+        "y": 61,
+        "w": 10,
+        "h": 7
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395515",
+      "id": "126_395515",
+      "bbox": {
+        "x": 224,
+        "y": 36,
+        "w": 120,
+        "h": 56
+      },
+      "text_snippet": "",
+      "total_child_count": 3,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395516",
+      "id": "126_395516",
+      "bbox": {
+        "x": 224,
+        "y": 52,
+        "w": 24,
+        "h": 24
+      },
+      "text_snippet": "",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395517",
+      "id": "126_395517",
+      "bbox": {
+        "x": 224,
+        "y": 52,
+        "w": 24,
+        "h": 24
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395518",
+      "id": "126_395518",
+      "bbox": {
+        "x": 224,
+        "y": 52,
+        "w": 24,
+        "h": 24
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395520",
+      "id": "126_395520",
+      "bbox": {
+        "x": 224,
+        "y": 55,
+        "w": 23,
+        "h": 17
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395521",
+      "id": "126_395521",
+      "bbox": {
+        "x": 230,
+        "y": 60,
+        "w": 8,
+        "h": 8
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395522",
+      "id": "126_395522",
+      "bbox": {
+        "x": 264,
+        "y": 52,
+        "w": 24,
+        "h": 24
+      },
+      "text_snippet": "",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395523",
+      "id": "126_395523",
+      "bbox": {
+        "x": 264,
+        "y": 52,
+        "w": 24,
+        "h": 24
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(216, 216, 216, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395524",
+      "id": "126_395524",
+      "bbox": {
+        "x": 264,
+        "y": 52,
+        "w": 24,
+        "h": 24
+      },
+      "text_snippet": "",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395525",
+      "id": "126_395525",
+      "bbox": {
+        "x": 264,
+        "y": 52,
+        "w": 24,
+        "h": 24
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "0"
+      }
+    },
+    {
+      "key": "id:126_395526",
+      "id": "126_395526",
+      "bbox": {
+        "x": 266,
+        "y": 55,
+        "w": 21,
+        "h": 19
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395530",
+      "id": "126_395530",
+      "bbox": {
+        "x": 304,
+        "y": 44,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395531",
+      "id": "126_395531",
+      "bbox": {
+        "x": 307,
+        "y": 48,
+        "w": 34,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 7,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395532",
+      "id": "126_395532",
+      "bbox": {
+        "x": 310,
+        "y": 48,
+        "w": 28,
+        "h": 7
+      },
+      "text_snippet": "",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395533",
+      "id": "126_395533",
+      "bbox": {
+        "x": 310,
+        "y": 48,
+        "w": 7,
+        "h": 7
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395534",
+      "id": "126_395534",
+      "bbox": {
+        "x": 330,
+        "y": 48,
+        "w": 7,
+        "h": 7
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395535",
+      "id": "126_395535",
+      "bbox": {
+        "x": 333,
+        "y": 54,
+        "w": 8,
+        "h": 10
+      },
+      "text_snippet": "",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395536",
+      "id": "126_395536",
+      "bbox": {
+        "x": 333,
+        "y": 54,
+        "w": 7,
+        "h": 10
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395537",
+      "id": "126_395537",
+      "bbox": {
+        "x": 337,
+        "y": 54,
+        "w": 4,
+        "h": 7
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395538",
+      "id": "126_395538",
+      "bbox": {
+        "x": 307,
+        "y": 54,
+        "w": 8,
+        "h": 10
+      },
+      "text_snippet": "",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395539",
+      "id": "126_395539",
+      "bbox": {
+        "x": 308,
+        "y": 54,
+        "w": 7,
+        "h": 10
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395540",
+      "id": "126_395540",
+      "bbox": {
+        "x": 307,
+        "y": 54,
+        "w": 4,
+        "h": 7
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395541",
+      "id": "126_395541",
+      "bbox": {
+        "x": 308,
+        "y": 50,
+        "w": 31,
+        "h": 28
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395542",
+      "id": "126_395542",
+      "bbox": {
+        "x": 308,
+        "y": 50,
+        "w": 31,
+        "h": 28
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395547",
+      "id": "126_395547",
+      "bbox": {
+        "x": 308,
+        "y": 50,
+        "w": 31,
+        "h": 29
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395552",
+      "id": "126_395552",
+      "bbox": {
+        "x": 311,
+        "y": 56,
+        "w": 26,
+        "h": 17
+      },
+      "text_snippet": "",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395553",
+      "id": "126_395553",
+      "bbox": {
+        "x": 311,
+        "y": 56,
+        "w": 26,
+        "h": 17
+      },
+      "text_snippet": "",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395556",
+      "id": "126_395556",
+      "bbox": {
+        "x": 317,
+        "y": 62,
+        "w": 13,
+        "h": 4
+      },
+      "text_snippet": "",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395559",
+      "id": "126_395559",
+      "bbox": {
+        "x": 331,
+        "y": 68,
+        "w": 10,
+        "h": 7
+      },
+      "text_snippet": "",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395560",
+      "id": "126_395560",
+      "bbox": {
+        "x": 334,
+        "y": 68,
+        "w": 7,
+        "h": 7
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395561",
+      "id": "126_395561",
+      "bbox": {
+        "x": 331,
+        "y": 74,
+        "w": 3,
+        "h": 2
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgb(4, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395562",
+      "id": "126_395562",
+      "bbox": {
+        "x": 16,
+        "y": 108,
+        "w": 328,
+        "h": 1004
+      },
+      "text_snippet": "70 待接收 16 跟进中 99+ 全部 最新 线索 LEB1234567890 客户公司名称 南京松海科技有限公司 我的线索 快捷入口 创建会议 分析看板 JMF JMF管理 新增客户 我要办会 9",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395563",
+      "id": "126_395563",
+      "bbox": {
+        "x": 16,
+        "y": 108,
+        "w": 328,
+        "h": 176
+      },
+      "text_snippet": "70 待接收 16 跟进中 99+ 全部 最新 线索 LEB1234567890 客户公司名称 南京松海科技有限公司 我的线索",
+      "total_child_count": 5,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395564",
+      "id": "126_395564",
+      "bbox": {
+        "x": 16,
+        "y": 108,
+        "w": 328,
+        "h": 186
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395565",
+      "id": "126_395565",
+      "bbox": {
+        "x": 16,
+        "y": 108,
+        "w": 328,
+        "h": 176
+      },
+      "text_snippet": "",
+      "total_child_count": 3,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395566",
+      "id": "126_395566",
+      "bbox": {
+        "x": 16,
+        "y": 148,
+        "w": 328,
+        "h": 96
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395569",
+      "id": "126_395569",
+      "bbox": {
+        "x": 16,
+        "y": 108,
+        "w": 328,
+        "h": 60
+      },
+      "text_snippet": "",
+      "total_child_count": 3,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395570",
+      "id": "126_395570",
+      "bbox": {
+        "x": 16,
+        "y": 108,
+        "w": 328,
+        "h": 52
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395571",
+      "id": "126_395571",
+      "bbox": {
+        "x": 16,
+        "y": 108,
+        "w": 179,
+        "h": 40
+      },
+      "text_snippet": "",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395572",
+      "id": "126_395572",
+      "bbox": {
+        "x": 16,
+        "y": 108,
+        "w": 164,
+        "h": 40
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395573",
+      "id": "126_395573",
+      "bbox": {
+        "x": 175,
+        "y": 138,
+        "w": 20,
+        "h": 10
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395574",
+      "id": "126_395574",
+      "bbox": {
+        "x": 16,
+        "y": 122,
+        "w": 164,
+        "h": 26
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395584",
+      "id": "126_395584",
+      "bbox": {
+        "x": 16,
+        "y": 148,
+        "w": 328,
+        "h": 136
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgb(255, 255, 255)",
+        "boxShadow": "rgba(0, 0, 0, 0.05) 0px 10px 20px -5px",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395585",
+      "id": "126_395585",
+      "bbox": {
+        "x": 28,
+        "y": 154,
+        "w": 304,
+        "h": 54
+      },
+      "text_snippet": "70 待接收 16 跟进中 99+ 全部",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395586",
+      "id": "126_395586",
+      "bbox": {
+        "x": 28,
+        "y": 154,
+        "w": 304,
+        "h": 54
+      },
+      "text_snippet": "70 待接收 16 跟进中 99+ 全部",
+      "total_child_count": 3,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395587",
+      "id": "126_395587",
+      "bbox": {
+        "x": 28,
+        "y": 154,
+        "w": 84,
+        "h": 54
+      },
+      "text_snippet": "70 待接收",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395590",
+      "id": "126_395590",
+      "bbox": {
+        "x": 138,
+        "y": 154,
+        "w": 84,
+        "h": 54
+      },
+      "text_snippet": "16 跟进中",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395593",
+      "id": "126_395593",
+      "bbox": {
+        "x": 248,
+        "y": 154,
+        "w": 84,
+        "h": 54
+      },
+      "text_snippet": "99+ 全部",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395599",
+      "id": "126_395599",
+      "bbox": {
+        "x": 28,
+        "y": 218,
+        "w": 304,
+        "h": 0
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395600",
+      "id": "126_395600",
+      "bbox": {
+        "x": 28,
+        "y": 230,
+        "w": 248,
+        "h": 40
+      },
+      "text_snippet": "最新 线索 LEB1234567890 客户公司名称 南京松海科技有限公司",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395601",
+      "id": "126_395601",
+      "bbox": {
+        "x": 28,
+        "y": 230,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "最新 线索",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395602",
+      "id": "126_395602",
+      "bbox": {
+        "x": 33,
+        "y": 234,
+        "w": 31,
+        "h": 32
+      },
+      "text_snippet": "最新 线索",
+      "total_child_count": 3,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395603",
+      "id": "126_395603",
+      "bbox": {
+        "x": 33,
+        "y": 234,
+        "w": 31,
+        "h": 18
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgb(242, 85, 96)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395606",
+      "id": "126_395606",
+      "bbox": {
+        "x": 76,
+        "y": 230,
+        "w": 200,
+        "h": 40
+      },
+      "text_snippet": "LEB1234567890 客户公司名称 南京松海科技有限公司",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395607",
+      "id": "126_395607",
+      "bbox": {
+        "x": 76,
+        "y": 230,
+        "w": 104,
+        "h": 18
+      },
+      "text_snippet": "LEB1234567890",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395609",
+      "id": "126_395609",
+      "bbox": {
+        "x": 76,
+        "y": 254,
+        "w": 200,
+        "h": 16
+      },
+      "text_snippet": "客户公司名称 南京松海科技有限公司",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395681",
+      "id": "126_395681",
+      "bbox": {
+        "x": 16,
+        "y": 296,
+        "w": 328,
+        "h": 816
+      },
+      "text_snippet": "快捷入口 创建会议 分析看板 JMF JMF管理 新增客户 我要办会 9月23日 华为坤灵协作平板SOHO分销渠道沙龙 待开始 99999+ 物料总数 营销物料 更多 99999+ 新增访客 (周) ",
+      "total_child_count": 4,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395691",
+      "id": "126_395691",
+      "bbox": {
+        "x": 16,
+        "y": 296,
+        "w": 328,
+        "h": 140
+      },
+      "text_snippet": "快捷入口 创建会议 分析看板 JMF JMF管理 新增客户",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgb(255, 255, 255)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395692",
+      "id": "126_395692",
+      "bbox": {
+        "x": 16,
+        "y": 308,
+        "w": 328,
+        "h": 106
+      },
+      "text_snippet": "快捷入口 创建会议 分析看板 JMF JMF管理 新增客户",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395693",
+      "id": "126_395693",
+      "bbox": {
+        "x": 16,
+        "y": 308,
+        "w": 328,
+        "h": 20
+      },
+      "text_snippet": "快捷入口",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395694",
+      "id": "126_395694",
+      "bbox": {
+        "x": 28,
+        "y": 308,
+        "w": 64,
+        "h": 20
+      },
+      "text_snippet": "快捷入口",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395695",
+      "id": "126_395695",
+      "bbox": {
+        "x": 28,
+        "y": 308,
+        "w": 64,
+        "h": 20
+      },
+      "text_snippet": "快捷入口",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395711",
+      "id": "126_395711",
+      "bbox": {
+        "x": 320,
+        "y": 312,
+        "w": 12,
+        "h": 12
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395712",
+      "id": "126_395712",
+      "bbox": {
+        "x": 320,
+        "y": 312,
+        "w": 12,
+        "h": 12
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395715",
+      "id": "126_395715",
+      "bbox": {
+        "x": 16,
+        "y": 348,
+        "w": 328,
+        "h": 66
+      },
+      "text_snippet": "创建会议 分析看板 JMF JMF管理 新增客户",
+      "total_child_count": 4,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395716",
+      "id": "126_395716",
+      "bbox": {
+        "x": 32,
+        "y": 348,
+        "w": 68,
+        "h": 66
+      },
+      "text_snippet": "创建会议",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395729",
+      "id": "126_395729",
+      "bbox": {
+        "x": 46,
+        "y": 348,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395737",
+      "id": "126_395737",
+      "bbox": {
+        "x": 108,
+        "y": 348,
+        "w": 68,
+        "h": 66
+      },
+      "text_snippet": "分析看板",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395750",
+      "id": "126_395750",
+      "bbox": {
+        "x": 122,
+        "y": 348,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395754",
+      "id": "126_395754",
+      "bbox": {
+        "x": 185,
+        "y": 348,
+        "w": 67,
+        "h": 66
+      },
+      "text_snippet": "JMF JMF管理",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395760",
+      "id": "126_395760",
+      "bbox": {
+        "x": 198,
+        "y": 348,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "JMF",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395776",
+      "id": "126_395776",
+      "bbox": {
+        "x": 260,
+        "y": 348,
+        "w": 68,
+        "h": 66
+      },
+      "text_snippet": "新增客户",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "0"
+      }
+    },
+    {
+      "key": "id:126_395782",
+      "id": "126_395782",
+      "bbox": {
+        "x": 274,
+        "y": 348,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395789",
+      "id": "126_395789",
+      "bbox": {
+        "x": 152,
+        "y": 422,
+        "w": 56,
+        "h": 2
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "0"
+      }
+    },
+    {
+      "key": "id:126_395790",
+      "id": "126_395790",
+      "bbox": {
+        "x": 152,
+        "y": 422,
+        "w": 56,
+        "h": 2
+      },
+      "text_snippet": "",
+      "total_child_count": 3,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395791",
+      "id": "126_395791",
+      "bbox": {
+        "x": 152,
+        "y": 422,
+        "w": 16,
+        "h": 2
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgb(199, 0, 11)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395792",
+      "id": "126_395792",
+      "bbox": {
+        "x": 172,
+        "y": 422,
+        "w": 16,
+        "h": 2
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgb(0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "0.1"
+      }
+    },
+    {
+      "key": "id:126_395793",
+      "id": "126_395793",
+      "bbox": {
+        "x": 192,
+        "y": 422,
+        "w": 16,
+        "h": 2
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgb(0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "0.1"
+      }
+    },
+    {
+      "key": "id:126_395794",
+      "id": "126_395794",
+      "bbox": {
+        "x": 16,
+        "y": 448,
+        "w": 328,
+        "h": 156
+      },
+      "text_snippet": "我要办会 9月23日 华为坤灵协作平板SOHO分销渠道沙龙 待开始 99999+ 物料总数 营销物料",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395795",
+      "id": "126_395795",
+      "bbox": {
+        "x": 16,
+        "y": 448,
+        "w": 156,
+        "h": 156
+      },
+      "text_snippet": "我要办会 9月23日 华为坤灵协作平板SOHO分销渠道沙龙 待开始",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395796",
+      "id": "126_395796",
+      "bbox": {
+        "x": 16,
+        "y": 448,
+        "w": 156,
+        "h": 156
+      },
+      "text_snippet": "我要办会 9月23日 华为坤灵协作平板SOHO分销渠道沙龙 待开始",
+      "total_child_count": 3,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395797",
+      "id": "126_395797",
+      "bbox": {
+        "x": 16,
+        "y": 448,
+        "w": 156,
+        "h": 156
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgb(255, 255, 255)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395798",
+      "id": "126_395798",
+      "bbox": {
+        "x": 28,
+        "y": 460,
+        "w": 64,
+        "h": 20
+      },
+      "text_snippet": "我要办会",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395800",
+      "id": "126_395800",
+      "bbox": {
+        "x": 28,
+        "y": 488,
+        "w": 130,
+        "h": 88
+      },
+      "text_snippet": "9月23日 华为坤灵协作平板SOHO分销渠道沙龙 待开始",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395802",
+      "id": "126_395802",
+      "bbox": {
+        "x": 28,
+        "y": 514,
+        "w": 130,
+        "h": 62
+      },
+      "text_snippet": "华为坤灵协作平板SOHO分销渠道沙龙 待开始",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395811",
+      "id": "126_395811",
+      "bbox": {
+        "x": 128,
+        "y": 560,
+        "w": 32,
+        "h": 32
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgb(242, 85, 96)",
+        "boxShadow": "rgba(242, 85, 96, 0.25) 0px 3px 6px 0px",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395812",
+      "id": "126_395812",
+      "bbox": {
+        "x": 134,
+        "y": 566,
+        "w": 20,
+        "h": 20
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395817",
+      "id": "126_395817",
+      "bbox": {
+        "x": 188,
+        "y": 448,
+        "w": 156,
+        "h": 156
+      },
+      "text_snippet": "99999+ 物料总数 营销物料",
+      "total_child_count": 3,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395818",
+      "id": "126_395818",
+      "bbox": {
+        "x": 188,
+        "y": 448,
+        "w": 156,
+        "h": 156
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgb(255, 255, 255)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395819",
+      "id": "126_395819",
+      "bbox": {
+        "x": 200,
+        "y": 502,
+        "w": 84,
+        "h": 54
+      },
+      "text_snippet": "99999+ 物料总数",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395820",
+      "id": "126_395820",
+      "bbox": {
+        "x": 200,
+        "y": 502,
+        "w": 132,
+        "h": 32
+      },
+      "text_snippet": "99999+",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395822",
+      "id": "126_395822",
+      "bbox": {
+        "x": 200,
+        "y": 538,
+        "w": 56,
+        "h": 18
+      },
+      "text_snippet": "物料总数",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395833",
+      "id": "126_395833",
+      "bbox": {
+        "x": 200,
+        "y": 460,
+        "w": 64,
+        "h": 20
+      },
+      "text_snippet": "营销物料",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395835",
+      "id": "126_395835",
+      "bbox": {
+        "x": 16,
+        "y": 616,
+        "w": 328,
+        "h": 156
+      },
+      "text_snippet": "更多 99999+ 新增访客 (周) 同比 2.6% 26728 兴趣访客 (周) 同比 2.6% 26000 互动访客 (周) 同比 2.6% 分享获客",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395836",
+      "id": "126_395836",
+      "bbox": {
+        "x": 16,
+        "y": 616,
+        "w": 328,
+        "h": 156
+      },
+      "text_snippet": "更多 99999+ 新增访客 (周) 同比 2.6% 26728 兴趣访客 (周) 同比 2.6% 26000 互动访客 (周) 同比 2.6% 分享获客",
+      "total_child_count": 4,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395837",
+      "id": "126_395837",
+      "bbox": {
+        "x": 16,
+        "y": 616,
+        "w": 328,
+        "h": 156
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(250, 250, 250, 0.8)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395838",
+      "id": "126_395838",
+      "bbox": {
+        "x": 284,
+        "y": 628,
+        "w": 48,
+        "h": 18
+      },
+      "text_snippet": "更多",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395840",
+      "id": "126_395840",
+      "bbox": {
+        "x": 316,
+        "y": 629,
+        "w": 16,
+        "h": 16
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395849",
+      "id": "126_395849",
+      "bbox": {
+        "x": 28,
+        "y": 666,
+        "w": 304,
+        "h": 78
+      },
+      "text_snippet": "99999+ 新增访客 (周) 同比 2.6% 26728 兴趣访客 (周) 同比 2.6% 26000 互动访客 (周) 同比 2.6%",
+      "total_child_count": 3,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395850",
+      "id": "126_395850",
+      "bbox": {
+        "x": 28,
+        "y": 666,
+        "w": 84,
+        "h": 78
+      },
+      "text_snippet": "99999+ 新增访客 (周) 同比 2.6%",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395862",
+      "id": "126_395862",
+      "bbox": {
+        "x": 138,
+        "y": 666,
+        "w": 84,
+        "h": 78
+      },
+      "text_snippet": "26728 兴趣访客 (周) 同比 2.6%",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395874",
+      "id": "126_395874",
+      "bbox": {
+        "x": 248,
+        "y": 666,
+        "w": 84,
+        "h": 78
+      },
+      "text_snippet": "26000 互动访客 (周) 同比 2.6%",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395886",
+      "id": "126_395886",
+      "bbox": {
+        "x": 28,
+        "y": 628,
+        "w": 64,
+        "h": 20
+      },
+      "text_snippet": "分享获客",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395911",
+      "id": "126_395911",
+      "bbox": {
+        "x": 16,
+        "y": 784,
+        "w": 328,
+        "h": 328
+      },
+      "text_snippet": "短视频能力中心 TOP1 数通 420 /980 TOP2 SOHO 260 /980 TOP3 数通网络安全 130 /980 TOP4 光接入 76 /980 TOP5 小全光 28 /980 8",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395912",
+      "id": "126_395912",
+      "bbox": {
+        "x": 16,
+        "y": 784,
+        "w": 328,
+        "h": 328
+      },
+      "text_snippet": "短视频能力中心 TOP1 数通 420 /980 TOP2 SOHO 260 /980 TOP3 数通网络安全 130 /980 TOP4 光接入 76 /980 TOP5 小全光 28 /980 8",
+      "total_child_count": 4,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395913",
+      "id": "126_395913",
+      "bbox": {
+        "x": 16,
+        "y": 784,
+        "w": 328,
+        "h": 328
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgb(255, 255, 255)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395914",
+      "id": "126_395914",
+      "bbox": {
+        "x": 28,
+        "y": 796,
+        "w": 112,
+        "h": 20
+      },
+      "text_snippet": "短视频能力中心",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395916",
+      "id": "126_395916",
+      "bbox": {
+        "x": 28,
+        "y": 896,
+        "w": 304,
+        "h": 204
+      },
+      "text_snippet": "TOP1 数通 420 /980 TOP2 SOHO 260 /980 TOP3 数通网络安全 130 /980 TOP4 光接入 76 /980 TOP5 小全光 28 /980",
+      "total_child_count": 5,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395917",
+      "id": "126_395917",
+      "bbox": {
+        "x": 28,
+        "y": 896,
+        "w": 304,
+        "h": 26
+      },
+      "text_snippet": "TOP1 数通 420 /980",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395927",
+      "id": "126_395927",
+      "bbox": {
+        "x": 28,
+        "y": 941,
+        "w": 304,
+        "h": 26
+      },
+      "text_snippet": "TOP2 SOHO 260 /980",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395936",
+      "id": "126_395936",
+      "bbox": {
+        "x": 28,
+        "y": 985,
+        "w": 304,
+        "h": 26
+      },
+      "text_snippet": "TOP3 数通网络安全 130 /980",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395945",
+      "id": "126_395945",
+      "bbox": {
+        "x": 28,
+        "y": 1030,
+        "w": 304,
+        "h": 26
+      },
+      "text_snippet": "TOP4 光接入 76 /980",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395954",
+      "id": "126_395954",
+      "bbox": {
+        "x": 28,
+        "y": 1074,
+        "w": 304,
+        "h": 26
+      },
+      "text_snippet": "TOP5 小全光 28 /980",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395963",
+      "id": "126_395963",
+      "bbox": {
+        "x": 28,
+        "y": 830,
+        "w": 180,
+        "h": 54
+      },
+      "text_snippet": "875 视频素材总数 环比 (周) 2.6%",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_395965",
+      "id": "126_395965",
+      "bbox": {
+        "x": 28,
+        "y": 866,
+        "w": 180,
+        "h": 18
+      },
+      "text_snippet": "视频素材总数 环比 (周) 2.6%",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396066",
+      "id": "126_396066",
+      "bbox": {
+        "x": 16,
+        "y": 1128,
+        "w": 328,
+        "h": 40
+      },
+      "text_snippet": "管理应用",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396067",
+      "id": "126_396067",
+      "bbox": {
+        "x": 16,
+        "y": 1128,
+        "w": 328,
+        "h": 40
+      },
+      "text_snippet": "管理应用",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0.05)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396068",
+      "id": "126_396068",
+      "bbox": {
+        "x": 142,
+        "y": 1137,
+        "w": 76,
+        "h": 22
+      },
+      "text_snippet": "管理应用",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396069",
+      "id": "126_396069",
+      "bbox": {
+        "x": 142,
+        "y": 1140,
+        "w": 16,
+        "h": 16
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396070",
+      "id": "126_396070",
+      "bbox": {
+        "x": 142,
+        "y": 1140,
+        "w": 16,
+        "h": 16
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396071",
+      "id": "126_396071",
+      "bbox": {
+        "x": 142,
+        "y": 1140,
+        "w": 16,
+        "h": 16
+      },
+      "text_snippet": "",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396078",
+      "id": "126_396078",
+      "bbox": {
+        "x": 0,
+        "y": 1184,
+        "w": 360,
+        "h": 64
+      },
+      "text_snippet": "首页 商城 营销 服务 我的",
+      "total_child_count": 5,
+      "style_summary": {
+        "background": "rgba(255, 255, 255, 0.95)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396079",
+      "id": "126_396079",
+      "bbox": {
+        "x": 0,
+        "y": 1194,
+        "w": 72,
+        "h": 44
+      },
+      "text_snippet": "首页",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396080",
+      "id": "126_396080",
+      "bbox": {
+        "x": 21,
+        "y": 1194,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396081",
+      "id": "126_396081",
+      "bbox": {
+        "x": 21,
+        "y": 1194,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 3,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396082",
+      "id": "126_396082",
+      "bbox": {
+        "x": 21,
+        "y": 1194,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396083",
+      "id": "126_396083",
+      "bbox": {
+        "x": 30,
+        "y": 1213,
+        "w": 5,
+        "h": 2
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396084",
+      "id": "126_396084",
+      "bbox": {
+        "x": 26,
+        "y": 1199,
+        "w": 20,
+        "h": 20
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396086",
+      "id": "126_396086",
+      "bbox": {
+        "x": 72,
+        "y": 1194,
+        "w": 72,
+        "h": 44
+      },
+      "text_snippet": "商城",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396087",
+      "id": "126_396087",
+      "bbox": {
+        "x": 93,
+        "y": 1194,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396088",
+      "id": "126_396088",
+      "bbox": {
+        "x": 93,
+        "y": 1194,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 3,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396089",
+      "id": "126_396089",
+      "bbox": {
+        "x": 93,
+        "y": 1194,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396090",
+      "id": "126_396090",
+      "bbox": {
+        "x": 106,
+        "y": 1203,
+        "w": 4,
+        "h": 7
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396091",
+      "id": "126_396091",
+      "bbox": {
+        "x": 98,
+        "y": 1200,
+        "w": 20,
+        "h": 19
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396093",
+      "id": "126_396093",
+      "bbox": {
+        "x": 144,
+        "y": 1194,
+        "w": 72,
+        "h": 44
+      },
+      "text_snippet": "营销",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396094",
+      "id": "126_396094",
+      "bbox": {
+        "x": 165,
+        "y": 1194,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396095",
+      "id": "126_396095",
+      "bbox": {
+        "x": 165,
+        "y": 1194,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 5,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396096",
+      "id": "126_396096",
+      "bbox": {
+        "x": 165,
+        "y": 1194,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396097",
+      "id": "126_396097",
+      "bbox": {
+        "x": 170,
+        "y": 1199,
+        "w": 9,
+        "h": 9
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396098",
+      "id": "126_396098",
+      "bbox": {
+        "x": 181,
+        "y": 1199,
+        "w": 9,
+        "h": 9
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396099",
+      "id": "126_396099",
+      "bbox": {
+        "x": 170,
+        "y": 1210,
+        "w": 9,
+        "h": 9
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396100",
+      "id": "126_396100",
+      "bbox": {
+        "x": 181,
+        "y": 1210,
+        "w": 9,
+        "h": 9
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396102",
+      "id": "126_396102",
+      "bbox": {
+        "x": 216,
+        "y": 1194,
+        "w": 72,
+        "h": 44
+      },
+      "text_snippet": "服务",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396103",
+      "id": "126_396103",
+      "bbox": {
+        "x": 237,
+        "y": 1194,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396104",
+      "id": "126_396104",
+      "bbox": {
+        "x": 237,
+        "y": 1194,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 3,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396105",
+      "id": "126_396105",
+      "bbox": {
+        "x": 237,
+        "y": 1194,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396106",
+      "id": "126_396106",
+      "bbox": {
+        "x": 242,
+        "y": 1199,
+        "w": 20,
+        "h": 20
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396107",
+      "id": "126_396107",
+      "bbox": {
+        "x": 248,
+        "y": 1205,
+        "w": 8,
+        "h": 2
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396109",
+      "id": "126_396109",
+      "bbox": {
+        "x": 288,
+        "y": 1194,
+        "w": 72,
+        "h": 44
+      },
+      "text_snippet": "我的",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396110",
+      "id": "126_396110",
+      "bbox": {
+        "x": 309,
+        "y": 1194,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396111",
+      "id": "126_396111",
+      "bbox": {
+        "x": 309,
+        "y": 1194,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 3,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396112",
+      "id": "126_396112",
+      "bbox": {
+        "x": 309,
+        "y": 1194,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396113",
+      "id": "126_396113",
+      "bbox": {
+        "x": 314,
+        "y": 1199,
+        "w": 21,
+        "h": 21
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:126_396114",
+      "id": "126_396114",
+      "bbox": {
+        "x": 319,
+        "y": 1206,
+        "w": 7,
+        "h": 3
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    }
+  ]
+}

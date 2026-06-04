@@ -1,0 +1,6 @@
+{
+  "id": "provider_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"provider_card\" \n      style={{ \n        position: 'absolute', \n        left: 12, \n        top: 852, \n        width: 336, \n        height: 160 \n      }}\n    >\n      <SectionLayout variant=\"card\" title=\"服务商信息\">\n        <div className=\"tf-cg-provider-placeholder\" />\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": ".tf-cg-provider-placeholder {\n  flex: 1;\n  background-color: var(--color-bg-disabled);\n  border-radius: var(--radius-md);\n  min-height: 40px;\n}",
+  "notes": "used SectionLayout, --color-bg-disabled, --radius-md"
+}

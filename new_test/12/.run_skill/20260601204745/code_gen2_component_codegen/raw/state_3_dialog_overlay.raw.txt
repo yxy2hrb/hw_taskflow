@@ -1,0 +1,6 @@
+{
+  "id": "dialog_overlay",
+  "reactCode": "import React from 'react';\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"dialog_overlay\"\n      className=\"tf-cg-overlay\"\n      style={{\n        position: 'absolute',\n        left: 0,\n        top: 0,\n        width: 360,\n        height: 1248,\n        background: 'rgba(0, 0, 0, 0.5)',\n        zIndex: 100,\n      }}\n    />\n  );\n}",
+  "css": ".tf-cg-overlay{box-sizing:border-box;pointer-events:auto;}",
+  "notes": "Container shell only (overlay mask); mounted dialog children render separately. Used --color-mask equivalent rgba(0,0,0,0.5) for semi-transparent background."
+}

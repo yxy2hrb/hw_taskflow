@@ -1,0 +1,38 @@
+{
+  "ok": true,
+  "input_dir": "new_test/12",
+  "model": "qwen3.7-max",
+  "codegen": "code_gen2",
+  "stamp": "20260601204745",
+  "outputs": {
+    "run_dir": "new_test/12/.run_skill/20260601204745",
+    "codegen": "code_gen2",
+    "preprocess_dir": "new_test/12/.run_skill/20260601204745/preprocess",
+    "preprocessed_html": "new_test/12/.run_skill/20260601204745/preprocess/Index.preprocessed.html",
+    "page_dsl": "new_test/12/.run_skill/20260601204745/preprocess/spec.used.json",
+    "semantic_registry": "new_test/12/.run_skill/20260601204745/preprocess/semantic_registry.json",
+    "semantic_anchors": "new_test/12/.run_skill/20260601204745/preprocess/semantic_anchors.js",
+    "blueprint": "new_test/12/.run_skill/20260601204745/blueprint/phase4/stages/blueprint_builder_input.json",
+    "state_implementation_model": "new_test/12/.run_skill/20260601204745/state_implementation/state_implementation_model.llm.json",
+    "component_codegen": "new_test/12/.run_skill/20260601204745/code_gen2_component_codegen/component_codegen.generated.json",
+    "llm_layer_html": "new_test/12/html/Index.state-model.code-gen2-layers.html",
+    "llm_layer_dir": "new_test/12/.run_skill/20260601204745/code_gen2_llm_layer_codegen",
+    "state_layers_report": "new_test/12/.run_skill/20260601204745/code_gen2_llm_layer_codegen/auto_shots/state_layers_report.json",
+    "postprocess": {
+      "state_key_nav_present": true,
+      "state_key_nav_changed": false
+    }
+  },
+  "checks": {
+    "preprocess_ok": true,
+    "semantic_anchor_count": 94,
+    "state_model_states": 4,
+    "state_model_issues": [],
+    "llm_layers_ok": true,
+    "screenshot_summary": {
+      "total_states": 4,
+      "force_pass": 4,
+      "issues_found": []
+    }
+  }
+}

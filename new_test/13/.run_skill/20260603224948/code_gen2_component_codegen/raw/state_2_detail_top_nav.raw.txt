@@ -1,0 +1,6 @@
+{
+  "id": "detail_top_nav",
+  "reactCode": "import React from 'react';\nimport TopNav from '@/components/TopNav';\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"detail_top_nav\" \n      style={{ \n        position: 'absolute', \n        left: 0, \n        top: 36, \n        width: 360, \n        height: 56 \n      }}\n    >\n      <TopNav \n        variant=\"title\" \n        title=\"产品详情\" \n        onBack={() => {}} \n        actions={['cart', 'message', 'grid']} \n      />\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"detail_top_nav\"] .font-headline-xxl {\n  font-size: var(--font-headline-16);\n  line-height: var(--line-height-20);\n  font-weight: var(--font-weight-medium);\n}",
+  "notes": "used TopNav, --font-headline-16, --line-height-20, --font-weight-medium, --color-text-primary"
+}

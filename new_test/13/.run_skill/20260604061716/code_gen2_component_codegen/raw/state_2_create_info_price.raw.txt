@@ -1,0 +1,6 @@
+{
+  "id": "info_price",
+  "reactCode": "import React from 'react';\n\nexport default function InfoPrice() {\n  return (\n    <div data-component-id=\"info_price\" className=\"tf-cg-info-price\">\n      <span className=\"font-headline-s\" style={{ fontSize: 'var(--font-headline-16)', fontWeight: 'var(--font-weight-bold)', color: 'var(--color-primary)' }}>\n        ¥21,999.00\n      </span>\n    </div>\n  );\n}",
+  "css": ".tf-cg-info-price {\n  display: inline-flex;\n  align-items: baseline;\n}",
+  "notes": "used Text component pattern, font-headline-s class, --font-headline-16, --font-weight-bold, --color-primary CSS variables for price display"
+}

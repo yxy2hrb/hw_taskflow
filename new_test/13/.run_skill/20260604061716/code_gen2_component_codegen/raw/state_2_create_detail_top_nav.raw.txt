@@ -1,0 +1,6 @@
+{
+  "id": "detail_top_nav",
+  "reactCode": "import React from 'react';\nimport TopNav from '@/components/TopNav';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"detail_top_nav\">\n      <TopNav\n        variant=\"title\"\n        title=\"\"\n        onBack={() => {}}\n        actions={['cart', 'message', 'grid']}\n      />\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used TopNav, variant=title, actions=[cart, message, grid], onBack no-op"
+}

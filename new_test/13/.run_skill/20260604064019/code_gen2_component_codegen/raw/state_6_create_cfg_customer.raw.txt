@@ -1,0 +1,6 @@
+{
+  "id": "cfg_customer",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <span\n      data-component-id=\"cfg_customer\"\n      className=\"font-body-m\"\n      style={{\n        fontSize: 'var(--font-body-14)',\n        color: 'var(--color-text-secondary)'\n      }}\n    >\n      客户类型：中小企业\n    </span>\n  );\n}",
+  "css": "",
+  "notes": "used inline span, font-body-m, --font-body-14, --color-text-secondary"
+}

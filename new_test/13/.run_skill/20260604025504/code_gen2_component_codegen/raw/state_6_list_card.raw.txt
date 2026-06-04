@@ -1,0 +1,6 @@
+{
+  "id": "list_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport { TextButton } from '@/components/ui/Button';\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"list_card\" \n      style={{ \n        position: 'absolute', \n        left: 12, \n        top: 428, \n        width: 336, \n        height: 240 \n      }}\n    >\n      <SectionLayout\n        variant=\"card\"\n        title=\"产品清单\"\n        headerRightAction={\n          <TextButton variant=\"primary\" size=\"medium\">编辑</TextButton>\n        }\n      >\n        <div style={{ flex: 1, minHeight: 160 }} />\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used SectionLayout, TextButton, --spacing-lg, --radius-lg, --color-primary"
+}

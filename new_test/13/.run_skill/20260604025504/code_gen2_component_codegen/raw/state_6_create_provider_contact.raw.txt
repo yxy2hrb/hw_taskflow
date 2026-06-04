@@ -1,0 +1,6 @@
+{
+  "id": "provider_contact",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"provider_contact\"\n      className=\"font-body-m\"\n      style={{\n        position: 'absolute',\n        left: '24px',\n        top: '896px',\n        width: '312px',\n        height: '20px',\n        fontSize: 'var(--font-body-14)',\n        color: 'var(--color-text-secondary)',\n        display: 'flex',\n        alignItems: 'center',\n        whiteSpace: 'nowrap',\n        overflow: 'hidden',\n        textOverflow: 'ellipsis'\n      }}\n    >\n      联系人：张三 | 电话：13800138000\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used Text, font-body-m, --font-body-14, --color-text-secondary, absolute bbox positioning"
+}

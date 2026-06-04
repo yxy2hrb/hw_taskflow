@@ -1,0 +1,6 @@
+{
+  "id": "config_bottom_bar",
+  "reactCode": "import React from 'react';\nimport ButtonBar from '@/components/ButtonBar';\n\nexport default function ConfigBottomBar() {\n  return (\n    <div\n      data-component-id=\"config_bottom_bar\"\n      style={{\n        position: 'absolute',\n        top: 1004,\n        left: 0,\n        width: 360,\n        height: 64,\n        backgroundColor: 'var(--color-bg-card)',\n        boxShadow: '0 -4px 12px rgba(0, 0, 0, 0.05)',\n        display: 'flex',\n        alignItems: 'center',\n        justifyContent: 'center',\n        zIndex: 10,\n      }}\n    >\n      <ButtonBar\n        variant=\"triple\"\n        thirdLabel=\"点位图\"\n        secondaryLabel=\"采购咨询\"\n        primaryLabel=\"导出\"\n        width={360}\n      />\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"config_bottom_bar\"] {\n  box-sizing: border-box;\n}",
+  "notes": "used ButtonBar, --color-bg-card"
+}

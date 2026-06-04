@@ -1,0 +1,13 @@
+{
+  "state_id": 5,
+  "state_name": "成功终态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": true,
+    "issues": [],
+    "fixedBlocks": "",
+    "reviewMs": 26443,
+    "screenshot": 138894
+  }
+}

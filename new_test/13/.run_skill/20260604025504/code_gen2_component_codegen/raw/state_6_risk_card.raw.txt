@@ -1,0 +1,6 @@
+{
+  "id": "risk_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\n\nexport default function RiskCard() {\n  return (\n    <div\n      data-component-id=\"risk_card\"\n      style={{\n        position: 'absolute',\n        left: 12,\n        top: 296,\n        width: 336,\n        height: 120,\n      }}\n    >\n      <SectionLayout variant=\"card\" title=\"风险提示\">\n        <div className=\"flex items-start\" style={{ gap: 'var(--spacing-md)' }}>\n          <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"var(--color-warning)\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\" style={{ flexShrink: 0, marginTop: 2 }}>\n            <path d=\"M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z\"/>\n            <line x1=\"12\" y1=\"9\" x2=\"12\" y2=\"13\"/>\n            <line x1=\"12\" y1=\"17\" x2=\"12.01\" y2=\"17\"/>\n          </svg>\n          <span className=\"font-body-s-multi\" style={{ color: 'var(--color-text-secondary)' }}>\n            部分产品库存紧张，建议提前与客户确认交付周期，避免违约风险。\n          </span>\n        </div>\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used SectionLayout, --color-warning, --color-text-secondary, --spacing-md, font-body-s-multi"
+}

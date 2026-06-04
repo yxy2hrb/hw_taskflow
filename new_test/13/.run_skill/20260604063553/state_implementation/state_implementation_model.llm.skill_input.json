@@ -1,0 +1,1327 @@
+{
+  "viewport": {
+    "width": 360,
+    "initial_height": 936,
+    "width_locked": true,
+    "height_may_expand": true
+  },
+  "blueprint": {
+    "action": "done",
+    "phase": 4,
+    "source_dir": "new_test/13",
+    "generated_at": "2026-06-03T16:44:17.183Z",
+    "sources": {
+      "brief": "new_test\\13\\html\\input.txt",
+      "page_dsl": "new_test\\13\\spec.json",
+      "phase1_user_story": "new_test\\13\\html\\_run_skills_qwen3.7-max_20260603164243_phase3\\stages\\phase1_user_story.json",
+      "phase2_state_enumeration": "new_test\\13\\html\\_run_skills_qwen3.7-max_20260603164243_phase3\\stages\\phase2_state_enumeration.json",
+      "phase3_implementation_plan": "new_test\\13\\html\\_run_skills_qwen3.7-max_20260603164243_phase3\\stages\\phase3_implementation_plan.json"
+    },
+    "brief": "用户点击某一商品卡片后进入产品详情页，页面上方为顶部导航栏和产品图片展示区，导航栏包含返回、购物车、清单和分享等操作入口，图片区展示产品主图及图片序号。页面中部必须按从上到下的独立卡片结构展示，不要把产品详情压缩成四个小入口：第一块是一个大的产品信息卡片，展示产品名称/型号、部件编码、价格、厂商、核心参数、描述信息和相关配件入口；第二块是独立的售后信息卡片，展示保修政策、质保服务、服务保障等；第三块是独立的工具卡片，展示售前/售后工具入口；第四块是独立的评论/问答卡片，展示问答、评价或咨询内容入口。页面底部固定操作栏必须包含三组内容：左侧是两个图标入口“产品对比”和“咨询”（图标在上或左、文字标签可见）；中间是次要按钮“加入采购单”；右侧是红色主按钮“加入配单”。用户确认产品后点击“加入配单”，页面在当前产品详情页上方弹出半模态配单页，背景被灰色遮罩弱化；半模态弹窗不要铺满大半个屏幕，建议从屏幕中下部弹出，高度约占屏幕 55%–60%，顶部必须有标题栏，标题为“产品清单”，同时包含关闭按钮和“全部清空”操作。弹窗内容从上到下展示风险提示条、已选产品卡片（产品缩略图、型号说明、价格、数量加减控件）、推荐配件入口、合计金额以及底部红色“去配单”主按钮。用户点击“去配单”后，在当前页面上方进一步弹出配单信息编辑页，背景继续保持遮罩状态，底部弹窗显示“编辑配单信息”标题、关闭按钮、配单名称以及底部“确定”按钮，用户可在此确认或修改配单名称。点击“确定”后，页面跳转至配单详情页，整体布局变为“顶部导航 + 多张信息卡片 + 底部固定操作栏”。顶部导航包含返回按钮、配单详情标题和分享入口；页面中部首先展示配单概览卡片，包括配单名称、编辑入口、客户类型、总报价和总成本价等核心信息；随后展示风险提示卡片，用于提示当前方案可能缺少 UPS、路由器、防火墙等关键设备，并提供去添加入口；产品清单卡片呈现已选产品信息、数量和单价，并支持编辑；继续向下展示方案特色卡片，支持添加或编辑方案特色内容；服务商信息卡片展示服务商名称、联系人和联系电话等服务支持信息。页面底部固定操作栏包含“点位图”“采购咨询”和“导出”等操作，其中“导出”为主要行动按钮，用于生成或输出最终配单方案。",
+    "user_story_confirmed": {
+      "actor": "有采购或配单需求的移动端用户",
+      "context": "移动端产品列表页",
+      "trigger": "点击某一商品卡片",
+      "happy_path": "进入产品详情页，查看顶部导航与产品图片，向下浏览由产品信息、售后信息、工具、评论/问答组成的四个独立卡片，点击底部固定操作栏的红色“加入配单”按钮；在当前页上方弹出高度约55%-60%的半模态“产品清单”配单页，查看风险提示、已选产品卡片及合计金额，点击底部红色“去配单”按钮；在继续弹出的“编辑配单信息”弹窗中确认或修改配单名称并点击“确定”；最终跳转至配单详情页，查看包含配单概览、风险提示、产品清单、方案特色及服务商信息的多张卡片，并使用底部的“导出”按钮生成最终方案。",
+      "goal": "完成产品详情查看、加入配单、编辑配单信息并最终导出配单方案",
+      "benefit": "能够高效地挑选产品、管理配单清单并输出完整的配单方案以供后续采购或分享",
+      "success_criteria": "成功跳转至配单详情页，页面完整展示配单概览、风险提示、产品清单等卡片信息，且底部操作栏的“导出”按钮可正常点击以生成最终方案",
+      "acceptance_criteria_steps": [
+        {
+          "type": "given",
+          "text": "用户停留在移动端“产品”列表页"
+        },
+        {
+          "type": "and",
+          "text": "页面商品列表区展示有多个商品卡片"
+        },
+        {
+          "type": "when",
+          "text": "用户点击某一商品卡片"
+        },
+        {
+          "type": "then",
+          "text": "系统进入产品详情页，顶部展示导航栏和产品图片展示区，底部展示包含“产品对比”、“咨询”、“加入采购单”和红色“加入配单”的固定操作栏"
+        },
+        {
+          "type": "and",
+          "text": "页面中部从上到下独立展示产品信息、售后信息、工具和评论/问答四个卡片"
+        },
+        {
+          "type": "when",
+          "text": "用户点击底部红色的“加入配单”按钮"
+        },
+        {
+          "type": "then",
+          "text": "页面弹出高度约占屏幕55%-60%的半模态“产品清单”配单页，背景被灰色遮罩弱化"
+        },
+        {
+          "type": "and",
+          "text": "弹窗内展示风险提示条、已选产品卡片、推荐配件入口、合计金额及底部红色“去配单”按钮"
+        },
+        {
+          "type": "when",
+          "text": "用户点击“去配单”按钮"
+        },
+        {
+          "type": "then",
+          "text": "页面进一步弹出“编辑配单信息”底部弹窗，展示配单名称及“确定”按钮"
+        },
+        {
+          "type": "when",
+          "text": "用户确认或修改配单名称后点击“确定”按钮"
+        },
+        {
+          "type": "then",
+          "text": "页面跳转至配单详情页，顶部展示导航与分享入口，底部展示包含“点位图”、“采购咨询”和“导出”的固定操作栏"
+        },
+        {
+          "type": "and",
+          "text": "页面中部依次展示配单概览、风险提示、产品清单、方案特色和服务商信息卡片"
+        }
+      ],
+      "user_story": "作为有采购或配单需求的移动端用户，当在产品列表页点击某一商品卡片时，我希望能查看产品详情并将其加入配单，在编辑配单信息后跳转至配单详情页查看完整方案，直到点击导出按钮生成最终配单方案为止。",
+      "platform": "mobile"
+    },
+    "merged_states_by_id": {
+      "state_1": {
+        "id": "state_1",
+        "label": "产品列表初始状态",
+        "description": "触发条件：无，任务流起点。\n展示信息：移动端产品列表页，包含状态栏、标题栏、分类标签栏、产品分类区、筛选按钮、多个商品卡片以及底部导航栏。\n继承信息：无。",
+        "implementation": null
+      },
+      "state_2": {
+        "id": "state_2",
+        "label": "产品详情页面状态",
+        "description": "触发条件：用户在产品列表页点击某一商品卡片。\n展示信息：产品详情页，顶部展示导航栏和产品图片展示区；中部从上到下独立展示产品信息、售后信息、工具和评论/问答四个卡片；底部展示包含“产品对比”、“咨询”、“加入采购单”和红色“加入配单”的固定操作栏。\n继承信息：无，跳转至新页面，仅继承系统状态栏。",
+        "implementation": {
+          "implementation_plan": "采用全屏纵向滚动详情页。顶部为沉浸式产品图片轮播区，叠加透明导航栏（含返回、购物车、清单、分享图标），向下滚动时导航栏背景渐变为白色。中部纵向排列四个独立大卡片，页面高度根据内容向下扩展：1. 产品信息卡片（名称、型号、部件编码、价格、厂商、核心参数、描述、相关配件入口）；2. 售后信息卡片（保修、质保、服务保障）；3. 工具卡片（售前/售后工具入口）；4. 评论/问答卡片（问答、评价入口）。底部固定操作栏：左侧“产品对比”和“咨询”图标加文字，中间“加入采购单”次要按钮，右侧红色“加入配单”主按钮。"
+        }
+      },
+      "state_3": {
+        "id": "state_3",
+        "label": "产品清单半模态弹窗态",
+        "description": "触发条件：用户在产品详情页底部点击红色的“加入配单”按钮。\n展示信息：页面背景被灰色遮罩弱化，上方弹出高度约占屏幕55%-60%的半模态“产品清单”配单页。弹窗内展示标题栏、风险提示条、已选产品卡片、推荐配件入口、合计金额及底部红色“去配单”按钮。\n继承信息：继承 state_2 的产品详情页作为背景并被遮罩弱化；主体区域新增半模态弹窗。",
+        "implementation": {
+          "implementation_plan": "采用标准半模态底部抽屉（Bottom Sheet）。背景覆盖半透明灰色遮罩，抽屉从底部滑入，高度占屏幕 55%-60%，顶部圆角。抽屉顶部为标题栏，左侧“产品清单”标题，右侧“全部清空”文字按钮和关闭图标。主体内容区纵向滚动：顶部黄色风险提示条；接着是已选产品卡片（含缩略图、型号、价格、数量加减控件）；下方是推荐配件入口卡片。底部固定区域显示“合计金额”和红色“去配单”主按钮。"
+        }
+      },
+      "state_4": {
+        "id": "state_4",
+        "label": "编辑配单弹窗初始态",
+        "description": "触发条件：用户在“产品清单”半模态弹窗中点击底部的“去配单”按钮。\n展示信息：页面进一步弹出“编辑配单信息”底部弹窗，背景继续保持遮罩状态。弹窗展示标题、关闭按钮、配单名称输入框以及底部“确定”按钮。\n继承信息：继承 state_3 的遮罩背景；在弹窗区域切换为“编辑配单信息”底部弹窗内容。",
+        "implementation": {
+          "implementation_plan": "采用标准底部小弹窗（Bottom Sheet）。在 state_3 的遮罩基础上，从底部滑入一个高度约 30%-40% 的新弹窗，顶部圆角。弹窗顶部为标题栏，居中“编辑配单信息”标题，右侧关闭图标。中部为配单名称 Text field，标签“配单名称”，占位符“请输入配单名称”，默认带焦点并弹出软键盘。底部固定区域放置宽大的红色“确定”主按钮。"
+        }
+      },
+      "state_5": {
+        "id": "state_5",
+        "label": "配单信息提交中状态",
+        "description": "触发条件：用户在“编辑配单信息”弹窗中确认或修改配单名称后点击“确定”按钮。\n展示信息：“确定”按钮进入 loading 禁用状态，页面出现提交中反馈，表示系统正在处理配单创建请求。\n继承信息：继承 state_4 的弹窗内容和遮罩背景；“确定”按钮变为 loading 状态。",
+        "implementation": {
+          "implementation_plan": "采用按钮内 Loading 态。继承 state_4 的弹窗布局，底部的红色“确定”按钮变为禁用状态，内部显示白色 CircularProgress 动画和“提交中...”文案。配单名称 Text field 变为只读/禁用状态，防止用户修改。背景遮罩和弹窗其余部分保持不变。"
+        }
+      },
+      "state_6": {
+        "id": "state_6",
+        "label": "配单详情页面成功态",
+        "description": "触发条件：系统成功处理配单创建请求，完成页面跳转。\n展示信息：配单详情页，顶部展示导航与分享入口；中部依次展示配单概览、风险提示、产品清单、方案特色和服务商信息卡片；底部展示包含“点位图”、“采购咨询”和“导出”的固定操作栏。\n继承信息：无，跳转至全新页面，仅继承系统状态栏。",
+        "implementation": {
+          "implementation_plan": "采用全屏纵向滚动详情页。顶部 Top app bar，左侧返回按钮，居中“配单详情”标题，右侧分享图标。中部纵向排列五个独立卡片，页面高度向下扩展：1. 配单概览卡片（名称、编辑入口、客户类型、总报价、总成本价）；2. 风险提示卡片（缺少设备提示及“去添加”入口）；3. 产品清单卡片（产品列表、数量、单价、编辑入口）；4. 方案特色卡片（特色内容及添加/编辑入口）；5. 服务商信息卡片（名称、联系人、电话）。底部固定操作栏：左侧“点位图”和“采购咨询”图标加文字，右侧红色“导出”主按钮。"
+        }
+      }
+    },
+    "page_dsl": {
+      "UI整体描述": "这是一个移动应用的‘产品’页面，主要功能是展示和购买协作平板及相关设备。页面顶部显示时间、网络状态和电量信息，中间区域展示不同系列的产品列表，底部为导航栏，包含五个主要功能入口。",
+      "页面构成": [
+        "状态栏",
+        "标题栏",
+        "分类标签栏",
+        "产品分类区",
+        "商品列表区",
+        "底部导航栏"
+      ],
+      "视觉风格": "简洁现代，采用白色背景与卡片式设计，图标使用灰色、橙色、绿色等鲜明色彩突出功能区分，文字清晰易读，整体布局规整，注重商品展示与交互引导。",
+      "各个区域组件信息分述": [
+        {
+          "组件类型": "状态栏",
+          "承担的功能": "显示系统状态信息",
+          "承载的信息": "08:08、Wi-Fi信号、蜂窝信号、电池电量100%",
+          "组件的配色样式和布局": "位于页面最上方，灰色背景，左侧显示时间，右侧依次排列信号和电量图标",
+          "组件所处的位置": "页面顶部"
+        },
+        {
+          "组件类型": "标题栏",
+          "承担的功能": "显示当前页面名称及提供交互入口",
+          "承载的信息": "产品",
+          "组件的配色样式和布局": "黑色字体，右侧有搜索图标、购物车图标（带红色数字1）和我的文档图标",
+          "组件所处的位置": "状态栏下方"
+        },
+        {
+          "组件类型": "分类标签栏",
+          "承担的功能": "切换不同产品类别",
+          "承载的信息": "关接入、存储、协作平板、视频会议、智能门禁",
+          "组件的配色样式和布局": "横向排列的图标按钮，每个按钮包含图标和文字说明，当前选中项为协作平板，背景为浅灰色圆角矩形",
+          "组件所处的位置": "标题栏下方"
+        },
+        {
+          "组件类型": "产品分类区",
+          "承担的功能": "展示当前分类下的子系列",
+          "承载的信息": "协作平板、idealHub S2系列、idealHub B系列",
+          "组件的配色样式和布局": "横向排列的标签，理想Hub S2系列为红色文字，其余为灰色文字，右侧有下拉箭头",
+          "组件所处的位置": "分类标签栏下方"
+        },
+        {
+          "组件类型": "筛选按钮",
+          "承担的功能": "展开筛选条件",
+          "承载的信息": "筛选",
+          "组件的配色样式和布局": "灰色文字，右侧有向下三角形图标，位于商品列表上方",
+          "组件所处的位置": "产品分类区下方"
+        },
+        {
+          "组件类型": "商品卡片",
+          "承担的功能": "展示单个商品信息并支持购买操作",
+          "承载的信息": "idealHub B3 Base-75寸、EOS、享现货、提供1080P高清云会议体验、光学防蓝光、健康护眼、¥21,999.00",
+          "组件的配色样式和布局": "白色圆角矩形卡片，内含商品图片、名称、标签、描述、价格、数量选择按钮（减号、数字1、加号）",
+          "组件所处的位置": "商品列表区第一项"
+        },
+        {
+          "组件类型": "商品卡片",
+          "承担的功能": "展示单个商品信息并支持购买操作",
+          "承载的信息": "idealHub B2 Base-75寸、EOS、享现货、提供1080P高清云会议体验、光学防蓝光、健康护眼、¥21,999.00",
+          "组件的配色样式和布局": "白色圆角矩形卡片，内含商品图片、名称、标签、描述、价格、数量选择按钮（减号、数字1、加号）",
+          "组件所处的位置": "商品列表区第二项"
+        },
+        {
+          "组件类型": "商品卡片",
+          "承担的功能": "展示单个商品信息并支持购买操作",
+          "承载的信息": "idealShare KEY（Type-A）、提供1080P高清云会议体验、光学防蓝光、健康护眼、面向中小企业",
+          "组件的配色样式和布局": "白色圆角矩形卡片，内含商品图片、名称、描述、红色加号按钮",
+          "组件所处的位置": "商品列表区第三项"
+        },
+        {
+          "组件类型": "商品卡片",
+          "承担的功能": "展示单个商品信息并支持购买操作",
+          "承载的信息": "IdealHub S2 - 86寸、即将上市、提供1080P高清云会议体验、光学防蓝光、健康护眼、面向中小企业",
+          "组件的配色样式和布局": "白色圆角矩形卡片，内含商品图片、名称、标签、描述、红色加号按钮",
+          "组件所处的位置": "商品列表区第四项"
+        },
+        {
+          "组件类型": "商品卡片",
+          "承担的功能": "展示单个商品信息并支持购买操作",
+          "承载的信息": "idealHub B2 Base-75寸、EOS、享现货、提供1080P高清云会议体验、光学防蓝光、健康护眼、¥21,999.00",
+          "组件的配色样式和布局": "白色圆角矩形卡片，内含商品图片、名称、标签、描述、价格、数量选择按钮（减号、数字1、加号）",
+          "组件所处的位置": "商品列表区第五项"
+        },
+        {
+          "组件类型": "底部导航栏",
+          "承担的功能": "切换不同功能页面",
+          "承载的信息": "首页、商城、工作台、服务、我的",
+          "组件的配色样式和布局": "五个图标按钮横向排列，当前选中项为红色，其余为灰色，图标下方有对应文字标签",
+          "组件所处的位置": "页面底部"
+        }
+      ]
+    }
+  },
+  "semantic_registry": {
+    "悬浮功能按钮-左下角悬浮": {
+      "selector": "#5_2727",
+      "semantic": "悬浮功能按钮",
+      "text": "",
+      "area": "主体内容区域",
+      "policy": "replaceable"
+    },
+    "底部导航栏-底部横向区域": {
+      "selector": "#2_112933",
+      "semantic": "底部导航栏",
+      "text": "首页 商城 工作台 服务 我的",
+      "area": "底部区域",
+      "policy": "persistent-or-hideable"
+    },
+    "底部导航项-首页-底部靠左": {
+      "selector": "#5_2341",
+      "semantic": "底部导航项-首页",
+      "text": "首页",
+      "area": "底部区域",
+      "policy": "persistent-or-hideable"
+    },
+    "底部导航项-商城当前选中-底部靠左中": {
+      "selector": "#5_2348",
+      "semantic": "底部导航项-商城（当前选中）",
+      "text": "商城",
+      "area": "底部区域",
+      "policy": "persistent-or-hideable"
+    },
+    "底部导航项-工作台-底部居中": {
+      "selector": "#5_2355",
+      "semantic": "底部导航项-工作台",
+      "text": "工作台",
+      "area": "底部区域",
+      "policy": "persistent-or-hideable"
+    },
+    "底部导航项-服务-底部靠右中": {
+      "selector": "#5_2364",
+      "semantic": "底部导航项-服务",
+      "text": "服务",
+      "area": "底部区域",
+      "policy": "persistent-or-hideable"
+    },
+    "底部导航项-我的-底部靠右": {
+      "selector": "#5_2371",
+      "semantic": "底部导航项-我的",
+      "text": "我的",
+      "area": "底部区域",
+      "policy": "persistent-or-hideable"
+    },
+    "顶部状态栏-顶部横向区域": {
+      "selector": "#2_112936",
+      "semantic": "顶部状态栏",
+      "text": "08:08",
+      "area": "顶部区域",
+      "policy": "persistent-or-hideable"
+    },
+    "状态栏右侧系统图标组-顶部靠右": {
+      "selector": "#5_1478",
+      "semantic": "状态栏右侧系统图标组",
+      "text": "",
+      "area": "顶部区域",
+      "policy": "persistent-or-hideable"
+    },
+    "顶部标题栏与Tab导航区-顶部横向区域": {
+      "selector": "#2_112937",
+      "semantic": "顶部标题栏与Tab导航区",
+      "text": "产品 配单 门店 我的自定义",
+      "area": "顶部区域",
+      "policy": "persistent-or-hideable"
+    },
+    "当前选中的标题Tab-顶部靠左": {
+      "selector": "#2_112939",
+      "semantic": "当前选中的标题Tab",
+      "text": "产品",
+      "area": "顶部区域",
+      "policy": "hideable"
+    },
+    "顶部功能图标组-顶部靠右": {
+      "selector": "#2_112943",
+      "semantic": "顶部功能图标组",
+      "text": "我的自定义",
+      "area": "顶部区域",
+      "policy": "hideable"
+    },
+    "搜索功能图标-顶部靠右": {
+      "selector": "#2_112944",
+      "semantic": "搜索功能图标",
+      "text": "",
+      "area": "顶部区域",
+      "policy": "hideable"
+    },
+    "购物车功能图标-顶部靠右": {
+      "selector": "#2_112945",
+      "semantic": "购物车功能图标",
+      "text": "",
+      "area": "顶部区域",
+      "policy": "hideable"
+    },
+    "我的自定义功能图标-顶部靠右": {
+      "selector": "#2_112952",
+      "semantic": "我的自定义功能图标",
+      "text": "我的自定义",
+      "area": "顶部区域",
+      "policy": "hideable"
+    },
+    "横向分类标签栏-顶部横向区域": {
+      "selector": "#2_112953",
+      "semantic": "横向分类标签栏",
+      "text": "光接入 存储 协作平板 视频会议 智能安防 广场屏 昇腾APN 计算 全部",
+      "area": "顶部区域",
+      "policy": "hideable"
+    },
+    "当前选中的分类标签项-中间靠左": {
+      "selector": "#5_2177",
+      "semantic": "当前选中的分类标签项",
+      "text": "协作平板",
+      "area": "顶部区域",
+      "policy": "hideable"
+    },
+    "全部分类展开按钮-顶部靠右": {
+      "selector": "#5_2291",
+      "semantic": "全部分类展开按钮",
+      "text": "全部",
+      "area": "顶部区域",
+      "policy": "hideable"
+    },
+    "左侧子分类导航栏-左侧纵向区域": {
+      "selector": "#2_112955",
+      "semantic": "左侧子分类导航栏",
+      "text": "协作平板 其他",
+      "area": "主体内容区域",
+      "policy": "replaceable"
+    },
+    "当前选中的左侧导航项-左侧靠上": {
+      "selector": "#5_1472",
+      "semantic": "当前选中的左侧导航项",
+      "text": "协作平板",
+      "area": "主体内容区域",
+      "policy": "replaceable"
+    },
+    "右侧商品列表及筛选区-右侧主体区域": {
+      "selector": "#2_112956",
+      "semantic": "右侧商品列表及筛选区",
+      "text": "IdeaHub S2系列 IdeaHub B系列 筛选项3 筛选项4 筛选项5 筛选项6 筛选 售罄 IdeaHub B3 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝",
+      "area": "主体内容区域",
+      "policy": "replaceable"
+    },
+    "子系列分类标签-右侧靠上": {
+      "selector": "#5_2642",
+      "semantic": "子系列分类标签",
+      "text": "IdeaHub S2系列",
+      "area": "主体内容区域",
+      "policy": "replaceable"
+    },
+    "筛选条件按钮-右侧靠上": {
+      "selector": "#5_2720",
+      "semantic": "筛选条件按钮",
+      "text": "筛选",
+      "area": "主体内容区域",
+      "policy": "replaceable"
+    },
+    "商品卡片售罄状态-右侧列表第一项": {
+      "selector": "#2_112960",
+      "semantic": "商品卡片（售罄状态）",
+      "text": "售罄 IdeaHub B3 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会",
+      "area": "主体内容区域",
+      "policy": "replaceable"
+    },
+    "商品卡片热销状态-右侧列表第二项": {
+      "selector": "#2_112970",
+      "semantic": "商品卡片（热销状态）",
+      "text": "热销 IdeaHub B2 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会",
+      "area": "主体内容区域",
+      "policy": "replaceable"
+    },
+    "商品卡片新品状态-右侧列表第三项": {
+      "selector": "#2_112983",
+      "semantic": "商品卡片（新品状态）",
+      "text": "新品 IdeaHub B2 Base-75 寸 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、经理室、开",
+      "area": "主体内容区域",
+      "policy": "replaceable"
+    },
+    "商品卡片配件类-右侧列表第四项": {
+      "selector": "#2_112996",
+      "semantic": "商品卡片（配件类）",
+      "text": "IdeaShare KEY （Type-A） 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、经理室、开放",
+      "area": "主体内容区域",
+      "policy": "replaceable"
+    },
+    "商品卡片即将上市状态-右侧列表第五项": {
+      "selector": "#2_113005",
+      "semantic": "商品卡片（即将上市状态）",
+      "text": "即将上市 IdeaHub S2 - 86寸 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、经理室、开放办",
+      "area": "主体内容区域",
+      "policy": "replaceable"
+    },
+    "商品卡片清库状态-右侧列表第六项": {
+      "selector": "#2_113014",
+      "semantic": "商品卡片（清库状态）",
+      "text": "清库 IdeaHub B2 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会",
+      "area": "主体内容区域",
+      "policy": "replaceable"
+    },
+    "底部导航项-首页-文本-首页": {
+      "selector": "#5_2347",
+      "semantic": "text",
+      "text": "首页",
+      "area": "bottom-area",
+      "policy": "hideable"
+    },
+    "底部导航项-商城当前选中-文本-商城": {
+      "selector": "#5_2354",
+      "semantic": "text",
+      "text": "商城",
+      "area": "bottom-area",
+      "policy": "hideable"
+    },
+    "底部导航项-工作台-文本-工作台": {
+      "selector": "#5_2363",
+      "semantic": "text",
+      "text": "工作台",
+      "area": "bottom-area",
+      "policy": "hideable"
+    },
+    "底部导航项-服务-文本-服务": {
+      "selector": "#5_2370",
+      "semantic": "text",
+      "text": "服务",
+      "area": "bottom-area",
+      "policy": "hideable"
+    },
+    "底部导航项-我的-文本-我的": {
+      "selector": "#5_2377",
+      "semantic": "text",
+      "text": "我的",
+      "area": "bottom-area",
+      "policy": "hideable"
+    },
+    "0808-文本": {
+      "selector": "#5_1477",
+      "semantic": "text",
+      "text": "08:08",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "产品-文本": {
+      "selector": "#5_342",
+      "semantic": "text",
+      "text": "产品",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "配单-文本": {
+      "selector": "#5_367",
+      "semantic": "text",
+      "text": "配单",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "门店-文本": {
+      "selector": "#5_267",
+      "semantic": "text",
+      "text": "门店",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "我的自定义-文本": {
+      "selector": "#5_2340",
+      "semantic": "text",
+      "text": "我的自定义",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "光接入-文本": {
+      "selector": "#5_2157",
+      "semantic": "text",
+      "text": "光接入",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "存储-文本": {
+      "selector": "#5_2176",
+      "semantic": "text",
+      "text": "存储",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "协作平板-文本": {
+      "selector": "#5_2195",
+      "semantic": "text",
+      "text": "协作平板",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "视频会议-文本": {
+      "selector": "#5_2214",
+      "semantic": "text",
+      "text": "视频会议",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "智能安防-文本": {
+      "selector": "#5_2233",
+      "semantic": "text",
+      "text": "智能安防",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "广场屏-文本": {
+      "selector": "#5_2252",
+      "semantic": "text",
+      "text": "广场屏",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "昇腾APN-文本": {
+      "selector": "#5_2271",
+      "semantic": "text",
+      "text": "昇腾APN",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "计算-文本": {
+      "selector": "#5_2290",
+      "semantic": "text",
+      "text": "计算",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "全部-文本": {
+      "selector": "#5_2292",
+      "semantic": "text",
+      "text": "全部",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "协作平板-文本-2": {
+      "selector": "#5_1474",
+      "semantic": "text",
+      "text": "协作平板",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "其他-文本": {
+      "selector": "#5_1476",
+      "semantic": "text",
+      "text": "其他",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "IdeaHub-S2系列-文本": {
+      "selector": "#5_2647",
+      "semantic": "text",
+      "text": "IdeaHub S2系列",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "IdeaHub-B系列-文本": {
+      "selector": "#5_2659",
+      "semantic": "text",
+      "text": "IdeaHub B系列",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "筛选项3-文本": {
+      "selector": "#5_2671",
+      "semantic": "text",
+      "text": "筛选项3",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "筛选项4-文本": {
+      "selector": "#5_2683",
+      "semantic": "text",
+      "text": "筛选项4",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "筛选项5-文本": {
+      "selector": "#5_2695",
+      "semantic": "text",
+      "text": "筛选项5",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "筛选项6-文本": {
+      "selector": "#5_2707",
+      "semantic": "text",
+      "text": "筛选项6",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "筛选-文本": {
+      "selector": "#5_2721",
+      "semantic": "text",
+      "text": "筛选",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "售罄-文本": {
+      "selector": "#5_1431",
+      "semantic": "text",
+      "text": "售罄",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "IdeaHub-B3-Base-75-寸-文本": {
+      "selector": "#2_112964",
+      "semantic": "text",
+      "text": "IdeaHub B3 Base-75 寸",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "EOS-文本": {
+      "selector": "#5_2059",
+      "semantic": "text",
+      "text": "EOS",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "非现货-文本": {
+      "selector": "#5_2062",
+      "semantic": "text",
+      "text": "非现货",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "2199900-文本": {
+      "selector": "#5_432",
+      "semantic": "text",
+      "text": "￥21,999.00",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "1-文本": {
+      "selector": "#5_2628",
+      "semantic": "text",
+      "text": "1",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "热销-文本": {
+      "selector": "#5_1423",
+      "semantic": "text",
+      "text": "热销",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "IdeaHub-B2-Base-75-寸-文本": {
+      "selector": "#2_112974",
+      "semantic": "text",
+      "text": "IdeaHub B2 Base-75 寸",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "EOS-文本-2": {
+      "selector": "#5_2074",
+      "semantic": "text",
+      "text": "EOS",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "非现货-文本-2": {
+      "selector": "#5_2077",
+      "semantic": "text",
+      "text": "非现货",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "金牌价-文本": {
+      "selector": "#5_245",
+      "semantic": "text",
+      "text": "金牌价",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "3290000-文本": {
+      "selector": "#2_112979",
+      "semantic": "text",
+      "text": "¥32,900.00",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "2199900-文本-2": {
+      "selector": "#5_495",
+      "semantic": "text",
+      "text": "￥21,999.00",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "1-文本-2": {
+      "selector": "#5_2613",
+      "semantic": "text",
+      "text": "1",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "新品-文本": {
+      "selector": "#5_1437",
+      "semantic": "text",
+      "text": "新品",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "IdeaHub-B2-Base-75-寸-文本-2": {
+      "selector": "#2_112991",
+      "semantic": "text",
+      "text": "IdeaHub B2 Base-75 寸",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "1-文本-3": {
+      "selector": "#5_2583",
+      "semantic": "text",
+      "text": "1",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "IdeaShare-KEY-type-A-文本": {
+      "selector": "#2_113000",
+      "semantic": "text",
+      "text": "IdeaShare KEY （type-A）",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "即将上市-文本": {
+      "selector": "#5_1435",
+      "semantic": "text",
+      "text": "即将上市",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "IdeaHub-S2---86寸-文本": {
+      "selector": "#2_113009",
+      "semantic": "text",
+      "text": "IdeaHub S2 - 86寸",
+      "area": "content-area",
+      "policy": "hideable"
+    },
+    "清库-文本": {
+      "selector": "#5_1433",
+      "semantic": "text",
+      "text": "清库",
+      "area": "bottom-area",
+      "policy": "hideable"
+    },
+    "IdeaHub-B2-Base-75-寸-文本-3": {
+      "selector": "#2_113018",
+      "semantic": "text",
+      "text": "IdeaHub B2 Base-75 寸",
+      "area": "bottom-area",
+      "policy": "hideable"
+    },
+    "EOS-文本-3": {
+      "selector": "#5_2044",
+      "semantic": "text",
+      "text": "EOS",
+      "area": "bottom-area",
+      "policy": "hideable"
+    },
+    "非现货-文本-3": {
+      "selector": "#5_2047",
+      "semantic": "text",
+      "text": "非现货",
+      "area": "bottom-area",
+      "policy": "hideable"
+    },
+    "2199900-文本-3": {
+      "selector": "#5_398",
+      "semantic": "text",
+      "text": "￥21,999.00",
+      "area": "bottom-area",
+      "policy": "hideable"
+    },
+    "1-文本-4": {
+      "selector": "#5_2598",
+      "semantic": "text",
+      "text": "1",
+      "area": "bottom-area",
+      "policy": "hideable"
+    }
+  },
+  "anchor_bboxes": {
+    "悬浮功能按钮-左下角悬浮": [
+      8,
+      796,
+      60,
+      60
+    ],
+    "底部导航栏-底部横向区域": [
+      0,
+      0,
+      360,
+      64
+    ],
+    "底部导航项-首页-底部靠左": [
+      0,
+      882,
+      72,
+      44
+    ],
+    "底部导航项-商城当前选中-底部靠左中": [
+      72,
+      882,
+      72,
+      44
+    ],
+    "底部导航项-工作台-底部居中": [
+      144,
+      882,
+      72,
+      44
+    ],
+    "底部导航项-服务-底部靠右中": [
+      216,
+      882,
+      72,
+      44
+    ],
+    "底部导航项-我的-底部靠右": [
+      288,
+      882,
+      72,
+      44
+    ],
+    "顶部状态栏-顶部横向区域": [
+      0,
+      0,
+      360,
+      36
+    ],
+    "状态栏右侧系统图标组-顶部靠右": [
+      240,
+      12,
+      96,
+      13
+    ],
+    "顶部标题栏与Tab导航区-顶部横向区域": [
+      0,
+      36,
+      360,
+      56
+    ],
+    "当前选中的标题Tab-顶部靠左": [
+      20,
+      48,
+      48,
+      32
+    ],
+    "顶部功能图标组-顶部靠右": [
+      212,
+      44,
+      136,
+      40
+    ],
+    "搜索功能图标-顶部靠右": [
+      212,
+      44,
+      40,
+      40
+    ],
+    "购物车功能图标-顶部靠右": [
+      260,
+      44,
+      40,
+      40
+    ],
+    "我的自定义功能图标-顶部靠右": [
+      308,
+      44,
+      40,
+      40
+    ],
+    "横向分类标签栏-顶部横向区域": [
+      0,
+      92,
+      360,
+      92
+    ],
+    "当前选中的分类标签项-中间靠左": [
+      144,
+      101,
+      64,
+      66
+    ],
+    "全部分类展开按钮-顶部靠右": [
+      316,
+      100,
+      44,
+      68
+    ],
+    "左侧子分类导航栏-左侧纵向区域": [
+      0,
+      184,
+      72,
+      752
+    ],
+    "当前选中的左侧导航项-左侧靠上": [
+      0,
+      184,
+      72,
+      46
+    ],
+    "右侧商品列表及筛选区-右侧主体区域": [
+      80,
+      184,
+      280,
+      692
+    ],
+    "子系列分类标签-右侧靠上": [
+      80,
+      194,
+      115,
+      28
+    ],
+    "筛选条件按钮-右侧靠上": [
+      296,
+      237,
+      48,
+      18
+    ],
+    "商品卡片售罄状态-右侧列表第一项": [
+      80,
+      268,
+      264,
+      96
+    ],
+    "商品卡片热销状态-右侧列表第二项": [
+      80,
+      372,
+      264,
+      114
+    ],
+    "商品卡片新品状态-右侧列表第三项": [
+      80,
+      494,
+      264,
+      86
+    ],
+    "商品卡片配件类-右侧列表第四项": [
+      80,
+      588,
+      264,
+      90
+    ],
+    "商品卡片即将上市状态-右侧列表第五项": [
+      80,
+      686,
+      264,
+      86
+    ],
+    "商品卡片清库状态-右侧列表第六项": [
+      80,
+      780,
+      264,
+      96
+    ],
+    "底部导航项-首页-文本-首页": [
+      21,
+      882,
+      30,
+      30
+    ],
+    "底部导航项-商城当前选中-文本-商城": [
+      93,
+      882,
+      30,
+      30
+    ],
+    "底部导航项-工作台-文本-工作台": [
+      165,
+      882,
+      30,
+      30
+    ],
+    "底部导航项-服务-文本-服务": [
+      237,
+      882,
+      30,
+      30
+    ],
+    "底部导航项-我的-文本-我的": [
+      309,
+      882,
+      30,
+      30
+    ],
+    "0808-文本": [
+      0,
+      0,
+      360,
+      36
+    ],
+    "产品-文本": [
+      20,
+      48,
+      48,
+      32
+    ],
+    "配单-文本": [
+      84,
+      52,
+      36,
+      24
+    ],
+    "门店-文本": [
+      136,
+      52,
+      36,
+      24
+    ],
+    "我的自定义-文本": [
+      331,
+      55,
+      4,
+      4
+    ],
+    "光接入-文本": [
+      21,
+      119,
+      39,
+      12
+    ],
+    "存储-文本": [
+      88,
+      105,
+      40,
+      40
+    ],
+    "协作平板-文本": [
+      159,
+      113,
+      33,
+      24
+    ],
+    "视频会议-文本": [
+      227,
+      114,
+      33,
+      19
+    ],
+    "智能安防-文本": [
+      295,
+      115,
+      33,
+      21
+    ],
+    "广场屏-文本": [
+      363,
+      111,
+      33,
+      28
+    ],
+    "昇腾APN-文本": [
+      431,
+      113,
+      33,
+      24
+    ],
+    "计算-文本": [
+      499,
+      113,
+      33,
+      24
+    ],
+    "全部-文本": [
+      316,
+      100,
+      44,
+      68
+    ],
+    "协作平板-文本-2": [
+      0,
+      199,
+      2,
+      16
+    ],
+    "其他-文本": [
+      0,
+      230,
+      72,
+      46
+    ],
+    "IdeaHub-S2系列-文本": [
+      80,
+      194,
+      115,
+      28
+    ],
+    "IdeaHub-B系列-文本": [
+      203,
+      194,
+      108,
+      28
+    ],
+    "筛选项3-文本": [
+      319,
+      194,
+      67,
+      28
+    ],
+    "筛选项4-文本": [
+      394,
+      194,
+      67,
+      28
+    ],
+    "筛选项5-文本": [
+      469,
+      194,
+      67,
+      28
+    ],
+    "筛选项6-文本": [
+      544,
+      194,
+      67,
+      28
+    ],
+    "筛选-文本": [
+      296,
+      237,
+      48,
+      18
+    ],
+    "售罄-文本": [
+      80,
+      268,
+      36,
+      20
+    ],
+    "IdeaHub-B3-Base-75-寸-文本": [
+      164,
+      276,
+      168,
+      80
+    ],
+    "EOS-文本": [
+      164,
+      296,
+      168,
+      16
+    ],
+    "非现货-文本": [
+      164,
+      296,
+      168,
+      16
+    ],
+    "2199900-文本": [
+      164,
+      334,
+      168,
+      22
+    ],
+    "1-文本": [
+      164,
+      334,
+      168,
+      22
+    ],
+    "热销-文本": [
+      80,
+      372,
+      36,
+      20
+    ],
+    "IdeaHub-B2-Base-75-寸-文本": [
+      164,
+      380,
+      168,
+      98
+    ],
+    "EOS-文本-2": [
+      164,
+      400,
+      168,
+      16
+    ],
+    "非现货-文本-2": [
+      164,
+      400,
+      168,
+      16
+    ],
+    "金牌价-文本": [
+      164,
+      438,
+      168,
+      14
+    ],
+    "3290000-文本": [
+      164,
+      438,
+      168,
+      14
+    ],
+    "2199900-文本-2": [
+      164,
+      456,
+      168,
+      22
+    ],
+    "1-文本-2": [
+      164,
+      456,
+      168,
+      22
+    ],
+    "新品-文本": [
+      80,
+      494,
+      36,
+      20
+    ],
+    "IdeaHub-B2-Base-75-寸-文本-2": [
+      164,
+      502,
+      12,
+      12
+    ],
+    "1-文本-3": [
+      164,
+      550,
+      168,
+      22
+    ],
+    "IdeaShare-KEY-type-A-文本": [
+      164,
+      596,
+      168,
+      74
+    ],
+    "即将上市-文本": [
+      80,
+      686,
+      56,
+      20
+    ],
+    "IdeaHub-S2---86寸-文本": [
+      164,
+      694,
+      168,
+      70
+    ],
+    "清库-文本": [
+      80,
+      780,
+      36,
+      20
+    ],
+    "IdeaHub-B2-Base-75-寸-文本-3": [
+      164,
+      788,
+      168,
+      80
+    ],
+    "EOS-文本-3": [
+      164,
+      808,
+      168,
+      16
+    ],
+    "非现货-文本-3": [
+      164,
+      808,
+      168,
+      16
+    ],
+    "2199900-文本-3": [
+      164,
+      846,
+      168,
+      22
+    ],
+    "1-文本-4": [
+      164,
+      846,
+      168,
+      22
+    ]
+  },
+  "layout_constraints": [
+    "Ordinary page cards should use weak layout hints instead of fixed bbox: layout.group, layout.order, layout.flow, layout.widthHint, layout.heightMode:auto, layout.startAnchor, and layout.spacingHint.",
+    "Ordinary page cards should not invent exact x/y/height unless there is a clear visual anchor, fixed start point, two-column grid, sticky/floating behavior, or edge alignment requirement.",
+    "Fixed containers must use bbox: Overlay, mask, BottomSheet, Drawer, Modal, Dialog, Toast, top nav, bottom bar, and floating action bars.",
+    "If a state keeps a top/status anchor, fixed created content must start below that anchor bbox unless it is an intentional transparent/hero background; flow cards should use layout.startAnchor.",
+    "If a state keeps a bottom/nav anchor, fixed created content must end above that anchor bbox; flow cards should use layout.endBeforeAnchor or a scrollable content group.",
+    "If the state is not a modal, drawer, popover, toast, or overlay, every fixed created component bbox must avoid overlap with kept bboxes.",
+    "Fixed body regions at the same z-index must be bbox-mutually exclusive. Status/top/nav/body/bottom regions must not overlap unless one is a higher-z overlay/modal/sheet or an intentional transparent hero background.",
+    "Every modal/sheet/drawer/dialog layer must have its own global overlay/mask. Overlay z-index must be lower than its own surface and higher than content it dims.",
+    "For stacked modals, the second-level overlay z-index must be higher than the first-level sheet/dialog z-index, and the second-level sheet/dialog z-index must be higher than the second-level overlay.",
+    "Do not output hide or replace. The implementation model only contains keep, create, and update.",
+    "Generated UI should support an antd Mobile visual style and Gestalt grouping.",
+    "Prefer component names and props from component_library_reference. Use other component/container names only when no documented component fits the state requirement.",
+    "Only top-level create/update patches need page-coordinate bbox. Children inside containers should describe their own props/text/intrinsic width/height instead of bbox.",
+    "Parent containers own page placement and child layout. Child components are generated first and imported by the parent during codegen.",
+    "Rich cards must be fully populated in state_implementation_model. Component-codegen only renders existing props/children/text and must not invent business data."
+  ],
+  "component_library_reference": "# Code Gen2 组件库参考\r\n\r\n本文档说明 `code_gen2/resources/components` 中的规范组件、props 与推荐使用场景，供 component-codegen / page-layer 选择组件形态时参考。\r\n\r\n## 总体原则\r\n\r\n- 组件依赖 `../global.css` 中的设计变量，如 `--color-primary`、`--color-bg-card`、`--radius-lg`、`--spacing-xl`、`font-headline-*`。\r\n- 组件默认面向 360px 宽移动端页面。\r\n- codegen 应优先复用本组件库里的稳定形态，避免重复生成风格不一致的按钮、卡片、筛选、导航。\r\n- page-layer 阶段不要输出大段组件 HTML/CSS，应使用组件占位符：`<div class=\"tf-component-placeholder\" data-component-id=\"component_id\"></div>`。\r\n- 保留原始 D2C 区域时使用 keep 占位符：`<div class=\"tf-keep-placeholder\" data-keep-anchor=\"语义锚点名\"></div>`。\r\n\r\n## 布局与外壳\r\n\r\n### `MobileLayout`\r\n\r\n固定 360 x 792 的移动端页面外壳，包含模拟状态栏、主内容区、底部导航和二级页面覆盖层。\r\n\r\nProps:\r\n\r\n- `children: React.ReactNode`：页面主体内容。\r\n\r\n使用场景:\r\n\r\n- 完整应用预览页面。\r\n- 需要状态栏、底部导航、二级页面遮罩动画的路由页面。\r\n\r\n注意:\r\n\r\n- 依赖 `react-router-dom`、`BottomNav`、`StatusBar` 和业务 store。\r\n- 静态 taskflow layer 通常不直接使用完整外壳，而是继承原始页面或复用其布局规范。\r\n\r\n### `SectionLayout`\r\n\r\n楼层容器，组合标题、可选页签和内容区。\r\n\r\nProps:\r\n\r\n- `variant: 'browse' | 'card'`：`browse` 为透明背景，`card` 为白色圆角卡片。\r\n- `title: string`：楼层标题。\r\n- `moreText?: string`：更多按钮文案，默认 `更多`。\r\n- `onMore?: () => void`：更多按钮回调。\r\n- `tabs?: { id: string; label: string }[]`：页签列表。\r\n- `activeTab?: string`：当前页签 id。\r\n- `onTabChange?: (id: string) => void`：页签切换。\r\n- `headerRightAction?: React.ReactNode`：标题右侧自定义内容。\r\n- `children: React.ReactNode`：楼层内容。\r\n\r\n使用场景:\r\n\r\n- `browse`：资讯、直播、课程、案例等浏览型内容。\r\n- `card`：工具、工作台、快捷入口、商城模块等操作型内容。\r\n\r\n### `SectionTitle`\r\n\r\n标题行组件，包含标题和右侧操作。\r\n\r\nProps:\r\n\r\n- `variant: 'browse' | 'card'`：所在楼层上下文。\r\n- `title: string`：标题文字。\r\n- `onMore?: () => void`：显示内置 `MoreButton`。\r\n- `moreText?: string`：更多按钮文案。\r\n- `headerRightAction?: React.ReactNode`：右侧自定义内容，优先级高于 `onMore`。\r\n\r\n使用场景:\r\n\r\n- 楼层标题。\r\n- 卡片标题行。\r\n\r\n## 导航组件\r\n\r\n### `StatusBar`\r\n\r\n模拟系统状态栏，展示时间、挖孔、信号、Wi-Fi、电池。\r\n\r\nProps:\r\n\r\n- 无。\r\n\r\n使用场景:\r\n\r\n- 完整移动端页面预览。\r\n- 若原始页面已有状态栏，taskflow layer 优先使用 `tf-keep-placeholder` 继承。\r\n\r\n### `TopNav`\r\n\r\n顶部导航栏，高度 56px，支持页签、标题和抽屉式标题。\r\n\r\nProps:\r\n\r\n- `variant?: 'tabs' | 'title' | 'drawer'`：导航形态，默认 `tabs`。\r\n- `onBack?: () => void`：传入后显示返回按钮。\r\n- `activeTab?: string`：`tabs` 模式当前项。\r\n- `tabs?: string[]`：`tabs` 模式页签列表。\r\n- `onTabChange?: (tab: string) => void`：页签切换。\r\n- `title?: string`：`title` 模式标题。\r\n- `drawerValue?: string`：`drawer` 模式当前值。\r\n- `drawerOptions?: string[]`：`drawer` 模式选项。\r\n- `onDrawerChange?: (value: string) => void`：抽屉切换。\r\n- `drawerDefaultOpen?: boolean`：默认展开抽屉，主要用于预览。\r\n- `actions: ('search' | 'cart' | 'profile' | 'scan' | 'message' | 'settings' | 'grid')[]`：右侧操作，最多显示 3 个。\r\n- `cartCount?: number`：购物车角标。\r\n- `onSearch? / onCart? / onProfile? / onScan? / onMessage? / onSettings? / onGrid?: () => void`：对应操作回调。\r\n\r\n使用场景:\r\n\r\n- 一级页面：`tabs` 或 `title`。\r\n- 二级页面：`onBack` + `title`。\r\n- 需要切换上下文：`drawer`。\r\n\r\n### `BottomNav`\r\n\r\n底部五栏导航，固定 64px 高。\r\n\r\nProps:\r\n\r\n- 无外部 props。\r\n\r\n使用场景:\r\n\r\n- 应用主框架底部导航。\r\n\r\n注意:\r\n\r\n- 依赖路由与 `workspaceStore`。\r\n- 静态 taskflow layer 中通常通过 keep placeholder 继承原始底部导航。\r\n\r\n### `UnderlineTabs`\r\n\r\n横向下划线 Tab，支持自动滚动到选中项。\r\n\r\nProps:\r\n\r\n- `tabs: { id: string; label: string }[]`：页签数据。\r\n- `activeId: string`：当前选中项。\r\n- `onChange: (id: string) => void`：切换回调。\r\n- `size?: 'default' | 'sm'`：尺寸，默认 `default`。\r\n- `className?: string`：扩展类名。\r\n\r\n使用场景:\r\n\r\n- 页面级 Tab。\r\n- 卡片内部子 Tab。\r\n- 非筛选语义的同级内容切换。\r\n\r\n### `CategoryTabs`\r\n\r\n产品图片横滑分类页签。\r\n\r\nProps:\r\n\r\n- `categories: { id: string; name: string; image?: string }[]`：分类项。\r\n- `activeId: string`：当前分类。\r\n- `onChange: (id: string) => void`：切换回调。\r\n\r\n使用场景:\r\n\r\n- 商城产品分类。\r\n- 图文产品系列切换。\r\n\r\n## 按钮与表单\r\n\r\n### `CapsuleButton`\r\n\r\n胶囊按钮，来自 `components/ui/Button` 的命名导出。\r\n\r\nProps:\r\n\r\n- `children: React.ReactNode`：按钮内容。\r\n- `size?: 'large' | 'small'`：`large` 高 40px，`small` 高 28px。\r\n- `variant?: 'primary' | 'secondary' | 'secondary-primary'`：按钮样式。\r\n- `disabled?: boolean`：禁用。\r\n- `icon?: React.ReactNode`：左侧图标。\r\n- `className?: string`：扩展类。\r\n- `onClick?: () => void`：点击回调。\r\n\r\n使用场景:\r\n\r\n- 主按钮、次按钮、底部操作栏按钮。\r\n- 确认、提交、取消、加入购物车等动作。\r\n\r\n### `TextButton`\r\n\r\n文本按钮，来自 `components/ui/Button` 的命名导出。\r\n\r\nProps:\r\n\r\n- `children: React.ReactNode`：按钮内容。\r\n- `size?: 'large' | 'medium' | 'small'`：字号尺寸。\r\n- `variant?: 'primary' | 'secondary'`：强调色或次要色。\r\n- `disabled?: boolean`：禁用。\r\n- `icon?: React.ReactNode`：右侧图标。\r\n- `className?: string`：扩展类。\r\n- `onClick?: () => void`：点击回调。\r\n\r\n使用场景:\r\n\r\n- “更多”“查看全部”“编辑”“跳过”等弱操作。\r\n\r\n### `ButtonBar`\r\n\r\n按钮操作栏，支持 7 种布局组合。\r\n\r\nProps:\r\n\r\n- `variant: 'single-primary' | 'single-secondary' | 'input-primary' | 'input-secondary' | 'dual' | 'checkbox-dual' | 'triple'`：布局变体。\r\n- `primaryLabel?: string`：主按钮文案。\r\n- `secondaryLabel?: string`：次按钮文案。\r\n- `thirdLabel?: string`：第三按钮文案，仅 `triple` 有效。\r\n- `inputPlaceholder?: string`：输入框占位文案。\r\n- `checkboxLabel?: string`：复选框文案。\r\n- `width?: number`：容器宽度，默认 360。\r\n- `className?: string`：扩展类。\r\n- `onPrimaryClick?: () => void`：主按钮回调。\r\n- `onSecondaryClick?: () => void`：次按钮回调。\r\n- `onThirdClick?: () => void`：第三按钮回调。\r\n\r\n使用场景:\r\n\r\n- 表单底部确认栏。\r\n- 双按钮/三按钮操作栏。\r\n- 输入框 + 按钮组合。\r\n- 勾选协议 + 操作按钮组合。\r\n\r\n### `InputDemo`\r\n\r\n线条输入框，支持受控/非受控、校验、错误提示和可见/隐藏切换。\r\n\r\nProps:\r\n\r\n- `label?: string`：标签，默认 `标题名称`。\r\n- `placeholder?: string`：占位文字，默认 `提示示例`。\r\n- `errorMessage?: string`：默认错误文案。\r\n- `value?: string`：受控值。\r\n- `onChange?: (value: string) => void`：值变化。\r\n- `validate?: (value: string) => string | null | undefined`：自定义校验。\r\n- `disabled?: boolean`：禁用。\r\n- `showToggle?: boolean`：显示可见/隐藏切换。\r\n- `className?: string`：扩展类。\r\n\r\nRef:\r\n\r\n- `validate: () => boolean`：触发校验。\r\n- `clear: () => void`：清空值和错误。\r\n- `value: string`：当前值。\r\n\r\n使用场景:\r\n\r\n- 项目名称、配单名称、账号、密码等表单输入。\r\n- 需要错误态提示的输入项。\r\n\r\n## 筛选与状态\r\n\r\n### `FilterPills`\r\n\r\n横向胶囊筛选。\r\n\r\nProps:\r\n\r\n- `filters: { id: string; name: string }[]`：筛选项。\r\n- `activeId: string`：当前选中项。\r\n- `onChange: (id: string) => void`：切换回调。\r\n- `fadeEdges?: boolean`：是否显示左右渐隐遮罩。\r\n\r\n使用场景:\r\n\r\n- 商品子分类。\r\n- 状态筛选。\r\n- 标签筛选。\r\n\r\n### `LeftSidebar`\r\n\r\n左侧纵向筛选栏，宽 72px。\r\n\r\nProps:\r\n\r\n- `filters: { id: string; name: string }[]`：筛选项。\r\n- `activeId: string`：当前选中项。\r\n- `onChange: (id: string) => void`：切换回调。\r\n\r\n使用场景:\r\n\r\n- 商城左侧一级分类。\r\n- 双栏筛选页。\r\n\r\n### `StatusPill`\r\n\r\n状态标签胶囊，根据文案映射颜色。\r\n\r\nProps:\r\n\r\n- `text: string`：状态文案。\r\n- `colorMap?: Record<string, { color: string; bgColor: string }>`：自定义颜色映射。\r\n\r\n默认状态:\r\n\r\n- `进行中`、`待开始`、`已完成`\r\n- `跟进中`、`已签约`、`意向高`\r\n- `待付款`、`待发货`、`已发货`\r\n- `严重`、`警告`、`通知`\r\n\r\n使用场景:\r\n\r\n- 订单状态。\r\n- 线索状态。\r\n- 风险等级。\r\n- 消息类型。\r\n\r\n## 商品与列表\r\n\r\n### `ProductLayout`\r\n\r\n产品页组合布局：左侧分类 + 顶部胶囊筛选 + 产品列表。\r\n\r\nProps:\r\n\r\n- `filters: { id: string; name: string }[]`：左侧一级筛选。\r\n- `activeFilter: string`：当前一级筛选。\r\n- `onFilterChange: (id: string) => void`：一级筛选切换。\r\n- `subFilters: { id: string; name: string }[]`：子筛选。\r\n- `activeSubFilter: string`：当前子筛选。\r\n- `onSubFilterChange: (id: string) => void`：子筛选切换。\r\n- `products: Product[]`：产品列表。\r\n- `onProductClick?: (product: Product) => void`：产品点击。\r\n- `onAddToCart?: (product: Product) => void`：加入购物车。\r\n\r\n使用场景:\r\n\r\n- 标准产品列表页。\r\n- 左分类右商品列表的商城页面。\r\n\r\n### `ProductCard`\r\n\r\n商品卡片，固定 264 x 90，左图右文，右下角加号。\r\n\r\nProps:\r\n\r\n- `product: { id: string; name: string; description?: string; image?: string; price: number }`：商品数据。\r\n- `onClick?: () => void`：卡片点击。\r\n- `onAddToCart?: (product: Product) => void`：加号点击。\r\n\r\n使用场景:\r\n\r\n- 商品列表项。\r\n- 商品选择、加入购物车、进入详情页入口。\r\n\r\n注意:\r\n\r\n- 当前实现使用图片占位，`image` 字段未直接渲染真实图片。\r\n\r\n### `ProductSelectionListItem`\r\n\r\n配单/报价单列表项，包含 Logo、名称、状态、时间、流转和更多菜单。\r\n\r\nProps:\r\n\r\n- `item: { id: string; name: string; status: '谈单中' | '已成单' | '未成单'; scene?: string; time: string }`：列表项。\r\n- `onForward?: (id: string) => void`：流转操作。\r\n- `onMore?: (id: string) => void`：更多点击。\r\n- `onStatusChange?: (id: string, status: '谈单中' | '已成单' | '未成单') => void`：状态修改。\r\n- `isLast?: boolean`：是否最后一项。\r\n\r\n使用场景:\r\n\r\n- 配单列表。\r\n- 报价单列表。\r\n- 可快速修改状态的业务列表。\r\n\r\n### `CourseListItem`\r\n\r\n课程/内容列表项，左图右文。\r\n\r\nProps:\r\n\r\n- `course: { title: string; subtitle?: string; date?: string; students?: number; image?: string; gradient?: string }`：课程数据。\r\n- `onClick?: () => void`：点击回调。\r\n- `renderMeta?: (course: Course) => React.ReactNode`：自定义元信息。\r\n\r\n使用场景:\r\n\r\n- 课程列表。\r\n- 资讯列表。\r\n- 直播回放列表。\r\n\r\n### `HotVideoCard`\r\n\r\n上图下文视频卡片，支持默认小卡和 livestream 大卡布局。\r\n\r\nProps:\r\n\r\n- `title: string`：标题。\r\n- `subtitle?: string`：副标题，传 `action` 时显示。\r\n- `imageGradient: string`：封面背景，可为 CSS 渐变、data URL 或 http(s) URL。\r\n- `imageHeight?: number`：封面高度，默认 90。\r\n- `width?: number | string`：卡片宽度，默认 160。\r\n- `tag?: string`：标签文本。\r\n- `action?: React.ReactNode`：右侧操作插槽，传入后切换大卡布局。\r\n- `onShare?: () => void`：分享回调。\r\n- `onClick?: () => void`：卡片点击。\r\n\r\n使用场景:\r\n\r\n- 热门视频。\r\n- 直播入口。\r\n- 活动视频卡片。\r\n\r\n## 入口与网格\r\n\r\n### `IconGrid`\r\n\r\n通用图标阵列，支持纯网格和卡片包裹。\r\n\r\nProps:\r\n\r\n- `cols: number`：列数，通常为 3 或 4。\r\n- `items: { icon: React.ElementType; label: string; color: string }[]`：图标项。\r\n- `title?: string`：标题，仅 `card` 变体显示。\r\n- `variant?: 'plain' | 'card'`：默认 `plain`。\r\n- `emptyText?: string`：空数据文案，默认 `暂无数据`。\r\n\r\n使用场景:\r\n\r\n- 功能入口阵列。\r\n- 工具入口。\r\n- 工作台快捷操作。\r\n\r\n### `QuickEntryGrid`\r\n\r\n快捷入口 3 列网格，白色卡片包裹。\r\n\r\nProps:\r\n\r\n- `items: { icon: React.ComponentType<React.SVGProps<SVGSVGElement> & { size?: number }>; label: string; color: string }[]`：入口项。\r\n- `title?: string`：可选标题。\r\n\r\n使用场景:\r\n\r\n- 首页快捷入口。\r\n- 工作台快捷入口。\r\n\r\n### `EntryCard`\r\n\r\n左文右图入口卡片，默认 158 x 58。\r\n\r\nProps:\r\n\r\n- `card: { id: string; title: string; subtitle: string; color: string; bgColor: string; iconBg: string; icon?: string }`：入口数据。\r\n- `width?: number`：宽度，默认 158。\r\n- `height?: number`：高度，默认 58。\r\n\r\n使用场景:\r\n\r\n- 首页双列入口卡。\r\n- 产品、场景、问卷、扫码等轻量入口。\r\n\r\n### `MoreButton`\r\n\r\n“更多 + 右箭头”文本按钮。\r\n\r\nProps:\r\n\r\n- `onClick?: () => void`：点击回调。\r\n- `text?: string`：文案，默认 `更多`。\r\n\r\n使用场景:\r\n\r\n- 楼层标题右侧操作。\r\n- `SectionTitle` 内置更多按钮。\r\n\r\n## Codegen 选型建议\r\n\r\n- 顶栏优先使用 `TopNav`；原始页已有顶栏时优先 keep 原始锚点。\r\n- 底部主操作优先使用 `ButtonBar` 或 `CapsuleButton`。\r\n- 筛选语义使用 `FilterPills` / `LeftSidebar`；导航切换语义使用 `UnderlineTabs` / `CategoryTabs`。\r\n- 商品列表优先组合 `ProductLayout` + `ProductCard`。\r\n- 配单/报价列表优先使用 `ProductSelectionListItem`。\r\n- 表单输入优先使用 `InputDemo`，提交区域使用 `ButtonBar`。\r\n- 状态标签、风险等级、订单状态优先使用 `StatusPill`。\r\n- 功能宫格优先使用 `IconGrid` / `QuickEntryGrid`，入口卡片使用 `EntryCard`。\r\n- 视频和课程内容优先使用 `HotVideoCard` / `CourseListItem`。\r\n\r\n## 默认尺寸与 bbox 建议\r\n\r\n生成 `state_implementation_model` 时，`bbox` 应优先参考组件默认尺寸；如业务状态需要更大容器，可以使用外层容器包裹，而不是强行拉伸内部固定尺寸组件。\r\n\r\n- `StatusBar`：高度 `36`，宽度通常为 `360`。\r\n- `TopNav`：高度 `56`，宽度通常为 `360`。二级页一般放在 `y=36`。\r\n- `BottomNav`：高度 `64`，宽度通常为 `360`。默认贴底。\r\n- `ButtonBar`：默认宽度 `360`，内容区按钮高度 `40`，外层实际建议高度 `64` 至 `72`。底部固定操作栏建议 `bbox=[0, height-64, 360, 64]`。\r\n- `CapsuleButton`：`large` 高 `40`，`small` 高 `28`。宽度由父容器或 `className` 决定。\r\n- `TextButton`：高度随字号，常用操作区建议预留 `24` 至 `32`。\r\n- `InputDemo`：输入行高度 `40`；含 label 和错误信息时建议预留 `72` 至 `92`。\r\n- `UnderlineTabs`：页面级建议高度 `36` 至 `44`，卡片内 `sm` 建议高度 `32` 至 `40`。\r\n- `CategoryTabs`：固定高度 `92`，宽度通常为 `360`。\r\n- `FilterPills`：胶囊高度 `28`，外层含上下 padding 建议高度 `44` 至 `48`。\r\n- `LeftSidebar`：宽度 `72`；每项高度 `46`。\r\n- `SectionTitle`：建议高度 `24` 至 `32`。\r\n- `SectionLayout`：根据内容变化；`card` 变体需要额外预留 `12` padding 和内部间距。\r\n- `ProductCard`：固定宽度 `264`、高度 `90`。如果需要 `328` 宽列表项，优先使用自定义容器或新增适配组件，不要直接把 `ProductCard` bbox 写成 `328` 宽。\r\n- `ProductLayout`：组合布局，通常占据页面主内容区剩余空间；左侧栏固定 `72` 宽。\r\n- `ProductSelectionListItem`：单行主体高 `46`，含间距/分割线时建议每项预留 `59` 至 `72`。\r\n- `CourseListItem`：图片固定 `120 x 68`，整行建议高度 `68` 至 `84`。\r\n- `HotVideoCard`：默认宽度 `160`，默认封面高度 `90`；总高度取决于内容，常用小卡约 `160 x 170`。\r\n- `QuickEntryGrid`：3 列网格，图标容器 `48 x 48`，白卡高度随行数变化。\r\n- `IconGrid`：图标容器 `40 x 40`；3/4 列布局，外层高度随行数变化。\r\n- `EntryCard`：默认宽度 `158`、高度 `58`。\r\n- `StatusPill`：高度约 `14` 至 `18`，适合嵌入列表/卡片内。\r\n- `MoreButton`：高度约 `24`，适合标题行右侧。\r\n\r\n## 弹窗/遮罩与字体约束\r\n\r\n- BottomSheet、Drawer、Modal、Dialog 这类弹层组件应作为完整组件承载自身标题、关闭按钮、清空操作、主体内容和底部操作区；不要把同一个弹窗拆成多个兄弟组件，除非子组件需要独立复用或独立动画。\r\n- 遮罩与弹窗必须显式设置层级：遮罩建议 `props.zIndex = 50`，弹窗建议 `props.zIndex = 60` 或更高，Toast 等更高层反馈建议 `70` 或更高。\r\n- 有可见文字的组件应携带 `text_style` 或 `props.textStyles`，字体 token 参考 `global.css`：页面标题用 `font-headline-xxl`，卡片标题/主按钮用 `font-headline-s`，紧凑标题用 `font-headline-xs`，正文用 `font-body-m`，辅助文案用 `font-caption-m`，标签用 `font-caption-s`。\r\n- `text_style` 推荐包含 `className`、`fontSize`、`lineHeight`、`fontWeight`、`color`。component-codegen 应优先使用这些属性，而不是重新猜测字号。\r\n\r\n## State height 与长页面\r\n\r\n- `state_implementation_model.states[].height` 是每个状态的实际画布高度。\r\n- 如果内容能放进初始视口，`height` 等于 `viewport.initial_height`。\r\n- 如果卡片、列表或详情内容过多，允许 `height` 大于初始视口；bbox 可以继续向下排列，避免压缩内容导致空卡片或信息缺失。\r\n- page-layer 会把 `height` 用作对应 state layer 的 `min-height`，截图时也会按该 state 的 `height` 设置 Playwright viewport。\r\n- 生成 bbox 时，所有可见组件的 `bbox[1] + bbox[3]` 不应超过该 state 的 `height`。\r\n\r\n"
+}

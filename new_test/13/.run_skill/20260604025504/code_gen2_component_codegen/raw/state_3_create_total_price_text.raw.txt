@@ -1,0 +1,6 @@
+{
+  "id": "total_price_text",
+  "reactCode": "import React from 'react';\n\nexport default function TotalPriceText() {\n  return (\n    <div\n      data-component-id=\"total_price_text\"\n      className=\"tf-cg-total-price-text font-headline-s\"\n      style={{\n        position: 'absolute',\n        left: '16px',\n        top: '1300px',\n        width: '120px',\n        height: '24px',\n        fontSize: 'var(--font-headline-16)',\n        fontWeight: 'var(--font-weight-bold)',\n        color: 'var(--color-primary)',\n        display: 'flex',\n        alignItems: 'center',\n        whiteSpace: 'nowrap'\n      }}\n    >\n      合计：¥21,999.00\n    </div>\n  );\n}",
+  "css": ".tf-cg-total-price-text {\n  box-sizing: border-box;\n}",
+  "notes": "used Text, font-headline-s, --font-headline-16, --font-weight-bold, --color-primary"
+}

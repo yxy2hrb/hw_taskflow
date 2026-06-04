@@ -1,0 +1,6 @@
+{
+  "id": "config_feature_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_feat_text from './feat_text';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"config_feature_card\">\n      <SectionLayout\n        variant=\"card\"\n        title=\"方案特色\"\n        headerRightAction={\n          <span \n            className=\"font-headline-xs\" \n            style={{ color: 'var(--color-primary)', cursor: 'pointer' }}\n          >\n            添加\n          </span>\n        }\n      >\n        <Child_feat_text />\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used SectionLayout, Child_feat_text, --color-primary, font-headline-xs"
+}

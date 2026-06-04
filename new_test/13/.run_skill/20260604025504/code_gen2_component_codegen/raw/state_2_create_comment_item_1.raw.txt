@@ -1,0 +1,6 @@
+{
+  "id": "comment_item_1",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"comment_item_1\"\n      style={{\n        position: 'absolute',\n        left: 24,\n        top: 1112,\n        width: 312,\n        height: 48,\n        display: 'flex',\n        alignItems: 'flex-start',\n      }}\n    >\n      <span\n        className=\"font-body-m\"\n        style={{\n          fontSize: 'var(--font-body-14)',\n          color: 'var(--color-text-primary)',\n        }}\n      >\n        用户评价：设备非常清晰，会议体验很好，投屏稳定。\n      </span>\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"comment_item_1\"] {\n  box-sizing: border-box;\n}",
+  "notes": "used Text, font-body-m, --font-body-14, --color-text-primary"
+}

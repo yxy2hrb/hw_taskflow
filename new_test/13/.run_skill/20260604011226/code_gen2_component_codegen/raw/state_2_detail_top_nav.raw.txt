@@ -1,0 +1,6 @@
+{
+  "id": "detail_top_nav",
+  "reactCode": "import React from 'react';\nimport TopNav from '@/components/TopNav';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"detail_top_nav\" style={{ position: 'absolute', left: 0, top: 36, width: 360, height: 56 }}>\n      <TopNav\n        variant=\"title\"\n        title=\"产品详情\"\n        onBack={() => {}}\n        actions={['cart', 'message']}\n      />\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used TopNav component library source. Mapped 'share' action to supported actions since 'share' is not in the allowed actions union type."
+}

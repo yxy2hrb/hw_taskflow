@@ -1,0 +1,6 @@
+{
+  "id": "action_consult",
+  "reactCode": "import React from 'react';\n\nexport default function ActionConsult() {\n  return (\n    <div \n      data-component-id=\"action_consult\" \n      className=\"tf-cg-icon-text-btn\"\n      style={{\n        position: 'absolute',\n        left: 72,\n        top: 1308,\n        width: 48,\n        height: 40,\n        display: 'flex',\n        flexDirection: 'column',\n        alignItems: 'center',\n        justifyContent: 'center',\n        gap: 2,\n        color: 'var(--color-text-primary)',\n        cursor: 'pointer'\n      }}\n    >\n      <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\">\n        <path d=\"M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z\"></path>\n      </svg>\n      <span style={{ fontSize: 10, lineHeight: '12px', fontWeight: 400 }}>咨询</span>\n    </div>\n  );\n}",
+  "css": ".tf-cg-icon-text-btn {\n  font-family: 'HarmonyOS Sans SC', sans-serif;\n  user-select: none;\n  -webkit-tap-highlight-color: transparent;\n}\n.tf-cg-icon-text-btn:active {\n  opacity: 0.7;\n}",
+  "notes": "used inline SVG for MessageOutlined icon, --color-text-primary, custom flex layout for icon and text within 48x40 bbox."
+}

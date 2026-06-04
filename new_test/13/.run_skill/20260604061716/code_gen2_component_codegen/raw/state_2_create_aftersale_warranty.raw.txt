@@ -1,0 +1,6 @@
+{
+  "id": "aftersale_warranty",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <span\n      data-component-id=\"aftersale_warranty\"\n      className=\"font-body-m tf-cg-aftersale-warranty\"\n      style={{ fontSize: 'var(--font-body-14)', color: 'var(--color-text-primary)' }}\n    >\n      保修政策：3年整机质保\n    </span>\n  );\n}",
+  "css": ".tf-cg-aftersale-warranty {\n  display: inline;\n}",
+  "notes": "used Text, font-body-m, --font-body-14, --color-text-primary"
+}

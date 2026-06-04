@@ -1,0 +1,6 @@
+{
+  "id": "dialog_btn_cancel",
+  "reactCode": "import React from 'react';\nimport { CapsuleButton } from '@/components/ui/Button';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"dialog_btn_cancel\"\n      style={{\n        position: 'absolute',\n        left: 60,\n        top: 600,\n        width: 100,\n        height: 40,\n      }}\n    >\n      <CapsuleButton\n        size=\"large\"\n        variant=\"secondary\"\n        onClick={() => {}}\n        className=\"w-full\"\n      >\n        取消\n      </CapsuleButton>\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"dialog_btn_cancel\"] .tf-cg-cancel-btn { width: 100%; }",
+  "notes": "used CapsuleButton (variant=secondary, size=large), --color-bg-disabled, --color-text-primary, --radius-full"
+}

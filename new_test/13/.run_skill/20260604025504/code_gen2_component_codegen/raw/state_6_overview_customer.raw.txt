@@ -1,0 +1,6 @@
+{
+  "id": "overview_customer",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"overview_customer\"\n      className=\"font-body-m\"\n      style={{\n        position: 'absolute',\n        left: 24,\n        top: 148,\n        width: 312,\n        height: 20,\n        color: 'var(--color-text-secondary)',\n        display: 'flex',\n        alignItems: 'center',\n      }}\n    >\n      客户类型：中小企业\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"overview_customer\"] {\n  font-size: var(--font-body-14);\n  line-height: var(--line-height-18);\n}",
+  "notes": "Used font-body-m, --color-text-secondary, --font-body-14, --line-height-18."
+}

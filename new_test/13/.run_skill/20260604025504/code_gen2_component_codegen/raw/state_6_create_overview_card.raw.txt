@@ -1,0 +1,6 @@
+{
+  "id": "overview_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"overview_card\"\n      className=\"absolute\"\n      style={{\n        left: 12,\n        top: 104,\n        width: 336,\n        height: 180\n      }}\n    >\n      <SectionLayout\n        variant=\"card\"\n        title=\"配单概览\"\n        headerRightAction={\n          <span \n            className=\"font-body-m cursor-pointer\" \n            style={{ color: 'var(--color-primary)' }}\n          >\n            编辑\n          </span>\n        }\n      >\n        <div className=\"flex-1\" />\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used SectionLayout, absolute positioning with bbox, --color-primary for edit action text"
+}

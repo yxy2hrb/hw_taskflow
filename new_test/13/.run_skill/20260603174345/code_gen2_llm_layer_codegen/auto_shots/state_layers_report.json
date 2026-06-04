@@ -1,0 +1,81 @@
+{
+  "html_path": "new_test/13/html/Index.state-model.code-gen2-layers.html",
+  "timestamp": "2026-06-03T10:14:33.536Z",
+  "shots": [
+    {
+      "state_id": 1,
+      "state_name": "产品列表初始态",
+      "screenshot": "state_1_force.png",
+      "not_blank": true,
+      "layer_exists": true,
+      "layer_visible": true,
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "state_id": 2,
+      "state_name": "产品详情展示态",
+      "screenshot": "state_2_force.png",
+      "not_blank": true,
+      "layer_exists": true,
+      "layer_visible": true,
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "state_id": 3,
+      "state_name": "半模态配单弹窗态",
+      "screenshot": "state_3_force.png",
+      "not_blank": true,
+      "layer_exists": true,
+      "layer_visible": true,
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "state_id": 4,
+      "state_name": "配单编辑初始态",
+      "screenshot": "state_4_force.png",
+      "not_blank": true,
+      "layer_exists": true,
+      "layer_visible": true,
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "state_id": 5,
+      "state_name": "配单编辑可提交态",
+      "screenshot": "state_5_force.png",
+      "not_blank": true,
+      "layer_exists": true,
+      "layer_visible": true,
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "state_id": 6,
+      "state_name": "配单提交中状态",
+      "screenshot": "state_6_force.png",
+      "not_blank": true,
+      "layer_exists": true,
+      "layer_visible": true,
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "state_id": 7,
+      "state_name": "配单详情成功态",
+      "screenshot": "state_7_force.png",
+      "not_blank": true,
+      "layer_exists": true,
+      "layer_visible": true,
+      "status": "pass",
+      "issues": []
+    }
+  ],
+  "summary": {
+    "total_states": 7,
+    "force_pass": 7,
+    "issues_found": []
+  }
+}

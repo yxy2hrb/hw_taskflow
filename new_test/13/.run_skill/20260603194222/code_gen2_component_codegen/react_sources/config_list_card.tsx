@@ -1,0 +1,3 @@
+import React from 'react';
+import SectionTitle from '@/components/SectionTitle';
+export default function GeneratedComponent(){ return <div data-component-id="config_list_card" className="tf-cg-config-list-card" style={{ position:'absolute', left:0, top:328, width:360, height:150, boxSizing:'border-box' }}><div style={{ background:'var(--color-bg-card)', borderRadius:'var(--radius-lg)', padding:'var(--spacing-lg)', display:'flex', flexDirection:'column', gap:'var(--spacing-lg)', width:'100%', height:'100%', boxSizing:'border-box' }}><SectionTitle variant="card" title="产品清单" /><div style={{ flex:1 }} /></div></div>; }

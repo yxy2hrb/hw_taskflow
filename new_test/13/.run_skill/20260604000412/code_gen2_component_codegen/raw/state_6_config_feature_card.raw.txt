@@ -1,0 +1,6 @@
+{
+  "id": "config_feature_card",
+  "reactCode": "import React from 'react';\nimport SectionTitle from '@/components/SectionTitle';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"config_feature_card\"\n      style={{\n        position: 'absolute',\n        left: 16,\n        top: 636,\n        width: 328,\n        height: 120,\n        zIndex: 1,\n      }}\n    >\n      <div\n        className=\"bg-white rounded-[var(--radius-lg)] flex flex-col\"\n        style={{\n          width: '100%',\n          height: '100%',\n          padding: 'var(--spacing-lg)',\n          gap: 'var(--spacing-lg)',\n          boxSizing: 'border-box',\n        }}\n      >\n        <SectionTitle variant=\"card\" title=\"方案特色\" />\n        <div className=\"flex-1\" />\n      </div>\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"config_feature_card\"] {\n  box-sizing: border-box;\n}\n[data-component-id=\"config_feature_card\"] .bg-white {\n  background-color: var(--color-bg-card);\n}",
+  "notes": "used SectionTitle component, --radius-lg, --spacing-lg, --color-bg-card, font-headline-s text style applied via SectionTitle"
+}

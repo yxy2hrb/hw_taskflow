@@ -1,0 +1,6 @@
+{
+  "id": "list_product_item",
+  "reactCode": "import React from 'react';\nimport ProductSelectionListItem from '@/components/ProductSelectionListItem';\n\nexport default function GeneratedComponent() {\n  const item = {\n    id: \"p1\",\n    name: \"IdeaHub B2 Base-75寸\",\n    status: \"谈单中\" as '谈单中' | '已成单' | '未成单',\n    time: \"\"\n  };\n\n  return (\n    <div \n      data-component-id=\"list_product_item\" \n      style={{ \n        position: 'absolute', \n        left: 16, \n        top: 496, \n        width: 328, \n        height: 72 \n      }}\n    >\n      <ProductSelectionListItem \n        item={item}\n        onForward={() => {}}\n        onMore={() => {}}\n        onStatusChange={() => {}}\n      />\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used ProductSelectionListItem, absolute bbox positioning"
+}

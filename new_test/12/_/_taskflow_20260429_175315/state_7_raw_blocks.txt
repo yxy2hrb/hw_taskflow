@@ -1,0 +1,13 @@
+[OLD]
+</body>
+[NEW]
+<!-- 任务节点开始: 网络失败重试状态【临时】 -->
+<div style="position:fixed;top:0;left:0;right:0;height:44px;background:#C7000B;color:#FFFFFF;display:flex;align-items:center;justify-content:space-between;padding:0 16px;z-index:1002;box-shadow:0 4px 12px rgba(0,0,0,0.06);font-family:HarmonyHeiTi,'HarmonyOS Sans',-apple-system,sans-serif;font-size:14px;font-weight:500;transition:opacity 300ms;">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <span class="mi" style="font-size:20px;">warning</span>
+    <span>网络异常，请重试</span>
+  </div>
+  <button type="button" style="background:none;border:none;color:#FFFFFF;text-decoration:underline;font-size:14px;font-weight:500;cursor:pointer;padding:0;margin:0;">重试</button>
+</div>
+<!-- 任务节点结束: 网络失败重试状态【临时】 -->
+</body>

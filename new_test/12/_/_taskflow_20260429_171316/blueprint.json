@@ -1,0 +1,59 @@
+{
+  "meta": {
+    "title": "分享获客卡片移除流程",
+    "slug": "share-acquisition-card-removal-flow",
+    "user_story": "已登录的营销运营人员在工作台卡片区域长按‘分享获客’卡片，移除‘分享获客’卡片 → 系统高亮确认弹窗 → 用户点击‘确认移除’完成操作 → ‘分享获客’卡片消失，下方所有卡片自动上移填补空位，页面无空白缺口",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "工作台首页初始态",
+      "description": "用户打开营销模块工作台，页面完整显示多张功能卡片，其中‘分享获客’卡片位于卡片流中上部（第2或第3位），卡片包含标题文字、图标及右下角小箭头，底部Tab栏‘营销’项为红色高亮选中状态，顶部状态栏与导航栏正常显示。",
+      "implementation_method": "原始 HTML 初始快照，不做改造",
+      "last_state": null
+    },
+    {
+      "state_id": 2,
+      "state_name": "长按激活编辑态",
+      "description": "用户长按‘分享获客’卡片约400ms后，该卡片整体轻微上浮8px并加深投影，右上角浮现红色垃圾桶图标（尺寸20×20px，描边1px），同时其余所有卡片透明度统一降至60%，背景蒙层未覆盖Tab栏和顶部状态栏。",
+      "implementation_method": "卡片高亮态 (Card Highlight State)：主卡片添加 transform: translateY(-8px) + box-shadow 增强；右上角绝对定位垃圾桶图标（SVG路径，fill='#C7000B'）；其余卡片 wrapper 应用 opacity: 0.6；Tab栏与状态栏保持原样式不参与交互锁定。",
+      "last_state": 1
+    },
+    {
+      "state_id": 3,
+      "state_name": "确认移除弹窗态",
+      "description": "用户点击卡片右上角垃圾桶图标后，居中浮出白色圆角模态弹窗（宽320px，圆角12px，阴影rgba(0,0,0,0.15)），顶部显示红色感叹号图标，正中标题‘确认移除？’，下方灰色小字说明‘该操作不可恢复，确定要删除此功能入口吗？’，底部并排两个按钮：左侧‘取消’（文字色#666）、右侧‘确认移除’（文字色#C7000B，加粗）。",
+      "implementation_method": "模态弹窗 (Modal/Dialog)：白色背景 #FFFFFF，圆角12px，阴影 rgba(0,0,0,0.15)；顶部图标为红色感叹号 SVG（24×24px）；标题文本 '确认移除？'（16px bold，#252525）；说明文字 '该操作不可恢复，确定要删除此功能入口吗？'（14px regular，#666）；底部按钮栏：左按钮 '取消'（15px medium，#666），右按钮 '确认移除'（15px medium，#C7000B，font-weight: 600）；弹窗遮罩层为 rgba(0,0,0,0.4)。",
+      "last_state": 2
+    },
+    {
+      "state_id": 4,
+      "state_name": "移除执行动画态",
+      "description": "用户点击‘确认移除’按钮后，‘分享获客’卡片立即开始 scale(0.9)→scale(0) + opacity(1)→opacity(0) 淡出动画（持续300ms），同时其正下方所有卡片以 transform: translateY(-Xpx) 同步上移补位（X为卡片高度+间距，精确计算），页面底部短暂浮现灰色轻量 toast：‘正在更新…’（12px，#999，背景#F5F5F5，圆角6px，停留1.2秒）。",
+      "implementation_method": "卡片淡出+布局重排动画 (Animated Card Removal)：目标卡片应用 CSS transition: transform 300ms ease-out, opacity 300ms ease-out；下方卡片组监听动画结束事件，触发 translateY 补位（数值动态计算，确保无缝对齐）；底部轻量级提示 (Toast/Snackbar)：文本 '正在更新…'（12px HarmonyHeiTi，#999），背景 #F5F5F5，圆角6px，padding 6px 12px，位置固定于页面底部上方24px。",
+      "last_state": 3
+    },
+    {
+      "state_id": 5,
+      "state_name": "移除成功终态",
+      "description": "动画结束后，‘分享获客’卡片完全消失，原位置被下方卡片精准顶替，卡片流整体向上收缩，相邻卡片间距保持一致（16px），无视觉空白或错位；Tab栏‘营销’仍为红色高亮，顶部状态栏与底部Tab栏未受影响；页面可继续滚动浏览。",
+      "implementation_method": "布局重排终态 (Layout Reflow Final State)：DOM 中移除对应卡片节点；剩余卡片容器 flex-direction: column 且 gap: 16px；所有卡片尺寸、字体、图标、右下角箭头等样式与初始态完全一致；无新增元素，无残留过渡类，无障碍标签 aria-hidden='true' 已从原卡片移除。",
+      "last_state": 4
+    },
+    {
+      "state_id": 6,
+      "state_name": "取消操作终态",
+      "description": "用户在弹窗中点击‘取消’按钮后，模态弹窗以淡出动画关闭（200ms），‘分享获客’卡片瞬间恢复原始位置、尺寸与透明度（无缩放/位移/投影变化），其他卡片透明度同步恢复至100%，页面状态与初始态完全一致，无任何视觉残留。",
+      "implementation_method": "弹窗关闭回退态 (Modal Dismiss Rollback)：弹窗 transition: opacity 200ms ease-out；关闭后立即移除弹窗 DOM 节点；主卡片清除所有 transform、box-shadow、opacity 覆盖样式，回归原始 class 集合；其余卡片 opacity 重置为 1；无额外动画或延迟。",
+      "last_state": 3
+    },
+    {
+      "state_id": 7,
+      "state_name": "移除失败反馈态",
+      "description": "网络请求失败或服务端返回错误时，模态弹窗关闭后，页面顶部滑入红色 toast 提示：‘移除失败，请重试’（14px white，背景#D32F2F，圆角6px，左右内边距16px，上下8px），3秒后自动淡出消失；‘分享获客’卡片保持原位、原样式，未发生任何移除动作。",
+      "implementation_method": "顶部滑入提示 (Top Snackbar)：背景 #D32F2F，圆角6px，padding 8px 16px；文本 '移除失败，请重试'（14px HarmonyHeiTi，white，font-weight: 500）；出现动效：transform: translateY(-100%) → translateY(0)，消失动效：transform: translateY(0) → translateY(-100%)，各持续250ms；z-index 高于所有内容但低于弹窗；仅展示一次，不阻塞后续操作。",
+      "last_state": 3
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "id": "service_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_svc_name from './svc_name';\n\nexport default function ServiceCard() {\n  return (\n    <div data-component-id=\"service_card\" className=\"tf-cg-service-card\">\n      <SectionLayout variant=\"card\" title=\"服务商信息\">\n        <Child_svc_name />\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": ".tf-cg-service-card {\n  position: absolute;\n  left: 12px;\n  top: 852px;\n  width: 336px;\n  height: 140px;\n}",
+  "notes": "used SectionLayout (card variant), imported Child_svc_name, applied bbox as absolute positioning"
+}

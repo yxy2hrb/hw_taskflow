@@ -1,0 +1,6 @@
+{
+  "id": "config_risk_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_risk_pill from './risk_pill';\nimport Child_risk_msg from './risk_msg';\nimport Child_risk_action from './risk_action';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"config_risk_card\" className=\"tf-cg-risk-card\">\n      <SectionLayout variant=\"card\" title=\"风险提示\">\n        <div className=\"flex items-center\" style={{ gap: 'var(--spacing-md)' }}>\n          <Child_risk_pill />\n          <Child_risk_msg />\n        </div>\n        <Child_risk_action />\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": ".tf-cg-risk-card {\n  width: 100%;\n}",
+  "notes": "used SectionLayout, Child_risk_pill, Child_risk_msg, Child_risk_action, --spacing-md"
+}

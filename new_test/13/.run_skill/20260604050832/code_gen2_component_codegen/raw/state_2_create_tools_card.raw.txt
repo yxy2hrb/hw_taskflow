@@ -1,0 +1,6 @@
+{
+  "id": "tools_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_tools_grid from './tools_grid';\n\nexport default function ToolsCard() {\n  return (\n    <div \n      data-component-id=\"tools_card\"\n      style={{\n        position: 'absolute',\n        left: 12,\n        top: 816,\n        width: 336,\n        height: 120\n      }}\n    >\n      <SectionLayout variant=\"card\" title=\"售前/售后工具\">\n        <Child_tools_grid \n          cols={4} \n          items={[\n            { icon: \"tool1\", label: \"配置工具\", color: \"#1890ff\" }, \n            { icon: \"tool2\", label: \"售后报修\", color: \"#52c41a\" }\n          ]} \n        />\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used SectionLayout, Child_tools_grid, bbox absolute positioning"
+}

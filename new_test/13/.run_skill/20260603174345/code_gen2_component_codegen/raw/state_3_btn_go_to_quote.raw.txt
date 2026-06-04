@@ -1,0 +1,6 @@
+{
+  "id": "btn_go_to_quote",
+  "reactCode": "import React from 'react';\nimport { CapsuleButton } from '@/components/ui/Button';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"btn_go_to_quote\"\n      style={{\n        position: 'absolute',\n        left: 200,\n        top: 680,\n        width: 140,\n        height: 44,\n        display: 'flex',\n        alignItems: 'center',\n        justifyContent: 'center',\n      }}\n    >\n      <CapsuleButton\n        size=\"large\"\n        variant=\"primary\"\n        onClick={() => {}}\n        className=\"w-full\"\n      >\n        去配单\n      </CapsuleButton>\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"btn_go_to_quote\"] .tf-cg-btn-go-quote {\n  width: 100%;\n  height: 40px;\n}",
+  "notes": "used CapsuleButton (primary variant, large size), absolute bbox positioning [200,680,140,44], text '去配单' from component.text"
+}

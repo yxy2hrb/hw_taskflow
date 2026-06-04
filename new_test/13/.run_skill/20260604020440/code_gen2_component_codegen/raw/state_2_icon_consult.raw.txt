@@ -1,0 +1,6 @@
+{
+  "id": "icon_consult",
+  "reactCode": "import React from 'react';\nimport { MessageCircle } from 'lucide-react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"icon_consult\"\n      style={{\n        position: 'absolute',\n        left: 84,\n        top: 1116,\n        width: 40,\n        height: 40,\n        display: 'flex',\n        flexDirection: 'column',\n        alignItems: 'center',\n        justifyContent: 'center',\n        gap: 2,\n      }}\n    >\n      <MessageCircle size={20} style={{ color: 'var(--color-text-secondary)' }} />\n      <span\n        className=\"font-caption-s\"\n        style={{\n          fontSize: 'var(--font-caption-10)',\n          color: 'var(--color-text-secondary)',\n          lineHeight: '12px',\n        }}\n      >\n        咨询\n      </span>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used MessageCircle from lucide-react, --font-caption-10, --color-text-secondary, font-caption-s"
+}

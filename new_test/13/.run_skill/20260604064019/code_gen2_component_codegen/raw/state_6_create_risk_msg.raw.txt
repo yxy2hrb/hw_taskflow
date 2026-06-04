@@ -1,0 +1,6 @@
+{
+  "id": "risk_msg",
+  "reactCode": "import React from 'react';\n\nexport default function RiskMsg() {\n  return (\n    <div data-component-id=\"risk_msg\" className=\"tf-cg-risk-msg\">\n      <span className=\"font-body-m\" style={{ fontSize: 'var(--font-body-14)', color: 'var(--color-text-primary)' }}>\n        当前方案可能缺少 UPS、路由器、防火墙等关键设备\n      </span>\n    </div>\n  );\n}",
+  "css": ".tf-cg-risk-msg {\n  display: block;\n  width: 100%;\n}",
+  "notes": "used Text, font-body-m, --font-body-14, --color-text-primary"
+}

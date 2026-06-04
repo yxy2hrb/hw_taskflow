@@ -1,0 +1,6 @@
+{
+  "id": "action_consult",
+  "reactCode": "import React from 'react';\n\nexport default function ActionConsult() {\n  return (\n    <div \n      data-component-id=\"action_consult\" \n      className=\"tf-cg-icon-text-btn\"\n      style={{\n        position: 'absolute',\n        left: 72,\n        top: 1308,\n        width: 48,\n        height: 40,\n      }}\n    >\n      <svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"currentColor\">\n        <path d=\"M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z\" />\n      </svg>\n      <span className=\"font-caption-s\" style={{ color: 'var(--color-text-primary)', lineHeight: '12px' }}>咨询</span>\n    </div>\n  );\n}",
+  "css": ".tf-cg-icon-text-btn {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: 2px;\n  cursor: pointer;\n  color: var(--color-text-primary);\n  user-select: none;\n  -webkit-tap-highlight-color: transparent;\n}\n.tf-cg-icon-text-btn:active {\n  opacity: 0.7;\n}",
+  "notes": "used custom IconTextButton layout, --color-text-primary, font-caption-s"
+}

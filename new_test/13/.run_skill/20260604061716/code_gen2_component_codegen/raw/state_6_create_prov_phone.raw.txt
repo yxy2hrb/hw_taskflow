@@ -1,0 +1,6 @@
+{
+  "id": "prov_phone",
+  "reactCode": "import React from 'react';\n\nexport default function ProvPhone() {\n  return (\n    <span\n      data-component-id=\"prov_phone\"\n      className=\"font-body-m\"\n      style={{ fontSize: 'var(--font-body-14)', color: 'var(--color-primary)' }}\n    >\n      联系电话：400-888-9999\n    </span>\n  );\n}",
+  "css": "",
+  "notes": "used font-body-m, --font-body-14, --color-primary"
+}

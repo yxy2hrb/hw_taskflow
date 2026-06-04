@@ -1,0 +1,6 @@
+{
+  "id": "config_feature_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\n\nexport default function ConfigFeatureCard() {\n  return (\n    <div\n      data-component-id=\"config_feature_card\"\n      style={{\n        position: 'absolute',\n        left: 12,\n        top: 520,\n        width: 336,\n        height: 100,\n      }}\n    >\n      <SectionLayout variant=\"card\" title=\"方案特色\">\n        <div className=\"flex flex-col\" style={{ gap: 'var(--spacing-xs)' }}>\n          <span className=\"font-body-s\" style={{ color: 'var(--color-text-secondary)' }}>\n            • 定制化行业解决方案\n          </span>\n          <span className=\"font-body-s\" style={{ color: 'var(--color-text-secondary)' }}>\n            • 全流程数字化管理支持\n          </span>\n        </div>\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used SectionLayout, --spacing-xs, --color-text-secondary, font-body-s"
+}

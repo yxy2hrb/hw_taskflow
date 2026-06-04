@@ -1,0 +1,49 @@
+{
+  "state_id": 6,
+  "state_name": "取消操作还原状态",
+  "components": [
+    {
+      "tag": "Dialog",
+      "attrs": {
+        "content": "确认执行该操作吗？",
+        "title": "..."
+      },
+      "component": {
+        "group": "Dialog-Phone",
+        "variant": "类型=content",
+        "node_id": "1:11548",
+        "page": "6. Container 容器类",
+        "component_key": "edbf6468bdb138e3995391f90e0b0d1e506a78fd"
+      }
+    },
+    {
+      "tag": "Button",
+      "attrs": {
+        "label": "取消",
+        "variant": "secondary"
+      },
+      "component": {
+        "group": "Button-Phone",
+        "variant": "尺寸=Medium,类型=Emphasized,状态=Enabled",
+        "node_id": "1:9168",
+        "page": "2. Controls 操作类",
+        "component_key": "938b12c82f10e57073b3fde899a73a462b8536a0"
+      }
+    },
+    {
+      "tag": "Button",
+      "attrs": {
+        "label": "确认",
+        "variant": "primary"
+      },
+      "component": {
+        "group": "Button-Phone",
+        "variant": "尺寸=Medium,类型=Emphasized,状态=Enabled",
+        "node_id": "1:9168",
+        "page": "2. Controls 操作类",
+        "component_key": "938b12c82f10e57073b3fde899a73a462b8536a0"
+      }
+    }
+  ],
+  "missing": []
+}

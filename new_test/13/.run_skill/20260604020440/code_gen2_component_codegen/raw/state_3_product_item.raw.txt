@@ -1,0 +1,6 @@
+{
+  "id": "product_item",
+  "reactCode": "import React from 'react';\nimport ProductCard from '@/components/ProductCard';\n\nexport default function GeneratedComponent() {\n  const product = {\n    id: 'p1',\n    name: 'IdeaHub B2 Base-75寸',\n    description: 'EOS 非现货',\n    price: 21999\n  };\n\n  return (\n    <div\n      data-component-id=\"product_item\"\n      style={{\n        position: 'absolute',\n        left: 48,\n        top: 584,\n        width: 264,\n        height: 90,\n      }}\n    >\n      <ProductCard product={product} />\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used ProductCard component from library, applied absolute positioning based on bbox."
+}

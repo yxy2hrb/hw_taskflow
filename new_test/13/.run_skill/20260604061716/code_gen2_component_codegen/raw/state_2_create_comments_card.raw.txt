@@ -1,0 +1,6 @@
+{
+  "id": "comments_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_comment_summary from './comment_summary';\nimport Child_comment_item from './comment_item';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"comments_card\">\n      <SectionLayout\n        variant=\"card\"\n        title=\"评论/问答\"\n        onMore={() => {}}\n      >\n        <Child_comment_summary />\n        <Child_comment_item />\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "Used SectionLayout with variant='card' and title='评论/问答'. Imported generated children Child_comment_summary and Child_comment_item. Provided inert onMore handler to render the default '更多' action button."
+}

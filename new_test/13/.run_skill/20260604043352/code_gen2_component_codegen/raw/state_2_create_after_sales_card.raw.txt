@@ -1,0 +1,6 @@
+{
+  "id": "after_sales_card",
+  "reactCode": "import React from 'react'\nimport SectionLayout from '@/components/SectionLayout'\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"after_sales_card\"\n      style={{\n        position: 'absolute',\n        left: 12,\n        top: 776,\n        width: 336,\n        height: 160,\n      }}\n    >\n      <SectionLayout variant=\"card\" title=\"售后信息\">\n        <div\n          style={{\n            height: 88,\n            backgroundColor: 'var(--color-bg-hover)',\n            borderRadius: 'var(--radius-md)',\n          }}\n        />\n      </SectionLayout>\n    </div>\n  )\n}",
+  "css": "[data-component-id=\"after_sales_card\"] {\n  box-sizing: border-box;\n}\n[data-component-id=\"after_sales_card\"] > * {\n  width: 100%;\n  height: 100%;\n}",
+  "notes": "used SectionLayout component with variant='card' and title='售后信息'; neutral placeholder div for children area since __hasChildren is true; CSS variables: --color-bg-hover, --radius-md; absolute positioning via bbox [12, 776, 336, 160]"
+}

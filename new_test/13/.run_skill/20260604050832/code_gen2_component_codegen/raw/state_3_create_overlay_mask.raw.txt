@@ -1,0 +1,6 @@
+{
+  "id": "overlay_mask",
+  "reactCode": "import React from 'react';\n\nexport default function OverlayMask() {\n  return (\n    <div \n      data-component-id=\"overlay_mask\"\n      className=\"tf-cg-overlay-mask\"\n      style={{ zIndex: 50 }}\n    />\n  );\n}",
+  "css": ".tf-cg-overlay-mask {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 360px;\n  height: 1144px;\n  background-color: rgba(0, 0, 0, 0.5);\n}",
+  "notes": "Custom Overlay mask component using bbox dimensions, inline zIndex from props, and rgba background color."
+}

@@ -1,0 +1,6 @@
+{
+  "id": "detail_tool_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"detail_tool_card\" \n      style={{ \n        position: 'absolute', \n        left: 12, \n        top: 832, \n        width: 336, \n        height: 120 \n      }}\n    >\n      <SectionLayout variant=\"card\" title=\"工具\">\n        <div \n          className=\"font-body-m\" \n          style={{ \n            fontSize: 'var(--font-body-14)', \n            lineHeight: '22px', \n            color: 'var(--color-text-primary)' \n          }}\n        >\n          售前工具 | 售后工具\n        </div>\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used SectionLayout, --font-body-14, --color-text-primary"
+}

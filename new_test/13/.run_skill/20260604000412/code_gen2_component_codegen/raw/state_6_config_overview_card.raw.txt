@@ -1,0 +1,6 @@
+{
+  "id": "config_overview_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"config_overview_card\"\n      className=\"tf-cg-overview-card\"\n      style={{\n        position: 'absolute',\n        left: 16,\n        top: 108,\n        width: 328,\n        height: 160,\n      }}\n    >\n      <SectionLayout variant=\"card\" title=\"配单概览\">\n        <div className=\"tf-cg-overview-body\" />\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": ".tf-cg-overview-card {\n  overflow: hidden;\n}\n.tf-cg-overview-card .tf-cg-overview-body {\n  min-height: 80px;\n}",
+  "notes": "used SectionLayout (variant=card, title=配单概览), --radius-lg, --spacing-lg, --color-text-primary, --font-headline-16 via text_style className font-headline-s"
+}

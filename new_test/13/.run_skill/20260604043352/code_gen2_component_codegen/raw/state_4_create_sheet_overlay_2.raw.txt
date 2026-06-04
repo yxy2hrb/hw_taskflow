@@ -1,0 +1,6 @@
+{
+  "id": "sheet_overlay_2",
+  "reactCode": "import React from 'react';\n\nexport default function SheetOverlay2() {\n  return (\n    <div\n      data-component-id=\"sheet_overlay_2\"\n      style={{\n        position: 'absolute',\n        left: 0,\n        top: 0,\n        width: 360,\n        height: 1360,\n        zIndex: 65,\n        backgroundColor: 'rgba(0, 0, 0, 0.3)',\n      }}\n    />\n  );\n}",
+  "css": "",
+  "notes": "used inline styles for bbox, zIndex, and backgroundColor as specified in props. Equivalent to --color-mask."
+}

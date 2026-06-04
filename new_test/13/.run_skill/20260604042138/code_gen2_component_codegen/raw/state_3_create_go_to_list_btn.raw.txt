@@ -1,0 +1,6 @@
+{
+  "id": "go_to_list_btn",
+  "reactCode": "import React from 'react';\nimport { CapsuleButton } from '@/components/ui/Button';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"go_to_list_btn\"\n      style={{\n        position: 'absolute',\n        left: 220,\n        top: 1292,\n        width: 124,\n        height: 40,\n      }}\n    >\n      <CapsuleButton variant=\"primary\" size=\"large\" className=\"w-full\">\n        去配单\n      </CapsuleButton>\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"go_to_list_btn\"] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}",
+  "notes": "used CapsuleButton, w-full, absolute bbox positioning, --color-primary, --color-text-white, font-headline-s"
+}

@@ -1,0 +1,2 @@
+import React from 'react';
+export default function GeneratedComponent(){ return <div data-component-id="quote_drawer" className="tf-cg-half-drawer" style={{ position:'absolute', left:0, top:280, width:360, height:656, background:'var(--color-bg-card)', borderRadius:'var(--radius-3xl) var(--radius-3xl) 0 0', boxShadow:'0 -4px 24px rgba(0,0,0,0.12)', display:'flex', flexDirection:'column', overflow:'hidden' }}><div style={{ width:36, height:4, borderRadius:'var(--radius-full)', backgroundColor:'var(--color-divider)', margin:'10px auto 0' }} /></div>; }

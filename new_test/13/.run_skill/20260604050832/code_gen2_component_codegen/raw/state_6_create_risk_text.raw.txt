@@ -1,0 +1,6 @@
+{
+  "id": "risk_text",
+  "reactCode": "import React from 'react';\n\nexport default function RiskText() {\n  return (\n    <span\n      data-component-id=\"risk_text\"\n      className=\"font-body-m\"\n      style={{\n        fontSize: 'var(--font-body-14)',\n        lineHeight: 'var(--line-height-20)',\n        fontWeight: 'var(--font-weight-regular)',\n        color: 'var(--color-warning)'\n      }}\n    >\n      缺少关键设备：UPS、路由器\n    </span>\n  );\n}",
+  "css": "",
+  "notes": "used inline styles for text_style, font-body-m class, --color-warning"
+}

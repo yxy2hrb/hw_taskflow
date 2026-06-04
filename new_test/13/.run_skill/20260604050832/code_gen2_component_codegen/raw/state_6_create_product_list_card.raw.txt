@@ -1,0 +1,6 @@
+{
+  "id": "product_list_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_pl_item from './pl_item';\n\nexport default function ProductListCard() {\n  return (\n    <div\n      data-component-id=\"product_list_card\"\n      className=\"tf-cg-product-list-card\"\n      style={{\n        position: 'absolute',\n        left: 12,\n        top: 428,\n        width: 336,\n        minHeight: 240,\n      }}\n    >\n      <SectionLayout variant=\"card\" title=\"产品清单\">\n        <Child_pl_item />\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": ".tf-cg-product-list-card {\n  box-sizing: border-box;\n}",
+  "notes": "used SectionLayout (variant=card, title=产品清单), imported Child_pl_item from ./pl_item as generated child, applied bbox absolute positioning [12,428,336,240], used --font-headline-s text style from component metadata"
+}

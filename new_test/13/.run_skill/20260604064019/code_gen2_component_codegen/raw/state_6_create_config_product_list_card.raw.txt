@@ -1,0 +1,6 @@
+{
+  "id": "config_product_list_card",
+  "reactCode": "import React from 'react'\nimport SectionLayout from '@/components/SectionLayout'\nimport Child_cfg_prod_1 from './cfg_prod_1'\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"config_product_list_card\">\n      <SectionLayout\n        variant=\"card\"\n        title=\"产品清单\"\n        headerRightAction={\n          <button\n            onClick={() => {}}\n            className=\"bg-transparent border-none cursor-pointer\"\n            style={{ padding: 0 }}\n          >\n            <span\n              className=\"font-headline-xs\"\n              style={{ color: 'var(--color-primary)' }}\n            >\n              编辑\n            </span>\n          </button>\n        }\n      >\n        <Child_cfg_prod_1 />\n      </SectionLayout>\n    </div>\n  )\n}",
+  "css": "[data-component-id=\"config_product_list_card\"] {\n  width: 100%;\n}",
+  "notes": "Used SectionLayout (variant=card) for white card container with title and headerRightAction. Rendered '编辑' as a primary-colored clickable button in the header right slot. Imported and composed Child_cfg_prod_1 as the card body content. Used --color-primary for the edit action text color, font-headline-xs for the action label typography."
+}

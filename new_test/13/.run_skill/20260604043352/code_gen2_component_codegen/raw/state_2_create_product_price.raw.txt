@@ -1,0 +1,6 @@
+{
+  "id": "product_price",
+  "reactCode": "import React from 'react';\n\nexport default function ProductPrice() {\n  return (\n    <div\n      data-component-id=\"product_price\"\n      className=\"tf-cg-product-price font-headline-s\"\n      style={{\n        position: 'absolute',\n        left: 24,\n        top: 508,\n        width: 120,\n        height: 24,\n        fontSize: 'var(--font-headline-16)',\n        fontWeight: 'var(--font-weight-bold)',\n        color: 'var(--color-primary)',\n        display: 'flex',\n        alignItems: 'center'\n      }}\n    >\n      ¥21,999.00\n    </div>\n  );\n}",
+  "css": ".tf-cg-product-price {\n  box-sizing: border-box;\n  white-space: nowrap;\n}",
+  "notes": "used Text, font-headline-s, --color-primary, --font-weight-bold, --font-headline-16, absolute bbox positioning"
+}

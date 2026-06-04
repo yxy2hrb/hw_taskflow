@@ -1,0 +1,6 @@
+{
+  "id": "icon_compare",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"icon_compare\"\n      className=\"tf-cg-compare-entry\"\n    >\n      <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"var(--color-text-secondary)\" strokeWidth=\"1.5\" strokeLinecap=\"round\" strokeLinejoin=\"round\">\n        <rect x=\"3\" y=\"4\" width=\"7\" height=\"16\" rx=\"1.5\" />\n        <rect x=\"14\" y=\"4\" width=\"7\" height=\"16\" rx=\"1.5\" />\n      </svg>\n      <span \n        className=\"font-caption-s\"\n        style={{\n          fontSize: 'var(--font-caption-10)',\n          color: 'var(--color-text-secondary)',\n          lineHeight: '12px',\n        }}\n      >\n        对比\n      </span>\n    </div>\n  );\n}",
+  "css": ".tf-cg-compare-entry {\n  position: absolute;\n  left: 24px;\n  top: 1116px;\n  width: 40px;\n  height: 40px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: 2px;\n  cursor: pointer;\n}",
+  "notes": "used --color-text-secondary, --font-caption-10, font-caption-s, absolute bbox positioning"
+}

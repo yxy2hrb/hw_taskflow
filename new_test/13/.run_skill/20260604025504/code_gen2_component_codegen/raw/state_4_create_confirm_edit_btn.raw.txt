@@ -1,0 +1,6 @@
+{
+  "id": "confirm_edit_btn",
+  "reactCode": "import React from 'react';\nimport { CapsuleButton } from '@/components/ui/Button';\n\nexport default function ConfirmEditBtn() {\n  return (\n    <div\n      data-component-id=\"confirm_edit_btn\"\n      style={{\n        position: 'absolute',\n        left: 16,\n        top: 1276,\n        width: 328,\n        height: 48,\n        display: 'flex',\n        alignItems: 'center',\n        justifyContent: 'center',\n      }}\n    >\n      <CapsuleButton variant=\"primary\" size=\"large\" className=\"w-full\">\n        确定\n      </CapsuleButton>\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"confirm_edit_btn\"] {\n  z-index: 10;\n}",
+  "notes": "used CapsuleButton, absolute bbox positioning, w-full utility, --color-primary, --radius-full"
+}

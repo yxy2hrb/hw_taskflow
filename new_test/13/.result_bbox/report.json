@@ -1,0 +1,36 @@
+{
+  "ok": true,
+  "stage": 1,
+  "method": "playwright-getBoundingClientRect",
+  "input": {
+    "inputDir": "new_test/13",
+    "htmlPath": "new_test/13/html/Index.html",
+    "imagePath": "new_test\\13\\wps_doc_0.png"
+  },
+  "adaptive_depth": {
+    "target_ratio": 0.6,
+    "selected_depth": 16,
+    "forced_depth": null,
+    "coverage_ratio": 0.6369,
+    "total_div_count": 369,
+    "selected_div_count": 235
+  },
+  "viewport": {
+    "width": 360,
+    "height": 936
+  },
+  "counts": {
+    "all_divs": 369,
+    "selected_divs": 235,
+    "bbox_visible": 235,
+    "bbox_invisible": 0,
+    "annotated_count": 165
+  },
+  "outputs": {
+    "divs_all": "new_test\\13\\.result_bbox\\divs.all.json",
+    "divs_selected": "new_test\\13\\.result_bbox\\divs.selected.json",
+    "div_bbox": "new_test\\13\\.result_bbox\\div_bbox.json",
+    "annotated_body_bbox": "new_test\\13\\.result_bbox\\annotated_body_bbox.html",
+    "report": "new_test\\13\\.result_bbox\\report.json"
+  }
+}

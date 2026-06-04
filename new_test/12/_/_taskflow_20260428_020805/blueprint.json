@@ -1,0 +1,59 @@
+{
+  "meta": {
+    "title": "分享获客卡片移除流程",
+    "slug": "share-acquisition-card-removal-flow",
+    "user_story": "已登录的营销运营人员在工作台卡片区域长按‘分享获客’卡片，移除指定卡片 → 系统高亮该卡片并显示‘移除’按钮 → 用户点击确认后卡片即时消失且下方卡片上移补位 → ‘分享获客’卡片完全从 DOM 中移除，且相邻卡片间无空白间隙",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "工作台首页初始状态",
+      "description": "用户打开营销模块工作台，页面完整展示卡片列表；‘分享获客’卡片位于列表中段（第3位），含图标、标题‘分享获客’、副标题‘邀请好友注册即得奖励’及右向箭头，底部 Tab 栏‘营销’项为红色主色高亮，顶部状态栏显示时间与信号图标。",
+      "implementation_method": "原始 HTML 初始快照，不做改造。",
+      "last_state": null
+    },
+    {
+      "state_id": 2,
+      "state_name": "长按激活高亮状态",
+      "description": "用户长按‘分享获客’卡片持续 400ms 后，该卡片背景变为浅蓝色（rgba(70, 177, 227, 0.1)），右上角浮现红色圆角矩形按钮（宽64px/高28px，文字‘移除’），其余卡片整体透明度降至 60%，底部 Tab 栏保持原状，无遮罩层覆盖全局。",
+      "implementation_method": "卡片局部高亮+右上角悬浮按钮 (Inline Highlight + Floating Button)：被操作卡片应用 fill-info信息色info_1-14_365554-text 文字色与 fill-info信息色info_2-14_365553 背景色；右上角按钮使用 fill-brand主色brand_normal-14_468127-text 文字色 + fill-component控件背景色comp_tab_bg-14_468137 背景；文案‘移除’（'Remove'）；位置：卡片右上角内边距 8px；其余卡片统一添加 opacity: 0.6;",
+      "last_state": 1
+    },
+    {
+      "state_id": 3,
+      "state_name": "确认弹窗状态",
+      "description": "用户点击右上角‘移除’按钮后，居中浮出白色圆角模态弹窗（宽320px，圆角12px，阴影 0 4px 12px rgba(0,0,0,0.1)），背景为半透灰（rgba(0,0,0,0.5)）；弹窗内顶部显示标题‘确定要移除？’，中部无图标，底部左右并排‘取消’（浅灰色）和‘确认’（主红）按钮，底部 Tab 栏仍可见但不可点。",
+      "implementation_method": "居中模态弹窗 (Modal/Dialog)：白色背景 #FFFFFF + 圆角 12px + 阴影 0 4px 12px rgba(0,0,0,0.1)；蒙层背景 rgba(0,0,0,0.5)；标题文本 '确定要移除？'（'Are you sure you want to remove this?'）；左按钮文案‘取消’（'Cancel'），文字色 rgba(0,0,0,0.6)，无边框；右按钮文案‘确认’（'Confirm'），文字色 rgba(199,0,11,1)，背景色 transparent；按钮尺寸 80px×32px，水平居中对齐；位置：垂直居中，距离顶部 30vh；",
+      "last_state": 2
+    },
+    {
+      "state_id": 4,
+      "state_name": "移除进行中动画状态",
+      "description": "用户点击‘确认’后，‘分享获客’卡片立即开始淡出（opacity 1→0）并缩放至 80%（transform: scale(0.8)→scale(0)），同时其正下方卡片以 spring 动画向上弹性滑入空位（top 值递减，时长300ms，easing cubic-bezier(0.25, 0.46, 0.45, 0.94)），其余卡片保持静止，底部 Tab 栏始终固定可见。",
+      "implementation_method": "卡片缩放消失+下方卡片弹性上推 (Animated Removal + Spring Reorder)：被删卡片 CSS transition: opacity 300ms ease-out, transform 300ms cubic-bezier(0.25,0.46,0.45,0.94)；起始 transform: scale(1), opacity: 1；结束 transform: scale(0), opacity: 0；下方卡片应用 transform: translateY(-100%) → translateY(0) with spring easing；无 DOM 暂留空白；",
+      "last_state": 3
+    },
+    {
+      "state_id": 5,
+      "state_name": "删除成功无缝重排状态",
+      "description": "卡片完全消失后，原位置彻底清空，下方卡片已平滑上移填补空缺，相邻卡片间距与初始一致（gap: 12px），无任何空白间隙或抖动；页面滚动位置未偏移；底部 Tab 栏‘营销’仍为红色高亮，顶部状态栏完整保留；DOM 中‘分享获客’卡片节点已被移除。",
+      "implementation_method": "无缝重排 (CSS Flex Auto-Reflow)：卡片容器使用 display: flex; flex-direction: column; gap: 12px；被删卡片元素直接调用 remove() 方法；剩余卡片由浏览器自动重排，不依赖 JS 位移计算；无过渡动画，仅依赖 flex gap 自适应；",
+      "last_state": 4
+    },
+    {
+      "state_id": 6,
+      "state_name": "取消返回常态状态",
+      "description": "用户在弹窗中点击‘取消’或点击弹窗外半透灰蒙层区域，弹窗在200ms内淡出（opacity 1→0），‘分享获客’卡片同步取消高亮（背景恢复原色）、右上角‘移除’按钮消失，所有其他卡片透明度恢复 100%，页面状态与 state_1 完全一致，无残留视觉痕迹。",
+      "implementation_method": "弹窗关闭+卡片恢复常态 (Modal Dismiss + State Reset)：弹窗 transition: opacity 200ms ease-in；关闭后立即移除弹窗 DOM；卡片移除 class='highlighted' 及 style.opacity；右上角按钮元素 remove()；所有卡片重置 opacity: 1；无回弹动画；",
+      "last_state": 3
+    },
+    {
+      "state_id": 7,
+      "state_name": "网络失败toast提示状态",
+      "description": "移除请求返回 500 或超时后，页面保持当前卡片布局不变（弹窗已关闭，卡片处于常态），顶部状态栏下方 8px 处浮出灰色 toast 条（宽320px，高44px，圆角8px，背景 rgba(25,25,25,0.8)，白字），显示‘删除失败，请重试’（'Removal failed. Please try again.'），3秒后自动淡出，不遮挡底部 Tab 栏。",
+      "implementation_method": "顶部 toast 提示 (Toast/Snackbar)：背景 rgba(25,25,25,0.8)，圆角 8px，高度 44px，宽度 320px；文本居中，字号 14px，行高 20px，文字色 #FFFFFF；文案‘删除失败，请重试’（'Removal failed. Please try again.'）；出现位置：top: env(safe-area-inset-top, 0) + 8px；自动消失时长 3000ms，transition: opacity 300ms ease-out；",
+      "last_state": 4
+    }
+  ]
+}

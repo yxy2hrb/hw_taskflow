@@ -1,0 +1,6 @@
+{
+  "id": "qa_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_qa_entry from './qa_entry';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"qa_card\">\n      <SectionLayout variant=\"card\" title=\"评论/问答\">\n        <Child_qa_entry />\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used SectionLayout with variant card, imported Child_qa_entry as children"
+}

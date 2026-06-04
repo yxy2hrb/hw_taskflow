@@ -1,0 +1,6 @@
+{
+  "id": "list_total_price",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"list_total_price\"\n      style={{\n        position: 'absolute',\n        left: 16,\n        top: 880,\n        width: 120,\n        height: 40,\n        display: 'flex',\n        alignItems: 'center',\n      }}\n    >\n      <span\n        className=\"font-body-m\"\n        style={{ color: 'var(--color-text-primary)' }}\n      >\n        合计:{' '}\n        <span\n          className=\"font-headline-s\"\n          style={{ color: 'var(--color-primary)' }}\n        >\n          ¥21,999\n        </span>\n      </span>\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"list_total_price\"] {\n  font-family: 'HarmonyOS Sans SC', sans-serif;\n}",
+  "notes": "used --color-text-primary, --color-primary, font-body-m, font-headline-s"
+}

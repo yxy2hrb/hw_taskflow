@@ -1,0 +1,6 @@
+{
+  "id": "feat_text",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"feat_text\" className=\"tf-cg-text-wrapper\">\n      <p className=\"font-body-m tf-cg-text\" style={{ fontSize: 'var(--font-body-14)', color: 'var(--color-text-secondary)', margin: 0 }}>\n        提供一站式会议室升级方案，包含高清显示与无线投屏。\n      </p>\n    </div>\n  );\n}",
+  "css": ".tf-cg-text-wrapper {\n  width: 100%;\n}\n.tf-cg-text {\n  margin: 0;\n  padding: 0;\n}",
+  "notes": "used custom inline Text, font-body-m, --font-body-14, --color-text-secondary"
+}

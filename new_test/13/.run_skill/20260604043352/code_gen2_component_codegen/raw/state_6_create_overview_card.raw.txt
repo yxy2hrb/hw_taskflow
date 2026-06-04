@@ -1,0 +1,6 @@
+{
+  "id": "overview_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"overview_card\"\n      style={{\n        position: 'absolute',\n        left: 12,\n        top: 104,\n        width: 336,\n        height: 180,\n      }}\n    >\n      <SectionLayout\n        variant=\"card\"\n        title=\"配单概览\"\n        headerRightAction={\n          <span className=\"font-body-m\" style={{ color: 'var(--color-primary)' }}>\n            编辑\n          </span>\n        }\n      >\n        <div style={{ flex: 1, backgroundColor: 'var(--color-bg-disabled)', borderRadius: 'var(--radius-md)' }} />\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used SectionLayout, font-body-m, --color-primary, --color-bg-disabled, --radius-md"
+}

@@ -1,0 +1,69 @@
+{
+  "title": "分享获客卡片移除流程",
+  "slug": "share-acquisition-card-remove-flow",
+  "createdAt": "2026-04-29T11:24:08.116Z",
+  "meta": {
+    "title": "分享获客卡片移除流程",
+    "slug": "share-acquisition-card-remove-flow",
+    "user_story": "已登录的营销运营人员在工作台卡片区域长按‘分享获客’卡片，移除不需要的‘分享获客’卡片 → 系统立即收起该卡片并动画上移填补空位 → 用户看到下方卡片无缝顶替原位置",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "工作台首页初始态",
+      "description": "用户打开营销模块工作台，页面完整显示多张功能卡片；‘分享获客’卡片位于卡片列表中段（第3位），宽高比约3:1，左上角带‘营销’标签，主标题为‘分享获客’，右侧有灰色箭头图标；顶部状态栏显示时间/信号，底部Tab栏‘营销’项高亮红色。",
+      "implementation_method": "原始 HTML 初始快照，不做改造",
+      "last_state": null,
+      "file": "state_1.html"
+    },
+    {
+      "state_id": 2,
+      "state_name": "长按激活编辑态",
+      "description": "用户长按‘分享获客’卡片持续400ms后，该卡片边框变为#46B1E3蓝色描边（2px）、整体轻微放大至104%缩放，右上角浮现圆形红色删除图标（直径32px，含白色×符号）；其余卡片透明度降至60%，且不可点击；顶部状态栏与底部Tab栏保持不变。",
+      "implementation_method": "卡片局部高亮+右上角悬浮‘移除’按钮 (Card Highlight + Floating Action Button)：目标卡片应用 class='fill-info信息色info_1-14_365554-text' 边框与 transform: scale(1.04)；右上角绝对定位 div 含 background-color: #C7000B、display: flex、justify-content: center、align-items: center；图标为白色×（Unicode × 或 SVG）；其他卡片统一添加 class='fill-场景fill-colorcolor-fill-disabled-subtle-14_536315'。",
+      "last_state": 1,
+      "file": "state_2.html"
+    },
+    {
+      "state_id": 3,
+      "state_name": "确认弹窗态",
+      "description": "用户点击右上角红色删除图标后，页面中部浮出半透明模态弹窗：白色圆角背景（12px圆角，阴影柔和），标题‘确定要移除该卡片？’居中加粗，下方灰色小字说明‘移除后将不再显示，可随时在设置中重新启用’；底部并排两个按钮：左侧‘取消’（灰色文字，#666）、右侧‘确认移除’（红色文字，#C7000B）；背景层蒙版透明度30%。",
+      "implementation_method": "居中半透明模态弹窗 (Modal/Dialog)：容器 class='fill-component控件背景色comp_tab_bg-14_468137' + box-shadow: 0 4px 16px rgba(0,0,0,0.1)；标题文本 '确定要移除该卡片？' / 'Are you sure you want to remove this card?'；说明文本 '移除后将不再显示，可随时在设置中重新启用' / 'It will be hidden from dashboard but can be re-enabled in Settings.'；按钮文案 '取消'/'Cancel'（text-color: #666）和 '确认移除'/'Confirm Removal'（text-color: #C7000B）；按钮横向等宽排列，高度44px，圆角8px。",
+      "last_state": 2,
+      "file": "state_3.html"
+    },
+    {
+      "state_id": 4,
+      "state_name": "移除进行中态",
+      "description": "用户点击‘确认移除’后，‘分享获客’卡片开始执行复合动画：透明度从1线性降至0，同时Y轴向上微移16px；其正下方所有卡片同步以相同缓动函数（ease-out）向上滑动，填补原卡片高度（120px）；动画时长300ms，期间底部Tab栏与顶部状态栏静止不动；无任何遮罩或过渡层。",
+      "implementation_method": "卡片淡出+位移动画同步进行 (Animated Card Exit + Cascade Shift)：目标卡片添加 CSS 动画 keyframes fadeUpOut { 0% { opacity:1; transform: translateY(0); } 100% { opacity:0; transform: translateY(-16px); } }；下方卡片组使用 JS 计算偏移量并逐个添加 transform: translateY(-120px) + transition: transform 300ms ease-out；动画触发后立即从DOM移除该卡片节点。",
+      "last_state": 3,
+      "file": "state_4.html"
+    },
+    {
+      "state_id": 5,
+      "state_name": "成功终态",
+      "description": "动画结束后，‘分享获客’卡片完全消失；原卡片所在位置被下方卡片平滑上移填补，上下卡片间距保持一致，无空白间隙；卡片列表整体视觉连续，第3位变为原第4位卡片（如‘客户裂变’），其样式、尺寸、交互能力完全正常；顶部状态栏与底部Tab栏未发生任何变化。",
+      "implementation_method": "移除后卡片位置完全消失，下方卡片平滑上移停稳，空隙由相邻卡片无缝拉伸填补（如网格自动重排） (Layout Reflow with Smooth Transition)：卡片容器采用 display: grid 或 flex-direction: column；移除操作触发后，通过 CSS transition: all 300ms ease-out 统一作用于子卡片；无额外占位符或伪元素，依靠 layout 自动重流实现无缝衔接。",
+      "last_state": 4,
+      "file": "state_5.html"
+    },
+    {
+      "state_id": 6,
+      "state_name": "取消终态",
+      "description": "用户在确认弹窗中点击‘取消’按钮后，弹窗立即淡出（200ms），‘分享获客’卡片恢复原始状态：边框描色消失、缩放还原为100%、右上角删除图标隐藏；其余卡片透明度恢复100%；整个过程伴随一次轻微回弹动画（先微缩至98%，再弹回100%，总时长240ms）；界面无其他提示或变化。",
+      "implementation_method": "弹窗关闭后卡片恢复原样，同时播放一次轻微回弹动画（上下微震）表示取消成功 (Card Bounce-on-Cancel Animation)：弹窗移除后，目标卡片添加 @keyframes bounceCancel { 0% { transform: scale(1); } 30% { transform: scale(0.98); } 60% { transform: scale(1.01); } 100% { transform: scale(1); } }；动画时长240ms，timing-function: cubic-bezier(0.22, 0.61, 0.36, 1)；其余卡片同步移除灰度类名。",
+      "last_state": 3,
+      "file": "state_6.html"
+    },
+    {
+      "state_id": 7,
+      "state_name": "网络失败终态",
+      "description": "移除请求返回HTTP 500或超时后，‘分享获客’卡片短暂左右抖动（3次，每次位移±6px，间隔80ms），同时页面顶部状态栏下方浮现红色Toast提示条：背景#C7000B、白字‘删除失败，请重试’，停留2秒后自动淡出；卡片本身保持原位且可再次操作；底部Tab栏与其余UI无变化。",
+      "implementation_method": "卡片短暂抖动（左右3次）+顶部出现红色Toast：‘删除失败，请重试’，2秒后自动消失 (Shake Animation + Toast Notification)：抖动动画 keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 50% { transform: translateX(6px); } 75% { transform: translateX(-6px); } }；Toast为 fixed 定位，top: 48px，left: 50%，transform: translateX(-50%)，width: 280px，height: 44px，background-color: #C7000B，color: white，font-size: 14px，text-align: center，line-height: 44px，border-radius: 22px；文案 '删除失败，请重试' / 'Removal failed. Please try again.'；自动移除通过 setTimeout + opacity transition 实现。",
+      "last_state": 4,
+      "file": "state_7.html"
+    }
+  ]
+}

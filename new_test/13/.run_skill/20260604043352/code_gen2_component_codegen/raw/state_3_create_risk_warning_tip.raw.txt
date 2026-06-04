@@ -1,0 +1,6 @@
+{
+  "id": "risk_warning_tip",
+  "reactCode": "import React from 'react';\n\nexport default function WarningTip() {\n  return (\n    <div\n      data-component-id=\"risk_warning_tip\"\n      className=\"tf-cg-warning-tip\"\n    >\n      <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"var(--color-warning)\" style={{ flexShrink: 0 }}>\n        <path d=\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z\"/>\n      </svg>\n      <span \n        className=\"font-caption-m\" \n        style={{ \n          color: 'var(--color-warning)', \n          fontSize: 'var(--font-caption-12)',\n          lineHeight: 'var(--line-height-16)'\n        }}\n      >\n        风险提示：当前方案可能缺少关键设备\n      </span>\n    </div>\n  );\n}",
+  "css": ".tf-cg-warning-tip {\n  position: absolute;\n  left: 16px;\n  top: 608px;\n  width: 328px;\n  height: 40px;\n  display: flex;\n  align-items: center;\n  padding: 0 12px;\n  background-color: rgba(249, 115, 22, 0.08);\n  border-radius: var(--radius-xxs);\n  gap: 8px;\n  box-sizing: border-box;\n}",
+  "notes": "used custom WarningTip layout, --color-warning, --radius-xxs, font-caption-m"
+}

@@ -1,0 +1,2 @@
+import React from 'react';
+export default function GeneratedComponent(){ return <div data-component-id="短视频能力中心区域-下半部分" className="tf-cg-video-center-lower" style={{ position:'absolute', left:16, top:616, width:328, height:328, background:'transparent', overflowY:'auto' }} />; }

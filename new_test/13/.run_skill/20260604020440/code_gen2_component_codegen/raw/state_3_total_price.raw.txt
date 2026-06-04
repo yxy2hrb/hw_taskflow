@@ -1,0 +1,6 @@
+{
+  "id": "total_price",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"total_price\"\n      style={{\n        position: 'absolute',\n        left: 12,\n        top: 1060,\n        width: 336,\n        height: 24,\n        display: 'flex',\n        alignItems: 'center',\n      }}\n    >\n      <span\n        className=\"font-headline-s\"\n        style={{\n          fontSize: 'var(--font-headline-16)',\n          lineHeight: 'var(--line-height-24)',\n          fontWeight: 'var(--font-weight-bold)',\n          color: 'var(--color-primary)',\n        }}\n      >\n        合计：¥21,999\n      </span>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "Used bbox for absolute positioning, applied font-headline-s class and inline text_style variables (--font-headline-16, --line-height-24, --font-weight-bold, --color-primary)."
+}

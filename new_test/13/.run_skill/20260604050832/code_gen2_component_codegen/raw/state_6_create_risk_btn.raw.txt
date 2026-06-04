@@ -1,0 +1,6 @@
+{
+  "id": "risk_btn",
+  "reactCode": "import React from 'react';\nimport { CapsuleButton } from '@/components/ui/Button';\n\nexport default function RiskBtn() {\n  return (\n    <div data-component-id=\"risk_btn\" style={{ display: 'inline-flex' }}>\n      <CapsuleButton size=\"small\" variant=\"secondary-primary\">\n        <span\n          className=\"font-caption-m\"\n          style={{\n            fontSize: 'var(--font-caption-12)',\n            lineHeight: 'var(--line-height-16)',\n            fontWeight: 'var(--font-weight-medium)',\n            color: 'var(--color-primary)'\n          }}\n        >\n          去添加\n        </span>\n      </CapsuleButton>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used CapsuleButton, --font-caption-12, --line-height-16, --font-weight-medium, --color-primary"
+}

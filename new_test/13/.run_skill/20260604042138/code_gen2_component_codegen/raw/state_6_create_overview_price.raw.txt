@@ -1,0 +1,6 @@
+{
+  "id": "overview_price",
+  "reactCode": "import React from 'react';\n\nexport default function OverviewPrice() {\n  return (\n    <div\n      data-component-id=\"overview_price\"\n      style={{\n        position: 'absolute',\n        left: 24,\n        top: 184,\n        width: 150,\n        height: 24,\n        display: 'flex',\n        alignItems: 'center',\n      }}\n    >\n      <span\n        className=\"font-headline-s\"\n        style={{\n          fontSize: 'var(--font-headline-16)',\n          fontWeight: 'var(--font-weight-bold)',\n          color: 'var(--color-primary)',\n          whiteSpace: 'nowrap',\n        }}\n      >\n        总报价：¥32,900.00\n      </span>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used font-headline-s, --font-headline-16, --font-weight-bold, --color-primary"
+}

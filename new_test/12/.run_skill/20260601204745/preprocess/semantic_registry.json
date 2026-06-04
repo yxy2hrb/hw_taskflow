@@ -1,0 +1,2947 @@
+{
+  "generated_at": "2026-06-01T20:49:28.645Z",
+  "source": "new_test/12/.run_skill/20260601204745/preprocess/annotated_body_semantic.html",
+  "semantic_dom_registry": {
+    "页面全局背景容器-整个页面": {
+      "name": "页面全局背景容器-整个页面",
+      "selector": "#14_527266",
+      "id": "14_527266",
+      "area": "全屏背景",
+      "component": "页面全局背景容器",
+      "element": "整个页面",
+      "bbox": [
+        0,
+        0,
+        360,
+        1248
+      ],
+      "confidence": "高",
+      "text": "",
+      "inheritance_policy": "hideable"
+    },
+    "顶部背景遮罩层-顶部靠上": {
+      "name": "顶部背景遮罩层-顶部靠上",
+      "selector": "#126_395424",
+      "id": "126_395424",
+      "area": "顶部区域",
+      "component": "顶部背景遮罩层",
+      "element": "顶部靠上",
+      "bbox": [
+        0,
+        0,
+        360,
+        200
+      ],
+      "confidence": "高 -->\n        </div>\n        <!-- 顶部背景矩形：用于形成导航栏/头部的底色背景 -->\n        <!-- bbox: key=id:126_395424",
+      "text": "",
+      "inheritance_policy": "hideable"
+    },
+    "顶部状态栏-顶部横向区域": {
+      "name": "顶部状态栏-顶部横向区域",
+      "selector": "#126_395437",
+      "id": "126_395437",
+      "area": "顶部区域",
+      "component": "顶部状态栏",
+      "element": "顶部横向区域",
+      "bbox": [
+        0,
+        0,
+        360,
+        36
+      ],
+      "confidence": "高",
+      "text": "08:08",
+      "inheritance_policy": "persistent-or-hideable"
+    },
+    "状态栏右侧系统图标组-顶部靠右": {
+      "name": "状态栏右侧系统图标组-顶部靠右",
+      "selector": "#126_395439",
+      "id": "126_395439",
+      "area": "顶部区域",
+      "component": "状态栏右侧系统图标组",
+      "element": "顶部靠右",
+      "bbox": [
+        240,
+        12,
+        96,
+        13
+      ],
+      "confidence": "高",
+      "text": "",
+      "inheritance_policy": "persistent-or-hideable"
+    },
+    "顶部导航栏-顶部横向区域": {
+      "name": "顶部导航栏-顶部横向区域",
+      "selector": "#126_395496",
+      "id": "126_395496",
+      "area": "顶部区域",
+      "component": "顶部导航栏",
+      "element": "顶部横向区域",
+      "bbox": [
+        0,
+        36,
+        360,
+        56
+      ],
+      "confidence": "高",
+      "text": "营销 工作台",
+      "inheritance_policy": "hideable"
+    },
+    "导航栏标题文本区-顶部靠左": {
+      "name": "导航栏标题文本区-顶部靠左",
+      "selector": "#126_395504",
+      "id": "126_395504",
+      "area": "顶部区域",
+      "component": "导航栏标题文本区",
+      "element": "顶部靠左",
+      "bbox": [
+        16,
+        48,
+        120,
+        32
+      ],
+      "confidence": "高",
+      "text": "营销 工作台",
+      "inheritance_policy": "hideable"
+    },
+    "顶部功能图标组-顶部靠右": {
+      "name": "顶部功能图标组-顶部靠右",
+      "selector": "#126_395515",
+      "id": "126_395515",
+      "area": "顶部区域",
+      "component": "顶部功能图标组",
+      "element": "顶部靠右",
+      "bbox": [
+        224,
+        36,
+        120,
+        56
+      ],
+      "confidence": "高",
+      "text": "",
+      "inheritance_policy": "hideable"
+    },
+    "主业务内容滚动容器-页面中下部": {
+      "name": "主业务内容滚动容器-页面中下部",
+      "selector": "#126_395562",
+      "id": "126_395562",
+      "area": "主体内容区域",
+      "component": "主业务内容滚动容器",
+      "element": "页面中下部",
+      "bbox": [
+        16,
+        108,
+        328,
+        1004
+      ],
+      "confidence": "高",
+      "text": "70 待接收 16 跟进中 99+ 全部 最新 线索 LEB1234567890 客户公司名称 南京松海科技有限公司 我的线索 快捷入口 创建会议 分析看板 JMF JMF管理 新增客户 我要办会 9",
+      "inheritance_policy": "replaceable"
+    },
+    "我的线索区域-上半部分": {
+      "name": "我的线索区域-上半部分",
+      "selector": "#126_395563",
+      "id": "126_395563",
+      "area": "主体内容区域",
+      "component": "我的线索区域",
+      "element": "上半部分",
+      "bbox": [
+        16,
+        108,
+        328,
+        176
+      ],
+      "confidence": "高",
+      "text": "70 待接收 16 跟进中 99+ 全部 最新 线索 LEB1234567890 客户公司名称 南京松海科技有限公司 我的线索",
+      "inheritance_policy": "replaceable"
+    },
+    "线索数量统计卡片-上半部分": {
+      "name": "线索数量统计卡片-上半部分",
+      "selector": "#126_395585",
+      "id": "126_395585",
+      "area": "主体内容区域",
+      "component": "线索数量统计卡片",
+      "element": "上半部分",
+      "bbox": [
+        28,
+        154,
+        304,
+        54
+      ],
+      "confidence": "高",
+      "text": "70 待接收 16 跟进中 99+ 全部",
+      "inheritance_policy": "replaceable"
+    },
+    "最新线索详情卡片-上半部分": {
+      "name": "最新线索详情卡片-上半部分",
+      "selector": "#126_395600",
+      "id": "126_395600",
+      "area": "主体内容区域",
+      "component": "最新线索详情卡片",
+      "element": "上半部分",
+      "bbox": [
+        28,
+        230,
+        248,
+        40
+      ],
+      "confidence": "高",
+      "text": "最新 线索 LEB1234567890 客户公司名称 南京松海科技有限公司",
+      "inheritance_policy": "replaceable"
+    },
+    "快捷入口区域-中间靠左": {
+      "name": "快捷入口区域-中间靠左",
+      "selector": "#126_395691",
+      "id": "126_395691",
+      "area": "主体内容区域",
+      "component": "快捷入口区域",
+      "element": "中间靠左",
+      "bbox": [
+        16,
+        296,
+        328,
+        140
+      ],
+      "confidence": "高",
+      "text": "快捷入口 创建会议 分析看板 JMF JMF管理 新增客户",
+      "inheritance_policy": "replaceable"
+    },
+    "快捷入口按钮组-中间靠左": {
+      "name": "快捷入口按钮组-中间靠左",
+      "selector": "#126_395715",
+      "id": "126_395715",
+      "area": "主体内容区域",
+      "component": "快捷入口按钮组",
+      "element": "中间靠左",
+      "bbox": [
+        16,
+        348,
+        328,
+        66
+      ],
+      "confidence": "高",
+      "text": "创建会议 分析看板 JMF JMF管理 新增客户",
+      "inheritance_policy": "replaceable"
+    },
+    "我要办会与营销物料双栏卡片区域-中间区域": {
+      "name": "我要办会与营销物料双栏卡片区域-中间区域",
+      "selector": "#126_395794",
+      "id": "126_395794",
+      "area": "主体内容区域",
+      "component": "我要办会与营销物料双栏卡片区域",
+      "element": "中间区域",
+      "bbox": [
+        16,
+        448,
+        328,
+        156
+      ],
+      "confidence": "高",
+      "text": "我要办会 9月23日 华为坤灵协作平板SOHO分销渠道沙龙 待开始 99999+ 物料总数 营销物料",
+      "inheritance_policy": "replaceable"
+    },
+    "我要办会卡片-中间靠左": {
+      "name": "我要办会卡片-中间靠左",
+      "selector": "#126_395795",
+      "id": "126_395795",
+      "area": "主体内容区域",
+      "component": "我要办会卡片",
+      "element": "中间靠左",
+      "bbox": [
+        16,
+        448,
+        156,
+        156
+      ],
+      "confidence": "高",
+      "text": "我要办会 9月23日 华为坤灵协作平板SOHO分销渠道沙龙 待开始",
+      "inheritance_policy": "replaceable"
+    },
+    "营销物料卡片-中间靠右": {
+      "name": "营销物料卡片-中间靠右",
+      "selector": "#126_395817",
+      "id": "126_395817",
+      "area": "主体内容区域",
+      "component": "营销物料卡片",
+      "element": "中间靠右",
+      "bbox": [
+        188,
+        448,
+        156,
+        156
+      ],
+      "confidence": "高",
+      "text": "99999+ 物料总数 营销物料",
+      "inheritance_policy": "replaceable"
+    },
+    "分享获客数据统计区域-中间偏下": {
+      "name": "分享获客数据统计区域-中间偏下",
+      "selector": "#126_395835",
+      "id": "126_395835",
+      "area": "主体内容区域",
+      "component": "分享获客数据统计区域",
+      "element": "中间偏下",
+      "bbox": [
+        16,
+        616,
+        328,
+        156
+      ],
+      "confidence": "高",
+      "text": "更多 99999+ 新增访客 (周) 同比 2.6% 26728 兴趣访客 (周) 同比 2.6% 26000 互动访客 (周) 同比 2.6% 分享获客",
+      "inheritance_policy": "replaceable"
+    },
+    "获客数据指标组-中间偏下": {
+      "name": "获客数据指标组-中间偏下",
+      "selector": "#126_395849",
+      "id": "126_395849",
+      "area": "主体内容区域",
+      "component": "获客数据指标组",
+      "element": "中间偏下",
+      "bbox": [
+        28,
+        666,
+        304,
+        78
+      ],
+      "confidence": "高",
+      "text": "99999+ 新增访客 (周) 同比 2.6% 26728 兴趣访客 (周) 同比 2.6% 26000 互动访客 (周) 同比 2.6%",
+      "inheritance_policy": "replaceable"
+    },
+    "短视频能力中心区域-下半部分": {
+      "name": "短视频能力中心区域-下半部分",
+      "selector": "#126_395911",
+      "id": "126_395911",
+      "area": "主体内容区域",
+      "component": "短视频能力中心区域",
+      "element": "下半部分",
+      "bbox": [
+        16,
+        784,
+        328,
+        328
+      ],
+      "confidence": "高",
+      "text": "短视频能力中心 TOP1 数通 420 /980 TOP2 SOHO 260 /980 TOP3 数通网络安全 130 /980 TOP4 光接入 76 /980 TOP5 小全光 28 /980 8",
+      "inheritance_policy": "replaceable"
+    },
+    "短视频TOP排行榜列表-下半部分": {
+      "name": "短视频TOP排行榜列表-下半部分",
+      "selector": "#126_395916",
+      "id": "126_395916",
+      "area": "主体内容区域",
+      "component": "短视频TOP排行榜列表",
+      "element": "下半部分",
+      "bbox": [
+        28,
+        896,
+        304,
+        204
+      ],
+      "confidence": "高",
+      "text": "TOP1 数通 420 /980 TOP2 SOHO 260 /980 TOP3 数通网络安全 130 /980 TOP4 光接入 76 /980 TOP5 小全光 28 /980",
+      "inheritance_policy": "replaceable"
+    },
+    "管理应用跳转按钮-底部靠上": {
+      "name": "管理应用跳转按钮-底部靠上",
+      "selector": "#126_396066",
+      "id": "126_396066",
+      "area": "主体内容区域",
+      "component": "管理应用跳转按钮",
+      "element": "底部靠上",
+      "bbox": [
+        16,
+        1128,
+        328,
+        40
+      ],
+      "confidence": "高",
+      "text": "管理应用",
+      "inheritance_policy": "replaceable"
+    },
+    "底部标签栏-底部横向区域": {
+      "name": "底部标签栏-底部横向区域",
+      "selector": "#126_396078",
+      "id": "126_396078",
+      "area": "底部区域",
+      "component": "底部标签栏",
+      "element": "底部横向区域",
+      "bbox": [
+        0,
+        1184,
+        360,
+        64
+      ],
+      "confidence": "高",
+      "text": "首页 商城 营销 服务 我的",
+      "inheritance_policy": "hideable"
+    },
+    "0808-文本": {
+      "name": "0808-文本",
+      "selector": "#126_395438",
+      "id": "126_395438",
+      "area": "content-area",
+      "component": "text",
+      "element": "08:08",
+      "bbox": [
+        0,
+        0,
+        360,
+        36
+      ],
+      "confidence": "high",
+      "text": "08:08",
+      "inheritance_policy": "hideable"
+    },
+    "营销-文本": {
+      "name": "营销-文本",
+      "selector": "#126_395506",
+      "id": "126_395506",
+      "area": "content-area",
+      "component": "text",
+      "element": "营销",
+      "bbox": [
+        16,
+        48,
+        48,
+        38
+      ],
+      "confidence": "high",
+      "text": "营销",
+      "inheritance_policy": "hideable"
+    },
+    "顶部导航栏-文本-工作台": {
+      "name": "顶部导航栏-文本-工作台",
+      "selector": "#126_395510",
+      "id": "126_395510",
+      "area": "content-area",
+      "component": "text",
+      "element": "工作台",
+      "bbox": [
+        16,
+        48,
+        48,
+        38
+      ],
+      "confidence": "high",
+      "text": "工作台",
+      "inheritance_policy": "hideable"
+    },
+    "70-文本": {
+      "name": "70-文本",
+      "selector": "#126_395588",
+      "id": "126_395588",
+      "area": "content-area",
+      "component": "text",
+      "element": "70",
+      "bbox": [
+        28,
+        154,
+        84,
+        54
+      ],
+      "confidence": "high",
+      "text": "70",
+      "inheritance_policy": "hideable"
+    },
+    "待接收-文本": {
+      "name": "待接收-文本",
+      "selector": "#126_395589",
+      "id": "126_395589",
+      "area": "content-area",
+      "component": "text",
+      "element": "待接收",
+      "bbox": [
+        28,
+        154,
+        84,
+        54
+      ],
+      "confidence": "high",
+      "text": "待接收",
+      "inheritance_policy": "hideable"
+    },
+    "16-文本": {
+      "name": "16-文本",
+      "selector": "#126_395591",
+      "id": "126_395591",
+      "area": "content-area",
+      "component": "text",
+      "element": "16",
+      "bbox": [
+        138,
+        154,
+        84,
+        54
+      ],
+      "confidence": "high",
+      "text": "16",
+      "inheritance_policy": "hideable"
+    },
+    "跟进中-文本": {
+      "name": "跟进中-文本",
+      "selector": "#126_395592",
+      "id": "126_395592",
+      "area": "content-area",
+      "component": "text",
+      "element": "跟进中",
+      "bbox": [
+        138,
+        154,
+        84,
+        54
+      ],
+      "confidence": "high",
+      "text": "跟进中",
+      "inheritance_policy": "hideable"
+    },
+    "99-文本": {
+      "name": "99-文本",
+      "selector": "#126_395594",
+      "id": "126_395594",
+      "area": "content-area",
+      "component": "text",
+      "element": "99+",
+      "bbox": [
+        248,
+        154,
+        84,
+        54
+      ],
+      "confidence": "high",
+      "text": "99+",
+      "inheritance_policy": "hideable"
+    },
+    "全部-文本": {
+      "name": "全部-文本",
+      "selector": "#126_395595",
+      "id": "126_395595",
+      "area": "content-area",
+      "component": "text",
+      "element": "全部",
+      "bbox": [
+        248,
+        154,
+        84,
+        54
+      ],
+      "confidence": "high",
+      "text": "全部",
+      "inheritance_policy": "hideable"
+    },
+    "最新-文本": {
+      "name": "最新-文本",
+      "selector": "#126_395604",
+      "id": "126_395604",
+      "area": "content-area",
+      "component": "text",
+      "element": "最新",
+      "bbox": [
+        33,
+        234,
+        31,
+        18
+      ],
+      "confidence": "high",
+      "text": "最新",
+      "inheritance_policy": "hideable"
+    },
+    "线索-文本": {
+      "name": "线索-文本",
+      "selector": "#126_395605",
+      "id": "126_395605",
+      "area": "content-area",
+      "component": "text",
+      "element": "线索",
+      "bbox": [
+        33,
+        234,
+        31,
+        18
+      ],
+      "confidence": "high",
+      "text": "线索",
+      "inheritance_policy": "hideable"
+    },
+    "LEB1234567890-文本": {
+      "name": "LEB1234567890-文本",
+      "selector": "#126_395608",
+      "id": "126_395608",
+      "area": "content-area",
+      "component": "text",
+      "element": "LEB1234567890",
+      "bbox": [
+        76,
+        230,
+        104,
+        18
+      ],
+      "confidence": "high",
+      "text": "LEB1234567890",
+      "inheritance_policy": "hideable"
+    },
+    "客户公司名称-文本": {
+      "name": "客户公司名称-文本",
+      "selector": "#126_395610",
+      "id": "126_395610",
+      "area": "content-area",
+      "component": "text",
+      "element": "客户公司名称",
+      "bbox": [
+        76,
+        254,
+        200,
+        16
+      ],
+      "confidence": "high",
+      "text": "客户公司名称",
+      "inheritance_policy": "hideable"
+    },
+    "南京松海科技有限公司-文本": {
+      "name": "南京松海科技有限公司-文本",
+      "selector": "#126_395611",
+      "id": "126_395611",
+      "area": "content-area",
+      "component": "text",
+      "element": "南京松海科技有限公司",
+      "bbox": [
+        76,
+        254,
+        200,
+        16
+      ],
+      "confidence": "high",
+      "text": "南京松海科技有限公司",
+      "inheritance_policy": "hideable"
+    },
+    "我的线索-文本": {
+      "name": "我的线索-文本",
+      "selector": "#126_395614",
+      "id": "126_395614",
+      "area": "content-area",
+      "component": "text",
+      "element": "我的线索",
+      "bbox": [
+        76,
+        254,
+        200,
+        16
+      ],
+      "confidence": "high",
+      "text": "我的线索",
+      "inheritance_policy": "hideable"
+    },
+    "快捷入口-文本": {
+      "name": "快捷入口-文本",
+      "selector": "#126_395696",
+      "id": "126_395696",
+      "area": "content-area",
+      "component": "text",
+      "element": "快捷入口",
+      "bbox": [
+        28,
+        308,
+        64,
+        20
+      ],
+      "confidence": "high",
+      "text": "快捷入口",
+      "inheritance_policy": "hideable"
+    },
+    "创建会议-文本": {
+      "name": "创建会议-文本",
+      "selector": "#126_395736",
+      "id": "126_395736",
+      "area": "content-area",
+      "component": "text",
+      "element": "创建会议",
+      "bbox": [
+        46,
+        348,
+        40,
+        40
+      ],
+      "confidence": "high",
+      "text": "创建会议",
+      "inheritance_policy": "hideable"
+    },
+    "分析看板-文本": {
+      "name": "分析看板-文本",
+      "selector": "#126_395753",
+      "id": "126_395753",
+      "area": "content-area",
+      "component": "text",
+      "element": "分析看板",
+      "bbox": [
+        122,
+        348,
+        40,
+        40
+      ],
+      "confidence": "high",
+      "text": "分析看板",
+      "inheritance_policy": "hideable"
+    },
+    "JMF-文本": {
+      "name": "JMF-文本",
+      "selector": "#126_395767",
+      "id": "126_395767",
+      "area": "content-area",
+      "component": "text",
+      "element": "JMF",
+      "bbox": [
+        198,
+        348,
+        40,
+        40
+      ],
+      "confidence": "high",
+      "text": "JMF",
+      "inheritance_policy": "hideable"
+    },
+    "JMF管理-文本": {
+      "name": "JMF管理-文本",
+      "selector": "#126_395775",
+      "id": "126_395775",
+      "area": "content-area",
+      "component": "text",
+      "element": "JMF管理",
+      "bbox": [
+        198,
+        348,
+        40,
+        40
+      ],
+      "confidence": "high",
+      "text": "JMF管理",
+      "inheritance_policy": "hideable"
+    },
+    "新增客户-文本": {
+      "name": "新增客户-文本",
+      "selector": "#126_395788",
+      "id": "126_395788",
+      "area": "content-area",
+      "component": "text",
+      "element": "新增客户",
+      "bbox": [
+        274,
+        348,
+        40,
+        40
+      ],
+      "confidence": "high",
+      "text": "新增客户",
+      "inheritance_policy": "hideable"
+    },
+    "我要办会-文本": {
+      "name": "我要办会-文本",
+      "selector": "#126_395799",
+      "id": "126_395799",
+      "area": "content-area",
+      "component": "text",
+      "element": "我要办会",
+      "bbox": [
+        28,
+        460,
+        64,
+        20
+      ],
+      "confidence": "high",
+      "text": "我要办会",
+      "inheritance_policy": "hideable"
+    },
+    "9月23日-文本": {
+      "name": "9月23日-文本",
+      "selector": "#126_395801",
+      "id": "126_395801",
+      "area": "content-area",
+      "component": "text",
+      "element": "9月23日",
+      "bbox": [
+        28,
+        488,
+        130,
+        88
+      ],
+      "confidence": "high",
+      "text": "9月23日",
+      "inheritance_policy": "hideable"
+    },
+    "待开始-文本": {
+      "name": "待开始-文本",
+      "selector": "#126_395810",
+      "id": "126_395810",
+      "area": "content-area",
+      "component": "text",
+      "element": "待开始",
+      "bbox": [
+        28,
+        514,
+        130,
+        62
+      ],
+      "confidence": "high",
+      "text": "待开始",
+      "inheritance_policy": "hideable"
+    },
+    "99999-文本": {
+      "name": "99999-文本",
+      "selector": "#126_395821",
+      "id": "126_395821",
+      "area": "content-area",
+      "component": "text",
+      "element": "99999+",
+      "bbox": [
+        200,
+        502,
+        132,
+        32
+      ],
+      "confidence": "high",
+      "text": "99999+",
+      "inheritance_policy": "hideable"
+    },
+    "物料总数-文本": {
+      "name": "物料总数-文本",
+      "selector": "#126_395826",
+      "id": "126_395826",
+      "area": "content-area",
+      "component": "text",
+      "element": "物料总数",
+      "bbox": [
+        200,
+        538,
+        56,
+        18
+      ],
+      "confidence": "high",
+      "text": "物料总数",
+      "inheritance_policy": "hideable"
+    },
+    "营销物料-文本": {
+      "name": "营销物料-文本",
+      "selector": "#126_395834",
+      "id": "126_395834",
+      "area": "content-area",
+      "component": "text",
+      "element": "营销物料",
+      "bbox": [
+        200,
+        460,
+        64,
+        20
+      ],
+      "confidence": "high",
+      "text": "营销物料",
+      "inheritance_policy": "hideable"
+    },
+    "更多-文本": {
+      "name": "更多-文本",
+      "selector": "#126_395839",
+      "id": "126_395839",
+      "area": "content-area",
+      "component": "text",
+      "element": "更多",
+      "bbox": [
+        284,
+        628,
+        48,
+        18
+      ],
+      "confidence": "high",
+      "text": "更多",
+      "inheritance_policy": "hideable"
+    },
+    "99999-文本-2": {
+      "name": "99999-文本-2",
+      "selector": "#126_395852",
+      "id": "126_395852",
+      "area": "content-area",
+      "component": "text",
+      "element": "99999+",
+      "bbox": [
+        28,
+        666,
+        84,
+        78
+      ],
+      "confidence": "high",
+      "text": "99999+",
+      "inheritance_policy": "hideable"
+    },
+    "新增访客-周-文本": {
+      "name": "新增访客-周-文本",
+      "selector": "#126_395855",
+      "id": "126_395855",
+      "area": "content-area",
+      "component": "text",
+      "element": "新增访客 (周)",
+      "bbox": [
+        28,
+        666,
+        84,
+        78
+      ],
+      "confidence": "high",
+      "text": "新增访客 (周)",
+      "inheritance_policy": "hideable"
+    },
+    "同比-文本": {
+      "name": "同比-文本",
+      "selector": "#126_395858",
+      "id": "126_395858",
+      "area": "content-area",
+      "component": "text",
+      "element": "同比",
+      "bbox": [
+        28,
+        666,
+        84,
+        78
+      ],
+      "confidence": "high",
+      "text": "同比",
+      "inheritance_policy": "hideable"
+    },
+    "26-文本": {
+      "name": "26-文本",
+      "selector": "#126_395861",
+      "id": "126_395861",
+      "area": "content-area",
+      "component": "text",
+      "element": "2.6%",
+      "bbox": [
+        28,
+        666,
+        84,
+        78
+      ],
+      "confidence": "high",
+      "text": "2.6%",
+      "inheritance_policy": "hideable"
+    },
+    "26728-文本": {
+      "name": "26728-文本",
+      "selector": "#126_395864",
+      "id": "126_395864",
+      "area": "content-area",
+      "component": "text",
+      "element": "26728",
+      "bbox": [
+        138,
+        666,
+        84,
+        78
+      ],
+      "confidence": "high",
+      "text": "26728",
+      "inheritance_policy": "hideable"
+    },
+    "兴趣访客-周-文本": {
+      "name": "兴趣访客-周-文本",
+      "selector": "#126_395867",
+      "id": "126_395867",
+      "area": "content-area",
+      "component": "text",
+      "element": "兴趣访客 (周)",
+      "bbox": [
+        138,
+        666,
+        84,
+        78
+      ],
+      "confidence": "high",
+      "text": "兴趣访客 (周)",
+      "inheritance_policy": "hideable"
+    },
+    "同比-文本-2": {
+      "name": "同比-文本-2",
+      "selector": "#126_395870",
+      "id": "126_395870",
+      "area": "content-area",
+      "component": "text",
+      "element": "同比",
+      "bbox": [
+        138,
+        666,
+        84,
+        78
+      ],
+      "confidence": "high",
+      "text": "同比",
+      "inheritance_policy": "hideable"
+    },
+    "26-文本-2": {
+      "name": "26-文本-2",
+      "selector": "#126_395873",
+      "id": "126_395873",
+      "area": "content-area",
+      "component": "text",
+      "element": "2.6%",
+      "bbox": [
+        138,
+        666,
+        84,
+        78
+      ],
+      "confidence": "high",
+      "text": "2.6%",
+      "inheritance_policy": "hideable"
+    },
+    "26000-文本": {
+      "name": "26000-文本",
+      "selector": "#126_395876",
+      "id": "126_395876",
+      "area": "content-area",
+      "component": "text",
+      "element": "26000",
+      "bbox": [
+        248,
+        666,
+        84,
+        78
+      ],
+      "confidence": "high",
+      "text": "26000",
+      "inheritance_policy": "hideable"
+    },
+    "互动访客-周-文本": {
+      "name": "互动访客-周-文本",
+      "selector": "#126_395879",
+      "id": "126_395879",
+      "area": "content-area",
+      "component": "text",
+      "element": "互动访客 (周)",
+      "bbox": [
+        248,
+        666,
+        84,
+        78
+      ],
+      "confidence": "high",
+      "text": "互动访客 (周)",
+      "inheritance_policy": "hideable"
+    },
+    "同比-文本-3": {
+      "name": "同比-文本-3",
+      "selector": "#126_395882",
+      "id": "126_395882",
+      "area": "content-area",
+      "component": "text",
+      "element": "同比",
+      "bbox": [
+        248,
+        666,
+        84,
+        78
+      ],
+      "confidence": "high",
+      "text": "同比",
+      "inheritance_policy": "hideable"
+    },
+    "26-文本-3": {
+      "name": "26-文本-3",
+      "selector": "#126_395885",
+      "id": "126_395885",
+      "area": "content-area",
+      "component": "text",
+      "element": "2.6%",
+      "bbox": [
+        248,
+        666,
+        84,
+        78
+      ],
+      "confidence": "high",
+      "text": "2.6%",
+      "inheritance_policy": "hideable"
+    },
+    "分享获客-文本": {
+      "name": "分享获客-文本",
+      "selector": "#126_395906",
+      "id": "126_395906",
+      "area": "content-area",
+      "component": "text",
+      "element": "分享获客",
+      "bbox": [
+        28,
+        628,
+        64,
+        20
+      ],
+      "confidence": "high",
+      "text": "分享获客",
+      "inheritance_policy": "hideable"
+    },
+    "短视频能力中心-文本": {
+      "name": "短视频能力中心-文本",
+      "selector": "#126_395915",
+      "id": "126_395915",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "短视频能力中心",
+      "bbox": [
+        28,
+        796,
+        112,
+        20
+      ],
+      "confidence": "high",
+      "text": "短视频能力中心",
+      "inheritance_policy": "hideable"
+    },
+    "TOP1-文本": {
+      "name": "TOP1-文本",
+      "selector": "#126_395920",
+      "id": "126_395920",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "TOP1",
+      "bbox": [
+        28,
+        896,
+        304,
+        26
+      ],
+      "confidence": "high",
+      "text": "TOP1",
+      "inheritance_policy": "hideable"
+    },
+    "数通-文本": {
+      "name": "数通-文本",
+      "selector": "#126_395921",
+      "id": "126_395921",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "数通",
+      "bbox": [
+        28,
+        896,
+        304,
+        26
+      ],
+      "confidence": "high",
+      "text": "数通",
+      "inheritance_policy": "hideable"
+    },
+    "420-文本": {
+      "name": "420-文本",
+      "selector": "#126_395922_1",
+      "id": "126_395922_1",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "420",
+      "bbox": [
+        28,
+        896,
+        304,
+        26
+      ],
+      "confidence": "high",
+      "text": "420",
+      "inheritance_policy": "hideable"
+    },
+    "980-文本": {
+      "name": "980-文本",
+      "selector": "#126_395922_2",
+      "id": "126_395922_2",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "/980",
+      "bbox": [
+        28,
+        896,
+        304,
+        26
+      ],
+      "confidence": "high",
+      "text": "/980",
+      "inheritance_policy": "hideable"
+    },
+    "TOP2-文本": {
+      "name": "TOP2-文本",
+      "selector": "#126_395930",
+      "id": "126_395930",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "TOP2",
+      "bbox": [
+        28,
+        941,
+        304,
+        26
+      ],
+      "confidence": "high",
+      "text": "TOP2",
+      "inheritance_policy": "hideable"
+    },
+    "SOHO-文本": {
+      "name": "SOHO-文本",
+      "selector": "#126_395931",
+      "id": "126_395931",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "SOHO",
+      "bbox": [
+        28,
+        941,
+        304,
+        26
+      ],
+      "confidence": "high",
+      "text": "SOHO",
+      "inheritance_policy": "hideable"
+    },
+    "260-文本": {
+      "name": "260-文本",
+      "selector": "#126_395932_1",
+      "id": "126_395932_1",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "260",
+      "bbox": [
+        28,
+        941,
+        304,
+        26
+      ],
+      "confidence": "high",
+      "text": "260",
+      "inheritance_policy": "hideable"
+    },
+    "980-文本-2": {
+      "name": "980-文本-2",
+      "selector": "#126_395932_2",
+      "id": "126_395932_2",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "/980",
+      "bbox": [
+        28,
+        941,
+        304,
+        26
+      ],
+      "confidence": "high",
+      "text": "/980",
+      "inheritance_policy": "hideable"
+    },
+    "TOP3-文本": {
+      "name": "TOP3-文本",
+      "selector": "#126_395939",
+      "id": "126_395939",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "TOP3",
+      "bbox": [
+        28,
+        985,
+        304,
+        26
+      ],
+      "confidence": "high",
+      "text": "TOP3",
+      "inheritance_policy": "hideable"
+    },
+    "数通网络安全-文本": {
+      "name": "数通网络安全-文本",
+      "selector": "#126_395940",
+      "id": "126_395940",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "数通网络安全",
+      "bbox": [
+        28,
+        985,
+        304,
+        26
+      ],
+      "confidence": "high",
+      "text": "数通网络安全",
+      "inheritance_policy": "hideable"
+    },
+    "130-文本": {
+      "name": "130-文本",
+      "selector": "#126_395941_1",
+      "id": "126_395941_1",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "130",
+      "bbox": [
+        28,
+        985,
+        304,
+        26
+      ],
+      "confidence": "high",
+      "text": "130",
+      "inheritance_policy": "hideable"
+    },
+    "980-文本-3": {
+      "name": "980-文本-3",
+      "selector": "#126_395941_2",
+      "id": "126_395941_2",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "/980",
+      "bbox": [
+        28,
+        985,
+        304,
+        26
+      ],
+      "confidence": "high",
+      "text": "/980",
+      "inheritance_policy": "hideable"
+    },
+    "TOP4-文本": {
+      "name": "TOP4-文本",
+      "selector": "#126_395948",
+      "id": "126_395948",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "TOP4",
+      "bbox": [
+        28,
+        1030,
+        304,
+        26
+      ],
+      "confidence": "high",
+      "text": "TOP4",
+      "inheritance_policy": "hideable"
+    },
+    "光接入-文本": {
+      "name": "光接入-文本",
+      "selector": "#126_395949",
+      "id": "126_395949",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "光接入",
+      "bbox": [
+        28,
+        1030,
+        304,
+        26
+      ],
+      "confidence": "high",
+      "text": "光接入",
+      "inheritance_policy": "hideable"
+    },
+    "76-文本": {
+      "name": "76-文本",
+      "selector": "#126_395950_1",
+      "id": "126_395950_1",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "76",
+      "bbox": [
+        28,
+        1030,
+        304,
+        26
+      ],
+      "confidence": "high",
+      "text": "76",
+      "inheritance_policy": "hideable"
+    },
+    "980-文本-4": {
+      "name": "980-文本-4",
+      "selector": "#126_395950_2",
+      "id": "126_395950_2",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "/980",
+      "bbox": [
+        28,
+        1030,
+        304,
+        26
+      ],
+      "confidence": "high",
+      "text": "/980",
+      "inheritance_policy": "hideable"
+    },
+    "TOP5-文本": {
+      "name": "TOP5-文本",
+      "selector": "#126_395957",
+      "id": "126_395957",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "TOP5",
+      "bbox": [
+        28,
+        1074,
+        304,
+        26
+      ],
+      "confidence": "high",
+      "text": "TOP5",
+      "inheritance_policy": "hideable"
+    },
+    "小全光-文本": {
+      "name": "小全光-文本",
+      "selector": "#126_395958",
+      "id": "126_395958",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "小全光",
+      "bbox": [
+        28,
+        1074,
+        304,
+        26
+      ],
+      "confidence": "high",
+      "text": "小全光",
+      "inheritance_policy": "hideable"
+    },
+    "28-文本": {
+      "name": "28-文本",
+      "selector": "#126_395959_1",
+      "id": "126_395959_1",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "28",
+      "bbox": [
+        28,
+        1074,
+        304,
+        26
+      ],
+      "confidence": "high",
+      "text": "28",
+      "inheritance_policy": "hideable"
+    },
+    "980-文本-5": {
+      "name": "980-文本-5",
+      "selector": "#126_395959_2",
+      "id": "126_395959_2",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "/980",
+      "bbox": [
+        28,
+        1074,
+        304,
+        26
+      ],
+      "confidence": "high",
+      "text": "/980",
+      "inheritance_policy": "hideable"
+    },
+    "875-文本": {
+      "name": "875-文本",
+      "selector": "#126_395964",
+      "id": "126_395964",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "875",
+      "bbox": [
+        28,
+        830,
+        180,
+        54
+      ],
+      "confidence": "high",
+      "text": "875",
+      "inheritance_policy": "hideable"
+    },
+    "视频素材总数-文本": {
+      "name": "视频素材总数-文本",
+      "selector": "#126_395967",
+      "id": "126_395967",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "视频素材总数",
+      "bbox": [
+        28,
+        866,
+        180,
+        18
+      ],
+      "confidence": "high",
+      "text": "视频素材总数",
+      "inheritance_policy": "hideable"
+    },
+    "环比-周-文本": {
+      "name": "环比-周-文本",
+      "selector": "#126_395970",
+      "id": "126_395970",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "环比 (周)",
+      "bbox": [
+        28,
+        866,
+        180,
+        18
+      ],
+      "confidence": "high",
+      "text": "环比 (周)",
+      "inheritance_policy": "hideable"
+    },
+    "26-文本-4": {
+      "name": "26-文本-4",
+      "selector": "#126_395973",
+      "id": "126_395973",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "2.6%",
+      "bbox": [
+        28,
+        866,
+        180,
+        18
+      ],
+      "confidence": "high",
+      "text": "2.6%",
+      "inheritance_policy": "hideable"
+    },
+    "管理应用-文本": {
+      "name": "管理应用-文本",
+      "selector": "#126_396077",
+      "id": "126_396077",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "管理应用",
+      "bbox": [
+        142,
+        1140,
+        16,
+        16
+      ],
+      "confidence": "high",
+      "text": "管理应用",
+      "inheritance_policy": "hideable"
+    },
+    "底部标签栏-文本-首页": {
+      "name": "底部标签栏-文本-首页",
+      "selector": "#126_396085",
+      "id": "126_396085",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "首页",
+      "bbox": [
+        26,
+        1199,
+        20,
+        20
+      ],
+      "confidence": "high",
+      "text": "首页",
+      "inheritance_policy": "hideable"
+    },
+    "底部标签栏-文本-商城": {
+      "name": "底部标签栏-文本-商城",
+      "selector": "#126_396092",
+      "id": "126_396092",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "商城",
+      "bbox": [
+        98,
+        1200,
+        20,
+        19
+      ],
+      "confidence": "high",
+      "text": "商城",
+      "inheritance_policy": "hideable"
+    },
+    "营销-文本-2": {
+      "name": "营销-文本-2",
+      "selector": "#126_396101",
+      "id": "126_396101",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "营销",
+      "bbox": [
+        181,
+        1210,
+        9,
+        9
+      ],
+      "confidence": "high",
+      "text": "营销",
+      "inheritance_policy": "hideable"
+    },
+    "底部标签栏-文本-服务": {
+      "name": "底部标签栏-文本-服务",
+      "selector": "#126_396108",
+      "id": "126_396108",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "服务",
+      "bbox": [
+        248,
+        1205,
+        8,
+        2
+      ],
+      "confidence": "high",
+      "text": "服务",
+      "inheritance_policy": "hideable"
+    },
+    "底部标签栏-文本-我的": {
+      "name": "底部标签栏-文本-我的",
+      "selector": "#126_396115",
+      "id": "126_396115",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "我的",
+      "bbox": [
+        319,
+        1206,
+        7,
+        3
+      ],
+      "confidence": "high",
+      "text": "我的",
+      "inheritance_policy": "hideable"
+    }
+  },
+  "semanticAnchors": {
+    "页面全局背景容器-整个页面": "#14_527266",
+    "顶部背景遮罩层-顶部靠上": "#126_395424",
+    "顶部状态栏-顶部横向区域": "#126_395437",
+    "状态栏右侧系统图标组-顶部靠右": "#126_395439",
+    "顶部导航栏-顶部横向区域": "#126_395496",
+    "导航栏标题文本区-顶部靠左": "#126_395504",
+    "顶部功能图标组-顶部靠右": "#126_395515",
+    "主业务内容滚动容器-页面中下部": "#126_395562",
+    "我的线索区域-上半部分": "#126_395563",
+    "线索数量统计卡片-上半部分": "#126_395585",
+    "最新线索详情卡片-上半部分": "#126_395600",
+    "快捷入口区域-中间靠左": "#126_395691",
+    "快捷入口按钮组-中间靠左": "#126_395715",
+    "我要办会与营销物料双栏卡片区域-中间区域": "#126_395794",
+    "我要办会卡片-中间靠左": "#126_395795",
+    "营销物料卡片-中间靠右": "#126_395817",
+    "分享获客数据统计区域-中间偏下": "#126_395835",
+    "获客数据指标组-中间偏下": "#126_395849",
+    "短视频能力中心区域-下半部分": "#126_395911",
+    "短视频TOP排行榜列表-下半部分": "#126_395916",
+    "管理应用跳转按钮-底部靠上": "#126_396066",
+    "底部标签栏-底部横向区域": "#126_396078",
+    "0808-文本": "#126_395438",
+    "营销-文本": "#126_395506",
+    "顶部导航栏-文本-工作台": "#126_395510",
+    "70-文本": "#126_395588",
+    "待接收-文本": "#126_395589",
+    "16-文本": "#126_395591",
+    "跟进中-文本": "#126_395592",
+    "99-文本": "#126_395594",
+    "全部-文本": "#126_395595",
+    "最新-文本": "#126_395604",
+    "线索-文本": "#126_395605",
+    "LEB1234567890-文本": "#126_395608",
+    "客户公司名称-文本": "#126_395610",
+    "南京松海科技有限公司-文本": "#126_395611",
+    "我的线索-文本": "#126_395614",
+    "快捷入口-文本": "#126_395696",
+    "创建会议-文本": "#126_395736",
+    "分析看板-文本": "#126_395753",
+    "JMF-文本": "#126_395767",
+    "JMF管理-文本": "#126_395775",
+    "新增客户-文本": "#126_395788",
+    "我要办会-文本": "#126_395799",
+    "9月23日-文本": "#126_395801",
+    "待开始-文本": "#126_395810",
+    "99999-文本": "#126_395821",
+    "物料总数-文本": "#126_395826",
+    "营销物料-文本": "#126_395834",
+    "更多-文本": "#126_395839",
+    "99999-文本-2": "#126_395852",
+    "新增访客-周-文本": "#126_395855",
+    "同比-文本": "#126_395858",
+    "26-文本": "#126_395861",
+    "26728-文本": "#126_395864",
+    "兴趣访客-周-文本": "#126_395867",
+    "同比-文本-2": "#126_395870",
+    "26-文本-2": "#126_395873",
+    "26000-文本": "#126_395876",
+    "互动访客-周-文本": "#126_395879",
+    "同比-文本-3": "#126_395882",
+    "26-文本-3": "#126_395885",
+    "分享获客-文本": "#126_395906",
+    "短视频能力中心-文本": "#126_395915",
+    "TOP1-文本": "#126_395920",
+    "数通-文本": "#126_395921",
+    "420-文本": "#126_395922_1",
+    "980-文本": "#126_395922_2",
+    "TOP2-文本": "#126_395930",
+    "SOHO-文本": "#126_395931",
+    "260-文本": "#126_395932_1",
+    "980-文本-2": "#126_395932_2",
+    "TOP3-文本": "#126_395939",
+    "数通网络安全-文本": "#126_395940",
+    "130-文本": "#126_395941_1",
+    "980-文本-3": "#126_395941_2",
+    "TOP4-文本": "#126_395948",
+    "光接入-文本": "#126_395949",
+    "76-文本": "#126_395950_1",
+    "980-文本-4": "#126_395950_2",
+    "TOP5-文本": "#126_395957",
+    "小全光-文本": "#126_395958",
+    "28-文本": "#126_395959_1",
+    "980-文本-5": "#126_395959_2",
+    "875-文本": "#126_395964",
+    "视频素材总数-文本": "#126_395967",
+    "环比-周-文本": "#126_395970",
+    "26-文本-4": "#126_395973",
+    "管理应用-文本": "#126_396077",
+    "底部标签栏-文本-首页": "#126_396085",
+    "底部标签栏-文本-商城": "#126_396092",
+    "营销-文本-2": "#126_396101",
+    "底部标签栏-文本-服务": "#126_396108",
+    "底部标签栏-文本-我的": "#126_396115"
+  },
+  "semantic_dom_tree": {
+    "roots": [
+      "页面全局背景容器-整个页面"
+    ],
+    "nodes": {
+      "页面全局背景容器-整个页面": {
+        "name": "页面全局背景容器-整个页面",
+        "selector": "#14_527266",
+        "id": "14_527266",
+        "area": "全屏背景",
+        "semantic": "页面全局背景容器",
+        "range": "整个页面",
+        "text": "",
+        "confidence": "高",
+        "parent": null,
+        "children": [
+          "顶部背景遮罩层-顶部靠上",
+          "顶部状态栏-顶部横向区域",
+          "顶部导航栏-顶部横向区域",
+          "主业务内容滚动容器-页面中下部",
+          "底部标签栏-底部横向区域"
+        ]
+      },
+      "顶部背景遮罩层-顶部靠上": {
+        "name": "顶部背景遮罩层-顶部靠上",
+        "selector": "#126_395424",
+        "id": "126_395424",
+        "area": "顶部区域",
+        "semantic": "顶部背景遮罩层",
+        "range": "顶部靠上",
+        "text": "",
+        "confidence": "高 -->\n        </div>\n        <!-- 顶部背景矩形：用于形成导航栏/头部的底色背景 -->\n        <!-- bbox: key=id:126_395424",
+        "parent": "页面全局背景容器-整个页面",
+        "children": []
+      },
+      "顶部状态栏-顶部横向区域": {
+        "name": "顶部状态栏-顶部横向区域",
+        "selector": "#126_395437",
+        "id": "126_395437",
+        "area": "顶部区域",
+        "semantic": "顶部状态栏",
+        "range": "顶部横向区域",
+        "text": "08:08",
+        "confidence": "高",
+        "parent": "页面全局背景容器-整个页面",
+        "children": [
+          "状态栏右侧系统图标组-顶部靠右",
+          "0808-文本"
+        ]
+      },
+      "状态栏右侧系统图标组-顶部靠右": {
+        "name": "状态栏右侧系统图标组-顶部靠右",
+        "selector": "#126_395439",
+        "id": "126_395439",
+        "area": "顶部区域",
+        "semantic": "状态栏右侧系统图标组",
+        "range": "顶部靠右",
+        "text": "",
+        "confidence": "高",
+        "parent": "顶部状态栏-顶部横向区域",
+        "children": []
+      },
+      "顶部导航栏-顶部横向区域": {
+        "name": "顶部导航栏-顶部横向区域",
+        "selector": "#126_395496",
+        "id": "126_395496",
+        "area": "顶部区域",
+        "semantic": "顶部导航栏",
+        "range": "顶部横向区域",
+        "text": "营销 工作台",
+        "confidence": "高",
+        "parent": "页面全局背景容器-整个页面",
+        "children": [
+          "导航栏标题文本区-顶部靠左",
+          "顶部功能图标组-顶部靠右"
+        ]
+      },
+      "导航栏标题文本区-顶部靠左": {
+        "name": "导航栏标题文本区-顶部靠左",
+        "selector": "#126_395504",
+        "id": "126_395504",
+        "area": "顶部区域",
+        "semantic": "导航栏标题文本区",
+        "range": "顶部靠左",
+        "text": "营销 工作台",
+        "confidence": "高",
+        "parent": "顶部导航栏-顶部横向区域",
+        "children": [
+          "营销-文本",
+          "顶部导航栏-文本-工作台"
+        ]
+      },
+      "顶部功能图标组-顶部靠右": {
+        "name": "顶部功能图标组-顶部靠右",
+        "selector": "#126_395515",
+        "id": "126_395515",
+        "area": "顶部区域",
+        "semantic": "顶部功能图标组",
+        "range": "顶部靠右",
+        "text": "",
+        "confidence": "高",
+        "parent": "顶部导航栏-顶部横向区域",
+        "children": []
+      },
+      "主业务内容滚动容器-页面中下部": {
+        "name": "主业务内容滚动容器-页面中下部",
+        "selector": "#126_395562",
+        "id": "126_395562",
+        "area": "主体内容区域",
+        "semantic": "主业务内容滚动容器",
+        "range": "页面中下部",
+        "text": "70 待接收 16 跟进中 99+ 全部 最新 线索 LEB1234567890 客户公司名称 南京松海科技有限公司 我的线索 快捷入口 创建会议 分析看板 JMF JMF管理 新增客户 我要办会 9",
+        "confidence": "高",
+        "parent": "页面全局背景容器-整个页面",
+        "children": [
+          "我的线索区域-上半部分",
+          "快捷入口区域-中间靠左",
+          "我要办会与营销物料双栏卡片区域-中间区域",
+          "管理应用跳转按钮-底部靠上"
+        ]
+      },
+      "我的线索区域-上半部分": {
+        "name": "我的线索区域-上半部分",
+        "selector": "#126_395563",
+        "id": "126_395563",
+        "area": "主体内容区域",
+        "semantic": "我的线索区域",
+        "range": "上半部分",
+        "text": "70 待接收 16 跟进中 99+ 全部 最新 线索 LEB1234567890 客户公司名称 南京松海科技有限公司 我的线索",
+        "confidence": "高",
+        "parent": "主业务内容滚动容器-页面中下部",
+        "children": [
+          "线索数量统计卡片-上半部分",
+          "最新线索详情卡片-上半部分",
+          "我的线索-文本"
+        ]
+      },
+      "线索数量统计卡片-上半部分": {
+        "name": "线索数量统计卡片-上半部分",
+        "selector": "#126_395585",
+        "id": "126_395585",
+        "area": "主体内容区域",
+        "semantic": "线索数量统计卡片",
+        "range": "上半部分",
+        "text": "70 待接收 16 跟进中 99+ 全部",
+        "confidence": "高",
+        "parent": "我的线索区域-上半部分",
+        "children": [
+          "70-文本",
+          "待接收-文本",
+          "16-文本",
+          "跟进中-文本",
+          "99-文本",
+          "全部-文本"
+        ]
+      },
+      "最新线索详情卡片-上半部分": {
+        "name": "最新线索详情卡片-上半部分",
+        "selector": "#126_395600",
+        "id": "126_395600",
+        "area": "主体内容区域",
+        "semantic": "最新线索详情卡片",
+        "range": "上半部分",
+        "text": "最新 线索 LEB1234567890 客户公司名称 南京松海科技有限公司",
+        "confidence": "高",
+        "parent": "我的线索区域-上半部分",
+        "children": [
+          "最新-文本",
+          "线索-文本",
+          "LEB1234567890-文本",
+          "客户公司名称-文本",
+          "南京松海科技有限公司-文本"
+        ]
+      },
+      "快捷入口区域-中间靠左": {
+        "name": "快捷入口区域-中间靠左",
+        "selector": "#126_395691",
+        "id": "126_395691",
+        "area": "主体内容区域",
+        "semantic": "快捷入口区域",
+        "range": "中间靠左",
+        "text": "快捷入口 创建会议 分析看板 JMF JMF管理 新增客户",
+        "confidence": "高",
+        "parent": "主业务内容滚动容器-页面中下部",
+        "children": [
+          "快捷入口按钮组-中间靠左",
+          "快捷入口-文本"
+        ]
+      },
+      "快捷入口按钮组-中间靠左": {
+        "name": "快捷入口按钮组-中间靠左",
+        "selector": "#126_395715",
+        "id": "126_395715",
+        "area": "主体内容区域",
+        "semantic": "快捷入口按钮组",
+        "range": "中间靠左",
+        "text": "创建会议 分析看板 JMF JMF管理 新增客户",
+        "confidence": "高",
+        "parent": "快捷入口区域-中间靠左",
+        "children": [
+          "创建会议-文本",
+          "分析看板-文本",
+          "JMF-文本",
+          "JMF管理-文本",
+          "新增客户-文本"
+        ]
+      },
+      "我要办会与营销物料双栏卡片区域-中间区域": {
+        "name": "我要办会与营销物料双栏卡片区域-中间区域",
+        "selector": "#126_395794",
+        "id": "126_395794",
+        "area": "主体内容区域",
+        "semantic": "我要办会与营销物料双栏卡片区域",
+        "range": "中间区域",
+        "text": "我要办会 9月23日 华为坤灵协作平板SOHO分销渠道沙龙 待开始 99999+ 物料总数 营销物料",
+        "confidence": "高",
+        "parent": "主业务内容滚动容器-页面中下部",
+        "children": [
+          "我要办会卡片-中间靠左",
+          "分享获客数据统计区域-中间偏下",
+          "短视频能力中心区域-下半部分"
+        ]
+      },
+      "我要办会卡片-中间靠左": {
+        "name": "我要办会卡片-中间靠左",
+        "selector": "#126_395795",
+        "id": "126_395795",
+        "area": "主体内容区域",
+        "semantic": "我要办会卡片",
+        "range": "中间靠左",
+        "text": "我要办会 9月23日 华为坤灵协作平板SOHO分销渠道沙龙 待开始",
+        "confidence": "高",
+        "parent": "我要办会与营销物料双栏卡片区域-中间区域",
+        "children": [
+          "营销物料卡片-中间靠右",
+          "我要办会-文本",
+          "9月23日-文本",
+          "待开始-文本"
+        ]
+      },
+      "营销物料卡片-中间靠右": {
+        "name": "营销物料卡片-中间靠右",
+        "selector": "#126_395817",
+        "id": "126_395817",
+        "area": "主体内容区域",
+        "semantic": "营销物料卡片",
+        "range": "中间靠右",
+        "text": "99999+ 物料总数 营销物料",
+        "confidence": "高",
+        "parent": "我要办会卡片-中间靠左",
+        "children": [
+          "99999-文本",
+          "物料总数-文本",
+          "营销物料-文本"
+        ]
+      },
+      "分享获客数据统计区域-中间偏下": {
+        "name": "分享获客数据统计区域-中间偏下",
+        "selector": "#126_395835",
+        "id": "126_395835",
+        "area": "主体内容区域",
+        "semantic": "分享获客数据统计区域",
+        "range": "中间偏下",
+        "text": "更多 99999+ 新增访客 (周) 同比 2.6% 26728 兴趣访客 (周) 同比 2.6% 26000 互动访客 (周) 同比 2.6% 分享获客",
+        "confidence": "高",
+        "parent": "我要办会与营销物料双栏卡片区域-中间区域",
+        "children": [
+          "获客数据指标组-中间偏下",
+          "更多-文本",
+          "分享获客-文本"
+        ]
+      },
+      "获客数据指标组-中间偏下": {
+        "name": "获客数据指标组-中间偏下",
+        "selector": "#126_395849",
+        "id": "126_395849",
+        "area": "主体内容区域",
+        "semantic": "获客数据指标组",
+        "range": "中间偏下",
+        "text": "99999+ 新增访客 (周) 同比 2.6% 26728 兴趣访客 (周) 同比 2.6% 26000 互动访客 (周) 同比 2.6%",
+        "confidence": "高",
+        "parent": "分享获客数据统计区域-中间偏下",
+        "children": [
+          "99999-文本-2",
+          "新增访客-周-文本",
+          "同比-文本",
+          "26-文本",
+          "26728-文本",
+          "兴趣访客-周-文本",
+          "同比-文本-2",
+          "26-文本-2",
+          "26000-文本",
+          "互动访客-周-文本",
+          "同比-文本-3",
+          "26-文本-3"
+        ]
+      },
+      "短视频能力中心区域-下半部分": {
+        "name": "短视频能力中心区域-下半部分",
+        "selector": "#126_395911",
+        "id": "126_395911",
+        "area": "主体内容区域",
+        "semantic": "短视频能力中心区域",
+        "range": "下半部分",
+        "text": "短视频能力中心 TOP1 数通 420 /980 TOP2 SOHO 260 /980 TOP3 数通网络安全 130 /980 TOP4 光接入 76 /980 TOP5 小全光 28 /980 8",
+        "confidence": "高",
+        "parent": "我要办会与营销物料双栏卡片区域-中间区域",
+        "children": [
+          "短视频TOP排行榜列表-下半部分",
+          "短视频能力中心-文本",
+          "875-文本",
+          "视频素材总数-文本",
+          "环比-周-文本",
+          "26-文本-4"
+        ]
+      },
+      "短视频TOP排行榜列表-下半部分": {
+        "name": "短视频TOP排行榜列表-下半部分",
+        "selector": "#126_395916",
+        "id": "126_395916",
+        "area": "主体内容区域",
+        "semantic": "短视频TOP排行榜列表",
+        "range": "下半部分",
+        "text": "TOP1 数通 420 /980 TOP2 SOHO 260 /980 TOP3 数通网络安全 130 /980 TOP4 光接入 76 /980 TOP5 小全光 28 /980",
+        "confidence": "高",
+        "parent": "短视频能力中心区域-下半部分",
+        "children": [
+          "TOP1-文本",
+          "数通-文本",
+          "420-文本",
+          "980-文本",
+          "TOP2-文本",
+          "SOHO-文本",
+          "260-文本",
+          "980-文本-2",
+          "TOP3-文本",
+          "数通网络安全-文本",
+          "130-文本",
+          "980-文本-3",
+          "TOP4-文本",
+          "光接入-文本",
+          "76-文本",
+          "980-文本-4",
+          "TOP5-文本",
+          "小全光-文本",
+          "28-文本",
+          "980-文本-5"
+        ]
+      },
+      "管理应用跳转按钮-底部靠上": {
+        "name": "管理应用跳转按钮-底部靠上",
+        "selector": "#126_396066",
+        "id": "126_396066",
+        "area": "主体内容区域",
+        "semantic": "管理应用跳转按钮",
+        "range": "底部靠上",
+        "text": "管理应用",
+        "confidence": "高",
+        "parent": "主业务内容滚动容器-页面中下部",
+        "children": [
+          "管理应用-文本"
+        ]
+      },
+      "底部标签栏-底部横向区域": {
+        "name": "底部标签栏-底部横向区域",
+        "selector": "#126_396078",
+        "id": "126_396078",
+        "area": "底部区域",
+        "semantic": "底部标签栏",
+        "range": "底部横向区域",
+        "text": "首页 商城 营销 服务 我的",
+        "confidence": "高",
+        "parent": "页面全局背景容器-整个页面",
+        "children": [
+          "底部标签栏-文本-首页",
+          "底部标签栏-文本-商城",
+          "营销-文本-2",
+          "底部标签栏-文本-服务",
+          "底部标签栏-文本-我的"
+        ]
+      },
+      "0808-文本": {
+        "name": "0808-文本",
+        "selector": "#126_395438",
+        "id": "126_395438",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "08:08",
+        "text": "08:08",
+        "confidence": "high",
+        "parent": "顶部状态栏-顶部横向区域",
+        "children": []
+      },
+      "营销-文本": {
+        "name": "营销-文本",
+        "selector": "#126_395506",
+        "id": "126_395506",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "营销",
+        "text": "营销",
+        "confidence": "high",
+        "parent": "导航栏标题文本区-顶部靠左",
+        "children": []
+      },
+      "顶部导航栏-文本-工作台": {
+        "name": "顶部导航栏-文本-工作台",
+        "selector": "#126_395510",
+        "id": "126_395510",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "工作台",
+        "text": "工作台",
+        "confidence": "high",
+        "parent": "导航栏标题文本区-顶部靠左",
+        "children": []
+      },
+      "70-文本": {
+        "name": "70-文本",
+        "selector": "#126_395588",
+        "id": "126_395588",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "70",
+        "text": "70",
+        "confidence": "high",
+        "parent": "线索数量统计卡片-上半部分",
+        "children": []
+      },
+      "待接收-文本": {
+        "name": "待接收-文本",
+        "selector": "#126_395589",
+        "id": "126_395589",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "待接收",
+        "text": "待接收",
+        "confidence": "high",
+        "parent": "线索数量统计卡片-上半部分",
+        "children": []
+      },
+      "16-文本": {
+        "name": "16-文本",
+        "selector": "#126_395591",
+        "id": "126_395591",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "16",
+        "text": "16",
+        "confidence": "high",
+        "parent": "线索数量统计卡片-上半部分",
+        "children": []
+      },
+      "跟进中-文本": {
+        "name": "跟进中-文本",
+        "selector": "#126_395592",
+        "id": "126_395592",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "跟进中",
+        "text": "跟进中",
+        "confidence": "high",
+        "parent": "线索数量统计卡片-上半部分",
+        "children": []
+      },
+      "99-文本": {
+        "name": "99-文本",
+        "selector": "#126_395594",
+        "id": "126_395594",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "99+",
+        "text": "99+",
+        "confidence": "high",
+        "parent": "线索数量统计卡片-上半部分",
+        "children": []
+      },
+      "全部-文本": {
+        "name": "全部-文本",
+        "selector": "#126_395595",
+        "id": "126_395595",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "全部",
+        "text": "全部",
+        "confidence": "high",
+        "parent": "线索数量统计卡片-上半部分",
+        "children": []
+      },
+      "最新-文本": {
+        "name": "最新-文本",
+        "selector": "#126_395604",
+        "id": "126_395604",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "最新",
+        "text": "最新",
+        "confidence": "high",
+        "parent": "最新线索详情卡片-上半部分",
+        "children": []
+      },
+      "线索-文本": {
+        "name": "线索-文本",
+        "selector": "#126_395605",
+        "id": "126_395605",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "线索",
+        "text": "线索",
+        "confidence": "high",
+        "parent": "最新线索详情卡片-上半部分",
+        "children": []
+      },
+      "LEB1234567890-文本": {
+        "name": "LEB1234567890-文本",
+        "selector": "#126_395608",
+        "id": "126_395608",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "LEB1234567890",
+        "text": "LEB1234567890",
+        "confidence": "high",
+        "parent": "最新线索详情卡片-上半部分",
+        "children": []
+      },
+      "客户公司名称-文本": {
+        "name": "客户公司名称-文本",
+        "selector": "#126_395610",
+        "id": "126_395610",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "客户公司名称",
+        "text": "客户公司名称",
+        "confidence": "high",
+        "parent": "最新线索详情卡片-上半部分",
+        "children": []
+      },
+      "南京松海科技有限公司-文本": {
+        "name": "南京松海科技有限公司-文本",
+        "selector": "#126_395611",
+        "id": "126_395611",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "南京松海科技有限公司",
+        "text": "南京松海科技有限公司",
+        "confidence": "high",
+        "parent": "最新线索详情卡片-上半部分",
+        "children": []
+      },
+      "我的线索-文本": {
+        "name": "我的线索-文本",
+        "selector": "#126_395614",
+        "id": "126_395614",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "我的线索",
+        "text": "我的线索",
+        "confidence": "high",
+        "parent": "我的线索区域-上半部分",
+        "children": []
+      },
+      "快捷入口-文本": {
+        "name": "快捷入口-文本",
+        "selector": "#126_395696",
+        "id": "126_395696",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "快捷入口",
+        "text": "快捷入口",
+        "confidence": "high",
+        "parent": "快捷入口区域-中间靠左",
+        "children": []
+      },
+      "创建会议-文本": {
+        "name": "创建会议-文本",
+        "selector": "#126_395736",
+        "id": "126_395736",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "创建会议",
+        "text": "创建会议",
+        "confidence": "high",
+        "parent": "快捷入口按钮组-中间靠左",
+        "children": []
+      },
+      "分析看板-文本": {
+        "name": "分析看板-文本",
+        "selector": "#126_395753",
+        "id": "126_395753",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "分析看板",
+        "text": "分析看板",
+        "confidence": "high",
+        "parent": "快捷入口按钮组-中间靠左",
+        "children": []
+      },
+      "JMF-文本": {
+        "name": "JMF-文本",
+        "selector": "#126_395767",
+        "id": "126_395767",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "JMF",
+        "text": "JMF",
+        "confidence": "high",
+        "parent": "快捷入口按钮组-中间靠左",
+        "children": []
+      },
+      "JMF管理-文本": {
+        "name": "JMF管理-文本",
+        "selector": "#126_395775",
+        "id": "126_395775",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "JMF管理",
+        "text": "JMF管理",
+        "confidence": "high",
+        "parent": "快捷入口按钮组-中间靠左",
+        "children": []
+      },
+      "新增客户-文本": {
+        "name": "新增客户-文本",
+        "selector": "#126_395788",
+        "id": "126_395788",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "新增客户",
+        "text": "新增客户",
+        "confidence": "high",
+        "parent": "快捷入口按钮组-中间靠左",
+        "children": []
+      },
+      "我要办会-文本": {
+        "name": "我要办会-文本",
+        "selector": "#126_395799",
+        "id": "126_395799",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "我要办会",
+        "text": "我要办会",
+        "confidence": "high",
+        "parent": "我要办会卡片-中间靠左",
+        "children": []
+      },
+      "9月23日-文本": {
+        "name": "9月23日-文本",
+        "selector": "#126_395801",
+        "id": "126_395801",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "9月23日",
+        "text": "9月23日",
+        "confidence": "high",
+        "parent": "我要办会卡片-中间靠左",
+        "children": []
+      },
+      "待开始-文本": {
+        "name": "待开始-文本",
+        "selector": "#126_395810",
+        "id": "126_395810",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "待开始",
+        "text": "待开始",
+        "confidence": "high",
+        "parent": "我要办会卡片-中间靠左",
+        "children": []
+      },
+      "99999-文本": {
+        "name": "99999-文本",
+        "selector": "#126_395821",
+        "id": "126_395821",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "99999+",
+        "text": "99999+",
+        "confidence": "high",
+        "parent": "营销物料卡片-中间靠右",
+        "children": []
+      },
+      "物料总数-文本": {
+        "name": "物料总数-文本",
+        "selector": "#126_395826",
+        "id": "126_395826",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "物料总数",
+        "text": "物料总数",
+        "confidence": "high",
+        "parent": "营销物料卡片-中间靠右",
+        "children": []
+      },
+      "营销物料-文本": {
+        "name": "营销物料-文本",
+        "selector": "#126_395834",
+        "id": "126_395834",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "营销物料",
+        "text": "营销物料",
+        "confidence": "high",
+        "parent": "营销物料卡片-中间靠右",
+        "children": []
+      },
+      "更多-文本": {
+        "name": "更多-文本",
+        "selector": "#126_395839",
+        "id": "126_395839",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "更多",
+        "text": "更多",
+        "confidence": "high",
+        "parent": "分享获客数据统计区域-中间偏下",
+        "children": []
+      },
+      "99999-文本-2": {
+        "name": "99999-文本-2",
+        "selector": "#126_395852",
+        "id": "126_395852",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "99999+",
+        "text": "99999+",
+        "confidence": "high",
+        "parent": "获客数据指标组-中间偏下",
+        "children": []
+      },
+      "新增访客-周-文本": {
+        "name": "新增访客-周-文本",
+        "selector": "#126_395855",
+        "id": "126_395855",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "新增访客 (周)",
+        "text": "新增访客 (周)",
+        "confidence": "high",
+        "parent": "获客数据指标组-中间偏下",
+        "children": []
+      },
+      "同比-文本": {
+        "name": "同比-文本",
+        "selector": "#126_395858",
+        "id": "126_395858",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "同比",
+        "text": "同比",
+        "confidence": "high",
+        "parent": "获客数据指标组-中间偏下",
+        "children": []
+      },
+      "26-文本": {
+        "name": "26-文本",
+        "selector": "#126_395861",
+        "id": "126_395861",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "2.6%",
+        "text": "2.6%",
+        "confidence": "high",
+        "parent": "获客数据指标组-中间偏下",
+        "children": []
+      },
+      "26728-文本": {
+        "name": "26728-文本",
+        "selector": "#126_395864",
+        "id": "126_395864",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "26728",
+        "text": "26728",
+        "confidence": "high",
+        "parent": "获客数据指标组-中间偏下",
+        "children": []
+      },
+      "兴趣访客-周-文本": {
+        "name": "兴趣访客-周-文本",
+        "selector": "#126_395867",
+        "id": "126_395867",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "兴趣访客 (周)",
+        "text": "兴趣访客 (周)",
+        "confidence": "high",
+        "parent": "获客数据指标组-中间偏下",
+        "children": []
+      },
+      "同比-文本-2": {
+        "name": "同比-文本-2",
+        "selector": "#126_395870",
+        "id": "126_395870",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "同比",
+        "text": "同比",
+        "confidence": "high",
+        "parent": "获客数据指标组-中间偏下",
+        "children": []
+      },
+      "26-文本-2": {
+        "name": "26-文本-2",
+        "selector": "#126_395873",
+        "id": "126_395873",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "2.6%",
+        "text": "2.6%",
+        "confidence": "high",
+        "parent": "获客数据指标组-中间偏下",
+        "children": []
+      },
+      "26000-文本": {
+        "name": "26000-文本",
+        "selector": "#126_395876",
+        "id": "126_395876",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "26000",
+        "text": "26000",
+        "confidence": "high",
+        "parent": "获客数据指标组-中间偏下",
+        "children": []
+      },
+      "互动访客-周-文本": {
+        "name": "互动访客-周-文本",
+        "selector": "#126_395879",
+        "id": "126_395879",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "互动访客 (周)",
+        "text": "互动访客 (周)",
+        "confidence": "high",
+        "parent": "获客数据指标组-中间偏下",
+        "children": []
+      },
+      "同比-文本-3": {
+        "name": "同比-文本-3",
+        "selector": "#126_395882",
+        "id": "126_395882",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "同比",
+        "text": "同比",
+        "confidence": "high",
+        "parent": "获客数据指标组-中间偏下",
+        "children": []
+      },
+      "26-文本-3": {
+        "name": "26-文本-3",
+        "selector": "#126_395885",
+        "id": "126_395885",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "2.6%",
+        "text": "2.6%",
+        "confidence": "high",
+        "parent": "获客数据指标组-中间偏下",
+        "children": []
+      },
+      "分享获客-文本": {
+        "name": "分享获客-文本",
+        "selector": "#126_395906",
+        "id": "126_395906",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "分享获客",
+        "text": "分享获客",
+        "confidence": "high",
+        "parent": "分享获客数据统计区域-中间偏下",
+        "children": []
+      },
+      "短视频能力中心-文本": {
+        "name": "短视频能力中心-文本",
+        "selector": "#126_395915",
+        "id": "126_395915",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "短视频能力中心",
+        "text": "短视频能力中心",
+        "confidence": "high",
+        "parent": "短视频能力中心区域-下半部分",
+        "children": []
+      },
+      "TOP1-文本": {
+        "name": "TOP1-文本",
+        "selector": "#126_395920",
+        "id": "126_395920",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "TOP1",
+        "text": "TOP1",
+        "confidence": "high",
+        "parent": "短视频TOP排行榜列表-下半部分",
+        "children": []
+      },
+      "数通-文本": {
+        "name": "数通-文本",
+        "selector": "#126_395921",
+        "id": "126_395921",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "数通",
+        "text": "数通",
+        "confidence": "high",
+        "parent": "短视频TOP排行榜列表-下半部分",
+        "children": []
+      },
+      "420-文本": {
+        "name": "420-文本",
+        "selector": "#126_395922_1",
+        "id": "126_395922_1",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "420",
+        "text": "420",
+        "confidence": "high",
+        "parent": "短视频TOP排行榜列表-下半部分",
+        "children": []
+      },
+      "980-文本": {
+        "name": "980-文本",
+        "selector": "#126_395922_2",
+        "id": "126_395922_2",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "/980",
+        "text": "/980",
+        "confidence": "high",
+        "parent": "短视频TOP排行榜列表-下半部分",
+        "children": []
+      },
+      "TOP2-文本": {
+        "name": "TOP2-文本",
+        "selector": "#126_395930",
+        "id": "126_395930",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "TOP2",
+        "text": "TOP2",
+        "confidence": "high",
+        "parent": "短视频TOP排行榜列表-下半部分",
+        "children": []
+      },
+      "SOHO-文本": {
+        "name": "SOHO-文本",
+        "selector": "#126_395931",
+        "id": "126_395931",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "SOHO",
+        "text": "SOHO",
+        "confidence": "high",
+        "parent": "短视频TOP排行榜列表-下半部分",
+        "children": []
+      },
+      "260-文本": {
+        "name": "260-文本",
+        "selector": "#126_395932_1",
+        "id": "126_395932_1",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "260",
+        "text": "260",
+        "confidence": "high",
+        "parent": "短视频TOP排行榜列表-下半部分",
+        "children": []
+      },
+      "980-文本-2": {
+        "name": "980-文本-2",
+        "selector": "#126_395932_2",
+        "id": "126_395932_2",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "/980",
+        "text": "/980",
+        "confidence": "high",
+        "parent": "短视频TOP排行榜列表-下半部分",
+        "children": []
+      },
+      "TOP3-文本": {
+        "name": "TOP3-文本",
+        "selector": "#126_395939",
+        "id": "126_395939",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "TOP3",
+        "text": "TOP3",
+        "confidence": "high",
+        "parent": "短视频TOP排行榜列表-下半部分",
+        "children": []
+      },
+      "数通网络安全-文本": {
+        "name": "数通网络安全-文本",
+        "selector": "#126_395940",
+        "id": "126_395940",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "数通网络安全",
+        "text": "数通网络安全",
+        "confidence": "high",
+        "parent": "短视频TOP排行榜列表-下半部分",
+        "children": []
+      },
+      "130-文本": {
+        "name": "130-文本",
+        "selector": "#126_395941_1",
+        "id": "126_395941_1",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "130",
+        "text": "130",
+        "confidence": "high",
+        "parent": "短视频TOP排行榜列表-下半部分",
+        "children": []
+      },
+      "980-文本-3": {
+        "name": "980-文本-3",
+        "selector": "#126_395941_2",
+        "id": "126_395941_2",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "/980",
+        "text": "/980",
+        "confidence": "high",
+        "parent": "短视频TOP排行榜列表-下半部分",
+        "children": []
+      },
+      "TOP4-文本": {
+        "name": "TOP4-文本",
+        "selector": "#126_395948",
+        "id": "126_395948",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "TOP4",
+        "text": "TOP4",
+        "confidence": "high",
+        "parent": "短视频TOP排行榜列表-下半部分",
+        "children": []
+      },
+      "光接入-文本": {
+        "name": "光接入-文本",
+        "selector": "#126_395949",
+        "id": "126_395949",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "光接入",
+        "text": "光接入",
+        "confidence": "high",
+        "parent": "短视频TOP排行榜列表-下半部分",
+        "children": []
+      },
+      "76-文本": {
+        "name": "76-文本",
+        "selector": "#126_395950_1",
+        "id": "126_395950_1",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "76",
+        "text": "76",
+        "confidence": "high",
+        "parent": "短视频TOP排行榜列表-下半部分",
+        "children": []
+      },
+      "980-文本-4": {
+        "name": "980-文本-4",
+        "selector": "#126_395950_2",
+        "id": "126_395950_2",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "/980",
+        "text": "/980",
+        "confidence": "high",
+        "parent": "短视频TOP排行榜列表-下半部分",
+        "children": []
+      },
+      "TOP5-文本": {
+        "name": "TOP5-文本",
+        "selector": "#126_395957",
+        "id": "126_395957",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "TOP5",
+        "text": "TOP5",
+        "confidence": "high",
+        "parent": "短视频TOP排行榜列表-下半部分",
+        "children": []
+      },
+      "小全光-文本": {
+        "name": "小全光-文本",
+        "selector": "#126_395958",
+        "id": "126_395958",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "小全光",
+        "text": "小全光",
+        "confidence": "high",
+        "parent": "短视频TOP排行榜列表-下半部分",
+        "children": []
+      },
+      "28-文本": {
+        "name": "28-文本",
+        "selector": "#126_395959_1",
+        "id": "126_395959_1",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "28",
+        "text": "28",
+        "confidence": "high",
+        "parent": "短视频TOP排行榜列表-下半部分",
+        "children": []
+      },
+      "980-文本-5": {
+        "name": "980-文本-5",
+        "selector": "#126_395959_2",
+        "id": "126_395959_2",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "/980",
+        "text": "/980",
+        "confidence": "high",
+        "parent": "短视频TOP排行榜列表-下半部分",
+        "children": []
+      },
+      "875-文本": {
+        "name": "875-文本",
+        "selector": "#126_395964",
+        "id": "126_395964",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "875",
+        "text": "875",
+        "confidence": "high",
+        "parent": "短视频能力中心区域-下半部分",
+        "children": []
+      },
+      "视频素材总数-文本": {
+        "name": "视频素材总数-文本",
+        "selector": "#126_395967",
+        "id": "126_395967",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "视频素材总数",
+        "text": "视频素材总数",
+        "confidence": "high",
+        "parent": "短视频能力中心区域-下半部分",
+        "children": []
+      },
+      "环比-周-文本": {
+        "name": "环比-周-文本",
+        "selector": "#126_395970",
+        "id": "126_395970",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "环比 (周)",
+        "text": "环比 (周)",
+        "confidence": "high",
+        "parent": "短视频能力中心区域-下半部分",
+        "children": []
+      },
+      "26-文本-4": {
+        "name": "26-文本-4",
+        "selector": "#126_395973",
+        "id": "126_395973",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "2.6%",
+        "text": "2.6%",
+        "confidence": "high",
+        "parent": "短视频能力中心区域-下半部分",
+        "children": []
+      },
+      "管理应用-文本": {
+        "name": "管理应用-文本",
+        "selector": "#126_396077",
+        "id": "126_396077",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "管理应用",
+        "text": "管理应用",
+        "confidence": "high",
+        "parent": "管理应用跳转按钮-底部靠上",
+        "children": []
+      },
+      "底部标签栏-文本-首页": {
+        "name": "底部标签栏-文本-首页",
+        "selector": "#126_396085",
+        "id": "126_396085",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "首页",
+        "text": "首页",
+        "confidence": "high",
+        "parent": "底部标签栏-底部横向区域",
+        "children": []
+      },
+      "底部标签栏-文本-商城": {
+        "name": "底部标签栏-文本-商城",
+        "selector": "#126_396092",
+        "id": "126_396092",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "商城",
+        "text": "商城",
+        "confidence": "high",
+        "parent": "底部标签栏-底部横向区域",
+        "children": []
+      },
+      "营销-文本-2": {
+        "name": "营销-文本-2",
+        "selector": "#126_396101",
+        "id": "126_396101",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "营销",
+        "text": "营销",
+        "confidence": "high",
+        "parent": "底部标签栏-底部横向区域",
+        "children": []
+      },
+      "底部标签栏-文本-服务": {
+        "name": "底部标签栏-文本-服务",
+        "selector": "#126_396108",
+        "id": "126_396108",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "服务",
+        "text": "服务",
+        "confidence": "high",
+        "parent": "底部标签栏-底部横向区域",
+        "children": []
+      },
+      "底部标签栏-文本-我的": {
+        "name": "底部标签栏-文本-我的",
+        "selector": "#126_396115",
+        "id": "126_396115",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "我的",
+        "text": "我的",
+        "confidence": "high",
+        "parent": "底部标签栏-底部横向区域",
+        "children": []
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "id": "overview_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_ov_name from './ov_name';\nimport Child_ov_customer from './ov_customer';\nimport Child_ov_quote from './ov_quote';\nimport Child_ov_cost from './ov_cost';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"overview_card\" className=\"tf-cg-overview-card\">\n      <SectionLayout\n        variant=\"card\"\n        title=\"配单概览\"\n        headerRightAction={\n          <button\n            className=\"bg-transparent border-none cursor-pointer font-headline-xs\"\n            style={{ color: 'var(--color-primary)', padding: 0 }}\n            onClick={() => {}}\n          >\n            编辑\n          </button>\n        }\n      >\n        <div className=\"flex flex-col\" style={{ gap: 'var(--spacing-lg)' }}>\n          <Child_ov_name />\n          <Child_ov_customer />\n          <Child_ov_quote />\n          <Child_ov_cost />\n        </div>\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": ".tf-cg-overview-card {\n  width: 100%;\n}",
+  "notes": "used SectionLayout, --color-primary, --spacing-lg, font-headline-xs"
+}

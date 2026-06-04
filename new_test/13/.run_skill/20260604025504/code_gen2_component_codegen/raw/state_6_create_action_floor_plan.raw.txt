@@ -1,0 +1,6 @@
+{
+  "id": "action_floor_plan",
+  "reactCode": "import React from 'react';\n\nexport default function ActionFloorPlan() {\n  return (\n    <div \n      data-component-id=\"action_floor_plan\" \n      className=\"tf-cg-icon-text-btn\"\n      style={{\n        position: 'absolute',\n        left: '16px',\n        top: '1036px',\n        width: '64px',\n        height: '40px'\n      }}\n    >\n      <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\">\n        <path d=\"M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z\"></path>\n        <circle cx=\"12\" cy=\"10\" r=\"3\"></circle>\n      </svg>\n      <span className=\"font-caption-m\" style={{ color: 'var(--color-text-primary)', lineHeight: '14px' }}>点位图</span>\n    </div>\n  );\n}",
+  "css": ".tf-cg-icon-text-btn {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: 2px;\n  cursor: pointer;\n  color: var(--color-text-primary);\n  background: transparent;\n  border: none;\n  padding: 0;\n}",
+  "notes": "used inline SVG for EnvironmentOutlined icon, font-caption-m, --color-text-primary, absolute bbox positioning"
+}

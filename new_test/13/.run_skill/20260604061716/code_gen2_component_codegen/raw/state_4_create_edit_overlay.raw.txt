@@ -1,0 +1,6 @@
+{
+  "id": "edit_overlay",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"edit_overlay\" \n      className=\"tf-cg-overlay\"\n      style={{ zIndex: 65 }}\n    />\n  );\n}",
+  "css": ".tf-cg-overlay {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 360px;\n  height: 1200px;\n  background-color: var(--color-mask);\n}",
+  "notes": "Rendered Overlay as a full-screen mask using --color-mask and bbox dimensions. No bottom sheet content or children were provided in the component patch, so only the backdrop is rendered as per rule 14."
+}

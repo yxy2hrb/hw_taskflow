@@ -1,0 +1,6 @@
+{
+  "id": "overlay_mask_1",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"overlay_mask_1\"\n      style={{\n        position: 'absolute',\n        top: 0,\n        left: 0,\n        width: 360,\n        height: 936,\n        zIndex: 50,\n        backgroundColor: 'rgba(0,0,0,0.5)',\n      }}\n    />\n  );\n}",
+  "css": "",
+  "notes": "used inline styles for absolute positioning, z-index, and background color based on bbox and props."
+}

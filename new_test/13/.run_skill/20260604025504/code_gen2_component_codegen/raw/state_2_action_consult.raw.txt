@@ -1,0 +1,6 @@
+{
+  "id": "action_consult",
+  "reactCode": "import React from 'react';\nimport { MessageSquare } from 'lucide-react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"action_consult\"\n      style={{\n        position: 'absolute',\n        left: 72,\n        top: 1308,\n        width: 48,\n        height: 40,\n        display: 'flex',\n        flexDirection: 'column',\n        alignItems: 'center',\n        justifyContent: 'center',\n        cursor: 'pointer',\n        background: 'transparent',\n        border: 'none',\n        padding: 0,\n      }}\n    >\n      <MessageSquare size={18} style={{ color: 'var(--color-text-primary)' }} />\n      <span\n        className=\"font-caption-s\"\n        style={{ color: 'var(--color-text-primary)', marginTop: 2, whiteSpace: 'nowrap' }}\n      >\n        咨询\n      </span>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used MessageSquare from lucide-react, --color-text-primary, font-caption-s"
+}

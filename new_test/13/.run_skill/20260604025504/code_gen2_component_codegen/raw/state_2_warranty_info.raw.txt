@@ -1,0 +1,6 @@
+{
+  "id": "warranty_info",
+  "reactCode": "import React from 'react';\n\nexport default function WarrantyInfo() {\n  return (\n    <div\n      data-component-id=\"warranty_info\"\n      className=\"tf-cg-warranty-info font-body-m\"\n      style={{\n        position: 'absolute',\n        left: 24,\n        top: 788,\n        width: 312,\n        height: 40,\n        color: 'var(--color-text-secondary)',\n        whiteSpace: 'pre-line',\n      }}\n    >\n      {\"保修政策：全国联保，享受三包服务\\n质保服务：整机1年，主要部件3年\"}\n    </div>\n  );\n}",
+  "css": ".tf-cg-warranty-info {\n  box-sizing: border-box;\n}",
+  "notes": "used font-body-m, --color-text-secondary, absolute positioning for bbox"
+}

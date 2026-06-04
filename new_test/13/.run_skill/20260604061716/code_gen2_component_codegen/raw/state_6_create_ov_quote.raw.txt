@@ -1,0 +1,6 @@
+{
+  "id": "ov_quote",
+  "reactCode": "import React from 'react';\n\nexport default function OvQuote() {\n  return (\n    <div\n      data-component-id=\"ov_quote\"\n      className=\"font-headline-s tf-cg-ov-quote\"\n      style={{\n        fontSize: 'var(--font-headline-16)',\n        fontWeight: 'var(--font-weight-bold)',\n        color: 'var(--color-primary)'\n      }}\n    >\n      总报价：¥45,998.00\n    </div>\n  );\n}",
+  "css": ".tf-cg-ov-quote {\n  display: block;\n}",
+  "notes": "used Text, font-headline-s, --font-headline-16, --font-weight-bold, --color-primary"
+}
