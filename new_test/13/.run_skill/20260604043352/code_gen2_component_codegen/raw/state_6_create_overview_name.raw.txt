@@ -1,0 +1,6 @@
+{
+  "id": "overview_name",
+  "reactCode": "import React from 'react';\n\nexport default function OverviewName() {\n  return (\n    <div\n      data-component-id=\"overview_name\"\n      style={{\n        position: 'absolute',\n        left: 24,\n        top: 116,\n        width: 200,\n        height: 24,\n        display: 'flex',\n        alignItems: 'center',\n      }}\n    >\n      <span\n        className=\"font-headline-s\"\n        style={{\n          fontSize: 'var(--font-headline-16)',\n          fontWeight: 'var(--font-weight-medium)',\n          color: 'var(--color-text-primary)',\n          whiteSpace: 'nowrap',\n        }}\n      >\n        我的新配单\n      </span>\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"overview_name\"] {\n  box-sizing: border-box;\n}",
+  "notes": "used Text, font-headline-s, --font-headline-16, --font-weight-medium, --color-text-primary"
+}

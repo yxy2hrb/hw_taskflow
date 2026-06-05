@@ -1,0 +1,6 @@
+{
+  "id": "product_info_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_info_name from './info_name';\nimport Child_info_price from './info_price';\nimport Child_info_params from './info_params';\nimport Child_info_stock from './info_stock';\nimport Child_info_accessories from './info_accessories';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"product_info_card\">\n      <SectionLayout variant=\"card\" title=\"产品信息\">\n        <div className=\"tf-cg-product-info-content\">\n          <Child_info_name />\n          <Child_info_price />\n          <Child_info_params />\n          <div className=\"tf-cg-product-info-row\">\n            <Child_info_stock />\n          </div>\n          <Child_info_accessories />\n        </div>\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": ".tf-cg-product-info-content {\n  display: flex;\n  flex-direction: column;\n  gap: var(--spacing-lg);\n}\n.tf-cg-product-info-row {\n  display: flex;\n  align-items: center;\n  gap: var(--spacing-md);\n}",
+  "notes": "used SectionLayout, Child_info_name, Child_info_price, Child_info_params, Child_info_stock, Child_info_accessories, --spacing-lg, --spacing-md"
+}

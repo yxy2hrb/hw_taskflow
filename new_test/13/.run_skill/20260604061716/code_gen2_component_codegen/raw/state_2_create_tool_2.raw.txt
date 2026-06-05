@@ -1,0 +1,6 @@
+{
+  "id": "tool_2",
+  "reactCode": "import React from 'react';\nimport EntryCard from '@/components/EntryCard';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"tool_2\">\n      <EntryCard\n        card={{\n          id: \"t2\",\n          title: \"售后工具\",\n          subtitle: \"报修服务\",\n          color: \"#333\",\n          bgColor: \"#f5f5f5\",\n          iconBg: \"#fff7e6\"\n        }}\n      />\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "Used EntryCard component reference with provided card props."
+}

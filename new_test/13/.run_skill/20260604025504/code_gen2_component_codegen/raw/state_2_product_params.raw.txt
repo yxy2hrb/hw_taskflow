@@ -1,0 +1,6 @@
+{
+  "id": "product_params",
+  "reactCode": "import React from 'react';\n\nexport default function ProductParams() {\n  const text = \"部件编码：EOS | 厂商：华为\\n核心参数：1080P高清云会议，光学防蓝光\\n描述：面向中小企业数字化办公，投屏、书写全面升级\";\n\n  return (\n    <div\n      data-component-id=\"product_params\"\n      className=\"font-body-m\"\n      style={{\n        position: 'absolute',\n        left: 24,\n        top: 544,\n        width: 312,\n        height: 60,\n      }}\n    >\n      <span\n        style={{\n          color: 'var(--color-text-secondary)',\n          fontSize: 'var(--font-body-14)',\n          whiteSpace: 'pre-line',\n        }}\n      >\n        {text}\n      </span>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used font-body-m, --color-text-secondary, --font-body-14, whiteSpace: pre-line for multiline text"
+}

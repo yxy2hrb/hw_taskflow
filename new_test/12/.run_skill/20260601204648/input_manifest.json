@@ -1,0 +1,12 @@
+{
+  "image_path": "new_test/12/wps_doc_0.png",
+  "html_path": "new_test/12/_/index.html",
+  "input_txt_path": "new_test/12/input.txt",
+  "codegen": "code_gen2",
+  "viewport": {
+    "width": 360,
+    "initial_height": 1248,
+    "width_locked": true,
+    "height_may_expand": true
+  }
+}

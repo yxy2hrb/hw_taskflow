@@ -1,0 +1,6 @@
+{
+  "id": "ov_price",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"ov_price\"\n      className=\"font-headline-s\"\n      style={{\n        fontSize: 'var(--font-headline-16)',\n        lineHeight: 'var(--line-height-20)',\n        fontWeight: 'var(--font-weight-bold)',\n        color: 'var(--color-primary)'\n      }}\n    >\n      总报价：¥100,000\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used inline styles for text_style, font-headline-s class, --color-primary, --font-headline-16, --line-height-20, --font-weight-bold"
+}

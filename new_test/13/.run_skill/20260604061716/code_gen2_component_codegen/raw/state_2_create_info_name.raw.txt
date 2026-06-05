@@ -1,0 +1,6 @@
+{
+  "id": "info_name",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <span\n      data-component-id=\"info_name\"\n      className=\"font-headline-s\"\n      style={{\n        fontSize: 'var(--font-headline-16)',\n        fontWeight: 'var(--font-weight-medium)',\n        color: 'var(--color-text-primary)'\n      }}\n    >\n      IdeaHub B2 Base-75寸 协作平板\n    </span>\n  );\n}",
+  "css": "[data-component-id=\"info_name\"] {\n  display: inline;\n}",
+  "notes": "used Text, font-headline-s, --font-headline-16, --font-weight-medium, --color-text-primary"
+}

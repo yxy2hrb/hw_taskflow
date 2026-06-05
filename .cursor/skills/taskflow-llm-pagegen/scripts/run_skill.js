@@ -122,6 +122,7 @@ async function main() {
     throw new Error("Usage: node .cursor/skills/taskflow-llm-pagegen/scripts/run_skill.js <inputDir> [--image image.png] [--html Index.original.html] [--input input.txt] [--width W --height H] [--codegen codegen|code_gen2]");
   }
 
+  loadDotEnv(path.join(SKILL_ROOT, ".env"));
   loadDotEnv(path.join(ROOT, "backend", ".env"));
   const inputDir = path.resolve(ROOT, targetArg || path.dirname(path.dirname(path.resolve(ROOT, htmlArg))));
   const model = argValue(args, "--model", "qwen3.7-max");

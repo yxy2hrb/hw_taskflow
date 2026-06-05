@@ -1,0 +1,6 @@
+{
+  "id": "cfg_prod_1",
+  "reactCode": "import React from 'react';\nimport ProductSelectionListItem from '@/components/ProductSelectionListItem';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"cfg_prod_1\">\n      <ProductSelectionListItem\n        item={{\n          id: 'p1',\n          name: 'IdeaHub B2 Base-75寸',\n          status: '谈单中',\n          time: '¥21,999 x 1'\n        }}\n      />\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used ProductSelectionListItem, passed item props directly as specified."
+}

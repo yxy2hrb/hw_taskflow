@@ -1,0 +1,6 @@
+{
+  "id": "config_bottom_bar",
+  "reactCode": "import React from 'react';\nimport ButtonBar from '@/components/ButtonBar';\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"config_bottom_bar\" \n      className=\"tf-cg-bottom-bar\"\n      style={{ \n        width: 360, \n        height: 64, \n        zIndex: 20,\n        position: 'relative'\n      }}\n    >\n      <ButtonBar\n        variant=\"triple\"\n        primaryLabel=\"导出\"\n        secondaryLabel=\"采购咨询\"\n        thirdLabel=\"点位图\"\n        width={360}\n      />\n    </div>\n  );\n}",
+  "css": ".tf-cg-bottom-bar {\n  background-color: var(--color-bg-card);\n  box-shadow: 0 -4px 12px 0 rgba(0, 0, 0, 0.05);\n}",
+  "notes": "used ButtonBar, --color-bg-card, zIndex from props"
+}

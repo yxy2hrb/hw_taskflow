@@ -1,0 +1,6 @@
+{
+  "id": "tools_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\n\nexport default function ToolsCard() {\n  return (\n    <div\n      data-component-id=\"tools_card\"\n      style={{\n        position: 'absolute',\n        left: 0,\n        top: 888,\n        width: 360,\n        height: 120,\n        padding: '0 var(--spacing-xl)',\n        boxSizing: 'border-box',\n      }}\n    >\n      <SectionLayout variant=\"card\" title=\"工具\">\n        <div style={{ minHeight: 0 }} />\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"tools_card\"] {\n  pointer-events: auto;\n}\n[data-component-id=\"tools_card\"] .bg-white {\n  height: 100%;\n  box-sizing: border-box;\n}",
+  "notes": "used SectionLayout (variant=card, title=工具), --spacing-xl, --color-text-primary, font-headline-s text style applied via SectionLayout's internal SectionTitle"
+}

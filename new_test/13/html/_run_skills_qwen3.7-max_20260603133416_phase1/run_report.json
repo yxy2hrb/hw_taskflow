@@ -1,0 +1,6 @@
+{
+  "source_dir": "new_test/13",
+  "model": "qwen3.7-max",
+  "phase": "phase1_user_story",
+  "output": "E:\\任务流\\任务流\\p2p\\new_test\\13\\html\\_run_skills_qwen3.7-max_20260603133416_phase1\\stages\\phase1_user_story.json"
+}

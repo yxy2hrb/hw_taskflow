@@ -1,0 +1,6 @@
+{
+  "id": "btn_add_to_plan",
+  "reactCode": "import React from 'react';\nimport { CapsuleButton } from '@/components/ui/Button';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"btn_add_to_plan\"\n      style={{\n        position: 'absolute',\n        left: 240,\n        top: 1116,\n        width: 108,\n        height: 40,\n      }}\n    >\n      <CapsuleButton variant=\"primary\" size=\"large\" className=\"w-full\">\n        加入配单\n      </CapsuleButton>\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"btn_add_to_plan\"] button {\n  width: 100%;\n  padding-left: 0 !important;\n  padding-right: 0 !important;\n}",
+  "notes": "used CapsuleButton, --color-primary, --color-text-white, font-headline-s"
+}

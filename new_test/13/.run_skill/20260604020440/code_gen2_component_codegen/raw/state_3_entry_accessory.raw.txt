@@ -1,0 +1,6 @@
+{
+  "id": "entry_accessory",
+  "reactCode": "import React from 'react';\nimport EntryCard from '@/components/EntryCard';\n\nexport default function GeneratedComponent() {\n  const card = {\n    id: 'acc',\n    title: '推荐配件',\n    subtitle: '查看相关配件',\n    color: '#1677FF',\n    bgColor: '#E6F4FF',\n    iconBg: '#BAE0FF',\n  };\n\n  return (\n    <div\n      data-component-id=\"entry_accessory\"\n      style={{\n        position: 'absolute',\n        left: 101,\n        top: 686,\n        width: 158,\n        height: 58,\n        zIndex: 1,\n      }}\n    >\n      <EntryCard card={card} width={158} height={58} />\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used EntryCard component from @/components/EntryCard with card props (id, title, subtitle, color, bgColor, iconBg). Absolute positioning via bbox [101,686,158,58]. Mounted in sheet_plan container but rendered as independent absolute sibling per rules."
+}

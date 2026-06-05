@@ -1,0 +1,6 @@
+{
+  "id": "provider_contact",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"provider_contact\"\n      style={{\n        position: 'absolute',\n        left: 24,\n        top: 896,\n        width: 312,\n        height: 20,\n        display: 'flex',\n        alignItems: 'center',\n      }}\n    >\n      <span\n        className=\"font-body-m\"\n        style={{\n          fontSize: 'var(--font-body-14)',\n          color: 'var(--color-text-secondary)',\n          lineHeight: '20px',\n          whiteSpace: 'nowrap',\n          overflow: 'hidden',\n          textOverflow: 'ellipsis',\n          width: '100%',\n        }}\n      >\n        联系人：张三 | 电话：13800138000\n      </span>\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"provider_contact\"] {\n  pointer-events: none;\n}",
+  "notes": "Used font-body-m, --font-body-14, --color-text-secondary. Absolute positioning based on bbox."
+}

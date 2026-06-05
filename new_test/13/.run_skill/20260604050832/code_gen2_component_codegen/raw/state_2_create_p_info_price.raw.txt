@@ -1,0 +1,6 @@
+{
+  "id": "p_info_price",
+  "reactCode": "import React from 'react';\n\nexport default function PInfoPrice() {\n  return (\n    <div\n      data-component-id=\"p_info_price\"\n      className=\"font-headline-s\"\n      style={{\n        fontSize: 'var(--font-headline-16)',\n        lineHeight: 'var(--line-height-20)',\n        fontWeight: 'var(--font-weight-bold)',\n        color: 'var(--color-primary)'\n      }}\n    >\n      ¥21,999.00\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used Text, font-headline-s, --font-headline-16, --line-height-20, --font-weight-bold, --color-primary"
+}

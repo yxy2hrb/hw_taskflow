@@ -1,0 +1,6 @@
+{
+  "id": "p_info_params",
+  "reactCode": "import React from 'react';\n\nexport default function PInfoParamsText() {\n  return (\n    <span\n      data-component-id=\"p_info_params\"\n      className=\"font-body-m\"\n      style={{\n        fontSize: 'var(--font-body-14)',\n        lineHeight: 'var(--line-height-20)',\n        fontWeight: 'var(--font-weight-regular)',\n        color: 'var(--color-text-secondary)'\n      }}\n    >\n      核心参数：1080P高清云会议，光学防蓝光，健康护眼\n    </span>\n  );\n}",
+  "css": "[data-component-id=\"p_info_params\"] {\n  word-break: break-word;\n}",
+  "notes": "used font-body-m, --font-body-14, --line-height-20, --font-weight-regular, --color-text-secondary"
+}

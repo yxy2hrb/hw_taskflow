@@ -1,0 +1,6 @@
+{
+  "id": "product_info_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_prod_name from './prod_name';\nimport Child_prod_code from './prod_code';\nimport Child_prod_price from './prod_price';\nimport Child_prod_params from './prod_params';\nimport Child_prod_stock from './prod_stock';\nimport Child_prod_accessories_btn from './prod_accessories_btn';\n\nexport default function ProductInfoCard() {\n  return (\n    <div data-component-id=\"product_info_card\">\n      <SectionLayout variant=\"card\" title=\"产品信息\">\n        <div className=\"tf-cg-product-info-content flex flex-col\" style={{ gap: 'var(--spacing-lg)' }}>\n          <div className=\"flex flex-col\" style={{ gap: 'var(--spacing-xs)' }}>\n            <Child_prod_name />\n            <Child_prod_code />\n          </div>\n          <Child_prod_price />\n          <Child_prod_params />\n          <div className=\"flex items-center justify-between\">\n            <Child_prod_stock />\n            <Child_prod_accessories_btn />\n          </div>\n        </div>\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": ".tf-cg-product-info-content {\n  width: 100%;\n}",
+  "notes": "used SectionLayout, generated_children imports, --spacing-lg, --spacing-xs"
+}

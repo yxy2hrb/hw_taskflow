@@ -1,0 +1,3201 @@
+{
+  "viewport": {
+    "width": 360,
+    "initial_height": 936,
+    "width_locked": true,
+    "height_may_expand": true
+  },
+  "blueprint": {
+    "states": [
+      {
+        "state_id": 1,
+        "state_name": "产品列表初始状态",
+        "description": "触发条件：无，任务流起点。\n展示信息：移动端产品列表页，包含状态栏、标题栏、分类标签栏、产品分类区、筛选按钮、多个商品卡片以及底部导航栏。\n继承信息：无。"
+      },
+      {
+        "state_id": 2,
+        "state_name": "产品详情页面状态",
+        "description": "触发条件：用户在产品列表页点击某一商品卡片。\n展示信息：产品详情页，顶部展示导航栏和产品图片展示区；中部从上到下独立展示产品信息、售后信息、工具和评论/问答四个卡片；底部展示包含“产品对比”、“咨询”、“加入采购单”和红色“加入配单”的固定操作栏。\n继承信息：无，跳转至新页面，仅继承系统状态栏。"
+      },
+      {
+        "state_id": 3,
+        "state_name": "产品清单半模态弹窗态",
+        "description": "触发条件：用户在产品详情页底部点击红色的“加入配单”按钮。\n展示信息：页面背景被灰色遮罩弱化，上方弹出高度约占屏幕55%-60%的半模态“产品清单”配单页。弹窗内展示标题栏、风险提示条、已选产品卡片、推荐配件入口、合计金额及底部红色“去配单”按钮。\n继承信息：继承 state_2 的产品详情页作为背景并被遮罩弱化；主体区域新增半模态弹窗。"
+      },
+      {
+        "state_id": 4,
+        "state_name": "编辑配单弹窗初始态",
+        "description": "触发条件：用户在“产品清单”半模态弹窗中点击底部的“去配单”按钮。\n展示信息：页面进一步弹出“编辑配单信息”底部弹窗，背景继续保持遮罩状态。弹窗展示标题、关闭按钮、配单名称输入框以及底部“确定”按钮。\n继承信息：继承 state_3 的遮罩背景；在弹窗区域切换为“编辑配单信息”底部弹窗内容。"
+      },
+      {
+        "state_id": 5,
+        "state_name": "配单信息提交中状态",
+        "description": "触发条件：用户在“编辑配单信息”弹窗中确认或修改配单名称后点击“确定”按钮。\n展示信息：“确定”按钮进入 loading 禁用状态，页面出现提交中反馈，表示系统正在处理配单创建请求。\n继承信息：继承 state_4 的弹窗内容和遮罩背景；“确定”按钮变为 loading 状态。"
+      },
+      {
+        "state_id": 6,
+        "state_name": "配单详情页面成功态",
+        "description": "触发条件：系统成功处理配单创建请求，完成页面跳转。\n展示信息：配单详情页，顶部展示导航与分享入口；中部依次展示配单概览、风险提示、产品清单、方案特色和服务商信息卡片；底部展示包含“点位图”、“采购咨询”和“导出”的固定操作栏。\n继承信息：无，跳转至全新页面，仅继承系统状态栏。"
+      }
+    ]
+  },
+  "semantic_registry": {
+    "悬浮功能按钮-左下角悬浮": {
+      "selector": "#5_2727",
+      "bbox": [
+        8,
+        796,
+        60,
+        60
+      ],
+      "area": "主体内容区域",
+      "component": "悬浮功能按钮",
+      "text": "",
+      "policy": "replaceable"
+    },
+    "底部导航栏-底部横向区域": {
+      "selector": "#2_112933",
+      "bbox": [
+        0,
+        0,
+        360,
+        64
+      ],
+      "area": "底部区域",
+      "component": "底部导航栏",
+      "text": "首页 商城 工作台 服务 我的",
+      "policy": "persistent-or-hideable"
+    },
+    "底部导航项-首页-底部靠左": {
+      "selector": "#5_2341",
+      "bbox": [
+        0,
+        882,
+        72,
+        44
+      ],
+      "area": "底部区域",
+      "component": "底部导航项-首页",
+      "text": "首页",
+      "policy": "persistent-or-hideable"
+    },
+    "底部导航项-商城当前选中-底部靠左中": {
+      "selector": "#5_2348",
+      "bbox": [
+        72,
+        882,
+        72,
+        44
+      ],
+      "area": "底部区域",
+      "component": "底部导航项-商城（当前选中）",
+      "text": "商城",
+      "policy": "persistent-or-hideable"
+    },
+    "底部导航项-工作台-底部居中": {
+      "selector": "#5_2355",
+      "bbox": [
+        144,
+        882,
+        72,
+        44
+      ],
+      "area": "底部区域",
+      "component": "底部导航项-工作台",
+      "text": "工作台",
+      "policy": "persistent-or-hideable"
+    },
+    "底部导航项-服务-底部靠右中": {
+      "selector": "#5_2364",
+      "bbox": [
+        216,
+        882,
+        72,
+        44
+      ],
+      "area": "底部区域",
+      "component": "底部导航项-服务",
+      "text": "服务",
+      "policy": "persistent-or-hideable"
+    },
+    "底部导航项-我的-底部靠右": {
+      "selector": "#5_2371",
+      "bbox": [
+        288,
+        882,
+        72,
+        44
+      ],
+      "area": "底部区域",
+      "component": "底部导航项-我的",
+      "text": "我的",
+      "policy": "persistent-or-hideable"
+    },
+    "顶部状态栏-顶部横向区域": {
+      "selector": "#2_112936",
+      "bbox": [
+        0,
+        0,
+        360,
+        36
+      ],
+      "area": "顶部区域",
+      "component": "顶部状态栏",
+      "text": "08:08",
+      "policy": "persistent-or-hideable"
+    },
+    "状态栏右侧系统图标组-顶部靠右": {
+      "selector": "#5_1478",
+      "bbox": [
+        240,
+        12,
+        96,
+        13
+      ],
+      "area": "顶部区域",
+      "component": "状态栏右侧系统图标组",
+      "text": "",
+      "policy": "persistent-or-hideable"
+    },
+    "顶部标题栏与Tab导航区-顶部横向区域": {
+      "selector": "#2_112937",
+      "bbox": [
+        0,
+        36,
+        360,
+        56
+      ],
+      "area": "顶部区域",
+      "component": "顶部标题栏与Tab导航区",
+      "text": "产品 配单 门店 我的自定义",
+      "policy": "persistent-or-hideable"
+    },
+    "当前选中的标题Tab-顶部靠左": {
+      "selector": "#2_112939",
+      "bbox": [
+        20,
+        48,
+        48,
+        32
+      ],
+      "area": "顶部区域",
+      "component": "当前选中的标题Tab",
+      "text": "产品",
+      "policy": "hideable"
+    },
+    "顶部功能图标组-顶部靠右": {
+      "selector": "#2_112943",
+      "bbox": [
+        212,
+        44,
+        136,
+        40
+      ],
+      "area": "顶部区域",
+      "component": "顶部功能图标组",
+      "text": "我的自定义",
+      "policy": "hideable"
+    },
+    "搜索功能图标-顶部靠右": {
+      "selector": "#2_112944",
+      "bbox": [
+        212,
+        44,
+        40,
+        40
+      ],
+      "area": "顶部区域",
+      "component": "搜索功能图标",
+      "text": "",
+      "policy": "hideable"
+    },
+    "购物车功能图标-顶部靠右": {
+      "selector": "#2_112945",
+      "bbox": [
+        260,
+        44,
+        40,
+        40
+      ],
+      "area": "顶部区域",
+      "component": "购物车功能图标",
+      "text": "",
+      "policy": "hideable"
+    },
+    "我的自定义功能图标-顶部靠右": {
+      "selector": "#2_112952",
+      "bbox": [
+        308,
+        44,
+        40,
+        40
+      ],
+      "area": "顶部区域",
+      "component": "我的自定义功能图标",
+      "text": "我的自定义",
+      "policy": "hideable"
+    },
+    "横向分类标签栏-顶部横向区域": {
+      "selector": "#2_112953",
+      "bbox": [
+        0,
+        92,
+        360,
+        92
+      ],
+      "area": "顶部区域",
+      "component": "横向分类标签栏",
+      "text": "光接入 存储 协作平板 视频会议 智能安防 广场屏 昇腾APN 计算 全部",
+      "policy": "hideable"
+    },
+    "当前选中的分类标签项-中间靠左": {
+      "selector": "#5_2177",
+      "bbox": [
+        144,
+        101,
+        64,
+        66
+      ],
+      "area": "顶部区域",
+      "component": "当前选中的分类标签项",
+      "text": "协作平板",
+      "policy": "hideable"
+    },
+    "全部分类展开按钮-顶部靠右": {
+      "selector": "#5_2291",
+      "bbox": [
+        316,
+        100,
+        44,
+        68
+      ],
+      "area": "顶部区域",
+      "component": "全部分类展开按钮",
+      "text": "全部",
+      "policy": "hideable"
+    },
+    "左侧子分类导航栏-左侧纵向区域": {
+      "selector": "#2_112955",
+      "bbox": [
+        0,
+        184,
+        72,
+        752
+      ],
+      "area": "主体内容区域",
+      "component": "左侧子分类导航栏",
+      "text": "协作平板 其他",
+      "policy": "replaceable"
+    },
+    "当前选中的左侧导航项-左侧靠上": {
+      "selector": "#5_1472",
+      "bbox": [
+        0,
+        184,
+        72,
+        46
+      ],
+      "area": "主体内容区域",
+      "component": "当前选中的左侧导航项",
+      "text": "协作平板",
+      "policy": "replaceable"
+    },
+    "右侧商品列表及筛选区-右侧主体区域": {
+      "selector": "#2_112956",
+      "bbox": [
+        80,
+        184,
+        280,
+        692
+      ],
+      "area": "主体内容区域",
+      "component": "右侧商品列表及筛选区",
+      "text": "IdeaHub S2系列 IdeaHub B系列 筛选项3 筛选项4 筛选项5 筛选项6 筛选 售罄 IdeaHub B3 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝",
+      "policy": "replaceable"
+    },
+    "子系列分类标签-右侧靠上": {
+      "selector": "#5_2642",
+      "bbox": [
+        80,
+        194,
+        115,
+        28
+      ],
+      "area": "主体内容区域",
+      "component": "子系列分类标签",
+      "text": "IdeaHub S2系列",
+      "policy": "replaceable"
+    },
+    "筛选条件按钮-右侧靠上": {
+      "selector": "#5_2720",
+      "bbox": [
+        296,
+        237,
+        48,
+        18
+      ],
+      "area": "主体内容区域",
+      "component": "筛选条件按钮",
+      "text": "筛选",
+      "policy": "replaceable"
+    },
+    "商品卡片售罄状态-右侧列表第一项": {
+      "selector": "#2_112960",
+      "bbox": [
+        80,
+        268,
+        264,
+        96
+      ],
+      "area": "主体内容区域",
+      "component": "商品卡片（售罄状态）",
+      "text": "售罄 IdeaHub B3 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会",
+      "policy": "replaceable"
+    },
+    "商品卡片热销状态-右侧列表第二项": {
+      "selector": "#2_112970",
+      "bbox": [
+        80,
+        372,
+        264,
+        114
+      ],
+      "area": "主体内容区域",
+      "component": "商品卡片（热销状态）",
+      "text": "热销 IdeaHub B2 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会",
+      "policy": "replaceable"
+    },
+    "商品卡片新品状态-右侧列表第三项": {
+      "selector": "#2_112983",
+      "bbox": [
+        80,
+        494,
+        264,
+        86
+      ],
+      "area": "主体内容区域",
+      "component": "商品卡片（新品状态）",
+      "text": "新品 IdeaHub B2 Base-75 寸 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、经理室、开",
+      "policy": "replaceable"
+    },
+    "商品卡片配件类-右侧列表第四项": {
+      "selector": "#2_112996",
+      "bbox": [
+        80,
+        588,
+        264,
+        90
+      ],
+      "area": "主体内容区域",
+      "component": "商品卡片（配件类）",
+      "text": "IdeaShare KEY （Type-A） 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、经理室、开放",
+      "policy": "replaceable"
+    },
+    "商品卡片即将上市状态-右侧列表第五项": {
+      "selector": "#2_113005",
+      "bbox": [
+        80,
+        686,
+        264,
+        86
+      ],
+      "area": "主体内容区域",
+      "component": "商品卡片（即将上市状态）",
+      "text": "即将上市 IdeaHub S2 - 86寸 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、经理室、开放办",
+      "policy": "replaceable"
+    },
+    "商品卡片清库状态-右侧列表第六项": {
+      "selector": "#2_113014",
+      "bbox": [
+        80,
+        780,
+        264,
+        96
+      ],
+      "area": "主体内容区域",
+      "component": "商品卡片（清库状态）",
+      "text": "清库 IdeaHub B2 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会",
+      "policy": "replaceable"
+    },
+    "底部导航项-首页-文本-首页": {
+      "selector": "#5_2347",
+      "bbox": [
+        21,
+        882,
+        30,
+        30
+      ],
+      "area": "bottom-area",
+      "component": "text",
+      "text": "首页",
+      "policy": "hideable"
+    },
+    "底部导航项-商城当前选中-文本-商城": {
+      "selector": "#5_2354",
+      "bbox": [
+        93,
+        882,
+        30,
+        30
+      ],
+      "area": "bottom-area",
+      "component": "text",
+      "text": "商城",
+      "policy": "hideable"
+    },
+    "底部导航项-工作台-文本-工作台": {
+      "selector": "#5_2363",
+      "bbox": [
+        165,
+        882,
+        30,
+        30
+      ],
+      "area": "bottom-area",
+      "component": "text",
+      "text": "工作台",
+      "policy": "hideable"
+    },
+    "底部导航项-服务-文本-服务": {
+      "selector": "#5_2370",
+      "bbox": [
+        237,
+        882,
+        30,
+        30
+      ],
+      "area": "bottom-area",
+      "component": "text",
+      "text": "服务",
+      "policy": "hideable"
+    },
+    "底部导航项-我的-文本-我的": {
+      "selector": "#5_2377",
+      "bbox": [
+        309,
+        882,
+        30,
+        30
+      ],
+      "area": "bottom-area",
+      "component": "text",
+      "text": "我的",
+      "policy": "hideable"
+    },
+    "0808-文本": {
+      "selector": "#5_1477",
+      "bbox": [
+        0,
+        0,
+        360,
+        36
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "08:08",
+      "policy": "hideable"
+    },
+    "产品-文本": {
+      "selector": "#5_342",
+      "bbox": [
+        20,
+        48,
+        48,
+        32
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "产品",
+      "policy": "hideable"
+    },
+    "配单-文本": {
+      "selector": "#5_367",
+      "bbox": [
+        84,
+        52,
+        36,
+        24
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "配单",
+      "policy": "hideable"
+    },
+    "门店-文本": {
+      "selector": "#5_267",
+      "bbox": [
+        136,
+        52,
+        36,
+        24
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "门店",
+      "policy": "hideable"
+    },
+    "我的自定义-文本": {
+      "selector": "#5_2340",
+      "bbox": [
+        331,
+        55,
+        4,
+        4
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "我的自定义",
+      "policy": "hideable"
+    },
+    "光接入-文本": {
+      "selector": "#5_2157",
+      "bbox": [
+        21,
+        119,
+        39,
+        12
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "光接入",
+      "policy": "hideable"
+    },
+    "存储-文本": {
+      "selector": "#5_2176",
+      "bbox": [
+        88,
+        105,
+        40,
+        40
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "存储",
+      "policy": "hideable"
+    },
+    "协作平板-文本": {
+      "selector": "#5_2195",
+      "bbox": [
+        159,
+        113,
+        33,
+        24
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "协作平板",
+      "policy": "hideable"
+    },
+    "视频会议-文本": {
+      "selector": "#5_2214",
+      "bbox": [
+        227,
+        114,
+        33,
+        19
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "视频会议",
+      "policy": "hideable"
+    },
+    "智能安防-文本": {
+      "selector": "#5_2233",
+      "bbox": [
+        295,
+        115,
+        33,
+        21
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "智能安防",
+      "policy": "hideable"
+    },
+    "广场屏-文本": {
+      "selector": "#5_2252",
+      "bbox": [
+        363,
+        111,
+        33,
+        28
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "广场屏",
+      "policy": "hideable"
+    },
+    "昇腾APN-文本": {
+      "selector": "#5_2271",
+      "bbox": [
+        431,
+        113,
+        33,
+        24
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "昇腾APN",
+      "policy": "hideable"
+    },
+    "计算-文本": {
+      "selector": "#5_2290",
+      "bbox": [
+        499,
+        113,
+        33,
+        24
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "计算",
+      "policy": "hideable"
+    },
+    "全部-文本": {
+      "selector": "#5_2292",
+      "bbox": [
+        316,
+        100,
+        44,
+        68
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "全部",
+      "policy": "hideable"
+    },
+    "协作平板-文本-2": {
+      "selector": "#5_1474",
+      "bbox": [
+        0,
+        199,
+        2,
+        16
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "协作平板",
+      "policy": "hideable"
+    },
+    "其他-文本": {
+      "selector": "#5_1476",
+      "bbox": [
+        0,
+        230,
+        72,
+        46
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "其他",
+      "policy": "hideable"
+    },
+    "IdeaHub-S2系列-文本": {
+      "selector": "#5_2647",
+      "bbox": [
+        80,
+        194,
+        115,
+        28
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "IdeaHub S2系列",
+      "policy": "hideable"
+    },
+    "IdeaHub-B系列-文本": {
+      "selector": "#5_2659",
+      "bbox": [
+        203,
+        194,
+        108,
+        28
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "IdeaHub B系列",
+      "policy": "hideable"
+    },
+    "筛选项3-文本": {
+      "selector": "#5_2671",
+      "bbox": [
+        319,
+        194,
+        67,
+        28
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "筛选项3",
+      "policy": "hideable"
+    },
+    "筛选项4-文本": {
+      "selector": "#5_2683",
+      "bbox": [
+        394,
+        194,
+        67,
+        28
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "筛选项4",
+      "policy": "hideable"
+    },
+    "筛选项5-文本": {
+      "selector": "#5_2695",
+      "bbox": [
+        469,
+        194,
+        67,
+        28
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "筛选项5",
+      "policy": "hideable"
+    },
+    "筛选项6-文本": {
+      "selector": "#5_2707",
+      "bbox": [
+        544,
+        194,
+        67,
+        28
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "筛选项6",
+      "policy": "hideable"
+    },
+    "筛选-文本": {
+      "selector": "#5_2721",
+      "bbox": [
+        296,
+        237,
+        48,
+        18
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "筛选",
+      "policy": "hideable"
+    },
+    "售罄-文本": {
+      "selector": "#5_1431",
+      "bbox": [
+        80,
+        268,
+        36,
+        20
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "售罄",
+      "policy": "hideable"
+    },
+    "IdeaHub-B3-Base-75-寸-文本": {
+      "selector": "#2_112964",
+      "bbox": [
+        164,
+        276,
+        168,
+        80
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "IdeaHub B3 Base-75 寸",
+      "policy": "hideable"
+    },
+    "EOS-文本": {
+      "selector": "#5_2059",
+      "bbox": [
+        164,
+        296,
+        168,
+        16
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "EOS",
+      "policy": "hideable"
+    },
+    "非现货-文本": {
+      "selector": "#5_2062",
+      "bbox": [
+        164,
+        296,
+        168,
+        16
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "非现货",
+      "policy": "hideable"
+    },
+    "2199900-文本": {
+      "selector": "#5_432",
+      "bbox": [
+        164,
+        334,
+        168,
+        22
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "￥21,999.00",
+      "policy": "hideable"
+    },
+    "1-文本": {
+      "selector": "#5_2628",
+      "bbox": [
+        164,
+        334,
+        168,
+        22
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "1",
+      "policy": "hideable"
+    },
+    "热销-文本": {
+      "selector": "#5_1423",
+      "bbox": [
+        80,
+        372,
+        36,
+        20
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "热销",
+      "policy": "hideable"
+    },
+    "IdeaHub-B2-Base-75-寸-文本": {
+      "selector": "#2_112974",
+      "bbox": [
+        164,
+        380,
+        168,
+        98
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "IdeaHub B2 Base-75 寸",
+      "policy": "hideable"
+    },
+    "EOS-文本-2": {
+      "selector": "#5_2074",
+      "bbox": [
+        164,
+        400,
+        168,
+        16
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "EOS",
+      "policy": "hideable"
+    },
+    "非现货-文本-2": {
+      "selector": "#5_2077",
+      "bbox": [
+        164,
+        400,
+        168,
+        16
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "非现货",
+      "policy": "hideable"
+    },
+    "金牌价-文本": {
+      "selector": "#5_245",
+      "bbox": [
+        164,
+        438,
+        168,
+        14
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "金牌价",
+      "policy": "hideable"
+    },
+    "3290000-文本": {
+      "selector": "#2_112979",
+      "bbox": [
+        164,
+        438,
+        168,
+        14
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "¥32,900.00",
+      "policy": "hideable"
+    },
+    "2199900-文本-2": {
+      "selector": "#5_495",
+      "bbox": [
+        164,
+        456,
+        168,
+        22
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "￥21,999.00",
+      "policy": "hideable"
+    },
+    "1-文本-2": {
+      "selector": "#5_2613",
+      "bbox": [
+        164,
+        456,
+        168,
+        22
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "1",
+      "policy": "hideable"
+    },
+    "新品-文本": {
+      "selector": "#5_1437",
+      "bbox": [
+        80,
+        494,
+        36,
+        20
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "新品",
+      "policy": "hideable"
+    },
+    "IdeaHub-B2-Base-75-寸-文本-2": {
+      "selector": "#2_112991",
+      "bbox": [
+        164,
+        502,
+        12,
+        12
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "IdeaHub B2 Base-75 寸",
+      "policy": "hideable"
+    },
+    "1-文本-3": {
+      "selector": "#5_2583",
+      "bbox": [
+        164,
+        550,
+        168,
+        22
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "1",
+      "policy": "hideable"
+    },
+    "IdeaShare-KEY-type-A-文本": {
+      "selector": "#2_113000",
+      "bbox": [
+        164,
+        596,
+        168,
+        74
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "IdeaShare KEY （type-A）",
+      "policy": "hideable"
+    },
+    "即将上市-文本": {
+      "selector": "#5_1435",
+      "bbox": [
+        80,
+        686,
+        56,
+        20
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "即将上市",
+      "policy": "hideable"
+    },
+    "IdeaHub-S2---86寸-文本": {
+      "selector": "#2_113009",
+      "bbox": [
+        164,
+        694,
+        168,
+        70
+      ],
+      "area": "content-area",
+      "component": "text",
+      "text": "IdeaHub S2 - 86寸",
+      "policy": "hideable"
+    },
+    "清库-文本": {
+      "selector": "#5_1433",
+      "bbox": [
+        80,
+        780,
+        36,
+        20
+      ],
+      "area": "bottom-area",
+      "component": "text",
+      "text": "清库",
+      "policy": "hideable"
+    },
+    "IdeaHub-B2-Base-75-寸-文本-3": {
+      "selector": "#2_113018",
+      "bbox": [
+        164,
+        788,
+        168,
+        80
+      ],
+      "area": "bottom-area",
+      "component": "text",
+      "text": "IdeaHub B2 Base-75 寸",
+      "policy": "hideable"
+    },
+    "EOS-文本-3": {
+      "selector": "#5_2044",
+      "bbox": [
+        164,
+        808,
+        168,
+        16
+      ],
+      "area": "bottom-area",
+      "component": "text",
+      "text": "EOS",
+      "policy": "hideable"
+    },
+    "非现货-文本-3": {
+      "selector": "#5_2047",
+      "bbox": [
+        164,
+        808,
+        168,
+        16
+      ],
+      "area": "bottom-area",
+      "component": "text",
+      "text": "非现货",
+      "policy": "hideable"
+    },
+    "2199900-文本-3": {
+      "selector": "#5_398",
+      "bbox": [
+        164,
+        846,
+        168,
+        22
+      ],
+      "area": "bottom-area",
+      "component": "text",
+      "text": "￥21,999.00",
+      "policy": "hideable"
+    },
+    "1-文本-4": {
+      "selector": "#5_2598",
+      "bbox": [
+        164,
+        846,
+        168,
+        22
+      ],
+      "area": "bottom-area",
+      "component": "text",
+      "text": "1",
+      "policy": "hideable"
+    }
+  },
+  "state_implementation_model": {
+    "states": [
+      {
+        "id": "state_1",
+        "label": "产品列表初始状态",
+        "ui_intent": "移动端产品列表页，展示状态栏、标题栏、分类标签、左侧导航、商品列表和底部导航",
+        "height": 936,
+        "parent_state": null,
+        "trigger": null,
+        "inheritance": {
+          "keep": [
+            "顶部状态栏-顶部横向区域",
+            "顶部标题栏与Tab导航区-顶部横向区域",
+            "横向分类标签栏-顶部横向区域",
+            "左侧子分类导航栏-左侧纵向区域",
+            "右侧商品列表及筛选区-右侧主体区域",
+            "底部导航栏-底部横向区域",
+            "悬浮功能按钮-左下角悬浮"
+          ],
+          "create": [],
+          "update": []
+        },
+        "patches": []
+      },
+      {
+        "id": "state_2",
+        "label": "产品详情页面状态",
+        "ui_intent": "产品详情页，顶部沉浸式图片与导航，中部四个独立信息卡片，底部固定操作栏",
+        "height": 1100,
+        "parent_state": "state_1",
+        "trigger": {
+          "anchor": "商品卡片热销状态-右侧列表第二项",
+          "action": "click"
+        },
+        "inheritance": {
+          "keep": [
+            "顶部状态栏-顶部横向区域"
+          ],
+          "create": [
+            {
+              "type": "create",
+              "id": "detail_top_nav",
+              "component": "TopNav",
+              "bbox": [
+                0,
+                36,
+                360,
+                56
+              ],
+              "props": {
+                "variant": "title",
+                "onBack": true,
+                "title": "",
+                "actions": [
+                  "cart",
+                  "profile",
+                  "grid"
+                ],
+                "zIndex": 10
+              }
+            },
+            {
+              "type": "create",
+              "id": "product_image_carousel",
+              "component": "ImageCarousel",
+              "description": "沉浸式产品主图轮播区",
+              "bbox": [
+                0,
+                36,
+                360,
+                320
+              ],
+              "props": {
+                "images": [
+                  "product_main_1.jpg",
+                  "product_main_2.jpg"
+                ],
+                "showIndicator": true
+              }
+            },
+            {
+              "type": "create",
+              "id": "product_info_card",
+              "component": "SectionLayout",
+              "layout": {
+                "group": "detail_content",
+                "order": 1,
+                "flow": "vertical",
+                "widthHint": "content-column",
+                "heightMode": "auto",
+                "startAnchor": "below:product_image_carousel",
+                "spacingHint": 12
+              },
+              "props": {
+                "variant": "card",
+                "title": "产品信息"
+              },
+              "content_density": "rich",
+              "content_requirements": [
+                "title",
+                "price",
+                "coreParameters",
+                "stockOrLeadTime",
+                "serviceTags",
+                "moreEntryOrPrimaryAction"
+              ],
+              "children": [
+                {
+                  "type": "create",
+                  "id": "prod_name",
+                  "component": "Text",
+                  "text": "IdeaHub B2 Base-75寸",
+                  "text_style": {
+                    "className": "font-headline-s",
+                    "fontSize": "var(--font-headline-16)",
+                    "lineHeight": "var(--line-height-20)",
+                    "fontWeight": "var(--font-weight-medium)",
+                    "color": "var(--color-text-primary)"
+                  }
+                },
+                {
+                  "type": "create",
+                  "id": "prod_code",
+                  "component": "Text",
+                  "text": "部件编码：EOS-B2-75",
+                  "text_style": {
+                    "className": "font-caption-m",
+                    "fontSize": "var(--font-caption-12)",
+                    "color": "var(--color-text-secondary)"
+                  }
+                },
+                {
+                  "type": "create",
+                  "id": "prod_price",
+                  "component": "Text",
+                  "text": "¥21,999.00",
+                  "text_style": {
+                    "className": "font-headline-s",
+                    "fontSize": "var(--font-headline-16)",
+                    "fontWeight": "var(--font-weight-bold)",
+                    "color": "var(--color-primary)"
+                  }
+                },
+                {
+                  "type": "create",
+                  "id": "prod_params",
+                  "component": "Text",
+                  "text": "核心参数：1080P高清云会议 | 光学防蓝光 | 双Wi-Fi投屏",
+                  "text_style": {
+                    "className": "font-body-m",
+                    "fontSize": "var(--font-body-14)",
+                    "color": "var(--color-text-primary)"
+                  }
+                },
+                {
+                  "type": "create",
+                  "id": "prod_stock",
+                  "component": "StatusPill",
+                  "text": "享现货"
+                },
+                {
+                  "type": "create",
+                  "id": "prod_accessories_btn",
+                  "component": "TextButton",
+                  "text": "查看相关配件",
+                  "props": {
+                    "variant": "primary",
+                    "icon": "right"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "create",
+              "id": "aftersale_info_card",
+              "component": "SectionLayout",
+              "layout": {
+                "group": "detail_content",
+                "order": 2,
+                "flow": "vertical",
+                "widthHint": "content-column",
+                "heightMode": "auto",
+                "spacingHint": 12
+              },
+              "props": {
+                "variant": "card",
+                "title": "售后信息"
+              },
+              "content_density": "rich",
+              "content_requirements": [
+                "policy",
+                "serviceScope",
+                "responseTime",
+                "contactProvider"
+              ],
+              "children": [
+                {
+                  "type": "create",
+                  "id": "after_policy",
+                  "component": "Text",
+                  "text": "保修政策：3年整机质保，核心部件5年保修",
+                  "text_style": {
+                    "className": "font-body-m",
+                    "fontSize": "var(--font-body-14)",
+                    "color": "var(--color-text-primary)"
+                  }
+                },
+                {
+                  "type": "create",
+                  "id": "after_scope",
+                  "component": "Text",
+                  "text": "服务范围：全国联保，免费上门安装与调试",
+                  "text_style": {
+                    "className": "font-body-m",
+                    "fontSize": "var(--font-body-14)",
+                    "color": "var(--color-text-primary)"
+                  }
+                },
+                {
+                  "type": "create",
+                  "id": "after_response",
+                  "component": "Text",
+                  "text": "响应时间：7x24小时专属客服，2小时内响应",
+                  "text_style": {
+                    "className": "font-body-m",
+                    "fontSize": "var(--font-body-14)",
+                    "color": "var(--color-text-primary)"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "create",
+              "id": "tool_card",
+              "component": "SectionLayout",
+              "layout": {
+                "group": "detail_content",
+                "order": 3,
+                "flow": "vertical",
+                "widthHint": "content-column",
+                "heightMode": "auto",
+                "spacingHint": 12
+              },
+              "props": {
+                "variant": "card",
+                "title": "售前/售后工具"
+              },
+              "content_density": "normal",
+              "content_requirements": [
+                "preSaleTool",
+                "afterSaleTool",
+                "moreEntry"
+              ],
+              "children": [
+                {
+                  "type": "create",
+                  "id": "tool_grid",
+                  "component": "IconGrid",
+                  "props": {
+                    "cols": 4,
+                    "variant": "plain",
+                    "items": [
+                      {
+                        "label": "方案配置",
+                        "color": "#1677FF"
+                      },
+                      {
+                        "label": "点位设计",
+                        "color": "#52C41A"
+                      },
+                      {
+                        "label": "报修服务",
+                        "color": "#FA8C16"
+                      },
+                      {
+                        "label": "更多工具",
+                        "color": "#8C8C8C"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "type": "create",
+              "id": "comment_qa_card",
+              "component": "SectionLayout",
+              "layout": {
+                "group": "detail_content",
+                "order": 4,
+                "flow": "vertical",
+                "widthHint": "content-column",
+                "heightMode": "auto",
+                "spacingHint": 12
+              },
+              "props": {
+                "variant": "card",
+                "title": "评论/问答",
+                "moreText": "查看全部"
+              },
+              "content_density": "normal",
+              "content_requirements": [
+                "summaryCounts",
+                "representativeComment",
+                "moreEntry"
+              ],
+              "children": [
+                {
+                  "type": "create",
+                  "id": "qa_summary",
+                  "component": "Text",
+                  "text": "98%好评率 · 128条评价 · 35个问答",
+                  "text_style": {
+                    "className": "font-caption-m",
+                    "fontSize": "var(--font-caption-12)",
+                    "color": "var(--color-text-secondary)"
+                  }
+                },
+                {
+                  "type": "create",
+                  "id": "qa_comment",
+                  "component": "Text",
+                  "text": "“设备投屏非常稳定，画质清晰，防蓝光效果很好，适合长时间开会使用。”",
+                  "text_style": {
+                    "className": "font-body-m",
+                    "fontSize": "var(--font-body-14)",
+                    "color": "var(--color-text-primary)"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "create",
+              "id": "detail_bottom_bar",
+              "component": "DetailBottomBar",
+              "description": "自定义底部操作栏，左侧双图标，中间次要按钮，右侧主按钮",
+              "bbox": [
+                0,
+                1036,
+                360,
+                64
+              ],
+              "props": {
+                "leftIcons": [
+                  "compare",
+                  "consult"
+                ],
+                "secondaryLabel": "加入采购单",
+                "primaryLabel": "加入配单",
+                "zIndex": 20
+              }
+            }
+          ],
+          "update": []
+        },
+        "patches": []
+      },
+      {
+        "id": "state_3",
+        "label": "产品清单半模态弹窗态",
+        "ui_intent": "弹出半模态产品清单配单页，展示风险提示、已选产品、合计金额及去配单按钮",
+        "height": 1100,
+        "parent_state": "state_2",
+        "trigger": {
+          "anchor": "detail_bottom_bar",
+          "target": "primary"
+        },
+        "inheritance": {
+          "keep": [
+            "detail_top_nav",
+            "product_image_carousel",
+            "product_info_card",
+            "aftersale_info_card",
+            "tool_card",
+            "comment_qa_card",
+            "detail_bottom_bar"
+          ],
+          "create": [
+            {
+              "type": "create",
+              "id": "sheet_overlay_1",
+              "component": "Overlay",
+              "bbox": [
+                0,
+                0,
+                360,
+                1100
+              ],
+              "props": {
+                "zIndex": 50,
+                "color": "rgba(0,0,0,0.5)"
+              }
+            },
+            {
+              "type": "create",
+              "id": "product_list_sheet",
+              "component": "BottomSheet",
+              "bbox": [
+                0,
+                540,
+                360,
+                560
+              ],
+              "props": {
+                "zIndex": 60,
+                "title": "产品清单",
+                "showClose": true,
+                "clearText": "全部清空",
+                "body": [
+                  {
+                    "type": "warning",
+                    "text": "风险提示：当前方案可能缺少关键设备"
+                  },
+                  {
+                    "type": "product",
+                    "name": "IdeaHub B2 Base-75寸",
+                    "price": "¥21,999",
+                    "quantity": 1
+                  },
+                  {
+                    "type": "entry",
+                    "title": "推荐配件",
+                    "subtitle": "查看相关配件"
+                  }
+                ],
+                "footer": {
+                  "totalText": "合计：¥21,999",
+                  "primaryLabel": "去配单"
+                }
+              }
+            }
+          ],
+          "update": []
+        },
+        "patches": []
+      },
+      {
+        "id": "state_4",
+        "label": "编辑配单弹窗初始态",
+        "ui_intent": "弹出编辑配单信息底部弹窗，输入配单名称并确认",
+        "height": 1100,
+        "parent_state": "state_3",
+        "trigger": {
+          "anchor": "product_list_sheet",
+          "target": "footer.primary"
+        },
+        "inheritance": {
+          "keep": [
+            "sheet_overlay_1",
+            "product_list_sheet",
+            "detail_top_nav",
+            "product_image_carousel",
+            "product_info_card",
+            "aftersale_info_card",
+            "tool_card",
+            "comment_qa_card",
+            "detail_bottom_bar"
+          ],
+          "create": [
+            {
+              "type": "create",
+              "id": "sheet_overlay_2",
+              "component": "Overlay",
+              "bbox": [
+                0,
+                0,
+                360,
+                1100
+              ],
+              "props": {
+                "zIndex": 65,
+                "color": "rgba(0,0,0,0.3)"
+              }
+            },
+            {
+              "type": "create",
+              "id": "edit_sheet",
+              "component": "BottomSheet",
+              "bbox": [
+                0,
+                780,
+                360,
+                320
+              ],
+              "props": {
+                "zIndex": 70,
+                "title": "编辑配单信息",
+                "showClose": true,
+                "body": [
+                  {
+                    "type": "input",
+                    "label": "配单名称",
+                    "placeholder": "请输入配单名称",
+                    "value": ""
+                  }
+                ],
+                "footer": {
+                  "primaryLabel": "确定"
+                }
+              }
+            }
+          ],
+          "update": []
+        },
+        "patches": []
+      },
+      {
+        "id": "state_5",
+        "label": "配单信息提交中状态",
+        "ui_intent": "确定按钮进入loading状态，输入框禁用，系统处理配单创建请求",
+        "height": 1100,
+        "parent_state": "state_4",
+        "trigger": {
+          "anchor": "edit_sheet",
+          "target": "footer.primary"
+        },
+        "inheritance": {
+          "keep": [
+            "sheet_overlay_1",
+            "product_list_sheet",
+            "sheet_overlay_2",
+            "edit_sheet",
+            "detail_top_nav",
+            "product_image_carousel",
+            "product_info_card",
+            "aftersale_info_card",
+            "tool_card",
+            "comment_qa_card",
+            "detail_bottom_bar"
+          ],
+          "create": [],
+          "update": [
+            {
+              "type": "update",
+              "id": "edit_sheet",
+              "component": "BottomSheet",
+              "props": {
+                "body": [
+                  {
+                    "type": "input",
+                    "label": "配单名称",
+                    "placeholder": "请输入配单名称",
+                    "value": "我的配单",
+                    "disabled": true
+                  }
+                ],
+                "footer": {
+                  "primaryLabel": "提交中...",
+                  "loading": true,
+                  "disabled": true
+                }
+              }
+            }
+          ]
+        },
+        "patches": []
+      },
+      {
+        "id": "state_6",
+        "label": "配单详情页面成功态",
+        "ui_intent": "配单详情页，展示概览、风险、清单、特色、服务商卡片及底部导出操作栏",
+        "height": 1000,
+        "parent_state": "state_5",
+        "trigger": {
+          "anchor": "system",
+          "action": "submit_success"
+        },
+        "inheritance": {
+          "keep": [
+            "顶部状态栏-顶部横向区域"
+          ],
+          "create": [
+            {
+              "type": "create",
+              "id": "config_detail_nav",
+              "component": "TopNav",
+              "bbox": [
+                0,
+                36,
+                360,
+                56
+              ],
+              "props": {
+                "variant": "title",
+                "onBack": true,
+                "title": "配单详情",
+                "actions": [
+                  "grid"
+                ]
+              }
+            },
+            {
+              "type": "create",
+              "id": "config_overview_card",
+              "component": "SectionLayout",
+              "layout": {
+                "group": "config_content",
+                "order": 1,
+                "flow": "vertical",
+                "widthHint": "content-column",
+                "heightMode": "auto",
+                "startAnchor": "below:config_detail_nav",
+                "spacingHint": 12
+              },
+              "props": {
+                "variant": "card",
+                "title": "配单概览",
+                "headerRightAction": "编辑"
+              },
+              "content_density": "rich",
+              "content_requirements": [
+                "configName",
+                "customerType",
+                "totalQuote",
+                "totalCost"
+              ],
+              "children": [
+                {
+                  "type": "create",
+                  "id": "cfg_name",
+                  "component": "Text",
+                  "text": "我的配单",
+                  "text_style": {
+                    "className": "font-headline-s",
+                    "fontSize": "var(--font-headline-16)",
+                    "fontWeight": "var(--font-weight-medium)",
+                    "color": "var(--color-text-primary)"
+                  }
+                },
+                {
+                  "type": "create",
+                  "id": "cfg_customer",
+                  "component": "Text",
+                  "text": "客户类型：中小企业",
+                  "text_style": {
+                    "className": "font-body-m",
+                    "fontSize": "var(--font-body-14)",
+                    "color": "var(--color-text-secondary)"
+                  }
+                },
+                {
+                  "type": "create",
+                  "id": "cfg_quote",
+                  "component": "Text",
+                  "text": "总报价：¥21,999.00",
+                  "text_style": {
+                    "className": "font-headline-s",
+                    "fontSize": "var(--font-headline-16)",
+                    "fontWeight": "var(--font-weight-bold)",
+                    "color": "var(--color-primary)"
+                  }
+                },
+                {
+                  "type": "create",
+                  "id": "cfg_cost",
+                  "component": "Text",
+                  "text": "总成本价：¥18,500.00",
+                  "text_style": {
+                    "className": "font-body-m",
+                    "fontSize": "var(--font-body-14)",
+                    "color": "var(--color-text-secondary)"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "create",
+              "id": "config_risk_card",
+              "component": "SectionLayout",
+              "layout": {
+                "group": "config_content",
+                "order": 2,
+                "flow": "vertical",
+                "widthHint": "content-column",
+                "heightMode": "auto",
+                "spacingHint": 12
+              },
+              "props": {
+                "variant": "card",
+                "title": "风险提示"
+              },
+              "content_density": "normal",
+              "content_requirements": [
+                "riskMessage",
+                "missingDevices",
+                "addAction"
+              ],
+              "children": [
+                {
+                  "type": "create",
+                  "id": "risk_pill",
+                  "component": "StatusPill",
+                  "text": "警告"
+                },
+                {
+                  "type": "create",
+                  "id": "risk_msg",
+                  "component": "Text",
+                  "text": "当前方案可能缺少 UPS、路由器、防火墙等关键设备",
+                  "text_style": {
+                    "className": "font-body-m",
+                    "fontSize": "var(--font-body-14)",
+                    "color": "var(--color-text-primary)"
+                  }
+                },
+                {
+                  "type": "create",
+                  "id": "risk_action",
+                  "component": "TextButton",
+                  "text": "去添加",
+                  "props": {
+                    "variant": "primary"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "create",
+              "id": "config_product_list_card",
+              "component": "SectionLayout",
+              "layout": {
+                "group": "config_content",
+                "order": 3,
+                "flow": "vertical",
+                "widthHint": "content-column",
+                "heightMode": "auto",
+                "spacingHint": 12
+              },
+              "props": {
+                "variant": "card",
+                "title": "产品清单",
+                "headerRightAction": "编辑"
+              },
+              "content_density": "rich",
+              "content_requirements": [
+                "productItems",
+                "quantity",
+                "unitPrice"
+              ],
+              "children": [
+                {
+                  "type": "create",
+                  "id": "cfg_prod_1",
+                  "component": "ProductSelectionListItem",
+                  "props": {
+                    "item": {
+                      "id": "p1",
+                      "name": "IdeaHub B2 Base-75寸",
+                      "status": "谈单中",
+                      "time": "¥21,999 x 1"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "create",
+              "id": "config_feature_card",
+              "component": "SectionLayout",
+              "layout": {
+                "group": "config_content",
+                "order": 4,
+                "flow": "vertical",
+                "widthHint": "content-column",
+                "heightMode": "auto",
+                "spacingHint": 12
+              },
+              "props": {
+                "variant": "card",
+                "title": "方案特色",
+                "headerRightAction": "添加"
+              },
+              "content_density": "normal",
+              "content_requirements": [
+                "featureList",
+                "editAction"
+              ],
+              "children": [
+                {
+                  "type": "create",
+                  "id": "feat_text",
+                  "component": "Text",
+                  "text": "提供1080P高清云会议体验，光学防蓝光，健康护眼，双Wi-Fi投屏更稳定。",
+                  "text_style": {
+                    "className": "font-body-m",
+                    "fontSize": "var(--font-body-14)",
+                    "color": "var(--color-text-primary)"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "create",
+              "id": "config_provider_card",
+              "component": "SectionLayout",
+              "layout": {
+                "group": "config_content",
+                "order": 5,
+                "flow": "vertical",
+                "widthHint": "content-column",
+                "heightMode": "auto",
+                "spacingHint": 12
+              },
+              "props": {
+                "variant": "card",
+                "title": "服务商信息"
+              },
+              "content_density": "normal",
+              "content_requirements": [
+                "providerName",
+                "contactPerson",
+                "contactPhone"
+              ],
+              "children": [
+                {
+                  "type": "create",
+                  "id": "prov_name",
+                  "component": "Text",
+                  "text": "服务商：华为政企授权服务中心",
+                  "text_style": {
+                    "className": "font-body-m",
+                    "fontSize": "var(--font-body-14)",
+                    "color": "var(--color-text-primary)"
+                  }
+                },
+                {
+                  "type": "create",
+                  "id": "prov_contact",
+                  "component": "Text",
+                  "text": "联系人：张经理",
+                  "text_style": {
+                    "className": "font-body-m",
+                    "fontSize": "var(--font-body-14)",
+                    "color": "var(--color-text-secondary)"
+                  }
+                },
+                {
+                  "type": "create",
+                  "id": "prov_phone",
+                  "component": "Text",
+                  "text": "联系电话：400-888-9999",
+                  "text_style": {
+                    "className": "font-body-m",
+                    "fontSize": "var(--font-body-14)",
+                    "color": "var(--color-primary)"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "create",
+              "id": "config_bottom_bar",
+              "component": "ButtonBar",
+              "bbox": [
+                0,
+                936,
+                360,
+                64
+              ],
+              "props": {
+                "variant": "triple",
+                "primaryLabel": "导出",
+                "secondaryLabel": "采购咨询",
+                "thirdLabel": "点位图",
+                "zIndex": 20
+              }
+            }
+          ],
+          "update": []
+        },
+        "patches": []
+      }
+    ]
+  },
+  "component_codegen": {
+    "ok": true,
+    "source_state_model": "new_test/13/.run_skill/20260604064019/state_implementation/state_implementation_model.llm.json",
+    "components": [
+      {
+        "state_id": "state_2",
+        "operation": "create",
+        "id": "detail_top_nav",
+        "component": "TopNav",
+        "bbox": [
+          0,
+          36,
+          360,
+          56
+        ],
+        "layout": null,
+        "props": {
+          "variant": "title",
+          "onBack": true,
+          "title": "",
+          "actions": [
+            "cart",
+            "profile",
+            "grid"
+          ],
+          "zIndex": 10
+        },
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": true,
+        "generated_children": [],
+        "text": null,
+        "description": null,
+        "reactCode": "import React from 'react';\nimport TopNav from '@/components/TopNav';\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"detail_top_nav\" \n      style={{ \n        position: 'absolute', \n        top: 36, \n        left: 0, \n        width: 360, \n        zIndex: 10 \n      }}\n    >\n      <TopNav\n        variant=\"title\"\n        onBack={() => {}}\n        title=\"\"\n        actions={[\"cart\", \"profile\", \"grid\"]}\n      />\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_2",
+        "operation": "create",
+        "id": "product_image_carousel",
+        "component": "ImageCarousel",
+        "bbox": [
+          0,
+          36,
+          360,
+          320
+        ],
+        "layout": null,
+        "props": {
+          "images": [
+            "product_main_1.jpg",
+            "product_main_2.jpg"
+          ],
+          "showIndicator": true
+        },
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": true,
+        "generated_children": [],
+        "text": null,
+        "description": "沉浸式产品主图轮播区",
+        "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  const images = [\"product_main_1.jpg\", \"product_main_2.jpg\"];\n  \n  return (\n    <div data-component-id=\"product_image_carousel\" className=\"tf-cg-carousel\">\n      <div className=\"tf-cg-carousel-slide\">\n        <svg width=\"64\" height=\"64\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"rgba(0,0,0,0.15)\" strokeWidth=\"1\" strokeLinecap=\"round\" strokeLinejoin=\"round\">\n          <rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\" ry=\"2\"></rect>\n          <circle cx=\"8.5\" cy=\"8.5\" r=\"1.5\"></circle>\n          <polyline points=\"21 15 16 10 5 21\"></polyline>\n        </svg>\n      </div>\n      <div className=\"tf-cg-carousel-indicators\">\n        {images.map((_, index) => (\n          <div \n            key={index} \n            className={`tf-cg-indicator ${index === 0 ? 'active' : 'inactive'}`}\n          />\n        ))}\n      </div>\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_2",
+        "operation": "create",
+        "id": "prod_name",
+        "component": "Text",
+        "bbox": null,
+        "layout": null,
+        "props": null,
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": false,
+        "generated_children": [],
+        "text": "IdeaHub B2 Base-75寸",
+        "description": null,
+        "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <span \n      data-component-id=\"prod_name\" \n      className=\"tf-cg-prod-name font-headline-s\"\n      style={{\n        fontSize: 'var(--font-headline-16)',\n        lineHeight: 'var(--line-height-20)',\n        fontWeight: 'var(--font-weight-medium)',\n        color: 'var(--color-text-primary)'\n      }}\n    >\n      IdeaHub B2 Base-75寸\n    </span>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_2",
+        "operation": "create",
+        "id": "prod_code",
+        "component": "Text",
+        "bbox": null,
+        "layout": null,
+        "props": null,
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": false,
+        "generated_children": [],
+        "text": "部件编码：EOS-B2-75",
+        "description": null,
+        "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <span\n      data-component-id=\"prod_code\"\n      className=\"font-caption-m tf-cg-prod-code\"\n      style={{ fontSize: 'var(--font-caption-12)', color: 'var(--color-text-secondary)' }}\n    >\n      部件编码：EOS-B2-75\n    </span>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_2",
+        "operation": "create",
+        "id": "prod_price",
+        "component": "Text",
+        "bbox": null,
+        "layout": null,
+        "props": null,
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": false,
+        "generated_children": [],
+        "text": "¥21,999.00",
+        "description": null,
+        "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <span\n      data-component-id=\"prod_price\"\n      className=\"font-headline-s tf-cg-prod-price\"\n      style={{\n        fontSize: 'var(--font-headline-16)',\n        fontWeight: 'var(--font-weight-bold)',\n        color: 'var(--color-primary)'\n      }}\n    >\n      ¥21,999.00\n    </span>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_2",
+        "operation": "create",
+        "id": "prod_params",
+        "component": "Text",
+        "bbox": null,
+        "layout": null,
+        "props": null,
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": false,
+        "generated_children": [],
+        "text": "核心参数：1080P高清云会议 | 光学防蓝光 | 双Wi-Fi投屏",
+        "description": null,
+        "reactCode": "import React from 'react';\n\nexport default function ProdParamsText() {\n  return (\n    <div data-component-id=\"prod_params\" className=\"tf-cg-prod-params\">\n      <span \n        className=\"font-body-m\" \n        style={{ \n          fontSize: 'var(--font-body-14)', \n          color: 'var(--color-text-primary)'\n        }}\n      >\n        核心参数：1080P高清云会议 | 光学防蓝光 | 双Wi-Fi投屏\n      </span>\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_2",
+        "operation": "create",
+        "id": "prod_stock",
+        "component": "StatusPill",
+        "bbox": null,
+        "layout": null,
+        "props": null,
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": false,
+        "generated_children": [],
+        "text": "享现货",
+        "description": null,
+        "reactCode": "import React from 'react';\nimport StatusPill from '@/components/StatusPill';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"prod_stock\">\n      <StatusPill \n        text=\"享现货\" \n        colorMap={{\n          '享现货': { color: 'var(--color-success)', bgColor: 'rgba(16,185,129,0.1)' }\n        }}\n      />\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_2",
+        "operation": "create",
+        "id": "prod_accessories_btn",
+        "component": "TextButton",
+        "bbox": null,
+        "layout": null,
+        "props": {
+          "variant": "primary",
+          "icon": "right"
+        },
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": false,
+        "generated_children": [],
+        "text": "查看相关配件",
+        "description": null,
+        "reactCode": "import React from 'react';\nimport { TextButton } from '@/components/ui/Button';\n\nconst RightIcon = ({ size = 16, color = 'currentColor' }: { size?: number; color?: string }) => (\n  <svg width={size} height={size} viewBox=\"0 0 24 24\" fill=\"none\" stroke={color} strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\">\n    <polyline points=\"9 18 15 12 9 6\"></polyline>\n  </svg>\n);\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"prod_accessories_btn\" className=\"tf-cg-accessories-btn\">\n      <TextButton variant=\"primary\" icon={<RightIcon />}>\n        查看相关配件\n      </TextButton>\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_2",
+        "operation": "create",
+        "id": "product_info_card",
+        "component": "SectionLayout",
+        "bbox": null,
+        "layout": {
+          "group": "detail_content",
+          "order": 1,
+          "flow": "vertical",
+          "widthHint": "content-column",
+          "heightMode": "auto",
+          "startAnchor": "below:product_image_carousel",
+          "spacingHint": 12
+        },
+        "props": {
+          "variant": "card",
+          "title": "产品信息"
+        },
+        "content_density": "rich",
+        "content_requirements": [
+          "title",
+          "price",
+          "coreParameters",
+          "stockOrLeadTime",
+          "serviceTags",
+          "moreEntryOrPrimaryAction"
+        ],
+        "is_top_level": true,
+        "generated_children": [
+          {
+            "id": "prod_name",
+            "component": "Text",
+            "importName": "Child_prod_name",
+            "importPath": "./prod_name"
+          },
+          {
+            "id": "prod_code",
+            "component": "Text",
+            "importName": "Child_prod_code",
+            "importPath": "./prod_code"
+          },
+          {
+            "id": "prod_price",
+            "component": "Text",
+            "importName": "Child_prod_price",
+            "importPath": "./prod_price"
+          },
+          {
+            "id": "prod_params",
+            "component": "Text",
+            "importName": "Child_prod_params",
+            "importPath": "./prod_params"
+          },
+          {
+            "id": "prod_stock",
+            "component": "StatusPill",
+            "importName": "Child_prod_stock",
+            "importPath": "./prod_stock"
+          },
+          {
+            "id": "prod_accessories_btn",
+            "component": "TextButton",
+            "importName": "Child_prod_accessories_btn",
+            "importPath": "./prod_accessories_btn"
+          }
+        ],
+        "text": null,
+        "description": null,
+        "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_prod_name from './prod_name';\nimport Child_prod_code from './prod_code';\nimport Child_prod_price from './prod_price';\nimport Child_prod_params from './prod_params';\nimport Child_prod_stock from './prod_stock';\nimport Child_prod_accessories_btn from './prod_accessories_btn';\n\nexport default function ProductInfoCard() {\n  return (\n    <div data-component-id=\"product_info_card\">\n      <SectionLayout variant=\"card\" title=\"产品信息\">\n        <div className=\"tf-cg-product-info-content flex flex-col\" style={{ gap: 'var(--spacing-lg)' }}>\n          <div className=\"flex flex-col\" style={{ gap: 'var(--spacing-xs)' }}>\n            <Child_prod_name />\n            <Child_prod_code />\n          </div>\n          <Child_prod_price />\n          <Child_prod_params />\n          <div className=\"flex items-center justify-between\">\n            <Child_prod_stock />\n            <Child_prod_accessories_btn />\n          </div>\n        </div>\n      </SectionLayout>\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_2",
+        "operation": "create",
+        "id": "after_policy",
+        "component": "Text",
+        "bbox": null,
+        "layout": null,
+        "props": null,
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": false,
+        "generated_children": [],
+        "text": "保修政策：3年整机质保，核心部件5年保修",
+        "description": null,
+        "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"after_policy\" \n      className=\"font-body-m\" \n      style={{ color: 'var(--color-text-primary)' }}\n    >\n      保修政策：3年整机质保，核心部件5年保修\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_2",
+        "operation": "create",
+        "id": "after_scope",
+        "component": "Text",
+        "bbox": null,
+        "layout": null,
+        "props": null,
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": false,
+        "generated_children": [],
+        "text": "服务范围：全国联保，免费上门安装与调试",
+        "description": null,
+        "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <p \n      data-component-id=\"after_scope\" \n      className=\"font-body-m tf-cg-after-scope\"\n      style={{ fontSize: 'var(--font-body-14)', color: 'var(--color-text-primary)' }}\n    >\n      服务范围：全国联保，免费上门安装与调试\n    </p>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_2",
+        "operation": "create",
+        "id": "after_response",
+        "component": "Text",
+        "bbox": null,
+        "layout": null,
+        "props": null,
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": false,
+        "generated_children": [],
+        "text": "响应时间：7x24小时专属客服，2小时内响应",
+        "description": null,
+        "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <span\n      data-component-id=\"after_response\"\n      className=\"font-body-m tf-cg-text\"\n      style={{\n        fontSize: 'var(--font-body-14)',\n        color: 'var(--color-text-primary)'\n      }}\n    >\n      响应时间：7x24小时专属客服，2小时内响应\n    </span>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_2",
+        "operation": "create",
+        "id": "aftersale_info_card",
+        "component": "SectionLayout",
+        "bbox": null,
+        "layout": {
+          "group": "detail_content",
+          "order": 2,
+          "flow": "vertical",
+          "widthHint": "content-column",
+          "heightMode": "auto",
+          "spacingHint": 12
+        },
+        "props": {
+          "variant": "card",
+          "title": "售后信息"
+        },
+        "content_density": "rich",
+        "content_requirements": [
+          "policy",
+          "serviceScope",
+          "responseTime",
+          "contactProvider"
+        ],
+        "is_top_level": true,
+        "generated_children": [
+          {
+            "id": "after_policy",
+            "component": "Text",
+            "importName": "Child_after_policy",
+            "importPath": "./after_policy"
+          },
+          {
+            "id": "after_scope",
+            "component": "Text",
+            "importName": "Child_after_scope",
+            "importPath": "./after_scope"
+          },
+          {
+            "id": "after_response",
+            "component": "Text",
+            "importName": "Child_after_response",
+            "importPath": "./after_response"
+          }
+        ],
+        "text": null,
+        "description": null,
+        "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_after_policy from './after_policy';\nimport Child_after_scope from './after_scope';\nimport Child_after_response from './after_response';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"aftersale_info_card\">\n      <SectionLayout variant=\"card\" title=\"售后信息\">\n        <div className=\"tf-cg-aftersale-list\">\n          <div className=\"tf-cg-aftersale-item\">\n            <div className=\"tf-cg-aftersale-icon\">\n              <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\">\n                <path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\" />\n              </svg>\n            </div>\n            <Child_after_policy />\n          </div>\n          <div className=\"tf-cg-aftersale-divider\" />\n          <div className=\"tf-cg-aftersale-item\">\n            <div className=\"tf-cg-aftersale-icon\">\n              <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\">\n                <circle cx=\"12\" cy=\"12\" r=\"10\" />\n                <path d=\"M2 12h20\" />\n                <path d=\"M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z\" />\n              </svg>\n            </div>\n            <Child_after_scope />\n          </div>\n          <div className=\"tf-cg-aftersale-divider\" />\n          <div className=\"tf-cg-aftersale-item\">\n            <div className=\"tf-cg-aftersale-icon\">\n              <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\">\n                <circle cx=\"12\" cy=\"12\" r=\"10\" />\n                <polyline points=\"12 6 12 12 16 14\" />\n              </svg>\n            </div>\n            <Child_after_response />\n          </div>\n        </div>\n      </SectionLayout>\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_2",
+        "operation": "create",
+        "id": "tool_grid",
+        "component": "IconGrid",
+        "bbox": null,
+        "layout": null,
+        "props": {
+          "cols": 4,
+          "variant": "plain",
+          "items": [
+            {
+              "label": "方案配置",
+              "color": "#1677FF"
+            },
+            {
+              "label": "点位设计",
+              "color": "#52C41A"
+            },
+            {
+              "label": "报修服务",
+              "color": "#FA8C16"
+            },
+            {
+              "label": "更多工具",
+              "color": "#8C8C8C"
+            }
+          ]
+        },
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": false,
+        "generated_children": [],
+        "text": null,
+        "description": null,
+        "reactCode": "import React from 'react';\nimport IconGrid from '@/components/IconGrid';\n\nconst IconConfig = (props: any) => (\n  <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\" {...props}>\n    <circle cx=\"12\" cy=\"12\" r=\"3\"></circle>\n    <path d=\"M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z\"></path>\n  </svg>\n);\n\nconst IconLocation = (props: any) => (\n  <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\" {...props}>\n    <path d=\"M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z\"></path>\n    <circle cx=\"12\" cy=\"10\" r=\"3\"></circle>\n  </svg>\n);\n\nconst IconRepair = (props: any) => (\n  <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"non\n/* truncated */",
+        "issues": []
+      },
+      {
+        "state_id": "state_2",
+        "operation": "create",
+        "id": "tool_card",
+        "component": "SectionLayout",
+        "bbox": null,
+        "layout": {
+          "group": "detail_content",
+          "order": 3,
+          "flow": "vertical",
+          "widthHint": "content-column",
+          "heightMode": "auto",
+          "spacingHint": 12
+        },
+        "props": {
+          "variant": "card",
+          "title": "售前/售后工具"
+        },
+        "content_density": "normal",
+        "content_requirements": [
+          "preSaleTool",
+          "afterSaleTool",
+          "moreEntry"
+        ],
+        "is_top_level": true,
+        "generated_children": [
+          {
+            "id": "tool_grid",
+            "component": "IconGrid",
+            "importName": "Child_tool_grid",
+            "importPath": "./tool_grid"
+          }
+        ],
+        "text": null,
+        "description": null,
+        "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_tool_grid from './tool_grid';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"tool_card\" className=\"tf-cg-tool-card\">\n      <SectionLayout variant=\"card\" title=\"售前/售后工具\">\n        <Child_tool_grid />\n      </SectionLayout>\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_2",
+        "operation": "create",
+        "id": "qa_summary",
+        "component": "Text",
+        "bbox": null,
+        "layout": null,
+        "props": null,
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": false,
+        "generated_children": [],
+        "text": "98%好评率 · 128条评价 · 35个问答",
+        "description": null,
+        "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <span\n      data-component-id=\"qa_summary\"\n      className=\"tf-cg-qa-summary font-caption-m\"\n      style={{\n        fontSize: 'var(--font-caption-12)',\n        color: 'var(--color-text-secondary)'\n      }}\n    >\n      98%好评率 · 128条评价 · 35个问答\n    </span>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_2",
+        "operation": "create",
+        "id": "qa_comment",
+        "component": "Text",
+        "bbox": null,
+        "layout": null,
+        "props": null,
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": false,
+        "generated_children": [],
+        "text": "“设备投屏非常稳定，画质清晰，防蓝光效果很好，适合长时间开会使用。”",
+        "description": null,
+        "reactCode": "import React from 'react';\n\nexport default function QaCommentText() {\n  return (\n    <div data-component-id=\"qa_comment\" className=\"tf-cg-qa-comment\">\n      <p className=\"font-body-m\" style={{ fontSize: 'var(--font-body-14)', color: 'var(--color-text-primary)', margin: 0 }}>\n        “设备投屏非常稳定，画质清晰，防蓝光效果很好，适合长时间开会使用。”\n      </p>\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_2",
+        "operation": "create",
+        "id": "comment_qa_card",
+        "component": "SectionLayout",
+        "bbox": null,
+        "layout": {
+          "group": "detail_content",
+          "order": 4,
+          "flow": "vertical",
+          "widthHint": "content-column",
+          "heightMode": "auto",
+          "spacingHint": 12
+        },
+        "props": {
+          "variant": "card",
+          "title": "评论/问答",
+          "moreText": "查看全部"
+        },
+        "content_density": "normal",
+        "content_requirements": [
+          "summaryCounts",
+          "representativeComment",
+          "moreEntry"
+        ],
+        "is_top_level": true,
+        "generated_children": [
+          {
+            "id": "qa_summary",
+            "component": "Text",
+            "importName": "Child_qa_summary",
+            "importPath": "./qa_summary"
+          },
+          {
+            "id": "qa_comment",
+            "component": "Text",
+            "importName": "Child_qa_comment",
+            "importPath": "./qa_comment"
+          }
+        ],
+        "text": null,
+        "description": null,
+        "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_qa_summary from './qa_summary';\nimport Child_qa_comment from './qa_comment';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"comment_qa_card\" className=\"tf-cg-comment-qa-card\">\n      <SectionLayout\n        variant=\"card\"\n        title=\"评论/问答\"\n        moreText=\"查看全部\"\n        onMore={() => {}}\n      >\n        <div className=\"tf-cg-comment-qa-content\">\n          <Child_qa_summary />\n          <Child_qa_comment />\n        </div>\n      </SectionLayout>\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_2",
+        "operation": "create",
+        "id": "detail_bottom_bar",
+        "component": "DetailBottomBar",
+        "bbox": [
+          0,
+          1036,
+          360,
+          64
+        ],
+        "layout": null,
+        "props": {
+          "leftIcons": [
+            "compare",
+            "consult"
+          ],
+          "secondaryLabel": "加入采购单",
+          "primaryLabel": "加入配单",
+          "zIndex": 20
+        },
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": true,
+        "generated_children": [],
+        "text": null,
+        "description": "自定义底部操作栏，左侧双图标，中间次要按钮，右侧主按钮",
+        "reactCode": "import React from 'react';\n\nconst CompareIcon = () => (\n  <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n    <rect x=\"3\" y=\"3\" width=\"7\" height=\"18\" rx=\"1.5\" stroke=\"rgba(0,0,0,0.9)\" strokeWidth=\"1.5\" />\n    <rect x=\"14\" y=\"3\" width=\"7\" height=\"18\" rx=\"1.5\" stroke=\"rgba(0,0,0,0.9)\" strokeWidth=\"1.5\" />\n    <line x1=\"5.5\" y1=\"8\" x2=\"7.5\" y2=\"8\" stroke=\"rgba(0,0,0,0.9)\" strokeWidth=\"1.2\" strokeLinecap=\"round\" />\n    <line x1=\"5.5\" y1=\"11\" x2=\"7.5\" y2=\"11\" stroke=\"rgba(0,0,0,0.9)\" strokeWidth=\"1.2\" strokeLinecap=\"round\" />\n    <line x1=\"16.5\" y1=\"8\" x2=\"18.5\" y2=\"8\" stroke=\"rgba(0,0,0,0.9)\" strokeWidth=\"1.2\" strokeLinecap=\"round\" />\n    <line x1=\"16.5\" y1=\"11\" x2=\"18.5\" y2=\"11\" stroke=\"rgba(0,0,0,0.9)\" strokeWidth=\"1.2\" strokeLinecap=\"round\" />\n  </svg>\n);\n\nconst ConsultIcon = () => (\n  <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n    <path d=\"M4 5C4 3.89543 4.89543 3 6 3H18C19.1046 3 20 3.89543 20 5V14C20 15.1046 19.1046 16 18 16H8L4 20V5Z\" stroke=\"rgba(0,0,0,0.9)\" strokeWidth=\"1.5\" strokeLinejoin=\"round\" />\n    <circle cx=\"9\" cy=\"9.5\" r=\"1\" fill=\"rgba(0,0,0,0.9)\" />\n    <circle cx=\"12\" cy=\"9.5\" r=\"1\" fill=\"rgba(0,0,0,0.9)\" />\n    <circle cx=\"15\" cy=\"9.5\" r=\"1\" fill=\"rgba(0,0,0,0.9)\" />\n  </svg>\n);\n\nexport default function DetailBottomBar() {\n  return (\n    <div\n      data-component-id=\"detail_bottom_bar\"\n      className=\"tf-cg-bottom-bar\"\n      style={{ zIndex: 20 }}\n    >\n      <div className=\"tf-cg-bottom-bar__icons\">\n        <button className=\"tf-cg-bottom-bar__icon-btn tap-scale\" onClick={() => {}}>\n          <CompareIcon />\n          <span className=\"tf-cg-bottom-bar__icon-label font-caption-s\">对比</span>\n        </button>\n        <button className=\"tf-cg-bottom-bar__icon-btn tap-scale\" onClick={() => {}}>\n          <ConsultIcon />\n          <span className=\"tf-cg-bottom-bar__icon-label font-caption-s\">客服</span>\n        </button>\n      </div>\n      <div className=\"tf-cg-bottom-bar__actions\">\n        <button className=\"tf-cg-bottom-bar__btn tf-cg-bottom-bar__btn--secondary tap-scale\" onClick={() => {}}>\n          <span className=\"font-headline-xs\">加入采购单</span>\n        </button>\n        <button className=\"tf-cg-bottom-bar__btn tf-cg-bottom-bar__btn--primary tap-scale\" onClick={() => {}}>\n          <span className=\"font-headline-xs\">加入配单</span>\n        </button>\n      </div>\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_3",
+        "operation": "create",
+        "id": "sheet_overlay_1",
+        "component": "Overlay",
+        "bbox": [
+          0,
+          0,
+          360,
+          1100
+        ],
+        "layout": null,
+        "props": {
+          "zIndex": 50,
+          "color": "rgba(0,0,0,0.5)"
+        },
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": true,
+        "generated_children": [],
+        "text": null,
+        "description": null,
+        "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"sheet_overlay_1\" \n      className=\"tf-cg-overlay\"\n      style={{ zIndex: 50 }}\n    />\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_3",
+        "operation": "create",
+        "id": "product_list_sheet",
+        "component": "BottomSheet",
+        "bbox": [
+          0,
+          540,
+          360,
+          560
+        ],
+        "layout": null,
+        "props": {
+          "zIndex": 60,
+          "title": "产品清单",
+          "showClose": true,
+          "clearText": "全部清空",
+          "body": [
+            {
+              "type": "warning",
+              "text": "风险提示：当前方案可能缺少关键设备"
+            },
+            {
+              "type": "product",
+              "name": "IdeaHub B2 Base-75寸",
+              "price": "¥21,999",
+              "quantity": 1
+            },
+            {
+              "type": "entry",
+              "title": "推荐配件",
+              "subtitle": "查看相关配件"
+            }
+          ],
+          "footer": {
+            "totalText": "合计：¥21,999",
+            "primaryLabel": "去配单"
+          }
+        },
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": true,
+        "generated_children": [],
+        "text": null,
+        "description": null,
+        "reactCode": "import React from 'react';\n\nexport default function ProductListSheet() {\n  return (\n    <div \n      data-component-id=\"product_list_sheet\" \n      className=\"tf-cg-sheet-overlay\" \n      style={{ zIndex: 60 }}\n    >\n      <div className=\"tf-cg-sheet\">\n        <div className=\"tf-cg-sheet-header\">\n          <span className=\"font-headline-s\">产品清单</span>\n          <div className=\"tf-cg-sheet-header-actions\">\n            <span className=\"tf-cg-clear-text font-body-m\">全部清空</span>\n            <button className=\"tf-cg-close-btn\" aria-label=\"关闭\">\n              <svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\">\n                <path d=\"M15 5L5 15M5 5l10 10\" stroke=\"currentColor\" strokeWidth=\"1.5\" strokeLinecap=\"round\"/>\n              </svg>\n            </button>\n          </div>\n        </div>\n\n        <div className=\"tf-cg-sheet-body\">\n          <div className=\"tf-cg-warning\">\n            <svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\">\n              <path d=\"M8 1.5L14.5 13H1.5L8 1.5Z\" stroke=\"currentColor\" strokeWidth=\"1.2\" strokeLinejoin=\"round\"/>\n              <path d=\"M8 6v3.5M8 11.5v.5\" stroke=\"currentColor\" strokeWidth=\"1.2\" strokeLinecap=\"round\"/>\n            </svg>\n            <span className=\"font-body-s\">风险提示：当前方案可能缺少关键设备</span>\n          </div>\n\n          <div className=\"tf-cg-product\">\n            <div className=\"tf-cg-product-info\">\n              <span className=\"font-body-m tf-cg-product-name\">IdeaHub B2 Base-75寸</span>\n              <span className=\"font-body-s tf-cg-product-qty\">x1</span>\n            </div>\n            <span className=\"font-headline-xs tf-cg-product-price\">¥21,999</span>\n          </div>\n\n          <div className=\"tf-cg-entry\">\n            <div className=\"tf-cg-entry-info\">\n              <span className=\"font-body-m\">推荐配件</span>\n              <span className=\"font-body-s tf-cg-entry-sub\">查看相关配件</span>\n            </div>\n            <svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\">\n              <path d=\"M6 4l4 4-4 4\" stroke=\"currentColor\" strokeWidth=\"1.5\" strokeLinecap=\"round\" strokeLinejoin=\"round\"/>\n            </svg>\n          </div>\n        </div>\n\n        <div className=\"tf-cg-sheet-footer\">\n          <div className=\"tf-cg-total\">\n            <span className=\"font-body-m\">合计：</span>\n            <span className=\"font-headline-m tf-cg-total-price\">¥21,999</span>\n          </div>\n          <button className=\"tf-cg-primary-btn font-headline-s\">去配单</button>\n        </div>\n      </div>\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_4",
+        "operation": "create",
+        "id": "sheet_overlay_2",
+        "component": "Overlay",
+        "bbox": [
+          0,
+          0,
+          360,
+          1100
+        ],
+        "layout": null,
+        "props": {
+          "zIndex": 65,
+          "color": "rgba(0,0,0,0.3)"
+        },
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": true,
+        "generated_children": [],
+        "text": null,
+        "description": null,
+        "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"sheet_overlay_2\" \n      className=\"tf-cg-overlay\"\n      style={{ zIndex: 65 }}\n    />\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_4",
+        "operation": "create",
+        "id": "edit_sheet",
+        "component": "BottomSheet",
+        "bbox": [
+          0,
+          780,
+          360,
+          320
+        ],
+        "layout": null,
+        "props": {
+          "zIndex": 70,
+          "title": "编辑配单信息",
+          "showClose": true,
+          "body": [
+            {
+              "type": "input",
+              "label": "配单名称",
+              "placeholder": "请输入配单名称",
+              "value": ""
+            }
+          ],
+          "footer": {
+            "primaryLabel": "确定"
+          }
+        },
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": true,
+        "generated_children": [],
+        "text": null,
+        "description": null,
+        "reactCode": "import React from 'react';\n\nexport default function EditSheet() {\n  return (\n    <div data-component-id=\"edit_sheet\" style={{ position: 'fixed', inset: 0, zIndex: 70, pointerEvents: 'auto' }}>\n      <div className=\"tf-cg-mask\" />\n      <div className=\"tf-cg-sheet\">\n        <div className=\"tf-cg-header\">\n          <div className=\"tf-cg-title font-headline-s\">编辑配单信息</div>\n          <button className=\"tf-cg-close-btn\" aria-label=\"关闭\">\n            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\">\n              <line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"></line>\n              <line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"></line>\n            </svg>\n          </button>\n        </div>\n        <div className=\"tf-cg-body\">\n          <div className=\"tf-cg-field\">\n            <label className=\"tf-cg-label font-body-m\">配单名称</label>\n            <div className=\"tf-cg-input-wrapper\">\n              <input \n                type=\"text\" \n                className=\"tf-cg-input font-body-m\" \n                placeholder=\"请输入配单名称\" \n                defaultValue=\"\" \n              />\n            </div>\n          </div>\n        </div>\n        <div className=\"tf-cg-footer\">\n          <button className=\"tf-cg-primary-btn font-headline-s\">确定</button>\n        </div>\n      </div>\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_5",
+        "operation": "update",
+        "id": "edit_sheet",
+        "component": "BottomSheet",
+        "bbox": null,
+        "layout": null,
+        "props": {
+          "body": [
+            {
+              "type": "input",
+              "label": "配单名称",
+              "placeholder": "请输入配单名称",
+              "value": "我的配单",
+              "disabled": true
+            }
+          ],
+          "footer": {
+            "primaryLabel": "提交中...",
+            "loading": true,
+            "disabled": true
+          }
+        },
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": true,
+        "generated_children": [],
+        "text": null,
+        "description": null,
+        "reactCode": "import React from 'react';\n\nexport default function EditSheet() {\n  return (\n    <div data-component-id=\"edit_sheet\" style={{ position: 'fixed', inset: 0, zIndex: 70, pointerEvents: 'auto' }}>\n      <div className=\"tf-cg-mask\" />\n      <div className=\"tf-cg-sheet\">\n        <div className=\"tf-cg-header\">\n          <div className=\"tf-cg-title font-headline-s\">编辑配单信息</div>\n          <button className=\"tf-cg-close-btn\" aria-label=\"关闭\">\n            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\">\n              <line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"></line>\n              <line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"></line>\n            </svg>\n          </button>\n        </div>\n        <div className=\"tf-cg-body\">\n          <div className=\"tf-cg-field\">\n            <label className=\"tf-cg-label font-body-m\">配单名称</label>\n            <div className=\"tf-cg-input-wrapper\">\n              <input \n                type=\"text\" \n                className=\"tf-cg-input font-body-m tf-cg-input-disabled\" \n                placeholder=\"请输入配单名称\" \n                defaultValue=\"我的配单\" \n                disabled \n              />\n            </div>\n          </div>\n        </div>\n        <div className=\"tf-cg-footer\">\n          <button className=\"tf-cg-primary-btn font-headline-s tf-cg-btn-loading\" disabled>\n            <svg className=\"tf-cg-spinner\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\">\n              <path d=\"M21 12a9 9 0 1 1-6.219-8.56\" />\n            </svg>\n            提交中...\n          </button>\n        </div>\n      </div>\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_6",
+        "operation": "create",
+        "id": "config_detail_nav",
+        "component": "TopNav",
+        "bbox": [
+          0,
+          36,
+          360,
+          56
+        ],
+        "layout": null,
+        "props": {
+          "variant": "title",
+          "onBack": true,
+          "title": "配单详情",
+          "actions": [
+            "grid"
+          ]
+        },
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": true,
+        "generated_children": [],
+        "text": null,
+        "description": null,
+        "reactCode": "import React from 'react';\nimport TopNav from '@/components/TopNav';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"config_detail_nav\">\n      <TopNav\n        variant=\"title\"\n        onBack={() => {}}\n        title=\"配单详情\"\n        actions={['grid']}\n        onGrid={() => {}}\n      />\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_6",
+        "operation": "create",
+        "id": "cfg_name",
+        "component": "Text",
+        "bbox": null,
+        "layout": null,
+        "props": null,
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": false,
+        "generated_children": [],
+        "text": "我的配单",
+        "description": null,
+        "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <span\n      data-component-id=\"cfg_name\"\n      className=\"font-headline-s\"\n      style={{\n        fontSize: 'var(--font-headline-16)',\n        fontWeight: 'var(--font-weight-medium)',\n        color: 'var(--color-text-primary)'\n      }}\n    >\n      我的配单\n    </span>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_6",
+        "operation": "create",
+        "id": "cfg_customer",
+        "component": "Text",
+        "bbox": null,
+        "layout": null,
+        "props": null,
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": false,
+        "generated_children": [],
+        "text": "客户类型：中小企业",
+        "description": null,
+        "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <span\n      data-component-id=\"cfg_customer\"\n      className=\"font-body-m\"\n      style={{\n        fontSize: 'var(--font-body-14)',\n        color: 'var(--color-text-secondary)'\n      }}\n    >\n      客户类型：中小企业\n    </span>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_6",
+        "operation": "create",
+        "id": "cfg_quote",
+        "component": "Text",
+        "bbox": null,
+        "layout": null,
+        "props": null,
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": false,
+        "generated_children": [],
+        "text": "总报价：¥21,999.00",
+        "description": null,
+        "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"cfg_quote\" className=\"tf-cg-quote\">\n      <span \n        className=\"font-headline-s\" \n        style={{ \n          fontSize: 'var(--font-headline-16)', \n          fontWeight: 'var(--font-weight-bold)', \n          color: 'var(--color-primary)' \n        }}\n      >\n        总报价：¥21,999.00\n      </span>\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_6",
+        "operation": "create",
+        "id": "cfg_cost",
+        "component": "Text",
+        "bbox": null,
+        "layout": null,
+        "props": null,
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": false,
+        "generated_children": [],
+        "text": "总成本价：¥18,500.00",
+        "description": null,
+        "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"cfg_cost\" \n      className=\"font-body-m tf-cg-cost-text\" \n      style={{ fontSize: 'var(--font-body-14)', color: 'var(--color-text-secondary)' }}\n    >\n      总成本价：¥18,500.00\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_6",
+        "operation": "create",
+        "id": "config_overview_card",
+        "component": "SectionLayout",
+        "bbox": null,
+        "layout": {
+          "group": "config_content",
+          "order": 1,
+          "flow": "vertical",
+          "widthHint": "content-column",
+          "heightMode": "auto",
+          "startAnchor": "below:config_detail_nav",
+          "spacingHint": 12
+        },
+        "props": {
+          "variant": "card",
+          "title": "配单概览",
+          "headerRightAction": "编辑"
+        },
+        "content_density": "rich",
+        "content_requirements": [
+          "configName",
+          "customerType",
+          "totalQuote",
+          "totalCost"
+        ],
+        "is_top_level": true,
+        "generated_children": [
+          {
+            "id": "cfg_name",
+            "component": "Text",
+            "importName": "Child_cfg_name",
+            "importPath": "./cfg_name"
+          },
+          {
+            "id": "cfg_customer",
+            "component": "Text",
+            "importName": "Child_cfg_customer",
+            "importPath": "./cfg_customer"
+          },
+          {
+            "id": "cfg_quote",
+            "component": "Text",
+            "importName": "Child_cfg_quote",
+            "importPath": "./cfg_quote"
+          },
+          {
+            "id": "cfg_cost",
+            "component": "Text",
+            "importName": "Child_cfg_cost",
+            "importPath": "./cfg_cost"
+          }
+        ],
+        "text": null,
+        "description": null,
+        "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_cfg_name from './cfg_name';\nimport Child_cfg_customer from './cfg_customer';\nimport Child_cfg_quote from './cfg_quote';\nimport Child_cfg_cost from './cfg_cost';\n\nexport default function ConfigOverviewCard() {\n  return (\n    <div data-component-id=\"config_overview_card\" className=\"tf-cg-overview-card\">\n      <SectionLayout\n        variant=\"card\"\n        title=\"配单概览\"\n        headerRightAction={\n          <button\n            className=\"tf-cg-edit-btn bg-transparent border-none cursor-pointer font-headline-xs\"\n            style={{ color: 'var(--color-primary)', padding: 0 }}\n            onClick={() => {}}\n          >\n            编辑\n          </button>\n        }\n      >\n        <div className=\"tf-cg-overview-content flex flex-col\" style={{ gap: 'var(--spacing-md)' }}>\n          <Child_cfg_name />\n          <Child_cfg_customer />\n          <Child_cfg_quote />\n          <Child_cfg_cost />\n        </div>\n      </SectionLayout>\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_6",
+        "operation": "create",
+        "id": "risk_pill",
+        "component": "StatusPill",
+        "bbox": null,
+        "layout": null,
+        "props": null,
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": false,
+        "generated_children": [],
+        "text": "警告",
+        "description": null,
+        "reactCode": "import React from 'react';\nimport StatusPill from '@/components/StatusPill';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"risk_pill\" style={{ display: 'inline-block' }}>\n      <StatusPill text=\"警告\" />\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_6",
+        "operation": "create",
+        "id": "risk_msg",
+        "component": "Text",
+        "bbox": null,
+        "layout": null,
+        "props": null,
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": false,
+        "generated_children": [],
+        "text": "当前方案可能缺少 UPS、路由器、防火墙等关键设备",
+        "description": null,
+        "reactCode": "import React from 'react';\n\nexport default function RiskMsg() {\n  return (\n    <div data-component-id=\"risk_msg\" className=\"tf-cg-risk-msg\">\n      <span className=\"font-body-m\" style={{ fontSize: 'var(--font-body-14)', color: 'var(--color-text-primary)' }}>\n        当前方案可能缺少 UPS、路由器、防火墙等关键设备\n      </span>\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_6",
+        "operation": "create",
+        "id": "risk_action",
+        "component": "TextButton",
+        "bbox": null,
+        "layout": null,
+        "props": {
+          "variant": "primary"
+        },
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": false,
+        "generated_children": [],
+        "text": "去添加",
+        "description": null,
+        "reactCode": "import React from 'react';\nimport { TextButton } from '@/components/ui/Button';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"risk_action\">\n      <TextButton variant=\"primary\">去添加</TextButton>\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_6",
+        "operation": "create",
+        "id": "config_risk_card",
+        "component": "SectionLayout",
+        "bbox": null,
+        "layout": {
+          "group": "config_content",
+          "order": 2,
+          "flow": "vertical",
+          "widthHint": "content-column",
+          "heightMode": "auto",
+          "spacingHint": 12
+        },
+        "props": {
+          "variant": "card",
+          "title": "风险提示"
+        },
+        "content_density": "normal",
+        "content_requirements": [
+          "riskMessage",
+          "missingDevices",
+          "addAction"
+        ],
+        "is_top_level": true,
+        "generated_children": [
+          {
+            "id": "risk_pill",
+            "component": "StatusPill",
+            "importName": "Child_risk_pill",
+            "importPath": "./risk_pill"
+          },
+          {
+            "id": "risk_msg",
+            "component": "Text",
+            "importName": "Child_risk_msg",
+            "importPath": "./risk_msg"
+          },
+          {
+            "id": "risk_action",
+            "component": "TextButton",
+            "importName": "Child_risk_action",
+            "importPath": "./risk_action"
+          }
+        ],
+        "text": null,
+        "description": null,
+        "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_risk_pill from './risk_pill';\nimport Child_risk_msg from './risk_msg';\nimport Child_risk_action from './risk_action';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"config_risk_card\" className=\"tf-cg-risk-card\">\n      <SectionLayout variant=\"card\" title=\"风险提示\">\n        <div className=\"flex items-center\" style={{ gap: 'var(--spacing-md)' }}>\n          <Child_risk_pill />\n          <Child_risk_msg />\n        </div>\n        <Child_risk_action />\n      </SectionLayout>\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_6",
+        "operation": "create",
+        "id": "cfg_prod_1",
+        "component": "ProductSelectionListItem",
+        "bbox": null,
+        "layout": null,
+        "props": {
+          "item": {
+            "id": "p1",
+            "name": "IdeaHub B2 Base-75寸",
+            "status": "谈单中",
+            "time": "¥21,999 x 1"
+          }
+        },
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": false,
+        "generated_children": [],
+        "text": null,
+        "description": null,
+        "reactCode": "import React from 'react';\nimport ProductSelectionListItem from '@/components/ProductSelectionListItem';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"cfg_prod_1\">\n      <ProductSelectionListItem\n        item={{\n          id: 'p1',\n          name: 'IdeaHub B2 Base-75寸',\n          status: '谈单中',\n          time: '¥21,999 x 1'\n        }}\n      />\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_6",
+        "operation": "create",
+        "id": "config_product_list_card",
+        "component": "SectionLayout",
+        "bbox": null,
+        "layout": {
+          "group": "config_content",
+          "order": 3,
+          "flow": "vertical",
+          "widthHint": "content-column",
+          "heightMode": "auto",
+          "spacingHint": 12
+        },
+        "props": {
+          "variant": "card",
+          "title": "产品清单",
+          "headerRightAction": "编辑"
+        },
+        "content_density": "rich",
+        "content_requirements": [
+          "productItems",
+          "quantity",
+          "unitPrice"
+        ],
+        "is_top_level": true,
+        "generated_children": [
+          {
+            "id": "cfg_prod_1",
+            "component": "ProductSelectionListItem",
+            "importName": "Child_cfg_prod_1",
+            "importPath": "./cfg_prod_1"
+          }
+        ],
+        "text": null,
+        "description": null,
+        "reactCode": "import React from 'react'\nimport SectionLayout from '@/components/SectionLayout'\nimport Child_cfg_prod_1 from './cfg_prod_1'\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"config_product_list_card\">\n      <SectionLayout\n        variant=\"card\"\n        title=\"产品清单\"\n        headerRightAction={\n          <button\n            onClick={() => {}}\n            className=\"bg-transparent border-none cursor-pointer\"\n            style={{ padding: 0 }}\n          >\n            <span\n              className=\"font-headline-xs\"\n              style={{ color: 'var(--color-primary)' }}\n            >\n              编辑\n            </span>\n          </button>\n        }\n      >\n        <Child_cfg_prod_1 />\n      </SectionLayout>\n    </div>\n  )\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_6",
+        "operation": "create",
+        "id": "feat_text",
+        "component": "Text",
+        "bbox": null,
+        "layout": null,
+        "props": null,
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": false,
+        "generated_children": [],
+        "text": "提供1080P高清云会议体验，光学防蓝光，健康护眼，双Wi-Fi投屏更稳定。",
+        "description": null,
+        "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"feat_text\" className=\"tf-cg-text\">\n      <span className=\"font-body-m\" style={{ fontSize: 'var(--font-body-14)', color: 'var(--color-text-primary)' }}>\n        提供1080P高清云会议体验，光学防蓝光，健康护眼，双Wi-Fi投屏更稳定。\n      </span>\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_6",
+        "operation": "create",
+        "id": "config_feature_card",
+        "component": "SectionLayout",
+        "bbox": null,
+        "layout": {
+          "group": "config_content",
+          "order": 4,
+          "flow": "vertical",
+          "widthHint": "content-column",
+          "heightMode": "auto",
+          "spacingHint": 12
+        },
+        "props": {
+          "variant": "card",
+          "title": "方案特色",
+          "headerRightAction": "添加"
+        },
+        "content_density": "normal",
+        "content_requirements": [
+          "featureList",
+          "editAction"
+        ],
+        "is_top_level": true,
+        "generated_children": [
+          {
+            "id": "feat_text",
+            "component": "Text",
+            "importName": "Child_feat_text",
+            "importPath": "./feat_text"
+          }
+        ],
+        "text": null,
+        "description": null,
+        "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_feat_text from './feat_text';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"config_feature_card\">\n      <SectionLayout\n        variant=\"card\"\n        title=\"方案特色\"\n        headerRightAction={\n          <span \n            className=\"font-headline-xs\" \n            style={{ color: 'var(--color-primary)', cursor: 'pointer' }}\n          >\n            添加\n          </span>\n        }\n      >\n        <Child_feat_text />\n      </SectionLayout>\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_6",
+        "operation": "create",
+        "id": "prov_name",
+        "component": "Text",
+        "bbox": null,
+        "layout": null,
+        "props": null,
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": false,
+        "generated_children": [],
+        "text": "服务商：华为政企授权服务中心",
+        "description": null,
+        "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <span\n      data-component-id=\"prov_name\"\n      className=\"font-body-m\"\n      style={{\n        fontSize: 'var(--font-body-14)',\n        color: 'var(--color-text-primary)'\n      }}\n    >\n      服务商：华为政企授权服务中心\n    </span>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_6",
+        "operation": "create",
+        "id": "prov_contact",
+        "component": "Text",
+        "bbox": null,
+        "layout": null,
+        "props": null,
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": false,
+        "generated_children": [],
+        "text": "联系人：张经理",
+        "description": null,
+        "reactCode": "import React from 'react';\n\nexport default function ProvContact() {\n  return (\n    <div \n      data-component-id=\"prov_contact\" \n      className=\"tf-cg-prov-contact font-body-m\"\n      style={{\n        fontSize: 'var(--font-body-14)',\n        color: 'var(--color-text-secondary)'\n      }}\n    >\n      联系人：张经理\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_6",
+        "operation": "create",
+        "id": "prov_phone",
+        "component": "Text",
+        "bbox": null,
+        "layout": null,
+        "props": null,
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": false,
+        "generated_children": [],
+        "text": "联系电话：400-888-9999",
+        "description": null,
+        "reactCode": "import React from 'react';\n\nexport default function ProvPhone() {\n  return (\n    <span\n      data-component-id=\"prov_phone\"\n      className=\"font-body-m\"\n      style={{ fontSize: 'var(--font-body-14)', color: 'var(--color-primary)' }}\n    >\n      联系电话：400-888-9999\n    </span>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_6",
+        "operation": "create",
+        "id": "config_provider_card",
+        "component": "SectionLayout",
+        "bbox": null,
+        "layout": {
+          "group": "config_content",
+          "order": 5,
+          "flow": "vertical",
+          "widthHint": "content-column",
+          "heightMode": "auto",
+          "spacingHint": 12
+        },
+        "props": {
+          "variant": "card",
+          "title": "服务商信息"
+        },
+        "content_density": "normal",
+        "content_requirements": [
+          "providerName",
+          "contactPerson",
+          "contactPhone"
+        ],
+        "is_top_level": true,
+        "generated_children": [
+          {
+            "id": "prov_name",
+            "component": "Text",
+            "importName": "Child_prov_name",
+            "importPath": "./prov_name"
+          },
+          {
+            "id": "prov_contact",
+            "component": "Text",
+            "importName": "Child_prov_contact",
+            "importPath": "./prov_contact"
+          },
+          {
+            "id": "prov_phone",
+            "component": "Text",
+            "importName": "Child_prov_phone",
+            "importPath": "./prov_phone"
+          }
+        ],
+        "text": null,
+        "description": null,
+        "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_prov_name from './prov_name';\nimport Child_prov_contact from './prov_contact';\nimport Child_prov_phone from './prov_phone';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"config_provider_card\">\n      <SectionLayout variant=\"card\" title=\"服务商信息\">\n        <div className=\"tf-cg-provider-content\">\n          <Child_prov_name />\n          <Child_prov_contact />\n          <Child_prov_phone />\n        </div>\n      </SectionLayout>\n    </div>\n  );\n}",
+        "issues": []
+      },
+      {
+        "state_id": "state_6",
+        "operation": "create",
+        "id": "config_bottom_bar",
+        "component": "ButtonBar",
+        "bbox": [
+          0,
+          936,
+          360,
+          64
+        ],
+        "layout": null,
+        "props": {
+          "variant": "triple",
+          "primaryLabel": "导出",
+          "secondaryLabel": "采购咨询",
+          "thirdLabel": "点位图",
+          "zIndex": 20
+        },
+        "content_density": null,
+        "content_requirements": [],
+        "is_top_level": true,
+        "generated_children": [],
+        "text": null,
+        "description": null,
+        "reactCode": "import React from 'react';\nimport ButtonBar from '@/components/ButtonBar';\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"config_bottom_bar\" \n      className=\"tf-cg-bottom-bar\"\n      style={{ \n        width: 360, \n        height: 64, \n        zIndex: 20,\n        position: 'relative'\n      }}\n    >\n      <ButtonBar\n        variant=\"triple\"\n        primaryLabel=\"导出\"\n        secondaryLabel=\"采购咨询\"\n        thirdLabel=\"点位图\"\n        width={360}\n      />\n    </div>\n  );\n}",
+        "issues": []
+      }
+    ]
+  },
+  "global_css": "/* ============================================\n   HarmonyOS Sans SC — 字体声明\n   ============================================ */\n\n@font-face {\n  font-family: 'HarmonyOS Sans SC';\n  src: url('../assets/fonts/harmonyos-sans-sc/HarmonyOS_Sans_SC_Regular.ttf') format('truetype');\n  font-weight: 400;\n  font-display: swap;\n}\n\n@font-face {\n  font-family: 'HarmonyOS Sans SC';\n  src: url('../assets/fonts/harmonyos-sans-sc/HarmonyOS_Sans_SC_Medium.ttf') format('truetype');\n  font-weight: 500;\n  font-display: swap;\n}\n\n@font-face {\n  font-family: 'HarmonyOS Sans SC';\n  src: url('../assets/fonts/harmonyos-sans-sc/HarmonyOS_Sans_SC_Bold.ttf') format('truetype');\n  font-weight: 600;\n  font-display: swap;\n}\n\n@font-face {\n  font-family: 'HarmonyOS Sans SC';\n  src: url('../assets/fonts/harmonyos-sans-sc/HarmonyOS_Sans_SC_Bold.ttf') format('truetype');\n  font-weight: 700;\n  font-display: swap;\n}\n\n/* ============================================\n   kunling-o2o Design System — 主变量层\n   ============================================ */\n\n@layer base {\n  :root {\n    /* ── shadcn 主题变量（指向 kunling 品牌色） ── */\n    --background: oklch(1 0 0);\n    --foreground: var(--color-text-primary);\n    --card: var(--color-bg-card);\n    --card-foreground: var(--color-text-primary);\n    --popover: var(--color-bg-card);\n    --popover-foreground: var(--color-text-primary);\n    --primary: var(--color-primary);\n    --primary-foreground: var(--color-text-white);\n    --secondary: var(--color-bg-hover);\n    --secondary-foreground: var(--color-text-primary);\n    --muted: var(--color-bg-disabled);\n    --muted-foreground: var(--color-text-secondary);\n    --accent: var(--color-primary-active);\n    --accent-foreground: var(--color-primary);\n    --destructive: var(--color-error);\n    --destructive-foreground: var(--color-text-white);\n    --border: var(--color-border-subtle);\n    --input: var(--color-border-subtle);\n    --ring: var(--color-primary);\n    --radius: 0.625rem;\n    --chart-1: oklch(0.87 0 0);\n    --chart-2: oklch(0.556 0 0);\n    --chart-3: oklch(0.439 0 0);\n    --chart-4: oklch(0.371 0 0);\n    --chart-5: oklch(0.269 0 0);\n    --sidebar: oklch(0.985 0 0);\n    --sidebar-foreground: var(--color-text-primary);\n    --sidebar-primary: var(--color-primary);\n    --sidebar-primary-foreground: var(--color-text-white);\n    --sidebar-accent: var(--color-primary-active);\n    --sidebar-accent-foreground: var(--color-primary);\n    --sidebar-border: var(--color-border-subtle);\n    --sidebar-ring: var(--color-primary);\n\n    /* ── kunling 自定义变量 ── */\n    --color-text-primary:     rgba(0, 0, 0, 0.9);\n    --color-text-secondary:   rgba(0, 0, 0, 0.6);\n    --color-text-muted:       rgba(0, 0, 0, 0.4);\n    --color-text-hint:        rgba(0, 0, 0, 0.4);\n    --color-text-disabled:    rgba(0, 0, 0, 0.2);\n    --color-text-white:       #ffffff;\n\n    --color-primary: #C7000B;\n    --color-primary-disabled: rgba(199, 0, 11, 0.4);\n    --color-primary-soft: rgba(199, 0, 11, 0.05);\n    --color-primary-active: rgba(199, 0, 11, 0.08);\n    --color-orange: #FF8C42;\n\n    --color-success: #10B981;\n    --color-warning: #F97316;\n    --color-error: #DC2626;\n\n    --color-bg-page: #F2F3F5;\n    --color-bg-card: #ffffff;\n    --color-bg-hover: rgba(0, 0, 0, 0.04);\n    --color-bg-disabled: rgba(0, 0, 0, 0.05);\n\n    --color-border-subtle: rgba(0, 0, 0, 0.06);\n\n    --color-divider-strong:  rgba(0, 0, 0, 0.6);\n    --color-divider:         rgba(0, 0, 0, 0.1);\n    --color-divider-subtle:  rgba(0, 0, 0, 0.05);\n    --color-divider-faint:   rgba(0, 0, 0, 0.03);\n\n    --color-mask: rgba(0, 0, 0, 0.3);\n\n    --radius-xxs: 4px;\n    --radius-md: 12px;\n    --radius-lg: 16px;\n    --radius-xl: 18px;\n    --radius-2xl: 20px;\n    --radius-3xl: 24px;\n    --radius-4xl: 32px;\n    --radius-full: 9999px;\n\n    --shadow-sm: 0 1px 6px 0 rgba(0, 0, 0, 0.08);\n    --shadow-md: 0 8px 24px 0 rgba(0, 0, 0, 0.08);\n    --shadow-lg: 0 8px 24px 0 rgba(0, 0, 0, 0.16);\n    --shadow-xl: 0 10px 20px 0 rgba(0, 0, 0, 0.15);\n\n    --font-caption-10:  10px;\n    --font-caption-12:  12px;\n    --font-display-36: 36px;\n    --font-display-48: 48px;\n    --font-display-60: 60px;\n    --font-headline-12: 12px;\n    --font-headline-14: 14px;\n    --font-headline-16: 16px;\n    --font-headline-18: 18px;\n    --font-headline-20: 20px;\n    --font-headline-24: 24px;\n    --font-body-12: 12px;\n    --font-body-14: 14px;\n    --font-body-16: 16px;\n\n    --font-weight-regular:  400;\n    --font-weight-medium:   500;\n    --font-weight-semibold: 600;\n    --font-weight-bold:     700;\n\n    --line-height-12: 12px;\n    --line-height-14: 14px;\n    --line-height-16: 16px;\n    --line-height-18: 18px;\n    --line-height-20: 20px;\n    --line-height-24: 24px;\n    --line-height-26: 26px;\n    --line-height-30: 30px;\n    --line-height-32: 32px;\n    --line-height-36: 36px;\n    --line-height-48: 48px;\n    --line-height-60: 60px;\n    --line-height-64: 64px;\n    --line-height-80: 80px;\n\n    --spacing-xs: 4px;\n    --spacing-sm: 6px;\n    --spacing-md: 8px;\n    --spacing-lg: 12px;\n    --spacing-xl: 16px;\n    --spacing-2xl: 24px;\n  }\n\n  .dark {\n    --background: oklch(0.145 0 0);\n    --foreground: oklch(0.985 0 0);\n    --card: oklch(0.205 0 0);\n    --card-foreground: oklch(0.985 0 0);\n    --popover: oklch(0.205 0 0);\n    --popover-foreground: oklch(0.985 0 0);\n    --primary: var(--color-primary);\n    --primary-foreground: var(--color-text-white);\n    --secondary: oklch(0.269 0 0);\n    --secondary-foreground: oklch(0.985 0 0);\n    --muted: oklch(0.269 0 0);\n    --muted-foreground: oklch(0.708 0 0);\n    --accent: oklch(0.269 0 0);\n    --accent-foreground: oklch(0.985 0 0);\n    --destructive: var(--color-error);\n    --destructive-foreground: var(--color-text-white);\n    --border: oklch(1 0 0 / 10%);\n    --input: oklch(1 0 0 / 15%);\n    --ring: var(--color-primary);\n    --chart-1: oklch(0.87 0 0);\n    --chart-2: oklch(0.556 0 0);\n    --chart-3: oklch(0.439 0 0);\n    --chart-4: oklch(0.371 0 0);\n    --chart-5: oklch(0.269 0 0);\n    --sidebar: oklch(0.205 0 0);\n    --sidebar-foreground: oklch(0.985 0 0);\n    --sidebar-primary: oklch(0.488 0.243 264.376);\n    --sidebar-primary-foreground: oklch(0.985 0 0);\n    --sidebar-accent: oklch(0.269 0 0);\n    --sidebar-accent-foreground: oklch(0.985 0 0);\n    --sidebar-border: oklch(1 0 0 / 10%);\n    --sidebar-ring: oklch(0.556 0 0);\n  }\n\n  * {\n    @apply border-border;\n    border-color: var(--color-border-subtle);\n  }\n\n  body {\n    @apply bg-background text-foreground;\n    font-family: 'HarmonyOS Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;\n    background-color: var(--color-bg-page);\n    color: var(--color-text-primary);\n    -webkit-tap-highlight-color: transparent;\n  }\n\n  .theme {\n    --font-heading: var(--font-sans);\n    --font-sans: 'HarmonyOS Sans SC', sans-serif;\n  }\n  html {\n    @apply font-sans;\n  }\n}\n\n/* ============================================\n   kunling Atomic Classes\n   ============================================ */\n\n@layer components {\n  /* ── Display 字系 ── */\n  .font-display-s { font-size: var(--font-display-36); line-height: var(--line-height-48); font-weight: var(--font-weight-medium); }\n  .font-display-m { font-size: var(--font-display-48); line-height: var(--line-height-64); font-weight: var(--font-weight-medium); }\n  .font-display-l { font-size: var(--font-display-60); line-height: var(--line-height-80); font-weight: var(--font-weight-medium); }\n\n  /* ── Headline 字系 ── */\n  .font-headline-xxs { font-size: var(--font-headline-12); line-height: var(--line-height-16); font-weight: var(--font-weight-medium); }\n  .font-headline-xs  { font-size: var(--font-headline-14); line-height: var(--line-height-18); font-weight: var(--font-weight-medium); }\n  .font-headline-s   { font-size: var(--font-headline-16); line-height: var(--line-height-20); font-weight: var(--font-weight-medium); }\n  .font-headline-m   { font-size: var(--font-headline-18); line-height: var(--line-height-24); font-weight: var(--font-weight-medium); }\n  .font-headline-l   { font-size: var(--font-headline-20); line-height: var(--line-height-26); font-weight: var(--font-weight-medium); }\n  .font-headline-xl  { font-size: var(--font-headline-20); line-height: var(--line-height-26); font-weight: var(--font-weight-bold); }\n  .font-headline-xxl { font-size: var(--font-headline-24); line-height: var(--line-height-32); font-weight: var(--font-weight-bold); }\n\n  /* Headline 多行行高 */\n  .font-headline-xs-multi { font-size: var(--font-headline-14); line-height: var(--line-height-20); font-weight: var(--font-weight-medium); }\n  .font-headline-s-multi  { font-size: var(--font-headline-16); line-height: var(--line-height-24); font-weight: var(--font-weight-medium); }\n  .font-headline-m-multi  { font-size: var(--font-headline-18); line-height: var(--line-height-26); font-weight: var(--font-weight-medium); }\n  .font-headline-l-multi  { font-size: var(--font-headline-20); line-height: var(--line-height-30); font-weight: var(--font-weight-medium); }\n\n  /* ── Body 字系 ── */\n  .font-body-s  { font-size: var(--font-body-12); line-height: var(--line-height-16); font-weight: var(--font-weight-regular); }\n  .font-body-m  { font-size: var(--font-body-14); line-height: var(--line-height-18); font-weight: var(--font-weight-regular); }\n  .font-body-l  { font-size: var(--font-body-16); line-height: var(--line-height-20); font-weight: var(--font-weight-regular); }\n\n  /* Body 多行行高 */\n  .font-body-s-multi { font-size: var(--font-body-12); line-height: var(--line-height-18); font-weight: var(--font-weight-regular); }\n  .font-body-m-multi { font-size: var(--font-body-14); line-height: var(--line-height-20); font-weight: var(--font-weight-regular); }\n  .font-body-l-multi { font-size: var(--font-body-16); line-height: var(--line-height-24); font-weight: var(--font-weight-regular); }\n\n  /* ── Caption 字系 ── */\n  .font-caption-s { font-size: var(--font-caption-10); line-height: var(--line-height-12); font-weight: var(--font-weight-regular); }\n  .font-caption-m { font-size: var(--font-caption-12); line-height: var(--line-height-16); font-weight: var(--font-weight-regular); }\n\n  .font-caption-s-multi { font-size: var(--font-caption-10); line-height: var(--line-height-14); font-weight: var(--font-weight-regular); }\n  .font-caption-m-multi { font-size: var(--font-caption-12); line-height: var(--line-height-18); font-weight: var(--font-weight-regular); }\n\n  /* ── Padding 类 ── */\n  .p-page    { padding: var(--spacing-lg) var(--spacing-xl); }\n  .p-card    { padding: var(--spacing-lg); }\n  .p-card-sm { padding: var(--spacing-md); }\n  .p-pill    { padding: var(--spacing-sm) var(--spacing-lg); }\n  .p-tab     { padding: var(--spacing-xs) 0; }\n\n  /* ── 图标容器 ── */\n  .size-icon-nav   { width: 40px; height: 40px; }\n  .size-icon-entry { width: 48px; height: 48px; }\n  .size-icon-card  { width: 40px; height: 40px; }\n  .size-icon-sm    { width: 28px; height: 28px; }\n  .size-badge      { width: 16px; height: 16px; font-size: 10px; }\n  .size-icon-tab   { width: 30px; height: 30px; }\n  .h-banner        { height: 140px; }\n\n  /* ── 背景渐变层 ── */\n  .bg-gradient-layer-1 {\n    width: 360px; height: 792px;\n    background:\n      linear-gradient(180deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%),\n      radial-gradient(circle 200px at 360px 140px, rgba(255,143,111,0.4) 0%, rgba(250,194,193,0) 100%),\n      radial-gradient(circle 300px at 0px -100px, rgba(247,168,10,0.4) 0%, rgba(247,106,10,0) 100%),\n      linear-gradient(180deg, #f6f6f5 0%, #f2f3f5 100%);\n  }\n  .bg-gradient-layer-2 {\n    width: 360px; height: 792px;\n    background:\n      linear-gradient(180deg, rgba(255,255,255,0.4) 10%, rgba(255,255,255,0) 100%),\n      radial-gradient(circle 231px at 320px 0px, rgba(255,143,111,0.2) 0%, rgba(250,194,193,0) 100%),\n      radial-gradient(circle 271px at 85px -105px, rgba(247,168,10,0.2) 0%, rgba(247,106,10,0) 100%),\n      linear-gradient(180deg, #f6f6f5 0%, #f2f3f5 100%);\n  }\n  .bg-gradient-layer-3 {\n    width: 360px; height: 792px;\n    background:\n      linear-gradient(\n/* truncated */"
+}

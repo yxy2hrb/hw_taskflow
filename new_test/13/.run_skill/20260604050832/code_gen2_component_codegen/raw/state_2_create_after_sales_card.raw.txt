@@ -1,0 +1,6 @@
+{
+  "id": "after_sales_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_after_sales_item from './after_sales_item';\n\nexport default function AfterSalesCard() {\n  return (\n    <div data-component-id=\"after_sales_card\">\n      <SectionLayout variant=\"card\" title=\"售后信息\">\n        <Child_after_sales_item />\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used SectionLayout with variant='card', imported generated child Child_after_sales_item"
+}

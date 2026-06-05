@@ -1,0 +1,6 @@
+{
+  "id": "config_name",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"config_name\"\n      className=\"font-headline-s\"\n      style={{\n        color: 'var(--color-text-primary)',\n      }}\n    >\n      华为办公配单方案\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used font-headline-s, --color-text-primary"
+}

@@ -1,0 +1,393 @@
+{
+  "states": [
+    {
+      "id": "state_1",
+      "label": "产品列表初始态",
+      "ui_intent": "移动端产品列表页，包含状态栏、标题栏、分类标签栏、产品分类区、筛选按钮、多个商品卡片及底部导航栏。",
+      "parent_state": null,
+      "trigger": null,
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域",
+          "顶部标题栏与Tab导航区-顶部横向区域",
+          "横向分类标签栏-顶部横向区域",
+          "左侧子分类导航栏-左侧纵向区域",
+          "右侧商品列表及筛选区-右侧主体区域",
+          "底部导航栏-底部横向区域"
+        ],
+        "create": [],
+        "update": []
+      },
+      "data_state": {},
+      "patches": [
+        {
+          "type": "bind",
+          "anchor": "商品卡片热销状态-右侧列表第二项",
+          "action": "click",
+          "goto": "state_2"
+        }
+      ]
+    },
+    {
+      "id": "state_2",
+      "label": "产品详情展示态",
+      "ui_intent": "产品详情页，包含导航栏、产品图片展示区、中部信息卡片及底部固定的“加入配单”等操作按钮。",
+      "parent_state": "state_1",
+      "trigger": {
+        "anchor": "商品卡片热销状态-右侧列表第二项",
+        "action": "click"
+      },
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域"
+        ],
+        "create": [
+          {
+            "type": "create",
+            "id": "detail_nav_bar",
+            "component": "NavBar",
+            "bbox": [0, 36, 360, 44],
+            "text": "产品详情"
+          },
+          {
+            "type": "create",
+            "id": "detail_image",
+            "component": "Image",
+            "bbox": [0, 80, 360, 240]
+          },
+          {
+            "type": "create",
+            "id": "detail_info_cards",
+            "component": "CardList",
+            "bbox": [0, 320, 360, 480],
+            "text": "型号、价格、参数、售后等信息"
+          },
+          {
+            "type": "create",
+            "id": "detail_bottom_bar",
+            "component": "BottomActionBar",
+            "bbox": [0, 872, 360, 64]
+          },
+          {
+            "type": "create",
+            "id": "btn_add_to_quote",
+            "component": "Button",
+            "bbox": [180, 882, 160, 44],
+            "text": "加入配单"
+          }
+        ],
+        "update": []
+      },
+      "data_state": {},
+      "patches": [
+        {
+          "type": "bind",
+          "anchor": "btn_add_to_quote",
+          "action": "click",
+          "goto": "state_3"
+        }
+      ]
+    },
+    {
+      "id": "state_3",
+      "label": "半模态配单弹窗态",
+      "ui_intent": "半模态配单弹窗，背景被遮罩。弹窗内展示产品清单、数量调节、合计金额、推荐配件提示和“去配单”按钮。",
+      "parent_state": "state_2",
+      "trigger": {
+        "anchor": "btn_add_to_quote",
+        "action": "click"
+      },
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域",
+          "detail_nav_bar",
+          "detail_image",
+          "detail_info_cards",
+          "detail_bottom_bar",
+          "btn_add_to_quote"
+        ],
+        "create": [
+          {
+            "type": "create",
+            "id": "overlay_mask",
+            "component": "Mask",
+            "bbox": [0, 0, 360, 936]
+          },
+          {
+            "type": "create",
+            "id": "quote_drawer",
+            "component": "HalfScreenDrawer",
+            "bbox": [0, 280, 360, 656],
+            "text": "配单清单"
+          },
+          {
+            "type": "create",
+            "id": "quote_product_list",
+            "component": "List",
+            "bbox": [0, 340, 360, 300],
+            "text": "已选产品及数量步进器"
+          },
+          {
+            "type": "create",
+            "id": "quote_accessory_tip",
+            "component": "Banner",
+            "bbox": [0, 640, 360, 40],
+            "text": "推荐配件提示"
+          },
+          {
+            "type": "create",
+            "id": "quote_total",
+            "component": "Text",
+            "bbox": [20, 690, 160, 30],
+            "text": "合计金额"
+          },
+          {
+            "type": "create",
+            "id": "btn_go_to_quote",
+            "component": "Button",
+            "bbox": [200, 680, 140, 44],
+            "text": "去配单"
+          }
+        ],
+        "update": []
+      },
+      "data_state": {},
+      "patches": [
+        {
+          "type": "bind",
+          "anchor": "btn_go_to_quote",
+          "action": "click",
+          "goto": "state_4"
+        }
+      ]
+    },
+    {
+      "id": "state_4",
+      "label": "配单编辑初始态",
+      "ui_intent": "配单信息编辑弹窗，背景被遮罩。弹窗内显示编辑配单信息区域、配单名称输入框及底部确认按钮。",
+      "parent_state": "state_3",
+      "trigger": {
+        "anchor": "btn_go_to_quote",
+        "action": "click"
+      },
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域",
+          "detail_nav_bar",
+          "detail_image",
+          "detail_info_cards",
+          "detail_bottom_bar",
+          "btn_add_to_quote",
+          "overlay_mask"
+        ],
+        "create": [
+          {
+            "type": "create",
+            "id": "edit_drawer",
+            "component": "HalfScreenDrawer",
+            "bbox": [0, 560, 360, 376],
+            "text": "编辑配单信息"
+          },
+          {
+            "type": "create",
+            "id": "edit_name_input",
+            "component": "Input",
+            "bbox": [20, 620, 320, 44],
+            "text": "请输入配单名称"
+          },
+          {
+            "type": "create",
+            "id": "btn_confirm_edit",
+            "component": "Button",
+            "bbox": [20, 850, 320, 44],
+            "text": "确认",
+            "disabled": true
+          }
+        ],
+        "update": []
+      },
+      "data_state": {},
+      "patches": [
+        {
+          "type": "bind",
+          "anchor": "edit_name_input",
+          "action": "input",
+          "goto": "state_5"
+        }
+      ]
+    },
+    {
+      "id": "state_5",
+      "label": "配单编辑可提交态",
+      "ui_intent": "配单信息编辑弹窗，配单名称等字段已填充，底部确认按钮明确变为可点击的高亮状态。",
+      "parent_state": "state_4",
+      "trigger": {
+        "anchor": "edit_name_input",
+        "action": "input"
+      },
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域",
+          "detail_nav_bar",
+          "detail_image",
+          "detail_info_cards",
+          "detail_bottom_bar",
+          "btn_add_to_quote",
+          "overlay_mask",
+          "edit_drawer",
+          "edit_name_input"
+        ],
+        "create": [],
+        "update": [
+          {
+            "type": "update",
+            "id": "edit_name_input",
+            "value": "我的配单方案"
+          },
+          {
+            "type": "update",
+            "id": "btn_confirm_edit",
+            "disabled": false
+          }
+        ]
+      },
+      "data_state": {},
+      "patches": [
+        {
+          "type": "bind",
+          "anchor": "btn_confirm_edit",
+          "action": "click",
+          "goto": "state_6"
+        }
+      ]
+    },
+    {
+      "id": "state_6",
+      "label": "配单提交中状态",
+      "ui_intent": "配单信息编辑弹窗，确认按钮进入 loading 禁用状态，防止重复点击。",
+      "parent_state": "state_5",
+      "trigger": {
+        "anchor": "btn_confirm_edit",
+        "action": "click"
+      },
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域",
+          "detail_nav_bar",
+          "detail_image",
+          "detail_info_cards",
+          "detail_bottom_bar",
+          "btn_add_to_quote",
+          "overlay_mask",
+          "edit_drawer",
+          "edit_name_input"
+        ],
+        "create": [],
+        "update": [
+          {
+            "type": "update",
+            "id": "btn_confirm_edit",
+            "text": "提交中...",
+            "loading": true,
+            "disabled": true
+          },
+          {
+            "type": "update",
+            "id": "edit_name_input",
+            "readonly": true
+          }
+        ]
+      },
+      "data_state": {},
+      "patches": []
+    },
+    {
+      "id": "state_7",
+      "label": "配单详情成功态",
+      "ui_intent": "配单详情页，包含顶部导航，中间展示配单概览、风险提示、产品清单、方案特色和服务商信息卡片，底部固定展示采购咨询和导出按钮。",
+      "parent_state": "state_6",
+      "trigger": {
+        "anchor": "system",
+        "action": "submit_success"
+      },
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域"
+        ],
+        "create": [
+          {
+            "type": "create",
+            "id": "quote_detail_nav",
+            "component": "NavBar",
+            "bbox": [0, 36, 360, 44],
+            "text": "配单详情"
+          },
+          {
+            "type": "create",
+            "id": "quote_overview_card",
+            "component": "Card",
+            "bbox": [16, 96, 328, 120],
+            "text": "配单概览"
+          },
+          {
+            "type": "create",
+            "id": "quote_risk_card",
+            "component": "Card",
+            "bbox": [16, 232, 328, 80],
+            "text": "风险提示"
+          },
+          {
+            "type": "create",
+            "id": "quote_product_list_card",
+            "component": "Card",
+            "bbox": [16, 328, 328, 200],
+            "text": "产品清单"
+          },
+          {
+            "type": "create",
+            "id": "quote_feature_card",
+            "component": "Card",
+            "bbox": [16, 544, 328, 120],
+            "text": "方案特色"
+          },
+          {
+            "type": "create",
+            "id": "quote_vendor_card",
+            "component": "Card",
+            "bbox": [16, 680, 328, 100],
+            "text": "服务商信息"
+          },
+          {
+            "type": "create",
+            "id": "quote_detail_bottom_bar",
+            "component": "BottomActionBar",
+            "bbox": [0, 872, 360, 64]
+          },
+          {
+            "type": "create",
+            "id": "btn_consult",
+            "component": "Button",
+            "bbox": [20, 882, 150, 44],
+            "text": "采购咨询"
+          },
+          {
+            "type": "create",
+            "id": "btn_export",
+            "component": "Button",
+            "bbox": [190, 882, 150, 44],
+            "text": "导出"
+          }
+        ],
+        "update": []
+      },
+      "data_state": {},
+      "patches": []
+    }
+  ],
+  "validation_notes": [
+    "All states follow the inheritance and trigger rules.",
+    "No hide or replace patches are used.",
+    "Modal and drawer states correctly overlap background elements.",
+    "Non-modal states avoid overlap with kept top status bar."
+  ]
+}

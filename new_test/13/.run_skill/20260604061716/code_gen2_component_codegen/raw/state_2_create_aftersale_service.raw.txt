@@ -1,0 +1,6 @@
+{
+  "id": "aftersale_service",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"aftersale_service\" className=\"tf-cg-aftersale\">\n      <span className=\"font-body-m tf-cg-aftersale__text\">\n        服务保障：7x24小时专属客服，全国上门\n      </span>\n    </div>\n  );\n}",
+  "css": ".tf-cg-aftersale {\n  display: flex;\n  align-items: center;\n}\n.tf-cg-aftersale__text {\n  font-size: var(--font-body-14);\n  line-height: var(--line-height-18);\n  font-weight: var(--font-weight-regular);\n  color: var(--color-text-primary);\n}",
+  "notes": "used font-body-m class, --font-body-14, --line-height-18, --font-weight-regular, --color-text-primary"
+}

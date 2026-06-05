@@ -1,0 +1,6 @@
+{
+  "id": "feature_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport { TextButton } from '@/components/ui/Button';\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"feature_card\" \n      style={{ \n        position: 'absolute', \n        left: 12, \n        top: 680, \n        width: 336, \n        height: 160 \n      }}\n    >\n      <SectionLayout\n        variant=\"card\"\n        title=\"方案特色\"\n        headerRightAction={\n          <TextButton size=\"medium\" variant=\"primary\" onClick={() => {}}>\n            添加\n          </TextButton>\n        }\n      >\n        <div className=\"flex items-center justify-center\" style={{ color: 'var(--color-text-hint)', minHeight: 88 }}>\n          <span className=\"font-body-m\">点击添加方案特色</span>\n        </div>\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used SectionLayout, TextButton, --color-text-hint, font-body-m"
+}

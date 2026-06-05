@@ -1,0 +1,6 @@
+{
+  "id": "sheet_product_item",
+  "reactCode": "import React from 'react';\nimport ProductCard from '@/components/ProductCard';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"sheet_product_item\"\n      style={{\n        position: 'absolute',\n        left: 16,\n        top: 320,\n        width: 328,\n        height: 100,\n        display: 'flex',\n        alignItems: 'center',\n        justifyContent: 'center'\n      }}\n    >\n      <ProductCard\n        product={{\n          id: 'p1',\n          name: 'IdeaHub B2 Base-75 寸',\n          price: 21999,\n        }}\n      />\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used ProductCard, absolute positioning with bbox"
+}

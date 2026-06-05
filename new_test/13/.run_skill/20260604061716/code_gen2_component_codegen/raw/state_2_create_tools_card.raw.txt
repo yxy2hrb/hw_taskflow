@@ -1,0 +1,6 @@
+{
+  "id": "tools_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_tool_1 from './tool_1';\nimport Child_tool_2 from './tool_2';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"tools_card\">\n      <SectionLayout variant=\"card\" title=\"售前/售后工具\">\n        <div className=\"flex\" style={{ gap: 'var(--spacing-lg)' }}>\n          <div className=\"flex-1\">\n            <Child_tool_1 />\n          </div>\n          <div className=\"flex-1\">\n            <Child_tool_2 />\n          </div>\n        </div>\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used SectionLayout, Child_tool_1, Child_tool_2, --spacing-lg, flex, flex-1"
+}

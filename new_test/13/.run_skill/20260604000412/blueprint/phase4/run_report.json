@@ -1,0 +1,16 @@
+{
+  "source_dir": "new_test/13",
+  "model": "qwen3.7-max",
+  "phase": "phase4_blueprint_builder_input",
+  "sources": {
+    "brief": "new_test\\13\\html\\input.txt",
+    "page_dsl": "new_test\\13\\spec.json",
+    "phase1_user_story": "new_test\\13\\html\\_run_skills_qwen3.7-max_20260603160412_phase3\\stages\\phase1_user_story.json",
+    "phase2_state_enumeration": "new_test\\13\\html\\_run_skills_qwen3.7-max_20260603160412_phase3\\stages\\phase2_state_enumeration.json",
+    "phase3_implementation_plan": "new_test\\13\\html\\_run_skills_qwen3.7-max_20260603160412_phase3\\stages\\phase3_implementation_plan.json"
+  },
+  "states": 6,
+  "implementations_confirmed": 5,
+  "output": "E:\\任务流\\任务流\\p2p\\new_test\\13\\html\\_run_skills_qwen3.7-max_20260603160607_phase4\\stages\\blueprint_builder_input.json",
+  "issues": []
+}

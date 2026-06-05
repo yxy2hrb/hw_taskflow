@@ -1,0 +1,6 @@
+{
+  "id": "comments_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\n\nexport default function CommentsCard() {\n  return (\n    <div \n      data-component-id=\"comments_card\" \n      style={{\n        position: 'absolute',\n        left: 12,\n        top: 1100,\n        width: 336,\n        height: 160\n      }}\n    >\n      <SectionLayout \n        variant=\"card\" \n        title=\"评论/问答\" \n        moreText=\"查看全部\" \n        onMore={() => {}}\n      >\n        <div className=\"flex items-center justify-center font-body-m\" style={{ color: 'var(--color-text-muted)', height: 88 }}>\n          暂无评论，快来抢沙发吧~\n        </div>\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used SectionLayout, bbox absolute positioning, --color-text-muted, font-body-m"
+}

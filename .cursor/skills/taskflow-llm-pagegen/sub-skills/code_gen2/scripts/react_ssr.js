@@ -4,6 +4,8 @@ const fs = require("fs");
 const path = require("path");
 
 const CODEGEN_ROOT = path.resolve(__dirname, "..");
+const SKILL_ROOT = path.resolve(CODEGEN_ROOT, "../..");
+const WORKSPACE_ROOT = path.resolve(SKILL_ROOT, "../../../..");
 const COMPONENTS_DIR = path.join(CODEGEN_ROOT, "resources", "components");
 const RENDER_DIR = path.join(CODEGEN_ROOT, ".react_ssr");
 const SHIMS_DIR = path.join(RENDER_DIR, "shims");
@@ -35,9 +37,9 @@ function requireFromCandidates(pkg, extraCandidates = []) {
   const candidates = [
     RENDER_DIR,
     CODEGEN_ROOT,
+    SKILL_ROOT,
+    WORKSPACE_ROOT,
     process.cwd(),
-    path.resolve(CODEGEN_ROOT, "../../../../../../../my-app"),
-    path.resolve(CODEGEN_ROOT, "../../../../../../../my-app2"),
     ...extraCandidates,
   ];
   for (const candidate of candidates) {

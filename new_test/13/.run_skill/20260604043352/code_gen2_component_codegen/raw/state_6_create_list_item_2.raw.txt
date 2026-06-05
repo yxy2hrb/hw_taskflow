@@ -1,0 +1,6 @@
+{
+  "id": "list_item_2",
+  "reactCode": "import React from 'react';\nimport ProductSelectionListItem from '@/components/ProductSelectionListItem';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"list_item_2\"\n      style={{\n        position: 'absolute',\n        left: 24,\n        top: 499,\n        width: 312,\n        height: 59,\n      }}\n    >\n      <ProductSelectionListItem\n        item={{\n          id: 'p2',\n          name: 'IdeaShare KEY (Type-A)',\n          status: '谈单中',\n          time: '¥1,999.00 x 2',\n        }}\n      />\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used ProductSelectionListItem, absolute bbox positioning"
+}

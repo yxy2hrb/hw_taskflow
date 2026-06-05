@@ -1,0 +1,77 @@
+{
+  "html_path": "new_test/13/html/Index.state-model.code-gen2-layers.html",
+  "timestamp": "2026-06-03T21:33:55.705Z",
+  "shots": [
+    {
+      "state_id": 1,
+      "state_name": "产品列表初始状态",
+      "height": 936,
+      "screenshot": "state_1_force.png",
+      "not_blank": true,
+      "layer_exists": true,
+      "layer_visible": true,
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "state_id": 2,
+      "state_name": "产品详情页面状态",
+      "height": 1144,
+      "screenshot": "state_2_force.png",
+      "not_blank": true,
+      "layer_exists": true,
+      "layer_visible": true,
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "state_id": 3,
+      "state_name": "产品清单半模态弹窗态",
+      "height": 1144,
+      "screenshot": "state_3_force.png",
+      "not_blank": true,
+      "layer_exists": true,
+      "layer_visible": true,
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "state_id": 4,
+      "state_name": "编辑配单弹窗初始态",
+      "height": 1144,
+      "screenshot": "state_4_force.png",
+      "not_blank": true,
+      "layer_exists": true,
+      "layer_visible": true,
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "state_id": 5,
+      "state_name": "配单信息提交中状态",
+      "height": 1144,
+      "screenshot": "state_5_force.png",
+      "not_blank": true,
+      "layer_exists": true,
+      "layer_visible": true,
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "state_id": 6,
+      "state_name": "配单详情页面成功态",
+      "height": 1068,
+      "screenshot": "state_6_force.png",
+      "not_blank": true,
+      "layer_exists": true,
+      "layer_visible": true,
+      "status": "pass",
+      "issues": []
+    }
+  ],
+  "summary": {
+    "total_states": 6,
+    "force_pass": 6,
+    "issues_found": []
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "state_id": 3,
+  "state_name": "确认弹窗态",
+  "components": [
+    {
+      "tag": "Button",
+      "attrs": {
+        "label": "取消",
+        "variant": "secondary"
+      },
+      "component": {
+        "group": "Button-Phone",
+        "variant": "尺寸=Medium,类型=Emphasized,状态=Enabled",
+        "node_id": "1:9168",
+        "page": "2. Controls 操作类",
+        "component_key": "938b12c82f10e57073b3fde899a73a462b8536a0"
+      }
+    },
+    {
+      "tag": "Button",
+      "attrs": {
+        "label": "确认移除",
+        "variant": "warning"
+      },
+      "component": {
+        "group": "Button-Phone",
+        "variant": "尺寸=Medium,类型=Emphasized,状态=Enabled",
+        "node_id": "1:9168",
+        "page": "2. Controls 操作类",
+        "component_key": "938b12c82f10e57073b3fde899a73a462b8536a0"
+      }
+    }
+  ],
+  "missing": [],
+  "review": {
+    "ok": false,
+    "issues": [
+      "语言一致性：弹窗中的按钮文案‘取消’和‘确认移除’应为灰色文字（#666）和红色文字（#C7000B），但截图中两个按钮均为橙色背景，且‘取消’按钮颜色错误，未使用指定的灰色文字；‘确认移除’按钮颜色虽接近红色，但实际为橙色，不符合规范。",
+      "基础样式：按钮背景色不符合需求。‘取消’按钮应为浅灰色或默认背景色搭配灰色文字，而非橙色；‘确认移除’按钮应为红色背景（#C7000B），但当前显示为橙色，视觉上不匹配。",
+      "元素溢出：弹窗底部按钮区域宽度计算不当，导致按钮在容器内水平排列时存在轻微挤压，虽然未完全裁掉，但布局不够严谨，影响可读性。",
+      "可见性：description 中要求‘取消’按钮为灰色文字（#666），但截图中显示为白色文字，与描述不符；‘确认移除’按钮文字颜色也非纯红，而是橙色，未能准确呈现预期样式。"
+    ],
+    "fixedBlocks": "[OLD]\n<div class=\"hm-1-9168\" style=\"display:inline-block; max-width:100%; flex-shrink:0;\"><style>.hm-1-9168 .symbol-1_9168 { width: 120px;\n  height: 40px;\n  position: relative;\n  flex-shrink: 0;\n  display: flex;\n  flex-direction: row;\n  gap: 8px;\n  justify-content: center;\n  align-items: center;\n  padding: 9px 16px 9px 16px;\n  border-radius: 20px 20px 20px 20px;\n  background-color: rgba(10, 89, 247, 1); }\n.hm-1-9168 .paragraph-1_9171 { font-size: 16px;\n  font-family: \"HarmonyHeiTi-Medium\";\n  font-weight: Medium;\n  text-align: center;\n  color: rgba(255, 255, 255, 1);\n  width: 88px;\n  height: auto;\n  position: relative;\n  flex-shrink: 0; }\n.hm-1-9168 .symbol-1_9168, .hm-1-9168 .symbol-1_9168 [class^=\"fill-layer\"] { background-color: rgba(0,0,0,0.05) !important; background-image: none !important; }\n.hm-1-9168 .symbol-1_9168 p { color: rgba(0,0,0,0.90) !important; }</style><div id=\"1_9168\" class=\"symbol-1_9168\">\n    <p id=\"1_9171\" class=\"paragraph-1_9171\">取消</p>\n  </div></div>\n[NEW]\n<div style=\"display:flex;flex-direction:row;gap:12px;justify-content:center;align-items:center;\">\n  <button style=\"width:120px;height:44px;border:none;background-color:#FFFFFF;color:#666;font-family:'HarmonyOS Sans';font-size:16px;font-weight:400;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,0.1);\">取消</button>\n  <button style=\"width:120px;height:44px;border:none;background-color:#C7000B;color:#FFFFFF;font-family:'HarmonyOS Sans';font-size:16px;font-weight:400;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,0.1);\">确认移除</button>\n</div>\n",
+    "reviewMs": 53891,
+    "screenshot": 154415,
+    "fixedBlocksParsed": 1
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "id": "plan_list_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_pl_item1 from './pl_item1';\nimport Child_pl_item2 from './pl_item2';\n\nexport default function PlanListCard() {\n  const headerRightAction = (\n    <button\n      className=\"bg-transparent border-none cursor-pointer font-headline-xs tap-opacity\"\n      style={{ color: 'var(--color-primary)', padding: 0 }}\n      onClick={() => {}}\n    >\n      编辑\n    </button>\n  );\n\n  return (\n    <div data-component-id=\"plan_list_card\">\n      <SectionLayout\n        variant=\"card\"\n        title=\"产品清单\"\n        headerRightAction={headerRightAction}\n      >\n        <div className=\"flex flex-col\" style={{ gap: 'var(--spacing-md)' }}>\n          <Child_pl_item1 />\n          <Child_pl_item2 />\n        </div>\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"plan_list_card\"] {\n  width: 100%;\n}",
+  "notes": "used SectionLayout, Child_pl_item1, Child_pl_item2, --color-primary, --spacing-md, font-headline-xs, tap-opacity"
+}

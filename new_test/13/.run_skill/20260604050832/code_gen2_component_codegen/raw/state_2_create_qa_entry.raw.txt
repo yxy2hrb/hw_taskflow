@@ -1,0 +1,6 @@
+{
+  "id": "qa_entry",
+  "reactCode": "import React from 'react';\n\nexport default function QaEntry() {\n  return (\n    <span \n      data-component-id=\"qa_entry\"\n      className=\"font-body-m tf-cg-qa-entry\"\n      style={{\n        fontSize: 'var(--font-body-14)',\n        lineHeight: 'var(--line-height-20)',\n        fontWeight: 'var(--font-weight-regular)',\n        color: 'var(--color-primary)'\n      }}\n    >\n      查看全部评价 &gt;\n    </span>\n  );\n}",
+  "css": ".tf-cg-qa-entry {\n  display: inline-block;\n  cursor: pointer;\n}",
+  "notes": "used span for Text, font-body-m, --color-primary, --font-body-14, --line-height-20, --font-weight-regular"
+}

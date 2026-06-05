@@ -1,0 +1,6 @@
+{
+  "id": "feature_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_feat_text from './feat_text';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"feature_card\">\n      <SectionLayout\n        variant=\"card\"\n        title=\"方案特色\"\n        headerRightAction={\n          <button\n            className=\"tf-cg-text-btn font-headline-xs\"\n            onClick={() => {}}\n          >\n            添加\n          </button>\n        }\n      >\n        <Child_feat_text />\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": ".tf-cg-text-btn {\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  padding: 0;\n  color: var(--color-primary);\n  font-family: inherit;\n}",
+  "notes": "used SectionLayout, Child_feat_text, --color-primary, font-headline-xs"
+}

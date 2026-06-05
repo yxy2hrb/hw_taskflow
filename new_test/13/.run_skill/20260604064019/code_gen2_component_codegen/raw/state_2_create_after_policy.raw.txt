@@ -1,0 +1,6 @@
+{
+  "id": "after_policy",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"after_policy\" \n      className=\"font-body-m\" \n      style={{ color: 'var(--color-text-primary)' }}\n    >\n      保修政策：3年整机质保，核心部件5年保修\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"after_policy\"] {\n  margin: 0;\n  padding: 0;\n}",
+  "notes": "used font-body-m, --color-text-primary"
+}

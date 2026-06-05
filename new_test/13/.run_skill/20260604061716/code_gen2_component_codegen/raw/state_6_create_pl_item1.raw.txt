@@ -1,0 +1,6 @@
+{
+  "id": "pl_item1",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"pl_item1\" \n      className=\"font-body-m\" \n      style={{ \n        fontSize: 'var(--font-body-14)', \n        color: 'var(--color-text-primary)' \n      }}\n    >\n      IdeaHub B2 Base-75寸 x1  ¥21,999.00\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"pl_item1\"] {\n  word-break: break-word;\n}",
+  "notes": "used Text, font-body-m, --font-body-14, --color-text-primary"
+}

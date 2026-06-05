@@ -1,0 +1,6 @@
+{
+  "id": "detail_top_nav",
+  "reactCode": "import React from 'react';\nimport TopNav from '@/components/TopNav';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"detail_top_nav\"\n      className=\"tf-cg-detail-top-nav\"\n    >\n      <TopNav\n        variant=\"title\"\n        onBack={() => {}}\n        title=\"\"\n        actions={['cart', 'profile', 'grid']}\n      />\n    </div>\n  );\n}",
+  "css": ".tf-cg-detail-top-nav {\n  position: absolute;\n  left: 0;\n  top: 36px;\n  width: 360px;\n  height: 56px;\n  z-index: 10;\n  background-color: transparent;\n}\n.tf-cg-detail-top-nav svg,\n.tf-cg-detail-top-nav span,\n.tf-cg-detail-top-nav button {\n  color: #ffffff !important;\n}",
+  "notes": "used TopNav, absolute positioning for immersive overlay, transparent background, white text/icons override for dark image contrast"
+}

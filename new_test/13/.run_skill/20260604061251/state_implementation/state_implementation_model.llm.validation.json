@@ -1,0 +1,8 @@
+{
+  "issues": [
+    "state_4.edit_confirm_btn unknown prop \"block\" for CapsuleButton",
+    "state_5.edit_confirm_btn ordinary top-level component requires bbox or weak layout hints",
+    "state_5.edit_input ordinary top-level component requires bbox or weak layout hints",
+    "state_6.feature_card rich card requires at least 3 content_requirements"
+  ]
+}

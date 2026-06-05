@@ -1,0 +1,6 @@
+{
+  "id": "card_service",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"card_service\" \n      style={{ \n        position: 'absolute', \n        left: 12, \n        top: 752, \n        width: 336, \n        height: 140 \n      }}\n    >\n      <SectionLayout variant=\"card\" title=\"服务商信息\">\n        <div \n          className=\"font-body-m tf-cg-service-text\" \n          style={{ \n            fontSize: 'var(--font-body-14)', \n            lineHeight: '22px', \n            color: 'var(--color-text-primary)'\n          }}\n        >\n          服务商：华为授权服务商{'\\n'}联系人：张三{'\\n'}电话：13800138000\n        </div>\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": ".tf-cg-service-text {\n  white-space: pre-line;\n}",
+  "notes": "used SectionLayout, font-body-m, --font-body-14, --color-text-primary"
+}

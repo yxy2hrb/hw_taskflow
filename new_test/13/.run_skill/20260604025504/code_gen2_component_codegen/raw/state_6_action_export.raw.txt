@@ -1,0 +1,6 @@
+{
+  "id": "action_export",
+  "reactCode": "import React from 'react';\nimport { CapsuleButton } from '@/components/ui/Button';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"action_export\"\n      style={{\n        position: 'absolute',\n        left: 220,\n        top: 1036,\n        width: 124,\n        height: 40,\n      }}\n    >\n      <CapsuleButton variant=\"primary\" size=\"large\" className=\"w-full h-full\">\n        导出\n      </CapsuleButton>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used CapsuleButton, w-full, h-full, absolute positioning"
+}

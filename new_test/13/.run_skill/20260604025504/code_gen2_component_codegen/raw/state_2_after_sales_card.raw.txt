@@ -1,0 +1,6 @@
+{
+  "id": "after_sales_card",
+  "reactCode": "import React from 'react';\nimport SectionTitle from '@/components/SectionTitle';\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"after_sales_card\"\n      style={{\n        position: 'absolute',\n        left: 12,\n        top: 776,\n        width: 336,\n        height: 160,\n      }}\n    >\n      <div\n        className=\"bg-white rounded-[var(--radius-lg)] flex flex-col h-full\"\n        style={{ padding: 'var(--spacing-lg)', gap: 'var(--spacing-lg)' }}\n      >\n        <SectionTitle variant=\"card\" title=\"售后信息\" />\n        <div className=\"flex-1\" />\n      </div>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used SectionTitle, bg-white, rounded-[var(--radius-lg)], --spacing-lg, h-full, flex-1"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "edit_name_input",
+  "reactCode": "import React from 'react';\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"edit_name_input\"\n      className=\"tf-cg-edit-name-input\"\n      style={{ position: 'absolute', left: 20, top: 620, width: 320, height: 44 }}\n    >\n      <input\n        type=\"text\"\n        defaultValue=\"我的配单方案\"\n        placeholder=\"请输入配单名称\"\n        readOnly\n        style={{\n          width: '100%',\n          height: '100%',\n          padding: '10px 0',\n          border: 'none',\n          borderBottom: '1px solid var(--color-border-subtle)',\n          outline: 'none',\n          backgroundColor: 'transparent',\n          fontSize: 16,\n          fontFamily: \"'HarmonyOS Sans SC', sans-serif\",\n          lineHeight: '20px',\n          caretColor: 'transparent',\n          color: 'var(--color-text-secondary)',\n          boxSizing: 'border-box',\n          cursor: 'default',\n        }}\n      />\n    </div>\n  );\n}",
+  "css": ".tf-cg-edit-name-input{box-sizing:border-box;}",
+  "notes": "added readOnly prop, changed text color to --color-text-secondary and caretColor to transparent to indicate disabled/readonly state during submission. used --color-border-subtle, --color-text-secondary."
+}

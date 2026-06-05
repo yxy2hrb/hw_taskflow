@@ -1,0 +1,6 @@
+{
+  "id": "cart_overlay",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"cart_overlay\"\n      className=\"tf-cg-overlay\"\n      style={{\n        position: 'absolute',\n        left: 0,\n        top: 0,\n        width: 360,\n        height: 1176,\n        zIndex: 50,\n        backgroundColor: 'rgba(0,0,0,0.5)',\n      }}\n    />\n  );\n}",
+  "css": ".tf-cg-overlay {\n  pointer-events: auto;\n}",
+  "notes": "used --color-mask concept for overlay background, absolute positioning with bbox [0,0,360,1176], zIndex 50 from props"
+}

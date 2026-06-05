@@ -1,0 +1,6 @@
+{
+  "id": "plan_detail_top_nav",
+  "reactCode": "import React from 'react';\nimport TopNav from '@/components/TopNav';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"plan_detail_top_nav\">\n      <TopNav\n        variant=\"title\"\n        title=\"配单详情\"\n        onBack={() => {}}\n        actions={['grid']}\n      />\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used TopNav component reference with variant='title', title='配单详情', onBack, and actions=['grid']."
+}

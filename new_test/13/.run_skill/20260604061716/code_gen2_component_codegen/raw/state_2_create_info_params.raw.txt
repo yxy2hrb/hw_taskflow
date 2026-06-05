@@ -1,0 +1,6 @@
+{
+  "id": "info_params",
+  "reactCode": "import React from 'react';\n\nexport default function InfoParamsText() {\n  return (\n    <div \n      data-component-id=\"info_params\" \n      className=\"tf-cg-info-params font-body-m\" \n      style={{ fontSize: 'var(--font-body-14)', color: 'var(--color-text-secondary)' }}\n    >\n      核心参数：75寸 4K 触控 安卓系统\n    </div>\n  );\n}",
+  "css": ".tf-cg-info-params {\n  margin: 0;\n  padding: 0;\n}",
+  "notes": "used Text, font-body-m, --font-body-14, --color-text-secondary"
+}

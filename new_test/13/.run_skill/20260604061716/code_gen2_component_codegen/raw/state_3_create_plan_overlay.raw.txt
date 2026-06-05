@@ -1,0 +1,6 @@
+{
+  "id": "plan_overlay",
+  "reactCode": "import React from 'react';\n\nexport default function PlanOverlay() {\n  return (\n    <div \n      data-component-id=\"plan_overlay\" \n      className=\"tf-cg-overlay\" \n      style={{ zIndex: 50 }} \n    />\n  );\n}",
+  "css": ".tf-cg-overlay {\n  position: fixed;\n  inset: 0;\n  width: 100%;\n  height: 100%;\n  background-color: var(--color-mask);\n}",
+  "notes": "used --color-mask for the semi-transparent background. Rendered as a fixed full-screen overlay mask with inline zIndex from props. No children were provided in the patch, so only the mask layer is generated."
+}

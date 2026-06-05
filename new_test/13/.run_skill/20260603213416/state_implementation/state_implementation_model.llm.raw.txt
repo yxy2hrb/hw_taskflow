@@ -1,0 +1,571 @@
+{
+  "states": [
+    {
+      "id": "state_1",
+      "label": "产品列表初始状态",
+      "ui_intent": "展示移动端产品列表页，包含状态栏、标题栏、分类标签、左侧导航、商品列表及底部导航。",
+      "parent_state": null,
+      "trigger": null,
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域",
+          "顶部标题栏与Tab导航区-顶部横向区域",
+          "横向分类标签栏-顶部横向区域",
+          "左侧子分类导航栏-左侧纵向区域",
+          "右侧商品列表及筛选区-右侧主体区域",
+          "底部导航栏-底部横向区域"
+        ],
+        "create": [],
+        "update": []
+      },
+      "data_state": {},
+      "patches": []
+    },
+    {
+      "id": "state_2",
+      "label": "产品详情页面状态",
+      "ui_intent": "展示产品详情页，包含顶部导航、产品图片、产品信息/售后/工具/评论四个独立卡片，以及底部固定操作栏。",
+      "parent_state": "state_1",
+      "trigger": {
+        "anchor": "商品卡片热销状态-右侧列表第二项",
+        "action": "click"
+      },
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域"
+        ],
+        "create": [
+          {
+            "type": "create",
+            "id": "detail_top_nav",
+            "component": "TopNav",
+            "bbox": [0, 36, 360, 56],
+            "props": {
+              "variant": "title",
+              "title": "产品详情",
+              "onBack": true,
+              "actions": ["cart", "profile", "message"]
+            }
+          },
+          {
+            "type": "create",
+            "id": "detail_image",
+            "component": "ProductImageCarousel",
+            "bbox": [0, 92, 360, 240],
+            "description": "产品主图轮播展示区，包含图片序号指示器"
+          },
+          {
+            "type": "create",
+            "id": "detail_info_card",
+            "component": "SectionLayout",
+            "bbox": [0, 332, 360, 200],
+            "props": {
+              "variant": "card",
+              "title": "产品信息"
+            },
+            "visible_text": ["产品名称/型号", "部件编码", "价格", "厂商", "核心参数", "描述信息", "相关配件"]
+          },
+          {
+            "type": "create",
+            "id": "detail_after_sales_card",
+            "component": "SectionLayout",
+            "bbox": [0, 544, 360, 120],
+            "props": {
+              "variant": "card",
+              "title": "售后信息"
+            },
+            "visible_text": ["保修政策", "质保服务", "服务保障"]
+          },
+          {
+            "type": "create",
+            "id": "detail_tools_card",
+            "component": "SectionLayout",
+            "bbox": [0, 676, 360, 80],
+            "props": {
+              "variant": "card",
+              "title": "工具"
+            },
+            "visible_text": ["售前工具", "售后工具"]
+          },
+          {
+            "type": "create",
+            "id": "detail_comments_card",
+            "component": "SectionLayout",
+            "bbox": [0, 768, 360, 92],
+            "props": {
+              "variant": "card",
+              "title": "评论/问答"
+            },
+            "visible_text": ["问答", "评价", "咨询内容"]
+          },
+          {
+            "type": "create",
+            "id": "detail_bottom_bar",
+            "component": "DetailBottomBar",
+            "bbox": [0, 872, 360, 64],
+            "description": "底部固定操作栏容器，承载图标与按钮"
+          },
+          {
+            "type": "create",
+            "id": "btn_compare",
+            "component": "IconButton",
+            "bbox": [16, 880, 48, 48],
+            "props": {
+              "label": "产品对比"
+            }
+          },
+          {
+            "type": "create",
+            "id": "btn_consult",
+            "component": "IconButton",
+            "bbox": [72, 880, 48, 48],
+            "props": {
+              "label": "咨询"
+            }
+          },
+          {
+            "type": "create",
+            "id": "btn_add_to_cart",
+            "component": "CapsuleButton",
+            "bbox": [128, 880, 104, 40],
+            "props": {
+              "variant": "secondary",
+              "children": "加入采购单"
+            }
+          },
+          {
+            "type": "create",
+            "id": "btn_add_to_list",
+            "component": "CapsuleButton",
+            "bbox": [240, 880, 104, 40],
+            "props": {
+              "variant": "primary",
+              "children": "加入配单"
+            }
+          }
+        ],
+        "update": []
+      },
+      "data_state": {},
+      "patches": [
+        {
+          "type": "bind",
+          "anchor": "btn_add_to_list",
+          "goto": "state_3"
+        }
+      ]
+    },
+    {
+      "id": "state_3",
+      "label": "产品清单半模态弹窗态",
+      "ui_intent": "在产品详情页上方弹出半模态产品清单，展示风险提示、已选产品、推荐配件及去配单按钮。",
+      "parent_state": "state_2",
+      "trigger": {
+        "anchor": "btn_add_to_list",
+        "action": "click"
+      },
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域",
+          "detail_top_nav",
+          "detail_image",
+          "detail_info_card",
+          "detail_after_sales_card",
+          "detail_tools_card",
+          "detail_comments_card",
+          "detail_bottom_bar",
+          "btn_compare",
+          "btn_consult",
+          "btn_add_to_cart",
+          "btn_add_to_list"
+        ],
+        "create": [
+          {
+            "type": "create",
+            "id": "overlay_mask",
+            "component": "Overlay",
+            "bbox": [0, 0, 360, 936],
+            "props": {
+              "color": "rgba(0,0,0,0.5)"
+            }
+          },
+          {
+            "type": "create",
+            "id": "list_sheet",
+            "component": "BottomSheet",
+            "bbox": [0, 376, 360, 560],
+            "description": "高度约60%的半模态弹窗容器"
+          },
+          {
+            "type": "create",
+            "id": "list_sheet_header",
+            "component": "SheetHeader",
+            "bbox": [0, 376, 360, 56],
+            "props": {
+              "title": "产品清单",
+              "onClose": true,
+              "onClear": true
+            },
+            "visible_text": ["产品清单", "全部清空"]
+          },
+          {
+            "type": "create",
+            "id": "list_risk_tip",
+            "component": "AlertBanner",
+            "bbox": [16, 448, 328, 32],
+            "props": {
+              "type": "warning"
+            },
+            "visible_text": ["风险提示：当前方案可能缺少关键设备"]
+          },
+          {
+            "type": "create",
+            "id": "list_product_item",
+            "component": "ProductSelectionListItem",
+            "bbox": [16, 496, 328, 72],
+            "props": {
+              "item": {
+                "id": "p1",
+                "name": "IdeaHub B2 Base-75寸",
+                "status": "谈单中",
+                "time": ""
+              }
+            }
+          },
+          {
+            "type": "create",
+            "id": "list_accessories",
+            "component": "EntryCard",
+            "bbox": [16, 584, 328, 58],
+            "props": {
+              "card": {
+                "id": "acc",
+                "title": "推荐配件",
+                "subtitle": "查看相关配件",
+                "color": "#333",
+                "bgColor": "#f5f5f5",
+                "iconBg": "#e6f7ff"
+              }
+            }
+          },
+          {
+            "type": "create",
+            "id": "list_bottom_bar",
+            "component": "ListBottomBar",
+            "bbox": [0, 872, 360, 64],
+            "description": "弹窗底部合计金额与操作区"
+          },
+          {
+            "type": "create",
+            "id": "list_total_price",
+            "component": "Text",
+            "bbox": [16, 880, 120, 40],
+            "props": {
+              "text": "合计: ¥21,999"
+            }
+          },
+          {
+            "type": "create",
+            "id": "btn_go_to_list",
+            "component": "CapsuleButton",
+            "bbox": [200, 880, 144, 40],
+            "props": {
+              "variant": "primary",
+              "children": "去配单"
+            }
+          }
+        ],
+        "update": []
+      },
+      "data_state": {},
+      "patches": [
+        {
+          "type": "bind",
+          "anchor": "btn_go_to_list",
+          "goto": "state_4"
+        }
+      ]
+    },
+    {
+      "id": "state_4",
+      "label": "编辑配单弹窗初始态",
+      "ui_intent": "在遮罩层上方弹出编辑配单信息底部弹窗，包含配单名称输入框和确定按钮。",
+      "parent_state": "state_3",
+      "trigger": {
+        "anchor": "btn_go_to_list",
+        "action": "click"
+      },
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域",
+          "detail_top_nav",
+          "detail_image",
+          "detail_info_card",
+          "detail_after_sales_card",
+          "detail_tools_card",
+          "detail_comments_card",
+          "detail_bottom_bar",
+          "btn_compare",
+          "btn_consult",
+          "btn_add_to_cart",
+          "btn_add_to_list",
+          "overlay_mask",
+          "list_sheet",
+          "list_sheet_header",
+          "list_risk_tip",
+          "list_product_item",
+          "list_accessories",
+          "list_bottom_bar",
+          "list_total_price",
+          "btn_go_to_list"
+        ],
+        "create": [
+          {
+            "type": "create",
+            "id": "edit_sheet",
+            "component": "BottomSheet",
+            "bbox": [0, 656, 360, 280],
+            "description": "高度约30%的编辑表单底部弹窗"
+          },
+          {
+            "type": "create",
+            "id": "edit_sheet_header",
+            "component": "SheetHeader",
+            "bbox": [0, 656, 360, 56],
+            "props": {
+              "title": "编辑配单信息",
+              "onClose": true
+            },
+            "visible_text": ["编辑配单信息"]
+          },
+          {
+            "type": "create",
+            "id": "edit_name_input",
+            "component": "InputDemo",
+            "bbox": [16, 728, 328, 72],
+            "props": {
+              "label": "配单名称",
+              "placeholder": "请输入配单名称"
+            }
+          },
+          {
+            "type": "create",
+            "id": "edit_bottom_bar",
+            "component": "EditBottomBar",
+            "bbox": [0, 872, 360, 64],
+            "description": "编辑弹窗底部操作区"
+          },
+          {
+            "type": "create",
+            "id": "btn_confirm",
+            "component": "CapsuleButton",
+            "bbox": [16, 880, 328, 40],
+            "props": {
+              "variant": "primary",
+              "children": "确定"
+            }
+          }
+        ],
+        "update": []
+      },
+      "data_state": {},
+      "patches": [
+        {
+          "type": "bind",
+          "anchor": "btn_confirm",
+          "goto": "state_5"
+        }
+      ]
+    },
+    {
+      "id": "state_5",
+      "label": "配单信息提交中状态",
+      "ui_intent": "确定按钮进入loading禁用状态，输入框禁用，表示系统正在处理配单创建请求。",
+      "parent_state": "state_4",
+      "trigger": {
+        "anchor": "btn_confirm",
+        "action": "click"
+      },
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域",
+          "detail_top_nav",
+          "detail_image",
+          "detail_info_card",
+          "detail_after_sales_card",
+          "detail_tools_card",
+          "detail_comments_card",
+          "detail_bottom_bar",
+          "btn_compare",
+          "btn_consult",
+          "btn_add_to_cart",
+          "btn_add_to_list",
+          "overlay_mask",
+          "list_sheet",
+          "list_sheet_header",
+          "list_risk_tip",
+          "list_product_item",
+          "list_accessories",
+          "list_bottom_bar",
+          "list_total_price",
+          "btn_go_to_list",
+          "edit_sheet",
+          "edit_sheet_header",
+          "edit_name_input",
+          "edit_bottom_bar",
+          "btn_confirm"
+        ],
+        "create": [],
+        "update": [
+          {
+            "type": "update",
+            "id": "btn_confirm",
+            "component": "CapsuleButton",
+            "props": {
+              "loading": true,
+              "disabled": true
+            }
+          },
+          {
+            "type": "update",
+            "id": "edit_name_input",
+            "component": "InputDemo",
+            "props": {
+              "disabled": true
+            }
+          }
+        ]
+      },
+      "data_state": {},
+      "patches": []
+    },
+    {
+      "id": "state_6",
+      "label": "配单详情页面成功态",
+      "ui_intent": "跳转至配单详情页，展示配单概览、风险提示、产品清单、方案特色、服务商信息卡片及底部操作栏。",
+      "parent_state": "state_5",
+      "trigger": {
+        "anchor": "btn_confirm",
+        "action": "submit_success"
+      },
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域"
+        ],
+        "create": [
+          {
+            "type": "create",
+            "id": "config_top_nav",
+            "component": "TopNav",
+            "bbox": [0, 36, 360, 56],
+            "props": {
+              "variant": "title",
+              "title": "配单详情",
+              "onBack": true,
+              "actions": ["message"]
+            }
+          },
+          {
+            "type": "create",
+            "id": "config_overview_card",
+            "component": "SectionLayout",
+            "bbox": [0, 92, 360, 160],
+            "props": {
+              "variant": "card",
+              "title": "配单概览"
+            },
+            "visible_text": ["配单名称", "编辑", "客户类型", "总报价", "总成本价"]
+          },
+          {
+            "type": "create",
+            "id": "config_risk_card",
+            "component": "SectionLayout",
+            "bbox": [0, 264, 360, 120],
+            "props": {
+              "variant": "card",
+              "title": "风险提示"
+            },
+            "visible_text": ["缺少UPS、路由器等关键设备", "去添加"]
+          },
+          {
+            "type": "create",
+            "id": "config_product_list_card",
+            "component": "SectionLayout",
+            "bbox": [0, 396, 360, 200],
+            "props": {
+              "variant": "card",
+              "title": "产品清单"
+            },
+            "visible_text": ["已选产品信息", "数量", "单价", "编辑"]
+          },
+          {
+            "type": "create",
+            "id": "config_feature_card",
+            "component": "SectionLayout",
+            "bbox": [0, 608, 360, 120],
+            "props": {
+              "variant": "card",
+              "title": "方案特色"
+            },
+            "visible_text": ["添加或编辑方案特色内容"]
+          },
+          {
+            "type": "create",
+            "id": "config_service_card",
+            "component": "SectionLayout",
+            "bbox": [0, 740, 360, 120],
+            "props": {
+              "variant": "card",
+              "title": "服务商信息"
+            },
+            "visible_text": ["服务商名称", "联系人", "联系电话"]
+          },
+          {
+            "type": "create",
+            "id": "config_bottom_bar",
+            "component": "ConfigBottomBar",
+            "bbox": [0, 872, 360, 64],
+            "description": "配单详情页底部固定操作栏"
+          },
+          {
+            "type": "create",
+            "id": "btn_point_map",
+            "component": "IconButton",
+            "bbox": [16, 880, 48, 48],
+            "props": {
+              "label": "点位图"
+            }
+          },
+          {
+            "type": "create",
+            "id": "btn_purchase_consult",
+            "component": "IconButton",
+            "bbox": [72, 880, 48, 48],
+            "props": {
+              "label": "采购咨询"
+            }
+          },
+          {
+            "type": "create",
+            "id": "btn_export",
+            "component": "CapsuleButton",
+            "bbox": [240, 880, 104, 40],
+            "props": {
+              "variant": "primary",
+              "children": "导出"
+            }
+          }
+        ],
+        "update": []
+      },
+      "data_state": {},
+      "patches": []
+    }
+  ],
+  "validation_notes": [
+    "All states correctly follow the parent-child hierarchy and trigger semantics.",
+    "No hide or replace patches are used; visibility is managed via keep and overlay stacking.",
+    "Bboxes for non-modal created components avoid overlap with kept bboxes and respect the fixed bottom action bar area.",
+    "Component library preferences (TopNav, SectionLayout, CapsuleButton, InputDemo, ProductSelectionListItem, EntryCard) are applied where applicable."
+  ]
+}

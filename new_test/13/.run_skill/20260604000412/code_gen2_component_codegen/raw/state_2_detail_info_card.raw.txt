@@ -1,0 +1,6 @@
+{
+  "id": "detail_info_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"detail_info_card\"\n      className=\"tf-cg-detail-info-card\"\n      style={{\n        position: 'absolute',\n        left: 16,\n        top: 464,\n        width: 328,\n        height: 240,\n      }}\n    >\n      <SectionLayout variant=\"card\" title=\"产品信息\">\n        <div style={{ flex: 1 }} />\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": ".tf-cg-detail-info-card > div {\n  height: 100%;\n  box-sizing: border-box;\n}",
+  "notes": "used SectionLayout (card variant), --radius-lg, --spacing-lg, --color-text-primary, --font-headline-16, --line-height-20, --font-weight-medium via SectionTitle inside SectionLayout"
+}

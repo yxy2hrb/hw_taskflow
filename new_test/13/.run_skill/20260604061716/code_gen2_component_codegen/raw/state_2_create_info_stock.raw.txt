@@ -1,0 +1,6 @@
+{
+  "id": "info_stock",
+  "reactCode": "import React from 'react';\nimport StatusPill from '@/components/StatusPill';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"info_stock\">\n      <StatusPill\n        text=\"享现货\"\n        colorMap={{ '享现货': { color: 'var(--color-success)', bgColor: 'rgba(16,185,129,0.1)' } }}\n      />\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used StatusPill, --color-success"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "after_scope",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <p \n      data-component-id=\"after_scope\" \n      className=\"font-body-m tf-cg-after-scope\"\n      style={{ fontSize: 'var(--font-body-14)', color: 'var(--color-text-primary)' }}\n    >\n      服务范围：全国联保，免费上门安装与调试\n    </p>\n  );\n}",
+  "css": ".tf-cg-after-scope {\n  margin: 0;\n  padding: 0;\n  line-height: var(--line-height-18);\n}",
+  "notes": "used Text, font-body-m, --font-body-14, --color-text-primary, --line-height-18"
+}

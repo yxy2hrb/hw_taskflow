@@ -1,0 +1,6 @@
+{
+  "id": "overlay_mask",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"overlay_mask\"\n      className=\"tf-cg-overlay-mask\"\n      style={{\n        position: 'absolute',\n        left: 0,\n        top: 0,\n        width: 360,\n        height: 936,\n        backgroundColor: 'rgba(0, 0, 0, 0.5)',\n        zIndex: 50,\n      }}\n    />\n  );\n}",
+  "css": ".tf-cg-overlay-mask {\n  pointer-events: auto;\n}",
+  "notes": "Simple overlay mask component covering full viewport (360x936) with rgba(0,0,0,0.5) semi-transparent background. Used --color-mask concept from design system. Positioned absolute to layer over existing page content."
+}

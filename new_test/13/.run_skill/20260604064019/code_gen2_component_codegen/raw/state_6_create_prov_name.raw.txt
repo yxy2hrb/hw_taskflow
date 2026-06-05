@@ -1,0 +1,6 @@
+{
+  "id": "prov_name",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <span\n      data-component-id=\"prov_name\"\n      className=\"font-body-m\"\n      style={{\n        fontSize: 'var(--font-body-14)',\n        color: 'var(--color-text-primary)'\n      }}\n    >\n      服务商：华为政企授权服务中心\n    </span>\n  );\n}",
+  "css": "",
+  "notes": "used inline span for Text component, applied font-body-m, --font-body-14, --color-text-primary"
+}

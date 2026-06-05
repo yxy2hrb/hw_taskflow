@@ -1,0 +1,6 @@
+{
+  "id": "edit_input",
+  "reactCode": "import React from 'react';\nimport InputDemo from '@/components/InputDemo';\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"edit_input\" \n      className=\"tf-cg-edit-input\"\n      style={{ \n        position: 'absolute', \n        left: 16, \n        top: 680, \n        width: 328, \n        height: 60 \n      }}\n    >\n      <InputDemo label=\"配单名称\" placeholder=\"请输入配单名称\" />\n    </div>\n  );\n}",
+  "css": ".tf-cg-edit-input{box-sizing:border-box;}",
+  "notes": "used InputDemo, absolute bbox positioning"
+}

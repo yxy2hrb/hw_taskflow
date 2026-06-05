@@ -1,0 +1,6 @@
+{
+  "id": "list_name_input",
+  "reactCode": "import React from 'react';\nimport InputDemo from '@/components/InputDemo';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"list_name_input\"\n      style={{\n        position: 'absolute',\n        left: 16,\n        top: 896,\n        width: 328,\n        height: 72,\n      }}\n    >\n      <InputDemo\n        label=\"配单名称\"\n        placeholder=\"请输入配单名称\"\n        value=\"我的新配单\"\n        disabled={true}\n      />\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used InputDemo, added disabled={true} prop to reflect loading/submission state"
+}

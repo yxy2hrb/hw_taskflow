@@ -1,0 +1,6 @@
+{
+  "id": "btn_confirm",
+  "reactCode": "import React from 'react';\nimport { CapsuleButton } from '@/components/ui/Button';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"btn_confirm\"\n      style={{\n        position: 'absolute',\n        left: 16,\n        top: 880,\n        width: 328,\n        height: 40,\n      }}\n    >\n      <CapsuleButton\n        size=\"large\"\n        variant=\"primary\"\n        className=\"w-full\"\n        disabled={true}\n        onClick={() => {}}\n      >\n        提交中...\n      </CapsuleButton>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used CapsuleButton from ui/Button, added disabled={true} and changed text to '提交中...' to reflect loading/disabled state, --color-primary-disabled (via disabled variant)"
+}

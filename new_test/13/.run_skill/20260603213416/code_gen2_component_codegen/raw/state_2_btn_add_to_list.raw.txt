@@ -1,0 +1,6 @@
+{
+  "id": "btn_add_to_list",
+  "reactCode": "import React from 'react';\nimport { CapsuleButton } from '@/components/ui/Button';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"btn_add_to_list\"\n      style={{\n        position: 'absolute',\n        left: 240,\n        top: 880,\n        width: 104,\n        height: 40,\n      }}\n    >\n      <CapsuleButton\n        size=\"large\"\n        variant=\"primary\"\n        className=\"w-full\"\n        onClick={() => {}}\n      >\n        加入配单\n      </CapsuleButton>\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"btn_add_to_list\"] .inline-flex {\n  width: 100%;\n  height: 100%;\n}",
+  "notes": "used CapsuleButton from @/components/ui/Button, variant=primary, size=large (40px height matches bbox). CSS variable --color-primary used internally by CapsuleButton."
+}

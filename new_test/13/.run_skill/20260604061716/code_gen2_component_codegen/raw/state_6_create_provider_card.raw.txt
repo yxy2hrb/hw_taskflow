@@ -1,0 +1,6 @@
+{
+  "id": "provider_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_prov_name from './prov_name';\nimport Child_prov_contact from './prov_contact';\nimport Child_prov_phone from './prov_phone';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"provider_card\" style={{ width: '100%' }}>\n      <SectionLayout variant=\"card\" title=\"服务商信息\">\n        <div className=\"flex flex-col\" style={{ gap: 'var(--spacing-sm)' }}>\n          <Child_prov_name />\n          <Child_prov_contact />\n          <Child_prov_phone />\n        </div>\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"provider_card\"] {\n  width: 100%;\n}",
+  "notes": "used SectionLayout, imported generated children (Child_prov_name, Child_prov_contact, Child_prov_phone), used --spacing-sm"
+}

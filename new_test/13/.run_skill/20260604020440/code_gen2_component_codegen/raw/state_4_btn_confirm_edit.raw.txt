@@ -1,0 +1,6 @@
+{
+  "id": "btn_confirm_edit",
+  "reactCode": "import React from 'react';\nimport { CapsuleButton } from '@/components/ui/Button';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"btn_confirm_edit\"\n      style={{\n        position: 'absolute',\n        left: 12,\n        top: 1100,\n        width: 336,\n        height: 40,\n      }}\n    >\n      <CapsuleButton variant=\"primary\" size=\"large\" className=\"w-full\">\n        确定\n      </CapsuleButton>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used CapsuleButton from @/components/ui/Button, w-full class for width stretching."
+}

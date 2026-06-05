@@ -1,0 +1,6 @@
+{
+  "id": "config_overview_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_cfg_name from './cfg_name';\nimport Child_cfg_customer from './cfg_customer';\nimport Child_cfg_quote from './cfg_quote';\nimport Child_cfg_cost from './cfg_cost';\n\nexport default function ConfigOverviewCard() {\n  return (\n    <div data-component-id=\"config_overview_card\" className=\"tf-cg-overview-card\">\n      <SectionLayout\n        variant=\"card\"\n        title=\"配单概览\"\n        headerRightAction={\n          <button\n            className=\"tf-cg-edit-btn bg-transparent border-none cursor-pointer font-headline-xs\"\n            style={{ color: 'var(--color-primary)', padding: 0 }}\n            onClick={() => {}}\n          >\n            编辑\n          </button>\n        }\n      >\n        <div className=\"tf-cg-overview-content flex flex-col\" style={{ gap: 'var(--spacing-md)' }}>\n          <Child_cfg_name />\n          <Child_cfg_customer />\n          <Child_cfg_quote />\n          <Child_cfg_cost />\n        </div>\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": ".tf-cg-overview-card {\n  width: 100%;\n}\n.tf-cg-edit-btn {\n  outline: none;\n}\n.tf-cg-overview-content {\n  width: 100%;\n}",
+  "notes": "used SectionLayout, --color-primary, --spacing-md, font-headline-xs"
+}

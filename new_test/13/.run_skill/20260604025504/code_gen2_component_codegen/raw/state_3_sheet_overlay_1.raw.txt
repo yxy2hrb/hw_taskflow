@@ -1,0 +1,6 @@
+{
+  "id": "sheet_overlay_1",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"sheet_overlay_1\"\n      style={{\n        position: 'absolute',\n        left: 0,\n        top: 0,\n        width: 360,\n        height: 1360,\n        zIndex: 50,\n        backgroundColor: 'rgba(0,0,0,0.5)',\n      }}\n    />\n  );\n}",
+  "css": "",
+  "notes": "used inline styles for absolute positioning, bbox dimensions, zIndex, and backgroundColor."
+}

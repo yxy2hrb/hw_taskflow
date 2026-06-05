@@ -1,0 +1,6 @@
+{
+  "id": "config_risk_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"config_risk_card\"\n      style={{\n        position: 'absolute',\n        left: 12,\n        top: 276,\n        width: 336,\n        height: 100\n      }}\n    >\n      <SectionLayout variant=\"card\" title=\"风险提示\">\n        <div style={{ height: 24 }} />\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used SectionLayout with variant='card' and title='风险提示', applied absolute bbox positioning."
+}

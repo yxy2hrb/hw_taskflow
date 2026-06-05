@@ -1,0 +1,6 @@
+{
+  "id": "tool_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_tool_grid from './tool_grid';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"tool_card\" className=\"tf-cg-tool-card\">\n      <SectionLayout variant=\"card\" title=\"售前/售后工具\">\n        <Child_tool_grid />\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": ".tf-cg-tool-card {\n  width: 100%;\n}",
+  "notes": "used SectionLayout, Child_tool_grid, --radius-lg, --spacing-lg"
+}

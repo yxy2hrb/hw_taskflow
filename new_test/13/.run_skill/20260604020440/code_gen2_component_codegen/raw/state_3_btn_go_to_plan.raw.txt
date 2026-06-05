@@ -1,0 +1,6 @@
+{
+  "id": "btn_go_to_plan",
+  "reactCode": "import React from 'react';\nimport { CapsuleButton } from '@/components/ui/Button';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"btn_go_to_plan\"\n      style={{\n        position: 'absolute',\n        left: 12,\n        top: 1100,\n        width: 336,\n        height: 40,\n      }}\n    >\n      <CapsuleButton variant=\"primary\" size=\"large\" className=\"w-full\">\n        <span\n          className=\"font-headline-s\"\n          style={{\n            fontSize: 'var(--font-headline-16)',\n            lineHeight: 'var(--line-height-20)',\n            fontWeight: 'var(--font-weight-medium)',\n            color: 'var(--color-text-white)',\n          }}\n        >\n          去配单\n        </span>\n      </CapsuleButton>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used CapsuleButton, --font-headline-16, --line-height-20, --font-weight-medium, --color-text-white, bbox absolute layout"
+}

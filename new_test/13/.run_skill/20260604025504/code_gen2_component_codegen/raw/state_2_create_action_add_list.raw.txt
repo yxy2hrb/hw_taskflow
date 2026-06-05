@@ -1,0 +1,6 @@
+{
+  "id": "action_add_list",
+  "reactCode": "import React from 'react';\nimport { CapsuleButton } from '@/components/ui/Button';\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"action_add_list\" \n      style={{\n        position: 'absolute',\n        left: 244,\n        top: 1308,\n        width: 100,\n        height: 40,\n      }}\n    >\n      <CapsuleButton variant=\"primary\" size=\"large\">\n        <span \n          className=\"font-headline-s\" \n          style={{\n            fontSize: 'var(--font-headline-16)',\n            fontWeight: 'var(--font-weight-medium)',\n            color: 'var(--color-text-white)'\n          }}\n        >\n          加入配单\n        </span>\n      </CapsuleButton>\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"action_add_list\"] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n[data-component-id=\"action_add_list\"] button {\n  width: 100%;\n  height: 100%;\n  padding-left: 0;\n  padding-right: 0;\n}",
+  "notes": "used CapsuleButton, --font-headline-16, --font-weight-medium, --color-text-white, absolute bbox positioning"
+}

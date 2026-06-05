@@ -1,0 +1,6 @@
+{
+  "id": "overview_name",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"overview_name\"\n      className=\"font-headline-s\"\n      style={{\n        position: 'absolute',\n        left: 24,\n        top: 116,\n        width: 200,\n        height: 24,\n        color: 'var(--color-text-primary)',\n        display: 'flex',\n        alignItems: 'center',\n      }}\n    >\n      我的新配单\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used font-headline-s, --color-text-primary"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "risk_tip",
+  "reactCode": "import React from 'react';\nimport StatusPill from '@/components/StatusPill';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"risk_tip\"\n      style={{\n        position: 'absolute',\n        left: 12,\n        top: 536,\n        width: 336,\n        height: 36,\n        display: 'flex',\n        alignItems: 'center',\n        zIndex: 10,\n      }}\n    >\n      <StatusPill\n        text=\"风险提示：当前方案可能缺少关键设备\"\n        colorMap={{\n          '风险提示：当前方案可能缺少关键设备': {\n            color: '#FF8F1F',\n            bgColor: '#FFF7E6',\n          },\n        }}\n      />\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"risk_tip\"] .font-caption-s {\n  font-size: var(--font-caption-12) !important;\n  line-height: var(--line-height-18) !important;\n}",
+  "notes": "used StatusPill component, --font-caption-12, --line-height-18, absolute bbox positioning per mount rule"
+}

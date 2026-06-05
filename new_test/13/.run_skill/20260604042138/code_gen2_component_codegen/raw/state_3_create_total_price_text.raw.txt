@@ -1,0 +1,6 @@
+{
+  "id": "total_price_text",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"total_price_text\"\n      className=\"font-headline-s\"\n      style={{\n        position: 'absolute',\n        left: 16,\n        top: 1300,\n        width: 120,\n        height: 24,\n        fontSize: 'var(--font-headline-16)',\n        fontWeight: 'var(--font-weight-bold)',\n        color: 'var(--color-primary)',\n        display: 'flex',\n        alignItems: 'center',\n        whiteSpace: 'nowrap'\n      }}\n    >\n      合计：¥21,999.00\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used Text, font-headline-s, --font-headline-16, --font-weight-bold, --color-primary"
+}

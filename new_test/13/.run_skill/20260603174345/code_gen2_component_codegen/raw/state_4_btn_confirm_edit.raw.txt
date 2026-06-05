@@ -1,0 +1,6 @@
+{
+  "id": "btn_confirm_edit",
+  "reactCode": "import React from 'react';\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"btn_confirm_edit\" style={{ position: 'absolute', left: 20, top: 850, width: 320, height: 44 }}>\n      <button\n        disabled\n        className=\"tf-cg-btn-confirm w-full h-full rounded-[var(--radius-full)] font-headline-s\"\n        style={{\n          backgroundColor: 'var(--color-primary-disabled)',\n          color: 'var(--color-text-white)',\n          border: 'none',\n          cursor: 'not-allowed',\n        }}\n      >\n        确认\n      </button>\n    </div>\n  );\n}",
+  "css": ".tf-cg-btn-confirm{box-sizing:border-box;}",
+  "notes": "used --color-primary-disabled, --color-text-white, --radius-full, font-headline-s"
+}

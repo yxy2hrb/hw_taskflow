@@ -1,0 +1,6 @@
+{
+  "id": "overview_cost",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"overview_cost\"\n      className=\"tf-cg-text\"\n      style={{\n        position: 'absolute',\n        left: 24,\n        top: 216,\n        width: 150,\n        height: 20,\n      }}\n    >\n      <span\n        className=\"font-body-m\"\n        style={{\n          fontSize: 'var(--font-body-14)',\n          color: 'var(--color-text-secondary)',\n        }}\n      >\n        总成本价：¥21,999.00\n      </span>\n    </div>\n  );\n}",
+  "css": ".tf-cg-text {\n  display: flex;\n  align-items: center;\n}",
+  "notes": "used font-body-m class, --font-body-14, --color-text-secondary CSS variables"
+}

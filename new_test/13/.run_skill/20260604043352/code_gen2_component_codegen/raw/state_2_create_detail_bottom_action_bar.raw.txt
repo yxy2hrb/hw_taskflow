@@ -1,0 +1,6 @@
+{
+  "id": "detail_bottom_action_bar",
+  "reactCode": "import React from 'react';\n\nexport default function DetailBottomActionBar() {\n  return (\n    <div\n      data-component-id=\"detail_bottom_action_bar\"\n      className=\"tf-cg-bottom-bar\"\n      style={{\n        position: 'absolute',\n        left: 0,\n        top: 1296,\n        width: 360,\n        height: 64,\n        zIndex: 40,\n        backgroundColor: 'var(--color-bg-card)',\n        borderTop: '1px solid var(--color-border-subtle)',\n        boxShadow: '0 -2px 8px rgba(0,0,0,0.04)',\n        display: 'flex',\n        alignItems: 'center',\n        padding: '0 16px',\n        boxSizing: 'border-box'\n      }}\n    />\n  );\n}",
+  "css": ".tf-cg-bottom-bar {\n  /* Empty visual shell for mounted children */\n}",
+  "notes": "used --color-bg-card, --color-border-subtle, absolute bbox, zIndex 40. Rendered as empty visual shell per __hasChildren rule."
+}

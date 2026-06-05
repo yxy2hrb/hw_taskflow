@@ -1,0 +1,12 @@
+{
+  "issues": [
+    "state_4 references unknown anchor: btn_go_to_plan",
+    "state_5.btn_confirm_edit ordinary top-level component requires bbox or weak layout hints",
+    "state_5.input_plan_name ordinary top-level component requires bbox or weak layout hints",
+    "state_5 references unknown anchor: btn_confirm_edit",
+    "state_5 references unknown anchor: btn_confirm_edit",
+    "state_5 references unknown anchor: input_plan_name",
+    "state_6.overview_card rich card requires at least 3 content_requirements",
+    "state_6.product_list_card rich card requires at least 3 content_requirements"
+  ]
+}

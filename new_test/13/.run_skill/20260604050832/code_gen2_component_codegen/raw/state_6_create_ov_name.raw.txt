@@ -1,0 +1,6 @@
+{
+  "id": "ov_name",
+  "reactCode": "import React from 'react';\n\nexport default function OvNameText() {\n  return (\n    <div\n      data-component-id=\"ov_name\"\n      className=\"font-body-m\"\n      style={{\n        fontSize: 'var(--font-body-14)',\n        lineHeight: 'var(--line-height-20)',\n        fontWeight: 'var(--font-weight-regular)',\n        color: 'var(--color-text-primary)'\n      }}\n    >\n      配单名称：XX项目配单\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"ov_name\"] {\n  display: block;\n}",
+  "notes": "used font-body-m, --font-body-14, --line-height-20, --font-weight-regular, --color-text-primary"
+}

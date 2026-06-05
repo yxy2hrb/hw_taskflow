@@ -1,0 +1,419 @@
+{
+  "states": [
+    {
+      "id": "state_1",
+      "label": "产品详情初始态",
+      "ui_intent": "展示产品详情页，包含导航栏、产品图片、详细信息卡片以及底部的加入采购单和加入配单操作按钮。",
+      "parent_state": null,
+      "trigger": null,
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域"
+        ],
+        "create": [
+          {
+            "type": "create",
+            "id": "state_1_nav_bar",
+            "component": "NavBar",
+            "bbox": [0, 36, 360, 56],
+            "props": {
+              "title": "产品详情",
+              "leftIcon": "back"
+            }
+          },
+          {
+            "type": "create",
+            "id": "state_1_product_image",
+            "component": "Image",
+            "bbox": [0, 92, 360, 300],
+            "props": {
+              "src": "product_image_url",
+              "alt": "产品图片"
+            }
+          },
+          {
+            "type": "create",
+            "id": "state_1_info_card",
+            "component": "Card",
+            "bbox": [0, 392, 360, 464],
+            "props": {
+              "title": "产品信息",
+              "content": "产品型号、价格、厂商、参数、售后信息、质保服务和工具入口"
+            }
+          },
+          {
+            "type": "create",
+            "id": "state_1_bottom_bar",
+            "component": "BottomBar",
+            "bbox": [0, 872, 360, 64],
+            "props": {
+              "style": "fixed"
+            }
+          },
+          {
+            "type": "create",
+            "id": "state_1_add_cart_btn",
+            "component": "Button",
+            "bbox": [16, 880, 156, 48],
+            "props": {
+              "text": "加入采购单",
+              "type": "default"
+            }
+          },
+          {
+            "type": "create",
+            "id": "state_1_add_quote_btn",
+            "component": "Button",
+            "bbox": [188, 880, 156, 48],
+            "props": {
+              "text": "加入配单",
+              "type": "primary"
+            }
+          }
+        ],
+        "update": []
+      },
+      "data_state": {},
+      "patches": [
+        {
+          "type": "bind",
+          "anchor": "state_1_add_quote_btn",
+          "action": "click",
+          "goto": "state_2"
+        }
+      ]
+    },
+    {
+      "id": "state_2",
+      "label": "半模态配单弹窗态",
+      "ui_intent": "在产品详情页上方弹出半模态配单页，背景遮罩，展示产品清单、数量调节、合计金额及去配单按钮。",
+      "parent_state": "state_1",
+      "trigger": {
+        "anchor": "state_1_add_quote_btn",
+        "action": "click"
+      },
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域",
+          "state_1_nav_bar",
+          "state_1_product_image",
+          "state_1_info_card",
+          "state_1_bottom_bar",
+          "state_1_add_cart_btn",
+          "state_1_add_quote_btn"
+        ],
+        "create": [
+          {
+            "type": "create",
+            "id": "state_2_overlay",
+            "component": "Overlay",
+            "bbox": [0, 0, 360, 936],
+            "props": {
+              "color": "rgba(0,0,0,0.5)"
+            }
+          },
+          {
+            "type": "create",
+            "id": "state_2_bottom_sheet",
+            "component": "BottomSheet",
+            "bbox": [0, 280, 360, 656],
+            "props": {
+              "title": "配单清单",
+              "showDragIndicator": true
+            }
+          },
+          {
+            "type": "create",
+            "id": "state_2_product_list",
+            "component": "List",
+            "bbox": [0, 336, 360, 400],
+            "props": {
+              "items": "product_list_with_stepper"
+            }
+          },
+          {
+            "type": "create",
+            "id": "state_2_accessory_tip",
+            "component": "Card",
+            "bbox": [16, 752, 328, 60],
+            "props": {
+              "text": "推荐配件提示"
+            }
+          },
+          {
+            "type": "create",
+            "id": "state_2_sheet_footer",
+            "component": "BottomBar",
+            "bbox": [0, 828, 360, 108],
+            "props": {
+              "style": "fixed"
+            }
+          },
+          {
+            "type": "create",
+            "id": "state_2_total_price",
+            "component": "Text",
+            "bbox": [16, 844, 160, 48],
+            "props": {
+              "text": "合计金额：¥XX,XXX",
+              "style": "bold"
+            }
+          },
+          {
+            "type": "create",
+            "id": "state_2_go_quote_btn",
+            "component": "Button",
+            "bbox": [200, 844, 144, 48],
+            "props": {
+              "text": "去配单",
+              "type": "primary"
+            }
+          }
+        ],
+        "update": []
+      },
+      "data_state": {},
+      "patches": [
+        {
+          "type": "bind",
+          "anchor": "state_2_go_quote_btn",
+          "action": "click",
+          "goto": "state_3"
+        }
+      ]
+    },
+    {
+      "id": "state_3",
+      "label": "配单信息编辑态",
+      "ui_intent": "弹出配单信息编辑页，背景遮罩，展示配单名称输入框及确认按钮。",
+      "parent_state": "state_2",
+      "trigger": {
+        "anchor": "state_2_go_quote_btn",
+        "action": "click"
+      },
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域",
+          "state_1_nav_bar",
+          "state_1_product_image",
+          "state_1_info_card",
+          "state_1_bottom_bar",
+          "state_1_add_cart_btn",
+          "state_1_add_quote_btn",
+          "state_2_overlay"
+        ],
+        "create": [
+          {
+            "type": "create",
+            "id": "state_3_bottom_sheet",
+            "component": "BottomSheet",
+            "bbox": [0, 560, 360, 376],
+            "props": {
+              "title": "编辑配单信息"
+            }
+          },
+          {
+            "type": "create",
+            "id": "state_3_name_input",
+            "component": "Input",
+            "bbox": [16, 632, 328, 56],
+            "props": {
+              "label": "配单名称",
+              "placeholder": "请输入配单名称",
+              "autoFocus": true
+            }
+          },
+          {
+            "type": "create",
+            "id": "state_3_sheet_footer",
+            "component": "BottomBar",
+            "bbox": [0, 872, 360, 64],
+            "props": {
+              "style": "fixed"
+            }
+          },
+          {
+            "type": "create",
+            "id": "state_3_confirm_btn",
+            "component": "Button",
+            "bbox": [16, 880, 328, 48],
+            "props": {
+              "text": "确认",
+              "type": "primary"
+            }
+          }
+        ],
+        "update": []
+      },
+      "data_state": {},
+      "patches": [
+        {
+          "type": "bind",
+          "anchor": "state_3_confirm_btn",
+          "action": "click",
+          "goto": "state_4"
+        }
+      ]
+    },
+    {
+      "id": "state_4",
+      "label": "配单提交中状态",
+      "ui_intent": "确认按钮进入 loading 禁用状态，输入框只读，等待系统处理配单创建请求。",
+      "parent_state": "state_3",
+      "trigger": {
+        "anchor": "state_3_confirm_btn",
+        "action": "click"
+      },
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域",
+          "state_1_nav_bar",
+          "state_1_product_image",
+          "state_1_info_card",
+          "state_1_bottom_bar",
+          "state_1_add_cart_btn",
+          "state_1_add_quote_btn",
+          "state_2_overlay",
+          "state_3_bottom_sheet",
+          "state_3_sheet_footer"
+        ],
+        "create": [],
+        "update": [
+          {
+            "type": "update",
+            "id": "state_3_confirm_btn",
+            "props": {
+              "loading": true,
+              "disabled": true,
+              "text": "提交中..."
+            }
+          },
+          {
+            "type": "update",
+            "id": "state_3_name_input",
+            "props": {
+              "readOnly": true
+            }
+          }
+        ]
+      },
+      "data_state": {},
+      "patches": []
+    },
+    {
+      "id": "state_5",
+      "label": "配单详情成功态",
+      "ui_intent": "跳转至配单详情页，展示配单概览、风险提示、产品清单、方案特色、服务商信息及底部操作栏。",
+      "parent_state": "state_4",
+      "trigger": {
+        "system": "submit_success"
+      },
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域"
+        ],
+        "create": [
+          {
+            "type": "create",
+            "id": "state_5_nav_bar",
+            "component": "NavBar",
+            "bbox": [0, 36, 360, 56],
+            "props": {
+              "title": "配单详情",
+              "leftIcon": "back"
+            }
+          },
+          {
+            "type": "create",
+            "id": "state_5_overview_card",
+            "component": "Card",
+            "bbox": [16, 108, 328, 120],
+            "props": {
+              "title": "配单概览",
+              "content": "配单名称、总报价"
+            }
+          },
+          {
+            "type": "create",
+            "id": "state_5_risk_card",
+            "component": "Card",
+            "bbox": [16, 244, 328, 80],
+            "props": {
+              "title": "风险提示",
+              "icon": "warning",
+              "style": "warning"
+            }
+          },
+          {
+            "type": "create",
+            "id": "state_5_product_list_card",
+            "component": "Card",
+            "bbox": [16, 340, 328, 200],
+            "props": {
+              "title": "产品清单",
+              "content": "产品明细列表"
+            }
+          },
+          {
+            "type": "create",
+            "id": "state_5_feature_card",
+            "component": "Card",
+            "bbox": [16, 556, 328, 120],
+            "props": {
+              "title": "方案特色"
+            }
+          },
+          {
+            "type": "create",
+            "id": "state_5_vendor_card",
+            "component": "Card",
+            "bbox": [16, 692, 328, 100],
+            "props": {
+              "title": "服务商信息"
+            }
+          },
+          {
+            "type": "create",
+            "id": "state_5_bottom_bar",
+            "component": "BottomBar",
+            "bbox": [0, 872, 360, 64],
+            "props": {
+              "style": "fixed"
+            }
+          },
+          {
+            "type": "create",
+            "id": "state_5_consult_btn",
+            "component": "Button",
+            "bbox": [16, 880, 156, 48],
+            "props": {
+              "text": "采购咨询",
+              "type": "default"
+            }
+          },
+          {
+            "type": "create",
+            "id": "state_5_export_btn",
+            "component": "Button",
+            "bbox": [188, 880, 156, 48],
+            "props": {
+              "text": "导出",
+              "type": "primary"
+            }
+          }
+        ],
+        "update": []
+      },
+      "data_state": {},
+      "patches": []
+    }
+  ],
+  "validation_notes": [
+    "All non-state_1 states have valid parent_state references.",
+    "All trigger anchors exist in original DOM anchors or previously created virtual anchors.",
+    "All keep/update targets exist in original DOM anchors or previously created virtual anchors.",
+    "No hide or replace patches are present.",
+    "Non-modal create/update bboxes avoid overlap with kept bboxes for their respective states.",
+    "System trigger used for state_5 transition after submit_success."
+  ]
+}

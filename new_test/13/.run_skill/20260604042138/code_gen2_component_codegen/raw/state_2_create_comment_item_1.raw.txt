@@ -1,0 +1,6 @@
+{
+  "id": "comment_item_1",
+  "reactCode": "import React from 'react';\n\nexport default function CommentItem1() {\n  return (\n    <div\n      data-component-id=\"comment_item_1\"\n      style={{\n        position: 'absolute',\n        left: '24px',\n        top: '1112px',\n        width: '312px',\n        minHeight: '48px',\n      }}\n    >\n      <p\n        className=\"font-body-m\"\n        style={{\n          fontSize: 'var(--font-body-14)',\n          color: 'var(--color-text-primary)',\n          margin: 0,\n        }}\n      >\n        用户评价：设备非常清晰，会议体验很好，投屏稳定。\n      </p>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used Text, font-body-m, --font-body-14, --color-text-primary, absolute bbox positioning"
+}

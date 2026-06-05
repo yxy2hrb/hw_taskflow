@@ -1,0 +1,6 @@
+{
+  "id": "btn_add_to_quote",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <button\n      data-component-id=\"btn_add_to_quote\"\n      className=\"tf-cg-btn-add-to-quote\"\n    >\n      加入配单\n    </button>\n  );\n}",
+  "css": ".tf-cg-btn-add-to-quote {\n  position: absolute;\n  left: 180px;\n  top: 882px;\n  width: 160px;\n  height: 44px;\n  background-color: var(--color-primary);\n  color: var(--color-text-white);\n  border-radius: var(--radius-full);\n  border: none;\n  font-family: 'HarmonyOS Sans SC', sans-serif;\n  font-size: var(--font-headline-16);\n  font-weight: var(--font-weight-medium);\n  line-height: var(--line-height-20);\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  box-sizing: border-box;\n  transition: opacity 150ms ease;\n}\n.tf-cg-btn-add-to-quote:active {\n  opacity: 0.8;\n}",
+  "notes": "Inlined button JSX for exact bbox matching (44px height) instead of CapsuleButton. Used --color-primary, --color-text-white, --radius-full, --font-headline-16, --font-weight-medium, --line-height-20."
+}

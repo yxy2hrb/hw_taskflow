@@ -1,0 +1,6 @@
+{
+  "id": "list_card",
+  "reactCode": "import React from 'react'\nimport SectionLayout from '@/components/SectionLayout'\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"list_card\" \n      style={{ \n        position: 'absolute', \n        left: 12, \n        top: 428, \n        width: 336, \n        height: 240 \n      }}\n    >\n      <SectionLayout\n        variant=\"card\"\n        title=\"产品清单\"\n        headerRightAction={\n          <span \n            className=\"font-headline-xs\" \n            style={{ color: 'var(--color-primary)', cursor: 'pointer' }}\n          >\n            编辑\n          </span>\n        }\n      >\n        <div style={{ flex: 1, minHeight: 160 }} />\n      </SectionLayout>\n    </div>\n  )\n}",
+  "css": "",
+  "notes": "used SectionLayout, --color-primary, font-headline-xs"
+}

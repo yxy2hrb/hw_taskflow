@@ -1,0 +1,35 @@
+{
+  "state_id": 3,
+  "state_name": "确认弹窗状态",
+  "components": [
+    {
+      "tag": "Button",
+      "attrs": {
+        "label": "取消",
+        "variant": "secondary"
+      },
+      "component": {
+        "group": "Button-Phone",
+        "variant": "尺寸=Medium,类型=Emphasized,状态=Enabled",
+        "node_id": "1:9168",
+        "page": "2. Controls 操作类",
+        "component_key": "938b12c82f10e57073b3fde899a73a462b8536a0"
+      }
+    },
+    {
+      "tag": "Button",
+      "attrs": {
+        "label": "确认",
+        "variant": "primary"
+      },
+      "component": {
+        "group": "Button-Phone",
+        "variant": "尺寸=Medium,类型=Emphasized,状态=Enabled",
+        "node_id": "1:9168",
+        "page": "2. Controls 操作类",
+        "component_key": "938b12c82f10e57073b3fde899a73a462b8536a0"
+      }
+    }
+  ],
+  "missing": []
+}

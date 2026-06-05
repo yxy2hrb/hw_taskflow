@@ -1,0 +1,51 @@
+{
+  "html_path": "new_test/12/html/Index.state-model.code-gen2-layers.html",
+  "timestamp": "2026-06-01T21:04:25.424Z",
+  "shots": [
+    {
+      "state_id": 1,
+      "state_name": "工作台初始状态",
+      "screenshot": "state_1_force.png",
+      "not_blank": true,
+      "layer_exists": true,
+      "layer_visible": true,
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "state_id": 2,
+      "state_name": "悬浮菜单弹出状态",
+      "screenshot": "state_2_force.png",
+      "not_blank": true,
+      "layer_exists": true,
+      "layer_visible": true,
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "state_id": 3,
+      "state_name": "移除确认对话框状态",
+      "screenshot": "state_3_force.png",
+      "not_blank": true,
+      "layer_exists": true,
+      "layer_visible": true,
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "state_id": 4,
+      "state_name": "卡片移除成功状态",
+      "screenshot": "state_4_force.png",
+      "not_blank": true,
+      "layer_exists": true,
+      "layer_visible": true,
+      "status": "pass",
+      "issues": []
+    }
+  ],
+  "summary": {
+    "total_states": 4,
+    "force_pass": 4,
+    "issues_found": []
+  }
+}

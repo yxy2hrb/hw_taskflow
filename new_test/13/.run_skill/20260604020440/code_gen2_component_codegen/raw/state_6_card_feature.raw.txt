@@ -1,0 +1,6 @@
+{
+  "id": "card_feature",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"card_feature\"\n      style={{\n        position: 'absolute',\n        left: 12,\n        top: 600,\n        width: 336,\n        height: 140,\n      }}\n    >\n      <SectionLayout variant=\"card\" title=\"方案特色\">\n        <p\n          className=\"font-caption-m\"\n          style={{\n            fontSize: 'var(--font-caption-12)',\n            lineHeight: 'var(--line-height-18)',\n            color: 'var(--color-text-muted)',\n          }}\n        >\n          添加或编辑方案特色内容\n        </p>\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used SectionLayout, --color-text-muted, font-caption-m"
+}

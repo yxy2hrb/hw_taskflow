@@ -1,0 +1,6 @@
+{
+  "id": "feature_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"feature_card\"\n      style={{\n        position: 'absolute',\n        left: 12,\n        top: 680,\n        width: 336,\n        height: 160,\n      }}\n    >\n      <SectionLayout\n        variant=\"card\"\n        title=\"方案特色\"\n        headerRightAction={\n          <span className=\"font-headline-xs\" style={{ color: 'var(--color-primary)' }}>\n            添加\n          </span>\n        }\n      >\n        <div\n          style={{\n            flex: 1,\n            backgroundColor: 'var(--color-bg-disabled)',\n            borderRadius: 'var(--radius-md)',\n          }}\n        />\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used SectionLayout, font-headline-xs, --color-primary, --color-bg-disabled, --radius-md"
+}

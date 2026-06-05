@@ -1,0 +1,6 @@
+{
+  "id": "selected_product_item",
+  "reactCode": "import React from 'react';\nimport ProductSelectionListItem from '@/components/ProductSelectionListItem';\n\nexport default function SelectedProductItem() {\n  const item = {\n    id: 'p1',\n    name: 'IdeaHub B2 Base-75寸',\n    status: '谈单中' as const,\n    time: '¥21,999.00',\n  };\n\n  return (\n    <div\n      data-component-id=\"selected_product_item\"\n      style={{\n        position: 'absolute',\n        left: 16,\n        top: 660,\n        width: 328,\n        height: 72,\n      }}\n    >\n      <ProductSelectionListItem item={item} isLast={true} />\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used ProductSelectionListItem, absolute positioning based on bbox"
+}

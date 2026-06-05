@@ -1,0 +1,111 @@
+{
+  "ok": true,
+  "input": {
+    "inputDir": "new_test/12",
+    "htmlPath": "new_test/12/_/index.html",
+    "specPath": "new_test\\12\\spec.json"
+  },
+  "stages": {
+    "stage0_spec": {
+      "source": "qwen-vl-max",
+      "imagePath": "new_test/12/wps_doc_0.png",
+      "specPath": "new_test\\12\\spec.json",
+      "generated": true
+    },
+    "stage1_bbox": {
+      "source": "playwright",
+      "bboxCount": 195,
+      "adaptiveDepth": {
+        "target_ratio": 0.6,
+        "selected_depth": 13,
+        "forced_depth": null,
+        "coverage_ratio": 0.6701,
+        "total_div_count": 291,
+        "selected_div_count": 195
+      }
+    },
+    "stage2_semantic": {
+      "source": "qwen",
+      "attempts": [
+        {
+          "attempt": 1,
+          "bboxDir": "new_test\\12\\.result_bbox",
+          "annotated": 22,
+          "validation": {
+            "targets": [
+              "顶部状态栏",
+              "状态栏",
+              "管理应用",
+              "分享获客",
+              "营销物料",
+              "数据统计",
+              "线索",
+              "快捷入口",
+              "卡片",
+              "按钮",
+              "导航栏",
+              "我的线索区域",
+              "最新线索卡片",
+              "快捷入口区域",
+              "我要办会与营销物料区域",
+              "分享获客数据区域",
+              "短视频能力中心区域",
+              "管理应用按钮",
+              "底部标签栏"
+            ],
+            "missing": [
+              "我要办会与营销物料区域",
+              "分享获客数据区域",
+              "管理应用按钮"
+            ],
+            "ok": false
+          },
+          "coverage_check": {
+            "needs_deeper_depth": false,
+            "missing_targets": []
+          }
+        }
+      ],
+      "validation": {
+        "targets": [
+          "顶部状态栏",
+          "状态栏",
+          "管理应用",
+          "分享获客",
+          "营销物料",
+          "数据统计",
+          "线索",
+          "快捷入口",
+          "卡片",
+          "按钮",
+          "导航栏",
+          "我的线索区域",
+          "最新线索卡片",
+          "快捷入口区域",
+          "我要办会与营销物料区域",
+          "分享获客数据区域",
+          "短视频能力中心区域",
+          "管理应用按钮",
+          "底部标签栏"
+        ],
+        "missing": [
+          "我要办会与营销物料区域",
+          "分享获客数据区域",
+          "管理应用按钮"
+        ],
+        "ok": false
+      },
+      "annotatedCount": 22
+    },
+    "stage3_replace": {
+      "ok": true
+    }
+  },
+  "outputs": {
+    "annotated_body_bbox": "new_test\\12\\.result_bbox\\annotated_body_bbox.html",
+    "annotated_body_semantic": "new_test\\12\\.run_skill\\20260601204745\\preprocess\\annotated_body_semantic.html",
+    "spec_used": "new_test\\12\\.run_skill\\20260601204745\\preprocess\\spec.used.json",
+    "spec_generated": "new_test\\12\\.run_skill\\20260601204745\\preprocess\\spec.generated.json",
+    "output_html": "new_test\\12\\.run_skill\\20260601204745\\preprocess\\Index.preprocessed.html"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "outputs": {
+    "html": "new_test/12/html/Index.state-model.code-gen2-layers.html",
+    "auto_shots": "new_test/12/.run_skill/20260601204745/code_gen2_llm_layer_codegen/auto_shots",
+    "state_layers_report": "new_test/12/.run_skill/20260601204745/code_gen2_llm_layer_codegen/auto_shots/state_layers_report.json"
+  },
+  "screenshot_summary": {
+    "total_states": 4,
+    "force_pass": 4,
+    "issues_found": []
+  }
+}

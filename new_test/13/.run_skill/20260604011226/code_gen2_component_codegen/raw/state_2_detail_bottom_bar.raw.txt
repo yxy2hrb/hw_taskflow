@@ -1,0 +1,6 @@
+{
+  "id": "detail_bottom_bar",
+  "reactCode": "import React from 'react';\nimport ButtonBar from '@/components/ButtonBar';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"detail_bottom_bar\"\n      style={{\n        position: 'absolute',\n        left: 0,\n        top: 1112,\n        width: 360,\n        height: 64,\n        zIndex: 10,\n      }}\n    >\n      <ButtonBar\n        variant=\"triple\"\n        thirdLabel=\"咨询\"\n        secondaryLabel=\"加入采购单\"\n        primaryLabel=\"加入配单\"\n        width={360}\n      />\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"detail_bottom_bar\"] {\n  background-color: var(--color-bg-card);\n  box-shadow: 0 -2px 8px 0 rgba(0, 0, 0, 0.06);\n}",
+  "notes": "Used ButtonBar component with triple variant. Applied --color-bg-card for background and subtle top shadow for visual separation from page content."
+}

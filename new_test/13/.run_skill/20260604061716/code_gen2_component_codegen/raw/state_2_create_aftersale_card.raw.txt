@@ -1,0 +1,6 @@
+{
+  "id": "aftersale_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_aftersale_warranty from './aftersale_warranty';\nimport Child_aftersale_service from './aftersale_service';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"aftersale_card\" className=\"tf-cg-aftersale-card\">\n      <SectionLayout variant=\"card\" title=\"售后信息\">\n        <Child_aftersale_warranty />\n        <Child_aftersale_service />\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": ".tf-cg-aftersale-card {\n  width: 100%;\n}",
+  "notes": "used SectionLayout, imported Child_aftersale_warranty and Child_aftersale_service"
+}

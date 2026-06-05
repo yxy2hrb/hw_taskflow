@@ -1,0 +1,6 @@
+{
+  "id": "btn_confirm",
+  "reactCode": "import React from 'react';\nimport { CapsuleButton } from '@/components/ui/Button';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"btn_confirm\"\n      style={{\n        position: 'absolute',\n        left: 16,\n        top: 880,\n        width: 328,\n        height: 40,\n      }}\n    >\n      <CapsuleButton\n        size=\"large\"\n        variant=\"primary\"\n        className=\"w-full\"\n        onClick={() => {}}\n      >\n        确定\n      </CapsuleButton>\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"btn_confirm\"] .inline-flex { width: 100%; }",
+  "notes": "used CapsuleButton from ui/Button, --color-primary (via variant='primary'), --radius-full (capsule shape), size='large' for 40px height"
+}

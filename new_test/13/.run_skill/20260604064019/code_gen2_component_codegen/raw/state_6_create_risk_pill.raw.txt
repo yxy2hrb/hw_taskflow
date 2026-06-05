@@ -1,0 +1,6 @@
+{
+  "id": "risk_pill",
+  "reactCode": "import React from 'react';\nimport StatusPill from '@/components/StatusPill';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"risk_pill\" style={{ display: 'inline-block' }}>\n      <StatusPill text=\"警告\" />\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used StatusPill, text='警告'"
+}

@@ -1,0 +1,614 @@
+{
+  "states": [
+    {
+      "id": "state_1",
+      "label": "产品列表初始状态",
+      "ui_intent": "移动端产品列表页，展示状态栏、标题栏、分类标签、左侧导航、商品列表及底部导航。",
+      "height": 936,
+      "parent_state": null,
+      "trigger": null,
+      "inheritance": {
+        "keep": [],
+        "create": [],
+        "update": []
+      },
+      "data_state": {},
+      "patches": []
+    },
+    {
+      "id": "state_2",
+      "label": "产品详情页面状态",
+      "ui_intent": "全屏纵向滚动的产品详情页，包含沉浸式图片、四个独立信息卡片及底部固定操作栏。",
+      "height": 1168,
+      "parent_state": "state_1",
+      "trigger": {
+        "anchor": "商品卡片热销状态-右侧列表第二项",
+        "event": "click"
+      },
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域"
+        ],
+        "create": [
+          {
+            "type": "create",
+            "id": "detail_image",
+            "component": "ImageCarousel",
+            "description": "沉浸式产品图片轮播区",
+            "bbox": [0, 0, 360, 396],
+            "props": {
+              "images": ["product_main.jpg"]
+            }
+          },
+          {
+            "type": "create",
+            "id": "detail_top_nav",
+            "component": "TopNav",
+            "bbox": [0, 36, 360, 56],
+            "props": {
+              "variant": "title",
+              "onBack": true,
+              "actions": ["cart", "profile", "grid"],
+              "zIndex": 10,
+              "transparent": true
+            }
+          },
+          {
+            "type": "create",
+            "id": "detail_info_card",
+            "component": "SectionLayout",
+            "bbox": [12, 408, 336, 260],
+            "props": {
+              "variant": "card",
+              "title": "产品信息"
+            },
+            "text": "IdeaHub B2 Base-75寸\n部件编码：EOS\n金牌价：¥32,900.00\n厂商：华为\n核心参数：1080P高清云会议，光学防蓝光",
+            "text_style": {
+              "className": "font-body-m",
+              "fontSize": "var(--font-body-14)",
+              "lineHeight": "var(--line-height-22)",
+              "color": "var(--color-text-primary)"
+            }
+          },
+          {
+            "type": "create",
+            "id": "detail_aftersale_card",
+            "component": "SectionLayout",
+            "bbox": [12, 680, 336, 140],
+            "props": {
+              "variant": "card",
+              "title": "售后信息"
+            },
+            "text": "保修政策：全国联保\n质保服务：3年整机质保\n服务保障：7天无理由退货",
+            "text_style": {
+              "className": "font-body-m",
+              "fontSize": "var(--font-body-14)",
+              "lineHeight": "var(--line-height-22)",
+              "color": "var(--color-text-secondary)"
+            }
+          },
+          {
+            "type": "create",
+            "id": "detail_tool_card",
+            "component": "SectionLayout",
+            "bbox": [12, 832, 336, 120],
+            "props": {
+              "variant": "card",
+              "title": "工具"
+            },
+            "text": "售前工具 | 售后工具",
+            "text_style": {
+              "className": "font-body-m",
+              "fontSize": "var(--font-body-14)",
+              "lineHeight": "var(--line-height-22)",
+              "color": "var(--color-text-primary)"
+            }
+          },
+          {
+            "type": "create",
+            "id": "detail_comment_card",
+            "component": "SectionLayout",
+            "bbox": [12, 964, 336, 140],
+            "props": {
+              "variant": "card",
+              "title": "评论/问答"
+            },
+            "text": "暂无评价，快来抢占沙发吧！",
+            "text_style": {
+              "className": "font-caption-m",
+              "fontSize": "var(--font-caption-12)",
+              "lineHeight": "var(--line-height-18)",
+              "color": "var(--color-text-tertiary)"
+            }
+          },
+          {
+            "type": "create",
+            "id": "icon_compare",
+            "component": "CustomIcon",
+            "description": "产品对比图标入口",
+            "bbox": [24, 1116, 40, 40],
+            "text": "对比",
+            "text_style": {
+              "className": "font-caption-s",
+              "fontSize": "var(--font-caption-10)",
+              "color": "var(--color-text-secondary)"
+            }
+          },
+          {
+            "type": "create",
+            "id": "icon_consult",
+            "component": "CustomIcon",
+            "description": "咨询图标入口",
+            "bbox": [84, 1116, 40, 40],
+            "text": "咨询",
+            "text_style": {
+              "className": "font-caption-s",
+              "fontSize": "var(--font-caption-10)",
+              "color": "var(--color-text-secondary)"
+            }
+          },
+          {
+            "type": "create",
+            "id": "btn_add_to_cart",
+            "component": "CapsuleButton",
+            "bbox": [132, 1116, 100, 40],
+            "text": "加入采购单",
+            "props": {
+              "variant": "secondary",
+              "size": "large"
+            },
+            "text_style": {
+              "className": "font-headline-xs",
+              "fontSize": "var(--font-headline-14)",
+              "fontWeight": "var(--font-weight-medium)",
+              "color": "var(--color-text-primary)"
+            }
+          },
+          {
+            "type": "create",
+            "id": "btn_add_to_plan",
+            "component": "CapsuleButton",
+            "bbox": [240, 1116, 108, 40],
+            "text": "加入配单",
+            "props": {
+              "variant": "primary",
+              "size": "large"
+            },
+            "text_style": {
+              "className": "font-headline-s",
+              "fontSize": "var(--font-headline-16)",
+              "lineHeight": "var(--line-height-20)",
+              "fontWeight": "var(--font-weight-medium)",
+              "color": "var(--color-text-white)"
+            }
+          }
+        ],
+        "update": []
+      },
+      "data_state": {},
+      "patches": []
+    },
+    {
+      "id": "state_3",
+      "label": "产品清单半模态弹窗态",
+      "ui_intent": "背景弱化，从底部弹出高度约60%的半模态产品清单页，展示已选产品、风险提示及去配单按钮。",
+      "height": 1168,
+      "parent_state": "state_2",
+      "trigger": {
+        "anchor": "btn_add_to_plan",
+        "event": "click"
+      },
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域",
+          "detail_image",
+          "detail_top_nav",
+          "detail_info_card",
+          "detail_aftersale_card",
+          "detail_tool_card",
+          "detail_comment_card",
+          "icon_compare",
+          "icon_consult",
+          "btn_add_to_cart",
+          "btn_add_to_plan"
+        ],
+        "create": [
+          {
+            "type": "create",
+            "id": "overlay_1",
+            "component": "Overlay",
+            "bbox": [0, 0, 360, 1168],
+            "props": {
+              "zIndex": 50,
+              "backgroundColor": "rgba(0,0,0,0.5)"
+            }
+          },
+          {
+            "type": "create",
+            "id": "sheet_plan",
+            "component": "BottomSheet",
+            "bbox": [0, 468, 360, 700],
+            "props": {
+              "zIndex": 60,
+              "title": "产品清单",
+              "showClose": true,
+              "clearText": "全部清空"
+            },
+            "children": [
+              {
+                "type": "create",
+                "id": "risk_tip",
+                "component": "StatusPill",
+                "bbox": [12, 536, 336, 36],
+                "text": "风险提示：当前方案可能缺少关键设备",
+                "props": {
+                  "text": "风险提示：当前方案可能缺少关键设备",
+                  "colorMap": {
+                    "风险提示：当前方案可能缺少关键设备": {
+                      "color": "#FF8F1F",
+                      "bgColor": "#FFF7E6"
+                    }
+                  }
+                },
+                "text_style": {
+                  "className": "font-caption-m",
+                  "fontSize": "var(--font-caption-12)",
+                  "lineHeight": "var(--line-height-18)",
+                  "color": "#FF8F1F"
+                }
+              },
+              {
+                "type": "create",
+                "id": "product_item",
+                "component": "ProductCard",
+                "bbox": [48, 584, 264, 90],
+                "props": {
+                  "product": {
+                    "id": "p1",
+                    "name": "IdeaHub B2 Base-75寸",
+                    "description": "EOS 非现货",
+                    "price": 21999
+                  }
+                }
+              },
+              {
+                "type": "create",
+                "id": "entry_accessory",
+                "component": "EntryCard",
+                "bbox": [101, 686, 158, 58],
+                "props": {
+                  "card": {
+                    "id": "acc",
+                    "title": "推荐配件",
+                    "subtitle": "查看相关配件",
+                    "color": "#1677FF",
+                    "bgColor": "#E6F4FF",
+                    "iconBg": "#BAE0FF"
+                  }
+                }
+              },
+              {
+                "type": "create",
+                "id": "total_price",
+                "component": "Text",
+                "bbox": [12, 1060, 336, 24],
+                "text": "合计：¥21,999",
+                "text_style": {
+                  "className": "font-headline-s",
+                  "fontSize": "var(--font-headline-16)",
+                  "lineHeight": "var(--line-height-24)",
+                  "fontWeight": "var(--font-weight-bold)",
+                  "color": "var(--color-primary)"
+                }
+              },
+              {
+                "type": "create",
+                "id": "btn_go_to_plan",
+                "component": "CapsuleButton",
+                "bbox": [12, 1100, 336, 40],
+                "text": "去配单",
+                "props": {
+                  "variant": "primary",
+                  "size": "large"
+                },
+                "text_style": {
+                  "className": "font-headline-s",
+                  "fontSize": "var(--font-headline-16)",
+                  "lineHeight": "var(--line-height-20)",
+                  "fontWeight": "var(--font-weight-medium)",
+                  "color": "var(--color-text-white)"
+                }
+              }
+            ]
+          }
+        ],
+        "update": []
+      },
+      "data_state": {},
+      "patches": []
+    },
+    {
+      "id": "state_4",
+      "label": "编辑配单弹窗初始态",
+      "ui_intent": "在已有遮罩和清单弹窗之上，进一步弹出编辑配单信息的小弹窗，包含名称输入框和确定按钮。",
+      "height": 1168,
+      "parent_state": "state_3",
+      "trigger": {
+        "anchor": "btn_go_to_plan",
+        "event": "click"
+      },
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域",
+          "detail_image",
+          "detail_top_nav",
+          "detail_info_card",
+          "detail_aftersale_card",
+          "detail_tool_card",
+          "detail_comment_card",
+          "icon_compare",
+          "icon_consult",
+          "btn_add_to_cart",
+          "btn_add_to_plan",
+          "overlay_1",
+          "sheet_plan",
+          "risk_tip",
+          "product_item",
+          "entry_accessory",
+          "total_price",
+          "btn_go_to_plan"
+        ],
+        "create": [
+          {
+            "type": "create",
+            "id": "overlay_2",
+            "component": "Overlay",
+            "bbox": [0, 0, 360, 1168],
+            "props": {
+              "zIndex": 65,
+              "backgroundColor": "rgba(0,0,0,0.3)"
+            }
+          },
+          {
+            "type": "create",
+            "id": "sheet_edit",
+            "component": "BottomSheet",
+            "bbox": [0, 828, 360, 340],
+            "props": {
+              "zIndex": 70,
+              "title": "编辑配单信息",
+              "showClose": true
+            },
+            "children": [
+              {
+                "type": "create",
+                "id": "input_plan_name",
+                "component": "InputDemo",
+                "bbox": [12, 900, 336, 72],
+                "props": {
+                  "label": "配单名称",
+                  "placeholder": "请输入配单名称"
+                }
+              },
+              {
+                "type": "create",
+                "id": "btn_confirm_edit",
+                "component": "CapsuleButton",
+                "bbox": [12, 1100, 336, 40],
+                "text": "确定",
+                "props": {
+                  "variant": "primary",
+                  "size": "large"
+                },
+                "text_style": {
+                  "className": "font-headline-s",
+                  "fontSize": "var(--font-headline-16)",
+                  "lineHeight": "var(--line-height-20)",
+                  "fontWeight": "var(--font-weight-medium)",
+                  "color": "var(--color-text-white)"
+                }
+              }
+            ]
+          }
+        ],
+        "update": []
+      },
+      "data_state": {},
+      "patches": []
+    },
+    {
+      "id": "state_5",
+      "label": "配单信息提交中状态",
+      "ui_intent": "用户点击确定后，输入框禁用，按钮进入loading状态，表示系统正在处理请求。",
+      "height": 1168,
+      "parent_state": "state_4",
+      "trigger": {
+        "anchor": "btn_confirm_edit",
+        "event": "click"
+      },
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域",
+          "detail_image",
+          "detail_top_nav",
+          "detail_info_card",
+          "detail_aftersale_card",
+          "detail_tool_card",
+          "detail_comment_card",
+          "icon_compare",
+          "icon_consult",
+          "btn_add_to_cart",
+          "btn_add_to_plan",
+          "overlay_1",
+          "sheet_plan",
+          "risk_tip",
+          "product_item",
+          "entry_accessory",
+          "total_price",
+          "btn_go_to_plan",
+          "overlay_2",
+          "sheet_edit"
+        ],
+        "create": [],
+        "update": [
+          {
+            "type": "update",
+            "id": "input_plan_name",
+            "component": "InputDemo",
+            "props": {
+              "disabled": true
+            }
+          },
+          {
+            "type": "update",
+            "id": "btn_confirm_edit",
+            "component": "CapsuleButton",
+            "text": "提交中...",
+            "props": {
+              "loading": true,
+              "disabled": true
+            }
+          }
+        ]
+      },
+      "data_state": {},
+      "patches": []
+    },
+    {
+      "id": "state_6",
+      "label": "配单详情页面成功态",
+      "ui_intent": "提交成功后跳转至全新的配单详情页，展示概览、风险、清单、特色、服务商五个卡片及底部操作栏。",
+      "height": 968,
+      "parent_state": "state_5",
+      "trigger": {
+        "anchor": "system",
+        "event": "submit_success"
+      },
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域"
+        ],
+        "create": [
+          {
+            "type": "create",
+            "id": "detail_top_nav_2",
+            "component": "TopNav",
+            "bbox": [0, 36, 360, 56],
+            "props": {
+              "variant": "title",
+              "onBack": true,
+              "title": "配单详情",
+              "actions": ["message"]
+            }
+          },
+          {
+            "type": "create",
+            "id": "card_overview",
+            "component": "SectionLayout",
+            "bbox": [12, 104, 336, 160],
+            "props": {
+              "variant": "card",
+              "title": "配单概览"
+            },
+            "text": "配单名称：华为会议室方案\n客户类型：企业\n总报价：¥45,000\n总成本价：¥38,000",
+            "text_style": {
+              "className": "font-body-m",
+              "fontSize": "var(--font-body-14)",
+              "lineHeight": "var(--line-height-22)",
+              "color": "var(--color-text-primary)"
+            }
+          },
+          {
+            "type": "create",
+            "id": "card_risk",
+            "component": "SectionLayout",
+            "bbox": [12, 276, 336, 100],
+            "props": {
+              "variant": "card",
+              "title": "风险提示"
+            },
+            "text": "当前方案可能缺少 UPS、路由器、防火墙等关键设备",
+            "text_style": {
+              "className": "font-caption-m",
+              "fontSize": "var(--font-caption-12)",
+              "lineHeight": "var(--line-height-18)",
+              "color": "#FF8F1F"
+            }
+          },
+          {
+            "type": "create",
+            "id": "card_product_list",
+            "component": "SectionLayout",
+            "bbox": [12, 388, 336, 200],
+            "props": {
+              "variant": "card",
+              "title": "产品清单"
+            },
+            "text": "IdeaHub B2 Base-75寸 x1 ¥21,999",
+            "text_style": {
+              "className": "font-body-m",
+              "fontSize": "var(--font-body-14)",
+              "lineHeight": "var(--line-height-22)",
+              "color": "var(--color-text-primary)"
+            }
+          },
+          {
+            "type": "create",
+            "id": "card_feature",
+            "component": "SectionLayout",
+            "bbox": [12, 600, 336, 140],
+            "props": {
+              "variant": "card",
+              "title": "方案特色"
+            },
+            "text": "添加或编辑方案特色内容",
+            "text_style": {
+              "className": "font-caption-m",
+              "fontSize": "var(--font-caption-12)",
+              "lineHeight": "var(--line-height-18)",
+              "color": "var(--color-text-tertiary)"
+            }
+          },
+          {
+            "type": "create",
+            "id": "card_service",
+            "component": "SectionLayout",
+            "bbox": [12, 752, 336, 140],
+            "props": {
+              "variant": "card",
+              "title": "服务商信息"
+            },
+            "text": "服务商：华为授权服务商\n联系人：张三\n电话：13800138000",
+            "text_style": {
+              "className": "font-body-m",
+              "fontSize": "var(--font-body-14)",
+              "lineHeight": "var(--line-height-22)",
+              "color": "var(--color-text-primary)"
+            }
+          },
+          {
+            "type": "create",
+            "id": "bottom_bar_2",
+            "component": "ButtonBar",
+            "bbox": [0, 904, 360, 64],
+            "props": {
+              "variant": "triple",
+              "primaryLabel": "导出",
+              "secondaryLabel": "采购咨询",
+              "thirdLabel": "点位图"
+            }
+          }
+        ],
+        "update": []
+      },
+      "data_state": {},
+      "patches": []
+    }
+  ],
+  "validation_notes": [
+    "state_2 高度扩展至 1168 以容纳四个独立大卡片及底部操作栏，避免内容压缩。",
+    "state_3 和 state_4 遵循 Stacked modal rule，使用递增的 zIndex (50, 60, 65, 70) 确保遮罩和弹窗层级正确。",
+    "BottomSheet 的 bbox 严格对齐 state height 底部，children 使用 state-level 绝对坐标。",
+    "state_6 高度扩展至 968 以完整展示五个信息卡片及底部操作栏。"
+  ]
+}

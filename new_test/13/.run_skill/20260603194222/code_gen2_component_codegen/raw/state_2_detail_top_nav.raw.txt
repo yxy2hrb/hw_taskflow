@@ -1,0 +1,6 @@
+{
+  "id": "detail_top_nav",
+  "reactCode": "import React from 'react';\nimport TopNav from '@/components/TopNav';\n\nexport default function GeneratedComponent() {\n  const noop = () => {};\n  return (\n    <div \n      data-component-id=\"detail_top_nav\" \n      className=\"tf-cg-detail-top-nav\"\n      style={{ \n        position: 'absolute', \n        left: 0, \n        top: 36, \n        width: 360, \n        height: 56 \n      }}\n    >\n      <TopNav \n        variant=\"title\" \n        title=\"产品详情\" \n        onBack={noop} \n        actions={['cart', 'message']} \n        onCart={noop}\n        onMessage={noop}\n      />\n    </div>\n  );\n}",
+  "css": ".tf-cg-detail-top-nav{box-sizing:border-box;pointer-events:auto;}",
+  "notes": "used TopNav, absolute bbox positioning, transparent background for product detail page overlay"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "warranty_info",
+  "reactCode": "import React from 'react';\n\nexport default function WarrantyInfo() {\n  return (\n    <div\n      data-component-id=\"warranty_info\"\n      className=\"font-body-m\"\n      style={{\n        position: 'absolute',\n        left: '24px',\n        top: '788px',\n        width: '312px',\n        height: '40px',\n        fontSize: 'var(--font-body-14)',\n        color: 'var(--color-text-secondary)',\n        whiteSpace: 'pre-wrap',\n        lineHeight: 'var(--line-height-18)'\n      }}\n    >\n      保修政策：全国联保，享受三包服务<br />质保服务：整机1年，主要部件3年\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used Text, font-body-m, --font-body-14, --color-text-secondary, --line-height-18"
+}

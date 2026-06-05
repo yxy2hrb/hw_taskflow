@@ -1,0 +1,11 @@
+{
+  "issues": [
+    "state_1.undefined ordinary top-level component requires bbox or weak layout hints",
+    "state_1 fixed same-z bbox overlap: 顶部状态栏-顶部横向区域 and 底部导航栏-底部横向区域 at zIndex 0",
+    "state_1 fixed same-z bbox overlap: 顶部标题栏与Tab导航区-顶部横向区域 and 底部导航栏-底部横向区域 at zIndex 0",
+    "state_1 fixed same-z bbox overlap: 左侧子分类导航栏-左侧纵向区域 and 悬浮功能按钮-左下角悬浮 at zIndex 0",
+    "state_2.undefined ordinary top-level component requires bbox or weak layout hints",
+    "state_3.undefined ordinary top-level component requires bbox or weak layout hints",
+    "state_4.undefined ordinary top-level component requires bbox or weak layout hints"
+  ]
+}

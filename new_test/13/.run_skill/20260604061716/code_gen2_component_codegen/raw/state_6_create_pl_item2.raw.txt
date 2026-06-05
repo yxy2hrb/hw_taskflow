@@ -1,0 +1,6 @@
+{
+  "id": "pl_item2",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div \n      data-component-id=\"pl_item2\" \n      className=\"font-body-m tf-cg-text-pl_item2\" \n      style={{ fontSize: 'var(--font-body-14)', color: 'var(--color-text-primary)' }}\n    >\n      IdeaShare KEY (Type-A) x2  ¥1,999.00\n    </div>\n  );\n}",
+  "css": ".tf-cg-text-pl_item2 {\n  display: block;\n}",
+  "notes": "used Text, font-body-m, --font-body-14, --color-text-primary"
+}

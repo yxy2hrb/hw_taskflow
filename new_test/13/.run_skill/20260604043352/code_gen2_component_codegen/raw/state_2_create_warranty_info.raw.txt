@@ -1,0 +1,6 @@
+{
+  "id": "warranty_info",
+  "reactCode": "import React from 'react';\n\nexport default function WarrantyInfo() {\n  return (\n    <div\n      data-component-id=\"warranty_info\"\n      style={{\n        position: 'absolute',\n        left: 24,\n        top: 788,\n        width: 312,\n        height: 40,\n      }}\n    >\n      <p\n        className=\"font-body-m tf-cg-warranty-text\"\n        style={{\n          fontSize: 'var(--font-body-14)',\n          color: 'var(--color-text-secondary)',\n          margin: 0,\n          whiteSpace: 'pre-line',\n          lineHeight: 'var(--line-height-20)',\n        }}\n      >\n        保修政策：全国联保，享受三包服务\n质保服务：整机1年，主要部件3年\n      </p>\n    </div>\n  );\n}",
+  "css": ".tf-cg-warranty-text {\n  font-family: 'HarmonyOS Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;\n  font-weight: var(--font-weight-regular);\n}",
+  "notes": "used Text component pattern, font-body-m class, --font-body-14, --color-text-secondary, --line-height-20, --font-weight-regular"
+}

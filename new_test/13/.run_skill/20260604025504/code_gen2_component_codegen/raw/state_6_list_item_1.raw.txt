@@ -1,0 +1,6 @@
+{
+  "id": "list_item_1",
+  "reactCode": "import React from 'react';\nimport ProductSelectionListItem from '@/components/ProductSelectionListItem';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"list_item_1\"\n      style={{\n        position: 'absolute',\n        left: 24,\n        top: 440,\n        width: 312,\n        height: 59,\n      }}\n    >\n      <ProductSelectionListItem\n        item={{\n          id: 'p1',\n          name: 'IdeaHub B2 Base-75寸',\n          status: '谈单中',\n          time: '¥21,999.00 x 1',\n        }}\n        isLast={true}\n      />\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used ProductSelectionListItem"
+}

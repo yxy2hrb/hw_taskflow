@@ -1,0 +1,6 @@
+{
+  "id": "quote_total",
+  "reactCode": "import React from 'react';\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"quote_total\"\n      className=\"tf-cg-quote-total\"\n      style={{\n        position: 'absolute',\n        left: 20,\n        top: 690,\n        width: 160,\n        height: 30,\n        display: 'flex',\n        alignItems: 'center',\n      }}\n    >\n      <span\n        className=\"font-headline-s\"\n        style={{ color: 'var(--color-text-primary)' }}\n      >\n        合计金额\n      </span>\n    </div>\n  );\n}",
+  "css": ".tf-cg-quote-total{box-sizing:border-box;}",
+  "notes": "used --color-text-primary, font-headline-s; simple text label for total amount in quote popup"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "sheet_overlay",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"sheet_overlay\"\n      className=\"tf-cg-overlay\"\n      style={{\n        position: 'absolute',\n        left: 0,\n        top: 0,\n        width: 360,\n        height: 1180,\n        zIndex: 50,\n        backgroundColor: 'rgba(0, 0, 0, 0.5)',\n      }}\n    />\n  );\n}",
+  "css": ".tf-cg-overlay {\n  pointer-events: auto;\n}",
+  "notes": "Used --color-mask concept for overlay background (rgba(0,0,0,0.5) as specified in props). Absolute positioning with bbox [0,0,360,1180]. zIndex 50 from props. Simple overlay shell with no child content as patch only describes the mask layer."
+}

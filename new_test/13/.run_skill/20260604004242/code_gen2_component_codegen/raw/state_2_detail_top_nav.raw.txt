@@ -1,0 +1,6 @@
+{
+  "id": "detail_top_nav",
+  "reactCode": "import React from 'react';\nimport TopNav from '@/components/TopNav';\n\nexport default function GeneratedComponent() {\n  const noop = () => {};\n  return (\n    <div\n      data-component-id=\"detail_top_nav\"\n      style={{\n        position: 'absolute',\n        left: 0,\n        top: 36,\n        width: 360,\n        height: 56,\n        zIndex: 10,\n      }}\n    >\n      <TopNav\n        variant=\"title\"\n        onBack={noop}\n        title=\"产品详情\"\n        actions={['cart', 'profile', 'grid']}\n        cartCount={0}\n        onCart={noop}\n        onProfile={noop}\n        onGrid={noop}\n      />\n    </div>\n  );\n}",
+  "css": "[data-component-id=\"detail_top_nav\"] {\n  box-sizing: border-box;\n}",
+  "notes": "used TopNav component with variant='title', onBack enabled, actions=['cart','profile','grid']. Applied --font-headline-16, --line-height-20, --font-weight-medium, --color-text-primary via TopNav's internal styling. Positioned absolutely per bbox [0,36,360,56]."
+}

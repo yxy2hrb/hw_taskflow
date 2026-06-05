@@ -1,0 +1,69 @@
+{
+  "title": "分享获客卡片移除流程",
+  "slug": "share-acquisition-card-remove-flow",
+  "createdAt": "2026-04-29T09:58:42.343Z",
+  "meta": {
+    "title": "分享获客卡片移除流程",
+    "slug": "share-acquisition-card-remove-flow",
+    "user_story": "已登录的营销运营人员 | 在工作台长按‘分享获客’卡片 | 移除指定卡片 → 系统临时高亮该卡片并显示删除控件 → 用户点击‘移除’后二次确认 | 卡片从界面彻底消失，下方卡片无缝上移填补空位，无空白间隙或跳动",
+    "platform": "mobile"
+  },
+  "states": [
+    {
+      "state_id": 1,
+      "state_name": "工作台首页初始状态",
+      "description": "用户打开营销模块工作台，页面完整展示多张功能卡片；‘分享获客’卡片位于列表中段（第3位），尺寸为360×120px，左对齐，背景浅灰，标题‘分享获客’居中显示于卡片顶部，底部有灰色箭头图标；顶部状态栏显示时间/信号，底部Tab栏‘营销’项高亮红色，其余Tab为默认灰黑色。",
+      "implementation_method": "原始 HTML 初始快照，不做改造。",
+      "last_state": null,
+      "file": "state_1.html"
+    },
+    {
+      "state_id": 2,
+      "state_name": "长按激活编辑状态",
+      "description": "用户长按‘分享获客’卡片持续500ms后，该卡片整体加粗蓝绿色边框（#46B1E3，2px），右上角浮出圆形‘移除’按钮（直径32px，白色背景+红色叉号图标），同时其他所有卡片透明度降至60%，且不可点击；顶部状态栏与底部Tab栏保持不变，无遮罩。",
+      "implementation_method": "卡片叠加态 (Card Overlay State)：主卡片外扩2px蓝绿色描边（#46B1E3）；右上角绝对定位悬浮按钮，含红色'×' SVG图标（fill: #C7000B）及隐藏文字'移除'；其余卡片统一应用 opacity: 0.6；无蒙层，无动画延迟。",
+      "last_state": 1,
+      "file": "state_2.html"
+    },
+    {
+      "state_id": 3,
+      "state_name": "确认弹窗显示状态",
+      "description": "用户点击右上角‘移除’按钮后，全屏覆盖半透灰遮罩（rgba(0,0,0,0.5)），中央弹出白色模态卡片：标题‘确定要移除？’居中显示，正文‘该操作不可恢复，确认删除此卡片？’，下方并排两个按钮——左侧‘取消’（灰色文字，#666）、右侧‘确认’（红色文字，#C7000B）；遮罩下原工作台内容模糊虚化但可见布局。",
+      "implementation_method": "居中模态弹窗 (Modal/Dialog)：白色圆角卡片（16px radius，shadow: 0 4px 12px rgba(0,0,0,0.15)）；标题 '确定要移除？'（中文）/'Are you sure you want to remove?'（英文），正文字体14px灰色；按钮：左 '取消'/'Cancel'（#666），右 '确认'/'Confirm'（#C7000B），均14px字重500，水平居中排列；遮罩层 z-index: 1000，内容区域 z-index: 1001。",
+      "last_state": 2,
+      "file": "state_3.html"
+    },
+    {
+      "state_id": 4,
+      "state_name": "移除进行中动画状态",
+      "description": "用户点击‘确认’按钮后，模态弹窗立即淡出（opacity 1→0，200ms），同时‘分享获客’卡片执行向右滑出视口动画（transform: translateX(100vw) + opacity 1→0，300ms），下方卡片（原第4位）同步向上平移补位（transform: translateY(-120px)，缓动函数 ease-out），整个过程无空白帧，视觉连贯。",
+      "implementation_method": "卡片滑出+补位动画 (Card Exit + Layout Reflow Animation)：主卡片 CSS 动画：transition: transform 300ms ease-out, opacity 300ms ease-out；起始 transform: none；结束 transform: translateX(100vw)；下方卡片监听 DOM 移除后立即触发 translateY(-120px) 补位动画（200ms ease-out）；无 JS 强制重排，依赖 flex 布局自动收缩。",
+      "last_state": 3,
+      "file": "state_4.html"
+    },
+    {
+      "state_id": 5,
+      "state_name": "删除成功布局稳定状态",
+      "description": "动画结束后，‘分享获客’卡片完全消失，原第4、5、6…位卡片依次上移，形成紧凑列表；新第3位卡片顶部紧贴原第3位位置（无像素级空隙），所有卡片尺寸/间距/字体完全一致；顶部状态栏、底部Tab栏、页面滚动位置均未偏移；无抖动、无闪烁、无重绘痕迹。",
+      "implementation_method": "Flex 自动重排完成态 (Flex Layout Final State)：父容器 display: flex; flex-direction: column; gap: 8px；卡片移除后由浏览器原生 flex layout 引擎完成瞬时重排；所有卡片保持原有 class 名与内联样式，无额外 JS 插入或 style 覆盖；最终 DOM 中无空节点、无占位符。",
+      "last_state": 4,
+      "file": "state_5.html"
+    },
+    {
+      "state_id": 6,
+      "state_name": "取消操作还原状态",
+      "description": "用户在确认弹窗中点击‘取消’按钮，弹窗立即淡出（opacity 1→0，150ms），‘分享获客’卡片瞬间恢复原始位置与样式（无缩放/位移/透明度变化），其他卡片透明度同步恢复至100%；整个过程无回弹动画，界面状态瞬切回初始态，底部Tab栏仍保持‘营销’高亮。",
+      "implementation_method": "弹窗收起+卡片静默还原 (Modal Dismiss + Silent Card Restore)：弹窗 transition: opacity 150ms ease-in；关闭后卡片立即 reset 所有 transform/opacity 样式至初始值（通过 class 切换或 style.clear()）；其他卡片 opacity 恢复为 1；无 JS setTimeout 或 animation callback 触发。",
+      "last_state": 3,
+      "file": "state_6.html"
+    },
+    {
+      "state_id": 7,
+      "state_name": "网络失败重试状态",
+      "description": "用户点击‘确认’后，后端接口返回 504 或超时，卡片短暂回弹（scale 0.98→1.0，200ms），同时页面顶部出现红色横幅提示：‘网络异常，请重试’，含左侧感叹号图标与右侧‘重试’按钮（#C7000B）；横幅3秒后自动淡出，若用户提前点击‘重试’则重新发起请求。",
+      "implementation_method": "顶部横幅提示 (Top Snackbar)：红色背景（#C7000B）+ 白色文字，高度44px；左侧嵌入感叹号 SVG 图标（fill: white）；正文 '网络异常，请重试'/'Network error. Please try again.'；右侧按钮 '重试'/'Retry'（text-decoration: underline, color: white）；自动消失 transition: opacity 300ms；z-index: 1002；横幅不遮挡底部Tab栏。",
+      "last_state": 4,
+      "file": "state_7.html"
+    }
+  ]
+}

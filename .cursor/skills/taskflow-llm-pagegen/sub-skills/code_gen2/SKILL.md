@@ -6,8 +6,16 @@ disable-model-invocation: true
 
 # Taskflow Code Gen2
 
-This is a side-by-side copy of the `hw-components` branch codegen skill. It is
-kept separate from `sub-skills/codegen` so the default pipeline is not changed.
+This sub-skill is the self-contained React-first code generation path for the
+taskflow pagegen pipeline. All code_gen2 prompts, runner scripts, component
+references, CSS tokens, SSR aliases, and validation logic live under this
+`sub-skills/code_gen2` directory.
+
+External inputs are limited to the case files and prior pipeline outputs:
+blueprint, semantic registry, preprocessed HTML, and optional viewport values.
+Runtime dependencies such as Node packages and API keys are resolved from the
+current workspace environment, but no old taskflow codegen scripts or external
+application source trees are required.
 
 This sub-skill turns a confirmed blueprint and semantic registry into renderable
 state layers. Its component path is React-first: component generation produces
@@ -23,8 +31,10 @@ layers inject the rendered HTML/CSS.
 
 2. `sub-skills/page-layer`
    - Uses `SKILL.md` as the page-generation prompt.
-   - Injects blueprint, semantic registry, and state implementation model.
-   - Generates static HTML/CSS state layers.
+   - Injects blueprint, semantic registry, state implementation model, local
+     component metadata, and local `resources/global.css`.
+   - Generates placeholder-based static state layers.
+   - Replaces placeholders with React SSR output.
    - Performs keep-placeholder fill and Playwright screenshot validation.
 
 3. `sub-skills/component-codegen`
@@ -34,9 +44,21 @@ layers inject the rendered HTML/CSS.
    - For update operations, passes previous React source back to the model, not
      the rendered HTML.
 
+## Local Resources
+
+- `resources/components`: component reference source and README used by
+  state-model and component-codegen prompts.
+- `resources/global.css`: design tokens used by component-codegen and
+  page-layer.
+- `scripts/react_ssr.js`: local React SSR bundling, aliases, and shims.
+- `scripts/validate_component_render.js`: local component reference smoke test.
+- `.react_ssr`, `.render_check`, and `.tmp_verify`: generated runtime caches;
+  ignored by `.gitignore` and not required as source inputs.
+
 ## Output
 
 - `state_implementation/state_implementation_model.llm.json`
-- `llm_layer_codegen/llm_layer.generated.json`
+- `code_gen2_component_codegen/component_codegen.generated.json`
+- `code_gen2_llm_layer_codegen/llm_layer.generated.json`
 - `html/Index.state-model.llm-layers.html`
-- `llm_layer_codegen/auto_shots/state_layers_report.json`
+- `code_gen2_llm_layer_codegen/auto_shots/state_layers_report.json`

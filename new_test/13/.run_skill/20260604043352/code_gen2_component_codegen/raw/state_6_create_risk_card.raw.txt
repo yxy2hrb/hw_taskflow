@@ -1,0 +1,6 @@
+{
+  "id": "risk_card",
+  "reactCode": "import React from 'react'\nimport SectionLayout from '@/components/SectionLayout'\n\nexport default function RiskCard() {\n  return (\n    <div\n      data-component-id=\"risk_card\"\n      style={{\n        position: 'absolute',\n        left: 12,\n        top: 296,\n        width: 336,\n        height: 120,\n      }}\n    >\n      <SectionLayout variant=\"card\" title=\"风险提示\">\n        <div\n          style={{\n            height: 52,\n            backgroundColor: 'var(--color-bg-disabled)',\n            borderRadius: 'var(--radius-md)',\n          }}\n        />\n      </SectionLayout>\n    </div>\n  )\n}",
+  "css": "[data-component-id=\"risk_card\"] .bg-white { width: 100%; height: 100%; box-sizing: border-box; }",
+  "notes": "used SectionLayout (card variant), --color-bg-disabled, --radius-md, --spacing-lg; neutral placeholder filler for __hasChildren container"
+}

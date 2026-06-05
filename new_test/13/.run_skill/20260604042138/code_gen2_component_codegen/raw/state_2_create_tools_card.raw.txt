@@ -1,0 +1,6 @@
+{
+  "id": "tools_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"tools_card\"\n      style={{\n        position: 'absolute',\n        left: 12,\n        top: 948,\n        width: 336,\n        height: 140,\n      }}\n    >\n      <SectionLayout variant=\"card\" title=\"售前/售后工具\">\n        <div />\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used SectionLayout, absolute bbox positioning"
+}

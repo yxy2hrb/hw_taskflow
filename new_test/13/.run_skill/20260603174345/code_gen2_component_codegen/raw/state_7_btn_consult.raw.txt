@@ -1,0 +1,6 @@
+{
+  "id": "btn_consult",
+  "reactCode": "import React from 'react';\nimport { CapsuleButton } from '@/components/ui/Button';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"btn_consult\"\n      style={{\n        position: 'absolute',\n        left: 20,\n        top: 882,\n        width: 150,\n        height: 44,\n        display: 'flex',\n        alignItems: 'center',\n        justifyContent: 'center',\n      }}\n    >\n      <CapsuleButton\n        size=\"large\"\n        variant=\"secondary\"\n        className=\"w-full\"\n        onClick={() => {}}\n      >\n        采购咨询\n      </CapsuleButton>\n    </div>\n  );\n}",
+  "css": ".tf-cg-btn-consult{box-sizing:border-box;}",
+  "notes": "used CapsuleButton from @/components/ui/Button with variant='secondary' and size='large'; text '采购咨询' from component.text; absolute positioning via bbox [20,882,150,44]"
+}

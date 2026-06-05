@@ -1,0 +1,6 @@
+{
+  "id": "feature_text",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"feature_text\"\n      className=\"font-body-m\"\n      style={{\n        position: 'absolute',\n        left: 24,\n        top: 692,\n        width: 312,\n        height: 60,\n        color: 'var(--color-text-secondary)',\n      }}\n    >\n      提供1080P高清云会议体验，光学防蓝光，健康护眼，面向中小企业数字化办公。\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used font-body-m, --color-text-secondary"
+}

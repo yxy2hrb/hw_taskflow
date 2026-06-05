@@ -1,0 +1,89 @@
+{
+  "ok": true,
+  "input": {
+    "inputDir": "new_test/13",
+    "htmlPath": "new_test/13/html/Index.html",
+    "specPath": "new_test\\13\\spec.json"
+  },
+  "stages": {
+    "stage0_spec": {
+      "source": "qwen-vl-max",
+      "imagePath": "new_test/13/html/wps_doc_0.png.PNG",
+      "specPath": "new_test\\13\\spec.json",
+      "generated": true
+    },
+    "stage1_bbox": {
+      "source": "playwright",
+      "bboxCount": 235,
+      "adaptiveDepth": {
+        "target_ratio": 0.6,
+        "selected_depth": 16,
+        "forced_depth": null,
+        "coverage_ratio": 0.6369,
+        "total_div_count": 369,
+        "selected_div_count": 235
+      }
+    },
+    "stage2_semantic": {
+      "source": "qwen",
+      "attempts": [
+        {
+          "attempt": 1,
+          "bboxDir": "new_test\\13\\.result_bbox",
+          "annotated": 29,
+          "validation": {
+            "targets": [
+              "状态栏",
+              "标题栏",
+              "底部导航栏",
+              "卡片",
+              "列表",
+              "按钮",
+              "分类标签栏",
+              "产品分类区",
+              "商品列表区"
+            ],
+            "missing": [
+              "产品分类区",
+              "商品列表区"
+            ],
+            "ok": false
+          },
+          "coverage_check": {
+            "needs_deeper_depth": false,
+            "missing_targets": []
+          }
+        }
+      ],
+      "validation": {
+        "targets": [
+          "状态栏",
+          "标题栏",
+          "底部导航栏",
+          "卡片",
+          "列表",
+          "按钮",
+          "分类标签栏",
+          "产品分类区",
+          "商品列表区"
+        ],
+        "missing": [
+          "产品分类区",
+          "商品列表区"
+        ],
+        "ok": false
+      },
+      "annotatedCount": 29
+    },
+    "stage3_replace": {
+      "ok": true
+    }
+  },
+  "outputs": {
+    "annotated_body_bbox": "new_test\\13\\.result_bbox\\annotated_body_bbox.html",
+    "annotated_body_semantic": "new_test\\13\\.run_skill\\20260603092217\\preprocess\\annotated_body_semantic.html",
+    "spec_used": "new_test\\13\\.run_skill\\20260603092217\\preprocess\\spec.used.json",
+    "spec_generated": "new_test\\13\\.run_skill\\20260603092217\\preprocess\\spec.generated.json",
+    "output_html": "new_test\\13\\.run_skill\\20260603092217\\preprocess\\Index.preprocessed.html"
+  }
+}

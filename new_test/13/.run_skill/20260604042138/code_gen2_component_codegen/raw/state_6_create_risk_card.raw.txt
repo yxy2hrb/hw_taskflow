@@ -1,0 +1,6 @@
+{
+  "id": "risk_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\n\nexport default function RiskCard() {\n  return (\n    <div\n      data-component-id=\"risk_card\"\n      style={{\n        position: 'absolute',\n        left: 12,\n        top: 296,\n        width: 336,\n        height: 120,\n      }}\n    >\n      <SectionLayout variant=\"card\" title=\"风险提示\">\n        <div className=\"flex items-center\" style={{ padding: 'var(--spacing-md) 0', color: 'var(--color-text-secondary)' }}>\n          <span className=\"font-body-m\">当前配单暂无风险提示</span>\n        </div>\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used SectionLayout, absolute bbox positioning, font-body-m, --color-text-secondary, --spacing-md"
+}

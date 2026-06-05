@@ -1,0 +1,6 @@
+{
+  "id": "risk_action",
+  "reactCode": "import React from 'react';\nimport { TextButton } from '@/components/ui/Button';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"risk_action\">\n      <TextButton variant=\"primary\">去添加</TextButton>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used TextButton from @/components/ui/Button with variant='primary'"
+}

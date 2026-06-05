@@ -1,0 +1,326 @@
+[OLD]
+              <!-- 分享获客区：展示新增访客、兴趣访客、互动访客等周数据及同比变化 -->
+              <div id="126_395835" class="frame-126_395835" style="border:2px solid #46B1E3;position:relative;transform:translateX(100vw);opacity:0;transition:transform 300ms ease-out,opacity 300ms ease-out;">
+                <div id="126_395836" class="frame-126_395836">
+                  <div id="126_395837" class="rectangle-126_395837"></div>
+                  <div id="126_395838" class="frame-126_395838">
+                    <!-- 分享获客标题与更多按钮 -->
+                    <span id="126_395839" class="text-126_395839 fill-text文本色图标色color_text_secondary-14_468126-text text-单行行高headline标题headline_xs-14_290524">更多</span>
+                    <div id="126_395840" class="frame-126_395840">
+                      <div id="126_395841" class="frame-126_395841">
+                        <div id="126_395842" class="frame-126_395842">
+                          <div id="126_395843" class="rectangle-126_395843"></div>
+                          <div id="126_395844" class="vector-126_395844"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 分享获客数据项：新增访客(周)、兴趣访客(周)、互动访客(周) -->
+                  <div id="126_395849" class="frame-126_395849">
+                    <!-- 新增访客 (周) -->
+                    <div id="126_395850" class="frame-126_395850">
+                      <div id="126_395851" class="group-126_395851">
+                        <span id="126_395852" class="text-126_395852">99999+</span>
+                      </div>
+                      <div id="126_395853" class="frame-126_395853">
+                        <div id="126_395854" class="frame-126_395854">
+                          <span id="126_395855" class="text-126_395855">新增访客 (周)</span>
+                        </div>
+                        <div id="126_395856" class="frame-126_395856">
+                          <div id="126_395857" class="frame-126_395857">
+                            <span id="126_395858" class="text-126_395858">同比</span>
+                            <div id="126_395859" class="frame-126_395859">
+                              <div id="126_395860" class="vector-126_395860"></div>
+                            </div>
+                            <span id="126_395861" class="text-126_395861">2.6%</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- 兴趣访客 (周) -->
+                    <div id="126_395862" class="frame-126_395862">
+                      <div id="126_395863" class="group-126_395863">
+                        <span id="126_395864" class="text-126_395864">26728</span>
+                      </div>
+                      <div id="126_395865" class="frame-126_395865">
+                        <div id="126_395866" class="frame-126_395866">
+                          <span id="126_395867" class="text-126_395867">兴趣访客 (周)</span>
+                        </div>
+                        <div id="126_395868" class="frame-126_395868">
+                          <div id="126_395869" class="frame-126_395869">
+                            <span id="126_395870" class="text-126_395870">同比</span>
+                            <div id="126_395871" class="frame-126_395871">
+                              <div id="126_395872" class="vector-126_395872"></div>
+                            </div>
+                            <span id="126_395873" class="text-126_395873">2.6%</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- 互动访客 (周) -->
+                    <div id="126_395874" class="frame-126_395874">
+                      <div id="126_395875" class="group-126_395875">
+                        <span id="126_395876" class="text-126_395876">26000</span>
+                      </div>
+                      <div id="126_395877" class="frame-126_395877">
+                        <div id="126_395878" class="frame-126_395878">
+                          <span id="126_395879" class="text-126_395879">互动访客 (周)</span>
+                        </div>
+                        <div id="126_395880" class="frame-126_395880">
+                          <div id="126_395881" class="frame-126_395881">
+                            <span id="126_395882" class="text-126_395882">同比</span>
+                            <div id="126_395883" class="frame-126_395883">
+                              <div id="126_395884" class="vector-126_395884"></div>
+                            </div>
+                            <span id="126_395885" class="text-126_395885">2.6%</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 区域标题：分享获客 -->
+                  <div id="126_395886" class="frame-126_395886">
+                    <span id="126_395906" class="text-126_395906">分享获客</span>
+                  </div>
+                  <!-- 移除按钮：右上角圆形悬浮按钮 -->
+                  <div id="126_395907" class="frame-126_395907" style="position:absolute;top:8px;right:8px;width:32px;height:32px;border-radius:50%;background:#FFFFFF;box-shadow:0 2px 6px rgba(0,0,0,0.1);display:flex;align-items:center;justify-content:center;z-index:10;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" style="fill:#C7000B;"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                  </div>
+                </div>
+              </div>
+[NEW]
+
+[OLD]
+              <!-- 短视频能力中心区：展示短视频内容的TOP榜单和视频素材总数等数据 -->
+              <div id="126_395911" class="frame-126_395911" style="transform:translateY(-120px);transition:transform 200ms ease-out;">
+                <div id="126_395912" class="frame-126_395912">
+                  <div id="126_395913" class="rectangle-126_395913"></div>
+                  <!-- 区域标题：短视频能力中心 -->
+                  <div id="126_395914" class="frame-126_395914">
+                    <span id="126_395915" class="text-126_395915">短视频能力中心</span>
+                  </div>
+                  <!-- TOP1–TOP5 排行榜：展示不同短视频方向的播放/完成量及进度条 -->
+                  <div id="126_395916" class="frame-126_395916">
+                    <!-- TOP1 数通 -->
+                    <div id="126_395917" class="group-126_395917">
+                      <div id="126_395918" class="frame-126_395918">
+                        <div id="126_395919" class="frame-126_395919">
+                          <span id="126_395920" class="text-126_395920">TOP1</span>
+                          <span id="126_395921" class="text-126_395921">数通</span>
+                        </div>
+                        <span id="126_395922" class="text-126_395922">
+                          <span id="126_395922_1" class="span-126_395922_1">420</span>
+                          <span id="126_395922_2" class="span-126_395922_2">/980</span>
+                        </span>
+                      </div>
+                      <div id="126_395923" class="group-126_395923">
+                        <div id="126_395924" class="rectangle-126_395924"></div>
+                        <div id="126_395925" class="rectangle-126_395925"></div>
+                      </div>
+                    </div>
+                    <!-- TOP2 SOHO -->
+                    <div id="126_395927" class="group-126_395927">
+                      <div id="126_395928" class="frame-126_395928">
+                        <div id="126_395929" class="frame-126_395929">
+                          <span id="126_395930" class="text-126_395930">TOP2</span>
+                          <span id="126_395931" class="text-126_395931">SOHO</span>
+                        </div>
+                        <span id="126_395932" class="text-126_395932">
+                          <span id="126_395932_1" class="span-126_395932_1">260</span>
+                          <span id="126_395932_2" class="span-126_395932_2">/980</span>
+                        </span>
+                      </div>
+                      <div id="126_395933" class="group-126_395933">
+                        <div id="126_395934" class="rectangle-126_395934"></div>
+                        <div id="126_395935" class="rectangle-126_395935"></div>
+                      </div>
+                    </div>
+                    <!-- TOP3 数通网络安全 -->
+                    <div id="126_395936" class="group-126_395936">
+                      <div id="126_395937" class="frame-126_395937">
+                        <div id="126_395938" class="frame-126_395938">
+                          <span id="126_395939" class="text-126_395939">TOP3</span>
+                          <span id="126_395940" class="text-126_395940">数通网络安全</span>
+                        </div>
+                        <span id="126_395941" class="text-126_395941">
+                          <span id="126_395941_1" class="span-126_395941_1">130</span>
+                          <span id="126_395941_2" class="span-126_395941_2">/980</span>
+                        </span>
+                      </div>
+                      <div id="126_395942" class="group-126_395942">
+                        <div id="126_395943" class="rectangle-126_395943"></div>
+                        <div id="126_395944" class="rectangle-126_395944"></div>
+                      </div>
+                    </div>
+                    <!-- TOP4 光接入 -->
+                    <div id="126_395945" class="group-126_395945">
+                      <div id="126_395946" class="frame-126_395946">
+                        <div id="126_395947" class="frame-126_395947">
+                          <span id="126_395948" class="text-126_395948">TOP4</span>
+                          <span id="126_395949" class="text-126_395949">光接入</span>
+                        </div>
+                        <span id="126_395950" class="text-126_395950">
+                          <span id="126_395950_1" class="span-126_395950_1">76</span>
+                          <span id="126_395950_2" class="span-126_395950_2">/980</span>
+                        </span>
+                      </div>
+                      <div id="126_395951" class="group-126_395951">
+                        <div id="126_395952" class="rectangle-126_395952"></div>
+                        <div id="126_395953" class="rectangle-126_395953"></div>
+                      </div>
+                    </div>
+                    <!-- TOP5 小全光 -->
+                    <div id="126_395954" class="group-126_395954">
+                      <div id="126_395955" class="frame-126_395955">
+                        <div id="126_395956" class="frame-126_395956">
+                          <span id="126_395957" class="text-126_395957">TOP5</span>
+                          <span id="126_395958" class="text-126_395958">小全光</span>
+                        </div>
+                        <span id="126_395959" class="text-126_395959">
+                          <span id="126_395959_1" class="span-126_395959_1">28</span>
+                          <span id="126_395959_2" class="span-126_395959_2">/980</span>
+                        </span>
+                      </div>
+                      <div id="126_395960" class="group-126_395960">
+                        <div id="126_395961" class="rectangle-126_395961"></div>
+                        <div id="126_395962" class="rectangle-126_395962"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 视频素材总数及环比趋势数据 -->
+                  <div id="126_395963" class="frame-126_395963">
+                    <span id="126_395964" class="text-126_395964">875</span>
+                    <div id="126_395965" class="group-126_395965">
+                      <div id="126_395966" class="frame-126_395966">
+                        <span id="126_395967" class="text-126_395967">视频素材总数</span>
+                        <div id="126_395968" class="frame-126_395968">
+                          <div id="126_395969" class="frame-126_395969">
+                            <span id="126_395970" class="text-126_395970">环比 (周)</span>
+                            <div id="126_395971" class="frame-126_395971">
+                              <div id="126_395972" class="vector-126_395972"></div>
+                            </div>
+                            <span id="126_395973" class="text-126_395973">2.6%</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+[NEW]
+              <!-- 短视频能力中心区：展示短视频内容的TOP榜单和视频素材总数等数据 -->
+              <div id="126_395911" class="frame-126_395911">
+                <div id="126_395912" class="frame-126_395912">
+                  <div id="126_395913" class="rectangle-126_395913"></div>
+                  <!-- 区域标题：短视频能力中心 -->
+                  <div id="126_395914" class="frame-126_395914">
+                    <span id="126_395915" class="text-126_395915">短视频能力中心</span>
+                  </div>
+                  <!-- TOP1–TOP5 排行榜：展示不同短视频方向的播放/完成量及进度条 -->
+                  <div id="126_395916" class="frame-126_395916">
+                    <!-- TOP1 数通 -->
+                    <div id="126_395917" class="group-126_395917">
+                      <div id="126_395918" class="frame-126_395918">
+                        <div id="126_395919" class="frame-126_395919">
+                          <span id="126_395920" class="text-126_395920">TOP1</span>
+                          <span id="126_395921" class="text-126_395921">数通</span>
+                        </div>
+                        <span id="126_395922" class="text-126_395922">
+                          <span id="126_395922_1" class="span-126_395922_1">420</span>
+                          <span id="126_395922_2" class="span-126_395922_2">/980</span>
+                        </span>
+                      </div>
+                      <div id="126_395923" class="group-126_395923">
+                        <div id="126_395924" class="rectangle-126_395924"></div>
+                        <div id="126_395925" class="rectangle-126_395925"></div>
+                      </div>
+                    </div>
+                    <!-- TOP2 SOHO -->
+                    <div id="126_395927" class="group-126_395927">
+                      <div id="126_395928" class="frame-126_395928">
+                        <div id="126_395929" class="frame-126_395929">
+                          <span id="126_395930" class="text-126_395930">TOP2</span>
+                          <span id="126_395931" class="text-126_395931">SOHO</span>
+                        </div>
+                        <span id="126_395932" class="text-126_395932">
+                          <span id="126_395932_1" class="span-126_395932_1">260</span>
+                          <span id="126_395932_2" class="span-126_395932_2">/980</span>
+                        </span>
+                      </div>
+                      <div id="126_395933" class="group-126_395933">
+                        <div id="126_395934" class="rectangle-126_395934"></div>
+                        <div id="126_395935" class="rectangle-126_395935"></div>
+                      </div>
+                    </div>
+                    <!-- TOP3 数通网络安全 -->
+                    <div id="126_395936" class="group-126_395936">
+                      <div id="126_395937" class="frame-126_395937">
+                        <div id="126_395938" class="frame-126_395938">
+                          <span id="126_395939" class="text-126_395939">TOP3</span>
+                          <span id="126_395940" class="text-126_395940">数通网络安全</span>
+                        </div>
+                        <span id="126_395941" class="text-126_395941">
+                          <span id="126_395941_1" class="span-126_395941_1">130</span>
+                          <span id="126_395941_2" class="span-126_395941_2">/980</span>
+                        </span>
+                      </div>
+                      <div id="126_395942" class="group-126_395942">
+                        <div id="126_395943" class="rectangle-126_395943"></div>
+                        <div id="126_395944" class="rectangle-126_395944"></div>
+                      </div>
+                    </div>
+                    <!-- TOP4 光接入 -->
+                    <div id="126_395945" class="group-126_395945">
+                      <div id="126_395946" class="frame-126_395946">
+                        <div id="126_395947" class="frame-126_395947">
+                          <span id="126_395948" class="text-126_395948">TOP4</span>
+                          <span id="126_395949" class="text-126_395949">光接入</span>
+                        </div>
+                        <span id="126_395950" class="text-126_395950">
+                          <span id="126_395950_1" class="span-126_395950_1">76</span>
+                          <span id="126_395950_2" class="span-126_395950_2">/980</span>
+                        </span>
+                      </div>
+                      <div id="126_395951" class="group-126_395951">
+                        <div id="126_395952" class="rectangle-126_395952"></div>
+                        <div id="126_395953" class="rectangle-126_395953"></div>
+                      </div>
+                    </div>
+                    <!-- TOP5 小全光 -->
+                    <div id="126_395954" class="group-126_395954">
+                      <div id="126_395955" class="frame-126_395955">
+                        <div id="126_395956" class="frame-126_395956">
+                          <span id="126_395957" class="text-126_395957">TOP5</span>
+                          <span id="126_395958" class="text-126_395958">小全光</span>
+                        </div>
+                        <span id="126_395959" class="text-126_395959">
+                          <span id="126_395959_1" class="span-126_395959_1">28</span>
+                          <span id="126_395959_2" class="span-126_395959_2">/980</span>
+                        </span>
+                      </div>
+                      <div id="126_395960" class="group-126_395960">
+                        <div id="126_395961" class="rectangle-126_395961"></div>
+                        <div id="126_395962" class="rectangle-126_395962"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 视频素材总数及环比趋势数据 -->
+                  <div id="126_395963" class="frame-126_395963">
+                    <span id="126_395964" class="text-126_395964">875</span>
+                    <div id="126_395965" class="group-126_395965">
+                      <div id="126_395966" class="frame-126_395966">
+                        <span id="126_395967" class="text-126_395967">视频素材总数</span>
+                        <div id="126_395968" class="frame-126_395968">
+                          <div id="126_395969" class="frame-126_395969">
+                            <span id="126_395970" class="text-126_395970">环比 (周)</span>
+                            <div id="126_395971" class="frame-126_395971">
+                              <div id="126_395972" class="vector-126_395972"></div>
+                            </div>
+                            <span id="126_395973" class="text-126_395973">2.6%</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>

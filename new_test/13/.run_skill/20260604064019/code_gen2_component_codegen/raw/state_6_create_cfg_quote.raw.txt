@@ -1,0 +1,6 @@
+{
+  "id": "cfg_quote",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"cfg_quote\" className=\"tf-cg-quote\">\n      <span \n        className=\"font-headline-s\" \n        style={{ \n          fontSize: 'var(--font-headline-16)', \n          fontWeight: 'var(--font-weight-bold)', \n          color: 'var(--color-primary)' \n        }}\n      >\n        总报价：¥21,999.00\n      </span>\n    </div>\n  );\n}",
+  "css": ".tf-cg-quote {\n  display: inline-block;\n}",
+  "notes": "used custom Text implementation, font-headline-s, --font-headline-16, --font-weight-bold, --color-primary"
+}

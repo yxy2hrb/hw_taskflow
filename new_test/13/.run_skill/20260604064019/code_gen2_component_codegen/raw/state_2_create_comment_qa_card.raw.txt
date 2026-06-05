@@ -1,0 +1,6 @@
+{
+  "id": "comment_qa_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_qa_summary from './qa_summary';\nimport Child_qa_comment from './qa_comment';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"comment_qa_card\" className=\"tf-cg-comment-qa-card\">\n      <SectionLayout\n        variant=\"card\"\n        title=\"评论/问答\"\n        moreText=\"查看全部\"\n        onMore={() => {}}\n      >\n        <div className=\"tf-cg-comment-qa-content\">\n          <Child_qa_summary />\n          <Child_qa_comment />\n        </div>\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": ".tf-cg-comment-qa-card {\n  width: 100%;\n}\n.tf-cg-comment-qa-content {\n  display: flex;\n  flex-direction: column;\n  gap: var(--spacing-md);\n}",
+  "notes": "used SectionLayout, Child_qa_summary, Child_qa_comment, --spacing-md"
+}

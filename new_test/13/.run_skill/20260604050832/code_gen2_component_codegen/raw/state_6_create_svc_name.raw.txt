@@ -1,0 +1,6 @@
+{
+  "id": "svc_name",
+  "reactCode": "import React from 'react';\n\nexport default function SvcName() {\n  return (\n    <div\n      data-component-id=\"svc_name\"\n      className=\"font-body-m\"\n      style={{\n        fontSize: 'var(--font-body-14)',\n        lineHeight: 'var(--line-height-20)',\n        fontWeight: 'var(--font-weight-regular)',\n        color: 'var(--color-text-primary)'\n      }}\n    >\n      服务商：XX科技有限公司\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used font-body-m class and inline styles for Text component, --color-text-primary, --font-body-14, --line-height-20, --font-weight-regular"
+}

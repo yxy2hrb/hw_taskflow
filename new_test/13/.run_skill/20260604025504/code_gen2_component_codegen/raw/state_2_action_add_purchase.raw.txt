@@ -1,0 +1,6 @@
+{
+  "id": "action_add_purchase",
+  "reactCode": "import React from 'react';\nimport { CapsuleButton } from '@/components/ui/Button';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"action_add_purchase\"\n      style={{\n        position: 'absolute',\n        left: 136,\n        top: 1308,\n        width: 100,\n        height: 40,\n      }}\n    >\n      <CapsuleButton variant=\"secondary\" size=\"large\" className=\"w-full\">\n        加入采购单\n      </CapsuleButton>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used CapsuleButton from @/components/ui/Button, absolute positioning with bbox"
+}

@@ -1,0 +1,13 @@
+{
+  "state_id": 6,
+  "state_name": "取消恢复初始状态",
+  "components": [],
+  "missing": [],
+  "review": {
+    "ok": true,
+    "issues": [],
+    "fixedBlocks": "",
+    "reviewMs": 11439,
+    "screenshot": 145067
+  }
+}

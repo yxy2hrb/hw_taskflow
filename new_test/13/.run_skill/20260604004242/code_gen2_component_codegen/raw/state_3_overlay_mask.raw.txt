@@ -1,0 +1,6 @@
+{
+  "id": "overlay_mask",
+  "reactCode": "import React from 'react';\n\nexport default function OverlayMask() {\n  return (\n    <div\n      data-component-id=\"overlay_mask\"\n      style={{\n        position: 'absolute',\n        left: 0,\n        top: 0,\n        width: 360,\n        height: 1244,\n        zIndex: 50,\n        backgroundColor: 'rgba(0,0,0,0.5)',\n      }}\n    />\n  );\n}",
+  "css": "",
+  "notes": "Simple overlay mask component with absolute positioning, semi-transparent black background (rgba(0,0,0,0.5)), and zIndex 50. No component library sources used; inline styles applied directly."
+}

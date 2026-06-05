@@ -1,0 +1,6 @@
+{
+  "id": "risk_text",
+  "reactCode": "import React from 'react';\n\nexport default function RiskText() {\n  return (\n    <div\n      data-component-id=\"risk_text\"\n      style={{\n        position: 'absolute',\n        left: 24,\n        top: 308,\n        width: 220,\n        height: 40,\n        display: 'flex',\n        alignItems: 'center',\n      }}\n    >\n      <span\n        className=\"font-body-m\"\n        style={{\n          fontSize: 'var(--font-body-14)',\n          color: 'var(--color-warning)',\n        }}\n      >\n        当前方案可能缺少 UPS、路由器、防火墙等关键设备\n      </span>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used Text component pattern, font-body-m class, --font-body-14, --color-warning CSS variables"
+}

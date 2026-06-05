@@ -1,0 +1,6 @@
+{
+  "id": "risk_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_risk_text from './risk_text';\nimport Child_risk_btn from './risk_btn';\n\nexport default function RiskCard() {\n  return (\n    <div data-component-id=\"risk_card\">\n      <SectionLayout variant=\"card\" title=\"风险提示\">\n        <div className=\"flex items-center justify-between\">\n          <Child_risk_text />\n          <Child_risk_btn />\n        </div>\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used SectionLayout with variant='card', flex utility classes for inner layout to align text and button"
+}

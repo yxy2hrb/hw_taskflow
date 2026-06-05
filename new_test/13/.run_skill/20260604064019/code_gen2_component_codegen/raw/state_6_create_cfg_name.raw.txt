@@ -1,0 +1,6 @@
+{
+  "id": "cfg_name",
+  "reactCode": "import React from 'react';\n\nexport default function GeneratedComponent() {\n  return (\n    <span\n      data-component-id=\"cfg_name\"\n      className=\"font-headline-s\"\n      style={{\n        fontSize: 'var(--font-headline-16)',\n        fontWeight: 'var(--font-weight-medium)',\n        color: 'var(--color-text-primary)'\n      }}\n    >\n      我的配单\n    </span>\n  );\n}",
+  "css": "",
+  "notes": "used inline span for Text component, applied font-headline-s class and inline styles for fontSize, fontWeight, and color using CSS variables."
+}

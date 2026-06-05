@@ -1,0 +1,6 @@
+{
+  "id": "recommended_accessories_entry",
+  "reactCode": "import React from 'react';\nimport EntryCard from '@/components/EntryCard';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"recommended_accessories_entry\"\n      style={{\n        position: 'absolute',\n        left: 16,\n        top: 744,\n        width: 328,\n        height: 58,\n      }}\n    >\n      <EntryCard\n        card={{\n          id: 'acc',\n          title: '推荐配件',\n          subtitle: '查看相关配件',\n          color: '#1677ff',\n          bgColor: '#e6f4ff',\n          iconBg: '#1677ff',\n        }}\n        width={328}\n        height={58}\n      />\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used EntryCard component with absolute bbox positioning"
+}

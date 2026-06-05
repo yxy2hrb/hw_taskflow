@@ -1,0 +1,6 @@
+{
+  "id": "product_params",
+  "reactCode": "import React from 'react';\n\nexport default function ProductParams() {\n  return (\n    <div\n      data-component-id=\"product_params\"\n      className=\"tf-cg-product-params font-body-m\"\n      style={{\n        position: 'absolute',\n        left: 24,\n        top: 544,\n        width: 312,\n        minHeight: 60,\n        color: 'var(--color-text-secondary)',\n        whiteSpace: 'pre-wrap',\n        wordBreak: 'break-word'\n      }}\n    >\n      部件编码：EOS | 厂商：华为{'\\n'}核心参数：1080P高清云会议，光学防蓝光{'\\n'}描述：面向中小企业数字化办公，投屏、书写全面升级\n    </div>\n  );\n}",
+  "css": ".tf-cg-product-params {\n  box-sizing: border-box;\n}",
+  "notes": "used Text, font-body-m, --color-text-secondary, whiteSpace pre-wrap for multiline text"
+}

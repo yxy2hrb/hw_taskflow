@@ -1,0 +1,6 @@
+{
+  "id": "feature_card",
+  "reactCode": "import React from 'react'\nimport SectionLayout from '@/components/SectionLayout'\nimport Child_feat_text from './feat_text'\n\nexport default function FeatureCard() {\n  return (\n    <div \n      data-component-id=\"feature_card\" \n      style={{ \n        position: 'absolute', \n        left: 12, \n        top: 680, \n        width: 336, \n        height: 160 \n      }}\n    >\n      <SectionLayout variant=\"card\" title=\"方案特色\">\n        <Child_feat_text />\n      </SectionLayout>\n    </div>\n  )\n}",
+  "css": "",
+  "notes": "used SectionLayout, imported Child_feat_text, applied bbox as absolute layout"
+}

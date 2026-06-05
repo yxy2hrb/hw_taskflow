@@ -1,0 +1,2612 @@
+{
+  "generated_at": "2026-06-03T09:24:39.206Z",
+  "source": "new_test/13/.run_skill/20260603092217/preprocess/annotated_body_semantic.html",
+  "semantic_dom_registry": {
+    "悬浮功能按钮-左下角悬浮": {
+      "name": "悬浮功能按钮-左下角悬浮",
+      "selector": "#5_2727",
+      "id": "5_2727",
+      "area": "主体内容区域",
+      "component": "悬浮功能按钮",
+      "element": "左下角悬浮",
+      "bbox": [
+        8,
+        796,
+        60,
+        60
+      ],
+      "confidence": "中",
+      "text": "",
+      "inheritance_policy": "replaceable"
+    },
+    "底部导航栏-底部横向区域": {
+      "name": "底部导航栏-底部横向区域",
+      "selector": "#2_112933",
+      "id": "2_112933",
+      "area": "底部区域",
+      "component": "底部导航栏",
+      "element": "底部横向区域",
+      "bbox": [
+        0,
+        0,
+        360,
+        64
+      ],
+      "confidence": "高",
+      "text": "首页 商城 工作台 服务 我的",
+      "inheritance_policy": "persistent-or-hideable"
+    },
+    "底部导航项-首页-底部靠左": {
+      "name": "底部导航项-首页-底部靠左",
+      "selector": "#5_2341",
+      "id": "5_2341",
+      "area": "底部区域",
+      "component": "底部导航项-首页",
+      "element": "底部靠左",
+      "bbox": [
+        0,
+        882,
+        72,
+        44
+      ],
+      "confidence": "高",
+      "text": "首页",
+      "inheritance_policy": "persistent-or-hideable"
+    },
+    "底部导航项-商城当前选中-底部靠左中": {
+      "name": "底部导航项-商城当前选中-底部靠左中",
+      "selector": "#5_2348",
+      "id": "5_2348",
+      "area": "底部区域",
+      "component": "底部导航项-商城（当前选中）",
+      "element": "底部靠左中",
+      "bbox": [
+        72,
+        882,
+        72,
+        44
+      ],
+      "confidence": "高",
+      "text": "商城",
+      "inheritance_policy": "persistent-or-hideable"
+    },
+    "底部导航项-工作台-底部居中": {
+      "name": "底部导航项-工作台-底部居中",
+      "selector": "#5_2355",
+      "id": "5_2355",
+      "area": "底部区域",
+      "component": "底部导航项-工作台",
+      "element": "底部居中",
+      "bbox": [
+        144,
+        882,
+        72,
+        44
+      ],
+      "confidence": "高",
+      "text": "工作台",
+      "inheritance_policy": "persistent-or-hideable"
+    },
+    "底部导航项-服务-底部靠右中": {
+      "name": "底部导航项-服务-底部靠右中",
+      "selector": "#5_2364",
+      "id": "5_2364",
+      "area": "底部区域",
+      "component": "底部导航项-服务",
+      "element": "底部靠右中",
+      "bbox": [
+        216,
+        882,
+        72,
+        44
+      ],
+      "confidence": "高",
+      "text": "服务",
+      "inheritance_policy": "persistent-or-hideable"
+    },
+    "底部导航项-我的-底部靠右": {
+      "name": "底部导航项-我的-底部靠右",
+      "selector": "#5_2371",
+      "id": "5_2371",
+      "area": "底部区域",
+      "component": "底部导航项-我的",
+      "element": "底部靠右",
+      "bbox": [
+        288,
+        882,
+        72,
+        44
+      ],
+      "confidence": "高",
+      "text": "我的",
+      "inheritance_policy": "persistent-or-hideable"
+    },
+    "顶部状态栏-顶部横向区域": {
+      "name": "顶部状态栏-顶部横向区域",
+      "selector": "#2_112936",
+      "id": "2_112936",
+      "area": "顶部区域",
+      "component": "顶部状态栏",
+      "element": "顶部横向区域",
+      "bbox": [
+        0,
+        0,
+        360,
+        36
+      ],
+      "confidence": "高",
+      "text": "08:08",
+      "inheritance_policy": "persistent-or-hideable"
+    },
+    "状态栏右侧系统图标组-顶部靠右": {
+      "name": "状态栏右侧系统图标组-顶部靠右",
+      "selector": "#5_1478",
+      "id": "5_1478",
+      "area": "顶部区域",
+      "component": "状态栏右侧系统图标组",
+      "element": "顶部靠右",
+      "bbox": [
+        240,
+        12,
+        96,
+        13
+      ],
+      "confidence": "高",
+      "text": "",
+      "inheritance_policy": "persistent-or-hideable"
+    },
+    "顶部标题栏与Tab导航区-顶部横向区域": {
+      "name": "顶部标题栏与Tab导航区-顶部横向区域",
+      "selector": "#2_112937",
+      "id": "2_112937",
+      "area": "顶部区域",
+      "component": "顶部标题栏与Tab导航区",
+      "element": "顶部横向区域",
+      "bbox": [
+        0,
+        36,
+        360,
+        56
+      ],
+      "confidence": "高",
+      "text": "产品 配单 门店 我的自定义",
+      "inheritance_policy": "persistent-or-hideable"
+    },
+    "当前选中的标题Tab-顶部靠左": {
+      "name": "当前选中的标题Tab-顶部靠左",
+      "selector": "#2_112939",
+      "id": "2_112939",
+      "area": "顶部区域",
+      "component": "当前选中的标题Tab",
+      "element": "顶部靠左",
+      "bbox": [
+        20,
+        48,
+        48,
+        32
+      ],
+      "confidence": "高",
+      "text": "产品",
+      "inheritance_policy": "hideable"
+    },
+    "顶部功能图标组-顶部靠右": {
+      "name": "顶部功能图标组-顶部靠右",
+      "selector": "#2_112943",
+      "id": "2_112943",
+      "area": "顶部区域",
+      "component": "顶部功能图标组",
+      "element": "顶部靠右",
+      "bbox": [
+        212,
+        44,
+        136,
+        40
+      ],
+      "confidence": "高",
+      "text": "我的自定义",
+      "inheritance_policy": "hideable"
+    },
+    "搜索功能图标-顶部靠右": {
+      "name": "搜索功能图标-顶部靠右",
+      "selector": "#2_112944",
+      "id": "2_112944",
+      "area": "顶部区域",
+      "component": "搜索功能图标",
+      "element": "顶部靠右",
+      "bbox": [
+        212,
+        44,
+        40,
+        40
+      ],
+      "confidence": "高",
+      "text": "",
+      "inheritance_policy": "hideable"
+    },
+    "购物车功能图标-顶部靠右": {
+      "name": "购物车功能图标-顶部靠右",
+      "selector": "#2_112945",
+      "id": "2_112945",
+      "area": "顶部区域",
+      "component": "购物车功能图标",
+      "element": "顶部靠右",
+      "bbox": [
+        260,
+        44,
+        40,
+        40
+      ],
+      "confidence": "高",
+      "text": "",
+      "inheritance_policy": "hideable"
+    },
+    "我的自定义功能图标-顶部靠右": {
+      "name": "我的自定义功能图标-顶部靠右",
+      "selector": "#2_112952",
+      "id": "2_112952",
+      "area": "顶部区域",
+      "component": "我的自定义功能图标",
+      "element": "顶部靠右",
+      "bbox": [
+        308,
+        44,
+        40,
+        40
+      ],
+      "confidence": "高",
+      "text": "我的自定义",
+      "inheritance_policy": "hideable"
+    },
+    "横向分类标签栏-顶部横向区域": {
+      "name": "横向分类标签栏-顶部横向区域",
+      "selector": "#2_112953",
+      "id": "2_112953",
+      "area": "顶部区域",
+      "component": "横向分类标签栏",
+      "element": "顶部横向区域",
+      "bbox": [
+        0,
+        92,
+        360,
+        92
+      ],
+      "confidence": "高",
+      "text": "光接入 存储 协作平板 视频会议 智能安防 广场屏 昇腾APN 计算 全部",
+      "inheritance_policy": "hideable"
+    },
+    "当前选中的分类标签项-中间靠左": {
+      "name": "当前选中的分类标签项-中间靠左",
+      "selector": "#5_2177",
+      "id": "5_2177",
+      "area": "顶部区域",
+      "component": "当前选中的分类标签项",
+      "element": "中间靠左",
+      "bbox": [
+        144,
+        101,
+        64,
+        66
+      ],
+      "confidence": "高",
+      "text": "协作平板",
+      "inheritance_policy": "hideable"
+    },
+    "全部分类展开按钮-顶部靠右": {
+      "name": "全部分类展开按钮-顶部靠右",
+      "selector": "#5_2291",
+      "id": "5_2291",
+      "area": "顶部区域",
+      "component": "全部分类展开按钮",
+      "element": "顶部靠右",
+      "bbox": [
+        316,
+        100,
+        44,
+        68
+      ],
+      "confidence": "高",
+      "text": "全部",
+      "inheritance_policy": "hideable"
+    },
+    "左侧子分类导航栏-左侧纵向区域": {
+      "name": "左侧子分类导航栏-左侧纵向区域",
+      "selector": "#2_112955",
+      "id": "2_112955",
+      "area": "主体内容区域",
+      "component": "左侧子分类导航栏",
+      "element": "左侧纵向区域",
+      "bbox": [
+        0,
+        184,
+        72,
+        752
+      ],
+      "confidence": "高",
+      "text": "协作平板 其他",
+      "inheritance_policy": "replaceable"
+    },
+    "当前选中的左侧导航项-左侧靠上": {
+      "name": "当前选中的左侧导航项-左侧靠上",
+      "selector": "#5_1472",
+      "id": "5_1472",
+      "area": "主体内容区域",
+      "component": "当前选中的左侧导航项",
+      "element": "左侧靠上",
+      "bbox": [
+        0,
+        184,
+        72,
+        46
+      ],
+      "confidence": "高",
+      "text": "协作平板",
+      "inheritance_policy": "replaceable"
+    },
+    "右侧商品列表及筛选区-右侧主体区域": {
+      "name": "右侧商品列表及筛选区-右侧主体区域",
+      "selector": "#2_112956",
+      "id": "2_112956",
+      "area": "主体内容区域",
+      "component": "右侧商品列表及筛选区",
+      "element": "右侧主体区域",
+      "bbox": [
+        80,
+        184,
+        280,
+        692
+      ],
+      "confidence": "高",
+      "text": "IdeaHub S2系列 IdeaHub B系列 筛选项3 筛选项4 筛选项5 筛选项6 筛选 售罄 IdeaHub B3 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝",
+      "inheritance_policy": "replaceable"
+    },
+    "子系列分类标签-右侧靠上": {
+      "name": "子系列分类标签-右侧靠上",
+      "selector": "#5_2642",
+      "id": "5_2642",
+      "area": "主体内容区域",
+      "component": "子系列分类标签",
+      "element": "右侧靠上",
+      "bbox": [
+        80,
+        194,
+        115,
+        28
+      ],
+      "confidence": "高",
+      "text": "IdeaHub S2系列",
+      "inheritance_policy": "replaceable"
+    },
+    "筛选条件按钮-右侧靠上": {
+      "name": "筛选条件按钮-右侧靠上",
+      "selector": "#5_2720",
+      "id": "5_2720",
+      "area": "主体内容区域",
+      "component": "筛选条件按钮",
+      "element": "右侧靠上",
+      "bbox": [
+        296,
+        237,
+        48,
+        18
+      ],
+      "confidence": "高",
+      "text": "筛选",
+      "inheritance_policy": "replaceable"
+    },
+    "商品卡片售罄状态-右侧列表第一项": {
+      "name": "商品卡片售罄状态-右侧列表第一项",
+      "selector": "#2_112960",
+      "id": "2_112960",
+      "area": "主体内容区域",
+      "component": "商品卡片（售罄状态）",
+      "element": "右侧列表第一项",
+      "bbox": [
+        80,
+        268,
+        264,
+        96
+      ],
+      "confidence": "高",
+      "text": "售罄 IdeaHub B3 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会",
+      "inheritance_policy": "replaceable"
+    },
+    "商品卡片热销状态-右侧列表第二项": {
+      "name": "商品卡片热销状态-右侧列表第二项",
+      "selector": "#2_112970",
+      "id": "2_112970",
+      "area": "主体内容区域",
+      "component": "商品卡片（热销状态）",
+      "element": "右侧列表第二项",
+      "bbox": [
+        80,
+        372,
+        264,
+        114
+      ],
+      "confidence": "高",
+      "text": "热销 IdeaHub B2 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会",
+      "inheritance_policy": "replaceable"
+    },
+    "商品卡片新品状态-右侧列表第三项": {
+      "name": "商品卡片新品状态-右侧列表第三项",
+      "selector": "#2_112983",
+      "id": "2_112983",
+      "area": "主体内容区域",
+      "component": "商品卡片（新品状态）",
+      "element": "右侧列表第三项",
+      "bbox": [
+        80,
+        494,
+        264,
+        86
+      ],
+      "confidence": "高",
+      "text": "新品 IdeaHub B2 Base-75 寸 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、经理室、开",
+      "inheritance_policy": "replaceable"
+    },
+    "商品卡片配件类-右侧列表第四项": {
+      "name": "商品卡片配件类-右侧列表第四项",
+      "selector": "#2_112996",
+      "id": "2_112996",
+      "area": "主体内容区域",
+      "component": "商品卡片（配件类）",
+      "element": "右侧列表第四项",
+      "bbox": [
+        80,
+        588,
+        264,
+        90
+      ],
+      "confidence": "高",
+      "text": "IdeaShare KEY （Type-A） 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、经理室、开放",
+      "inheritance_policy": "replaceable"
+    },
+    "商品卡片即将上市状态-右侧列表第五项": {
+      "name": "商品卡片即将上市状态-右侧列表第五项",
+      "selector": "#2_113005",
+      "id": "2_113005",
+      "area": "主体内容区域",
+      "component": "商品卡片（即将上市状态）",
+      "element": "右侧列表第五项",
+      "bbox": [
+        80,
+        686,
+        264,
+        86
+      ],
+      "confidence": "高",
+      "text": "即将上市 IdeaHub S2 - 86寸 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、经理室、开放办",
+      "inheritance_policy": "replaceable"
+    },
+    "商品卡片清库状态-右侧列表第六项": {
+      "name": "商品卡片清库状态-右侧列表第六项",
+      "selector": "#2_113014",
+      "id": "2_113014",
+      "area": "主体内容区域",
+      "component": "商品卡片（清库状态）",
+      "element": "右侧列表第六项",
+      "bbox": [
+        80,
+        780,
+        264,
+        96
+      ],
+      "confidence": "高",
+      "text": "清库 IdeaHub B2 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会",
+      "inheritance_policy": "replaceable"
+    },
+    "底部导航项-首页-文本-首页": {
+      "name": "底部导航项-首页-文本-首页",
+      "selector": "#5_2347",
+      "id": "5_2347",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "首页",
+      "bbox": [
+        21,
+        882,
+        30,
+        30
+      ],
+      "confidence": "high",
+      "text": "首页",
+      "inheritance_policy": "hideable"
+    },
+    "底部导航项-商城当前选中-文本-商城": {
+      "name": "底部导航项-商城当前选中-文本-商城",
+      "selector": "#5_2354",
+      "id": "5_2354",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "商城",
+      "bbox": [
+        93,
+        882,
+        30,
+        30
+      ],
+      "confidence": "high",
+      "text": "商城",
+      "inheritance_policy": "hideable"
+    },
+    "底部导航项-工作台-文本-工作台": {
+      "name": "底部导航项-工作台-文本-工作台",
+      "selector": "#5_2363",
+      "id": "5_2363",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "工作台",
+      "bbox": [
+        165,
+        882,
+        30,
+        30
+      ],
+      "confidence": "high",
+      "text": "工作台",
+      "inheritance_policy": "hideable"
+    },
+    "底部导航项-服务-文本-服务": {
+      "name": "底部导航项-服务-文本-服务",
+      "selector": "#5_2370",
+      "id": "5_2370",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "服务",
+      "bbox": [
+        237,
+        882,
+        30,
+        30
+      ],
+      "confidence": "high",
+      "text": "服务",
+      "inheritance_policy": "hideable"
+    },
+    "底部导航项-我的-文本-我的": {
+      "name": "底部导航项-我的-文本-我的",
+      "selector": "#5_2377",
+      "id": "5_2377",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "我的",
+      "bbox": [
+        309,
+        882,
+        30,
+        30
+      ],
+      "confidence": "high",
+      "text": "我的",
+      "inheritance_policy": "hideable"
+    },
+    "0808-文本": {
+      "name": "0808-文本",
+      "selector": "#5_1477",
+      "id": "5_1477",
+      "area": "content-area",
+      "component": "text",
+      "element": "08:08",
+      "bbox": [
+        0,
+        0,
+        360,
+        36
+      ],
+      "confidence": "high",
+      "text": "08:08",
+      "inheritance_policy": "hideable"
+    },
+    "产品-文本": {
+      "name": "产品-文本",
+      "selector": "#5_342",
+      "id": "5_342",
+      "area": "content-area",
+      "component": "text",
+      "element": "产品",
+      "bbox": [
+        20,
+        48,
+        48,
+        32
+      ],
+      "confidence": "high",
+      "text": "产品",
+      "inheritance_policy": "hideable"
+    },
+    "配单-文本": {
+      "name": "配单-文本",
+      "selector": "#5_367",
+      "id": "5_367",
+      "area": "content-area",
+      "component": "text",
+      "element": "配单",
+      "bbox": [
+        84,
+        52,
+        36,
+        24
+      ],
+      "confidence": "high",
+      "text": "配单",
+      "inheritance_policy": "hideable"
+    },
+    "门店-文本": {
+      "name": "门店-文本",
+      "selector": "#5_267",
+      "id": "5_267",
+      "area": "content-area",
+      "component": "text",
+      "element": "门店",
+      "bbox": [
+        136,
+        52,
+        36,
+        24
+      ],
+      "confidence": "high",
+      "text": "门店",
+      "inheritance_policy": "hideable"
+    },
+    "我的自定义-文本": {
+      "name": "我的自定义-文本",
+      "selector": "#5_2340",
+      "id": "5_2340",
+      "area": "content-area",
+      "component": "text",
+      "element": "我的自定义",
+      "bbox": [
+        331,
+        55,
+        4,
+        4
+      ],
+      "confidence": "high",
+      "text": "我的自定义",
+      "inheritance_policy": "hideable"
+    },
+    "光接入-文本": {
+      "name": "光接入-文本",
+      "selector": "#5_2157",
+      "id": "5_2157",
+      "area": "content-area",
+      "component": "text",
+      "element": "光接入",
+      "bbox": [
+        21,
+        119,
+        39,
+        12
+      ],
+      "confidence": "high",
+      "text": "光接入",
+      "inheritance_policy": "hideable"
+    },
+    "存储-文本": {
+      "name": "存储-文本",
+      "selector": "#5_2176",
+      "id": "5_2176",
+      "area": "content-area",
+      "component": "text",
+      "element": "存储",
+      "bbox": [
+        88,
+        105,
+        40,
+        40
+      ],
+      "confidence": "high",
+      "text": "存储",
+      "inheritance_policy": "hideable"
+    },
+    "协作平板-文本": {
+      "name": "协作平板-文本",
+      "selector": "#5_2195",
+      "id": "5_2195",
+      "area": "content-area",
+      "component": "text",
+      "element": "协作平板",
+      "bbox": [
+        159,
+        113,
+        33,
+        24
+      ],
+      "confidence": "high",
+      "text": "协作平板",
+      "inheritance_policy": "hideable"
+    },
+    "视频会议-文本": {
+      "name": "视频会议-文本",
+      "selector": "#5_2214",
+      "id": "5_2214",
+      "area": "content-area",
+      "component": "text",
+      "element": "视频会议",
+      "bbox": [
+        227,
+        114,
+        33,
+        19
+      ],
+      "confidence": "high",
+      "text": "视频会议",
+      "inheritance_policy": "hideable"
+    },
+    "智能安防-文本": {
+      "name": "智能安防-文本",
+      "selector": "#5_2233",
+      "id": "5_2233",
+      "area": "content-area",
+      "component": "text",
+      "element": "智能安防",
+      "bbox": [
+        295,
+        115,
+        33,
+        21
+      ],
+      "confidence": "high",
+      "text": "智能安防",
+      "inheritance_policy": "hideable"
+    },
+    "广场屏-文本": {
+      "name": "广场屏-文本",
+      "selector": "#5_2252",
+      "id": "5_2252",
+      "area": "content-area",
+      "component": "text",
+      "element": "广场屏",
+      "bbox": [
+        363,
+        111,
+        33,
+        28
+      ],
+      "confidence": "high",
+      "text": "广场屏",
+      "inheritance_policy": "hideable"
+    },
+    "昇腾APN-文本": {
+      "name": "昇腾APN-文本",
+      "selector": "#5_2271",
+      "id": "5_2271",
+      "area": "content-area",
+      "component": "text",
+      "element": "昇腾APN",
+      "bbox": [
+        431,
+        113,
+        33,
+        24
+      ],
+      "confidence": "high",
+      "text": "昇腾APN",
+      "inheritance_policy": "hideable"
+    },
+    "计算-文本": {
+      "name": "计算-文本",
+      "selector": "#5_2290",
+      "id": "5_2290",
+      "area": "content-area",
+      "component": "text",
+      "element": "计算",
+      "bbox": [
+        499,
+        113,
+        33,
+        24
+      ],
+      "confidence": "high",
+      "text": "计算",
+      "inheritance_policy": "hideable"
+    },
+    "全部-文本": {
+      "name": "全部-文本",
+      "selector": "#5_2292",
+      "id": "5_2292",
+      "area": "content-area",
+      "component": "text",
+      "element": "全部",
+      "bbox": [
+        316,
+        100,
+        44,
+        68
+      ],
+      "confidence": "high",
+      "text": "全部",
+      "inheritance_policy": "hideable"
+    },
+    "协作平板-文本-2": {
+      "name": "协作平板-文本-2",
+      "selector": "#5_1474",
+      "id": "5_1474",
+      "area": "content-area",
+      "component": "text",
+      "element": "协作平板",
+      "bbox": [
+        0,
+        199,
+        2,
+        16
+      ],
+      "confidence": "high",
+      "text": "协作平板",
+      "inheritance_policy": "hideable"
+    },
+    "其他-文本": {
+      "name": "其他-文本",
+      "selector": "#5_1476",
+      "id": "5_1476",
+      "area": "content-area",
+      "component": "text",
+      "element": "其他",
+      "bbox": [
+        0,
+        230,
+        72,
+        46
+      ],
+      "confidence": "high",
+      "text": "其他",
+      "inheritance_policy": "hideable"
+    },
+    "IdeaHub-S2系列-文本": {
+      "name": "IdeaHub-S2系列-文本",
+      "selector": "#5_2647",
+      "id": "5_2647",
+      "area": "content-area",
+      "component": "text",
+      "element": "IdeaHub S2系列",
+      "bbox": [
+        80,
+        194,
+        115,
+        28
+      ],
+      "confidence": "high",
+      "text": "IdeaHub S2系列",
+      "inheritance_policy": "hideable"
+    },
+    "IdeaHub-B系列-文本": {
+      "name": "IdeaHub-B系列-文本",
+      "selector": "#5_2659",
+      "id": "5_2659",
+      "area": "content-area",
+      "component": "text",
+      "element": "IdeaHub B系列",
+      "bbox": [
+        203,
+        194,
+        108,
+        28
+      ],
+      "confidence": "high",
+      "text": "IdeaHub B系列",
+      "inheritance_policy": "hideable"
+    },
+    "筛选项3-文本": {
+      "name": "筛选项3-文本",
+      "selector": "#5_2671",
+      "id": "5_2671",
+      "area": "content-area",
+      "component": "text",
+      "element": "筛选项3",
+      "bbox": [
+        319,
+        194,
+        67,
+        28
+      ],
+      "confidence": "high",
+      "text": "筛选项3",
+      "inheritance_policy": "hideable"
+    },
+    "筛选项4-文本": {
+      "name": "筛选项4-文本",
+      "selector": "#5_2683",
+      "id": "5_2683",
+      "area": "content-area",
+      "component": "text",
+      "element": "筛选项4",
+      "bbox": [
+        394,
+        194,
+        67,
+        28
+      ],
+      "confidence": "high",
+      "text": "筛选项4",
+      "inheritance_policy": "hideable"
+    },
+    "筛选项5-文本": {
+      "name": "筛选项5-文本",
+      "selector": "#5_2695",
+      "id": "5_2695",
+      "area": "content-area",
+      "component": "text",
+      "element": "筛选项5",
+      "bbox": [
+        469,
+        194,
+        67,
+        28
+      ],
+      "confidence": "high",
+      "text": "筛选项5",
+      "inheritance_policy": "hideable"
+    },
+    "筛选项6-文本": {
+      "name": "筛选项6-文本",
+      "selector": "#5_2707",
+      "id": "5_2707",
+      "area": "content-area",
+      "component": "text",
+      "element": "筛选项6",
+      "bbox": [
+        544,
+        194,
+        67,
+        28
+      ],
+      "confidence": "high",
+      "text": "筛选项6",
+      "inheritance_policy": "hideable"
+    },
+    "筛选-文本": {
+      "name": "筛选-文本",
+      "selector": "#5_2721",
+      "id": "5_2721",
+      "area": "content-area",
+      "component": "text",
+      "element": "筛选",
+      "bbox": [
+        296,
+        237,
+        48,
+        18
+      ],
+      "confidence": "high",
+      "text": "筛选",
+      "inheritance_policy": "hideable"
+    },
+    "售罄-文本": {
+      "name": "售罄-文本",
+      "selector": "#5_1431",
+      "id": "5_1431",
+      "area": "content-area",
+      "component": "text",
+      "element": "售罄",
+      "bbox": [
+        80,
+        268,
+        36,
+        20
+      ],
+      "confidence": "high",
+      "text": "售罄",
+      "inheritance_policy": "hideable"
+    },
+    "IdeaHub-B3-Base-75-寸-文本": {
+      "name": "IdeaHub-B3-Base-75-寸-文本",
+      "selector": "#2_112964",
+      "id": "2_112964",
+      "area": "content-area",
+      "component": "text",
+      "element": "IdeaHub B3 Base-75 寸",
+      "bbox": [
+        164,
+        276,
+        168,
+        80
+      ],
+      "confidence": "high",
+      "text": "IdeaHub B3 Base-75 寸",
+      "inheritance_policy": "hideable"
+    },
+    "EOS-文本": {
+      "name": "EOS-文本",
+      "selector": "#5_2059",
+      "id": "5_2059",
+      "area": "content-area",
+      "component": "text",
+      "element": "EOS",
+      "bbox": [
+        164,
+        296,
+        168,
+        16
+      ],
+      "confidence": "high",
+      "text": "EOS",
+      "inheritance_policy": "hideable"
+    },
+    "非现货-文本": {
+      "name": "非现货-文本",
+      "selector": "#5_2062",
+      "id": "5_2062",
+      "area": "content-area",
+      "component": "text",
+      "element": "非现货",
+      "bbox": [
+        164,
+        296,
+        168,
+        16
+      ],
+      "confidence": "high",
+      "text": "非现货",
+      "inheritance_policy": "hideable"
+    },
+    "2199900-文本": {
+      "name": "2199900-文本",
+      "selector": "#5_432",
+      "id": "5_432",
+      "area": "content-area",
+      "component": "text",
+      "element": "￥21,999.00",
+      "bbox": [
+        164,
+        334,
+        168,
+        22
+      ],
+      "confidence": "high",
+      "text": "￥21,999.00",
+      "inheritance_policy": "hideable"
+    },
+    "1-文本": {
+      "name": "1-文本",
+      "selector": "#5_2628",
+      "id": "5_2628",
+      "area": "content-area",
+      "component": "text",
+      "element": "1",
+      "bbox": [
+        164,
+        334,
+        168,
+        22
+      ],
+      "confidence": "high",
+      "text": "1",
+      "inheritance_policy": "hideable"
+    },
+    "热销-文本": {
+      "name": "热销-文本",
+      "selector": "#5_1423",
+      "id": "5_1423",
+      "area": "content-area",
+      "component": "text",
+      "element": "热销",
+      "bbox": [
+        80,
+        372,
+        36,
+        20
+      ],
+      "confidence": "high",
+      "text": "热销",
+      "inheritance_policy": "hideable"
+    },
+    "IdeaHub-B2-Base-75-寸-文本": {
+      "name": "IdeaHub-B2-Base-75-寸-文本",
+      "selector": "#2_112974",
+      "id": "2_112974",
+      "area": "content-area",
+      "component": "text",
+      "element": "IdeaHub B2 Base-75 寸",
+      "bbox": [
+        164,
+        380,
+        168,
+        98
+      ],
+      "confidence": "high",
+      "text": "IdeaHub B2 Base-75 寸",
+      "inheritance_policy": "hideable"
+    },
+    "EOS-文本-2": {
+      "name": "EOS-文本-2",
+      "selector": "#5_2074",
+      "id": "5_2074",
+      "area": "content-area",
+      "component": "text",
+      "element": "EOS",
+      "bbox": [
+        164,
+        400,
+        168,
+        16
+      ],
+      "confidence": "high",
+      "text": "EOS",
+      "inheritance_policy": "hideable"
+    },
+    "非现货-文本-2": {
+      "name": "非现货-文本-2",
+      "selector": "#5_2077",
+      "id": "5_2077",
+      "area": "content-area",
+      "component": "text",
+      "element": "非现货",
+      "bbox": [
+        164,
+        400,
+        168,
+        16
+      ],
+      "confidence": "high",
+      "text": "非现货",
+      "inheritance_policy": "hideable"
+    },
+    "金牌价-文本": {
+      "name": "金牌价-文本",
+      "selector": "#5_245",
+      "id": "5_245",
+      "area": "content-area",
+      "component": "text",
+      "element": "金牌价",
+      "bbox": [
+        164,
+        438,
+        168,
+        14
+      ],
+      "confidence": "high",
+      "text": "金牌价",
+      "inheritance_policy": "hideable"
+    },
+    "3290000-文本": {
+      "name": "3290000-文本",
+      "selector": "#2_112979",
+      "id": "2_112979",
+      "area": "content-area",
+      "component": "text",
+      "element": "¥32,900.00",
+      "bbox": [
+        164,
+        438,
+        168,
+        14
+      ],
+      "confidence": "high",
+      "text": "¥32,900.00",
+      "inheritance_policy": "hideable"
+    },
+    "2199900-文本-2": {
+      "name": "2199900-文本-2",
+      "selector": "#5_495",
+      "id": "5_495",
+      "area": "content-area",
+      "component": "text",
+      "element": "￥21,999.00",
+      "bbox": [
+        164,
+        456,
+        168,
+        22
+      ],
+      "confidence": "high",
+      "text": "￥21,999.00",
+      "inheritance_policy": "hideable"
+    },
+    "1-文本-2": {
+      "name": "1-文本-2",
+      "selector": "#5_2613",
+      "id": "5_2613",
+      "area": "content-area",
+      "component": "text",
+      "element": "1",
+      "bbox": [
+        164,
+        456,
+        168,
+        22
+      ],
+      "confidence": "high",
+      "text": "1",
+      "inheritance_policy": "hideable"
+    },
+    "新品-文本": {
+      "name": "新品-文本",
+      "selector": "#5_1437",
+      "id": "5_1437",
+      "area": "content-area",
+      "component": "text",
+      "element": "新品",
+      "bbox": [
+        80,
+        494,
+        36,
+        20
+      ],
+      "confidence": "high",
+      "text": "新品",
+      "inheritance_policy": "hideable"
+    },
+    "IdeaHub-B2-Base-75-寸-文本-2": {
+      "name": "IdeaHub-B2-Base-75-寸-文本-2",
+      "selector": "#2_112991",
+      "id": "2_112991",
+      "area": "content-area",
+      "component": "text",
+      "element": "IdeaHub B2 Base-75 寸",
+      "bbox": [
+        164,
+        502,
+        12,
+        12
+      ],
+      "confidence": "high",
+      "text": "IdeaHub B2 Base-75 寸",
+      "inheritance_policy": "hideable"
+    },
+    "1-文本-3": {
+      "name": "1-文本-3",
+      "selector": "#5_2583",
+      "id": "5_2583",
+      "area": "content-area",
+      "component": "text",
+      "element": "1",
+      "bbox": [
+        164,
+        550,
+        168,
+        22
+      ],
+      "confidence": "high",
+      "text": "1",
+      "inheritance_policy": "hideable"
+    },
+    "IdeaShare-KEY-type-A-文本": {
+      "name": "IdeaShare-KEY-type-A-文本",
+      "selector": "#2_113000",
+      "id": "2_113000",
+      "area": "content-area",
+      "component": "text",
+      "element": "IdeaShare KEY （type-A）",
+      "bbox": [
+        164,
+        596,
+        168,
+        74
+      ],
+      "confidence": "high",
+      "text": "IdeaShare KEY （type-A）",
+      "inheritance_policy": "hideable"
+    },
+    "即将上市-文本": {
+      "name": "即将上市-文本",
+      "selector": "#5_1435",
+      "id": "5_1435",
+      "area": "content-area",
+      "component": "text",
+      "element": "即将上市",
+      "bbox": [
+        80,
+        686,
+        56,
+        20
+      ],
+      "confidence": "high",
+      "text": "即将上市",
+      "inheritance_policy": "hideable"
+    },
+    "IdeaHub-S2---86寸-文本": {
+      "name": "IdeaHub-S2---86寸-文本",
+      "selector": "#2_113009",
+      "id": "2_113009",
+      "area": "content-area",
+      "component": "text",
+      "element": "IdeaHub S2 - 86寸",
+      "bbox": [
+        164,
+        694,
+        168,
+        70
+      ],
+      "confidence": "high",
+      "text": "IdeaHub S2 - 86寸",
+      "inheritance_policy": "hideable"
+    },
+    "清库-文本": {
+      "name": "清库-文本",
+      "selector": "#5_1433",
+      "id": "5_1433",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "清库",
+      "bbox": [
+        80,
+        780,
+        36,
+        20
+      ],
+      "confidence": "high",
+      "text": "清库",
+      "inheritance_policy": "hideable"
+    },
+    "IdeaHub-B2-Base-75-寸-文本-3": {
+      "name": "IdeaHub-B2-Base-75-寸-文本-3",
+      "selector": "#2_113018",
+      "id": "2_113018",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "IdeaHub B2 Base-75 寸",
+      "bbox": [
+        164,
+        788,
+        168,
+        80
+      ],
+      "confidence": "high",
+      "text": "IdeaHub B2 Base-75 寸",
+      "inheritance_policy": "hideable"
+    },
+    "EOS-文本-3": {
+      "name": "EOS-文本-3",
+      "selector": "#5_2044",
+      "id": "5_2044",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "EOS",
+      "bbox": [
+        164,
+        808,
+        168,
+        16
+      ],
+      "confidence": "high",
+      "text": "EOS",
+      "inheritance_policy": "hideable"
+    },
+    "非现货-文本-3": {
+      "name": "非现货-文本-3",
+      "selector": "#5_2047",
+      "id": "5_2047",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "非现货",
+      "bbox": [
+        164,
+        808,
+        168,
+        16
+      ],
+      "confidence": "high",
+      "text": "非现货",
+      "inheritance_policy": "hideable"
+    },
+    "2199900-文本-3": {
+      "name": "2199900-文本-3",
+      "selector": "#5_398",
+      "id": "5_398",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "￥21,999.00",
+      "bbox": [
+        164,
+        846,
+        168,
+        22
+      ],
+      "confidence": "high",
+      "text": "￥21,999.00",
+      "inheritance_policy": "hideable"
+    },
+    "1-文本-4": {
+      "name": "1-文本-4",
+      "selector": "#5_2598",
+      "id": "5_2598",
+      "area": "bottom-area",
+      "component": "text",
+      "element": "1",
+      "bbox": [
+        164,
+        846,
+        168,
+        22
+      ],
+      "confidence": "high",
+      "text": "1",
+      "inheritance_policy": "hideable"
+    }
+  },
+  "semanticAnchors": {
+    "悬浮功能按钮-左下角悬浮": "#5_2727",
+    "底部导航栏-底部横向区域": "#2_112933",
+    "底部导航项-首页-底部靠左": "#5_2341",
+    "底部导航项-商城当前选中-底部靠左中": "#5_2348",
+    "底部导航项-工作台-底部居中": "#5_2355",
+    "底部导航项-服务-底部靠右中": "#5_2364",
+    "底部导航项-我的-底部靠右": "#5_2371",
+    "顶部状态栏-顶部横向区域": "#2_112936",
+    "状态栏右侧系统图标组-顶部靠右": "#5_1478",
+    "顶部标题栏与Tab导航区-顶部横向区域": "#2_112937",
+    "当前选中的标题Tab-顶部靠左": "#2_112939",
+    "顶部功能图标组-顶部靠右": "#2_112943",
+    "搜索功能图标-顶部靠右": "#2_112944",
+    "购物车功能图标-顶部靠右": "#2_112945",
+    "我的自定义功能图标-顶部靠右": "#2_112952",
+    "横向分类标签栏-顶部横向区域": "#2_112953",
+    "当前选中的分类标签项-中间靠左": "#5_2177",
+    "全部分类展开按钮-顶部靠右": "#5_2291",
+    "左侧子分类导航栏-左侧纵向区域": "#2_112955",
+    "当前选中的左侧导航项-左侧靠上": "#5_1472",
+    "右侧商品列表及筛选区-右侧主体区域": "#2_112956",
+    "子系列分类标签-右侧靠上": "#5_2642",
+    "筛选条件按钮-右侧靠上": "#5_2720",
+    "商品卡片售罄状态-右侧列表第一项": "#2_112960",
+    "商品卡片热销状态-右侧列表第二项": "#2_112970",
+    "商品卡片新品状态-右侧列表第三项": "#2_112983",
+    "商品卡片配件类-右侧列表第四项": "#2_112996",
+    "商品卡片即将上市状态-右侧列表第五项": "#2_113005",
+    "商品卡片清库状态-右侧列表第六项": "#2_113014",
+    "底部导航项-首页-文本-首页": "#5_2347",
+    "底部导航项-商城当前选中-文本-商城": "#5_2354",
+    "底部导航项-工作台-文本-工作台": "#5_2363",
+    "底部导航项-服务-文本-服务": "#5_2370",
+    "底部导航项-我的-文本-我的": "#5_2377",
+    "0808-文本": "#5_1477",
+    "产品-文本": "#5_342",
+    "配单-文本": "#5_367",
+    "门店-文本": "#5_267",
+    "我的自定义-文本": "#5_2340",
+    "光接入-文本": "#5_2157",
+    "存储-文本": "#5_2176",
+    "协作平板-文本": "#5_2195",
+    "视频会议-文本": "#5_2214",
+    "智能安防-文本": "#5_2233",
+    "广场屏-文本": "#5_2252",
+    "昇腾APN-文本": "#5_2271",
+    "计算-文本": "#5_2290",
+    "全部-文本": "#5_2292",
+    "协作平板-文本-2": "#5_1474",
+    "其他-文本": "#5_1476",
+    "IdeaHub-S2系列-文本": "#5_2647",
+    "IdeaHub-B系列-文本": "#5_2659",
+    "筛选项3-文本": "#5_2671",
+    "筛选项4-文本": "#5_2683",
+    "筛选项5-文本": "#5_2695",
+    "筛选项6-文本": "#5_2707",
+    "筛选-文本": "#5_2721",
+    "售罄-文本": "#5_1431",
+    "IdeaHub-B3-Base-75-寸-文本": "#2_112964",
+    "EOS-文本": "#5_2059",
+    "非现货-文本": "#5_2062",
+    "2199900-文本": "#5_432",
+    "1-文本": "#5_2628",
+    "热销-文本": "#5_1423",
+    "IdeaHub-B2-Base-75-寸-文本": "#2_112974",
+    "EOS-文本-2": "#5_2074",
+    "非现货-文本-2": "#5_2077",
+    "金牌价-文本": "#5_245",
+    "3290000-文本": "#2_112979",
+    "2199900-文本-2": "#5_495",
+    "1-文本-2": "#5_2613",
+    "新品-文本": "#5_1437",
+    "IdeaHub-B2-Base-75-寸-文本-2": "#2_112991",
+    "1-文本-3": "#5_2583",
+    "IdeaShare-KEY-type-A-文本": "#2_113000",
+    "即将上市-文本": "#5_1435",
+    "IdeaHub-S2---86寸-文本": "#2_113009",
+    "清库-文本": "#5_1433",
+    "IdeaHub-B2-Base-75-寸-文本-3": "#2_113018",
+    "EOS-文本-3": "#5_2044",
+    "非现货-文本-3": "#5_2047",
+    "2199900-文本-3": "#5_398",
+    "1-文本-4": "#5_2598"
+  },
+  "semantic_dom_tree": {
+    "roots": [
+      "悬浮功能按钮-左下角悬浮",
+      "底部导航栏-底部横向区域",
+      "顶部状态栏-顶部横向区域",
+      "顶部标题栏与Tab导航区-顶部横向区域",
+      "横向分类标签栏-顶部横向区域",
+      "左侧子分类导航栏-左侧纵向区域",
+      "右侧商品列表及筛选区-右侧主体区域"
+    ],
+    "nodes": {
+      "悬浮功能按钮-左下角悬浮": {
+        "name": "悬浮功能按钮-左下角悬浮",
+        "selector": "#5_2727",
+        "id": "5_2727",
+        "area": "主体内容区域",
+        "semantic": "悬浮功能按钮",
+        "range": "左下角悬浮",
+        "text": "",
+        "confidence": "中",
+        "parent": null,
+        "children": []
+      },
+      "底部导航栏-底部横向区域": {
+        "name": "底部导航栏-底部横向区域",
+        "selector": "#2_112933",
+        "id": "2_112933",
+        "area": "底部区域",
+        "semantic": "底部导航栏",
+        "range": "底部横向区域",
+        "text": "首页 商城 工作台 服务 我的",
+        "confidence": "高",
+        "parent": null,
+        "children": [
+          "底部导航项-首页-底部靠左",
+          "底部导航项-商城当前选中-底部靠左中",
+          "底部导航项-工作台-底部居中",
+          "底部导航项-服务-底部靠右中",
+          "底部导航项-我的-底部靠右"
+        ]
+      },
+      "底部导航项-首页-底部靠左": {
+        "name": "底部导航项-首页-底部靠左",
+        "selector": "#5_2341",
+        "id": "5_2341",
+        "area": "底部区域",
+        "semantic": "底部导航项-首页",
+        "range": "底部靠左",
+        "text": "首页",
+        "confidence": "高",
+        "parent": "底部导航栏-底部横向区域",
+        "children": [
+          "底部导航项-首页-文本-首页"
+        ]
+      },
+      "底部导航项-商城当前选中-底部靠左中": {
+        "name": "底部导航项-商城当前选中-底部靠左中",
+        "selector": "#5_2348",
+        "id": "5_2348",
+        "area": "底部区域",
+        "semantic": "底部导航项-商城（当前选中）",
+        "range": "底部靠左中",
+        "text": "商城",
+        "confidence": "高",
+        "parent": "底部导航栏-底部横向区域",
+        "children": [
+          "底部导航项-商城当前选中-文本-商城"
+        ]
+      },
+      "底部导航项-工作台-底部居中": {
+        "name": "底部导航项-工作台-底部居中",
+        "selector": "#5_2355",
+        "id": "5_2355",
+        "area": "底部区域",
+        "semantic": "底部导航项-工作台",
+        "range": "底部居中",
+        "text": "工作台",
+        "confidence": "高",
+        "parent": "底部导航栏-底部横向区域",
+        "children": [
+          "底部导航项-工作台-文本-工作台"
+        ]
+      },
+      "底部导航项-服务-底部靠右中": {
+        "name": "底部导航项-服务-底部靠右中",
+        "selector": "#5_2364",
+        "id": "5_2364",
+        "area": "底部区域",
+        "semantic": "底部导航项-服务",
+        "range": "底部靠右中",
+        "text": "服务",
+        "confidence": "高",
+        "parent": "底部导航栏-底部横向区域",
+        "children": [
+          "底部导航项-服务-文本-服务"
+        ]
+      },
+      "底部导航项-我的-底部靠右": {
+        "name": "底部导航项-我的-底部靠右",
+        "selector": "#5_2371",
+        "id": "5_2371",
+        "area": "底部区域",
+        "semantic": "底部导航项-我的",
+        "range": "底部靠右",
+        "text": "我的",
+        "confidence": "高",
+        "parent": "底部导航栏-底部横向区域",
+        "children": [
+          "底部导航项-我的-文本-我的"
+        ]
+      },
+      "顶部状态栏-顶部横向区域": {
+        "name": "顶部状态栏-顶部横向区域",
+        "selector": "#2_112936",
+        "id": "2_112936",
+        "area": "顶部区域",
+        "semantic": "顶部状态栏",
+        "range": "顶部横向区域",
+        "text": "08:08",
+        "confidence": "高",
+        "parent": null,
+        "children": [
+          "状态栏右侧系统图标组-顶部靠右",
+          "0808-文本"
+        ]
+      },
+      "状态栏右侧系统图标组-顶部靠右": {
+        "name": "状态栏右侧系统图标组-顶部靠右",
+        "selector": "#5_1478",
+        "id": "5_1478",
+        "area": "顶部区域",
+        "semantic": "状态栏右侧系统图标组",
+        "range": "顶部靠右",
+        "text": "",
+        "confidence": "高",
+        "parent": "顶部状态栏-顶部横向区域",
+        "children": []
+      },
+      "顶部标题栏与Tab导航区-顶部横向区域": {
+        "name": "顶部标题栏与Tab导航区-顶部横向区域",
+        "selector": "#2_112937",
+        "id": "2_112937",
+        "area": "顶部区域",
+        "semantic": "顶部标题栏与Tab导航区",
+        "range": "顶部横向区域",
+        "text": "产品 配单 门店 我的自定义",
+        "confidence": "高",
+        "parent": null,
+        "children": [
+          "当前选中的标题Tab-顶部靠左",
+          "顶部功能图标组-顶部靠右",
+          "配单-文本",
+          "门店-文本"
+        ]
+      },
+      "当前选中的标题Tab-顶部靠左": {
+        "name": "当前选中的标题Tab-顶部靠左",
+        "selector": "#2_112939",
+        "id": "2_112939",
+        "area": "顶部区域",
+        "semantic": "当前选中的标题Tab",
+        "range": "顶部靠左",
+        "text": "产品",
+        "confidence": "高",
+        "parent": "顶部标题栏与Tab导航区-顶部横向区域",
+        "children": [
+          "产品-文本"
+        ]
+      },
+      "顶部功能图标组-顶部靠右": {
+        "name": "顶部功能图标组-顶部靠右",
+        "selector": "#2_112943",
+        "id": "2_112943",
+        "area": "顶部区域",
+        "semantic": "顶部功能图标组",
+        "range": "顶部靠右",
+        "text": "我的自定义",
+        "confidence": "高",
+        "parent": "顶部标题栏与Tab导航区-顶部横向区域",
+        "children": [
+          "搜索功能图标-顶部靠右",
+          "购物车功能图标-顶部靠右",
+          "我的自定义功能图标-顶部靠右"
+        ]
+      },
+      "搜索功能图标-顶部靠右": {
+        "name": "搜索功能图标-顶部靠右",
+        "selector": "#2_112944",
+        "id": "2_112944",
+        "area": "顶部区域",
+        "semantic": "搜索功能图标",
+        "range": "顶部靠右",
+        "text": "",
+        "confidence": "高",
+        "parent": "顶部功能图标组-顶部靠右",
+        "children": []
+      },
+      "购物车功能图标-顶部靠右": {
+        "name": "购物车功能图标-顶部靠右",
+        "selector": "#2_112945",
+        "id": "2_112945",
+        "area": "顶部区域",
+        "semantic": "购物车功能图标",
+        "range": "顶部靠右",
+        "text": "",
+        "confidence": "高",
+        "parent": "顶部功能图标组-顶部靠右",
+        "children": []
+      },
+      "我的自定义功能图标-顶部靠右": {
+        "name": "我的自定义功能图标-顶部靠右",
+        "selector": "#2_112952",
+        "id": "2_112952",
+        "area": "顶部区域",
+        "semantic": "我的自定义功能图标",
+        "range": "顶部靠右",
+        "text": "我的自定义",
+        "confidence": "高",
+        "parent": "顶部功能图标组-顶部靠右",
+        "children": [
+          "我的自定义-文本"
+        ]
+      },
+      "横向分类标签栏-顶部横向区域": {
+        "name": "横向分类标签栏-顶部横向区域",
+        "selector": "#2_112953",
+        "id": "2_112953",
+        "area": "顶部区域",
+        "semantic": "横向分类标签栏",
+        "range": "顶部横向区域",
+        "text": "光接入 存储 协作平板 视频会议 智能安防 广场屏 昇腾APN 计算 全部",
+        "confidence": "高",
+        "parent": null,
+        "children": [
+          "当前选中的分类标签项-中间靠左",
+          "全部分类展开按钮-顶部靠右",
+          "光接入-文本",
+          "存储-文本",
+          "视频会议-文本",
+          "智能安防-文本",
+          "广场屏-文本",
+          "昇腾APN-文本",
+          "计算-文本"
+        ]
+      },
+      "当前选中的分类标签项-中间靠左": {
+        "name": "当前选中的分类标签项-中间靠左",
+        "selector": "#5_2177",
+        "id": "5_2177",
+        "area": "顶部区域",
+        "semantic": "当前选中的分类标签项",
+        "range": "中间靠左",
+        "text": "协作平板",
+        "confidence": "高",
+        "parent": "横向分类标签栏-顶部横向区域",
+        "children": [
+          "协作平板-文本"
+        ]
+      },
+      "全部分类展开按钮-顶部靠右": {
+        "name": "全部分类展开按钮-顶部靠右",
+        "selector": "#5_2291",
+        "id": "5_2291",
+        "area": "顶部区域",
+        "semantic": "全部分类展开按钮",
+        "range": "顶部靠右",
+        "text": "全部",
+        "confidence": "高",
+        "parent": "横向分类标签栏-顶部横向区域",
+        "children": [
+          "全部-文本"
+        ]
+      },
+      "左侧子分类导航栏-左侧纵向区域": {
+        "name": "左侧子分类导航栏-左侧纵向区域",
+        "selector": "#2_112955",
+        "id": "2_112955",
+        "area": "主体内容区域",
+        "semantic": "左侧子分类导航栏",
+        "range": "左侧纵向区域",
+        "text": "协作平板 其他",
+        "confidence": "高",
+        "parent": null,
+        "children": [
+          "当前选中的左侧导航项-左侧靠上",
+          "其他-文本"
+        ]
+      },
+      "当前选中的左侧导航项-左侧靠上": {
+        "name": "当前选中的左侧导航项-左侧靠上",
+        "selector": "#5_1472",
+        "id": "5_1472",
+        "area": "主体内容区域",
+        "semantic": "当前选中的左侧导航项",
+        "range": "左侧靠上",
+        "text": "协作平板",
+        "confidence": "高",
+        "parent": "左侧子分类导航栏-左侧纵向区域",
+        "children": [
+          "协作平板-文本-2"
+        ]
+      },
+      "右侧商品列表及筛选区-右侧主体区域": {
+        "name": "右侧商品列表及筛选区-右侧主体区域",
+        "selector": "#2_112956",
+        "id": "2_112956",
+        "area": "主体内容区域",
+        "semantic": "右侧商品列表及筛选区",
+        "range": "右侧主体区域",
+        "text": "IdeaHub S2系列 IdeaHub B系列 筛选项3 筛选项4 筛选项5 筛选项6 筛选 售罄 IdeaHub B3 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝",
+        "confidence": "高",
+        "parent": null,
+        "children": [
+          "子系列分类标签-右侧靠上",
+          "筛选条件按钮-右侧靠上",
+          "商品卡片售罄状态-右侧列表第一项",
+          "商品卡片热销状态-右侧列表第二项",
+          "商品卡片新品状态-右侧列表第三项",
+          "商品卡片配件类-右侧列表第四项",
+          "商品卡片即将上市状态-右侧列表第五项",
+          "商品卡片清库状态-右侧列表第六项",
+          "IdeaHub-B系列-文本",
+          "筛选项3-文本",
+          "筛选项4-文本",
+          "筛选项5-文本",
+          "筛选项6-文本"
+        ]
+      },
+      "子系列分类标签-右侧靠上": {
+        "name": "子系列分类标签-右侧靠上",
+        "selector": "#5_2642",
+        "id": "5_2642",
+        "area": "主体内容区域",
+        "semantic": "子系列分类标签",
+        "range": "右侧靠上",
+        "text": "IdeaHub S2系列",
+        "confidence": "高",
+        "parent": "右侧商品列表及筛选区-右侧主体区域",
+        "children": [
+          "IdeaHub-S2系列-文本"
+        ]
+      },
+      "筛选条件按钮-右侧靠上": {
+        "name": "筛选条件按钮-右侧靠上",
+        "selector": "#5_2720",
+        "id": "5_2720",
+        "area": "主体内容区域",
+        "semantic": "筛选条件按钮",
+        "range": "右侧靠上",
+        "text": "筛选",
+        "confidence": "高",
+        "parent": "右侧商品列表及筛选区-右侧主体区域",
+        "children": [
+          "筛选-文本"
+        ]
+      },
+      "商品卡片售罄状态-右侧列表第一项": {
+        "name": "商品卡片售罄状态-右侧列表第一项",
+        "selector": "#2_112960",
+        "id": "2_112960",
+        "area": "主体内容区域",
+        "semantic": "商品卡片（售罄状态）",
+        "range": "右侧列表第一项",
+        "text": "售罄 IdeaHub B3 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会",
+        "confidence": "高",
+        "parent": "右侧商品列表及筛选区-右侧主体区域",
+        "children": [
+          "售罄-文本",
+          "IdeaHub-B3-Base-75-寸-文本",
+          "EOS-文本",
+          "非现货-文本",
+          "2199900-文本",
+          "1-文本"
+        ]
+      },
+      "商品卡片热销状态-右侧列表第二项": {
+        "name": "商品卡片热销状态-右侧列表第二项",
+        "selector": "#2_112970",
+        "id": "2_112970",
+        "area": "主体内容区域",
+        "semantic": "商品卡片（热销状态）",
+        "range": "右侧列表第二项",
+        "text": "热销 IdeaHub B2 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会",
+        "confidence": "高",
+        "parent": "右侧商品列表及筛选区-右侧主体区域",
+        "children": [
+          "热销-文本",
+          "IdeaHub-B2-Base-75-寸-文本",
+          "EOS-文本-2",
+          "非现货-文本-2",
+          "金牌价-文本",
+          "3290000-文本",
+          "2199900-文本-2",
+          "1-文本-2"
+        ]
+      },
+      "商品卡片新品状态-右侧列表第三项": {
+        "name": "商品卡片新品状态-右侧列表第三项",
+        "selector": "#2_112983",
+        "id": "2_112983",
+        "area": "主体内容区域",
+        "semantic": "商品卡片（新品状态）",
+        "range": "右侧列表第三项",
+        "text": "新品 IdeaHub B2 Base-75 寸 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、经理室、开",
+        "confidence": "高",
+        "parent": "右侧商品列表及筛选区-右侧主体区域",
+        "children": [
+          "新品-文本",
+          "IdeaHub-B2-Base-75-寸-文本-2",
+          "1-文本-3"
+        ]
+      },
+      "商品卡片配件类-右侧列表第四项": {
+        "name": "商品卡片配件类-右侧列表第四项",
+        "selector": "#2_112996",
+        "id": "2_112996",
+        "area": "主体内容区域",
+        "semantic": "商品卡片（配件类）",
+        "range": "右侧列表第四项",
+        "text": "IdeaShare KEY （Type-A） 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、经理室、开放",
+        "confidence": "高",
+        "parent": "右侧商品列表及筛选区-右侧主体区域",
+        "children": [
+          "IdeaShare-KEY-type-A-文本"
+        ]
+      },
+      "商品卡片即将上市状态-右侧列表第五项": {
+        "name": "商品卡片即将上市状态-右侧列表第五项",
+        "selector": "#2_113005",
+        "id": "2_113005",
+        "area": "主体内容区域",
+        "semantic": "商品卡片（即将上市状态）",
+        "range": "右侧列表第五项",
+        "text": "即将上市 IdeaHub S2 - 86寸 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、经理室、开放办",
+        "confidence": "高",
+        "parent": "右侧商品列表及筛选区-右侧主体区域",
+        "children": [
+          "即将上市-文本",
+          "IdeaHub-S2---86寸-文本"
+        ]
+      },
+      "商品卡片清库状态-右侧列表第六项": {
+        "name": "商品卡片清库状态-右侧列表第六项",
+        "selector": "#2_113014",
+        "id": "2_113014",
+        "area": "主体内容区域",
+        "semantic": "商品卡片（清库状态）",
+        "range": "右侧列表第六项",
+        "text": "清库 IdeaHub B2 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会",
+        "confidence": "高",
+        "parent": "右侧商品列表及筛选区-右侧主体区域",
+        "children": [
+          "清库-文本",
+          "IdeaHub-B2-Base-75-寸-文本-3",
+          "EOS-文本-3",
+          "非现货-文本-3",
+          "2199900-文本-3",
+          "1-文本-4"
+        ]
+      },
+      "底部导航项-首页-文本-首页": {
+        "name": "底部导航项-首页-文本-首页",
+        "selector": "#5_2347",
+        "id": "5_2347",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "首页",
+        "text": "首页",
+        "confidence": "high",
+        "parent": "底部导航项-首页-底部靠左",
+        "children": []
+      },
+      "底部导航项-商城当前选中-文本-商城": {
+        "name": "底部导航项-商城当前选中-文本-商城",
+        "selector": "#5_2354",
+        "id": "5_2354",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "商城",
+        "text": "商城",
+        "confidence": "high",
+        "parent": "底部导航项-商城当前选中-底部靠左中",
+        "children": []
+      },
+      "底部导航项-工作台-文本-工作台": {
+        "name": "底部导航项-工作台-文本-工作台",
+        "selector": "#5_2363",
+        "id": "5_2363",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "工作台",
+        "text": "工作台",
+        "confidence": "high",
+        "parent": "底部导航项-工作台-底部居中",
+        "children": []
+      },
+      "底部导航项-服务-文本-服务": {
+        "name": "底部导航项-服务-文本-服务",
+        "selector": "#5_2370",
+        "id": "5_2370",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "服务",
+        "text": "服务",
+        "confidence": "high",
+        "parent": "底部导航项-服务-底部靠右中",
+        "children": []
+      },
+      "底部导航项-我的-文本-我的": {
+        "name": "底部导航项-我的-文本-我的",
+        "selector": "#5_2377",
+        "id": "5_2377",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "我的",
+        "text": "我的",
+        "confidence": "high",
+        "parent": "底部导航项-我的-底部靠右",
+        "children": []
+      },
+      "0808-文本": {
+        "name": "0808-文本",
+        "selector": "#5_1477",
+        "id": "5_1477",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "08:08",
+        "text": "08:08",
+        "confidence": "high",
+        "parent": "顶部状态栏-顶部横向区域",
+        "children": []
+      },
+      "产品-文本": {
+        "name": "产品-文本",
+        "selector": "#5_342",
+        "id": "5_342",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "产品",
+        "text": "产品",
+        "confidence": "high",
+        "parent": "当前选中的标题Tab-顶部靠左",
+        "children": []
+      },
+      "配单-文本": {
+        "name": "配单-文本",
+        "selector": "#5_367",
+        "id": "5_367",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "配单",
+        "text": "配单",
+        "confidence": "high",
+        "parent": "顶部标题栏与Tab导航区-顶部横向区域",
+        "children": []
+      },
+      "门店-文本": {
+        "name": "门店-文本",
+        "selector": "#5_267",
+        "id": "5_267",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "门店",
+        "text": "门店",
+        "confidence": "high",
+        "parent": "顶部标题栏与Tab导航区-顶部横向区域",
+        "children": []
+      },
+      "我的自定义-文本": {
+        "name": "我的自定义-文本",
+        "selector": "#5_2340",
+        "id": "5_2340",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "我的自定义",
+        "text": "我的自定义",
+        "confidence": "high",
+        "parent": "我的自定义功能图标-顶部靠右",
+        "children": []
+      },
+      "光接入-文本": {
+        "name": "光接入-文本",
+        "selector": "#5_2157",
+        "id": "5_2157",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "光接入",
+        "text": "光接入",
+        "confidence": "high",
+        "parent": "横向分类标签栏-顶部横向区域",
+        "children": []
+      },
+      "存储-文本": {
+        "name": "存储-文本",
+        "selector": "#5_2176",
+        "id": "5_2176",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "存储",
+        "text": "存储",
+        "confidence": "high",
+        "parent": "横向分类标签栏-顶部横向区域",
+        "children": []
+      },
+      "协作平板-文本": {
+        "name": "协作平板-文本",
+        "selector": "#5_2195",
+        "id": "5_2195",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "协作平板",
+        "text": "协作平板",
+        "confidence": "high",
+        "parent": "当前选中的分类标签项-中间靠左",
+        "children": []
+      },
+      "视频会议-文本": {
+        "name": "视频会议-文本",
+        "selector": "#5_2214",
+        "id": "5_2214",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "视频会议",
+        "text": "视频会议",
+        "confidence": "high",
+        "parent": "横向分类标签栏-顶部横向区域",
+        "children": []
+      },
+      "智能安防-文本": {
+        "name": "智能安防-文本",
+        "selector": "#5_2233",
+        "id": "5_2233",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "智能安防",
+        "text": "智能安防",
+        "confidence": "high",
+        "parent": "横向分类标签栏-顶部横向区域",
+        "children": []
+      },
+      "广场屏-文本": {
+        "name": "广场屏-文本",
+        "selector": "#5_2252",
+        "id": "5_2252",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "广场屏",
+        "text": "广场屏",
+        "confidence": "high",
+        "parent": "横向分类标签栏-顶部横向区域",
+        "children": []
+      },
+      "昇腾APN-文本": {
+        "name": "昇腾APN-文本",
+        "selector": "#5_2271",
+        "id": "5_2271",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "昇腾APN",
+        "text": "昇腾APN",
+        "confidence": "high",
+        "parent": "横向分类标签栏-顶部横向区域",
+        "children": []
+      },
+      "计算-文本": {
+        "name": "计算-文本",
+        "selector": "#5_2290",
+        "id": "5_2290",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "计算",
+        "text": "计算",
+        "confidence": "high",
+        "parent": "横向分类标签栏-顶部横向区域",
+        "children": []
+      },
+      "全部-文本": {
+        "name": "全部-文本",
+        "selector": "#5_2292",
+        "id": "5_2292",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "全部",
+        "text": "全部",
+        "confidence": "high",
+        "parent": "全部分类展开按钮-顶部靠右",
+        "children": []
+      },
+      "协作平板-文本-2": {
+        "name": "协作平板-文本-2",
+        "selector": "#5_1474",
+        "id": "5_1474",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "协作平板",
+        "text": "协作平板",
+        "confidence": "high",
+        "parent": "当前选中的左侧导航项-左侧靠上",
+        "children": []
+      },
+      "其他-文本": {
+        "name": "其他-文本",
+        "selector": "#5_1476",
+        "id": "5_1476",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "其他",
+        "text": "其他",
+        "confidence": "high",
+        "parent": "左侧子分类导航栏-左侧纵向区域",
+        "children": []
+      },
+      "IdeaHub-S2系列-文本": {
+        "name": "IdeaHub-S2系列-文本",
+        "selector": "#5_2647",
+        "id": "5_2647",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "IdeaHub S2系列",
+        "text": "IdeaHub S2系列",
+        "confidence": "high",
+        "parent": "子系列分类标签-右侧靠上",
+        "children": []
+      },
+      "IdeaHub-B系列-文本": {
+        "name": "IdeaHub-B系列-文本",
+        "selector": "#5_2659",
+        "id": "5_2659",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "IdeaHub B系列",
+        "text": "IdeaHub B系列",
+        "confidence": "high",
+        "parent": "右侧商品列表及筛选区-右侧主体区域",
+        "children": []
+      },
+      "筛选项3-文本": {
+        "name": "筛选项3-文本",
+        "selector": "#5_2671",
+        "id": "5_2671",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "筛选项3",
+        "text": "筛选项3",
+        "confidence": "high",
+        "parent": "右侧商品列表及筛选区-右侧主体区域",
+        "children": []
+      },
+      "筛选项4-文本": {
+        "name": "筛选项4-文本",
+        "selector": "#5_2683",
+        "id": "5_2683",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "筛选项4",
+        "text": "筛选项4",
+        "confidence": "high",
+        "parent": "右侧商品列表及筛选区-右侧主体区域",
+        "children": []
+      },
+      "筛选项5-文本": {
+        "name": "筛选项5-文本",
+        "selector": "#5_2695",
+        "id": "5_2695",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "筛选项5",
+        "text": "筛选项5",
+        "confidence": "high",
+        "parent": "右侧商品列表及筛选区-右侧主体区域",
+        "children": []
+      },
+      "筛选项6-文本": {
+        "name": "筛选项6-文本",
+        "selector": "#5_2707",
+        "id": "5_2707",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "筛选项6",
+        "text": "筛选项6",
+        "confidence": "high",
+        "parent": "右侧商品列表及筛选区-右侧主体区域",
+        "children": []
+      },
+      "筛选-文本": {
+        "name": "筛选-文本",
+        "selector": "#5_2721",
+        "id": "5_2721",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "筛选",
+        "text": "筛选",
+        "confidence": "high",
+        "parent": "筛选条件按钮-右侧靠上",
+        "children": []
+      },
+      "售罄-文本": {
+        "name": "售罄-文本",
+        "selector": "#5_1431",
+        "id": "5_1431",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "售罄",
+        "text": "售罄",
+        "confidence": "high",
+        "parent": "商品卡片售罄状态-右侧列表第一项",
+        "children": []
+      },
+      "IdeaHub-B3-Base-75-寸-文本": {
+        "name": "IdeaHub-B3-Base-75-寸-文本",
+        "selector": "#2_112964",
+        "id": "2_112964",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "IdeaHub B3 Base-75 寸",
+        "text": "IdeaHub B3 Base-75 寸",
+        "confidence": "high",
+        "parent": "商品卡片售罄状态-右侧列表第一项",
+        "children": []
+      },
+      "EOS-文本": {
+        "name": "EOS-文本",
+        "selector": "#5_2059",
+        "id": "5_2059",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "EOS",
+        "text": "EOS",
+        "confidence": "high",
+        "parent": "商品卡片售罄状态-右侧列表第一项",
+        "children": []
+      },
+      "非现货-文本": {
+        "name": "非现货-文本",
+        "selector": "#5_2062",
+        "id": "5_2062",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "非现货",
+        "text": "非现货",
+        "confidence": "high",
+        "parent": "商品卡片售罄状态-右侧列表第一项",
+        "children": []
+      },
+      "2199900-文本": {
+        "name": "2199900-文本",
+        "selector": "#5_432",
+        "id": "5_432",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "￥21,999.00",
+        "text": "￥21,999.00",
+        "confidence": "high",
+        "parent": "商品卡片售罄状态-右侧列表第一项",
+        "children": []
+      },
+      "1-文本": {
+        "name": "1-文本",
+        "selector": "#5_2628",
+        "id": "5_2628",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "1",
+        "text": "1",
+        "confidence": "high",
+        "parent": "商品卡片售罄状态-右侧列表第一项",
+        "children": []
+      },
+      "热销-文本": {
+        "name": "热销-文本",
+        "selector": "#5_1423",
+        "id": "5_1423",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "热销",
+        "text": "热销",
+        "confidence": "high",
+        "parent": "商品卡片热销状态-右侧列表第二项",
+        "children": []
+      },
+      "IdeaHub-B2-Base-75-寸-文本": {
+        "name": "IdeaHub-B2-Base-75-寸-文本",
+        "selector": "#2_112974",
+        "id": "2_112974",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "IdeaHub B2 Base-75 寸",
+        "text": "IdeaHub B2 Base-75 寸",
+        "confidence": "high",
+        "parent": "商品卡片热销状态-右侧列表第二项",
+        "children": []
+      },
+      "EOS-文本-2": {
+        "name": "EOS-文本-2",
+        "selector": "#5_2074",
+        "id": "5_2074",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "EOS",
+        "text": "EOS",
+        "confidence": "high",
+        "parent": "商品卡片热销状态-右侧列表第二项",
+        "children": []
+      },
+      "非现货-文本-2": {
+        "name": "非现货-文本-2",
+        "selector": "#5_2077",
+        "id": "5_2077",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "非现货",
+        "text": "非现货",
+        "confidence": "high",
+        "parent": "商品卡片热销状态-右侧列表第二项",
+        "children": []
+      },
+      "金牌价-文本": {
+        "name": "金牌价-文本",
+        "selector": "#5_245",
+        "id": "5_245",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "金牌价",
+        "text": "金牌价",
+        "confidence": "high",
+        "parent": "商品卡片热销状态-右侧列表第二项",
+        "children": []
+      },
+      "3290000-文本": {
+        "name": "3290000-文本",
+        "selector": "#2_112979",
+        "id": "2_112979",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "¥32,900.00",
+        "text": "¥32,900.00",
+        "confidence": "high",
+        "parent": "商品卡片热销状态-右侧列表第二项",
+        "children": []
+      },
+      "2199900-文本-2": {
+        "name": "2199900-文本-2",
+        "selector": "#5_495",
+        "id": "5_495",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "￥21,999.00",
+        "text": "￥21,999.00",
+        "confidence": "high",
+        "parent": "商品卡片热销状态-右侧列表第二项",
+        "children": []
+      },
+      "1-文本-2": {
+        "name": "1-文本-2",
+        "selector": "#5_2613",
+        "id": "5_2613",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "1",
+        "text": "1",
+        "confidence": "high",
+        "parent": "商品卡片热销状态-右侧列表第二项",
+        "children": []
+      },
+      "新品-文本": {
+        "name": "新品-文本",
+        "selector": "#5_1437",
+        "id": "5_1437",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "新品",
+        "text": "新品",
+        "confidence": "high",
+        "parent": "商品卡片新品状态-右侧列表第三项",
+        "children": []
+      },
+      "IdeaHub-B2-Base-75-寸-文本-2": {
+        "name": "IdeaHub-B2-Base-75-寸-文本-2",
+        "selector": "#2_112991",
+        "id": "2_112991",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "IdeaHub B2 Base-75 寸",
+        "text": "IdeaHub B2 Base-75 寸",
+        "confidence": "high",
+        "parent": "商品卡片新品状态-右侧列表第三项",
+        "children": []
+      },
+      "1-文本-3": {
+        "name": "1-文本-3",
+        "selector": "#5_2583",
+        "id": "5_2583",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "1",
+        "text": "1",
+        "confidence": "high",
+        "parent": "商品卡片新品状态-右侧列表第三项",
+        "children": []
+      },
+      "IdeaShare-KEY-type-A-文本": {
+        "name": "IdeaShare-KEY-type-A-文本",
+        "selector": "#2_113000",
+        "id": "2_113000",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "IdeaShare KEY （type-A）",
+        "text": "IdeaShare KEY （type-A）",
+        "confidence": "high",
+        "parent": "商品卡片配件类-右侧列表第四项",
+        "children": []
+      },
+      "即将上市-文本": {
+        "name": "即将上市-文本",
+        "selector": "#5_1435",
+        "id": "5_1435",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "即将上市",
+        "text": "即将上市",
+        "confidence": "high",
+        "parent": "商品卡片即将上市状态-右侧列表第五项",
+        "children": []
+      },
+      "IdeaHub-S2---86寸-文本": {
+        "name": "IdeaHub-S2---86寸-文本",
+        "selector": "#2_113009",
+        "id": "2_113009",
+        "area": "content-area",
+        "semantic": "text",
+        "range": "IdeaHub S2 - 86寸",
+        "text": "IdeaHub S2 - 86寸",
+        "confidence": "high",
+        "parent": "商品卡片即将上市状态-右侧列表第五项",
+        "children": []
+      },
+      "清库-文本": {
+        "name": "清库-文本",
+        "selector": "#5_1433",
+        "id": "5_1433",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "清库",
+        "text": "清库",
+        "confidence": "high",
+        "parent": "商品卡片清库状态-右侧列表第六项",
+        "children": []
+      },
+      "IdeaHub-B2-Base-75-寸-文本-3": {
+        "name": "IdeaHub-B2-Base-75-寸-文本-3",
+        "selector": "#2_113018",
+        "id": "2_113018",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "IdeaHub B2 Base-75 寸",
+        "text": "IdeaHub B2 Base-75 寸",
+        "confidence": "high",
+        "parent": "商品卡片清库状态-右侧列表第六项",
+        "children": []
+      },
+      "EOS-文本-3": {
+        "name": "EOS-文本-3",
+        "selector": "#5_2044",
+        "id": "5_2044",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "EOS",
+        "text": "EOS",
+        "confidence": "high",
+        "parent": "商品卡片清库状态-右侧列表第六项",
+        "children": []
+      },
+      "非现货-文本-3": {
+        "name": "非现货-文本-3",
+        "selector": "#5_2047",
+        "id": "5_2047",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "非现货",
+        "text": "非现货",
+        "confidence": "high",
+        "parent": "商品卡片清库状态-右侧列表第六项",
+        "children": []
+      },
+      "2199900-文本-3": {
+        "name": "2199900-文本-3",
+        "selector": "#5_398",
+        "id": "5_398",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "￥21,999.00",
+        "text": "￥21,999.00",
+        "confidence": "high",
+        "parent": "商品卡片清库状态-右侧列表第六项",
+        "children": []
+      },
+      "1-文本-4": {
+        "name": "1-文本-4",
+        "selector": "#5_2598",
+        "id": "5_2598",
+        "area": "bottom-area",
+        "semantic": "text",
+        "range": "1",
+        "text": "1",
+        "confidence": "high",
+        "parent": "商品卡片清库状态-右侧列表第六项",
+        "children": []
+      }
+    }
+  }
+}

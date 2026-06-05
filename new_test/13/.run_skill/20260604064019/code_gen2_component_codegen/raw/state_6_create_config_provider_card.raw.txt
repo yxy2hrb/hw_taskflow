@@ -1,0 +1,6 @@
+{
+  "id": "config_provider_card",
+  "reactCode": "import React from 'react';\nimport SectionLayout from '@/components/SectionLayout';\nimport Child_prov_name from './prov_name';\nimport Child_prov_contact from './prov_contact';\nimport Child_prov_phone from './prov_phone';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"config_provider_card\">\n      <SectionLayout variant=\"card\" title=\"服务商信息\">\n        <div className=\"tf-cg-provider-content\">\n          <Child_prov_name />\n          <Child_prov_contact />\n          <Child_prov_phone />\n        </div>\n      </SectionLayout>\n    </div>\n  );\n}",
+  "css": ".tf-cg-provider-content {\n  display: flex;\n  flex-direction: column;\n  gap: var(--spacing-md);\n}",
+  "notes": "used SectionLayout, Child_prov_name, Child_prov_contact, Child_prov_phone, --spacing-md"
+}

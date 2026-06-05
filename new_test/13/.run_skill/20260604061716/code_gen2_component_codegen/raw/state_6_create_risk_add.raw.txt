@@ -1,0 +1,6 @@
+{
+  "id": "risk_add",
+  "reactCode": "import React from 'react';\nimport { CapsuleButton } from '@/components/ui/Button';\n\nexport default function GeneratedComponent() {\n  return (\n    <div data-component-id=\"risk_add\">\n      <CapsuleButton size=\"small\" variant=\"secondary-primary\">\n        去添加\n      </CapsuleButton>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used CapsuleButton from @/components/ui/Button with size='small' and variant='secondary-primary'."
+}

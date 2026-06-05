@@ -1,0 +1,6 @@
+{
+  "id": "edit_overlay",
+  "reactCode": "import React from 'react';\n\nexport default function EditOverlay() {\n  return (\n    <div\n      data-component-id=\"edit_overlay\"\n      style={{\n        position: 'absolute',\n        left: 0,\n        top: 0,\n        width: 360,\n        height: 1176,\n        zIndex: 65,\n        backgroundColor: 'rgba(0, 0, 0, 0.3)',\n      }}\n    />\n  );\n}",
+  "css": "",
+  "notes": "used --color-mask equivalent rgba(0,0,0,0.3) as specified in props.backgroundColor; absolute positioned overlay with zIndex 65 per props"
+}

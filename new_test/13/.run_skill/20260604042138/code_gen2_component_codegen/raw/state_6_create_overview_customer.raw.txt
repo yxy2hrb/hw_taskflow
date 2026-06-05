@@ -1,0 +1,6 @@
+{
+  "id": "overview_customer",
+  "reactCode": "import React from 'react';\n\nexport default function OverviewCustomer() {\n  return (\n    <div\n      data-component-id=\"overview_customer\"\n      className=\"tf-cg-overview-customer font-body-m\"\n      style={{\n        position: 'absolute',\n        left: '24px',\n        top: '148px',\n        width: '312px',\n        height: '20px',\n        fontSize: 'var(--font-body-14)',\n        color: 'var(--color-text-secondary)',\n        display: 'flex',\n        alignItems: 'center',\n      }}\n    >\n      客户类型：中小企业\n    </div>\n  );\n}",
+  "css": ".tf-cg-overview-customer {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}",
+  "notes": "used Text, font-body-m, --font-body-14, --color-text-secondary"
+}

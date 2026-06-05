@@ -1,0 +1,812 @@
+我将给你一段html代码和页面描述spec，你需要对html进行语义注释，对明确的div语义内容进行解释，解释尽量和spec内的描述一致 ，注意严禁修改原代码内容，只做注释
+html:
+<body>
+<div class="scroll-container-0_1">
+  <div id="0_1" class="canvas-0_1">
+    <div id="126_399527" class="frame-126_399527">
+      <div id="14_527266" class="frame-14_527266 fill-场景background-colorcolor-bg-1-6_11380">
+        <div id="126_395411" class="frame-126_395411">
+          <div id="126_395412" class="vector-126_395412"></div>
+          <div id="126_395413" class="vector-126_395413"></div>
+          <div id="126_395414" class="vector-126_395414"></div>
+          <div id="126_395415" class="vector-126_395415"></div>
+          <div id="126_395416" class="rectangle-126_395416"></div>
+        </div>
+        <div id="126_395424" class="rectangle-126_395424"></div>
+        <div id="126_395425" class="frame-126_395425">
+          <div id="126_395426" class="frame-126_395426 fill-场景background-colorcolor-bg-1-6_11380">
+            <div id="126_395427" class="rectangle-126_395427 fill-场景fill-colorcolor-fill-disabled-subtle-14_536315"></div>
+            <div id="126_395428" class="rectangle-126_395428 fill-场景fill-colorcolor-fill-disabled-14_365678"></div>
+            <div id="126_395429" class="rectangle-126_395429 fill-场景fill-colorcolor-fill-disabled-subtle-14_536315"></div>
+            <div id="126_395430" class="rectangle-126_395430 fill-场景fill-colorcolor-fill-disabled-subtle-14_536315"></div>
+            <div id="126_395431" class="rectangle-126_395431 fill-场景fill-colorcolor-fill-disabled-subtle-14_536315"></div>
+          </div>
+        </div>
+        <div id="126_395434" class="frame-126_395434">
+          <div id="126_395435" class="frame-126_395435">
+            <div id="126_395436" class="frame-126_395436">
+              <div id="126_395437" class="frame-126_395437">
+                <span id="126_395438" class="text-126_395438">08:08</span>
+                <div id="126_395439" class="frame-126_395439">
+                  <div id="126_395440" class="frame-126_395440">
+                    <div id="126_395441" class="vector-126_395441"></div>
+                    <div id="126_395444" class="vector-126_395444"></div>
+                  </div>
+                  <div id="126_395452" class="frame-126_395452">
+                    <div id="126_395453" class="vector-126_395453"></div>
+                  </div>
+                  <div id="126_395459" class="frame-126_395459">
+                    <div id="126_395460" class="vector-126_395460"></div>
+                  </div>
+                  <div id="126_395486" class="frame-126_395486">
+                    <div id="126_395487" class="vector-126_395487"></div>
+                    <div id="126_395490" class="vector-126_395490"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="126_395496" class="frame-126_395496">
+              <div id="126_395497" class="frame-126_395497">
+                <div id="126_395498" class="frame-126_395498">
+                  <div id="126_395503" class="frame-126_395503">
+                    <div id="126_395504" class="frame-126_395504">
+                      <div id="126_395505" class="frame-126_395505">
+                        <span id="126_395506" class="text-126_395506 fill-场景text-colorcolor-text-primary-6_11379-text">营销</span>
+                        <div id="126_395507" class="frame-126_395507">
+                          <div id="126_395508" class="rectangle-126_395508"></div>
+                        </div>
+                      </div>
+                      <span id="126_395510" class="text-126_395510 fill-场景text-colorcolor-text-primary-6_11379-text">工作台</span>
+                    </div>
+                    <div id="126_395511" class="frame-126_395511">
+                      <div id="126_395512" class="group-126_395512">
+                        <div id="126_395513" class="group-126_395513">
+                          <div id="126_395514" class="vector-126_395514"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="126_395515" class="frame-126_395515">
+                <div id="126_395516" class="frame-126_395516">
+                  <div id="126_395517" class="group-126_395517">
+                    <div id="126_395518" class="group-126_395518">
+                      <div id="126_395520" class="vector-126_395520"></div>
+                    </div>
+                  </div>
+                  <div id="126_395521" class="vector-126_395521"></div>
+                </div>
+                <div id="126_395522" class="frame-126_395522">
+                  <div id="126_395523" class="rectangle-126_395523"></div>
+                  <div id="126_395524" class="frame-126_395524">
+                    <div id="126_395525" class="rectangle-126_395525"></div>
+                    <div id="126_395526" class="vector-126_395526"></div>
+                  </div>
+                </div>
+                <div id="126_395530" class="frame-126_395530">
+                  <div id="126_395531" class="group-126_395531">
+                    <div id="126_395532" class="group-126_395532">
+                      <div id="126_395533" class="vector-126_395533"></div>
+                      <div id="126_395534" class="vector-126_395534"></div>
+                    </div>
+                    <div id="126_395535" class="group-126_395535">
+                      <div id="126_395536" class="vector-126_395536"></div>
+                      <div id="126_395537" class="vector-126_395537"></div>
+                    </div>
+                    <div id="126_395538" class="group-126_395538">
+                      <div id="126_395539" class="vector-126_395539"></div>
+                      <div id="126_395540" class="vector-126_395540"></div>
+                    </div>
+                    <div id="126_395541" class="vector-126_395541"></div>
+                    <div id="126_395542" class="vector-126_395542"></div>
+                    <div id="126_395547" class="vector-126_395547"></div>
+                    <div id="126_395552" class="group-126_395552">
+                      <div id="126_395553" class="group-126_395553">
+                        <div id="126_395554" class="vector-126_395554"></div>
+                        <div id="126_395555" class="vector-126_395555"></div>
+                      </div>
+                      <div id="126_395556" class="group-126_395556">
+                        <div id="126_395557" class="vector-126_395557"></div>
+                        <div id="126_395558" class="vector-126_395558"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="126_395559" class="group-126_395559">
+                    <div id="126_395560" class="vector-126_395560"></div>
+                    <div id="126_395561" class="rectangle-126_395561"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="126_395562" class="frame-126_395562">
+            <div id="126_395563" class="frame-126_395563">
+              <div id="126_395564" class="frame-126_395564">
+                <div id="126_395565" class="group-126_395565">
+                  <div id="126_395566" class="vector-126_395566"></div>
+                  <div id="126_395569" class="frame-126_395569">
+                    <div id="126_395570" class="vector-126_395570"></div>
+                    <div id="126_395571" class="group-126_395571">
+                      <div id="126_395572" class="vector-126_395572"></div>
+                      <div id="126_395573" class="vector-126_395573"></div>
+                    </div>
+                    <div id="126_395574" class="frame-126_395574"></div>
+                  </div>
+                  <div id="126_395584" class="rectangle-126_395584"></div>
+                </div>
+              </div>
+              <div id="126_395585" class="frame-126_395585">
+                <div id="126_395586" class="frame-126_395586">
+                  <div id="126_395587" class="frame-126_395587">
+                    <span id="126_395588" class="text-126_395588">70</span>
+                    <span id="126_395589" class="text-126_395589">待接收</span>
+                  </div>
+                  <div id="126_395590" class="frame-126_395590">
+                    <span id="126_395591" class="text-126_395591">16</span>
+                    <span id="126_395592" class="text-126_395592">跟进中</span>
+                  </div>
+                  <div id="126_395593" class="frame-126_395593">
+                    <span id="126_395594" class="text-126_395594">99+</span>
+                    <span id="126_395595" class="text-126_395595">全部</span>
+                  </div>
+                </div>
+              </div>
+              <div id="126_395599" class="vector-126_395599"></div>
+              <div id="126_395600" class="frame-126_395600">
+                <div id="126_395601" class="frame-126_395601">
+                  <div id="126_395602" class="group-126_395602">
+                    <div id="126_395603" class="rectangle-126_395603"></div>
+                    <span id="126_395604" class="text-126_395604">最新</span>
+                    <span id="126_395605" class="text-126_395605">线索</span>
+                  </div>
+                </div>
+                <div id="126_395606" class="frame-126_395606">
+                  <div id="126_395607" class="frame-126_395607">
+                    <span id="126_395608" class="text-126_395608">LEB1234567890</span>
+                  </div>
+                  <div id="126_395609" class="frame-126_395609">
+                    <span id="126_395610" class="text-126_395610">客户公司名称</span>
+                    <span id="126_395611" class="text-126_395611">南京松海科技有限公司</span>
+                  </div>
+                </div>
+              </div>
+              <span id="126_395614" class="text-126_395614">我的线索</span>
+            </div>
+            <div id="126_395681" class="frame-126_395681">
+              <div id="126_395691" class="frame-126_395691">
+                <div id="126_395692" class="frame-126_395692">
+                  <div id="126_395693" class="frame-126_395693">
+                    <div id="126_395694" class="frame-126_395694">
+                      <div id="126_395695" class="frame-126_395695">
+                        <span id="126_395696" class="text-126_395696">快捷入口</span>
+                      </div>
+                    </div>
+                    <div id="126_395711" class="frame-126_395711">
+                      <div id="126_395712" class="frame-126_395712">
+                        <div id="126_395713" class="group-126_395713">
+                          <div id="126_395714" class="rectangle-126_395714"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="126_395715" class="frame-126_395715">
+                    <div id="126_395716" class="frame-126_395716">
+                      <div id="126_395729" class="frame-126_395729">
+                        <div id="126_395731" class="group-126_395731">
+                          <div id="126_395732" class="vector-126_395732"></div>
+                          <div id="126_395735" class="vector-126_395735"></div>
+                        </div>
+                      </div>
+                      <span id="126_395736" class="text-126_395736">创建会议</span>
+                    </div>
+                    <div id="126_395737" class="frame-126_395737">
+                      <div id="126_395750" class="frame-126_395750">
+                        <div id="126_395751" class="rectangle-126_395751"></div>
+                        <div id="126_395752" class="vector-126_395752"></div>
+                      </div>
+                      <span id="126_395753" class="text-126_395753">分析看板</span>
+                    </div>
+                    <div id="126_395754" class="frame-126_395754">
+                      <div id="126_395760" class="frame-126_395760">
+                        <div id="126_395761" class="vector-126_395761"></div>
+                        <div id="126_395762" class="frame-126_395762">
+                          <div id="126_395763" class="vector-126_395763"></div>
+                          <span id="126_395767" class="text-126_395767">JMF</span>
+                          <div id="126_395774" class="vector-126_395774"></div>
+                        </div>
+                      </div>
+                      <span id="126_395775" class="text-126_395775">JMF管理</span>
+                    </div>
+                    <div id="126_395776" class="frame-126_395776">
+                      <div id="126_395782" class="frame-126_395782">
+                        <div id="126_395783" class="rectangle-126_395783"></div>
+                        <div id="126_395784" class="group-126_395784">
+                          <div id="126_395785" class="vector-126_395785"></div>
+                          <div id="126_395786" class="vector-126_395786"></div>
+                          <div id="126_395787" class="vector-126_395787"></div>
+                        </div>
+                      </div>
+                      <span id="126_395788" class="text-126_395788">新增客户</span>
+                    </div>
+                  </div>
+                </div>
+                <div id="126_395789" class="frame-126_395789">
+                  <div id="126_395790" class="frame-126_395790">
+                    <div id="126_395791" class="rectangle-126_395791"></div>
+                    <div id="126_395792" class="rectangle-126_395792"></div>
+                    <div id="126_395793" class="rectangle-126_395793"></div>
+                  </div>
+                </div>
+              </div>
+              <div id="126_395794" class="frame-126_395794">
+                <div id="126_395795" class="frame-126_395795">
+                  <div id="126_395796" class="frame-126_395796">
+                    <div id="126_395797" class="rectangle-126_395797"></div>
+                    <div id="126_395798" class="frame-126_395798">
+                      <span id="126_395799" class="text-126_395799">我要办会</span>
+                    </div>
+                    <div id="126_395800" class="frame-126_395800">
+                      <span id="126_395801" class="text-126_395801">9月23日</span>
+                      <div id="126_395802" class="group-126_395802">
+                        <div id="126_395803" class="frame-126_395803">
+                          <div id="126_395804" class="frame-126_395804">
+                            <div id="126_395805" class="rectangle-126_395805"></div>
+                          </div>
+                          <div id="126_395806" class="frame-126_395806">
+                            <div id="126_395807" class="frame-126_395807">
+                              <span id="126_395808" class="text-126_395808">华为坤灵协作平板SOHO分销渠道沙龙<br></span>
+                            </div>
+                            <div id="126_395809" class="frame-126_395809 fill-info信息色info_2-14_365553">
+                              <span id="126_395810" class="text-126_395810 fill-info信息色info_1-14_365554-text">待开始</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="126_395811" class="frame-126_395811">
+                    <div id="126_395812" class="frame-126_395812">
+                      <div id="126_395813" class="group-126_395813">
+                        <div id="126_395814" class="group-126_395814">
+                          <div id="126_395815" class="rectangle-126_395815">
+                            <div class="center-stroke-126_395815"></div>
+                          </div>
+                          <div id="126_395816" class="vector-126_395816"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="126_395817" class="frame-126_395817">
+                  <div id="126_395818" class="rectangle-126_395818"></div>
+                  <div id="126_395819" class="frame-126_395819">
+                    <div id="126_395820" class="group-126_395820">
+                      <span id="126_395821" class="text-126_395821">99999+</span>
+                    </div>
+                    <div id="126_395822" class="frame-126_395822">
+                      <div id="126_395823" class="group-126_395823">
+                        <div id="126_395824" class="frame-126_395824">
+                          <div id="126_395825" class="frame-126_395825">
+                            <span id="126_395826" class="text-126_395826">物料总数</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="126_395833" class="frame-126_395833">
+                    <span id="126_395834" class="text-126_395834">营销物料</span>
+                  </div>
+                </div>
+              </div>
+              <div id="126_395835" class="frame-126_395835">
+                <div id="126_395836" class="frame-126_395836">
+                  <div id="126_395837" class="rectangle-126_395837"></div>
+                  <div id="126_395838" class="frame-126_395838">
+                    <span id="126_395839" class="text-126_395839 fill-text文本色图标色color_text_secondary-14_468126-text text-单行行高headline标题headline_xs-14_290524">更多</span>
+                    <div id="126_395840" class="frame-126_395840">
+                      <div id="126_395841" class="frame-126_395841">
+                        <div id="126_395842" class="frame-126_395842">
+                          <div id="126_395843" class="rectangle-126_395843"></div>
+                          <div id="126_395844" class="vector-126_395844"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="126_395849" class="frame-126_395849">
+                    <div id="126_395850" class="frame-126_395850">
+                      <div id="126_395851" class="group-126_395851">
+                        <span id="126_395852" class="text-126_395852">99999+</span>
+                      </div>
+                      <div id="126_395853" class="frame-126_395853">
+                        <div id="126_395854" class="frame-126_395854">
+                          <span id="126_395855" class="text-126_395855">新增访客 (周)</span>
+                        </div>
+                        <div id="126_395856" class="frame-126_395856">
+                          <div id="126_395857" class="frame-126_395857">
+                            <span id="126_395858" class="text-126_395858">同比</span>
+                            <div id="126_395859" class="frame-126_395859">
+                              <div id="126_395860" class="vector-126_395860"></div>
+                            </div>
+                            <span id="126_395861" class="text-126_395861">2.6%</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="126_395862" class="frame-126_395862">
+                      <div id="126_395863" class="group-126_395863">
+                        <span id="126_395864" class="text-126_395864">26728</span>
+                      </div>
+                      <div id="126_395865" class="frame-126_395865">
+                        <div id="126_395866" class="frame-126_395866">
+                          <span id="126_395867" class="text-126_395867">兴趣访客 (周)</span>
+                        </div>
+                        <div id="126_395868" class="frame-126_395868">
+                          <div id="126_395869" class="frame-126_395869">
+                            <span id="126_395870" class="text-126_395870">同比</span>
+                            <div id="126_395871" class="frame-126_395871">
+                              <div id="126_395872" class="vector-126_395872"></div>
+                            </div>
+                            <span id="126_395873" class="text-126_395873">2.6%</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="126_395874" class="frame-126_395874">
+                      <div id="126_395875" class="group-126_395875">
+                        <span id="126_395876" class="text-126_395876">26000</span>
+                      </div>
+                      <div id="126_395877" class="frame-126_395877">
+                        <div id="126_395878" class="frame-126_395878">
+                          <span id="126_395879" class="text-126_395879">互动访客 (周)</span>
+                        </div>
+                        <div id="126_395880" class="frame-126_395880">
+                          <div id="126_395881" class="frame-126_395881">
+                            <span id="126_395882" class="text-126_395882">同比</span>
+                            <div id="126_395883" class="frame-126_395883">
+                              <div id="126_395884" class="vector-126_395884"></div>
+                            </div>
+                            <span id="126_395885" class="text-126_395885">2.6%</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="126_395886" class="frame-126_395886">
+                    <span id="126_395906" class="text-126_395906">分享获客</span>
+                  </div>
+                </div>
+              </div>
+              <div id="126_395911" class="frame-126_395911">
+                <div id="126_395912" class="frame-126_395912">
+                  <div id="126_395913" class="rectangle-126_395913"></div>
+                  <div id="126_395914" class="frame-126_395914">
+                    <span id="126_395915" class="text-126_395915">短视频能力中心</span>
+                  </div>
+                  <div id="126_395916" class="frame-126_395916">
+                    <div id="126_395917" class="group-126_395917">
+                      <div id="126_395918" class="frame-126_395918">
+                        <div id="126_395919" class="frame-126_395919">
+                          <span id="126_395920" class="text-126_395920">TOP1</span>
+                          <span id="126_395921" class="text-126_395921">数通</span>
+                        </div>
+                        <span id="126_395922" class="text-126_395922">
+                          <span id="126_395922_1" class="span-126_395922_1">420</span>
+                          <span id="126_395922_2" class="span-126_395922_2">/980</span>
+                        </span>
+                      </div>
+                      <div id="126_395923" class="group-126_395923">
+                        <div id="126_395924" class="rectangle-126_395924"></div>
+                        <div id="126_395925" class="rectangle-126_395925"></div>
+                      </div>
+                    </div>
+                    <div id="126_395927" class="group-126_395927">
+                      <div id="126_395928" class="frame-126_395928">
+                        <div id="126_395929" class="frame-126_395929">
+                          <span id="126_395930" class="text-126_395930">TOP2</span>
+                          <span id="126_395931" class="text-126_395931">SOHO</span>
+                        </div>
+                        <span id="126_395932" class="text-126_395932">
+                          <span id="126_395932_1" class="span-126_395932_1">260</span>
+                          <span id="126_395932_2" class="span-126_395932_2">/980</span>
+                        </span>
+                      </div>
+                      <div id="126_395933" class="group-126_395933">
+                        <div id="126_395934" class="rectangle-126_395934"></div>
+                        <div id="126_395935" class="rectangle-126_395935"></div>
+                      </div>
+                    </div>
+                    <div id="126_395936" class="group-126_395936">
+                      <div id="126_395937" class="frame-126_395937">
+                        <div id="126_395938" class="frame-126_395938">
+                          <span id="126_395939" class="text-126_395939">TOP3</span>
+                          <span id="126_395940" class="text-126_395940">数通网络安全</span>
+                        </div>
+                        <span id="126_395941" class="text-126_395941">
+                          <span id="126_395941_1" class="span-126_395941_1">130</span>
+                          <span id="126_395941_2" class="span-126_395941_2">/980</span>
+                        </span>
+                      </div>
+                      <div id="126_395942" class="group-126_395942">
+                        <div id="126_395943" class="rectangle-126_395943"></div>
+                        <div id="126_395944" class="rectangle-126_395944"></div>
+                      </div>
+                    </div>
+                    <div id="126_395945" class="group-126_395945">
+                      <div id="126_395946" class="frame-126_395946">
+                        <div id="126_395947" class="frame-126_395947">
+                          <span id="126_395948" class="text-126_395948">TOP4</span>
+                          <span id="126_395949" class="text-126_395949">光接入</span>
+                        </div>
+                        <span id="126_395950" class="text-126_395950">
+                          <span id="126_395950_1" class="span-126_395950_1">76</span>
+                          <span id="126_395950_2" class="span-126_395950_2">/980</span>
+                        </span>
+                      </div>
+                      <div id="126_395951" class="group-126_395951">
+                        <div id="126_395952" class="rectangle-126_395952"></div>
+                        <div id="126_395953" class="rectangle-126_395953"></div>
+                      </div>
+                    </div>
+                    <div id="126_395954" class="group-126_395954">
+                      <div id="126_395955" class="frame-126_395955">
+                        <div id="126_395956" class="frame-126_395956">
+                          <span id="126_395957" class="text-126_395957">TOP5</span>
+                          <span id="126_395958" class="text-126_395958">小全光</span>
+                        </div>
+                        <span id="126_395959" class="text-126_395959">
+                          <span id="126_395959_1" class="span-126_395959_1">28</span>
+                          <span id="126_395959_2" class="span-126_395959_2">/980</span>
+                        </span>
+                      </div>
+                      <div id="126_395960" class="group-126_395960">
+                        <div id="126_395961" class="rectangle-126_395961"></div>
+                        <div id="126_395962" class="rectangle-126_395962"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="126_395963" class="frame-126_395963">
+                    <span id="126_395964" class="text-126_395964">875</span>
+                    <div id="126_395965" class="group-126_395965">
+                      <div id="126_395966" class="frame-126_395966">
+                        <span id="126_395967" class="text-126_395967">视频素材总数</span>
+                        <div id="126_395968" class="frame-126_395968">
+                          <div id="126_395969" class="frame-126_395969">
+                            <span id="126_395970" class="text-126_395970">环比 (周)</span>
+                            <div id="126_395971" class="frame-126_395971">
+                              <div id="126_395972" class="vector-126_395972"></div>
+                            </div>
+                            <span id="126_395973" class="text-126_395973">2.6%</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="126_396066" class="frame-126_396066">
+            <div id="126_396067" class="frame-126_396067">
+              <div id="126_396068" class="frame-126_396068">
+                <div id="126_396069" class="frame-126_396069">
+                  <div id="126_396070" class="group-126_396070">
+                    <div id="126_396071" class="group-126_396071">
+                      <div id="126_396072" class="rectangle-126_396072">
+                        <div class="center-stroke-126_396072"></div>
+                      </div>
+                      <div id="126_396076" class="vector-126_396076"></div>
+                    </div>
+                  </div>
+                </div>
+                <span id="126_396077" class="text-126_396077 text-ohos_id_text_size_body2regular-6_250025">管理应用</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="126_396078" class="frame-126_396078 fill-component控件背景色comp_tab_bg-14_468137">
+          <div id="126_396079" class="frame-126_396079">
+            <div id="126_396080" class="frame-126_396080">
+              <div id="126_396081" class="frame-126_396081">
+                <div id="126_396082" class="vector-126_396082"></div>
+                <div id="126_396083" class="vector-126_396083"></div>
+                <div id="126_396084" class="vector-126_396084"></div>
+              </div>
+            </div>
+            <span id="126_396085" class="text-126_396085 fill-font文本色图标色font_primary-14_365583-text">首页</span>
+          </div>
+          <div id="126_396086" class="frame-126_396086">
+            <div id="126_396087" class="frame-126_396087">
+              <div id="126_396088" class="frame-126_396088">
+                <div id="126_396089" class="vector-126_396089"></div>
+                <div id="126_396090" class="vector-126_396090"></div>
+                <div id="126_396091" class="vector-126_396091"></div>
+              </div>
+            </div>
+            <span id="126_396092" class="text-126_396092 fill-font文本色图标色font_primary-14_365583-text">商城</span>
+          </div>
+          <div id="126_396093" class="frame-126_396093">
+            <div id="126_396094" class="frame-126_396094">
+              <div id="126_396095" class="frame-126_396095">
+                <div id="126_396096" class="vector-126_396096"></div>
+                <div id="126_396097" class="vector-126_396097"></div>
+                <div id="126_396098" class="vector-126_396098"></div>
+                <div id="126_396099" class="vector-126_396099"></div>
+                <div id="126_396100" class="vector-126_396100"></div>
+              </div>
+            </div>
+            <span id="126_396101" class="text-126_396101 fill-brand主色brand_normal-14_468127-text">营销</span>
+          </div>
+          <div id="126_396102" class="frame-126_396102">
+            <div id="126_396103" class="frame-126_396103">
+              <div id="126_396104" class="frame-126_396104">
+                <div id="126_396105" class="vector-126_396105"></div>
+                <div id="126_396106" class="vector-126_396106"></div>
+                <div id="126_396107" class="vector-126_396107"></div>
+              </div>
+            </div>
+            <span id="126_396108" class="text-126_396108 fill-font文本色图标色font_primary-14_365583-text">服务</span>
+          </div>
+          <div id="126_396109" class="frame-126_396109">
+            <div id="126_396110" class="frame-126_396110">
+              <div id="126_396111" class="frame-126_396111">
+                <div id="126_396112" class="vector-126_396112"></div>
+                <div id="126_396113" class="vector-126_396113"></div>
+                <div id="126_396114" class="vector-126_396114"></div>
+              </div>
+            </div>
+            <span id="126_396115" class="text-126_396115 fill-font文本色图标色font_primary-14_365583-text">我的</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+</script>
+
+</body>
+
+spec:
+{
+  "UI整体描述": {
+    "功能": "该UI为一个营销工作台的主界面，用于展示营销数据概览、快捷入口、活动日历、分享成效及短视频能力中心等核心信息。",
+    "产品场景": "当前页面是企业级营销管理平台的首页，面向市场或销售团队成员，提供实时数据监控、任务管理、内容发布与互动分析等功能。用户可通过该界面快速了解营销进展、参与活动、查看内容表现，并进行相关操作。整体产品场景为数字化营销运营系统，支持移动端高效协作与决策支持。"
+  },
+  "页面构成": [
+    "顶部状态栏",
+    "导航与标题区",
+    "我的线索区",
+    "快捷入口区",
+    "我要办会与营销物料区",
+    "分享获客区",
+    "短视频能力中心区",
+    "底部导航栏"
+  ],
+  "视觉风格": {
+    "调性": "专业现代，以白色背景为主，搭配红色强调色，突出关键数据与操作按钮，增强信息层级与可读性。",
+    "色彩体系": "以白色为底色，黑色文字为主，红色用于重点数据（如数字、标签）、图标和按钮；灰色用于辅助信息与分割线；蓝色、橙色、黄色等用于图表颜色区分。",
+    "设计风格": "符合主流企业级应用规范，采用卡片式布局、分段排版与图标化设计，提升信息密度与交互效率。"
+  },
+  "各个区域组件信息分述": [
+    {
+      "区域名称": "顶部状态栏",
+      "组件类型": "系统状态栏",
+      "承担的功能": "显示设备时间、网络连接状态、电池电量等系统信息",
+      "承载的信息": {
+        "时间": "08:08",
+        "网络状态": [
+          "Wi-Fi图标",
+          "蜂窝信号图标（满格）",
+          "蓝牙图标"
+        ],
+        "电池状态": {
+          "电量百分比": "100%",
+          "电池图标": "充满"
+        }
+      },
+      "组件的配色样式和布局": "背景为深色，文字和图标为白色，横向排列于屏幕最上方",
+      "组件所处的位置": "位于页面最上方，占据约1/20屏幕高度，横跨整个宽度"
+    },
+    {
+      "区域名称": "导航与标题区",
+      "组件类型": "导航栏与页面标题组合",
+      "承担的功能": "提供返回上一级页面的导航功能，并展示当前页面标题",
+      "承载的信息": {
+        "返回按钮": "左箭头“←”表示返回",
+        "页面标题": "营销工作台",
+        "下拉箭头": "右侧下拉箭头表示可展开更多选项",
+        "功能图标": [
+          "文件夹图标",
+          "聊天图标",
+          "机器人图标"
+        ]
+      },
+      "组件的配色样式和布局": "背景为白色，标题为黑色加粗文字，左侧为返回箭头，右侧为三个功能图标水平排列，图标为灰色；标题下方有一条红色横线作为强调",
+      "组件所处的位置": "位于状态栏下方，占据约1/15屏幕高度，横跨整个宽度"
+    },
+    {
+      "区域名称": "我的线索区",
+      "组件类型": "数据统计卡片",
+      "承担的功能": "展示用户的线索数量分布情况，包括待跟进、跟进中和全部线索",
+      "承载的信息": {
+        "标题": "我的线索",
+        "数据项": [
+          {
+            "数值": "70",
+            "标签": "待跟进"
+          },
+          {
+            "数值": "16",
+            "标签": "跟进中"
+          },
+          {
+            "数值": "99+",
+            "标签": "全部"
+          }
+        ],
+        "客户信息": {
+          "标签": "线索",
+          "客户编号": "LEB1234567890",
+          "客户名称": "客户公司名称 南京松海科技有限公司"
+        }
+      },
+      "组件的配色样式和布局": "卡片背景为白色，标题为黑色文字，数据项为大号黑色数字，标签为浅灰色小字；客户信息区域中，‘线索’标签为红色背景白字，其余为黑色文字；整体为垂直排列，行间有浅灰色分割线",
+      "组件所处的位置": "位于导航栏下方，占据约1/8屏幕高度，横跨整个宽度"
+    },
+    {
+      "区域名称": "快捷入口区",
+      "组件类型": "图标按钮组",
+      "承担的功能": "提供常用功能的快速访问入口",
+      "承载的信息": [
+        {
+          "图标": "会议图标",
+          "文字": "创建会议"
+        },
+        {
+          "图标": "分析图表图标",
+          "文字": "分析看板"
+        },
+        {
+          "图标": "Ji+图标",
+          "文字": "Ji+管理"
+        }
+      ],
+      "组件的配色样式和布局": "三个图标按钮水平排列，每个按钮为圆角矩形，图标为彩色，文字为黑色；背景为白色，按钮之间有间距",
+      "组件所处的位置": "位于我的线索区下方，占据约1/10屏幕高度，横跨整个宽度"
+    },
+    {
+      "区域名称": "我要办会与营销物料区",
+      "组件类型": "双列卡片组合",
+      "承担的功能": "展示即将举办的会议信息和营销物料总数",
+      "承载的信息": {
+        "左侧卡片": {
+          "标题": "我要办会",
+          "日期": "9月23日",
+          "会议名称": "华为坤灵协作平板 SOHO分班渠道...",
+          "状态": "待开播",
+          "操作按钮": "红色圆形加号按钮"
+        },
+        "右侧卡片": {
+          "标题": "营销物料",
+          "数值": "99999+",
+          "单位": "物料总数"
+        }
+      },
+      "组件的配色样式和布局": "两个卡片并列，左侧卡片背景为白色，右侧卡片背景为浅灰；左侧卡片内文字为黑色，状态为蓝色小字；右侧卡片数值为大号黑色数字，单位为浅灰色小字；操作按钮为红色圆形，居中放置",
+      "组件所处的位置": "位于快捷入口区下方，占据约1/6屏幕高度，横跨整个宽度"
+    },
+    {
+      "区域名称": "分享获客区",
+      "组件类型": "数据统计卡片",
+      "承担的功能": "展示分享带来的获客效果，包括新增访客、兴趣访客和互动访客数量及同比变化",
+      "承载的信息": {
+        "标题": "分享获客",
+        "更多按钮": "右侧‘更多 >’表示可跳转查看更多数据",
+        "数据项": [
+          {
+            "数值": "99999+",
+            "标签": "新增访客 (周)",
+            "同比": "同比 ↑ 2.6%"
+          },
+          {
+            "数值": "26728",
+            "标签": "兴趣访客 (周)",
+            "同比": "同比 ↑ 2.6%"
+          },
+          {
+            "数值": "26000",
+            "标签": "互动访客 (周)",
+            "同比": "同比 ↑ 2.6%"
+          }
+        ]
+      },
+      "组件的配色样式和布局": "卡片背景为白色，标题为黑色文字，数据项为大号黑色数字，标签为浅灰色小字，同比为绿色文字；‘更多’按钮为灰色文字；整体为垂直排列，行间有浅灰色分割线",
+      "组件所处的位置": "位于我要办会与营销物料区下方，占据约1/6屏幕高度，横跨整个宽度"
+    },
+    {
+      "区域名称": "短视频能力中心区",
+      "组件类型": "排行榜卡片",
+      "承担的功能": "展示短视频内容的播放量排名及趋势分析",
+      "承载的信息": {
+        "标题": "短视频能力中心",
+        "总播放量": "875",
+        "趋势说明": "视频素材总数 环比(周) ↑ 2.6%",
+        "排行榜": [
+          {
+            "排名": "TOP1",
+            "标题": "新通",
+            "播放量": "420",
+            "目标值": "980",
+            "进度条": "黄色进度条，长度约为42.8%"
+          },
+          {
+            "排名": "TOP2",
+            "标题": "SOHO",
+            "播放量": "260",
+            "目标值": "980",
+            "进度条": "橙色进度条，长度约为26.5%"
+          },
+          {
+            "排名": "TOP3",
+            "标题": "联通网防安全",
+            "播放量": "130",
+            "目标值": "980",
+            "进度条": "红色进度条，长度约为13.2%"
+          },
+          {
+            "排名": "TOP4",
+            "标题": "光速入",
+            "播放量": "76",
+            "目标值": "980",
+            "进度条": "蓝色进度条，长度约为7.7%"
+          },
+          {
+            "排名": "TOP5",
+            "标题": "小金光",
+            "播放量": "28",
+            "目标值": "980",
+            "进度条": "紫色进度条，长度约为2.8%"
+          }
+        ]
+      },
+      "组件的配色样式和布局": "卡片背景为白色，标题为黑色文字，总播放量为大号黑色数字，趋势说明为绿色文字；排行榜每行包含排名、标题、播放量、目标值和进度条；进度条颜色分别为黄、橙、红、蓝、紫，长度按比例显示；整体为垂直排列，行间有浅灰色分割线",
+      "组件所处的位置": "位于分享获客区下方，占据约1/4屏幕高度，横跨整个宽度"
+    },
+    {
+      "区域名称": "底部导航栏",
+      "组件类型": "底部Tab栏",
+      "承担的功能": "提供全局导航，切换至不同功能模块",
+      "承载的信息": [
+        {
+          "图标": "云图标",
+          "文字": "首页"
+        },
+        {
+          "图标": "日历图标",
+          "文字": "商机"
+        },
+        {
+          "图标": "红色直播图标",
+          "文字": "营销"
+        },
+        {
+          "图标": "服务图标",
+          "文字": "服务"
+        },
+        {
+          "图标": "笑脸图标",
+          "文字": "我的"
+        }
+      ],
+      "组件的配色样式和布局": "五个图标按钮水平排列，当前选中项为红色，其他为灰色；文字为黑色，图标为对应颜色；背景为白色，整体位于页面底部",
+      "组件所处的位置": "位于页面最底部，占据约1/15屏幕高度，横跨整个宽度"
+    }
+  ]
+}
+
+
+

@@ -1,0 +1,6 @@
+{
+  "id": "quote_accessory_tip",
+  "reactCode": "import React from 'react';\nexport default function GeneratedComponent(){ return <div data-component-id=\"quote_accessory_tip\" className=\"tf-cg-banner\" style={{ position:'absolute', left:0, top:640, width:360, height:40, display:'flex', alignItems:'center', padding:'0 16px', gap:8, backgroundColor:'var(--color-primary-soft)', boxSizing:'border-box' }}><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" style={{ flexShrink:0 }}><circle cx=\"8\" cy=\"8\" r=\"7\" stroke=\"var(--color-primary)\" strokeWidth=\"1.2\"/><path d=\"M8 4.5v4\" stroke=\"var(--color-primary)\" strokeWidth=\"1.4\" strokeLinecap=\"round\"/><circle cx=\"8\" cy=\"11\" r=\"0.75\" fill=\"var(--color-primary)\"/></svg><span className=\"font-body-s\" style={{ color:'var(--color-primary)', whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis' }}>推荐配件提示</span></div>; }",
+  "css": ".tf-cg-banner{box-sizing:border-box;}",
+  "notes": "used --color-primary-soft, --color-primary, font-body-s; simple info banner with icon and text for accessory recommendation tip"
+}

@@ -1,0 +1,247 @@
+{
+  "states": [
+    {
+      "id": "state_1",
+      "label": "工作台初始状态",
+      "ui_intent": "展示营销工作台页面，包含顶部状态栏、导航栏、我的线索、快捷入口、分享获客数据、短视频能力中心等卡片模块，以及底部标签栏。",
+      "parent_state": null,
+      "trigger": null,
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域",
+          "顶部导航栏-顶部横向区域",
+          "我的线索区域-上半部分",
+          "快捷入口区域-中间靠左",
+          "我要办会与营销物料双栏卡片区域-中间区域",
+          "分享获客数据统计区域-中间偏下",
+          "短视频能力中心区域-下半部分",
+          "管理应用跳转按钮-底部靠上",
+          "底部标签栏-底部横向区域"
+        ],
+        "create": [],
+        "update": []
+      },
+      "data_state": {},
+      "patches": []
+    },
+    {
+      "id": "state_2",
+      "label": "悬浮菜单弹出状态",
+      "ui_intent": "长按“分享获客”卡片后，卡片下方弹出包含“移除”选项的悬浮菜单。",
+      "parent_state": "state_1",
+      "trigger": {
+        "anchor": "分享获客数据统计区域-中间偏下",
+        "action": "click"
+      },
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域",
+          "顶部导航栏-顶部横向区域",
+          "我的线索区域-上半部分",
+          "快捷入口区域-中间靠左",
+          "我要办会与营销物料双栏卡片区域-中间区域",
+          "分享获客数据统计区域-中间偏下",
+          "短视频能力中心区域-下半部分",
+          "管理应用跳转按钮-底部靠上",
+          "底部标签栏-底部横向区域"
+        ],
+        "create": [
+          {
+            "type": "create",
+            "id": "dropdown_menu_remove",
+            "component": "DropdownMenu",
+            "bbox": [
+              220,
+              720,
+              120,
+              40
+            ],
+            "visible_text": {
+              "options": [
+                "移除"
+              ]
+            },
+            "mount": "分享获客数据统计区域-中间偏下"
+          }
+        ],
+        "update": []
+      },
+      "data_state": {},
+      "patches": [
+        {
+          "type": "bind",
+          "anchor": "dropdown_menu_remove",
+          "action": "click",
+          "goto": "state_3"
+        }
+      ]
+    },
+    {
+      "id": "state_3",
+      "label": "移除确认对话框状态",
+      "ui_intent": "页面中央弹出确认对话框，包含提示文案和红色的“移除”按钮，背景有半透明遮罩层。",
+      "parent_state": "state_2",
+      "trigger": {
+        "anchor": "dropdown_menu_remove",
+        "action": "click"
+      },
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域",
+          "顶部导航栏-顶部横向区域",
+          "我的线索区域-上半部分",
+          "快捷入口区域-中间靠左",
+          "我要办会与营销物料双栏卡片区域-中间区域",
+          "分享获客数据统计区域-中间偏下",
+          "短视频能力中心区域-下半部分",
+          "管理应用跳转按钮-底部靠上",
+          "底部标签栏-底部横向区域"
+        ],
+        "create": [
+          {
+            "type": "create",
+            "id": "dialog_overlay",
+            "component": "Overlay",
+            "bbox": [
+              0,
+              0,
+              360,
+              1248
+            ],
+            "style": {
+              "background": "rgba(0,0,0,0.5)"
+            }
+          },
+          {
+            "type": "create",
+            "id": "confirm_dialog",
+            "component": "Dialog",
+            "bbox": [
+              40,
+              500,
+              280,
+              160
+            ],
+            "visible_text": {
+              "title": "移除卡片",
+              "content": "确定要移除‘分享获客’卡片吗？"
+            }
+          },
+          {
+            "type": "create",
+            "id": "dialog_btn_cancel",
+            "component": "Button",
+            "bbox": [
+              60,
+              600,
+              100,
+              40
+            ],
+            "visible_text": {
+              "label": "取消"
+            },
+            "mount": "confirm_dialog"
+          },
+          {
+            "type": "create",
+            "id": "dialog_btn_confirm",
+            "component": "Button",
+            "bbox": [
+              200,
+              600,
+              100,
+              40
+            ],
+            "visible_text": {
+              "label": "移除"
+            },
+            "style": {
+              "color": "red"
+            },
+            "mount": "confirm_dialog"
+          }
+        ],
+        "update": []
+      },
+      "data_state": {},
+      "patches": [
+        {
+          "type": "bind",
+          "anchor": "dialog_btn_cancel",
+          "action": "click",
+          "goto": "state_1"
+        },
+        {
+          "type": "bind",
+          "anchor": "dialog_btn_confirm",
+          "action": "click",
+          "goto": "state_4"
+        }
+      ]
+    },
+    {
+      "id": "state_4",
+      "label": "卡片移除成功状态",
+      "ui_intent": "“分享获客”卡片从列表中消失，“短视频能力中心”等下方卡片自动上移填补空缺，底部弹出Snackbar提示。",
+      "parent_state": "state_3",
+      "trigger": {
+        "anchor": "dialog_btn_confirm",
+        "action": "click"
+      },
+      "inheritance": {
+        "keep": [
+          "顶部状态栏-顶部横向区域",
+          "顶部导航栏-顶部横向区域",
+          "我的线索区域-上半部分",
+          "快捷入口区域-中间靠左",
+          "我要办会与营销物料双栏卡片区域-中间区域",
+          "短视频能力中心区域-下半部分",
+          "管理应用跳转按钮-底部靠上",
+          "底部标签栏-底部横向区域"
+        ],
+        "create": [
+          {
+            "type": "create",
+            "id": "snackbar_success",
+            "component": "Snackbar",
+            "bbox": [
+              16,
+              1100,
+              328,
+              48
+            ],
+            "visible_text": {
+              "message": "已移除‘分享获客’",
+              "action": "撤销"
+            }
+          }
+        ],
+        "update": [
+          {
+            "type": "update",
+            "id": "短视频能力中心区域-下半部分",
+            "bbox": [
+              16,
+              616,
+              328,
+              328
+            ]
+          },
+          {
+            "type": "update",
+            "id": "管理应用跳转按钮-底部靠上",
+            "bbox": [
+              16,
+              960,
+              328,
+              40
+            ]
+          }
+        ]
+      },
+      "data_state": {},
+      "patches": []
+    }
+  ],
+  "validation_notes": []
+}

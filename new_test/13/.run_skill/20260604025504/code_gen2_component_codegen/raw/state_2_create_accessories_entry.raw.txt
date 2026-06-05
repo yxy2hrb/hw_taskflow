@@ -1,0 +1,6 @@
+{
+  "id": "accessories_entry",
+  "reactCode": "import React from 'react';\nimport { TextButton } from '@/components/ui/Button';\n\nexport default function GeneratedComponent() {\n  return (\n    <div\n      data-component-id=\"accessories_entry\"\n      style={{\n        position: 'absolute',\n        left: 24,\n        top: 714,\n        width: 120,\n        height: 32,\n        display: 'flex',\n        alignItems: 'center',\n      }}\n    >\n      <TextButton variant=\"primary\" size=\"medium\">\n        查看相关配件 &gt;\n      </TextButton>\n    </div>\n  );\n}",
+  "css": "",
+  "notes": "used TextButton, absolute bbox positioning"
+}
