@@ -679,6 +679,103 @@ function tfInstallGoto(){
   }};
 }
 tfInstallGoto();
+function tfActionIsClick(action){
+  return /(^|:)click$/i.test(String(action||"")) || /^tap$/i.test(String(action||""));
+}
+function tfGotoTarget(value){
+  if(!value) return null;
+  const match=String(value).match(/state[_-]?(\\d+)/i);
+  return match?Number(match[1]):null;
+}
+function tfFindByDataAttr(root, attr, value){
+  if(!root || !attr) return null;
+  const nodes=root.querySelectorAll("["+attr+"]");
+  const expected=String(value||"");
+  for(const node of nodes){
+    if(node.getAttribute(attr)===expected) return node;
+  }
+  return null;
+}
+function tfFindAnchorElements(anchor, stateNumber){
+  const out=[];
+  const seen=new Set();
+  function add(el){
+    if(!el || seen.has(el)) return;
+    seen.add(el);
+    out.push(el);
+  }
+  const raw=String(anchor||"");
+  const escaped=tfCssEscape(raw);
+  const registry=window.__TF_REGISTRY__ || {};
+  const entry=registry[raw];
+  if(entry && entry.selector){
+    try{ add(document.querySelector(entry.selector)); }catch(e){}
+  }
+  if(entry && entry.id){
+    try{ add(document.getElementById(entry.id)); }catch(e){}
+  }
+  const layer=stateNumber>1 ? document.getElementById("tf-state-"+stateNumber) : document.getElementById("app-root");
+  const roots=[layer, document];
+  roots.forEach(function(root){
+    if(!root) return;
+    try{ add(root.querySelector("#"+escaped)); }catch(e){}
+    try{ add(tfFindByDataAttr(root, "data-component-id", raw)); }catch(e){}
+    try{ add(tfFindByDataAttr(root, "data-keep-anchor", raw)); }catch(e){}
+  });
+  return out;
+}
+function tfPickTargetElement(root, target){
+  if(!root || !target) return root;
+  const text=String(target).toLowerCase();
+  const buttons=Array.prototype.slice.call(root.querySelectorAll("button,[role='button'],input,textarea"));
+  if(!buttons.length) return root;
+  if(/primary|confirm|submit|footer\\.primary|主/.test(text)) return buttons[buttons.length-1] || root;
+  if(/secondary|cancel|back|close|footer\\.secondary|取消|返回|关闭/.test(text)) return buttons[0] || root;
+  if(/input|body\\.input|field/.test(text)) return buttons.find(function(el){return /input|textarea/i.test(el.tagName);}) || root;
+  return buttons[0] || root;
+}
+function tfBindGoto(el, targetState){
+  if(!el || !targetState || el.__tfGotoBound) return;
+  el.__tfGotoBound=true;
+  el.style.cursor="pointer";
+  el.addEventListener("click",function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    window.TF.goto(targetState);
+  });
+}
+function tfInstallBindings(){
+  const model=window.__TF_STATE_MODEL__ || {};
+  function bindAnchorGoto(anchor, target, sourceState, targetState){
+    if(!anchor || !targetState) return;
+    const sourceNumber=tfNum(sourceState || 1);
+    tfFindAnchorElements(anchor, sourceNumber).forEach(function(root){
+      tfBindGoto(tfPickTargetElement(root, target), targetState);
+    });
+  }
+  (model.states||[]).forEach(function(state){
+    const targetState=tfNum(state.id);
+    const trigger=state.trigger || null;
+    if(trigger && trigger.anchor && tfActionIsClick(trigger.action)){
+      bindAnchorGoto(trigger.anchor, trigger.target, state.parent_state || "state_1", targetState);
+    }
+    (state.patches||[]).forEach(function(patch){
+      if(patch.type!=="bind") return;
+      const patchTarget=tfGotoTarget(patch.goto || patch.action);
+      if(!patchTarget || !tfActionIsClick(patch.action || "click")) return;
+      bindAnchorGoto(patch.anchor || patch.target_anchor || patch.target, patch.target, state.id, patchTarget);
+    });
+    const parentState=tfGotoTarget(state.parent_state);
+    if(!parentState) return;
+    ((state.inheritance&&state.inheritance.create)||[]).forEach(function(component){
+      if(component.component!=="Overlay" && !/overlay|mask/i.test(String(component.id||""))) return;
+      tfFindAnchorElements(component.id, targetState).forEach(function(root){
+        tfBindGoto(root, parentState);
+      });
+    });
+  });
+}
+tfInstallBindings();
 window.__TF_LLM_READY__=true;
 </script>
 </body>

@@ -101,6 +101,7 @@ function layoutConstraints() {
     "If the state is not a modal, drawer, popover, toast, or overlay, every fixed created component bbox must avoid overlap with kept bboxes.",
     "Fixed body regions at the same z-index must be bbox-mutually exclusive. Status/top/nav/body/bottom regions must not overlap unless one is a higher-z overlay/modal/sheet or an intentional transparent hero background.",
     "Every modal/sheet/drawer/dialog layer must have its own global overlay/mask. Overlay z-index must be lower than its own surface and higher than content it dims.",
+    "Toast is fixed feedback and does not require a global overlay/mask unless the blueprint explicitly asks for a blocking dialog.",
     "For stacked modals, the second-level overlay z-index must be higher than the first-level sheet/dialog z-index, and the second-level sheet/dialog z-index must be higher than the second-level overlay.",
     "Do not output hide or replace. The implementation model only contains keep, create, and update.",
     "Generated UI should support an antd Mobile visual style and Gestalt grouping.",
@@ -175,12 +176,16 @@ function isOverlayLike(patch) {
   return /overlay|mask|scrim|遮罩/i.test(`${patch?.component || ""} ${patch?.id || ""}`);
 }
 
+function isToastLike(patch) {
+  return /toast|snackbar|轻提示|提示条/i.test(`${patch?.component || ""} ${patch?.id || ""}`);
+}
+
 function isModalSurfaceLike(patch) {
-  return /bottomsheet|drawer|modal|dialog|sheet|popup|popover|toast|弹窗|抽屉/i.test(`${patch?.component || ""} ${patch?.id || ""}`);
+  return /bottomsheet|drawer|modal|dialog|sheet|popup|popover|弹窗|抽屉/i.test(`${patch?.component || ""} ${patch?.id || ""}`);
 }
 
 function isStackingExempt(patch) {
-  return isOverlayLike(patch) || isModalSurfaceLike(patch) || /hero|carousel|transparent/i.test(`${patch?.component || ""} ${patch?.id || ""}`);
+  return isOverlayLike(patch) || isModalSurfaceLike(patch) || isToastLike(patch) || /hero|carousel|transparent/i.test(`${patch?.component || ""} ${patch?.id || ""}`);
 }
 
 function validBbox(patch) {
@@ -243,6 +248,36 @@ function richContentStats(patch) {
     totalLength: meaningful.join("").length,
     childCount: patchChildren(patch).length,
   };
+}
+
+function inferRequirementName(value, fallback) {
+  return String(value || fallback || "")
+    .replace(/[^a-zA-Z0-9_\-\u4e00-\u9fa5]+/g, "_")
+    .replace(/^_+|_+$/g, "")
+    .slice(0, 48);
+}
+
+function normalizeRichContentRequirements(patch) {
+  if (!patch || typeof patch !== "object" || Array.isArray(patch)) return;
+  if (String(patch.content_density || "").toLowerCase() === "rich") {
+    const requirements = Array.isArray(patch.content_requirements)
+      ? patch.content_requirements.filter((item) => typeof item === "string" && item.trim())
+      : [];
+    const inferred = [];
+    for (const key of Object.keys(patch.props || {})) {
+      if (/^(variant|className|zIndex|width|height)$/i.test(key)) continue;
+      inferred.push(inferRequirementName(key));
+    }
+    for (const child of patchChildren(patch)) {
+      inferred.push(inferRequirementName(child.id || child.name || child.component));
+    }
+    const next = [...new Set([...requirements, ...inferred].filter(Boolean))];
+    while (next.length < 3 && patchChildren(patch).length) {
+      next.push(`childContent${next.length + 1}`);
+    }
+    patch.content_requirements = next;
+  }
+  for (const child of patchChildren(patch)) normalizeRichContentRequirements(child);
 }
 
 function componentSchema(name) {
@@ -448,9 +483,18 @@ function normalizeModel(model, initialHeight) {
 
     state.inheritance = { keep: [...keep], create, update };
     state.patches = patchList.filter((patch) => patch?.type !== "hide" && patch?.type !== "replace");
-    for (const patch of state.inheritance.create) normalizeNestedChildLayout(patch);
-    for (const patch of state.inheritance.update) normalizeNestedChildLayout(patch);
-    for (const patch of state.patches) normalizeNestedChildLayout(patch);
+    for (const patch of state.inheritance.create) {
+      normalizeNestedChildLayout(patch);
+      normalizeRichContentRequirements(patch);
+    }
+    for (const patch of state.inheritance.update) {
+      normalizeNestedChildLayout(patch);
+      normalizeRichContentRequirements(patch);
+    }
+    for (const patch of state.patches) {
+      normalizeNestedChildLayout(patch);
+      normalizeRichContentRequirements(patch);
+    }
     const requestedHeight = Number(state.height);
     const contentHeight = stateContentBottom(state);
     state.height = Math.max(

@@ -323,6 +323,10 @@ Required z-index convention:
 - Sheet/dialog/popup: `props.zIndex: 60` or higher
 - Floating toast above sheet: `props.zIndex: 70` or higher
 
+Toast/Snackbar feedback is fixed non-blocking feedback and does not require a
+global mask/overlay unless the blueprint explicitly asks for a blocking
+confirmation dialog.
+
 The overlay must never visually cover the sheet. Put z-index values in `props`
 so component-codegen can render them as inline `zIndex`.
 

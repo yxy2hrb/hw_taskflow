@@ -70,6 +70,25 @@ function resolveHtml(inputDir) {
   return hit;
 }
 
+function resolveInput(inputDir) {
+  const candidates = [
+    path.join(inputDir, "input.txt"),
+    path.join(inputDir, "html", "input.txt"),
+  ];
+  const hit = candidates.find(exists);
+  if (!hit) throw new Error("Missing input brief. Expected input.txt or html/input.txt.");
+  return hit;
+}
+
+function nodeEnv() {
+  const backendNodeModules = path.join(ROOT, "backend", "node_modules");
+  const parts = [process.env.NODE_PATH, exists(backendNodeModules) ? backendNodeModules : ""].filter(Boolean);
+  return {
+    ...process.env,
+    NODE_PATH: [...new Set(parts)].join(path.delimiter),
+  };
+}
+
 function loadDotEnv(file) {
   if (!exists(file)) return;
   for (const line of fs.readFileSync(file, "utf8").split(/\r?\n/)) {
@@ -90,7 +109,7 @@ function sleep(ms) {
 async function runNode(args, label, maxAttempts = 3) {
   for (let attempt = 1; attempt <= maxAttempts; attempt++) {
     console.log(`[taskflow-llm-pagegen] ${label}${attempt > 1 ? ` (retry ${attempt})` : ""}`);
-    const result = spawnSync(process.execPath, args, { cwd: ROOT, stdio: "inherit", env: process.env });
+    const result = spawnSync(process.execPath, args, { cwd: ROOT, stdio: "inherit", env: nodeEnv() });
     if (result.status === 0) return;
     if (attempt < maxAttempts) await sleep(attempt * 5000);
     else throw new Error(`${label} failed with exit ${result.status}`);
@@ -136,7 +155,7 @@ async function main() {
   const runStamp = argValue(args, "--stamp", stamp());
   const runDir = path.join(inputDir, ".run_skill", runStamp);
   const htmlPath = htmlArg ? path.resolve(ROOT, htmlArg) : resolveHtml(inputDir);
-  const inputPath = inputArg ? path.resolve(ROOT, inputArg) : path.join(inputDir, "input.txt");
+  const inputPath = inputArg ? path.resolve(ROOT, inputArg) : resolveInput(inputDir);
   await fsp.mkdir(runDir, { recursive: true });
   writeJson(path.join(runDir, "input_manifest.json"), {
     image_path: imagePath ? rel(imagePath) : null,
