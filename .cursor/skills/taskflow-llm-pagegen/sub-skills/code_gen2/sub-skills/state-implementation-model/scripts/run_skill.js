@@ -475,10 +475,8 @@ function normalizeModel(model, initialHeight) {
       }
     }
 
-    const bindPatch = patchList.find((patch) => patch.type === "bind" && (patch.goto || patch.action));
-    if (bindPatch && state.trigger) {
-      const gotoAction = bindPatch.action || (bindPatch.goto ? `goto:${bindPatch.goto}` : null);
-      if (gotoAction) state.trigger.action = gotoAction;
+    if (state.trigger && /^goto:/i.test(String(state.trigger.action || ""))) {
+      state.trigger.action = `goto:${state.id}`;
     }
 
     state.inheritance = { keep: [...keep], create, update };

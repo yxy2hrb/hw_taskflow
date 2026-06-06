@@ -114,6 +114,8 @@ anchor, it must have been created by an earlier state.
 
 - `trigger` describes how the user or system enters the current state from the
   previous state.
+- If `trigger.action` uses `goto:state_N`, `state_N` must equal the current
+  state's own `id`. A state's inbound trigger must not point to the next state.
 - A state's `trigger.anchor` must be an original DOM anchor or a virtual anchor
   created by an earlier state.
 - Do not set `trigger.anchor` to a component first created inside the current
