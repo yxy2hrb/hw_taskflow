@@ -806,6 +806,11 @@ function suppressUnexpectedBottomBars(generated, stateModel, componentCodegen) {
   return generated;
 }
 
+function isOverlayState(state) {
+  return [...(state.inheritance?.create || []), ...(state.inheritance?.update || [])]
+    .some((spec) => isOverlaySpec(spec) || isBottomSheetSpec(spec) || /modal|dialog|drawer|popup|popover/i.test(String(spec?.component || spec?.id || spec?.name || "")));
+}
+
 function normalizeKeepPlaceholderCss(generated) {
   if (!generated || typeof generated.css !== "string") return generated;
   const before = generated.css;
@@ -825,11 +830,12 @@ function buildHtml({ originalHtml, registry, generated, stateModel, width, heigh
   const head = extractBlock(originalHtml, "head") || "<head><meta charset=\"utf-8\"></head>";
   const body = restoreSemanticMasks(extractBodyInner(originalHtml));
   const runtimeModel = slimStateModel(stateModel);
-  const stateHeightCss = (stateModel.states || [])
+  const stateLayerCss = (stateModel.states || [])
     .map((state) => {
       const n = stateNum(state.id);
       if (n <= 1) return "";
-      return `#tf-state-${n}{--tf-state-content-height:${heightForState(stateModel, state.id, height)}px;}`;
+      const background = isOverlayState(state) ? "transparent" : "#f5f5f5";
+      return `#tf-state-${n}{--tf-state-content-height:${heightForState(stateModel, state.id, height)}px;background:${background}!important;}`;
     })
     .filter(Boolean)
     .join("\n");
@@ -848,7 +854,7 @@ ${head}
 .tf-component-frame>[data-component-id]{position:relative!important;left:auto!important;top:auto!important;width:100%!important;max-width:100%!important;height:100%!important;box-sizing:border-box;z-index:auto!important}
 .tf-component-frame>[data-component-id*="sheet"].tf-cg-sheet-overlay{background:transparent!important}
 .tf-component-frame>[data-component-id*="sheet"]>.tf-cg-mask,.tf-component-frame>[data-component-id*="sheet"] .tf-cg-mask,.tf-component-frame>[data-component-id*="sheet"]>.tf-cg-sheet-mask,.tf-component-frame>[data-component-id*="sheet"] .tf-cg-sheet-mask{display:none!important}
-${stateHeightCss}
+	${stateLayerCss}
 ${designSystemCss()}
 ${generated.css || ""}
 </style>
