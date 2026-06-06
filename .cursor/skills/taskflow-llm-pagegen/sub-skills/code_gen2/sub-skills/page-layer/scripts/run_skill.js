@@ -296,8 +296,107 @@ function componentPlaceholder(id) {
   return `<div class="tf-component-placeholder" data-component-id="${String(id).replace(/"/g, "&quot;")}"></div>`;
 }
 
+function layoutComponentSpecsForState(state) {
+  return [...(state.inheritance?.create || []), ...(state.inheritance?.update || [])]
+    .filter((spec) => {
+      const id = spec?.id || spec?.name;
+      return id
+        && spec?.layout?.group
+        && !Array.isArray(spec.bbox)
+        && !isBottomActionBarSpec(spec)
+        && !isBottomSheetSpec(spec)
+        && !isOverlaySpec(spec);
+    });
+}
+
+function flowLayoutGroupsForState(state) {
+  const groups = new Map();
+  for (const spec of layoutComponentSpecsForState(state)) {
+    const key = String(spec.layout.group);
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(spec);
+  }
+  return [...groups.entries()].map(([group, specs]) => ({
+    group,
+    specs: specs.sort((a, b) => Number(a.layout?.order || 0) - Number(b.layout?.order || 0)),
+  }));
+}
+
+function flowLayoutIdsForState(state) {
+  const ids = new Set();
+  for (const group of flowLayoutGroupsForState(state)) {
+    for (const spec of group.specs) ids.add(spec.id || spec.name);
+  }
+  return ids;
+}
+
+function componentSpecById(state, id) {
+  return [...(state.inheritance?.create || []), ...(state.inheritance?.update || [])]
+    .find((spec) => (spec?.id || spec?.name) === id) || null;
+}
+
+function flowStartAnchor(group) {
+  for (const spec of group.specs) {
+    const value = String(spec.layout?.startAnchor || "");
+    const match = value.match(/^below:(.+)$/i);
+    if (match) return match[1];
+  }
+  return "";
+}
+
+function flowGroupTop(state, group) {
+  const spacing = Number(group.specs[0]?.layout?.spacingHint ?? 12) || 12;
+  const anchor = flowStartAnchor(group);
+  const anchorSpec = anchor ? componentSpecById(state, anchor) : null;
+  const bbox = Array.isArray(anchorSpec?.bbox) ? anchorSpec.bbox.map(Number) : null;
+  if (bbox && bbox.every(Number.isFinite)) return Math.max(0, bbox[1] + bbox[3] + spacing);
+  let maxBottom = 0;
+  for (const spec of [...(state.inheritance?.create || []), ...(state.inheritance?.update || [])]) {
+    if (!Array.isArray(spec?.bbox) || isBottomActionBarSpec(spec) || isBottomSheetSpec(spec) || isOverlaySpec(spec)) continue;
+    const itemBbox = spec.bbox.map(Number);
+    if (itemBbox.every(Number.isFinite)) maxBottom = Math.max(maxBottom, itemBbox[1] + itemBbox[3]);
+  }
+  return maxBottom + spacing;
+}
+
+function flowGroupPlaceholder(group, state) {
+  const spacing = Number(group.specs[0]?.layout?.spacingHint ?? 12) || 12;
+  const top = flowGroupTop(state, group);
+  const style = [
+    "position:absolute",
+    "left:0px",
+    `top:${top}px`,
+    "width:100%",
+    "padding:0 12px 96px",
+    "display:flex",
+    "flex-direction:column",
+    `gap:${spacing}px`,
+    "box-sizing:border-box",
+  ].join(";");
+  return `<div class="tf-flow-group" data-flow-group="${escapeHtmlAttr(group.group)}" style="${style}">${group.specs.map((spec) => componentPlaceholder(spec.id || spec.name)).join("")}</div>`;
+}
+
 function componentPlaceholdersForState(state, componentCodegen) {
-  return stateExpectedComponentIds(state, componentCodegen).map(componentPlaceholder).join("");
+  const groups = flowLayoutGroupsForState(state);
+  if (!groups.length) return stateExpectedComponentIds(state, componentCodegen).map(componentPlaceholder).join("");
+  const groupById = new Map();
+  for (const group of groups) {
+    for (const spec of group.specs) groupById.set(spec.id || spec.name, group);
+  }
+  const emittedGroups = new Set();
+  const out = [];
+  for (const id of stateExpectedComponentIds(state, componentCodegen)) {
+    const group = groupById.get(id);
+    if (group) {
+      if (!emittedGroups.has(group.group)) {
+        emittedGroups.add(group.group);
+        out.push(flowGroupPlaceholder(group, state));
+      }
+      continue;
+    }
+    out.push(componentPlaceholder(id));
+  }
+  return out.join("");
 }
 
 function escapeHtmlAttr(value) {
@@ -559,6 +658,56 @@ function ensureKeepPlaceholderCoverage(generated, stateModel, componentCodegen, 
   });
   if (inserted) {
     generated.validation_notes = [generated.validation_notes, `Runner inserted missing keep placeholders: ${inserted}.`]
+      .filter(Boolean)
+      .join(" ");
+  }
+  return generated;
+}
+
+function flowPlaceholderRegex(id) {
+  const escaped = escapeRegExp(id);
+  return new RegExp(`<div\\b(?=[^>]*\\btf-component-placeholder\\b)(?=[^>]*\\bdata-component-id=["']${escaped}["'])[^>]*>\\s*<\\/div>`, "g");
+}
+
+function normalizeFlowLayoutPlaceholders(generated, stateModel, componentCodegen) {
+  if (!generated || typeof generated.html !== "string") return generated;
+  let changed = false;
+  generated.html = generated.html.replace(/<section\b[^>]*id=["']tf-state-(\d+)["'][\s\S]*?<\/section>/g, (sectionHtml, n) => {
+    const state = (stateModel.states || []).find((item) => stateNum(item.id) === Number(n));
+    if (!state) return sectionHtml;
+    const groups = flowLayoutGroupsForState(state);
+    if (!groups.length) return sectionHtml;
+    const missingGroups = groups.filter((group) => !new RegExp(`\\bdata-flow-group=["']${escapeRegExp(group.group)}["']`).test(sectionHtml));
+    if (!missingGroups.length) return sectionHtml;
+    let next = sectionHtml;
+    const flowIds = new Set();
+    for (const group of missingGroups) {
+      for (const spec of group.specs) flowIds.add(spec.id || spec.name);
+    }
+    for (const id of flowIds) next = next.replace(flowPlaceholderRegex(id), "");
+    for (const group of missingGroups) {
+      const placeholder = flowGroupPlaceholder(group, state);
+      const anchor = flowStartAnchor(group);
+      if (anchor) {
+        const anchorMatch = [...next.matchAll(flowPlaceholderRegex(anchor))].pop();
+        if (anchorMatch) {
+          const index = anchorMatch.index + anchorMatch[0].length;
+          next = `${next.slice(0, index)}${placeholder}${next.slice(index)}`;
+          continue;
+        }
+      }
+      const keepPattern = /(<div\b[^>]*class=["'][^"']*\btf-keep-placeholder\b[^"']*["'][^>]*><\/div>\s*)+/i;
+      if (keepPattern.test(next)) {
+        next = next.replace(keepPattern, (match) => match + placeholder);
+      } else {
+        next = next.replace(/(<section\b[^>]*>)/i, `$1${placeholder}`);
+      }
+    }
+    if (next !== sectionHtml) changed = true;
+    return next;
+  });
+  if (changed) {
+    generated.validation_notes = [generated.validation_notes, "Runner normalized flow layout placeholders into positioned groups."]
       .filter(Boolean)
       .join(" ");
   }
@@ -1061,6 +1210,7 @@ async function main() {
   generated.validation_notes = [generated.validation_notes, `generation_mode:${generationMode}`].filter(Boolean).join(" ");
   ensureStateSectionCoverage(generated, stateModel, componentCodegen, registry);
   ensureKeepPlaceholderCoverage(generated, stateModel, componentCodegen, registry);
+  normalizeFlowLayoutPlaceholders(generated, stateModel, componentCodegen);
   fillComponentPlaceholders(generated, stateModel, componentCodegen);
   ensureComponentCodegenCoverage(generated, stateModel, componentCodegen);
   suppressUnexpectedBottomBars(generated, stateModel, componentCodegen);
