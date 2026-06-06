@@ -280,6 +280,38 @@ function normalizeRichContentRequirements(patch) {
   for (const child of patchChildren(patch)) normalizeRichContentRequirements(child);
 }
 
+function inferSectionTitle(patch) {
+  const text = `${patch?.id || ""} ${patch?.name || ""} ${patch?.description || ""}`.toLowerCase();
+  if (/doc|document|文档/.test(text) && /detail|content|详情|内容/.test(text)) return "文档详情";
+  if (/doc|document|文档/.test(text)) return "文档列表";
+  if (/risk|风险/.test(text)) return "风险提示";
+  if (/product|产品/.test(text)) return "产品信息";
+  if (/service|售后|服务/.test(text)) return "服务信息";
+  if (/comment|qa|问答|评论/.test(text)) return "评论/问答";
+  if (/tool|工具/.test(text)) return "工具";
+  if (/overview|概览/.test(text)) return "概览";
+  const firstTextChild = patchChildren(patch).find((child) => typeof child?.text === "string" && child.text.trim());
+  if (firstTextChild) return firstTextChild.text.trim().slice(0, 20);
+  return "内容";
+}
+
+function normalizeComponentProps(patch) {
+  if (!patch || typeof patch !== "object" || Array.isArray(patch)) return;
+  if (String(patch.component || "").toLowerCase() === "sectionlayout") {
+    patch.props = patch.props && typeof patch.props === "object" && !Array.isArray(patch.props) ? patch.props : {};
+    if (!patch.props.variant) patch.props.variant = "card";
+    if (!patch.props.title) patch.props.title = inferSectionTitle(patch);
+  }
+  const schema = componentSchema(patch.component);
+  if (schema && patch.props && typeof patch.props === "object" && !Array.isArray(patch.props)) {
+    const allowed = new Set([...schema.required, ...schema.optional]);
+    for (const key of Object.keys(patch.props)) {
+      if (!allowed.has(key)) delete patch.props[key];
+    }
+  }
+  for (const child of patchChildren(patch)) normalizeComponentProps(child);
+}
+
 function componentSchema(name) {
   const key = String(name || "").toLowerCase();
   const schemas = {
@@ -483,14 +515,17 @@ function normalizeModel(model, initialHeight) {
     state.patches = patchList.filter((patch) => patch?.type !== "hide" && patch?.type !== "replace");
     for (const patch of state.inheritance.create) {
       normalizeNestedChildLayout(patch);
+      normalizeComponentProps(patch);
       normalizeRichContentRequirements(patch);
     }
     for (const patch of state.inheritance.update) {
       normalizeNestedChildLayout(patch);
+      normalizeComponentProps(patch);
       normalizeRichContentRequirements(patch);
     }
     for (const patch of state.patches) {
       normalizeNestedChildLayout(patch);
+      normalizeComponentProps(patch);
       normalizeRichContentRequirements(patch);
     }
     const requestedHeight = Number(state.height);
