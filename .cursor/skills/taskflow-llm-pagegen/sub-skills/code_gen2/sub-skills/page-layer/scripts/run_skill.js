@@ -292,6 +292,21 @@ function escapeHtmlAttr(value) {
   return String(value).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
 }
 
+function escapeHtmlText(value) {
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+function htmlTextContent(html) {
+  return String(html || "")
+    .replace(/<style[\s\S]*?<\/style>/gi, "")
+    .replace(/<[^>]+>/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function directPatchForComponent(state, id) {
   for (const patch of state.inheritance?.create || []) {
     if ((patch?.id || patch?.name) === id) return patch;
@@ -304,6 +319,33 @@ function directPatchForComponent(state, id) {
 
 function componentLayoutSpec(state, componentCodegen, id) {
   return directPatchForComponent(state, id) || latestComponentRecord(componentCodegen, id, state.id)?.input?.component || null;
+}
+
+function renderArticleDetailFallback(spec) {
+  if (String(spec?.component || "").toLowerCase() !== "articledetail") return null;
+  const props = spec.props || {};
+  const sections = Array.isArray(props.sections) ? props.sections : [];
+  if (!sections.length && !props.title && !props.loading) return null;
+  const body = props.loading
+    ? Array.from({ length: 6 }).map((_, index) => `<div style="height:${index % 3 === 0 ? 20 : 14}px;width:${index % 3 === 0 ? 70 : 96}%;background:#eceff3;border-radius:8px;margin:14px 0"></div>`).join("")
+    : sections.map((section) => {
+        const type = String(section?.type || "paragraph").toLowerCase();
+        if (type === "heading") return `<h3 style="font-size:17px;line-height:24px;margin:18px 0 8px;color:#111;font-weight:700">${escapeHtmlText(section.text)}</h3>`;
+        if (type === "image") return `<div style="height:176px;border-radius:12px;background:#eef1f5;color:#8a8f99;display:flex;align-items:center;justify-content:center;margin:14px 0;font-size:13px">${escapeHtmlText(section.caption || "文档配图")}</div>`;
+        return `<p style="font-size:15px;line-height:24px;margin:10px 0;color:#333;white-space:pre-wrap">${escapeHtmlText(section.text || section.caption || "")}</p>`;
+      }).join("");
+  return `<article data-component-id="${escapeHtmlAttr(spec.id || spec.name || "article_detail")}" class="tf-cg-article-detail-fallback" style="position:relative;width:100%;min-height:600px;margin-top:92px;padding:16px;background:#fff;box-sizing:border-box;color:#111">
+    ${props.title ? `<h2 style="font-size:22px;line-height:30px;margin:0 0 8px;font-weight:700">${escapeHtmlText(props.title)}</h2>` : ""}
+    ${body}
+  </article>`;
+}
+
+function componentHtmlForState(record, state, id, componentCodegen) {
+  const spec = componentLayoutSpec(state, componentCodegen, id);
+  const html = record?.component?.html;
+  const fallback = renderArticleDetailFallback(spec);
+  if (fallback && (!html || htmlTextContent(html).length < 8)) return fallback;
+  return html;
 }
 
 function isBottomActionBarSpec(spec) {
@@ -405,7 +447,7 @@ function componentSnippetsForState(state, componentCodegen, appendedCss) {
   const snippets = [];
   for (const id of stateExpectedComponentIds(state, componentCodegen)) {
     const record = latestComponentRecord(componentCodegen, id, state.id);
-    const html = record?.component?.html;
+    const html = componentHtmlForState(record, state, id, componentCodegen);
     if (typeof html !== "string" || !html.trim()) continue;
     snippets.push(wrapComponentHtml(html, { id, state, componentCodegen }));
     if (record.component.css) appendedCss.push(`\n/* component-codegen fallback: ${id} */\n${record.component.css}`);
@@ -463,7 +505,7 @@ function fillComponentPlaceholders(generated, stateModel, componentCodegen) {
     return sectionHtml.replace(placeholderRe, (placeholder, offset, fullSectionHtml) => {
       const id = (placeholder.match(/\bdata-component-id=["']([^"']+)["']/) || [])[1];
       const record = latestComponentRecord(componentCodegen, id, state.id);
-      const html = record?.component?.html;
+      const html = componentHtmlForState(record, state, id, componentCodegen);
       if (typeof html !== "string" || !html.trim()) return placeholder;
       changed = true;
       if (record.component.css) appendedCss.push(`\n/* component-codegen placeholder: ${id} */\n${record.component.css}`);
@@ -490,7 +532,7 @@ function ensureComponentCodegenCoverage(generated, stateModel, componentCodegen)
     for (const id of stateExpectedComponentIds(state, componentCodegen)) {
       if (sectionHasComponent(sectionHtml, id)) continue;
       const record = latestComponentRecord(componentCodegen, id, state.id);
-      const html = record?.component?.html;
+      const html = componentHtmlForState(record, state, id, componentCodegen);
       if (typeof html !== "string" || !html.trim()) continue;
       missing.push(wrapComponentHtml(html, { id, state, componentCodegen }));
       if (record.component.css) appendedCss.push(`\n/* component-codegen fallback: ${id} */\n${record.component.css}`);
@@ -683,14 +725,33 @@ function tfFillKeepPlaceholders(layer){
     slot.appendChild(crop);
   });
 }
+function tfIsAutoTrigger(action){
+  return /data_loaded|load_complete|submit_success|timeout|system|auto|success|完成|系统|自动/i.test(String(action||""));
+}
+function tfScheduleAutoTransition(currentState){
+  const model=window.__TF_STATE_MODEL__ || {};
+  const next=(model.states||[]).find(function(state){
+    const trigger=state && state.trigger || {};
+    return tfNum(state.parent_state)===currentState && tfIsAutoTrigger(trigger.action || trigger.event || trigger.anchor);
+  });
+  if(!next) return;
+  const target=tfGotoTarget(next.trigger && (next.trigger.goto || next.trigger.action)) || tfNum(next.id);
+  if(!target || target===currentState) return;
+  window.clearTimeout(window.TF && window.TF._autoTimer);
+  window.TF._autoTimer=window.setTimeout(function(){
+    if(window.TF && window.TF.current===currentState) window.TF.goto(target);
+  }, 600);
+}
 function tfInstallGoto(){
   window.TF={current:1,goto:function(id){
     const n=Number(String(id).replace(/\\D/g,""))||1;
     this.current=n;
+    window.clearTimeout(this._autoTimer);
     document.querySelectorAll(".tf-state-layer").forEach(function(layer){layer.style.display="none";});
     if(n===1) return;
     const layer=document.getElementById("tf-state-"+n);
     if(layer){ tfFillKeepPlaceholders(layer); layer.style.display="block"; }
+    tfScheduleAutoTransition(n);
   }};
 }
 tfInstallGoto();

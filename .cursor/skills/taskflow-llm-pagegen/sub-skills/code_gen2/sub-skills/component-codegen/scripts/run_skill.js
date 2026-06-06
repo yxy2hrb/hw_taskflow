@@ -75,6 +75,9 @@ function componentText(component) {
   const visible = component.visible_text;
   if (typeof visible === "string") return visible;
   if (visible && typeof visible === "object") return Object.values(visible).flat().join(" ");
+  if (Array.isArray(component.props?.sections)) {
+    return component.props.sections.map((section) => section?.text || section?.caption || "").filter(Boolean).join("\n");
+  }
   return component.text || component.description || "";
 }
 
