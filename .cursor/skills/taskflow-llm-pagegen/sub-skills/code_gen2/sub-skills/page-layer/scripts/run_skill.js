@@ -292,6 +292,25 @@ function escapeHtmlAttr(value) {
   return String(value).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
 }
 
+function restoreSemanticMasks(html) {
+  return String(html || "").replace(
+    /(<!-- bbox: key=id:([^|\s]+)\s*\|\s*x=([-\d.]+)\s+y=([-\d.]+)\s+w=([-\d.]+)\s+h=([-\d.]+)\s*-->\s*<!-- semantic:[^>]*semantic=全屏半透明遮罩层[^>]*-->)(?!\s*<div\b[^>]*\bid=["'][^"']+["'])/g,
+    (match, comments, id, x, y, w, h) => {
+      if (new RegExp(`id=["']${escapeRegExp(id)}["']`).test(html)) return match;
+      const style = [
+        "position:absolute",
+        `left:${Number(x) || 0}px`,
+        `top:${Number(y) || 0}px`,
+        `width:${Number(w) || 0}px`,
+        `height:${Number(h) || 0}px`,
+        "background-color:rgba(0,0,0,0.295)",
+        "pointer-events:none",
+      ].join(";");
+      return `${comments}\n<div id="${escapeHtmlAttr(id)}" class="tf-restored-semantic-mask" style="${style}"></div>`;
+    }
+  );
+}
+
 function escapeHtmlText(value) {
   return String(value || "")
     .replace(/&/g, "&amp;")
@@ -566,7 +585,7 @@ function normalizeKeepPlaceholderCss(generated) {
 
 function buildHtml({ originalHtml, registry, generated, stateModel, width, height }) {
   const head = extractBlock(originalHtml, "head") || "<head><meta charset=\"utf-8\"></head>";
-  const body = extractBodyInner(originalHtml);
+  const body = restoreSemanticMasks(extractBodyInner(originalHtml));
   const runtimeModel = slimStateModel(stateModel);
   const stateHeightCss = (stateModel.states || [])
     .map((state) => {
