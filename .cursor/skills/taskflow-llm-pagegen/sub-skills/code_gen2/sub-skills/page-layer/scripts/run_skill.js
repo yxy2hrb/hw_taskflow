@@ -687,6 +687,9 @@ function tfGotoTarget(value){
   const match=String(value).match(/state[_-]?(\\d+)/i);
   return match?Number(match[1]):null;
 }
+function tfActionIsBindable(action){
+  return tfActionIsClick(action) || !!tfGotoTarget(action);
+}
 function tfFindByDataAttr(root, attr, value){
   if(!root || !attr) return null;
   const nodes=root.querySelectorAll("["+attr+"]");
@@ -756,8 +759,8 @@ function tfInstallBindings(){
   (model.states||[]).forEach(function(state){
     const targetState=tfNum(state.id);
     const trigger=state.trigger || null;
-    if(trigger && trigger.anchor && tfActionIsClick(trigger.action)){
-      bindAnchorGoto(trigger.anchor, trigger.target, state.parent_state || "state_1", targetState);
+    if(trigger && trigger.anchor && tfActionIsBindable(trigger.action)){
+      bindAnchorGoto(trigger.anchor, trigger.target, state.parent_state || "state_1", tfGotoTarget(trigger.action) || targetState);
     }
     (state.patches||[]).forEach(function(patch){
       if(patch.type!=="bind") return;
