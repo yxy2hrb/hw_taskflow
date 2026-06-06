@@ -306,10 +306,25 @@ function componentLayoutSpec(state, componentCodegen, id) {
   return directPatchForComponent(state, id) || latestComponentRecord(componentCodegen, id, state.id)?.input?.component || null;
 }
 
+function isBottomActionBarSpec(spec) {
+  return /bottomactionbar|bottom_action_bar/i.test(String(spec?.component || ""))
+    || /(^|_)bottom(_|-)bar$|bottom_bar|bottom-action-bar/i.test(String(spec?.id || spec?.name || ""));
+}
+
 function componentFrameStyle(spec) {
   const bbox = Array.isArray(spec?.bbox) ? spec.bbox.map(Number) : null;
   if (!bbox || bbox.some((value) => !Number.isFinite(value))) return "";
   const zIndex = Number(spec?.props?.zIndex ?? spec?.zIndex);
+  if (isBottomActionBarSpec(spec)) {
+    return [
+      "position:fixed",
+      "left:0px",
+      "bottom:0px",
+      `width:${bbox[2]}px`,
+      `height:${bbox[3]}px`,
+      Number.isFinite(zIndex) ? `z-index:${Math.max(zIndex, 80)}` : "z-index:80",
+    ].join(";");
+  }
   return [
     "position:absolute",
     `left:${bbox[0]}px`,
@@ -515,7 +530,7 @@ function buildHtml({ originalHtml, registry, generated, stateModel, width, heigh
     .map((state) => {
       const n = stateNum(state.id);
       if (n <= 1) return "";
-      return `#tf-state-${n}{min-height:${heightForState(stateModel, state.id, height)}px!important;}`;
+      return `#tf-state-${n}{--tf-state-content-height:${heightForState(stateModel, state.id, height)}px;}`;
     })
     .filter(Boolean)
     .join("\n");
@@ -526,7 +541,7 @@ ${head}
 <div id="app-root">${body}</div>
 <div id="tf-layer-root">${generated.html || ""}</div>
 <style id="tf-llm-base-style">
-.tf-state-layer{position:fixed!important;left:0!important;top:0!important;width:${width}px!important;min-height:${height}px!important;z-index:9999!important;background:#f5f5f5;color:#1f1f1f;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;overflow-y:auto;overflow-x:hidden}
+.tf-state-layer{position:fixed!important;left:0!important;top:0!important;width:${width}px!important;height:${height}px!important;z-index:9999!important;background:#f5f5f5;color:#1f1f1f;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;overflow-y:auto;overflow-x:hidden;padding-bottom:88px}
 .tf-llm-layer *{box-sizing:border-box}
 .tf-keep-placeholder{position:absolute;overflow:hidden;pointer-events:none;z-index:2147483000!important}
 .tf-keep-placeholder>.tf-keep-crop{position:absolute;pointer-events:none}
