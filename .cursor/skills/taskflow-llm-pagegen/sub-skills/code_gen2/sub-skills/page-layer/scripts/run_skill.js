@@ -244,6 +244,18 @@ function latestComponentRecord(componentCodegen, id, stateId) {
     .sort((a, b) => componentRecordStateNum(b) - componentRecordStateNum(a))[0] || null;
 }
 
+function latestComponentRecordWithBbox(componentCodegen, id, stateId) {
+  const current = stateNum(stateId);
+  return (componentCodegen?.components || [])
+    .filter((record) => {
+      const spec = record?.input?.component || {};
+      return componentRecordId(record) === id
+        && componentRecordStateNum(record) <= current
+        && Array.isArray(spec.bbox);
+    })
+    .sort((a, b) => componentRecordStateNum(b) - componentRecordStateNum(a))[0] || null;
+}
+
 function isTopLevelComponentRecord(record) {
   return record?.input?.is_top_level !== false;
 }
@@ -337,7 +349,17 @@ function directPatchForComponent(state, id) {
 }
 
 function componentLayoutSpec(state, componentCodegen, id) {
-  return directPatchForComponent(state, id) || latestComponentRecord(componentCodegen, id, state.id)?.input?.component || null;
+  const direct = directPatchForComponent(state, id);
+  if (direct) {
+    const previous = latestComponentRecordWithBbox(componentCodegen, id, state.id)?.input?.component || {};
+    return {
+      ...previous,
+      ...direct,
+      bbox: Array.isArray(direct.bbox) ? direct.bbox : previous.bbox,
+      props: { ...(previous.props || {}), ...(direct.props || {}) },
+    };
+  }
+  return latestComponentRecord(componentCodegen, id, state.id)?.input?.component || null;
 }
 
 function renderArticleDetailFallback(spec) {
@@ -372,6 +394,16 @@ function isBottomActionBarSpec(spec) {
     || /(^|_)bottom(_|-)bar$|bottom_bar|bottom-action-bar/i.test(String(spec?.id || spec?.name || ""));
 }
 
+function isBottomSheetSpec(spec) {
+  return /bottomsheet|bottom_sheet/i.test(String(spec?.component || ""))
+    || /(^|_)sheet$|bottom_sheet|bottom-sheet/i.test(String(spec?.id || spec?.name || ""));
+}
+
+function isOverlaySpec(spec) {
+  return /overlay|mask|scrim/i.test(String(spec?.component || ""))
+    || /overlay|mask|scrim/i.test(String(spec?.id || spec?.name || ""));
+}
+
 function componentFrameStyle(spec) {
   const bbox = Array.isArray(spec?.bbox) ? spec.bbox.map(Number) : null;
   if (!bbox || bbox.some((value) => !Number.isFinite(value))) return "";
@@ -384,6 +416,26 @@ function componentFrameStyle(spec) {
       `width:${bbox[2]}px`,
       `height:${bbox[3]}px`,
       Number.isFinite(zIndex) ? `z-index:${Math.max(zIndex, 80)}` : "z-index:80",
+    ].join(";");
+  }
+  if (isBottomSheetSpec(spec)) {
+    return [
+      "position:fixed",
+      `left:${bbox[0]}px`,
+      "bottom:0px",
+      `width:${bbox[2]}px`,
+      `height:${bbox[3]}px`,
+      Number.isFinite(zIndex) ? `z-index:${zIndex}` : "z-index:70",
+    ].join(";");
+  }
+  if (isOverlaySpec(spec)) {
+    return [
+      "position:fixed",
+      `left:${bbox[0]}px`,
+      "top:0px",
+      `width:${bbox[2]}px`,
+      "height:100vh",
+      Number.isFinite(zIndex) ? `z-index:${zIndex}` : "z-index:50",
     ].join(";");
   }
   return [
@@ -565,6 +617,43 @@ function ensureComponentCodegenCoverage(generated, stateModel, componentCodegen)
       .filter(Boolean)
       .join(" ");
   }
+  return generated;
+}
+
+function cssAttr(value) {
+  return String(value || "").replace(/\\/g, "\\\\").replace(/"/g, "\\\"");
+}
+
+function bottomActionBarComponentIds(componentCodegen) {
+  const ids = [];
+  for (const record of componentCodegen?.components || []) {
+    const spec = record?.input?.component || record?.component || {};
+    const id = spec.id || spec.name || record?.id;
+    if (id && isBottomActionBarSpec(spec) && !ids.includes(id)) ids.push(id);
+  }
+  return ids;
+}
+
+function suppressUnexpectedBottomBars(generated, stateModel, componentCodegen) {
+  if (!generated || typeof generated.css !== "string" || !componentCodegen?.components?.length) return generated;
+  const bottomIds = bottomActionBarComponentIds(componentCodegen);
+  if (!bottomIds.length) return generated;
+  const rules = [];
+  for (const state of stateModel.states || []) {
+    const n = stateNum(state.id);
+    if (n <= 1) continue;
+    const expected = new Set(stateExpectedComponentIds(state, componentCodegen));
+    for (const id of bottomIds) {
+      if (expected.has(id)) continue;
+      const safe = cssAttr(id);
+      rules.push(`#tf-state-${n} [data-component-frame="${safe}"],#tf-state-${n} [data-component-id="${safe}"]{display:none!important;visibility:hidden!important;pointer-events:none!important}`);
+    }
+  }
+  if (!rules.length) return generated;
+  generated.css = `${generated.css || ""}\n/* Hide inherited bottom bars that do not belong to the active state. */\n${rules.join("\n")}`;
+  generated.validation_notes = [generated.validation_notes, "Runner suppressed unexpected inherited bottom action bars per state."]
+    .filter(Boolean)
+    .join(" ");
   return generated;
 }
 
@@ -974,6 +1063,7 @@ async function main() {
   ensureKeepPlaceholderCoverage(generated, stateModel, componentCodegen, registry);
   fillComponentPlaceholders(generated, stateModel, componentCodegen);
   ensureComponentCodegenCoverage(generated, stateModel, componentCodegen);
+  suppressUnexpectedBottomBars(generated, stateModel, componentCodegen);
   normalizeKeepPlaceholderCss(generated);
   const issues = validateGenerated(generated, stateModel);
   writeJson(path.join(outDir, "llm_layer.generated.json"), generated);
