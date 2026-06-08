@@ -766,6 +766,13 @@ function validateModel(model, registry) {
     if (Number(state.height || 0) < contentBottom) issues.push(`${state.id} height ${state.height} smaller than content bottom ${contentBottom}`);
     if (stateNum(state.id) > 1 && !state.parent_state) issues.push(`${state.id} missing parent_state`);
     if (stateNum(state.id) === 1 && !state.parent_state && state.trigger) issues.push(`${state.id} initial state must not define trigger`);
+    if (stateNum(state.id) === 1 && !state.parent_state
+      && ((state.inheritance?.create || []).length || (state.inheritance?.update || []).length)) {
+      // state_1 is the original captured page rendered from app-root; page-layer
+      // does not render its create/update components, so any bind to them is
+      // dead. First-screen interactions must target original DOM anchors.
+      issues.push(`${state.id} is the original captured page and must not create/update components; bind first-screen interactions to original DOM anchors instead`);
+    }
     if (stateNum(state.id) > 1 && state.trigger && !isSystemTrigger(state.trigger)) {
       const triggerAction = state.trigger.action || state.trigger.event;
       if (isClickAction(triggerAction)) {
@@ -814,6 +821,18 @@ function validateModel(model, registry) {
       }
       if (patch.type === "bind" && !patchGotoStateNum(patch)) issues.push(`${state.id} bind patch must include explicit goto state target`);
       if (patch.type === "hide" || patch.type === "replace") issues.push(`${state.id} must not contain ${patch.type} patch`);
+    }
+    // A bind's anchor must resolve to a real element (original DOM anchor or a
+    // virtual component visible in this state), otherwise the runtime cannot
+    // attach the click and the transition is dead. Checked after all create ids
+    // above are registered into virtualAnchors.
+    for (const patch of state.patches || []) {
+      if (patch.type !== "bind") continue;
+      const bindAnchor = patch.anchor || patch.target_anchor;
+      if (typeof bindAnchor === "string" && bindAnchor
+        && !originalAnchors.has(bindAnchor) && !virtualAnchors.has(bindAnchor)) {
+        issues.push(`${state.id} bind references unknown anchor: ${bindAnchor}`);
+      }
     }
   }
 

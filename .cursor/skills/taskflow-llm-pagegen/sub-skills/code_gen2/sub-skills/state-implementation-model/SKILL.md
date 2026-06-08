@@ -129,6 +129,13 @@ anchor, it must have been created by an earlier state.
   visible user action, such as tapping a search/filter/card button, on
   `state_1.trigger`; put that outbound interaction in `state_1.patches` as a
   `bind` patch.
+- `state_1` MUST NOT create or update components. It is the original captured
+  page rendered from app-root, and page-layer does not render its create/update
+  patches — so any bind to a state_1-created component is dead and the
+  transition will not work. A `state_1.patches[].bind` anchor must be an
+  ORIGINAL DOM anchor from `semantic_registry` (e.g. the real "搜索图标-…"
+  anchor that already exists on the page), never a newly created virtual id.
+  Do not create a new IconButton/etc. on state_1 just to bind it.
 - For every non-`state_1` click/tap trigger, make the inbound destination
   explicit with `goto` equal to the current state's own `id`, for example
   `{ "action": "click", "anchor": "搜索图标", "goto": "state_2" }`.
