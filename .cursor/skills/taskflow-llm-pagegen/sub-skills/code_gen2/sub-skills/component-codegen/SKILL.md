@@ -124,6 +124,26 @@ For these components:
    fixed page-positioned height. Render the natural content height. Page-layer
    will place the component.
 
+## Floating Surface Output Contract
+
+For floating-surface components — `BottomSheet`, `Drawer`, `Modal`, `Dialog`,
+`Popover` — render only the surface (panel) itself. Positioning and the dim
+backdrop are owned by other stages, not by this component:
+
+1. Do NOT render a full-screen backdrop/mask inside the component. The dim layer
+   is a separate `Overlay`/mask component created by the state model and placed
+   by page-layer. A self-rendered mask produces a double overlay.
+2. Do NOT self-position with page coordinates. Never emit a full-viewport root
+   (e.g. `top:0;height:936`) or an absolute page-coordinate panel
+   (e.g. `top:336px`). Render the panel so it fills its parent container
+   (`width:100%`, intrinsic or `height:100%`); page-layer's component frame
+   provides the actual on-screen placement via the state model `bbox`.
+3. Use the page-layer surface class convention so layout fixups apply: the panel
+   root should be `tf-cg-sheet` (not a private alias such as `tf-cg-bottom-sheet`),
+   the scrollable body `tf-cg-sheet-body`, and the action row `tf-cg-sheet-footer`.
+4. Keep the footer/primary action (`确定`/`确认`/`应用`) inside the panel and
+   within its natural height so it is not pushed below the viewport.
+
 ## Recursive Composition Contract
 
 - The runner generates a tree bottom-up. Leaf components receive no

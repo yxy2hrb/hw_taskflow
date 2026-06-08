@@ -126,6 +126,19 @@ function patchAnchor(patch) {
   return ownString(patch, "target_anchor") || ownString(patch, "anchor") || ownString(patch, "target") || ownString(patch, "id") || null;
 }
 
+function gotoStateNum(value) {
+  const match = String(value || "").match(/state[_-]?(\d+)/i);
+  return match ? Number(match[1]) : 0;
+}
+
+function patchGotoStateNum(patch) {
+  return gotoStateNum(patch?.goto) || gotoStateNum(patch?.action);
+}
+
+function isClickAction(action) {
+  return /(^|:)click$/i.test(String(action || "")) || /^tap$/i.test(String(action || ""));
+}
+
 function patchBottom(patch) {
   const bbox = Array.isArray(patch?.bbox) ? patch.bbox.map(Number) : [];
   const y = Number.isFinite(bbox[1]) ? bbox[1] : null;
@@ -169,7 +182,42 @@ function isContainerLike(patch) {
 
 function isFixedPlacementComponent(patch) {
   const value = `${patch?.component || ""} ${patch?.id || ""}`.toLowerCase();
-  return /bottomsheet|drawer|modal|dialog|toast|popover|overlay|mask|topnav|bottomnav|buttonbar|bottom[_-]?bar|action[_-]?bar|tab[_-]?bar|floating|statusbar/.test(value);
+  return /bottomsheet|drawer|modal|dialog|toast|popover|overlay|mask|topnav|bottomnav|buttonbar|bottom[_-]?bar|action[_-]?bar|tab[_-]?bar|floating|statusbar|softkeyboard|keyboard|ime/.test(value);
+}
+
+function isKeyboardPatch(patch) {
+  return /softkeyboard|keyboard|ime|软键盘|键盘/i.test(`${patch?.component || ""} ${patch?.id || ""}`);
+}
+
+function isBottomActionPatch(patch) {
+  return /buttonbar|bottomnav|bottom[_-]?bar|action[_-]?bar|footer[_-]?bar|底部.*按钮|底部.*操作/i.test(`${patch?.component || ""} ${patch?.id || ""}`);
+}
+
+function normalizeFixedViewportPatch(patch, initialHeight) {
+  if (!patch || typeof patch !== "object" || Array.isArray(patch)) return;
+  const viewportHeight = Number(initialHeight) || 936;
+  const bbox = Array.isArray(patch.bbox) ? patch.bbox.map(Number) : [];
+  if (isKeyboardPatch(patch)) {
+    const width = Number.isFinite(bbox[2]) && bbox[2] > 0 ? bbox[2] : 360;
+    const height = Number.isFinite(bbox[3]) && bbox[3] > 0 ? bbox[3] : 336;
+    patch.bbox = [0, Math.max(0, viewportHeight - height), width, height];
+    patch.props = { ...(patch.props || {}), layoutRole: "fixed-bottom-keyboard", zIndex: Math.max(Number(patch.props?.zIndex || 0), 90) };
+  } else if (isBottomActionPatch(patch)) {
+    const width = Number.isFinite(bbox[2]) && bbox[2] > 0 ? bbox[2] : 360;
+    const height = Number.isFinite(bbox[3]) && bbox[3] > 0 ? bbox[3] : 64;
+    patch.bbox = [0, Math.max(0, viewportHeight - height), width, height];
+    patch.props = { ...(patch.props || {}), layoutRole: "fixed-bottom-action", zIndex: Math.max(Number(patch.props?.zIndex || 0), 80) };
+  }
+}
+
+function mergeVirtualPlacement(patch, virtualPatchById) {
+  const id = patch?.id || patch?.name;
+  if (!id || !virtualPatchById.has(id)) return;
+  const previous = virtualPatchById.get(id) || {};
+  if (!patch.component && previous.component) patch.component = previous.component;
+  if (!Array.isArray(patch.bbox) && Array.isArray(previous.bbox)) patch.bbox = previous.bbox.slice();
+  if (!patch.layout && previous.layout) patch.layout = { ...previous.layout };
+  patch.props = { ...(previous.props || {}), ...(patch.props || {}) };
 }
 
 function isOverlayLike(patch) {
@@ -200,6 +248,23 @@ function bboxOf(patch) {
 function bboxOverlap(a, b) {
   if (!a || !b) return false;
   return a[0] < b[0] + b[2] && a[0] + a[2] > b[0] && a[1] < b[1] + b[3] && a[1] + a[3] > b[1];
+}
+
+// True when `outer` fully contains `inner` (with a small tolerance). Used to
+// exempt nested controls — e.g. a save/back TextButton sitting inside the top
+// nav bar — from the same-z "region overlap" rule, which is meant to catch
+// peer-level regions (status bar / nav / body / bottom bar) fighting for space,
+// not a button legitimately nested within a bar.
+function bboxContains(outer, inner, tol = 1) {
+  if (!outer || !inner) return false;
+  return outer[0] <= inner[0] + tol
+    && outer[1] <= inner[1] + tol
+    && outer[0] + outer[2] >= inner[0] + inner[2] - tol
+    && outer[1] + outer[3] >= inner[1] + inner[3] - tol;
+}
+
+function bboxNested(a, b) {
+  return bboxContains(a, b) || bboxContains(b, a);
 }
 
 function patchZIndex(patch) {
@@ -341,11 +406,16 @@ function componentSchema(name) {
   return schemas[key] || null;
 }
 
+// Protocol-level metadata props. These are injected by the runner
+// (normalizeFixedViewportPatch) or mandated by the page-layer contract / SKILL,
+// and are valid on any component regardless of its documented business props.
+const META_PROPS = ["layoutRole", "zIndex", "textStyles"];
+
 function validateComponentProps(patch, stateId, issues) {
   const schema = componentSchema(patch?.component);
   if (!schema) return;
   const props = patch.props || {};
-  const allowed = new Set([...schema.required, ...schema.optional]);
+  const allowed = new Set([...schema.required, ...schema.optional, ...META_PROPS]);
   for (const key of Object.keys(props)) {
     if (!allowed.has(key)) {
       issues.push(`${stateId}.${patch.id || patch.name || patch.component} unknown prop "${key}" for ${patch.component}`);
@@ -446,6 +516,8 @@ function validateStateStacking(state, registry, virtualPatches, issues) {
       if (a.source === "original_keep" && b.source === "original_keep") continue;
       if (a.z !== b.z) continue;
       if (isStackingExempt(a.patch) || isStackingExempt(b.patch)) continue;
+      if (a.id === b.id) continue;
+      if (bboxNested(a.bbox, b.bbox)) continue;
       if (bboxOverlap(a.bbox, b.bbox)) {
         issues.push(`${state.id} fixed same-z bbox overlap: ${a.id} and ${b.id} at zIndex ${a.z}`);
       }
@@ -487,8 +559,10 @@ function normalizeModel(model, initialHeight) {
   delete model.semanticAnchors;
   delete model.semantic_registry;
 
+  const virtualPatchById = new Map();
   for (const state of model.states || []) {
     if (!state.trigger || typeof state.trigger !== "object" || Array.isArray(state.trigger)) state.trigger = null;
+    if (stateNum(state.id) === 1 && !state.parent_state) state.trigger = null;
 
     const patchList = Array.isArray(state.patches) ? state.patches : [];
     const inheritance = state.inheritance && typeof state.inheritance === "object" && !Array.isArray(state.inheritance) ? state.inheritance : {};
@@ -502,13 +576,23 @@ function normalizeModel(model, initialHeight) {
       if (patch.type === "keep" && anchor) keep.add(anchor);
       if (patch.type === "create") create.push(patch);
       if (patch.type === "update") update.push(patch);
-      if (patch.type === "bind" && !state.trigger && anchor) {
-        state.trigger = { event: patch.event || "click", anchor, action: patch.action || `goto:${state.id}` };
+      if (patch.type === "bind" && anchor) {
+        const targetNum = patchGotoStateNum(patch);
+        if (!patch.goto && targetNum) patch.goto = `state_${targetNum}`;
+        if (!state.trigger && stateNum(state.id) > 1 && targetNum === stateNum(state.id)) {
+          state.trigger = { event: patch.event || "click", anchor, action: isClickAction(patch.action) ? "click" : (patch.action || "click"), goto: state.id };
+        }
       }
     }
 
     if (state.trigger && /^goto:/i.test(String(state.trigger.action || ""))) {
       state.trigger.action = `goto:${state.id}`;
+    }
+    if (state.trigger && stateNum(state.id) > 1) {
+      const action = String(state.trigger.action || state.trigger.event || "");
+      if (isClickAction(action) || /^goto:/i.test(String(state.trigger.action || ""))) {
+        state.trigger.goto = state.id;
+      }
     }
 
     state.inheritance = { keep: [...keep], create, update };
@@ -517,16 +601,25 @@ function normalizeModel(model, initialHeight) {
       normalizeNestedChildLayout(patch);
       normalizeComponentProps(patch);
       normalizeRichContentRequirements(patch);
+      normalizeFixedViewportPatch(patch, initialHeight);
+      registerPatchTree(patch, virtualPatchById);
     }
     for (const patch of state.inheritance.update) {
+      mergeVirtualPlacement(patch, virtualPatchById);
       normalizeNestedChildLayout(patch);
       normalizeComponentProps(patch);
       normalizeRichContentRequirements(patch);
+      normalizeFixedViewportPatch(patch, initialHeight);
+      if (patch?.id || patch?.name) {
+        const id = patch.id || patch.name;
+        virtualPatchById.set(id, { ...(virtualPatchById.get(id) || {}), ...patch, props: { ...((virtualPatchById.get(id) || {}).props || {}), ...(patch.props || {}) } });
+      }
     }
     for (const patch of state.patches) {
       normalizeNestedChildLayout(patch);
       normalizeComponentProps(patch);
       normalizeRichContentRequirements(patch);
+      normalizeFixedViewportPatch(patch, initialHeight);
     }
     const requestedHeight = Number(state.height);
     const contentHeight = stateContentBottom(state);
@@ -560,6 +653,16 @@ function validateModel(model, registry) {
     const contentBottom = stateContentBottom(state);
     if (Number(state.height || 0) < contentBottom) issues.push(`${state.id} height ${state.height} smaller than content bottom ${contentBottom}`);
     if (stateNum(state.id) > 1 && !state.parent_state) issues.push(`${state.id} missing parent_state`);
+    if (stateNum(state.id) === 1 && !state.parent_state && state.trigger) issues.push(`${state.id} initial state must not define trigger`);
+    if (stateNum(state.id) > 1 && state.trigger && !isSystemTrigger(state.trigger)) {
+      const triggerAction = state.trigger.action || state.trigger.event;
+      if (isClickAction(triggerAction)) {
+        const triggerTarget = gotoStateNum(state.trigger.goto) || gotoStateNum(state.trigger.action);
+        if (triggerTarget !== stateNum(state.id)) {
+          issues.push(`${state.id} click trigger must explicitly goto its own state id`);
+        }
+      }
+    }
     if (state.inheritance?.hide) issues.push(`${state.id} must not output inheritance.hide`);
     if (state.inheritance?.replace) issues.push(`${state.id} must not output inheritance.replace`);
     for (const patch of state.inheritance?.create || []) validatePatchShape(patch, state.id, issues);
@@ -597,6 +700,7 @@ function validateModel(model, registry) {
         collectPatchIds(patch).forEach((id) => virtualAnchors.add(id));
         registerPatchTree(patch, virtualPatches);
       }
+      if (patch.type === "bind" && !patchGotoStateNum(patch)) issues.push(`${state.id} bind patch must include explicit goto state target`);
       if (patch.type === "hide" || patch.type === "replace") issues.push(`${state.id} must not contain ${patch.type} patch`);
     }
   }

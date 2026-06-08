@@ -256,6 +256,18 @@ function latestComponentRecordWithBbox(componentCodegen, id, stateId) {
     .sort((a, b) => componentRecordStateNum(b) - componentRecordStateNum(a))[0] || null;
 }
 
+function latestComponentRecordWithLayout(componentCodegen, id, stateId) {
+  const current = stateNum(stateId);
+  return (componentCodegen?.components || [])
+    .filter((record) => {
+      const spec = record?.input?.component || {};
+      return componentRecordId(record) === id
+        && componentRecordStateNum(record) < current
+        && spec?.layout?.group;
+    })
+    .sort((a, b) => componentRecordStateNum(b) - componentRecordStateNum(a))[0] || null;
+}
+
 function isTopLevelComponentRecord(record) {
   return record?.input?.is_top_level !== false;
 }
@@ -296,8 +308,21 @@ function componentPlaceholder(id) {
   return `<div class="tf-component-placeholder" data-component-id="${String(id).replace(/"/g, "&quot;")}"></div>`;
 }
 
-function layoutComponentSpecsForState(state) {
-  return [...(state.inheritance?.create || []), ...(state.inheritance?.update || [])]
+function layoutComponentSpecsForState(state, componentCodegen, registry) {
+  const keptVirtualSpecs = (state.inheritance?.keep || [])
+    .filter((id) => typeof id === "string")
+    .map((id) => componentLayoutSpec(state, componentCodegen, id, registry))
+    .filter(Boolean);
+  const byId = new Map();
+  for (const spec of [...keptVirtualSpecs, ...(state.inheritance?.create || []), ...(state.inheritance?.update || [])]) {
+    const id = spec?.id || spec?.name;
+    if (id) byId.set(id, spec);
+  }
+  return [...byId.values()]
+    .map((spec) => {
+      const id = spec?.id || spec?.name;
+      return id ? componentLayoutSpec(state, componentCodegen, id, registry) || spec : spec;
+    })
     .filter((spec) => {
       const id = spec?.id || spec?.name;
       return id
@@ -309,9 +334,9 @@ function layoutComponentSpecsForState(state) {
     });
 }
 
-function flowLayoutGroupsForState(state) {
+function flowLayoutGroupsForState(state, componentCodegen, registry) {
   const groups = new Map();
-  for (const spec of layoutComponentSpecsForState(state)) {
+  for (const spec of layoutComponentSpecsForState(state, componentCodegen, registry)) {
     const key = String(spec.layout.group);
     if (!groups.has(key)) groups.set(key, []);
     groups.get(key).push(spec);
@@ -322,9 +347,9 @@ function flowLayoutGroupsForState(state) {
   }));
 }
 
-function flowLayoutIdsForState(state) {
+function flowLayoutIdsForState(state, componentCodegen, registry) {
   const ids = new Set();
-  for (const group of flowLayoutGroupsForState(state)) {
+  for (const group of flowLayoutGroupsForState(state, componentCodegen, registry)) {
     for (const spec of group.specs) ids.add(spec.id || spec.name);
   }
   return ids;
@@ -344,12 +369,34 @@ function flowStartAnchor(group) {
   return "";
 }
 
-function flowGroupTop(state, group) {
+function bboxForAnchor(registry, anchor) {
+  if (!registry || !anchor) return null;
+  const semantic = registry.semantic_dom_registry || {};
+  const direct = semantic[anchor];
+  if (Array.isArray(direct?.bbox)) return direct.bbox.map(Number);
+  const selector = registry.semanticAnchors?.[anchor];
+  if (selector) {
+    const bySelector = Object.values(semantic).find((item) => item?.selector === selector || `#${item?.id}` === selector);
+    if (Array.isArray(bySelector?.bbox)) return bySelector.bbox.map(Number);
+    const byKey = semantic[String(selector).replace(/^#/, "")] || semantic[selector];
+    if (Array.isArray(byKey?.bbox)) return byKey.bbox.map(Number);
+  }
+  const fuzzy = Object.entries(semantic).find(([name]) => name.includes(anchor) || anchor.includes(name));
+  if (Array.isArray(fuzzy?.[1]?.bbox)) return fuzzy[1].bbox.map(Number);
+  return null;
+}
+
+function flowGroupTop(state, group, registry, componentCodegen) {
   const spacing = Number(group.specs[0]?.layout?.spacingHint ?? 12) || 12;
   const anchor = flowStartAnchor(group);
   const anchorSpec = anchor ? componentSpecById(state, anchor) : null;
   const bbox = Array.isArray(anchorSpec?.bbox) ? anchorSpec.bbox.map(Number) : null;
   if (bbox && bbox.every(Number.isFinite)) return Math.max(0, bbox[1] + bbox[3] + spacing);
+  const componentBbox = anchor ? componentLayoutSpec(state, componentCodegen, anchor, registry)?.bbox : null;
+  const anchorBbox = Array.isArray(componentBbox) ? componentBbox.map(Number) : null;
+  if (anchorBbox && anchorBbox.every(Number.isFinite)) return Math.max(0, anchorBbox[1] + anchorBbox[3] + spacing);
+  const registryBbox = bboxForAnchor(registry, anchor);
+  if (registryBbox && registryBbox.every(Number.isFinite)) return Math.max(0, registryBbox[1] + registryBbox[3] + spacing);
   let maxBottom = 0;
   for (const spec of [...(state.inheritance?.create || []), ...(state.inheritance?.update || [])]) {
     if (!Array.isArray(spec?.bbox) || isBottomActionBarSpec(spec) || isBottomSheetSpec(spec) || isOverlaySpec(spec)) continue;
@@ -359,9 +406,9 @@ function flowGroupTop(state, group) {
   return maxBottom + spacing;
 }
 
-function flowGroupPlaceholder(group, state) {
+function flowGroupPlaceholder(group, state, registry, componentCodegen) {
   const spacing = Number(group.specs[0]?.layout?.spacingHint ?? 12) || 12;
-  const top = flowGroupTop(state, group);
+  const top = flowGroupTop(state, group, registry, componentCodegen);
   const style = [
     "position:absolute",
     "left:0px",
@@ -376,8 +423,8 @@ function flowGroupPlaceholder(group, state) {
   return `<div class="tf-flow-group" data-flow-group="${escapeHtmlAttr(group.group)}" style="${style}">${group.specs.map((spec) => componentPlaceholder(spec.id || spec.name)).join("")}</div>`;
 }
 
-function componentPlaceholdersForState(state, componentCodegen) {
-  const groups = flowLayoutGroupsForState(state);
+function componentPlaceholdersForState(state, componentCodegen, registry) {
+  const groups = flowLayoutGroupsForState(state, componentCodegen, registry);
   if (!groups.length) return stateExpectedComponentIds(state, componentCodegen).map(componentPlaceholder).join("");
   const groupById = new Map();
   for (const group of groups) {
@@ -390,7 +437,7 @@ function componentPlaceholdersForState(state, componentCodegen) {
     if (group) {
       if (!emittedGroups.has(group.group)) {
         emittedGroups.add(group.group);
-        out.push(flowGroupPlaceholder(group, state));
+        out.push(flowGroupPlaceholder(group, state, registry, componentCodegen));
       }
       continue;
     }
@@ -447,18 +494,35 @@ function directPatchForComponent(state, id) {
   return null;
 }
 
-function componentLayoutSpec(state, componentCodegen, id) {
+function componentLayoutSpec(state, componentCodegen, id, registry) {
   const direct = directPatchForComponent(state, id);
   if (direct) {
-    const previous = latestComponentRecordWithBbox(componentCodegen, id, state.id)?.input?.component || {};
+    const previous = (
+      latestComponentRecordWithBbox(componentCodegen, id, state.id)
+      || latestComponentRecordWithLayout(componentCodegen, id, state.id)
+    )?.input?.component || {};
+    const registryBbox = bboxForAnchor(registry, id);
     return {
       ...previous,
       ...direct,
-      bbox: Array.isArray(direct.bbox) ? direct.bbox : previous.bbox,
+      bbox: Array.isArray(direct.bbox) ? direct.bbox : (previous.bbox || registryBbox),
+      layout: direct.layout || previous.layout,
       props: { ...(previous.props || {}), ...(direct.props || {}) },
     };
   }
-  return latestComponentRecord(componentCodegen, id, state.id)?.input?.component || null;
+  const latest = latestComponentRecord(componentCodegen, id, state.id)?.input?.component || null;
+  if (!latest) return null;
+  const previous = (
+    (Array.isArray(latest.bbox) ? null : latestComponentRecordWithBbox(componentCodegen, id, state.id))
+    || (latest?.layout?.group ? null : latestComponentRecordWithLayout(componentCodegen, id, state.id))
+  )?.input?.component || {};
+  return {
+    ...previous,
+    ...latest,
+    bbox: Array.isArray(latest.bbox) ? latest.bbox : previous.bbox,
+    layout: latest.layout || previous.layout,
+    props: { ...(previous.props || {}), ...(latest.props || {}) },
+  };
 }
 
 function renderArticleDetailFallback(spec) {
@@ -480,8 +544,8 @@ function renderArticleDetailFallback(spec) {
   </article>`;
 }
 
-function componentHtmlForState(record, state, id, componentCodegen) {
-  const spec = componentLayoutSpec(state, componentCodegen, id);
+function componentHtmlForState(record, state, id, componentCodegen, registry) {
+  const spec = componentLayoutSpec(state, componentCodegen, id, registry);
   const html = record?.component?.html;
   const fallback = renderArticleDetailFallback(spec);
   if (fallback && (!html || htmlTextContent(html).length < 8)) return fallback;
@@ -489,7 +553,9 @@ function componentHtmlForState(record, state, id, componentCodegen) {
 }
 
 function isBottomActionBarSpec(spec) {
-  return /bottomactionbar|bottom_action_bar/i.test(String(spec?.component || ""))
+  const layoutRole = String(spec?.props?.layoutRole ?? spec?.layoutRole ?? "");
+  if (/^fixed-bottom-(action|keyboard)$/i.test(layoutRole)) return true;
+  return /bottomactionbar|bottom_action_bar|^buttonbar$/i.test(String(spec?.component || ""))
     || /(^|_)bottom(_|-)bar$|bottom_bar|bottom-action-bar/i.test(String(spec?.id || spec?.name || ""));
 }
 
@@ -503,10 +569,62 @@ function isOverlaySpec(spec) {
     || /overlay|mask|scrim/i.test(String(spec?.id || spec?.name || ""));
 }
 
+function isKeyboardSpec(spec) {
+  return /softkeyboard|keyboard|ime/i.test(String(spec?.component || ""))
+    || /soft[_-]?keyboard|keyboard|ime/i.test(String(spec?.id || spec?.name || ""));
+}
+
+// Components that must be positioned against the viewport (fixed bottom bar,
+// soft keyboard, bottom sheet, overlay/mask). For these the page-layer frame
+// owns placement; a frame the LLM may have wrapped with `position:absolute`
+// page coordinates must NOT be reused, or the element lands in the scrolling
+// canvas instead of pinned to the screen edge.
+function isViewportFixedSpec(spec) {
+  if (!spec) return false;
+  return isBottomActionBarSpec(spec) || isKeyboardSpec(spec) || isBottomSheetSpec(spec) || isOverlaySpec(spec);
+}
+
+function componentEverCreated(stateModel, id) {
+  for (const state of stateModel?.states || []) {
+    for (const item of state.inheritance?.create || []) {
+      if ((item?.id || item?.name) === id) return true;
+    }
+  }
+  return false;
+}
+
+// A component id that was never created as a top-level component and resolves
+// with no usable placement (no fixed bbox, no flow layout group, no fixed role)
+// is an "orphan". These come from the model wrongly promoting an internal child
+// control (e.g. a button/input embedded in a container's props) into a
+// standalone update patch. Rendering them yields an unpositioned node that falls
+// to the top-left of the page, so they must be skipped.
+function isUnplaceableOrphanComponent(state, stateModel, componentCodegen, registry, id) {
+  if (!id) return false;
+  if (componentEverCreated(stateModel, id)) return false;
+  const spec = componentLayoutSpec(state, componentCodegen, id, registry);
+  if (!spec) return false;
+  const hasBbox = Array.isArray(spec.bbox) && spec.bbox.length === 4 && spec.bbox.every((v) => Number.isFinite(Number(v)));
+  const hasLayout = Boolean(spec?.layout?.group);
+  if (hasBbox || hasLayout) return false;
+  if (isBottomActionBarSpec(spec) || isBottomSheetSpec(spec) || isKeyboardSpec(spec) || isOverlaySpec(spec)) return false;
+  return true;
+}
+
 function componentFrameStyle(spec) {
   const bbox = Array.isArray(spec?.bbox) ? spec.bbox.map(Number) : null;
   if (!bbox || bbox.some((value) => !Number.isFinite(value))) return "";
   const zIndex = Number(spec?.props?.zIndex ?? spec?.zIndex);
+  if (isKeyboardSpec(spec)) {
+    return [
+      "position:fixed",
+      "left:0px",
+      "bottom:0px",
+      `width:${bbox[2]}px`,
+      `height:${bbox[3]}px`,
+      Number.isFinite(zIndex) ? `z-index:${Math.max(zIndex, 90)}` : "z-index:90",
+    ].join(";");
+  }
   if (isBottomActionBarSpec(spec)) {
     return [
       "position:fixed",
@@ -547,8 +665,8 @@ function componentFrameStyle(spec) {
   ].filter(Boolean).join(";");
 }
 
-function wrapComponentHtml(html, { id, state, componentCodegen }) {
-  const style = componentFrameStyle(componentLayoutSpec(state, componentCodegen, id));
+function wrapComponentHtml(html, { id, state, componentCodegen, registry }) {
+  const style = componentFrameStyle(componentLayoutSpec(state, componentCodegen, id, registry));
   if (!style) return html;
   return `<div class="tf-component-frame" data-component-frame="${escapeHtmlAttr(id)}" style="${style}">${html}</div>`;
 }
@@ -573,7 +691,40 @@ function keepPlaceholdersForState(state, componentCodegen) {
 }
 
 function statusKeepAnchors(registry) {
-  return Object.keys(registry.semantic_dom_registry || {}).filter((anchor) => /状态栏|status/i.test(anchor));
+  return Object.entries(registry.semantic_dom_registry || {})
+    .filter(([anchor, entry]) => {
+      const text = `${anchor} ${entry?.component || ""} ${entry?.element || ""}`;
+      const bbox = Array.isArray(entry?.bbox) ? entry.bbox.map(Number) : [];
+      const isTopSmallRegion = Number.isFinite(bbox[1]) && Number.isFinite(bbox[3]) && bbox[1] <= 40 && bbox[3] <= 40;
+      if (!/状态栏|status|电池|系统图标|信号/i.test(text)) return false;
+      if (!isTopSmallRegion) return false;
+      return !/导航|标题|navbar|nav\s*bar|title/i.test(text);
+    })
+    .map(([anchor]) => anchor);
+}
+
+function isSystemBottomKeepAnchor(anchor, registry) {
+  const text = String(anchor || "");
+  if (!/底部系统|系统导航条|home[-_\s]?indicator|home\s*indicator|底部home/i.test(text)) return false;
+  const bbox = bboxForAnchor(registry, anchor);
+  if (!Array.isArray(bbox)) return true;
+  const y = Number(bbox[1]);
+  const h = Number(bbox[3]);
+  return !Number.isFinite(y) || !Number.isFinite(h) || h <= 40;
+}
+
+// A full-screen replacement state builds its own page header (TopNav/title bar)
+// and lays down its own full content, rather than floating over the previous
+// page. Such a state must NOT keep the previous page's content anchors as a
+// background — only system-resident bars (status bar) survive. Overlay/sheet/
+// dialog states are excluded: they legitimately keep the page behind them.
+function isSelfHeaderReplacementState(state, componentCodegen) {
+  if (!state || stateNum(state.id) <= 1) return false;
+  if (isOverlayState(state)) return false;
+  const creates = state.inheritance?.create || [];
+  if (creates.length < 2) return false;
+  return creates.some((spec) =>
+    /topnav|top[_-]?nav|navbar|nav[_-]?bar|titlebar|title[_-]?bar/i.test(String(spec?.component || spec?.id || spec?.name || "")));
 }
 
 function expectedKeepAnchorsForState(state, componentCodegen, registry) {
@@ -581,10 +732,17 @@ function expectedKeepAnchorsForState(state, componentCodegen, registry) {
   function add(anchor) {
     if (anchor && !anchors.includes(anchor)) anchors.push(anchor);
   }
+  const fullScreenReplace = isSelfHeaderReplacementState(state, componentCodegen);
+  const systemTop = fullScreenReplace ? new Set(statusKeepAnchors(registry)) : null;
   for (const anchor of state.inheritance?.keep || []) {
     if (typeof anchor !== "string") continue;
+    if (isSystemBottomKeepAnchor(anchor, registry)) continue;
     const record = latestComponentRecord(componentCodegen, anchor, state.id);
-    if (!record || !isTopLevelComponentRecord(record)) add(anchor);
+    if (record && isTopLevelComponentRecord(record)) continue;
+    // Drop inherited original-content keeps for full-screen replacement states
+    // so the previous page (state_1) is not retained as a ghost background.
+    if (fullScreenReplace && !systemTop.has(anchor)) continue;
+    add(anchor);
   }
   if (stateNum(state.id) > 1) {
     for (const anchor of statusKeepAnchors(registry)) add(anchor);
@@ -596,13 +754,18 @@ function keepPlaceholder(anchor) {
   return `<div class="tf-keep-placeholder" data-keep-anchor="${String(anchor).replace(/"/g, "&quot;")}"></div>`;
 }
 
-function buildRuleGenerated(stateModel, componentCodegen) {
+function keepPlaceholderRegex(anchor) {
+  const escaped = escapeRegExp(anchor);
+  return new RegExp(`<div\\b(?=[^>]*\\btf-keep-placeholder\\b)(?=[^>]*\\bdata-keep-anchor=["']${escaped}["'])[^>]*>\\s*<\\/div>\\s*`, "g");
+}
+
+function buildRuleGenerated(stateModel, componentCodegen, registry) {
   const sections = [];
   for (const state of stateModel.states || []) {
     const n = stateNum(state.id);
     if (n <= 1) continue;
     const keeps = keepPlaceholdersForState(state, componentCodegen);
-    const components = componentPlaceholdersForState(state, componentCodegen);
+    const components = componentPlaceholdersForState(state, componentCodegen, registry);
     sections.push(`<section id="tf-state-${n}" class="tf-state-layer tf-llm-layer" style="display:none">${keeps}${components}</section>`);
   }
   return {
@@ -613,13 +776,13 @@ function buildRuleGenerated(stateModel, componentCodegen) {
   };
 }
 
-function componentSnippetsForState(state, componentCodegen, appendedCss) {
+function componentSnippetsForState(state, componentCodegen, appendedCss, registry) {
   const snippets = [];
   for (const id of stateExpectedComponentIds(state, componentCodegen)) {
     const record = latestComponentRecord(componentCodegen, id, state.id);
-    const html = componentHtmlForState(record, state, id, componentCodegen);
+    const html = componentHtmlForState(record, state, id, componentCodegen, registry);
     if (typeof html !== "string" || !html.trim()) continue;
-    snippets.push(wrapComponentHtml(html, { id, state, componentCodegen }));
+    snippets.push(wrapComponentHtml(html, { id, state, componentCodegen, registry }));
     if (record.component.css) appendedCss.push(`\n/* component-codegen fallback: ${id} */\n${record.component.css}`);
   }
   return snippets;
@@ -632,7 +795,7 @@ function ensureStateSectionCoverage(generated, stateModel, componentCodegen, reg
   for (const state of stateModel.states || []) {
     if (stateNum(state.id) <= 1 || hasStateSection(generated.html, state.id)) continue;
     const keeps = expectedKeepAnchorsForState(state, componentCodegen, registry).map(keepPlaceholder).join("");
-    const placeholders = componentPlaceholdersForState(state, componentCodegen);
+    const placeholders = componentPlaceholdersForState(state, componentCodegen, registry);
     sections.push(`<section id="tf-state-${stateNum(state.id)}" class="tf-state-layer tf-llm-layer" style="display:none">${keeps}${placeholders}</section>`);
   }
   if (sections.length) {
@@ -647,17 +810,25 @@ function ensureStateSectionCoverage(generated, stateModel, componentCodegen, reg
 function ensureKeepPlaceholderCoverage(generated, stateModel, componentCodegen, registry) {
   if (!generated || typeof generated.html !== "string") return generated;
   let inserted = 0;
+  let removed = 0;
   generated.html = generated.html.replace(/<section\b[^>]*id=["']tf-state-(\d+)["'][\s\S]*?<\/section>/g, (sectionHtml, n) => {
     const state = (stateModel.states || []).find((item) => stateNum(item.id) === Number(n));
     if (!state || stateNum(state.id) <= 1) return sectionHtml;
-    const missing = expectedKeepAnchorsForState(state, componentCodegen, registry)
-      .filter((anchor) => !new RegExp(`data-keep-anchor=["']${escapeRegExp(anchor)}["']`).test(sectionHtml));
-    if (!missing.length) return sectionHtml;
+    const expectedKeeps = expectedKeepAnchorsForState(state, componentCodegen, registry);
+    const expectedSet = new Set(expectedKeeps);
+    let next = sectionHtml.replace(/<div\b(?=[^>]*\btf-keep-placeholder\b)(?=[^>]*\bdata-keep-anchor=["']([^"']+)["'])[^>]*>\s*<\/div>\s*/g, (match, anchor) => {
+      if (expectedSet.has(anchor)) return match;
+      removed += 1;
+      return "";
+    });
+    const missing = expectedKeeps
+      .filter((anchor) => !new RegExp(`data-keep-anchor=["']${escapeRegExp(anchor)}["']`).test(next));
+    if (!missing.length) return next;
     inserted += missing.length;
-    return sectionHtml.replace(/(<section\b[^>]*>)/i, `$1${missing.map(keepPlaceholder).join("")}`);
+    return next.replace(/(<section\b[^>]*>)/i, `$1${missing.map(keepPlaceholder).join("")}`);
   });
-  if (inserted) {
-    generated.validation_notes = [generated.validation_notes, `Runner inserted missing keep placeholders: ${inserted}.`]
+  if (inserted || removed) {
+    generated.validation_notes = [generated.validation_notes, `Runner normalized keep placeholders: inserted ${inserted}, removed ${removed}.`]
       .filter(Boolean)
       .join(" ");
   }
@@ -669,14 +840,21 @@ function flowPlaceholderRegex(id) {
   return new RegExp(`<div\\b(?=[^>]*\\btf-component-placeholder\\b)(?=[^>]*\\bdata-component-id=["']${escaped}["'])[^>]*>\\s*<\\/div>`, "g");
 }
 
-function normalizeFlowLayoutPlaceholders(generated, stateModel, componentCodegen) {
+function normalizeFlowLayoutPlaceholders(generated, stateModel, componentCodegen, registry) {
   if (!generated || typeof generated.html !== "string") return generated;
   let changed = false;
+  const suppressRules = [];
   generated.html = generated.html.replace(/<section\b[^>]*id=["']tf-state-(\d+)["'][\s\S]*?<\/section>/g, (sectionHtml, n) => {
     const state = (stateModel.states || []).find((item) => stateNum(item.id) === Number(n));
     if (!state) return sectionHtml;
-    const groups = flowLayoutGroupsForState(state);
+    const groups = flowLayoutGroupsForState(state, componentCodegen, registry);
     if (!groups.length) return sectionHtml;
+    for (const group of groups) {
+      for (const spec of group.specs) {
+        const safe = cssAttr(spec.id || spec.name);
+        suppressRules.push(`#tf-state-${Number(n)} > [data-component-id="${safe}"],#tf-state-${Number(n)} > [data-component-frame="${safe}"]{display:none!important;visibility:hidden!important;pointer-events:none!important}`);
+      }
+    }
     const missingGroups = groups.filter((group) => !new RegExp(`\\bdata-flow-group=["']${escapeRegExp(group.group)}["']`).test(sectionHtml));
     if (!missingGroups.length) return sectionHtml;
     let next = sectionHtml;
@@ -686,7 +864,7 @@ function normalizeFlowLayoutPlaceholders(generated, stateModel, componentCodegen
     }
     for (const id of flowIds) next = next.replace(flowPlaceholderRegex(id), "");
     for (const group of missingGroups) {
-      const placeholder = flowGroupPlaceholder(group, state);
+      const placeholder = flowGroupPlaceholder(group, state, registry, componentCodegen);
       const anchor = flowStartAnchor(group);
       if (anchor) {
         const anchorMatch = [...next.matchAll(flowPlaceholderRegex(anchor))].pop();
@@ -711,10 +889,13 @@ function normalizeFlowLayoutPlaceholders(generated, stateModel, componentCodegen
       .filter(Boolean)
       .join(" ");
   }
+  if (suppressRules.length) {
+    generated.css = `${generated.css || ""}\n/* Hide stale root-level flow components when a flow group owns their layout. */\n${[...new Set(suppressRules)].join("\n")}`;
+  }
   return generated;
 }
 
-function fillComponentPlaceholders(generated, stateModel, componentCodegen) {
+function fillComponentPlaceholders(generated, stateModel, componentCodegen, registry) {
   if (!generated || typeof generated.html !== "string" || !componentCodegen?.components?.length) return generated;
   const appendedCss = [];
   let changed = false;
@@ -724,13 +905,21 @@ function fillComponentPlaceholders(generated, stateModel, componentCodegen) {
     if (!state) return sectionHtml;
     return sectionHtml.replace(placeholderRe, (placeholder, offset, fullSectionHtml) => {
       const id = (placeholder.match(/\bdata-component-id=["']([^"']+)["']/) || [])[1];
+      if (isUnplaceableOrphanComponent(state, stateModel, componentCodegen, registry, id)) {
+        changed = true;
+        return "";
+      }
       const record = latestComponentRecord(componentCodegen, id, state.id);
-      const html = componentHtmlForState(record, state, id, componentCodegen);
+      const html = componentHtmlForState(record, state, id, componentCodegen, registry);
       if (typeof html !== "string" || !html.trim()) return placeholder;
       changed = true;
       if (record.component.css) appendedCss.push(`\n/* component-codegen placeholder: ${id} */\n${record.component.css}`);
-      if (placeholderAlreadyHasFrame(fullSectionHtml, offset)) return html;
-      return wrapComponentHtml(html, { id, state, componentCodegen });
+      const spec = componentLayoutSpec(state, componentCodegen, id, registry);
+      // Reuse an LLM-provided frame only for ordinary flow components. Viewport-
+      // fixed components must always be re-framed by componentFrameStyle so they
+      // pin to the screen edge instead of an absolute canvas coordinate.
+      if (placeholderAlreadyHasFrame(fullSectionHtml, offset) && !isViewportFixedSpec(spec)) return html;
+      return wrapComponentHtml(html, { id, state, componentCodegen, registry });
     });
   });
   if (changed) {
@@ -742,7 +931,7 @@ function fillComponentPlaceholders(generated, stateModel, componentCodegen) {
   return generated;
 }
 
-function ensureComponentCodegenCoverage(generated, stateModel, componentCodegen) {
+function ensureComponentCodegenCoverage(generated, stateModel, componentCodegen, registry) {
   if (!generated || typeof generated.html !== "string" || !componentCodegen?.components?.length) return generated;
   const appendedCss = [];
   let patchedHtml = generated.html.replace(/<section\b[^>]*id=["']tf-state-(\d+)["'][\s\S]*?<\/section>/g, (sectionHtml, n) => {
@@ -751,10 +940,11 @@ function ensureComponentCodegenCoverage(generated, stateModel, componentCodegen)
     const missing = [];
     for (const id of stateExpectedComponentIds(state, componentCodegen)) {
       if (sectionHasComponent(sectionHtml, id)) continue;
+      if (isUnplaceableOrphanComponent(state, stateModel, componentCodegen, registry, id)) continue;
       const record = latestComponentRecord(componentCodegen, id, state.id);
-      const html = componentHtmlForState(record, state, id, componentCodegen);
+      const html = componentHtmlForState(record, state, id, componentCodegen, registry);
       if (typeof html !== "string" || !html.trim()) continue;
-      missing.push(wrapComponentHtml(html, { id, state, componentCodegen }));
+      missing.push(wrapComponentHtml(html, { id, state, componentCodegen, registry }));
       if (record.component.css) appendedCss.push(`\n/* component-codegen fallback: ${id} */\n${record.component.css}`);
     }
     return injectMissingComponentHtml(sectionHtml, missing);
@@ -776,6 +966,11 @@ function cssAttr(value) {
 function bottomActionBarComponentIds(componentCodegen) {
   const ids = [];
   for (const record of componentCodegen?.components || []) {
+    // Only top-level bottom bars can be "unexpectedly inherited" between states.
+    // A bottom-bar-like component nested inside a container (e.g. a ButtonBar
+    // footer inside a BottomSheet) is owned and positioned by its parent and
+    // must never be globally suppressed, or its action button disappears.
+    if (!isTopLevelComponentRecord(record)) continue;
     const spec = record?.input?.component || record?.component || {};
     const id = spec.id || spec.name || record?.id;
     if (id && isBottomActionBarSpec(spec) && !ids.includes(id)) ids.push(id);
@@ -848,12 +1043,23 @@ ${head}
 <style id="tf-llm-base-style">
 .tf-state-layer{position:fixed!important;left:0!important;top:0!important;width:${width}px!important;height:${height}px!important;z-index:9999!important;background:#f5f5f5;color:#1f1f1f;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;overflow-y:auto;overflow-x:hidden;padding-bottom:88px}
 .tf-llm-layer *{box-sizing:border-box}
-.tf-keep-placeholder{position:absolute;overflow:hidden;pointer-events:none;z-index:2147483000!important}
+.tf-keep-placeholder{position:absolute;overflow:hidden;pointer-events:none;z-index:0!important}
 .tf-keep-placeholder>.tf-keep-crop{position:absolute;pointer-events:none}
 .tf-component-frame{position:absolute;box-sizing:border-box}
 .tf-component-frame>[data-component-id]{position:relative!important;left:auto!important;top:auto!important;width:100%!important;max-width:100%!important;height:100%!important;box-sizing:border-box;z-index:auto!important}
+.tf-component-frame>[data-component-id*="keyboard"],.tf-component-frame>[data-component-id*="Keyboard"],.tf-component-frame>.tf-cg-keyboard{position:absolute!important;left:0!important;right:0!important;top:0!important;bottom:0!important;width:100%!important;height:100%!important;max-width:100%!important}
+.tf-state-layer>[data-component-id*="keyboard"],.tf-state-layer>[data-component-id*="Keyboard"],.tf-state-layer>.tf-cg-keyboard{position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;width:100%!important;z-index:90!important}
 .tf-component-frame>[data-component-id*="sheet"].tf-cg-sheet-overlay{background:transparent!important}
 .tf-component-frame>[data-component-id*="sheet"]>.tf-cg-mask,.tf-component-frame>[data-component-id*="sheet"] .tf-cg-mask,.tf-component-frame>[data-component-id*="sheet"]>.tf-cg-sheet-mask,.tf-component-frame>[data-component-id*="sheet"] .tf-cg-sheet-mask{display:none!important}
+.tf-component-frame>[data-component-id*="sheet"]>[style*="color-mask"],.tf-component-frame>[data-component-id*="sheet"]>[class*="mask"]{display:none!important}
+.tf-component-frame>[data-component-id*="sheet"]{overflow:hidden!important}
+.tf-component-frame>[data-component-id*="sheet"] .tf-cg-sheet,.tf-component-frame>[data-component-id*="sheet"] .tf-cg-sheet-container,.tf-component-frame>[data-component-id*="sheet"] .tf-cg-sheet-panel,.tf-component-frame>[data-component-id*="sheet"] .tf-cg-bottom-sheet,.tf-component-frame>[data-component-id*="sheet"]>[class*="sheet"]:not([class*="body"]):not([class*="footer"]):not([class*="header"]):not([class*="mask"]):not([class*="overlay"]):not([class*="container"]){position:absolute!important;left:0!important;top:0!important;bottom:0!important;width:100%!important;height:100%!important;max-height:100%!important;display:flex!important;flex-direction:column!important;transform:none!important;animation:none!important}
+.tf-component-frame>[data-component-id*="sheet"] .tf-cg-sheet-body{flex:1 1 auto!important;min-height:0!important;overflow-y:auto!important}
+.tf-component-frame>[data-component-id*="sheet"] .tf-cg-body{flex:1 1 auto!important;min-height:0!important;overflow-y:auto!important}
+.tf-component-frame>[data-component-id*="sheet"] .tf-cg-sheet-footer{flex:0 0 auto!important}
+.tf-component-frame>[data-component-id*="sheet"] .tf-cg-footer{flex:0 0 auto!important}
+.tf-component-frame>[data-component-frame*="bottom_bar"] .flex-1,.tf-component-frame>[data-component-frame*="button_bar"] .flex-1,.tf-component-frame>[data-component-id*="bottom_bar"] .flex-1,.tf-component-frame>[data-component-id*="button_bar"] .flex-1{min-width:0!important}
+.tf-component-frame>[data-component-frame*="bottom_bar"] [style*="min-width: 120"],.tf-component-frame>[data-component-frame*="button_bar"] [style*="min-width: 120"],.tf-component-frame>[data-component-id*="bottom_bar"] [style*="min-width: 120"],.tf-component-frame>[data-component-id*="button_bar"] [style*="min-width: 120"]{min-width:0!important}
 	${stateLayerCss}
 ${designSystemCss()}
 ${generated.css || ""}
@@ -1011,9 +1217,18 @@ function tfInstallGoto(){
     this.current=n;
     window.clearTimeout(this._autoTimer);
     document.querySelectorAll(".tf-state-layer").forEach(function(layer){layer.style.display="none";});
-    if(n===1) return;
+    const appRoot=document.getElementById("app-root");
+    if(n===1){
+      // 回到初始态：恢复原始 D2C 页面
+      if(appRoot) appRoot.style.display="";
+      return;
+    }
+    // 非初始态：彻底隐藏初始页（state_1）。保留区(状态栏/被保留卡片)由 keep
+    // placeholder 克隆 app-root 内容显示，不依赖 app-root 自身可见；浮层态的
+    // 背景同样来自 keep 克隆，所以隐藏 app-root 不会丢背景。
     const layer=document.getElementById("tf-state-"+n);
     if(layer){ tfFillKeepPlaceholders(layer); layer.style.display="block"; }
+    if(appRoot) appRoot.style.display="none";
     tfScheduleAutoTransition(n);
   }};
 }
@@ -1021,13 +1236,16 @@ tfInstallGoto();
 function tfActionIsClick(action){
   return /(^|:)click$/i.test(String(action||"")) || /^tap$/i.test(String(action||""));
 }
+function tfActionIsInput(action){
+  return /^(input|focus|change|typing|type)$/i.test(String(action||""));
+}
 function tfGotoTarget(value){
   if(!value) return null;
   const match=String(value).match(/state[_-]?(\\d+)/i);
   return match?Number(match[1]):null;
 }
 function tfActionIsBindable(action){
-  return tfActionIsClick(action) || !!tfGotoTarget(action);
+  return tfActionIsClick(action) || tfActionIsInput(action) || !!tfGotoTarget(action);
 }
 function tfFindByDataAttr(root, attr, value){
   if(!root || !attr) return null;
@@ -1037,6 +1255,12 @@ function tfFindByDataAttr(root, attr, value){
     if(node.getAttribute(attr)===expected) return node;
   }
   return null;
+}
+function tfFindAllByDataAttr(root, attr, value){
+  if(!root || !attr) return [];
+  const expected=String(value||"");
+  return Array.prototype.slice.call(root.querySelectorAll("["+attr+"]"))
+    .filter(function(node){ return node.getAttribute(attr)===expected; });
 }
 function tfFindAnchorElements(anchor, stateNumber){
   const out=[];
@@ -1061,51 +1285,98 @@ function tfFindAnchorElements(anchor, stateNumber){
   roots.forEach(function(root){
     if(!root) return;
     try{ add(root.querySelector("#"+escaped)); }catch(e){}
-    try{ add(tfFindByDataAttr(root, "data-component-id", raw)); }catch(e){}
-    try{ add(tfFindByDataAttr(root, "data-keep-anchor", raw)); }catch(e){}
+    try{ tfFindAllByDataAttr(root, "data-component-id", raw).forEach(add); }catch(e){}
+    try{ tfFindAllByDataAttr(root, "data-component-frame", raw).forEach(add); }catch(e){}
+    try{ tfFindAllByDataAttr(root, "data-keep-anchor", raw).forEach(add); }catch(e){}
   });
   return out;
 }
-function tfPickTargetElement(root, target){
-  if(!root || !target) return root;
+function tfPickTargetElements(root, target){
+  if(!root || !target) return root ? [root] : [];
   const text=String(target).toLowerCase();
-  const buttons=Array.prototype.slice.call(root.querySelectorAll("button,[role='button'],input,textarea"));
-  if(!buttons.length) return root;
-  if(/primary|confirm|submit|footer\\.primary|主/.test(text)) return buttons[buttons.length-1] || root;
-  if(/secondary|cancel|back|close|footer\\.secondary|取消|返回|关闭/.test(text)) return buttons[0] || root;
-  if(/input|body\\.input|field/.test(text)) return buttons.find(function(el){return /input|textarea/i.test(el.tagName);}) || root;
-  return buttons[0] || root;
+  const buttons=Array.prototype.slice.call(root.querySelectorAll("button,[role='button'],.tf-cg-confirm,input,textarea"));
+  if(/body\\.options|options?|option|chips?|pills?|segmented|filter/.test(text)){
+    const scope=root.querySelector(".tf-cg-sheet-body,.tf-cg-body,[data-component-id*='option'],[data-component-id*='pills'],[data-component-id*='filter']") || root;
+    const optionButtons=Array.prototype.slice.call(scope.querySelectorAll(".tf-cg-option,[role='option'],button,[role='button']"))
+      .filter(function(el){
+        const label=(el.textContent || "").trim();
+        return label && !/确认|确定|保存|取消|关闭|返回|重置|清空|搜索|查询/.test(label);
+      });
+    return optionButtons.length ? optionButtons : buttons;
+  }
+  if(!buttons.length) return [root];
+  if(/primary|confirm|submit|footer\\.primary|主/.test(text)) return [buttons[buttons.length-1] || root];
+  if(/secondary|cancel|back|close|footer\\.secondary|取消|返回|关闭/.test(text)) return [buttons[0] || root];
+  if(/input|body\\.input|field/.test(text)) return [buttons.find(function(el){return /input|textarea/i.test(el.tagName);}) || root];
+  return [buttons[0] || root];
+}
+function tfPickTargetElement(root, target){
+  return tfPickTargetElements(root, target)[0] || root;
 }
 function tfBindGoto(el, targetState){
-  if(!el || !targetState || el.__tfGotoBound) return;
+  if(!el || !targetState) return;
+  el.__tfGotoTarget=targetState;
+  if(el.__tfGotoBound) return;
   el.__tfGotoBound=true;
   el.style.cursor="pointer";
   el.addEventListener("click",function(e){
     e.preventDefault();
     e.stopPropagation();
-    window.TF.goto(targetState);
-  });
-}
-function tfInstallBindings(){
+    window.TF.goto(el.__tfGotoTarget);
+    });
+  }
+  function tfBindKeyboardReturnGoto(stateNumber, patch, targetState){
+    const layer=document.getElementById("tf-state-"+stateNumber);
+    if(!layer || !targetState) return;
+    if(!layer.querySelector(".tf-cg-keyboard,[data-component-id*='keyboard'],[data-component-id*='Keyboard']")) return;
+    const patchText=JSON.stringify(patch || {});
+    if(!/保存|确定|提交|完成|save|submit|confirm|done/i.test(patchText)) return;
+    Array.prototype.slice.call(layer.querySelectorAll(".tf-cg-kb-key-return")).forEach(function(el){
+      tfBindGoto(el, targetState);
+    });
+  }
+  function tfInstallBindings(){
   const model=window.__TF_STATE_MODEL__ || {};
   function bindAnchorGoto(anchor, target, sourceState, targetState){
     if(!anchor || !targetState) return;
     const sourceNumber=tfNum(sourceState || 1);
-    tfFindAnchorElements(anchor, sourceNumber).forEach(function(root){
-      tfBindGoto(tfPickTargetElement(root, target), targetState);
+    let roots=tfFindAnchorElements(anchor, sourceNumber);
+    if(!roots.length){
+      (window.__TF_STATE_MODEL__.states || []).forEach(function(item){
+        const n=tfNum(item.id);
+        if(n && n!==sourceNumber) roots=roots.concat(tfFindAnchorElements(anchor, n));
+      });
+    }
+    roots.forEach(function(root){
+      const picked=tfPickTargetElements(root, target);
+      picked.forEach(function(el){
+        tfBindGoto(el, targetState);
+      });
+      const targetText=String(target || "").toLowerCase();
+      const componentId=(root && (root.getAttribute("data-component-id") || root.getAttribute("data-component-frame"))) || "";
+      const shouldBindWrapper=picked.length===1
+        && root
+        && picked[0] !== root
+        && componentId
+        && !/sheet|overlay|modal|dialog/.test(componentId)
+        && /button|primary|secondary|confirm|submit|save|footer|input|field|按钮|保存|确认|确定/.test(targetText);
+      if(shouldBindWrapper) tfBindGoto(root, targetState);
     });
   }
   (model.states||[]).forEach(function(state){
     const targetState=tfNum(state.id);
     const trigger=state.trigger || null;
     if(trigger && trigger.anchor && tfActionIsBindable(trigger.action)){
-      bindAnchorGoto(trigger.anchor, trigger.target, state.parent_state || "state_1", tfGotoTarget(trigger.action) || targetState);
+      const sourceState=state.parent_state || "state_1";
+      const triggerTarget=tfGotoTarget(trigger.action) || targetState;
+      if(triggerTarget!==tfNum(sourceState)) bindAnchorGoto(trigger.anchor, trigger.target, sourceState, triggerTarget);
     }
     (state.patches||[]).forEach(function(patch){
       if(patch.type!=="bind") return;
       const patchTarget=tfGotoTarget(patch.goto || patch.action);
-      if(!patchTarget || !tfActionIsClick(patch.action || "click")) return;
+      if(!patchTarget || !tfActionIsBindable(patch.action || "click")) return;
       bindAnchorGoto(patch.anchor || patch.target_anchor || patch.target, patch.target, state.id, patchTarget);
+      tfBindKeyboardReturnGoto(targetState, patch, patchTarget);
     });
     const parentState=tfGotoTarget(state.parent_state);
     if(!parentState) return;
@@ -1187,7 +1458,7 @@ async function main() {
   let generated;
   let generationMode = "llm-placeholder";
   if (ruleOnly) {
-    generated = buildRuleGenerated(stateModel, componentCodegen);
+    generated = buildRuleGenerated(stateModel, componentCodegen, registry);
     generationMode = "rule-only";
   } else {
     const skill = readUtf8(path.resolve(__dirname, "..", "SKILL.md"));
@@ -1206,7 +1477,7 @@ async function main() {
       }
     } catch (err) {
       writeUtf8(path.join(outDir, "llm_layer.error.txt"), String(err.stack || err.message || err));
-      generated = buildRuleGenerated(stateModel, componentCodegen);
+      generated = buildRuleGenerated(stateModel, componentCodegen, registry);
       generationMode = "rule-fallback";
     }
   }
@@ -1216,9 +1487,9 @@ async function main() {
   generated.validation_notes = [generated.validation_notes, `generation_mode:${generationMode}`].filter(Boolean).join(" ");
   ensureStateSectionCoverage(generated, stateModel, componentCodegen, registry);
   ensureKeepPlaceholderCoverage(generated, stateModel, componentCodegen, registry);
-  normalizeFlowLayoutPlaceholders(generated, stateModel, componentCodegen);
-  fillComponentPlaceholders(generated, stateModel, componentCodegen);
-  ensureComponentCodegenCoverage(generated, stateModel, componentCodegen);
+  normalizeFlowLayoutPlaceholders(generated, stateModel, componentCodegen, registry);
+  fillComponentPlaceholders(generated, stateModel, componentCodegen, registry);
+  ensureComponentCodegenCoverage(generated, stateModel, componentCodegen, registry);
   suppressUnexpectedBottomBars(generated, stateModel, componentCodegen);
   normalizeKeepPlaceholderCss(generated);
   const issues = validateGenerated(generated, stateModel);

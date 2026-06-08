@@ -224,17 +224,17 @@ const ButtonBar: React.FC<ButtonBarProps> = ({
       case 'triple':
         return (
           <div className="flex w-full" style={{ gap: 'var(--spacing-lg)' }}>
-            <div className="flex-1" style={{ minWidth: 120 }}>
+            <div className="flex-1" style={{ minWidth: 0 }}>
               <CapsuleButton size="large" variant="secondary" className="w-full" onClick={onThirdClick || emptyFn}>
                 {thirdLabel}
               </CapsuleButton>
             </div>
-            <div className="flex-1" style={{ minWidth: 120 }}>
+            <div className="flex-1" style={{ minWidth: 0 }}>
               <CapsuleButton size="large" variant="secondary" className="w-full" onClick={onSecondaryClick || emptyFn}>
                 {secondaryLabel}
               </CapsuleButton>
             </div>
-            <div className="flex-1" style={{ minWidth: 120 }}>
+            <div className="flex-1" style={{ minWidth: 0 }}>
               <CapsuleButton size="large" variant="primary" className="w-full" onClick={onPrimaryClick || emptyFn}>
                 {primaryLabel}
               </CapsuleButton>
