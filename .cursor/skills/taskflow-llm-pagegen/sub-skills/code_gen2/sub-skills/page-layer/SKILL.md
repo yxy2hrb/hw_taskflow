@@ -121,6 +121,11 @@ For fixed components:
 
 - Use fixed bbox hints from state model, such as overlays, modals, bottom
   sheets, top nav, bottom bars, toasts, and floating action bars.
+- If a component in `state_implementation_model` has a `bbox`, that bbox is
+  authoritative. The placeholder must be wrapped in a `tf-component-frame`
+  whose inline style includes `position:absolute`, `left`, `top`, `width`, and
+  `height` from that bbox. Only components without a bbox may use free/flow
+  layout.
 - If a fixed component has `props.zIndex`, put that z-index on the wrapper
   around its placeholder.
 - BottomSheet and Modal placement must follow the state model fixed bbox.
@@ -188,10 +193,13 @@ Rules:
    only `tools_card`.
 6. You may wrap placeholders in state-level layout elements such as
    `tf-llm-flow-group`, `tf-llm-flow-item`, or `tf-component-frame`.
+   When the component has a bbox, `tf-component-frame` is required and must
+   carry the exact bbox values as inline `left/top/width/height` styles.
 7. Do not add or rewrite component internals. Component background, internal
    layout, and child composition belong to the generated React component.
-8. If a fixed bbox is available, the runner may wrap the rendered component in
-   `tf-component-frame` to preserve page placement during replacement.
+8. If a fixed bbox is available, preserve it in `tf-component-frame` during
+   placeholder layout. The runner also enforces this as a safety net during
+   replacement.
 9. If no bbox is available, the runner must preserve your flow wrapper and only
    replace the placeholder node itself.
 

@@ -67,6 +67,18 @@ description: >
 4. **已提交/提交完成态**：表单或创建动作完成提交后的稳定反馈态，例如 Toast、Snackbar、成功页、回到来源页并展示成功提示
 5. **成功终态**：至少一个 happy-path 终态
 
+### state_1 原始页面锚定规则
+
+`state_1` 必须严格等于 `page_dsl` 描述的输入 HTML / 原始截图页面，不得等于首次点击、跳转或选择之后出现的新页面。
+
+- `state_1.description.展示信息` 必须能被 `page_dsl.页面构成` 和 `page_dsl.各个区域组件信息分述` 支撑。
+- 如果 `brief` 写的是“在 A 页点击/选择 X 后进入 B 页”，且 `page_dsl` 描述的是 A 页，则必须枚举为：
+  1. `state_1`：A 页原始页面状态，包含 X 入口；
+  2. `state_2`：点击/选择 X 后进入的 B 页；
+  3. 后续弹窗、表单、提交中、成功态继续按真实顺序展开。
+- 禁止把 B 页写成 `state_1`，即使 User Story 的 `Given` 中误写了“已经进入 B 页”，也必须以 `page_dsl` 为准纠正。
+- `state_1` 的触发条件固定为“无，任务流起点”，继承信息固定为“无”，不得描述为“点击后进入”的结果页。
+
 ### 基于 Acceptance Criteria Steps 枚举
 
 必须根据 Phase 1 的 `acceptance_criteria_steps` 从开始到结束枚举任务流状态：

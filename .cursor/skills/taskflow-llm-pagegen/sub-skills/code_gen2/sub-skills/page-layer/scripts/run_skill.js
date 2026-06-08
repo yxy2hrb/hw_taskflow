@@ -237,10 +237,23 @@ function componentRecordStateNum(record) {
   return stateNum(record?.state_id);
 }
 
+function validBboxArray(bbox) {
+  const values = Array.isArray(bbox) ? bbox.map(Number) : [];
+  return values.length === 4 && values.every(Number.isFinite) && values[2] > 0 && values[3] > 0;
+}
+
 function latestComponentRecord(componentCodegen, id, stateId) {
   const current = stateNum(stateId);
   return (componentCodegen?.components || [])
     .filter((record) => componentRecordId(record) === id && componentRecordStateNum(record) <= current)
+    .sort((a, b) => componentRecordStateNum(b) - componentRecordStateNum(a))[0] || null;
+}
+
+function latestComponentRecordWithBbox(componentCodegen, id, stateId) {
+  const current = stateNum(stateId);
+  return (componentCodegen?.components || [])
+    .filter((record) => componentRecordId(record) === id && componentRecordStateNum(record) <= current)
+    .filter((record) => validBboxArray(record?.input?.component?.bbox || record?.component?.bbox))
     .sort((a, b) => componentRecordStateNum(b) - componentRecordStateNum(a))[0] || null;
 }
 
@@ -303,12 +316,32 @@ function directPatchForComponent(state, id) {
 }
 
 function componentLayoutSpec(state, componentCodegen, id) {
-  return directPatchForComponent(state, id) || latestComponentRecord(componentCodegen, id, state.id)?.input?.component || null;
+  const direct = directPatchForComponent(state, id);
+  if (validBboxArray(direct?.bbox)) return direct;
+
+  const latest = latestComponentRecord(componentCodegen, id, state.id)?.input?.component || null;
+  if (validBboxArray(latest?.bbox)) return latest;
+
+  const latestWithBboxRecord = latestComponentRecordWithBbox(componentCodegen, id, state.id);
+  const latestWithBbox = latestWithBboxRecord?.input?.component || latestWithBboxRecord?.component || null;
+  if (direct && validBboxArray(latestWithBbox?.bbox)) {
+    return {
+      ...latestWithBbox,
+      ...direct,
+      bbox: latestWithBbox.bbox,
+      props: {
+        ...(latestWithBbox.props || {}),
+        ...(direct.props || {}),
+      },
+    };
+  }
+
+  return direct || latest || null;
 }
 
 function componentFrameStyle(spec) {
   const bbox = Array.isArray(spec?.bbox) ? spec.bbox.map(Number) : null;
-  if (!bbox || bbox.some((value) => !Number.isFinite(value))) return "";
+  if (!validBboxArray(bbox)) return "";
   const zIndex = Number(spec?.props?.zIndex ?? spec?.zIndex);
   return [
     "position:absolute",
@@ -332,6 +365,22 @@ function placeholderAlreadyHasFrame(sectionHtml, offset) {
   if (lastFrame < 0) return false;
   const lastClose = prefix.lastIndexOf("</div>");
   return lastFrame > lastClose;
+}
+
+function placeholderFrameHasCompleteBbox(sectionHtml, offset) {
+  const prefix = String(sectionHtml || "").slice(Math.max(0, offset - 1200), offset);
+  const lastFrame = prefix.lastIndexOf("tf-component-frame");
+  if (lastFrame < 0) return false;
+  const tagStart = prefix.lastIndexOf("<", lastFrame);
+  const tagEnd = prefix.indexOf(">", lastFrame);
+  if (tagStart < 0 || tagEnd < 0) return false;
+  const tag = prefix.slice(tagStart, tagEnd + 1);
+  const style = (tag.match(/\bstyle=["']([^"']*)["']/i) || [])[1] || "";
+  return /position\s*:\s*(absolute|fixed)/i.test(style)
+    && /left\s*:/i.test(style)
+    && /top\s*:/i.test(style)
+    && /width\s*:/i.test(style)
+    && /height\s*:/i.test(style);
 }
 
 function keepPlaceholdersForState(state, componentCodegen) {
@@ -452,8 +501,11 @@ function fillComponentPlaceholders(generated, stateModel, componentCodegen) {
       if (typeof html !== "string" || !html.trim()) return placeholder;
       changed = true;
       if (record.component.css) appendedCss.push(`\n/* component-codegen placeholder: ${id} */\n${record.component.css}`);
-      if (placeholderAlreadyHasFrame(fullSectionHtml, offset)) return html;
-      return wrapComponentHtml(html, { id, state, componentCodegen });
+      const framedHtml = wrapComponentHtml(html, { id, state, componentCodegen });
+      if (placeholderAlreadyHasFrame(fullSectionHtml, offset)) {
+        return placeholderFrameHasCompleteBbox(fullSectionHtml, offset) ? html : framedHtml;
+      }
+      return framedHtml;
     });
   });
   if (changed) {
@@ -671,11 +723,20 @@ function tfFillKeepPlaceholders(layer){
 function tfInstallGoto(){
   window.TF={current:1,goto:function(id){
     const n=Number(String(id).replace(/\\D/g,""))||1;
+    const appRoot=document.getElementById("app-root");
     this.current=n;
     document.querySelectorAll(".tf-state-layer").forEach(function(layer){layer.style.display="none";});
-    if(n===1) return;
+    if(n===1) {
+      if(appRoot) appRoot.style.display="";
+      return;
+    }
     const layer=document.getElementById("tf-state-"+n);
-    if(layer){ tfFillKeepPlaceholders(layer); layer.style.display="block"; }
+    if(layer){
+      if(appRoot) appRoot.style.display="";
+      tfFillKeepPlaceholders(layer);
+      layer.style.display="block";
+      if(appRoot) appRoot.style.display="none";
+    }
   }};
 }
 tfInstallGoto();
