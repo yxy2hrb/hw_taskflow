@@ -1053,7 +1053,22 @@ function buildHtml({ originalHtml, registry, generated, stateModel, width, heigh
       const n = stateNum(state.id);
       if (n <= 1) return "";
       const background = isOverlayState(state) ? "transparent" : "#f5f5f5";
-      return `#tf-state-${n}{--tf-state-content-height:${heightForState(stateModel, state.id, height)}px;background:${background}!important;}`;
+      let css = `#tf-state-${n}{--tf-state-content-height:${heightForState(stateModel, state.id, height)}px;background:${background}!important;}`;
+      // When a soft keyboard and a fixed bottom action bar coexist in the same
+      // state, lift the action bar above the keyboard so its button stays
+      // visible and clickable (mirrors real mobile keyboards pushing the bar up).
+      const patches = [...(state.inheritance?.create || []), ...(state.inheritance?.update || [])];
+      const keyboard = patches.find((p) => p && isKeyboardSpec(p));
+      const kbBbox = Array.isArray(keyboard?.bbox) ? keyboard.bbox.map(Number) : null;
+      const kbHeight = kbBbox && Number.isFinite(kbBbox[3]) ? kbBbox[3] : 0;
+      if (keyboard && kbHeight > 0) {
+        for (const bar of patches.filter((p) => p && !isKeyboardSpec(p) && isBottomActionBarSpec(p))) {
+          const id = cssAttr(bar.id || bar.name || "");
+          if (!id) continue;
+          css += `\n#tf-state-${n} [data-component-frame="${id}"],#tf-state-${n} [data-component-id="${id}"]{bottom:${kbHeight}px!important;}`;
+        }
+      }
+      return css;
     })
     .filter(Boolean)
     .join("\n");

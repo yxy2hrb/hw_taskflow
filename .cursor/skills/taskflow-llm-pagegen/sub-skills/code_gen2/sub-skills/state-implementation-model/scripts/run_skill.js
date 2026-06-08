@@ -638,8 +638,13 @@ function validateStateStacking(state, registry, virtualPatches, issues) {
     ...fixed.filter((item) => item.source === "keep" && isModalSurfaceLike(item.patch) && !isOverlayLike(item.patch)).map((item) => item.z)
   );
   if (Number.isFinite(inheritedSurfaceMaxZ)) {
+    const keptSurfaceIds = new Set(
+      fixed.filter((item) => item.source === "keep" && isModalSurfaceLike(item.patch) && !isOverlayLike(item.patch)).map((item) => item.id)
+    );
     const currentOverlays = overlays.filter((item) => item.source === "create" || item.source === "update");
-    const currentSurfaces = surfaces.filter((item) => item.source === "create" || item.source === "update");
+    // Updating an inherited modal (same id) is not a new stacked layer; only a
+    // freshly created surface with a NEW id stacks on top of the inherited one.
+    const currentSurfaces = surfaces.filter((item) => item.source === "create" && !keptSurfaceIds.has(item.id));
     if (currentSurfaces.length) {
       const raisedOverlay = currentOverlays.find((overlay) => overlay.z > inheritedSurfaceMaxZ);
       if (!raisedOverlay) {
