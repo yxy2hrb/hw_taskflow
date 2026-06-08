@@ -1260,7 +1260,8 @@ function tfInstallGoto(){
 }
 tfInstallGoto();
 function tfActionIsClick(action){
-  return /(^|:)click$/i.test(String(action||"")) || /^tap$/i.test(String(action||""));
+  return /(^|:)click$/i.test(String(action||"")) || /^tap$/i.test(String(action||""))
+    || /long[\s_-]?press|长按/i.test(String(action||""));
 }
 function tfActionIsInput(action){
   return /^(input|focus|change|typing|type)$/i.test(String(action||""));

@@ -180,7 +180,10 @@ function patchGotoStateNum(patch) {
 }
 
 function isClickAction(action) {
-  return /(^|:)click$/i.test(String(action || "")) || /^tap$/i.test(String(action || ""));
+  // Long-press degrades to a click: the static prototype cannot listen for a
+  // real long-press, so it is treated as a tap/click trigger.
+  return /(^|:)click$/i.test(String(action || "")) || /^tap$/i.test(String(action || ""))
+    || /long[\s_-]?press|长按/i.test(String(action || ""));
 }
 
 function registryIdToAnchorMap(registry) {
@@ -197,6 +200,8 @@ function registryIdToAnchorMap(registry) {
 function normalizeAnchorValue(value, idToAnchor) {
   if (typeof value !== "string") return value;
   if (idToAnchor.has(value)) return idToAnchor.get(value);
+  // Selector form (#id) that the model sometimes emits instead of the id.
+  if (value.startsWith("#") && idToAnchor.has(value.slice(1))) return idToAnchor.get(value.slice(1));
   const relation = value.match(/^(below|above|leftOf|rightOf|after|before):(.+)$/);
   if (relation && idToAnchor.has(relation[2])) return `${relation[1]}:${idToAnchor.get(relation[2])}`;
   return value;
@@ -204,7 +209,10 @@ function normalizeAnchorValue(value, idToAnchor) {
 
 function normalizePatchAnchorRefs(patch, idToAnchor) {
   if (!patch || typeof patch !== "object" || Array.isArray(patch)) return;
-  for (const key of ["anchor", "target_anchor"]) {
+  // Also normalize `id`: an update patch targeting an original DOM anchor may
+  // carry the raw element id (or #id) as its id. Virtual component ids are not
+  // in the map and pass through unchanged.
+  for (const key of ["anchor", "target_anchor", "id"]) {
     if (typeof patch[key] === "string") patch[key] = normalizeAnchorValue(patch[key], idToAnchor);
   }
   if (patch.layout && typeof patch.layout === "object" && !Array.isArray(patch.layout)) {
