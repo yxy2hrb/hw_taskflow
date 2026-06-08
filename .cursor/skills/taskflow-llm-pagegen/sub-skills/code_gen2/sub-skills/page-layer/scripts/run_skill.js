@@ -1065,7 +1065,10 @@ function buildHtml({ originalHtml, registry, generated, stateModel, width, heigh
         for (const bar of patches.filter((p) => p && !isKeyboardSpec(p) && isBottomActionBarSpec(p))) {
           const id = cssAttr(bar.id || bar.name || "");
           if (!id) continue;
-          css += `\n#tf-state-${n} [data-component-frame="${id}"],#tf-state-${n} [data-component-id="${id}"]{bottom:${kbHeight}px!important;}`;
+          // Only the frame (position:fixed) is lifted. Do NOT target the inner
+          // [data-component-id] node — it is position:relative, so `bottom` would
+          // offset it upward and fling the button to the top of the screen.
+          css += `\n#tf-state-${n} [data-component-frame="${id}"]{bottom:${kbHeight}px!important;}`;
         }
       }
       return css;
