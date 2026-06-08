@@ -19,6 +19,7 @@ const { spawnSync } = require("child_process");
 
 const BUILD_BBOX_SCRIPT = path.join(__dirname, "build_div_bbox.js");
 const REPLACE_BODY_SCRIPT = path.join(__dirname, "replace_body.py");
+const DEFAULT_DASHSCOPE_BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1";
 
 function readUtf8(p) { return fs.readFileSync(p, "utf8"); }
 function writeUtf8(p, s) { fs.writeFileSync(p, s, "utf8"); }
@@ -49,61 +50,144 @@ function imageToDataUrl(file) {
   return `data:image/${mime};base64,${buf.toString("base64")}`;
 }
 
-async function generateSpecWithQwenVl(apiKey, imagePath) {
-  if (!apiKey) throw new Error("Missing DASHSCOPE_API_KEY/QWEN_API_KEY for spec.json generation");
-  if (!fs.existsSync(imagePath)) throw new Error("spec.json not found and screenshot not found: " + imagePath);
-
-  const prompt = [
-    "请分析这张应用页面截图，输出中文 JSON 格式的 UI Spec。",
-    "结构必须包含以下字段：UI整体描述、页面构成、视觉风格、各个区域组件信息分述。",
-    "要求：",
-    "- 页面构成按从上到下、从左到右列出所有功能区块名。",
-    "- 各个区域组件信息分述中列出所有可见组件，包含组件类型、承担的功能、承载的信息、组件的配色样式和布局、组件所处的位置。",
-    "- 承载的信息必须使用截图里真实可见的文案、数字或状态。",
-    "- 不要写 px、颜色十六进制、代码或解释。",
-    "- 只输出 JSON 对象本身，不要 markdown。"
-  ].join("\n");
-
-  const payload = {
-    model: "qwen-vl-max",
-    input: {
-      messages: [
-        {
-          role: "user",
-          content: [
-            { image: imageToDataUrl(imagePath) },
-            { text: prompt },
-          ],
-        },
-      ],
-    },
-    parameters: { temperature: 0.2, max_tokens: 2400 },
-  };
-
+async function callDashScopeChat(apiKey, payload, label) {
+  const baseUrl = (process.env.DASHSCOPE_BASE_URL || DEFAULT_DASHSCOPE_BASE_URL).replace(/\/$/, "");
   let lastErr;
   for (let attempt = 1; attempt <= 4; attempt++) {
     try {
-      const resp = await fetch("https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation", {
+      const resp = await fetch(baseUrl + "/chat/completions", {
         method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer " + apiKey },
+        headers: { "Content-Type": "application/json", Authorization: "Bearer " + apiKey },
         body: JSON.stringify(payload),
       });
       const body = await resp.text();
-      if (!resp.ok) throw new Error("Qwen VL " + resp.status + ": " + body.slice(0, 1000));
-      const data = JSON.parse(body);
-      const content = data?.output?.choices?.[0]?.message?.content;
-      const text = Array.isArray(content)
-        ? (content.find((item) => item && typeof item.text === "string")?.text || "")
-        : (typeof content === "string" ? content : (data?.output?.text || ""));
-      const parsed = tryParseJson(text);
-      if (!parsed || Array.isArray(parsed)) throw new Error("Qwen VL returned non-object JSON");
-      return parsed;
+      if (!resp.ok) throw new Error(label + " HTTP " + resp.status + ": " + body.slice(0, 1000));
+      return JSON.parse(body);
     } catch (err) {
       lastErr = err;
       if (attempt < 4) await new Promise((resolve) => setTimeout(resolve, attempt * 3000));
     }
   }
   throw lastErr;
+}
+
+function getChatMessageContent(data) {
+  const content = data?.choices?.[0]?.message?.content;
+  if (typeof content === "string") return content;
+  if (Array.isArray(content)) {
+    return content.map((item) => {
+      if (!item) return "";
+      if (typeof item === "string") return item;
+      if (typeof item.text === "string") return item.text;
+      return "";
+    }).filter(Boolean).join("\n");
+  }
+  return "";
+}
+
+async function generateSpecWithQwenVl(apiKey, imagePath) {
+  if (!apiKey) throw new Error("Missing DASHSCOPE_API_KEY/QWEN_API_KEY for spec.json generation");
+  if (!fs.existsSync(imagePath)) throw new Error("spec.json not found and screenshot not found: " + imagePath);
+
+  const specExample = {
+    "UI整体描述": "这是一个移动应用的‘我的工作台’页面，主要功能是项目开局管理。页面顶部显示时间、网络状态和电量信息，中间区域展示项目开局的三个操作选项，底部为导航栏，包含五个主要功能入口。",
+    "页面构成": [
+      "状态栏",
+      "标题栏",
+      "主内容区",
+      "底部导航栏",
+    ],
+    "视觉风格": "简洁现代，采用灰色背景与白色卡片式设计，图标使用蓝色、橙色、绿色等鲜明色彩突出功能区分，文字清晰易读，整体布局规整，注重功能引导。",
+    "各个区域组件信息分述": [
+      {
+        "组件类型": "状态栏",
+        "承担的功能": "显示系统状态信息",
+        "承载的信息": "08:08、Wi-Fi信号、蜂窝信号、电池电量100%",
+        "组件的配色样式和布局": "位于页面最上方，灰色背景，左侧显示时间，右侧依次排列信号和电量图标",
+        "组件所处的位置": "页面顶部",
+      },
+      {
+        "组件类型": "标题栏",
+        "承担的功能": "显示当前页面名称及提供交互入口",
+        "承载的信息": "我的工作台",
+        "组件的配色样式和布局": "黑色字体，右侧有摄像头、消息和机器人头像图标，标题后跟一个向下三角形表示可展开",
+        "组件所处的位置": "状态栏下方",
+      },
+      {
+        "组件类型": "卡片容器",
+        "承担的功能": "展示项目开局相关操作选项",
+        "承载的信息": "项目开局",
+        "组件的配色样式和布局": "白色圆角矩形卡片，内含三个并列的按钮，每个按钮包含图标和文字说明",
+        "组件所处的位置": "页面中部",
+      },
+      {
+        "组件类型": "功能按钮",
+        "承担的功能": "创建开局",
+        "承载的信息": "创建开局",
+        "组件的配色样式和布局": "蓝色文件夹图标带无线信号，下方为黑色文字，背景为浅灰色圆角矩形",
+        "组件所处的位置": "卡片容器内左侧",
+      },
+      {
+        "组件类型": "功能按钮",
+        "承担的功能": "创建项目集",
+        "承载的信息": "创建项目集",
+        "组件的配色样式和布局": "橙色文件夹图标，下方为黑色文字，背景为浅灰色圆角矩形",
+        "组件所处的位置": "卡片容器内中间",
+      },
+      {
+        "组件类型": "功能按钮",
+        "承担的功能": "接收项目",
+        "承载的信息": "接收项目",
+        "组件的配色样式和布局": "绿色文档图标带加号，下方为黑色文字，背景为浅灰色圆角矩形",
+        "组件所处的位置": "卡片容器内右侧",
+      },
+      {
+        "组件类型": "底部导航栏",
+        "承担的功能": "切换不同功能页面",
+        "承载的信息": "首页、商城、工作台、服务、我的",
+        "组件的配色样式和布局": "五个图标按钮横向排列，当前选中项为红色，其余为灰色，图标下方有对应文字标签",
+        "组件所处的位置": "页面底部",
+      },
+    ],
+  };
+
+  const prompt = [
+    "请分析这张应用页面截图，输出中文 UI Spec。",
+    "输出格式是最高优先级约束，必须严格遵守：",
+    "- 只输出一个 JSON 对象本身，必须能被 JSON.parse 直接解析。",
+    "- 第一个字符必须是 {，最后一个字符必须是 }。",
+    "- 严禁输出 markdown 代码块、```、解释文字、前缀、后缀、注释、自然语言说明或任何 JSON 外字符。",
+    "- 严禁输出数组作为根节点，根节点必须是对象。",
+    "- 不确定的信息不要编造；承载的信息必须来自截图里真实可见的文案、数字或状态。",
+    "JSON 结构必须包含且仅围绕以下字段展开：UI整体描述、页面构成、视觉风格、各个区域组件信息分述。",
+    "字段要求：",
+    "- 页面构成按从上到下、从左到右列出所有功能区块名。",
+    "- 各个区域组件信息分述中列出所有可见核心组件，包含组件类型、承担的功能、承载的信息、组件的配色样式和布局、组件所处的位置。",
+    "- 不要写 px、颜色十六进制、代码或实现解释。",
+    "参考示例，仅学习结构、粒度和表达方式；不要照抄示例内容，必须根据当前截图生成：",
+    JSON.stringify(specExample, null, 2),
+  ].join("\n");
+
+  const payload = {
+    model: "qwen-vl-max",
+    messages: [
+      {
+        role: "user",
+        content: [
+          { type: "image_url", image_url: { url: imageToDataUrl(imagePath) } },
+          { type: "text", text: prompt },
+        ],
+      },
+    ],
+    temperature: 0.2,
+    max_tokens: 2400,
+    response_format: { type: "json_object" },
+  };
+
+  const data = await callDashScopeChat(apiKey, payload, "Qwen VL");
+  const parsed = tryParseJson(getChatMessageContent(data));
+  if (!parsed || Array.isArray(parsed)) throw new Error("Qwen VL returned non-object JSON");
+  return parsed;
 }
 
 function isLikelyEmptyDiv(bodyHtml, id) {
@@ -229,34 +313,15 @@ function refineOverlappingSemantics(items) {
 async function callQwen(apiKey, model, prompt) {
   const payload = {
     model: model,
-    input: { messages: [{ role: "user", content: prompt }] },
-    parameters: { temperature: 0.1, max_tokens: 12000 },
+    messages: [{ role: "user", content: prompt }],
+    temperature: 0.1,
+    max_tokens: 12000,
+    response_format: { type: "json_object" },
   };
-  let lastErr;
-  for (let attempt = 1; attempt <= 4; attempt++) {
-    try {
-      const resp = await fetch(
-        "https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "Authorization": "Bearer " + apiKey },
-          body: JSON.stringify(payload),
-        }
-      );
-      if (!resp.ok) throw new Error("Qwen " + resp.status + ": " + (await resp.text()));
-      const data = await resp.json();
-      const output = data && data.output;
-      const txt = (output && output.text) ||
-                  (output && output.choices && output.choices[0] &&
-                   output.choices[0].message && output.choices[0].message.content) || null;
-      if (!txt) throw new Error("Qwen returned no text");
-      return typeof txt === "string" ? txt : JSON.stringify(txt);
-    } catch (err) {
-      lastErr = err;
-      if (attempt < 4) await new Promise((resolve) => setTimeout(resolve, attempt * 3000));
-    }
-  }
-  throw lastErr;
+  const data = await callDashScopeChat(apiKey, payload, "Qwen");
+  const txt = getChatMessageContent(data);
+  if (!txt) throw new Error("Qwen returned no text");
+  return txt;
 }
 
 function annotateBodySemantic(bodyHtml, semanticItems) {

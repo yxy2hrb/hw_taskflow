@@ -69,26 +69,67 @@ function latestBlueprint(base) {
   return hits[0];
 }
 
-function lightweightRegistry(registry) {
-  const out = {};
-  for (const [name, entry] of Object.entries(registry.semantic_dom_registry || {})) {
-    out[name] = {
-      selector: entry.selector,
-      semantic: entry.component || entry.semantic,
-      text: entry.text,
-      area: entry.area,
-      policy: entry.inheritance_policy,
-    };
-  }
-  return out;
+function compactTreeNode(node) {
+  if (!node || typeof node !== "object") return null;
+  return {
+    anchor: node.anchor || node.name || null,
+    selector: node.selector || null,
+    id: node.id || null,
+    area: node.area || null,
+    component: node.component || node.semantic || null,
+    element: node.element || node.range || null,
+    bbox: Array.isArray(node.bbox) ? node.bbox : null,
+    text: node.text || "",
+    policy: node.policy || node.inheritance_policy || null,
+    confidence: node.confidence || null,
+    children: (node.children || []).map(compactTreeNode).filter(Boolean),
+  };
 }
 
-function anchorBboxes(registry) {
-  const out = {};
-  for (const [name, entry] of Object.entries(registry.semantic_dom_registry || {})) {
-    out[name] = entry.bbox || null;
+function treeRegistryFromGraph(registry) {
+  const graph = registry.semantic_dom_tree;
+  const graphNodes = graph?.nodes || {};
+  const roots = graph?.roots || [];
+  const build = (name) => {
+    const node = graphNodes[name];
+    if (!node) return null;
+    return compactTreeNode({
+      ...node,
+      anchor: node.anchor || name,
+      children: (node.children || []).map(build).filter(Boolean),
+    });
+  };
+  return { type: "tree", roots: roots.map(build).filter(Boolean) };
+}
+
+function treeRegistryFromFlat(registry) {
+  const roots = Object.entries(registry.semantic_dom_registry || {}).map(([name, entry]) => compactTreeNode({
+    anchor: name,
+    selector: entry.selector,
+    id: entry.id,
+    area: entry.area,
+    component: entry.component || entry.semantic,
+    element: entry.element || entry.range,
+    bbox: entry.bbox,
+    text: entry.text,
+    policy: entry.inheritance_policy,
+    confidence: entry.confidence,
+    children: [],
+  })).filter(Boolean);
+  return { type: "tree", roots };
+}
+
+function semanticRegistryForPrompt(registry) {
+  if (registry.semantic_registry_tree?.type === "tree" && Array.isArray(registry.semantic_registry_tree.roots)) {
+    return {
+      type: "tree",
+      roots: registry.semantic_registry_tree.roots.map(compactTreeNode).filter(Boolean),
+    };
   }
-  return out;
+  if (registry.semantic_dom_tree?.nodes && Array.isArray(registry.semantic_dom_tree.roots)) {
+    return treeRegistryFromGraph(registry);
+  }
+  return treeRegistryFromFlat(registry);
 }
 
 function layoutConstraints() {
@@ -109,6 +150,9 @@ function layoutConstraints() {
     "Only top-level create/update patches need page-coordinate bbox. Children inside containers should describe their own props/text/intrinsic width/height instead of bbox.",
     "Parent containers own page placement and child layout. Child components are generated first and imported by the parent during codegen.",
     "Rich cards must be fully populated in state_implementation_model. Component-codegen only renders existing props/children/text and must not invent business data.",
+    "For every state after state_1, first consider the previous state's full visible set: original kept anchors, previous create/update components, and components inherited from earlier ancestors. Keep or update the items that remain visible; create only newly introduced items.",
+    "For modal, drawer, popup, and bottom-sheet states, keep the background state's visible components behind the overlay, including persistent status/system bar anchors when present in semantic_registry.",
+    "If a state jumps back to an earlier page such as home/list, consider that earlier state's full accumulated visible set, not only its direct create patches.",
   ];
 }
 
@@ -137,6 +181,52 @@ function patchGotoStateNum(patch) {
 
 function isClickAction(action) {
   return /(^|:)click$/i.test(String(action || "")) || /^tap$/i.test(String(action || ""));
+}
+
+function registryIdToAnchorMap(registry) {
+  const map = new Map();
+  for (const [anchor, entry] of Object.entries(registry.semantic_dom_registry || {})) {
+    if (entry?.id) map.set(String(entry.id), anchor);
+    if (typeof entry?.selector === "string" && entry.selector.startsWith("#")) {
+      map.set(entry.selector.slice(1), anchor);
+    }
+  }
+  return map;
+}
+
+function normalizeAnchorValue(value, idToAnchor) {
+  if (typeof value !== "string") return value;
+  if (idToAnchor.has(value)) return idToAnchor.get(value);
+  const relation = value.match(/^(below|above|leftOf|rightOf|after|before):(.+)$/);
+  if (relation && idToAnchor.has(relation[2])) return `${relation[1]}:${idToAnchor.get(relation[2])}`;
+  return value;
+}
+
+function normalizePatchAnchorRefs(patch, idToAnchor) {
+  if (!patch || typeof patch !== "object" || Array.isArray(patch)) return;
+  for (const key of ["anchor", "target_anchor"]) {
+    if (typeof patch[key] === "string") patch[key] = normalizeAnchorValue(patch[key], idToAnchor);
+  }
+  if (patch.layout && typeof patch.layout === "object" && !Array.isArray(patch.layout)) {
+    for (const key of ["startAnchor", "endBeforeAnchor"]) {
+      if (typeof patch.layout[key] === "string") patch.layout[key] = normalizeAnchorValue(patch.layout[key], idToAnchor);
+    }
+  }
+  for (const child of patchChildren(patch)) normalizePatchAnchorRefs(child, idToAnchor);
+}
+
+function normalizeRichRequirements(patch) {
+  if (!patch || typeof patch !== "object" || Array.isArray(patch)) return;
+  if (String(patch.content_density || "").toLowerCase() === "rich") {
+    const requirements = Array.isArray(patch.content_requirements) ? patch.content_requirements.filter(Boolean) : [];
+    const fallback = ["primaryContent", "supportingContent", "actionOrMetadata"];
+    for (const item of fallback) {
+      if (requirements.length >= 3) break;
+      if (!requirements.includes(item)) requirements.push(item);
+    }
+    patch.content_requirements = requirements;
+  }
+  for (const child of patchChildren(patch)) normalizeRichRequirements(child);
 }
 
 function patchBottom(patch) {
@@ -380,11 +470,11 @@ function normalizeComponentProps(patch) {
 function componentSchema(name) {
   const key = String(name || "").toLowerCase();
   const schemas = {
-    sectionlayout: { required: ["variant", "title"], optional: ["moreText", "onMore", "tabs", "activeTab", "onTabChange", "headerRightAction"] },
+    sectionlayout: { required: ["variant"], optional: ["title", "moreText", "onMore", "tabs", "activeTab", "onTabChange", "headerRightAction"] },
     topnav: { required: [], optional: ["variant", "onBack", "activeTab", "tabs", "onTabChange", "title", "drawerValue", "drawerOptions", "onDrawerChange", "drawerDefaultOpen", "actions", "cartCount", "onSearch", "onCart", "onProfile", "onScan", "onMessage", "onSettings", "onGrid", "transparent", "zIndex"] },
     capsulebutton: { required: [], optional: ["children", "size", "variant", "disabled", "icon", "className", "onClick", "loading", "block", "zIndex"] },
     textbutton: { required: [], optional: ["children", "size", "variant", "disabled", "icon", "className", "onClick", "zIndex"] },
-    buttonbar: { required: ["variant"], optional: ["primaryLabel", "secondaryLabel", "thirdLabel", "inputPlaceholder", "checkboxLabel", "width", "className", "onPrimaryClick", "onSecondaryClick", "onThirdClick", "zIndex"] },
+    buttonbar: { required: ["variant"], optional: ["primaryLabel", "secondaryLabel", "thirdLabel", "inputPlaceholder", "checkboxLabel", "width", "className", "disabled", "loading", "onPrimaryClick", "onSecondaryClick", "onThirdClick", "zIndex"] },
     inputdemo: { required: [], optional: ["label", "placeholder", "errorMessage", "value", "onChange", "validate", "disabled", "showToggle", "className", "zIndex"] },
     statuspill: { required: ["text"], optional: ["colorMap", "zIndex"] },
     filterpills: { required: ["filters", "activeId"], optional: ["onChange", "fadeEdges", "zIndex"] },
@@ -555,23 +645,26 @@ function validateStateStacking(state, registry, virtualPatches, issues) {
   }
 }
 
-function normalizeModel(model, initialHeight) {
+function normalizeModel(model, initialHeight, registry = {}) {
   delete model.semanticAnchors;
   delete model.semantic_registry;
+  const idToAnchor = registryIdToAnchorMap(registry);
 
   const virtualPatchById = new Map();
   for (const state of model.states || []) {
     if (!state.trigger || typeof state.trigger !== "object" || Array.isArray(state.trigger)) state.trigger = null;
     if (stateNum(state.id) === 1 && !state.parent_state) state.trigger = null;
+    if (typeof state.trigger?.anchor === "string") state.trigger.anchor = normalizeAnchorValue(state.trigger.anchor, idToAnchor);
 
     const patchList = Array.isArray(state.patches) ? state.patches : [];
     const inheritance = state.inheritance && typeof state.inheritance === "object" && !Array.isArray(state.inheritance) ? state.inheritance : {};
-    const keep = new Set(inheritance.keep || []);
+    const keep = new Set((inheritance.keep || []).map((item) => typeof item === "string" ? normalizeAnchorValue(item, idToAnchor) : item));
     const create = Array.isArray(inheritance.create) ? inheritance.create.slice() : [];
     const update = Array.isArray(inheritance.update) ? inheritance.update.slice() : [];
 
     for (const patch of patchList) {
       if (!patch || typeof patch !== "object" || Array.isArray(patch)) continue;
+      normalizePatchAnchorRefs(patch, idToAnchor);
       const anchor = patchAnchor(patch);
       if (patch.type === "keep" && anchor) keep.add(anchor);
       if (patch.type === "create") create.push(patch);
@@ -598,17 +691,21 @@ function normalizeModel(model, initialHeight) {
     state.inheritance = { keep: [...keep], create, update };
     state.patches = patchList.filter((patch) => patch?.type !== "hide" && patch?.type !== "replace");
     for (const patch of state.inheritance.create) {
+      normalizePatchAnchorRefs(patch, idToAnchor);
       normalizeNestedChildLayout(patch);
       normalizeComponentProps(patch);
       normalizeRichContentRequirements(patch);
+      normalizeRichRequirements(patch);
       normalizeFixedViewportPatch(patch, initialHeight);
       registerPatchTree(patch, virtualPatchById);
     }
     for (const patch of state.inheritance.update) {
       mergeVirtualPlacement(patch, virtualPatchById);
+      normalizePatchAnchorRefs(patch, idToAnchor);
       normalizeNestedChildLayout(patch);
       normalizeComponentProps(patch);
       normalizeRichContentRequirements(patch);
+      normalizeRichRequirements(patch);
       normalizeFixedViewportPatch(patch, initialHeight);
       if (patch?.id || patch?.name) {
         const id = patch.id || patch.name;
@@ -616,9 +713,11 @@ function normalizeModel(model, initialHeight) {
       }
     }
     for (const patch of state.patches) {
+      normalizePatchAnchorRefs(patch, idToAnchor);
       normalizeNestedChildLayout(patch);
       normalizeComponentProps(patch);
       normalizeRichContentRequirements(patch);
+      normalizeRichRequirements(patch);
       normalizeFixedViewportPatch(patch, initialHeight);
     }
     const requestedHeight = Number(state.height);
@@ -764,8 +863,7 @@ async function main() {
       height_may_expand: true,
     },
     blueprint,
-    semantic_registry: lightweightRegistry(registry),
-    anchor_bboxes: anchorBboxes(registry),
+    semantic_registry: semanticRegistryForPrompt(registry),
     layout_constraints: layoutConstraints(),
     component_library_reference: componentReference,
   };
@@ -779,7 +877,7 @@ async function main() {
   });
   writeUtf8(out.replace(/\.json$/, ".raw.txt"), raw);
 
-  const parsed = normalizeModel(extractJson(raw), height);
+  const parsed = normalizeModel(extractJson(raw), height, registry);
   const issues = validateModel(parsed, registry);
   writeUtf8(out, JSON.stringify(parsed, null, 2));
   writeUtf8(out.replace(/\.json$/, ".validation.json"), JSON.stringify({ issues }, null, 2));

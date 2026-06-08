@@ -237,6 +237,11 @@ function componentRecordStateNum(record) {
   return stateNum(record?.state_id);
 }
 
+function validBboxArray(bbox) {
+  const values = Array.isArray(bbox) ? bbox.map(Number) : [];
+  return values.length === 4 && values.every(Number.isFinite) && values[2] > 0 && values[3] > 0;
+}
+
 function latestComponentRecord(componentCodegen, id, stateId) {
   const current = stateNum(stateId);
   return (componentCodegen?.components || [])
@@ -247,12 +252,8 @@ function latestComponentRecord(componentCodegen, id, stateId) {
 function latestComponentRecordWithBbox(componentCodegen, id, stateId) {
   const current = stateNum(stateId);
   return (componentCodegen?.components || [])
-    .filter((record) => {
-      const spec = record?.input?.component || {};
-      return componentRecordId(record) === id
-        && componentRecordStateNum(record) <= current
-        && Array.isArray(spec.bbox);
-    })
+    .filter((record) => componentRecordId(record) === id && componentRecordStateNum(record) <= current)
+    .filter((record) => validBboxArray(record?.input?.component?.bbox || record?.component?.bbox))
     .sort((a, b) => componentRecordStateNum(b) - componentRecordStateNum(a))[0] || null;
 }
 
@@ -613,7 +614,7 @@ function isUnplaceableOrphanComponent(state, stateModel, componentCodegen, regis
 
 function componentFrameStyle(spec) {
   const bbox = Array.isArray(spec?.bbox) ? spec.bbox.map(Number) : null;
-  if (!bbox || bbox.some((value) => !Number.isFinite(value))) return "";
+  if (!validBboxArray(bbox)) return "";
   const zIndex = Number(spec?.props?.zIndex ?? spec?.zIndex);
   if (isKeyboardSpec(spec)) {
     return [
@@ -677,6 +678,22 @@ function placeholderAlreadyHasFrame(sectionHtml, offset) {
   if (lastFrame < 0) return false;
   const lastClose = prefix.lastIndexOf("</div>");
   return lastFrame > lastClose;
+}
+
+function placeholderFrameHasCompleteBbox(sectionHtml, offset) {
+  const prefix = String(sectionHtml || "").slice(Math.max(0, offset - 1200), offset);
+  const lastFrame = prefix.lastIndexOf("tf-component-frame");
+  if (lastFrame < 0) return false;
+  const tagStart = prefix.lastIndexOf("<", lastFrame);
+  const tagEnd = prefix.indexOf(">", lastFrame);
+  if (tagStart < 0 || tagEnd < 0) return false;
+  const tag = prefix.slice(tagStart, tagEnd + 1);
+  const style = (tag.match(/\bstyle=["']([^"']*)["']/i) || [])[1] || "";
+  return /position\s*:\s*(absolute|fixed)/i.test(style)
+    && /left\s*:/i.test(style)
+    && /top\s*:/i.test(style)
+    && /width\s*:/i.test(style)
+    && /height\s*:/i.test(style);
 }
 
 function keepPlaceholdersForState(state, componentCodegen) {
@@ -915,11 +932,17 @@ function fillComponentPlaceholders(generated, stateModel, componentCodegen, regi
       changed = true;
       if (record.component.css) appendedCss.push(`\n/* component-codegen placeholder: ${id} */\n${record.component.css}`);
       const spec = componentLayoutSpec(state, componentCodegen, id, registry);
-      // Reuse an LLM-provided frame only for ordinary flow components. Viewport-
-      // fixed components must always be re-framed by componentFrameStyle so they
-      // pin to the screen edge instead of an absolute canvas coordinate.
-      if (placeholderAlreadyHasFrame(fullSectionHtml, offset) && !isViewportFixedSpec(spec)) return html;
-      return wrapComponentHtml(html, { id, state, componentCodegen, registry });
+      const framedHtml = wrapComponentHtml(html, { id, state, componentCodegen, registry });
+      // Reuse an LLM-provided frame only for ordinary flow components whose frame
+      // already carries a complete bbox. Viewport-fixed components (bottom bar,
+      // keyboard, sheet, overlay) must always be re-framed by componentFrameStyle
+      // so they pin to the screen edge instead of an absolute canvas coordinate.
+      if (placeholderAlreadyHasFrame(fullSectionHtml, offset)
+        && placeholderFrameHasCompleteBbox(fullSectionHtml, offset)
+        && !isViewportFixedSpec(spec)) {
+        return html;
+      }
+      return framedHtml;
     });
   });
   if (changed) {
@@ -1214,21 +1237,24 @@ function tfScheduleAutoTransition(currentState){
 function tfInstallGoto(){
   window.TF={current:1,goto:function(id){
     const n=Number(String(id).replace(/\\D/g,""))||1;
+    const appRoot=document.getElementById("app-root");
     this.current=n;
     window.clearTimeout(this._autoTimer);
     document.querySelectorAll(".tf-state-layer").forEach(function(layer){layer.style.display="none";});
-    const appRoot=document.getElementById("app-root");
     if(n===1){
       // 回到初始态：恢复原始 D2C 页面
       if(appRoot) appRoot.style.display="";
       return;
     }
-    // 非初始态：彻底隐藏初始页（state_1）。保留区(状态栏/被保留卡片)由 keep
-    // placeholder 克隆 app-root 内容显示，不依赖 app-root 自身可见；浮层态的
-    // 背景同样来自 keep 克隆，所以隐藏 app-root 不会丢背景。
+    // 非初始态：彻底隐藏初始页（state_1）。先临时恢复 app-root 让 keep 克隆/测量
+    // 正常，填充后再隐藏；保留区与浮层背景都来自 keep 克隆，不依赖 app-root 可见。
     const layer=document.getElementById("tf-state-"+n);
-    if(layer){ tfFillKeepPlaceholders(layer); layer.style.display="block"; }
-    if(appRoot) appRoot.style.display="none";
+    if(layer){
+      if(appRoot) appRoot.style.display="";
+      tfFillKeepPlaceholders(layer);
+      layer.style.display="block";
+      if(appRoot) appRoot.style.display="none";
+    }
     tfScheduleAutoTransition(n);
   }};
 }

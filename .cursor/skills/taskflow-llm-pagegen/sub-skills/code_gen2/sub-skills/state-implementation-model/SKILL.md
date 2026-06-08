@@ -8,8 +8,8 @@ description: Generate taskflow state implementation model from blueprint and sem
 ## Goal
 
 Use the LLM, not scripted heuristics, to convert confirmed blueprint states,
-semantic registry, anchor bbox information, and page context into a
-machine-readable state implementation model.
+tree-shaped semantic registry data, anchor bbox/text information, and page
+context into a machine-readable state implementation model.
 
 The output is only the state model. Do not repeat semantic anchors,
 semantic_registry, or full HTML in the output. The runner joins registry data
@@ -18,9 +18,9 @@ before the next stage.
 ## Inputs
 
 - `blueprint_builder_input.json`
-- `semantic_registry`, keyed by anchor name, with selector, semantic text,
-  visible text, area, policy, and bbox
-- `anchor_bboxes`, keyed by anchor name
+- `semantic_registry`, a tree-shaped registry. Each node includes `anchor`,
+  `selector`, semantic/component metadata, visible `text`, inheritance `policy`,
+  `bbox`, and `children`. Text anchors are included as child/leaf nodes.
 - `component_library_reference`, a Markdown reference for the available
   code_gen2 component library, including component names, props, and usage
   scenarios
@@ -188,6 +188,38 @@ anchor, it must have been created by an earlier state.
     elevation.
 14. Preserve Gestalt design principles: related elements should be close,
     aligned, visually similar, and grouped with clear hierarchy.
+
+## State Inheritance Reasoning
+
+Before authoring each state after `state_1`, explicitly reason from the previous
+state's full visible component set, not only from the previous state's
+`inheritance.keep` array.
+
+For every new state:
+
+1. Build the previous visible set mentally from:
+   - original DOM anchors kept by the previous state,
+   - virtual components created by the previous state,
+   - virtual/original components updated by the previous state,
+   - components inherited by the previous state from even earlier ancestors.
+2. Decide which of those visible items remain visible in the new state and put
+   them in `inheritance.keep`.
+3. Decide which visible items change content or visual state and put those in
+   `inheritance.update`.
+4. Decide which items are newly introduced and put those in `inheritance.create`.
+5. If the flow returns to or branches from an earlier state, such as jumping back
+   to a home/list page, consider all components that were visible in that earlier
+   state's accumulated visible set, not just its direct `create` patches.
+
+Modal, drawer, popup, and bottom-sheet states usually preserve the background
+state underneath the overlay. Therefore their `inheritance.keep` must include the
+background state's visible components that should remain dimmed behind the
+overlay, including persistent system/status anchors when they are visible.
+
+If an original status/system bar anchor exists in `semantic_registry` and the new
+state is not a full-screen replacement that intentionally redraws the entire top
+system area, keep the status/system bar anchor explicitly. Do not rely on
+page-layer fallback to restore it.
 
 ## Keep Scope: Replacement vs Overlay
 
