@@ -3,12 +3,12 @@ const path = require('path');
 const {
   createSession,
   loadSession,
-  readJson,
   stageFile,
 } = require('./session');
 const { confirmPhase, generatePhase, latestStagePayload, ValidationError } = require('./phase_runners');
 const { renderView } = require('./render_view');
 const { runAuto } = require('./legacy_auto');
+const { promptForFeedback, readFeedbackFile } = require('./numbered_interaction');
 
 function parseArgs(argv) {
   const command = argv[0] && !argv[0].startsWith('--') ? argv[0] : '';
@@ -40,7 +40,8 @@ function usage() {
     'Usage:',
     '  node run_skill.js init --dirs <caseDir> [--session-dir <dir>] [--model qwen3.7-max]',
     '  node run_skill.js generate --session-dir <dir> --phase 1|2|3|4',
-    '  node run_skill.js confirm --session-dir <dir> --phase 1|2|3|4 --input feedback.json',
+    '  node run_skill.js confirm --session-dir <dir> --phase 1|2|3|4',
+    '  node run_skill.js confirm --session-dir <dir> --phase 1|2|3|4 --input feedback.json|feedback.txt',
     '  node run_skill.js resume --session-dir <dir>',
     '  node run_skill.js status --session-dir <dir>',
     '  node run_skill.js auto --dirs <caseDir...> [--session-dir <dir>] [--model qwen3.7-max]',
@@ -121,7 +122,18 @@ async function main() {
   if (command === 'confirm') {
     const sessionDir = requireSessionDir(flags);
     const phase = phaseFromFlags(flags);
-    const feedback = flags.input ? await readJson(flags.input) : {};
+    const loaded = await loadSession(sessionDir);
+    const payload = latestStagePayload(loaded, loaded.session);
+    if (!payload || payload.phase !== phase) {
+      throw new Error(`Missing pending Phase ${phase} ask/preview.`);
+    }
+    if (!flags.noView) {
+      console.log(renderView(payload));
+      console.log('');
+    }
+    const feedback = flags.input
+      ? await readFeedbackFile(flags.input, payload)
+      : await promptForFeedback(payload);
     const output = await confirmPhase(sessionDir, phase, feedback, { allowDefaults: false });
     console.log(JSON.stringify({
       status: phase === 4 ? 'completed' : 'idle',

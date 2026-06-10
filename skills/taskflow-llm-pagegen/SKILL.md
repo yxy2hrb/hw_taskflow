@@ -21,9 +21,10 @@ It is self-contained: use only files under this skill directory.
 node .cursor/skills/taskflow-llm-pagegen/scripts/run_skill.js new_test/2 --model qwen3.7-max
 ```
 
-首次运行会完成 preprocess、初始化 blueprint session、生成 Phase 1 ask，然后正常暂停。
-确认当前 Phase 后，使用同一个 `--stamp` 或 `--blueprint-session-dir` 再次运行顶层命令。
-只有蓝图 session 达到 `completed` 后，才继续 state implementation 和 codegen。
+首次运行会完成 preprocess、初始化 blueprint session，并连续执行四个交互 Phase。
+每个 Phase 生成选项后会立即在当前终端提示用户输入保留编号和修改内容；
+确认后自动进入下一 Phase，不需要另外执行 confirm 或重复运行顶层命令。
+蓝图 session 达到 `completed` 后，当前命令直接继续 state implementation 和 codegen。
 恢复同一运行时，未重复传入的 model、codegen、输入路径和 viewport 会从
 `input_manifest.json` 继承。
 
@@ -49,8 +50,8 @@ Inputs:
 - `--codegen`: optional codegen implementation. Use `codegen` for the default
   static pipeline or `code_gen2` for the React-first component pipeline.
 - `--blueprint-mode`: `interactive | auto`，默认 `interactive`。
-- `--blueprint-session-dir`: 复用已有 blueprint session。适合用户确认某个 Phase 后继续整体流程。
-- `--stamp`: 固定整体运行目录；交互式多次调用时可复用同一个 stamp。
+- `--blueprint-session-dir`: 复用已有 blueprint session。适合进程中断后继续当前 Phase。
+- `--stamp`: 固定整体运行目录；中断恢复时复用同一个 stamp。
 
 The top-level runner only coordinates sub-skills and writes the final run report.
 
@@ -70,39 +71,28 @@ node .cursor/skills/taskflow-llm-pagegen/scripts/run_skill.js new_test/2 \
 new_test/2/.run_skill/20260610120000/blueprint/
 ```
 
-查看待确认视图：
+每个 Phase 生成后会立即显示编号选项并等待输入：
 
-```bash
-node .cursor/skills/taskflow-llm-pagegen/sub-skills/blueprint/scripts/run_skill.js status \
-  --session-dir new_test/2/.run_skill/20260610120000/blueprint
+```text
+请输入四个选项编号（每组一个，逗号分隔）：
+> 1,4,7,10
+
+要修改的编号（或 done）：
+> done
 ```
 
-提交当前 Phase 的用户反馈：
+确认当前 Phase 后，程序自动生成并进入下一 Phase。四个 Phase 全部确认后，
+同一个命令继续执行 state implementation 和 codegen。
 
-```bash
-node .cursor/skills/taskflow-llm-pagegen/sub-skills/blueprint/scripts/run_skill.js confirm \
-  --session-dir new_test/2/.run_skill/20260610120000/blueprint \
-  --phase 1 \
-  --input feedback.json
-```
-
-继续整体流程：
-
-```bash
-node .cursor/skills/taskflow-llm-pagegen/scripts/run_skill.js new_test/2 \
-  --model qwen3.7-max \
-  --stamp 20260610120000
-```
-
-也可直接指定 session：
+如果进程曾被中断，可使用同一个 session 恢复：
 
 ```bash
 node .cursor/skills/taskflow-llm-pagegen/scripts/run_skill.js new_test/2 \
   --blueprint-session-dir new_test/2/.run_skill/20260610120000/blueprint
 ```
 
-每次蓝图进入 `awaiting_confirm`，顶层 runner 都会以退出码 0 暂停，并在
-`run_report.json` 的 `blueprint` 字段中写入当前 Phase、待确认文件和下一步命令。
+如果 session 处于 `awaiting_confirm`，恢复后会直接继续当前 Phase 的编号交互；
+如果处于 `idle`，会先生成当前 Phase，再立即进入编号交互。
 
 批量/CI 模式保持全自动：
 

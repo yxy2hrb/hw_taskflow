@@ -56,6 +56,9 @@ description: >
 
 `blueprint_builder_input.json` 文件，作为下一阶段输入。当前不要求产出旧版 `blueprint.json`。
 
+终端交互时，用户输入要保持原样的状态编号；修改时输入对应编号和新内容。
+单段内容默认修改 implementation，`名称 | 描述 | 实现` 可同时修改三个字段。
+
 ```json
 {
   "action": "done",

@@ -64,8 +64,7 @@ node .cursor/skills/taskflow-llm-pagegen/sub-skills/blueprint/scripts/run_skill.
 
 node .cursor/skills/taskflow-llm-pagegen/sub-skills/blueprint/scripts/run_skill.js confirm \
   --session-dir new_test/2/.run_skill/{stamp}/blueprint \
-  --phase 1 \
-  --input user_feedback.json
+  --phase 1
 
 node .cursor/skills/taskflow-llm-pagegen/sub-skills/blueprint/scripts/run_skill.js resume \
   --session-dir new_test/2/.run_skill/{stamp}/blueprint
@@ -79,6 +78,29 @@ node .cursor/skills/taskflow-llm-pagegen/sub-skills/blueprint/scripts/run_skill.
 ```
 
 旧 `--skill taskflow-user-story` 参数已废弃；使用 `generate/confirm --phase N`。
+
+## 用户输入
+
+`confirm` 默认进入纯文本编号交互：
+
+```text
+请输入要保留的编号：
+> 1,2,3,4
+
+要修改的编号（或 done）：
+> 3
+
+请输入新的内容：
+> 修改后的内容
+```
+
+- Phase 1：四个分组各选择一个编号。
+- Phase 2：编号表示保留的 state。
+- Phase 3：编号表示保持原样的 UI 实现；可逐状态修改。
+- Phase 4：编号表示保持原样的合并状态；可逐状态修改。
+- 输入 `done` 完成修改。
+- `--input feedback.txt` 支持第一行编号、后续 `编号=内容`。
+- 原有 `--input feedback.json` 继续兼容。
 
 ## 阶段状态机
 

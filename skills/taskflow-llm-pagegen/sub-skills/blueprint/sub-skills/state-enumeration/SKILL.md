@@ -72,6 +72,8 @@ Phase 2 拆成 `generate` 与 `confirm` 两步。
 confirm 规则：
 
 - 只保留用户勾选或编辑后的 state。
+- 终端交互时只需输入保留状态的数字编号，多个编号使用逗号分隔。
+- 修改时输入已保留项的编号和新内容；`名称 | 完整描述` 可同时修改两个字段。
 - `state_1` 不可删除，且必须保持第一项。
 - `states.length >= 4`。
 - confirmed 中移除 `rationale`。

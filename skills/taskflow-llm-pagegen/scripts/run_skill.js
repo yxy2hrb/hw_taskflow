@@ -319,34 +319,28 @@ async function main() {
         "--page-dsl", rel(path.join(preprocessOut, "spec.used.json")),
       ], "blueprint init", 1);
     }
-    let session = readJson(blueprintSessionFile);
-    if (session.status === "idle") {
-      await runNode([
-        blueprintRunner,
-        "generate",
-        "--session-dir", rel(blueprintOut),
-        "--phase", String(session.current_phase),
-      ], `blueprint phase${session.current_phase} generate`, 1);
-      session = readJson(blueprintSessionFile);
-    }
-    if (session.status === "awaiting_confirm") {
-      await runNode([
-        blueprintRunner,
-        "status",
-        "--session-dir", rel(blueprintOut),
-      ], `blueprint phase${session.current_phase} awaiting confirmation`, 1);
-      const blueprint = blueprintSessionInfo(blueprintOut, blueprintMode);
-      writeAwaitingBlueprintReport({
-        report,
-        runDir,
-        preprocessOut,
-        registryPath,
-        anchorsPath,
-        blueprint,
-      });
-      return;
-    }
-    if (session.status !== "completed") {
+    while (true) {
+      let session = readJson(blueprintSessionFile);
+      if (session.status === "completed") break;
+      if (session.status === "idle") {
+        await runNode([
+          blueprintRunner,
+          "generate",
+          "--session-dir", rel(blueprintOut),
+          "--phase", String(session.current_phase),
+        ], `blueprint phase${session.current_phase} generate`, 1);
+        session = readJson(blueprintSessionFile);
+      }
+      if (session.status === "awaiting_confirm") {
+        await runNode([
+          blueprintRunner,
+          "confirm",
+          "--session-dir", rel(blueprintOut),
+          "--phase", String(session.current_phase),
+          "--no-view",
+        ], `blueprint phase${session.current_phase} confirm`, 1);
+        continue;
+      }
       throw new Error(`Blueprint session cannot continue from status ${session.status}: ${rel(blueprintSessionFile)}`);
     }
   }

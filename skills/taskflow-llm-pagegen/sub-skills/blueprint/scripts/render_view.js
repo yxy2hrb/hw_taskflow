@@ -1,9 +1,8 @@
-function renderOption(option) {
-  const marker = Object.prototype.hasOwnProperty.call(option, 'default')
-    ? `[${option.default ? 'x' : ' '}] `
-    : '';
-  const lines = [`- ${marker}${option.id}`];
-  if (option.label) lines.push(`  ${option.label}`);
+const { entriesForPayload } = require('./numbered_interaction');
+
+function renderOption(option, number) {
+  const lines = [`[${number}] ${option.label || option.id}`];
+  if (option.label) lines.push(`  ID：${option.id}`);
   if (option.implementation_plan) lines.push(`  ${option.implementation_plan}`);
   if (option.description) lines.push(`  ${option.description.replace(/\n/g, '\n  ')}`);
   if (option.rationale) lines.push(`  原因：${option.rationale}`);
@@ -16,20 +15,27 @@ function renderAsk(payload) {
     payload.note || '',
   ].filter(Boolean);
   let currentGroup = '';
-  for (const option of payload.options || []) {
+  for (const entry of entriesForPayload(payload)) {
+    const option = entry.raw;
     if (option.group && option.group !== currentGroup) {
       currentGroup = option.group;
       lines.push('', currentGroup);
     }
-    lines.push(renderOption(option));
+    lines.push(renderOption(option, entry.number));
   }
+  lines.push('', payload.phase === 1
+    ? '输入方式：输入四个编号，每组一个，例如 1,3,6,9。'
+    : payload.phase === 2
+      ? '输入方式：输入要保留的编号，例如 1,2,4,5。'
+      : '输入方式：输入要保留原内容的编号；直接回车表示全部保留。');
   return lines.join('\n');
 }
 
 function renderPreview(payload) {
   const lines = ['Phase 4 蓝图预览'];
-  for (const [stateId, state] of Object.entries(payload.merged_states_by_id || {})) {
-    lines.push('', `${stateId} · ${state.label}`, state.description || '');
+  for (const entry of entriesForPayload(payload)) {
+    const state = entry.raw;
+    lines.push('', `[${entry.number}] ${entry.id} · ${state.label}`, state.description || '');
     if (state.implementation?.implementation_plan) {
       lines.push(`实现：${state.implementation.implementation_plan}`);
     }
@@ -37,6 +43,7 @@ function renderPreview(payload) {
   if (payload.validation_issues?.length) {
     lines.push('', '校验问题：', ...payload.validation_issues.map((issue) => `- ${issue}`));
   }
+  lines.push('', '输入方式：输入要保留原内容的编号；直接回车表示全部保留。');
   return lines.join('\n');
 }
 

@@ -1,132 +1,167 @@
-# Blueprint Interactive 操作手册
+# Blueprint 编号交互操作手册
 
 ## 运行原则
 
-蓝图阶段默认 interactive。Agent 每次只推进一个 phase：
+蓝图阶段默认使用纯文本编号交互：
 
-1. 调用 `generate --phase N`。
-2. 渲染 `phaseN_ask.json` 或 `phase4_preview.json`。
-3. 收集用户选择、编辑或完整 JSON。
-4. 写成 feedback JSON。
-5. 调用 `confirm --phase N --input feedback.json`。
-6. 再进入下一 phase。
+1. `generate --phase N` 生成 ask 或 preview。
+2. CLI 将每个选项显示为 `[1] / [2] / [3]`。
+3. 用户输入要保留的编号，使用逗号分隔。
+4. 如需修改，输入对应编号，再输入新内容。
+5. 输入 `done` 完成修改并确认当前 Phase。
 
-`resume` 只会在 `idle` 时继续生成；遇到 `awaiting_confirm` 只展示当前待确认视图。
+不再要求用户手工编写 feedback JSON。原 JSON 输入仍兼容。
 
-## 命令
-
-```bash
-node .cursor/skills/taskflow-llm-pagegen/sub-skills/blueprint/scripts/run_skill.js init \
-  --dirs new_test/2 \
-  --model qwen3.7-max
-```
-
-```bash
-node .cursor/skills/taskflow-llm-pagegen/sub-skills/blueprint/scripts/run_skill.js generate \
-  --session-dir new_test/2/.run_skill/{stamp}/blueprint \
-  --phase 1
-```
+## 基本命令
 
 ```bash
 node .cursor/skills/taskflow-llm-pagegen/sub-skills/blueprint/scripts/run_skill.js confirm \
   --session-dir new_test/2/.run_skill/{stamp}/blueprint \
-  --phase 1 \
-  --input feedback.json
+  --phase 1
 ```
 
-## Feedback 格式
+执行后会显示编号视图并进入交互输入。
 
-### Phase 1
+## Phase 1
 
-方式 A：提交选项。
+四个分组中的选项使用全局连续编号。每组必须选择一个：
 
-```json
-{
-  "selections": {
-    "actor": "actor_1",
-    "trigger": "trigger_1",
-    "happy_path": "goal_1",
-    "success_criteria": "success_1"
-  },
-  "custom_overrides": {}
-}
+```text
+① Actor
+[1] 已登录用户
+[2] 首次访问用户
+
+② Trigger
+[3] 点击创建按钮
+[4] 从列表菜单进入
+
+③ Goal & Happy Path
+[5] ...
+[6] ...
+
+④ Success Criteria
+[7] ...
+[8] ...
+
+请输入四个选项编号：
+> 1,3,5,7
 ```
 
-方式 B：提交完整 `phase1_confirmed.json`。
+修改已选项：
 
-### Phase 2
+```text
+要修改的编号（或 done）：
+> 5
+请输入新的内容：
+> 用户修改后的完整 happy path
 
-默认全部保留时：
-
-```json
-{ "confirm_all": true }
+要修改的编号（或 done）：
+> done
 ```
 
-只保留指定状态并可局部编辑：
+## Phase 2
 
-```json
-{
-  "selected_ids": ["state_1", "state_2", "state_3", "state_4"],
-  "edits_by_id": {
-    "state_2": {
-      "label": "编辑后的状态名",
-      "description": "触发条件：...\n展示信息：...\n继承信息：..."
-    }
-  },
-  "custom_states": []
-}
+输入要保留的状态编号：
+
+```text
+请输入要保留的状态编号：
+> 1,2,3,5
 ```
 
-### Phase 3
+`state_1` 必须保留，确认后的状态数量仍需不少于 4。
 
-每个非 `state_1` 只有一份 UI 实现草案。全部接受时：
+只修改状态名称：
 
-```json
-{
-  "confirm_all": true
-}
+```text
+要修改的编号：
+> 3
+请输入新的内容：
+> 已填写可提交状态
 ```
 
-需要修改某些状态时，只提交这些 state：
+同时修改名称和 description：
 
-```json
-{
-  "edits_by_state": {
-    "state_3": {
-      "implementation_plan": "用户自定义完整实现方案..."
-    }
-  }
-}
+```text
+> 已填写可提交状态 | 触发条件：用户完成必填项。展示信息：字段已有值，确认按钮可点击。继承信息：继承 state_2 的表单骨架。
 ```
 
-未出现在 `edits_by_state` 中的状态保持原始实现草案。
+名称和完整 description 之间使用 `|` 分隔。
 
-### Phase 4
+## Phase 3
 
-直接确认预览：
+每个非初始状态只有一份 UI 实现草案。输入要保持原样的编号：
 
-```json
-{ "confirm": true }
+```text
+请输入要保留原内容的编号：
+> 1,2,3,4
 ```
 
-编辑合并结果后确认。可以只提交被编辑的 state，脚本会与 preview 中其它 state 合并：
+直接按回车表示全部保留。
 
-```json
-{
-  "merged_states_by_id": {
-    "state_1": {
-      "id": "state_1",
-      "label": "初始页面状态",
-      "description": "触发条件：...\n展示信息：...\n继承信息：无。",
-      "implementation": null
-    }
-  }
-}
+单独修改一个状态的 UI 实现：
+
+```text
+要修改的编号：
+> 3
+请输入新的内容：
+> 保留上一状态的顶部导航和主体骨架，在底部按钮区域显示 loading，并禁用重复提交。
 ```
+
+未修改编号继续使用生成草案，修改编号在 confirmed 中记为 `custom`。
+
+## Phase 4
+
+输入要保持原样的状态编号，直接回车表示全部保留。
+
+只修改非初始状态的 implementation：
+
+```text
+要修改的编号：
+> 3
+请输入新的内容：
+> 最终确认的 UI 实现方案
+```
+
+同时修改名称、description 和 implementation：
+
+```text
+> 最终状态名 | 触发条件：...展示信息：...继承信息：... | 最终 UI 实现方案
+```
+
+三个字段使用 `|` 分隔。
+
+## 编号文本文件
+
+需要非交互执行时，可以使用简单文本文件，不必写 JSON。
+
+第一行是保留编号，后续每行是 `编号=修改内容`：
+
+```text
+1,2,3,4
+3=修改后的内容
+4=另一项修改内容
+```
+
+执行：
+
+```bash
+node .cursor/skills/taskflow-llm-pagegen/sub-skills/blueprint/scripts/run_skill.js confirm \
+  --session-dir new_test/2/.run_skill/{stamp}/blueprint \
+  --phase 3 \
+  --input feedback.txt
+```
+
+Phase 3/4 全部保留时，文本文件第一行可写：
+
+```text
+all
+```
+
+## JSON 兼容
+
+已有的 `feedback.json` 无需修改，CLI 会先尝试按 JSON 解析；不是 JSON 时才按编号文本解析。
 
 ## Auto 模式
-
-批量模式使用：
 
 ```bash
 node .cursor/skills/taskflow-llm-pagegen/sub-skills/blueprint/scripts/run_skill.js auto \
@@ -134,4 +169,4 @@ node .cursor/skills/taskflow-llm-pagegen/sub-skills/blueprint/scripts/run_skill.
   --model qwen3.7-max
 ```
 
-auto 会复用同一 session 目录结构，并自动接受 Phase 3 的单一实现草案。
+auto 模式不进入终端编号交互，行为保持不变。
