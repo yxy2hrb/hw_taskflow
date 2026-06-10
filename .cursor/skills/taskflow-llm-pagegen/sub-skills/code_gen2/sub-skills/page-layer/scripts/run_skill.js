@@ -273,7 +273,62 @@ function isTopLevelComponentRecord(record) {
   return record?.input?.is_top_level !== false;
 }
 
-function stateExpectedComponentIds(state, componentCodegen) {
+function bboxContainsBbox(outer, inner, tol = 1) {
+  if (!validBboxArray(outer) || !validBboxArray(inner)) return false;
+  return outer[0] <= inner[0] + tol
+    && outer[1] <= inner[1] + tol
+    && outer[0] + outer[2] >= inner[0] + inner[2] - tol
+    && outer[1] + outer[3] >= inner[1] + inner[3] - tol;
+}
+
+function keptRegionCoversAnchor(state, registry, id) {
+  const entry = registry?.semantic_dom_registry?.[id];
+  const target = Array.isArray(entry?.bbox) ? entry.bbox.map(Number) : null;
+  for (const kept of state.inheritance?.keep || []) {
+    if (typeof kept !== "string") continue;
+    if (kept === id) return true;
+    if (!target) continue;
+    const keptEntry = registry.semantic_dom_registry?.[kept];
+    const keptBbox = Array.isArray(keptEntry?.bbox) ? keptEntry.bbox.map(Number) : null;
+    if (keptBbox && bboxContainsBbox(keptBbox, target)) return true;
+  }
+  return false;
+}
+
+function originalAnchorUpdatePatch(state, registry, id) {
+  if (!id || !registry?.semantic_dom_registry?.[id]) return null;
+  if ((state.inheritance?.create || []).some((patch) => (patch?.id || patch?.name) === id)) return null;
+  return (state.inheritance?.update || []).find((patch) => (patch?.id || patch?.name) === id) || null;
+}
+
+// Protocol props injected by the state-model runner (layoutRole/zIndex) are not
+// business content; a patch carrying only those is still a "bare" patch.
+function updatePatchHasContentPayload(patch) {
+  if (Array.isArray(patch?.children) && patch.children.length) return true;
+  if (typeof patch?.text === "string" && patch.text.trim()) return true;
+  const props = patch?.props && typeof patch.props === "object" && !Array.isArray(patch.props) ? patch.props : {};
+  return Object.keys(props).some((key) => !/^(layoutRole|zIndex)$/i.test(key));
+}
+
+// Original-anchor updates are never rendered through component-codegen — the
+// generated component cannot know the original region's real content and
+// produces an empty shell. Two runtime mechanisms replace it:
+//   A. Anchor covered by a kept region → rewrite the keep clone in place
+//      (update wins over keep).
+//   B. Bare reposition (bbox, no content payload, region not kept — e.g. a
+//      card moving up after a removal) → clone the ORIGINAL region and place
+//      the clone at the patch bbox, so the real content is preserved.
+// Only an original-anchor update that carries its own rich content payload is
+// still mounted as a codegen component (intentional re-render with new data).
+function isOriginalAnchorUpdate(state, registry, id) {
+  const patch = originalAnchorUpdatePatch(state, registry, id);
+  if (!patch) return false;
+  if (keptRegionCoversAnchor(state, registry, id)) return true;
+  const bbox = Array.isArray(patch.bbox) ? patch.bbox.map(Number) : null;
+  return validBboxArray(bbox) && !updatePatchHasContentPayload(patch);
+}
+
+function stateExpectedComponentIds(state, componentCodegen, registry) {
   const out = [];
   function add(id) {
     if (id && !out.includes(id)) out.push(id);
@@ -284,7 +339,11 @@ function stateExpectedComponentIds(state, componentCodegen) {
     const record = typeof item === "string" ? latestComponentRecord(componentCodegen, item, state.id) : null;
     if (record && isTopLevelComponentRecord(record)) add(item);
   }
-  for (const item of state.inheritance?.update || []) add(item?.id || item?.name);
+  for (const item of state.inheritance?.update || []) {
+    const id = item?.id || item?.name;
+    if (registry && isOriginalAnchorUpdate(state, registry, id)) continue;
+    add(id);
+  }
   for (const item of state.inheritance?.create || []) add(item?.id || item?.name);
   return out;
 }
@@ -426,14 +485,14 @@ function flowGroupPlaceholder(group, state, registry, componentCodegen) {
 
 function componentPlaceholdersForState(state, componentCodegen, registry) {
   const groups = flowLayoutGroupsForState(state, componentCodegen, registry);
-  if (!groups.length) return stateExpectedComponentIds(state, componentCodegen).map(componentPlaceholder).join("");
+  if (!groups.length) return stateExpectedComponentIds(state, componentCodegen, registry).map(componentPlaceholder).join("");
   const groupById = new Map();
   for (const group of groups) {
     for (const spec of group.specs) groupById.set(spec.id || spec.name, group);
   }
   const emittedGroups = new Set();
   const out = [];
-  for (const id of stateExpectedComponentIds(state, componentCodegen)) {
+  for (const id of stateExpectedComponentIds(state, componentCodegen, registry)) {
     const group = groupById.get(id);
     if (group) {
       if (!emittedGroups.has(group.group)) {
@@ -795,12 +854,12 @@ function buildRuleGenerated(stateModel, componentCodegen, registry) {
 
 function componentSnippetsForState(state, componentCodegen, appendedCss, registry) {
   const snippets = [];
-  for (const id of stateExpectedComponentIds(state, componentCodegen)) {
+  for (const id of stateExpectedComponentIds(state, componentCodegen, registry)) {
     const record = latestComponentRecord(componentCodegen, id, state.id);
     const html = componentHtmlForState(record, state, id, componentCodegen, registry);
     if (typeof html !== "string" || !html.trim()) continue;
     snippets.push(wrapComponentHtml(html, { id, state, componentCodegen, registry }));
-    if (record.component.css) appendedCss.push(`\n/* component-codegen fallback: ${id} */\n${record.component.css}`);
+    if (record.component.css) appendedCss.push(`\n/* component-codegen fallback: ${id} */\n${scopeComponentCssToState(record.component.css, state.id)}`);
   }
   return snippets;
 }
@@ -922,7 +981,8 @@ function fillComponentPlaceholders(generated, stateModel, componentCodegen, regi
     if (!state) return sectionHtml;
     return sectionHtml.replace(placeholderRe, (placeholder, offset, fullSectionHtml) => {
       const id = (placeholder.match(/\bdata-component-id=["']([^"']+)["']/) || [])[1];
-      if (isUnplaceableOrphanComponent(state, stateModel, componentCodegen, registry, id)) {
+      if (isUnplaceableOrphanComponent(state, stateModel, componentCodegen, registry, id)
+        || isOriginalAnchorUpdate(state, registry, id)) {
         changed = true;
         return "";
       }
@@ -930,7 +990,7 @@ function fillComponentPlaceholders(generated, stateModel, componentCodegen, regi
       const html = componentHtmlForState(record, state, id, componentCodegen, registry);
       if (typeof html !== "string" || !html.trim()) return placeholder;
       changed = true;
-      if (record.component.css) appendedCss.push(`\n/* component-codegen placeholder: ${id} */\n${record.component.css}`);
+      if (record.component.css) appendedCss.push(`\n/* component-codegen placeholder: ${id} */\n${scopeComponentCssToState(record.component.css, state.id)}`);
       const spec = componentLayoutSpec(state, componentCodegen, id, registry);
       const framedHtml = wrapComponentHtml(html, { id, state, componentCodegen, registry });
       // Reuse an LLM-provided frame only for ordinary flow components whose frame
@@ -961,14 +1021,14 @@ function ensureComponentCodegenCoverage(generated, stateModel, componentCodegen,
     const state = (stateModel.states || []).find((item) => stateNum(item.id) === Number(n));
     if (!state) return sectionHtml;
     const missing = [];
-    for (const id of stateExpectedComponentIds(state, componentCodegen)) {
+    for (const id of stateExpectedComponentIds(state, componentCodegen, registry)) {
       if (sectionHasComponent(sectionHtml, id)) continue;
       if (isUnplaceableOrphanComponent(state, stateModel, componentCodegen, registry, id)) continue;
       const record = latestComponentRecord(componentCodegen, id, state.id);
       const html = componentHtmlForState(record, state, id, componentCodegen, registry);
       if (typeof html !== "string" || !html.trim()) continue;
       missing.push(wrapComponentHtml(html, { id, state, componentCodegen, registry }));
-      if (record.component.css) appendedCss.push(`\n/* component-codegen fallback: ${id} */\n${record.component.css}`);
+      if (record.component.css) appendedCss.push(`\n/* component-codegen fallback: ${id} */\n${scopeComponentCssToState(record.component.css, state.id)}`);
     }
     return injectMissingComponentHtml(sectionHtml, missing);
   });
@@ -984,6 +1044,75 @@ function ensureComponentCodegenCoverage(generated, stateModel, componentCodegen,
 
 function cssAttr(value) {
   return String(value || "").replace(/\\/g, "\\\\").replace(/"/g, "\\\"");
+}
+
+// Component CSS is emitted once per state version of a component, but the
+// class names inside it (e.g. .tf-cg-input-name) are shared by every state's
+// copy of that component. Appending the raw CSS globally lets one state's
+// rules leak onto other state layers — e.g. state_3's fake-caret
+// `.tf-cg-input-name > div > div::after` and state_4's `.tf-cg-input-name::after`
+// both painting on the same input produces a double cursor. Scope every
+// selector to the owning state section.
+function matchBraceEnd(css, openIndex) {
+  let depth = 0;
+  for (let i = openIndex; i < css.length; i++) {
+    if (css[i] === "{") depth += 1;
+    else if (css[i] === "}") {
+      depth -= 1;
+      if (!depth) return i;
+    }
+  }
+  return css.length - 1;
+}
+
+function scopeCssBlock(css, prefix) {
+  let out = "";
+  let index = 0;
+  while (index < css.length) {
+    const brace = css.indexOf("{", index);
+    if (brace < 0) {
+      out += css.slice(index);
+      break;
+    }
+    const selector = css.slice(index, brace);
+    const trimmed = selector.trim();
+    if (trimmed.startsWith("@")) {
+      const end = matchBraceEnd(css, brace);
+      if (/^@(media|supports)\b/i.test(trimmed)) {
+        out += `${selector}{${scopeCssBlock(css.slice(brace + 1, end), prefix)}}`;
+      } else {
+        // @keyframes / @font-face pass through unscoped.
+        out += css.slice(index, end + 1);
+      }
+      index = end + 1;
+      continue;
+    }
+    const end = css.indexOf("}", brace);
+    if (end < 0) {
+      out += css.slice(index);
+      break;
+    }
+    const scoped = trimmed
+      .split(",")
+      .map((sel) => {
+        const single = sel.trim();
+        if (!single) return single;
+        if (/^(html|body|:root)\b/i.test(single)) return single;
+        return `${prefix}${single}`;
+      })
+      .filter(Boolean)
+      .join(",");
+    out += `${scoped}{${css.slice(brace + 1, end)}}`;
+    index = end + 1;
+  }
+  return out;
+}
+
+function scopeComponentCssToState(css, stateId) {
+  const n = stateNum(stateId);
+  const source = String(css || "").replace(/\/\*[\s\S]*?\*\//g, "");
+  if (!n || !source.trim()) return source;
+  return scopeCssBlock(source, `#tf-state-${n} `);
 }
 
 function bottomActionBarComponentIds(componentCodegen) {
@@ -1087,6 +1216,14 @@ ${head}
 .tf-keep-placeholder{position:absolute;overflow:hidden;pointer-events:none;z-index:0!important}
 .tf-keep-placeholder>.tf-keep-crop{position:absolute;pointer-events:none}
 .tf-component-frame{position:absolute;box-sizing:border-box}
+/* Frames and flow groups are layout wrappers, not interactive surfaces. An
+   LLM-authored wrapper frame left around a runner re-framed fixed component
+   (keyboard, bottom bar) is a transparent box floating over the page; if it
+   took pointer events it would swallow clicks meant for components beneath it.
+   Children re-enable pointer events, and bindings on frames still fire through
+   bubbling from those children. */
+.tf-llm-layer .tf-component-frame,.tf-llm-layer .tf-flow-group{pointer-events:none}
+.tf-llm-layer .tf-component-frame>*,.tf-llm-layer .tf-flow-group>*{pointer-events:auto}
 .tf-component-frame>[data-component-id]{position:relative!important;left:auto!important;top:auto!important;width:100%!important;max-width:100%!important;height:100%!important;box-sizing:border-box;z-index:auto!important}
 .tf-component-frame>[data-component-id*="keyboard"],.tf-component-frame>[data-component-id*="Keyboard"],.tf-component-frame>.tf-cg-keyboard{position:absolute!important;left:0!important;right:0!important;top:0!important;bottom:0!important;width:100%!important;height:100%!important;max-width:100%!important}
 .tf-state-layer>[data-component-id*="keyboard"],.tf-state-layer>[data-component-id*="Keyboard"],.tf-state-layer>.tf-cg-keyboard{position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;width:100%!important;z-index:90!important}
@@ -1221,10 +1358,16 @@ function tfFillKeepPlaceholders(layer){
       tfFillVirtualKeep(slot, layer, anchor);
       return;
     }
-    slot.style.left=Number(bbox[0]||0)+"px";
-    slot.style.top=Number(bbox[1]||0)+"px";
-    slot.style.width=Number(bbox[2]||0)+"px";
-    slot.style.height=Number(bbox[3]||0)+"px";
+    // A reposition slot shows the ORIGINAL region's clone at a NEW position:
+    // the slot box comes from data-keep-override (patch bbox) while the crop
+    // offset still uses the registry bbox so the original pixels are shown.
+    const override=(slot.getAttribute("data-keep-override")||"").split(",").map(Number);
+    const hasOverride=override.length===4 && override.every(function(n){ return Number.isFinite(n); });
+    const slotBox=hasOverride?override:[Number(bbox[0]||0),Number(bbox[1]||0),Number(bbox[2]||0),Number(bbox[3]||0)];
+    slot.style.left=slotBox[0]+"px";
+    slot.style.top=slotBox[1]+"px";
+    slot.style.width=slotBox[2]+"px";
+    slot.style.height=slotBox[3]+"px";
     const crop=document.createElement("div");
     crop.className="tf-keep-crop";
     crop.style.left=(-Number(bbox[0]||0))+"px";
@@ -1233,6 +1376,90 @@ function tfFillKeepPlaceholders(layer){
     crop.style.height="${height}px";
     Array.prototype.forEach.call(appRoot.childNodes,function(node){ crop.appendChild(node.cloneNode(true)); });
     slot.appendChild(crop);
+  });
+}
+// Bare reposition updates (original anchor + bbox, no content payload, region
+// not kept) are rendered as keep clones of the ORIGINAL region placed at the
+// NEW bbox, so the real content survives the move. Codegen components are not
+// mounted for these — they would be empty shells.
+function tfMountRepositionedOriginalClones(layer){
+  if(!layer) return;
+  const registry=window.__TF_REGISTRY__ || {};
+  const state=tfStateById("state_"+tfNum(layer.id));
+  if(!state) return;
+  Array.prototype.slice.call(layer.querySelectorAll("[data-keep-reposition]")).forEach(function(el){
+    if(el.parentNode) el.parentNode.removeChild(el);
+  });
+  const keeps=(state.inheritance&&state.inheritance.keep)||[];
+  ((state.inheritance&&state.inheritance.update)||[]).forEach(function(patch){
+    const anchor=patch&&(patch.id||patch.name);
+    const entry=anchor&&registry[anchor];
+    if(!entry) return;
+    const bbox=Array.isArray(patch.bbox)?patch.bbox.map(Number):null;
+    if(!bbox||bbox.length!==4||!bbox.every(function(n){ return Number.isFinite(n); })) return;
+    const props=patch.props&&typeof patch.props==="object"?patch.props:{};
+    const meaningfulProps=Object.keys(props).filter(function(key){ return !/^(layoutRole|zIndex)$/i.test(key); });
+    const hasContent=(Array.isArray(patch.children)&&patch.children.length)
+      || (typeof patch.text==="string"&&patch.text.trim())
+      || meaningfulProps.length;
+    if(hasContent) return;
+    const target=Array.isArray(entry.bbox)?entry.bbox.map(Number):null;
+    let covered=false;
+    keeps.forEach(function(kept){
+      if(covered||typeof kept!=="string") return;
+      if(kept===anchor){ covered=true; return; }
+      const keptEntry=registry[kept];
+      const keptBbox=keptEntry&&Array.isArray(keptEntry.bbox)?keptEntry.bbox.map(Number):null;
+      if(keptBbox&&target
+        &&keptBbox[0]<=target[0]+1&&keptBbox[1]<=target[1]+1
+        &&keptBbox[0]+keptBbox[2]>=target[0]+target[2]-1
+        &&keptBbox[1]+keptBbox[3]>=target[1]+target[3]-1) covered=true;
+    });
+    if(covered) return;
+    const slot=document.createElement("div");
+    slot.className="tf-keep-placeholder";
+    slot.setAttribute("data-keep-anchor", anchor);
+    slot.setAttribute("data-keep-reposition", "1");
+    slot.setAttribute("data-keep-override", bbox.join(","));
+    layer.appendChild(slot);
+  });
+}
+// Update wins over keep: an update patch that targets an ORIGINAL registry
+// anchor must rewrite the kept clone in place, otherwise the clone keeps
+// showing the stale original content. Applied along the ancestor chain so the
+// current state's update is applied last and wins.
+function tfApplyOriginalAnchorUpdates(layer){
+  if(!layer) return;
+  const registry=window.__TF_REGISTRY__ || {};
+  const stateNumber=tfNum(layer.id);
+  const chain=tfAncestorStates(stateNumber).slice().reverse();
+  const current=tfStateById("state_"+stateNumber);
+  if(current) chain.push(current);
+  chain.forEach(function(state){
+    const updates=(state && state.inheritance && state.inheritance.update) || [];
+    updates.forEach(function(patch){
+      const anchor=patch && (patch.id || patch.name);
+      const entry=anchor && registry[anchor];
+      if(!entry) return;
+      const targets=[];
+      layer.querySelectorAll("[data-keep-anchor]").forEach(function(slot){
+        let found=[];
+        if(entry.selector){
+          try{ found=Array.prototype.slice.call(slot.querySelectorAll(entry.selector)); }catch(e){}
+        }
+        if(!found.length && entry.id){
+          try{ found=Array.prototype.slice.call(slot.querySelectorAll("#"+tfCssEscape(entry.id))); }catch(e){}
+        }
+        found.forEach(function(node){ targets.push(node); });
+      });
+      targets.forEach(function(node){
+        if(typeof patch.text==="string" && patch.text.trim()) node.textContent=patch.text;
+        const style=patch.text_style || {};
+        if(style.color) node.style.color=style.color;
+        if(style.fontSize) node.style.fontSize=style.fontSize;
+        if(style.fontWeight) node.style.fontWeight=style.fontWeight;
+      });
+    });
   });
 }
 function tfIsAutoTrigger(action){
@@ -1269,7 +1496,9 @@ function tfInstallGoto(){
     const layer=document.getElementById("tf-state-"+n);
     if(layer){
       if(appRoot) appRoot.style.display="";
+      tfMountRepositionedOriginalClones(layer);
       tfFillKeepPlaceholders(layer);
+      tfApplyOriginalAnchorUpdates(layer);
       layer.style.display="block";
       if(appRoot) appRoot.style.display="none";
     }
@@ -1373,10 +1602,21 @@ function tfBindGoto(el, targetState){
   function tfBindKeyboardReturnGoto(stateNumber, patch, targetState){
     const layer=document.getElementById("tf-state-"+stateNumber);
     if(!layer || !targetState) return;
-    if(!layer.querySelector(".tf-cg-keyboard,[data-component-id*='keyboard'],[data-component-id*='Keyboard']")) return;
+    const keyboard=layer.querySelector(".tf-cg-keyboard,[data-component-id*='keyboard'],[data-component-id*='Keyboard']");
+    if(!keyboard) return;
     const patchText=JSON.stringify(patch || {});
     if(!/保存|确定|提交|完成|save|submit|confirm|done/i.test(patchText)) return;
-    Array.prototype.slice.call(layer.querySelectorAll(".tf-cg-kb-key-return")).forEach(function(el){
+    const keys=Array.prototype.slice.call(layer.querySelectorAll(".tf-cg-kb-key-return"));
+    if(!keys.length){
+      // Generated keyboards do not always use the tf-cg-kb-key-return class;
+      // fall back to the visible label of the return/confirm key.
+      Array.prototype.slice.call(keyboard.querySelectorAll("button,div,span")).forEach(function(el){
+        if(el.children.length) return;
+        const label=String(el.textContent||"").trim();
+        if(/^(完成|确定|保存|搜索|发送|前往|done|go|return|search|send|ok)$/i.test(label)) keys.push(el);
+      });
+    }
+    keys.forEach(function(el){
       tfBindGoto(el, targetState);
     });
   }
