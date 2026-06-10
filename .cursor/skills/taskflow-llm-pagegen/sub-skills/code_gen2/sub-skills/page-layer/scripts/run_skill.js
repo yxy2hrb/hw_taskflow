@@ -675,6 +675,11 @@ function componentFrameStyle(spec) {
   const bbox = Array.isArray(spec?.bbox) ? spec.bbox.map(Number) : null;
   if (!validBboxArray(bbox)) return "";
   const zIndex = Number(spec?.props?.zIndex ?? spec?.zIndex);
+  // Fixed stacking hierarchy for viewport-pinned roles, regardless of the
+  // z values the model authored: bottom bar 80 < overlay/mask 90 <
+  // sheet/dialog 100 < keyboard 150. LLMs routinely give sheets z 50-60,
+  // which would otherwise paint below the runner-lifted bottom bar (z 80)
+  // and clip the sheet's confirm button behind it.
   if (isKeyboardSpec(spec)) {
     return [
       "position:fixed",
@@ -682,7 +687,7 @@ function componentFrameStyle(spec) {
       "bottom:0px",
       `width:${bbox[2]}px`,
       `height:${bbox[3]}px`,
-      Number.isFinite(zIndex) ? `z-index:${Math.max(zIndex, 90)}` : "z-index:90",
+      Number.isFinite(zIndex) ? `z-index:${Math.max(zIndex, 150)}` : "z-index:150",
     ].join(";");
   }
   if (isBottomActionBarSpec(spec)) {
@@ -702,7 +707,7 @@ function componentFrameStyle(spec) {
       "bottom:0px",
       `width:${bbox[2]}px`,
       `height:${bbox[3]}px`,
-      Number.isFinite(zIndex) ? `z-index:${zIndex}` : "z-index:70",
+      Number.isFinite(zIndex) ? `z-index:${Math.max(zIndex, 100)}` : "z-index:100",
     ].join(";");
   }
   if (isOverlaySpec(spec)) {
@@ -712,7 +717,7 @@ function componentFrameStyle(spec) {
       "top:0px",
       `width:${bbox[2]}px`,
       "height:100vh",
-      Number.isFinite(zIndex) ? `z-index:${zIndex}` : "z-index:50",
+      Number.isFinite(zIndex) ? `z-index:${Math.max(zIndex, 90)}` : "z-index:90",
     ].join(";");
   }
   return [
@@ -1226,7 +1231,7 @@ ${head}
 .tf-llm-layer .tf-component-frame>*,.tf-llm-layer .tf-flow-group>*{pointer-events:auto}
 .tf-component-frame>[data-component-id]{position:relative!important;left:auto!important;top:auto!important;width:100%!important;max-width:100%!important;height:100%!important;box-sizing:border-box;z-index:auto!important}
 .tf-component-frame>[data-component-id*="keyboard"],.tf-component-frame>[data-component-id*="Keyboard"],.tf-component-frame>.tf-cg-keyboard{position:absolute!important;left:0!important;right:0!important;top:0!important;bottom:0!important;width:100%!important;height:100%!important;max-width:100%!important}
-.tf-state-layer>[data-component-id*="keyboard"],.tf-state-layer>[data-component-id*="Keyboard"],.tf-state-layer>.tf-cg-keyboard{position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;width:100%!important;z-index:90!important}
+.tf-state-layer>[data-component-id*="keyboard"],.tf-state-layer>[data-component-id*="Keyboard"],.tf-state-layer>.tf-cg-keyboard{position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;width:100%!important;z-index:150!important}
 .tf-component-frame>[data-component-id*="sheet"].tf-cg-sheet-overlay{background:transparent!important}
 .tf-component-frame>[data-component-id*="sheet"]>.tf-cg-mask,.tf-component-frame>[data-component-id*="sheet"] .tf-cg-mask,.tf-component-frame>[data-component-id*="sheet"]>.tf-cg-sheet-mask,.tf-component-frame>[data-component-id*="sheet"] .tf-cg-sheet-mask{display:none!important}
 .tf-component-frame>[data-component-id*="sheet"]>[style*="color-mask"],.tf-component-frame>[data-component-id*="sheet"]>[class*="mask"]{display:none!important}
@@ -1658,7 +1663,13 @@ function tfBindGoto(el, targetState){
     if(trigger && trigger.anchor && tfActionIsBindable(trigger.action)){
       const sourceState=state.parent_state || "state_1";
       const triggerTarget=tfGotoTarget(trigger.action) || targetState;
-      if(triggerTarget!==tfNum(sourceState)) bindAnchorGoto(trigger.anchor, trigger.target, sourceState, triggerTarget);
+      if(triggerTarget!==tfNum(sourceState)){
+        bindAnchorGoto(trigger.anchor, trigger.target, sourceState, triggerTarget);
+        // Save/submit transitions are often expressed only as the target
+        // state's trigger (no bind patch); the soft keyboard's return key in
+        // the source state must follow the same goto.
+        tfBindKeyboardReturnGoto(tfNum(sourceState), trigger, triggerTarget);
+      }
     }
     (state.patches||[]).forEach(function(patch){
       if(patch.type!=="bind") return;
