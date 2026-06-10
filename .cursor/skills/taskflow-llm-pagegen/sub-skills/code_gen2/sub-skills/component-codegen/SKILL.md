@@ -44,6 +44,14 @@ Update input:
 
 - `operation: "update"`
 - `component`: the update patch from `state_implementation_model`
+- `component.modifications`: the expanded change plan. Each entry pinpoints one
+  changed internal part — `target` (child id, prop path such as
+  `props.primaryLabel`, slot path such as `footer.primary`, or literal `text` /
+  `text_style` / `bbox` / `layout`), optional `target_component` (the child's
+  component name), `parent` (the id owning the changed part), and `change`
+  (the concrete modification plan, usually with before → after values)
+- `component.preserve`: internal parts (child ids, prop paths, `text`, `bbox`,
+  `layout`) that must stay exactly as in the previous implementation
 - `original_component`: previous generated React source for the same component id
 - `viewport`
 - `state_context`
@@ -64,7 +72,13 @@ Update input:
    documented component props.
 10. Preserve `component.id` as an internal attribute only. Never show ids, debug names, or state labels as visible UI text.
 11. For create, render the component from the patch.
-12. For update, start from `original_component.reactCode` and apply only the requested changes. Keep unchanged visual structure stable.
+12. For update, start from `original_component.reactCode` and apply only the
+    changes listed in `component.modifications`: locate each entry's `target`
+    inside the previous implementation and apply its `change`. Every part named
+    in `component.preserve` — and any part not named by a modification — must
+    keep the previous implementation's structure, classes, and content
+    unchanged. Do not regenerate the whole component from scratch when
+    `modifications` is present.
 13. CSS must use `tf-cg-*` classes, CSS variables, or target `[data-component-id="..."]`. Avoid broad global selectors.
 14. Use visible text only from `component.visible_text`, `component.text`,
     `component.props`, `component.children`, `generated_children`, or explicit

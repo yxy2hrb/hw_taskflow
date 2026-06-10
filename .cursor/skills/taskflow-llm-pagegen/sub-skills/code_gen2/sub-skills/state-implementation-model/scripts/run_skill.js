@@ -318,6 +318,182 @@ function mergeVirtualPlacement(patch, virtualPatchById) {
   patch.props = { ...(previous.props || {}), ...(patch.props || {}) };
 }
 
+// --- Update patch modification list -----------------------------------------
+// Every update patch must carry an expanded change plan: `modifications`
+// (which internal parts of the updated component change, and how) and
+// `preserve` (which parts must stay exactly as the previous implementation).
+// The LLM is asked to author these directly; when it does not, they are
+// derived deterministically by diffing the merged update patch against the
+// previous spec (virtual component from an earlier state, or the original
+// registry anchor).
+
+const MODIFICATION_KEY_ALIASES = ["modifications", "modification_list", "changes", "update_plan", "修改列表"];
+const PRESERVE_KEY_ALIASES = ["preserve", "preserved", "unchanged", "keep_parts", "保留列表"];
+
+function makeModification(target, targetComponent, parent, change) {
+  const entry = { target: String(target || "").trim(), parent: parent || null, change: String(change || "").trim() };
+  if (targetComponent) entry.target_component = String(targetComponent).trim();
+  return entry.target && entry.change ? entry : null;
+}
+
+// "子id/子组件名/父组件名" → { target, target_component, parent }
+function parseModificationTarget(raw) {
+  const parts = String(raw || "").split("/").map((item) => item.trim()).filter(Boolean);
+  return { target: parts[0] || "", target_component: parts[1] || null, parent: parts[2] || null };
+}
+
+function normalizeModificationEntry(entry, parentId) {
+  if (typeof entry === "string") {
+    const match = entry.match(/^([^:：]+)[:：]\s*(.+)$/);
+    if (!match) return null;
+    const parsed = parseModificationTarget(match[1]);
+    return makeModification(parsed.target, parsed.target_component, parsed.parent || parentId, match[2]);
+  }
+  if (!entry || typeof entry !== "object" || Array.isArray(entry)) return null;
+  const change = entry.change || entry.plan || entry["修改方案"] || entry["方案"];
+  const target = entry.target || entry.child || entry.path || entry["目标"] || entry["子组件"];
+  if (typeof target === "string" && typeof change === "string") {
+    const parsed = parseModificationTarget(target);
+    return makeModification(
+      parsed.target,
+      entry.target_component || entry.component || parsed.target_component,
+      entry.parent || parsed.parent || parentId,
+      change
+    );
+  }
+  const keys = Object.keys(entry);
+  if (keys.length === 1 && typeof entry[keys[0]] === "string") {
+    const parsed = parseModificationTarget(keys[0]);
+    return makeModification(parsed.target, parsed.target_component, parsed.parent || parentId, entry[keys[0]]);
+  }
+  return null;
+}
+
+function shortValueText(value) {
+  if (value == null) return "null";
+  const text = typeof value === "string" ? `「${value}」` : JSON.stringify(value);
+  return text.length > 60 ? text.slice(0, 57) + "..." : text;
+}
+
+function sameJson(a, b) {
+  return JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
+}
+
+function previousSpecForUpdate(patch, virtualPatchById, registry, idToAnchor) {
+  const rawId = patch?.id || patch?.name;
+  if (!rawId) return null;
+  if (virtualPatchById.has(rawId)) return virtualPatchById.get(rawId);
+  const id = normalizeAnchorValue(rawId, idToAnchor);
+  if (virtualPatchById.has(id)) return virtualPatchById.get(id);
+  const entry = registry.semantic_dom_registry?.[id] || registry.semantic_dom_registry?.[rawId];
+  if (!entry) return null;
+  return {
+    id,
+    component: entry.component || entry.semantic || null,
+    text: typeof entry.text === "string" ? entry.text : "",
+    bbox: Array.isArray(entry.bbox) ? entry.bbox : undefined,
+    props: {},
+  };
+}
+
+function diffUpdateModifications(patch, previousSpec) {
+  const parent = patch.id || patch.name || null;
+  const prev = previousSpec || {};
+  const mods = [];
+  if (typeof patch.text === "string" && patch.text.trim() && patch.text !== prev.text) {
+    mods.push(makeModification("text", null, parent,
+      typeof prev.text === "string" && prev.text.trim()
+        ? `文本从${shortValueText(prev.text)}改为${shortValueText(patch.text)}`
+        : `文本设为${shortValueText(patch.text)}`));
+  }
+  if (patch.text_style && !sameJson(patch.text_style, prev.text_style) && prev.text_style) {
+    mods.push(makeModification("text_style", null, parent, `文字样式更新为 ${shortValueText(patch.text_style)}`));
+  }
+  const prevProps = prev.props || {};
+  for (const [key, value] of Object.entries(patch.props || {})) {
+    if (sameJson(prevProps[key], value)) continue;
+    mods.push(makeModification(`props.${key}`, null, parent,
+      prevProps[key] === undefined
+        ? `新增 ${key}=${shortValueText(value)}`
+        : `${key} 从 ${shortValueText(prevProps[key])} 改为 ${shortValueText(value)}`));
+  }
+  if (Array.isArray(patch.bbox) && Array.isArray(prev.bbox) && !sameJson(patch.bbox, prev.bbox)) {
+    mods.push(makeModification("bbox", null, parent, `位置/尺寸从 ${JSON.stringify(prev.bbox)} 改为 ${JSON.stringify(patch.bbox)}`));
+  }
+  if (patch.layout && prev.layout && !sameJson(patch.layout, prev.layout)) {
+    mods.push(makeModification("layout", null, parent, `布局提示更新为 ${shortValueText(patch.layout)}`));
+  }
+  const prevChildren = new Map(patchChildren(prev).map((child) => [child?.id || child?.name, child]).filter(([id]) => id));
+  for (const child of patchChildren(patch)) {
+    const childId = child?.id || child?.name;
+    if (!childId) continue;
+    if (!prevChildren.has(childId)) {
+      mods.push(makeModification(childId, child.component || null, parent, "新增子组件"));
+    } else if (!sameJson(prevChildren.get(childId), child)) {
+      mods.push(makeModification(childId, child.component || prevChildren.get(childId)?.component || null, parent, "子组件内容/属性更新，按当前 patch 重渲染该子组件"));
+    }
+  }
+  return mods.filter(Boolean);
+}
+
+function derivePreserve(patch, previousSpec, modifications) {
+  const touched = new Set(modifications.map((mod) => String(mod?.target || "")));
+  const prev = previousSpec || {};
+  const preserve = [];
+  for (const key of Object.keys(prev.props || {})) {
+    if (!touched.has(`props.${key}`)) preserve.push(`props.${key}`);
+  }
+  if (typeof prev.text === "string" && prev.text.trim() && !touched.has("text")) preserve.push("text");
+  if (prev.text_style && !touched.has("text_style")) preserve.push("text_style");
+  if (Array.isArray(prev.bbox) && !touched.has("bbox")) preserve.push("bbox");
+  if (prev.layout && !touched.has("layout")) preserve.push("layout");
+  for (const child of patchChildren(prev)) {
+    const childId = child?.id || child?.name;
+    if (childId && !touched.has(childId)) preserve.push(childId);
+  }
+  return preserve;
+}
+
+function normalizeUpdateModifications(patch, previousSpec, idToAnchor = new Map()) {
+  if (!patch || typeof patch !== "object" || Array.isArray(patch)) return;
+  const parent = patch.id || patch.name || null;
+  let rawList = null;
+  for (const key of MODIFICATION_KEY_ALIASES) {
+    if (Array.isArray(patch[key])) {
+      rawList = patch[key];
+      if (key !== "modifications") delete patch[key];
+      break;
+    }
+  }
+  let modifications = (rawList || []).map((entry) => normalizeModificationEntry(entry, parent)).filter(Boolean);
+  for (const mod of modifications) {
+    if (!mod.parent) mod.parent = parent;
+    // LLM output may reference raw element ids (e.g. "11_285136") instead of
+    // registry anchor names; resolve them the same way patch anchors are.
+    mod.target = normalizeAnchorValue(mod.target, idToAnchor);
+    mod.parent = normalizeAnchorValue(mod.parent, idToAnchor);
+  }
+  if (!modifications.length) modifications = diffUpdateModifications(patch, previousSpec);
+  if (!modifications.length) {
+    modifications = [makeModification("self", null, parent,
+      "未检测到与上一状态的字段差异；保持原实现不变，仅确认该组件在当前状态可见")].filter(Boolean);
+  }
+  patch.modifications = modifications;
+
+  let rawPreserve = null;
+  for (const key of PRESERVE_KEY_ALIASES) {
+    if (Array.isArray(patch[key])) {
+      rawPreserve = patch[key];
+      if (key !== "preserve") delete patch[key];
+      break;
+    }
+  }
+  const authored = (rawPreserve || [])
+    .filter((item) => typeof item === "string" && item.trim())
+    .map((item) => normalizeAnchorValue(item, idToAnchor));
+  patch.preserve = [...new Set([...authored, ...derivePreserve(patch, previousSpec, modifications)])];
+}
+
 function isOverlayLike(patch) {
   return /overlay|mask|scrim|遮罩/i.test(`${patch?.component || ""} ${patch?.id || ""}`);
 }
@@ -713,6 +889,7 @@ function normalizeModel(model, initialHeight, registry = {}) {
       registerPatchTree(patch, virtualPatchById);
     }
     for (const patch of state.inheritance.update) {
+      const previousSpec = previousSpecForUpdate(patch, virtualPatchById, registry, idToAnchor);
       mergeVirtualPlacement(patch, virtualPatchById);
       normalizePatchAnchorRefs(patch, idToAnchor);
       normalizeNestedChildLayout(patch);
@@ -720,6 +897,7 @@ function normalizeModel(model, initialHeight, registry = {}) {
       normalizeRichContentRequirements(patch);
       normalizeRichRequirements(patch);
       normalizeFixedViewportPatch(patch, initialHeight);
+      normalizeUpdateModifications(patch, previousSpec, idToAnchor);
       if (patch?.id || patch?.name) {
         const id = patch.id || patch.name;
         virtualPatchById.set(id, { ...(virtualPatchById.get(id) || {}), ...patch, props: { ...((virtualPatchById.get(id) || {}).props || {}), ...(patch.props || {}) } });
@@ -743,6 +921,38 @@ function normalizeModel(model, initialHeight, registry = {}) {
   }
 
   return model;
+}
+
+// Original-anchor updates come in two patterns:
+//   A. Content rewrite — a text/props-only patch applied inside the keep clone
+//      of the region containing the anchor (e.g. swapping 李华 → 张三). Needs a
+//      kept host region or the rewrite is invisible.
+//   B. Re-render/reposition — the patch carries its own component + bbox (or
+//      layout/children) and is mounted standalone at the new position (e.g. a
+//      card moving up after a removal). The region is intentionally NOT kept.
+// Only pattern A requires keep coverage.
+function isSelfRenderableUpdatePatch(patch) {
+  if (validBbox(patch)) return true;
+  if (patch?.layout?.group) return true;
+  if (patchChildren(patch).length) return true;
+  return false;
+}
+
+// An update on an original DOM anchor is applied by rewriting the keep clone
+// of the region that contains it. If the state keeps neither the anchor itself
+// nor any region whose bbox contains it, the rewrite has no visible host.
+function keptAnchorContainsUpdateTarget(state, registry, anchor) {
+  const target = registry.semantic_dom_registry?.[anchor];
+  const targetBbox = Array.isArray(target?.bbox) ? target.bbox.map(Number) : null;
+  if (!targetBbox) return true;
+  for (const kept of state.inheritance?.keep || []) {
+    if (typeof kept !== "string") continue;
+    if (kept === anchor) return true;
+    const entry = registry.semantic_dom_registry?.[kept];
+    const keptBbox = Array.isArray(entry?.bbox) ? entry.bbox.map(Number) : null;
+    if (keptBbox && bboxContains(keptBbox, targetBbox)) return true;
+  }
+  return false;
 }
 
 function validateModel(model, registry) {
@@ -798,6 +1008,24 @@ function validateModel(model, registry) {
     for (const patch of state.inheritance?.update || []) {
       const anchor = patchAnchor(patch);
       if (anchor) refs.push(anchor);
+      const patchLabel = patch?.id || patch?.name || "update";
+      const modifications = Array.isArray(patch?.modifications) ? patch.modifications : [];
+      if (!modifications.length) {
+        issues.push(`${state.id}.${patchLabel} update patch requires a non-empty modifications list`);
+      }
+      for (const mod of modifications) {
+        if (!mod || typeof mod !== "object" || !String(mod.target || "").trim() || !String(mod.change || "").trim()) {
+          issues.push(`${state.id}.${patchLabel} update modification entries require target and change`);
+        }
+      }
+      if (!Array.isArray(patch?.preserve)) {
+        issues.push(`${state.id}.${patchLabel} update patch requires a preserve array`);
+      }
+      if (anchor && originalAnchors.has(anchor) && !virtualAnchors.has(anchor)
+        && !isSelfRenderableUpdatePatch(patch)
+        && !keptAnchorContainsUpdateTarget(state, registry, anchor)) {
+        issues.push(`${state.id}.${patchLabel} content-only update on original anchor "${anchor}" needs the state to keep it or a containing region (or carry its own bbox/layout to re-render standalone); otherwise the rewrite is invisible`);
+      }
     }
     for (const anchor of refs) {
       if (typeof anchor !== "string" || (!originalAnchors.has(anchor) && !virtualAnchors.has(anchor))) {
@@ -920,7 +1148,11 @@ async function main() {
   console.log(`[state-model-llm] out=${out}`);
 }
 
-main().catch((err) => {
-  console.error("[state-model-llm] ERROR:", err.stack || err.message);
-  process.exit(1);
-});
+if (require.main === module) {
+  main().catch((err) => {
+    console.error("[state-model-llm] ERROR:", err.stack || err.message);
+    process.exit(1);
+  });
+}
+
+module.exports = { normalizeModel, validateModel };

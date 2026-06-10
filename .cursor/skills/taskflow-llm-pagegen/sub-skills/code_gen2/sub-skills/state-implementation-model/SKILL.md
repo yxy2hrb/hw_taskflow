@@ -63,6 +63,9 @@ Return strict JSON only:
 - `inheritance.keep` must be an array of anchor/component ids.
 - `inheritance.create` must be an array of create patch objects, not strings.
 - `inheritance.update` must be an array of update patch objects, not strings.
+- Every update patch must include a non-empty `modifications` array and a
+  `preserve` array describing which internal parts change and which stay
+  exactly as the previous implementation. See "Update Patch Modification List".
 - `height` must be a number for every state.
 - Do not output `inheritance.hide`.
 - Do not output `inheritance.replace`.
@@ -100,9 +103,12 @@ Return strict JSON only:
 - A later state may `keep` or `update` a virtual component id created by an
   earlier state. Do not reference a virtual id before it has been created.
 - When updating a virtual component that was previously placed with `layout` or
-  fixed `bbox`, preserve that placement. If the update only changes props/text,
-  repeat the prior `layout` or `bbox`, or rely on the runner to inherit it. Do
-  not let an updated input/card/button fall back to the top-left of the page.
+  fixed `bbox`, preserve that placement. If the placement is unchanged, do NOT
+  repeat `layout`/`bbox` in the update patch — omit them and list them in
+  `preserve`; the runner deterministically inherits the previous placement.
+  Only output `layout`/`bbox` on an update patch when the placement actually
+  changes in this state, and record that change in `modifications`. Never let
+  an updated input/card/button fall back to the top-left of the page.
 - IDs embedded inside structured props, such as `props.footer.primaryId`,
   `props.body[].id`, or an input descriptor inside `BottomSheet.props.body`, do
   not create standalone virtual components. A later state must not `trigger`,
@@ -227,6 +233,62 @@ If an original status/system bar anchor exists in `semantic_registry` and the ne
 state is not a full-screen replacement that intentionally redraws the entire top
 system area, keep the status/system bar anchor explicitly. Do not rely on
 page-layer fallback to restore it.
+
+## Update Patch Modification List
+
+An update patch re-states the component's new full spec, but codegen also needs
+an explicit, expanded change plan: which internal parts of the updated parent
+component are modified, and which must stay exactly as the previous
+implementation. Therefore every update patch must carry:
+
+- `modifications`: a non-empty array. Each entry is one concrete change inside
+  the updated component:
+  - `target`: the changed part. Use a child patch id, a documented prop path
+    such as `props.primaryLabel`, a structured slot path such as
+    `footer.primary` or `body[1].quantity`, or the literal `text`,
+    `text_style`, `bbox`, or `layout`.
+  - `target_component`: the component name of the changed child/slot when the
+    target is itself a component; omit for plain prop/text targets.
+  - `parent`: the id of the component that directly owns the changed part.
+    For top-level prop/text changes this is the update patch's own `id`; for a
+    nested child it is that child's direct parent id.
+  - `change`: a self-contained modification plan in natural language with
+    before → after values when known, for example
+    "主按钮文案从「保存」改为「保存中...」，同时 disabled=true 并显示 loading".
+- `preserve`: an array of internal parts that must remain byte-stable from the
+  previous implementation: child ids, prop paths, `text`, `bbox`, or `layout`.
+  List at least the visually important untouched parts.
+
+Example:
+
+```json
+{
+  "type": "update",
+  "id": "btn_save",
+  "component": "ButtonBar",
+  "bbox": [0, 872, 360, 64],
+  "props": { "variant": "single-primary", "primaryLabel": "保存中...", "disabled": true, "loading": true },
+  "modifications": [
+    { "target": "props.primaryLabel", "parent": "btn_save", "change": "主按钮文案从「保存」改为「保存中...」" },
+    { "target": "props.disabled", "parent": "btn_save", "change": "disabled 从 false 改为 true，提交中不可重复点击" },
+    { "target": "props.loading", "parent": "btn_save", "change": "新增 loading=true，按钮内显示加载圈" }
+  ],
+  "preserve": ["bbox", "props.variant", "props.zIndex", "text_style"]
+}
+```
+
+Rules:
+
+- `modifications` must cover every difference between the previous visible spec
+  of this component and the current update patch. Anything not listed is
+  implicitly preserved; do not change unlisted parts.
+- A `target` naming a child must reference a child that already exists in the
+  previous spec, unless the entry's `change` explicitly starts with "新增" to
+  mark a newly added child.
+- Removal is still forbidden (no hide/replace). To visually retire an internal
+  part, change its content or visibility props and describe that in `change`.
+- For an update on an original DOM anchor (for example a text anchor), `target`
+  is usually `text` or `text_style` and `parent` is the anchor itself.
 
 ## Keep Scope: Replacement vs Overlay
 
@@ -540,7 +602,8 @@ Use these defaults unless the component library reference says otherwise:
 - `keep`: do not use as a patch; put anchors in `inheritance.keep`
 - `create`: describe new UI to create; put patches in `inheritance.create`
 - `update`: update content/state of an anchor; put patches in
-  `inheritance.update`
+  `inheritance.update`, each with an expanded `modifications` / `preserve`
+  change plan
 
 ## Validation Checklist
 
@@ -555,6 +618,8 @@ Use these defaults unless the component library reference says otherwise:
   `submit_success`.
 - Every keep/update target exists in original anchors or previous virtual
   anchors.
+- Every update patch has a non-empty `modifications` array whose entries all
+  include `target` and `change`, plus a `preserve` array for untouched parts.
 - Every non-modal create/update bbox avoids all kept bboxes for the state.
 - No `hide`, `replace`, `inheritance.hide`, or `inheritance.replace` is present.
 - No create visible text equals internal labels such as `state_2` or an internal
