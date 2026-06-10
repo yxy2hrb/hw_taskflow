@@ -1211,7 +1211,7 @@ ${head}
 <div id="app-root">${body}</div>
 <div id="tf-layer-root">${generated.html || ""}</div>
 <style id="tf-llm-base-style">
-.tf-state-layer{position:fixed!important;left:0!important;top:0!important;width:${width}px!important;height:${height}px!important;z-index:9999!important;background:#f5f5f5;color:#1f1f1f;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;overflow-y:auto;overflow-x:hidden;padding-bottom:88px}
+.tf-state-layer{position:fixed!important;left:0!important;top:0!important;width:${width}px!important;height:100vh!important;z-index:9999!important;background:#f5f5f5;color:#1f1f1f;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;overflow-y:auto;overflow-x:hidden;padding-bottom:88px}
 .tf-llm-layer *{box-sizing:border-box}
 .tf-keep-placeholder{position:absolute;overflow:hidden;pointer-events:none;z-index:0!important}
 .tf-keep-placeholder>.tf-keep-crop{position:absolute;pointer-events:none}
@@ -1373,7 +1373,11 @@ function tfFillKeepPlaceholders(layer){
     crop.style.left=(-Number(bbox[0]||0))+"px";
     crop.style.top=(-Number(bbox[1]||0))+"px";
     crop.style.width="${width}px";
-    crop.style.height="${height}px";
+    // The crop is the cloned page's canvas, not the clipping window (the slot
+    // clips). The original page is often taller than the capture viewport, so
+    // size the canvas to the full app-root content height or every kept
+    // region below the viewport line renders blank.
+    crop.style.height=Math.max(${height}, appRoot.scrollHeight||0)+"px";
     Array.prototype.forEach.call(appRoot.childNodes,function(node){ crop.appendChild(node.cloneNode(true)); });
     slot.appendChild(crop);
   });
