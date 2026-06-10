@@ -170,6 +170,13 @@ function patchAnchor(patch) {
   return ownString(patch, "target_anchor") || ownString(patch, "anchor") || ownString(patch, "target") || ownString(patch, "id") || null;
 }
 
+// LLMs sometimes express an automatic transition as a bind patch with a
+// pseudo anchor like "system"/"auto". The transition is already carried by the
+// target state's trigger; such binds can never attach to a DOM element.
+function isSystemBindAnchor(anchor) {
+  return typeof anchor === "string" && /^(system|auto|timer|timeout|load(ing|_complete)?|none|null|submit_success|success)$/i.test(anchor.trim());
+}
+
 function gotoStateNum(value) {
   const match = String(value || "").match(/state[_-]?(\d+)/i);
   return match ? Number(match[1]) : 0;
@@ -745,7 +752,14 @@ function validatePatchShape(patch, stateId, issues, depth = 0) {
   if (String(patch.component || "").toLowerCase() === "sectionlayout" && patchChildren(patch).length === 0) {
     issues.push(`${stateId}.${patch.id || patch.name || "SectionLayout"} SectionLayout requires non-empty children`);
   }
-  if (isContainerLike(patch) && typeof patch.text === "string" && patch.text.trim() && !hasStructuredContainerContent(patch)) {
+  // Update patches use top-level text as the rewrite channel (the rest of the
+  // component is preserved), so the container-text rule only applies to creates.
+  // A short single label (e.g. a dashed "添加项目" CTA card) is legitimate; the
+  // rule targets rich content collapsed into one text blob.
+  const containerText = typeof patch.text === "string" ? patch.text.trim() : "";
+  if (patch.type !== "update" && isContainerLike(patch) && containerText
+    && (containerText.length > 24 || /\n/.test(containerText))
+    && !hasStructuredContainerContent(patch)) {
     issues.push(`${stateId}.${patch.id || patch.name || "component"} container must not use top-level text without children`);
   }
   for (const child of patchChildren(patch)) validatePatchShape(child, stateId, issues, depth + 1);
@@ -858,7 +872,7 @@ function normalizeModel(model, initialHeight, registry = {}) {
       if (patch.type === "keep" && anchor) keep.add(anchor);
       if (patch.type === "create") create.push(patch);
       if (patch.type === "update") update.push(patch);
-      if (patch.type === "bind" && anchor) {
+      if (patch.type === "bind" && anchor && !isSystemBindAnchor(anchor)) {
         const targetNum = patchGotoStateNum(patch);
         if (!patch.goto && targetNum) patch.goto = `state_${targetNum}`;
         if (!state.trigger && stateNum(state.id) > 1 && targetNum === stateNum(state.id)) {
@@ -878,7 +892,8 @@ function normalizeModel(model, initialHeight, registry = {}) {
     }
 
     state.inheritance = { keep: [...keep], create, update };
-    state.patches = patchList.filter((patch) => patch?.type !== "hide" && patch?.type !== "replace");
+    state.patches = patchList.filter((patch) => patch?.type !== "hide" && patch?.type !== "replace"
+      && !(patch?.type === "bind" && isSystemBindAnchor(patchAnchor(patch))));
     for (const patch of state.inheritance.create) {
       normalizePatchAnchorRefs(patch, idToAnchor);
       normalizeNestedChildLayout(patch);
@@ -898,6 +913,7 @@ function normalizeModel(model, initialHeight, registry = {}) {
       normalizeRichRequirements(patch);
       normalizeFixedViewportPatch(patch, initialHeight);
       normalizeUpdateModifications(patch, previousSpec, idToAnchor);
+      ensureOriginalUpdateRenderable(patch, state, registry, virtualPatchById);
       if (patch?.id || patch?.name) {
         const id = patch.id || patch.name;
         virtualPatchById.set(id, { ...(virtualPatchById.get(id) || {}), ...patch, props: { ...((virtualPatchById.get(id) || {}).props || {}), ...(patch.props || {}) } });
@@ -936,6 +952,21 @@ function isSelfRenderableUpdatePatch(patch) {
   if (patch?.layout?.group) return true;
   if (patchChildren(patch).length) return true;
   return false;
+}
+
+// Deterministic repair for pattern A updates whose host region is not kept:
+// inject the anchor's registry bbox so the patch becomes self-renderable and
+// page-layer mounts it standalone at the original position (mode C) instead of
+// the rewrite silently disappearing or validation forcing an LLM retry.
+function ensureOriginalUpdateRenderable(patch, state, registry, virtualPatchById) {
+  const anchor = patchAnchor(patch);
+  if (!anchor || virtualPatchById.has(anchor)) return;
+  const entry = registry.semantic_dom_registry?.[anchor];
+  const bbox = Array.isArray(entry?.bbox) ? entry.bbox.map(Number) : null;
+  if (!bbox || bbox.length < 4 || !bbox.every(Number.isFinite)) return;
+  if (isSelfRenderableUpdatePatch(patch)) return;
+  if (keptAnchorContainsUpdateTarget(state, registry, anchor)) return;
+  patch.bbox = bbox;
 }
 
 // An update on an original DOM anchor is applied by rewriting the keep clone
@@ -1037,10 +1068,14 @@ function validateModel(model, registry) {
       registerPatchTree(patch, virtualPatches);
     }
     for (const patch of state.inheritance?.update || []) {
+      // Children introduced by an update patch are rendered into the DOM with
+      // their own component ids, so later states may keep/bind them.
+      collectPatchIds(patch).forEach((id) => virtualAnchors.add(id));
       const id = patch?.id || patch?.name;
       if (id && virtualPatches.has(id)) {
         virtualPatches.set(id, { ...virtualPatches.get(id), ...patch, props: { ...(virtualPatches.get(id).props || {}), ...(patch.props || {}) } });
       }
+      for (const child of patchChildren(patch)) registerPatchTree(child, virtualPatches);
     }
     for (const patch of state.patches || []) {
       if (patch.type === "create") {
