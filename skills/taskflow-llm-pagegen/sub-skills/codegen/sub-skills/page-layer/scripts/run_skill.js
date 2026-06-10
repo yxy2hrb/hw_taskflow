@@ -59,7 +59,7 @@ async function callLLM({ model, system, user, maxTokens }) {
         body: JSON.stringify({
           model,
           messages: [{ role: "system", content: system }, { role: "user", content: user }],
-          temperature: 0.2,
+          temperature: Number(process.env.MODEL_TEMPERATURE ?? 0.2),
           max_tokens: maxTokens,
           response_format: { type: "json_object" },
         }),

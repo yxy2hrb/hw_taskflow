@@ -72,7 +72,7 @@ async function callQwen({ system, user, model }) {
             { role: 'system', content: system },
             { role: 'user', content: user },
           ],
-          temperature: 0.35,
+          temperature: Number(process.env.MODEL_TEMPERATURE ?? 0.35),
           max_tokens: 7000,
           response_format: { type: 'json_object' },
         }),
