@@ -281,51 +281,30 @@ function bboxContainsBbox(outer, inner, tol = 1) {
     && outer[1] + outer[3] >= inner[1] + inner[3] - tol;
 }
 
-function keptRegionCoversAnchor(state, registry, id) {
-  const entry = registry?.semantic_dom_registry?.[id];
-  const target = Array.isArray(entry?.bbox) ? entry.bbox.map(Number) : null;
-  for (const kept of state.inheritance?.keep || []) {
-    if (typeof kept !== "string") continue;
-    if (kept === id) return true;
-    if (!target) continue;
-    const keptEntry = registry.semantic_dom_registry?.[kept];
-    const keptBbox = Array.isArray(keptEntry?.bbox) ? keptEntry.bbox.map(Number) : null;
-    if (keptBbox && bboxContainsBbox(keptBbox, target)) return true;
-  }
-  return false;
-}
-
 function originalAnchorUpdatePatch(state, registry, id) {
   if (!id || !registry?.semantic_dom_registry?.[id]) return null;
   if ((state.inheritance?.create || []).some((patch) => (patch?.id || patch?.name) === id)) return null;
   return (state.inheritance?.update || []).find((patch) => (patch?.id || patch?.name) === id) || null;
 }
 
-// Protocol props injected by the state-model runner (layoutRole/zIndex) are not
-// business content; a patch carrying only those is still a "bare" patch.
-function updatePatchHasContentPayload(patch) {
+// Unified card-update pipeline: an update on an original anchor is rendered
+// by cloning the card's previous implementation (the original region) and
+// applying the patch's cumulative modification ledger inside the clone —
+// text, text style, and position changes are machine-applicable. Only an
+// update that introduces structure or content the clone cannot express
+// (children, rich content, business props) goes through component-codegen,
+// which regenerates the whole card from the patch.
+function updateNeedsCodegen(patch) {
   if (Array.isArray(patch?.children) && patch.children.length) return true;
-  if (typeof patch?.text === "string" && patch.text.trim()) return true;
+  if (String(patch?.content_density || "").toLowerCase() === "rich") return true;
   const props = patch?.props && typeof patch.props === "object" && !Array.isArray(patch.props) ? patch.props : {};
   return Object.keys(props).some((key) => !/^(layoutRole|zIndex)$/i.test(key));
 }
 
-// Original-anchor updates are never rendered through component-codegen — the
-// generated component cannot know the original region's real content and
-// produces an empty shell. Two runtime mechanisms replace it:
-//   A. Anchor covered by a kept region → rewrite the keep clone in place
-//      (update wins over keep).
-//   B. Bare reposition (bbox, no content payload, region not kept — e.g. a
-//      card moving up after a removal) → clone the ORIGINAL region and place
-//      the clone at the patch bbox, so the real content is preserved.
-// Only an original-anchor update that carries its own rich content payload is
-// still mounted as a codegen component (intentional re-render with new data).
 function isOriginalAnchorUpdate(state, registry, id) {
   const patch = originalAnchorUpdatePatch(state, registry, id);
   if (!patch) return false;
-  if (keptRegionCoversAnchor(state, registry, id)) return true;
-  const bbox = Array.isArray(patch.bbox) ? patch.bbox.map(Number) : null;
-  return validBboxArray(bbox) && !updatePatchHasContentPayload(patch);
+  return !updateNeedsCodegen(patch);
 }
 
 function stateExpectedComponentIds(state, componentCodegen, registry) {
@@ -1387,87 +1366,134 @@ function tfFillKeepPlaceholders(layer){
     slot.appendChild(crop);
   });
 }
-// Bare reposition updates (original anchor + bbox, no content payload, region
-// not kept) are rendered as keep clones of the ORIGINAL region placed at the
-// NEW bbox, so the real content survives the move. Codegen components are not
-// mounted for these — they would be empty shells.
-function tfMountRepositionedOriginalClones(layer){
+// Unified card-update rendering. A card update's render = clone of the card's
+// previous implementation (the original region) + the patch's cumulative
+// modification ledger applied inside the clone. The slot carries
+// data-component-id so the card is addressable as the NEWEST version by later
+// states and binds. Moved cards simply carry a new bbox (data-keep-override).
+function tfMountUpdatedOriginalCards(layer){
   if(!layer) return;
   const registry=window.__TF_REGISTRY__ || {};
   const state=tfStateById("state_"+tfNum(layer.id));
   if(!state) return;
-  Array.prototype.slice.call(layer.querySelectorAll("[data-keep-reposition]")).forEach(function(el){
+  Array.prototype.slice.call(layer.querySelectorAll("[data-tf-card-update]")).forEach(function(el){
     if(el.parentNode) el.parentNode.removeChild(el);
   });
-  const keeps=(state.inheritance&&state.inheritance.keep)||[];
   ((state.inheritance&&state.inheritance.update)||[]).forEach(function(patch){
     const anchor=patch&&(patch.id||patch.name);
     const entry=anchor&&registry[anchor];
     if(!entry) return;
-    const bbox=Array.isArray(patch.bbox)?patch.bbox.map(Number):null;
-    if(!bbox||bbox.length!==4||!bbox.every(function(n){ return Number.isFinite(n); })) return;
-    const props=patch.props&&typeof patch.props==="object"?patch.props:{};
-    const meaningfulProps=Object.keys(props).filter(function(key){ return !/^(layoutRole|zIndex)$/i.test(key); });
-    const hasContent=(Array.isArray(patch.children)&&patch.children.length)
-      || (typeof patch.text==="string"&&patch.text.trim())
-      || meaningfulProps.length;
-    if(hasContent) return;
-    const target=Array.isArray(entry.bbox)?entry.bbox.map(Number):null;
-    let covered=false;
-    keeps.forEach(function(kept){
-      if(covered||typeof kept!=="string") return;
-      if(kept===anchor){ covered=true; return; }
-      const keptEntry=registry[kept];
-      const keptBbox=keptEntry&&Array.isArray(keptEntry.bbox)?keptEntry.bbox.map(Number):null;
-      if(keptBbox&&target
-        &&keptBbox[0]<=target[0]+1&&keptBbox[1]<=target[1]+1
-        &&keptBbox[0]+keptBbox[2]>=target[0]+target[2]-1
-        &&keptBbox[1]+keptBbox[3]>=target[1]+target[3]-1) covered=true;
-    });
-    if(covered) return;
+    // codegen produced a fresh implementation for this card in this section
+    if(layer.querySelector('[data-component-id="'+String(anchor).replace(/"/g,'\\"')+'"]')) return;
     const slot=document.createElement("div");
     slot.className="tf-keep-placeholder";
     slot.setAttribute("data-keep-anchor", anchor);
-    slot.setAttribute("data-keep-reposition", "1");
-    slot.setAttribute("data-keep-override", bbox.join(","));
+    slot.setAttribute("data-tf-card-update", "1");
+    slot.setAttribute("data-component-id", anchor);
+    const bbox=Array.isArray(patch.bbox)&&patch.bbox.length===4?patch.bbox.map(Number):null;
+    if(bbox&&bbox.every(function(n){ return Number.isFinite(n); })) slot.setAttribute("data-keep-override", bbox.join(","));
     layer.appendChild(slot);
   });
 }
-// Update wins over keep: an update patch that targets an ORIGINAL registry
-// anchor must rewrite the kept clone in place, otherwise the clone keeps
-// showing the stale original content. Applied along the ancestor chain so the
-// current state's update is applied last and wins.
-function tfApplyOriginalAnchorUpdates(layer){
+// Original anchors updated anywhere along this state's parent chain: their id
+// now refers to the newest implementation, never the original pixels.
+function tfUpdatedOriginalAnchors(stateNumber){
+  const registry=window.__TF_REGISTRY__ || {};
+  const set=new Set();
+  const states=tfAncestorStates(stateNumber).slice();
+  const current=tfStateById("state_"+stateNumber);
+  if(current) states.push(current);
+  states.forEach(function(state){
+    ((state&&state.inheritance&&state.inheritance.update)||[]).forEach(function(patch){
+      const id=patch&&(patch.id||patch.name);
+      if(id&&registry[id]) set.add(id);
+    });
+  });
+  return set;
+}
+function tfLatestUpdatePatchFor(stateNumber, anchor){
+  const current=tfStateById("state_"+stateNumber);
+  const states=[current].concat(tfAncestorStates(stateNumber));
+  for(const state of states){
+    const hit=((state&&state.inheritance&&state.inheritance.update)||[]).find(function(patch){
+      return patch&&(patch.id||patch.name)===anchor;
+    });
+    if(hit) return hit;
+  }
+  return null;
+}
+// Apply a card's modification ledger inside its clone slot. Each state's patch
+// carries modifications_applied (every change since the original), so one
+// application makes the slot the newest card — no ancestor replay.
+function tfApplyCardLedgers(layer){
   if(!layer) return;
   const registry=window.__TF_REGISTRY__ || {};
   const stateNumber=tfNum(layer.id);
-  const chain=tfAncestorStates(stateNumber).slice().reverse();
-  const current=tfStateById("state_"+stateNumber);
-  if(current) chain.push(current);
-  chain.forEach(function(state){
-    const updates=(state && state.inheritance && state.inheritance.update) || [];
-    updates.forEach(function(patch){
-      const anchor=patch && (patch.id || patch.name);
-      const entry=anchor && registry[anchor];
-      if(!entry) return;
-      const targets=[];
-      layer.querySelectorAll("[data-keep-anchor]").forEach(function(slot){
-        let found=[];
-        if(entry.selector){
-          try{ found=Array.prototype.slice.call(slot.querySelectorAll(entry.selector)); }catch(e){}
+  const updated=tfUpdatedOriginalAnchors(stateNumber);
+  if(!updated.size) return;
+  layer.querySelectorAll("[data-keep-anchor]").forEach(function(slot){
+    const anchor=slot.getAttribute("data-keep-anchor");
+    if(!updated.has(anchor)) return;
+    const patch=tfLatestUpdatePatchFor(stateNumber, anchor);
+    if(!patch) return;
+    function nodesFor(target){
+      const entry=registry[target];
+      let nodes=[];
+      if(entry&&entry.selector){ try{ nodes=Array.prototype.slice.call(slot.querySelectorAll(entry.selector)); }catch(e){} }
+      if(!nodes.length&&entry&&entry.id){ try{ nodes=Array.prototype.slice.call(slot.querySelectorAll("#"+tfCssEscape(entry.id))); }catch(e){} }
+      return nodes;
+    }
+    const mods=(Array.isArray(patch.modifications_applied)&&patch.modifications_applied.length
+      ? patch.modifications_applied : patch.modifications)||[];
+    mods.forEach(function(mod){
+      if(!mod||typeof mod!=="object") return;
+      const hasText=typeof mod.set_text==="string";
+      const style=mod.set_text_style&&typeof mod.set_text_style==="object"?mod.set_text_style:null;
+      if(!hasText&&!style) return;
+      let nodes=nodesFor(mod.target);
+      if(!nodes.length&&(mod.target==="text"||mod.target==="text_style"||mod.target==="self")) nodes=nodesFor(anchor);
+      nodes.forEach(function(node){
+        if(hasText) node.textContent=mod.set_text;
+        if(style){
+          if(style.color) node.style.color=style.color;
+          if(style.fontSize) node.style.fontSize=style.fontSize;
+          if(style.fontWeight) node.style.fontWeight=style.fontWeight;
         }
-        if(!found.length && entry.id){
-          try{ found=Array.prototype.slice.call(slot.querySelectorAll("#"+tfCssEscape(entry.id))); }catch(e){}
-        }
-        found.forEach(function(node){ targets.push(node); });
       });
-      targets.forEach(function(node){
-        if(typeof patch.text==="string" && patch.text.trim()) node.textContent=patch.text;
-        const style=patch.text_style || {};
-        if(style.color) node.style.color=style.color;
-        if(style.fontSize) node.style.fontSize=style.fontSize;
-        if(style.fontWeight) node.style.fontWeight=style.fontWeight;
+    });
+    // legacy models: top-level text/text_style on the patch rewrite the anchor
+    if(typeof patch.text==="string"&&patch.text.trim()){
+      nodesFor(anchor).forEach(function(node){ node.textContent=patch.text; });
+    }
+    if(patch.text_style&&typeof patch.text_style==="object"){
+      nodesFor(anchor).forEach(function(node){
+        if(patch.text_style.color) node.style.color=patch.text_style.color;
+        if(patch.text_style.fontSize) node.style.fontSize=patch.text_style.fontSize;
+        if(patch.text_style.fontWeight) node.style.fontWeight=patch.text_style.fontWeight;
       });
+    }
+  });
+}
+// Region keep clones still hold the ORIGINAL pixels of updated cards. When the
+// layer renders a newer version of a card (its own slot, a codegen mount, or a
+// kept card slot), blank the stale original inside every other clone so old
+// content never shows through.
+function tfPunchUpdatedCards(layer){
+  if(!layer) return;
+  const registry=window.__TF_REGISTRY__ || {};
+  const updated=tfUpdatedOriginalAnchors(tfNum(layer.id));
+  if(!updated.size) return;
+  updated.forEach(function(anchor){
+    const fresh=layer.querySelector('[data-component-id="'+String(anchor).replace(/"/g,'\\"')+'"],[data-keep-anchor="'+String(anchor).replace(/"/g,'\\"')+'"]');
+    if(!fresh) return;
+    const entry=registry[anchor];
+    if(!entry) return;
+    layer.querySelectorAll("[data-keep-anchor]").forEach(function(slot){
+      if(slot.getAttribute("data-keep-anchor")===anchor) return;
+      let nodes=[];
+      if(entry.selector){ try{ nodes=Array.prototype.slice.call(slot.querySelectorAll(entry.selector)); }catch(e){} }
+      if(!nodes.length&&entry.id){ try{ nodes=Array.prototype.slice.call(slot.querySelectorAll("#"+tfCssEscape(entry.id))); }catch(e){} }
+      nodes.forEach(function(node){ node.style.visibility="hidden"; });
     });
   });
 }
@@ -1505,9 +1531,10 @@ function tfInstallGoto(){
     const layer=document.getElementById("tf-state-"+n);
     if(layer){
       if(appRoot) appRoot.style.display="";
-      tfMountRepositionedOriginalClones(layer);
+      tfMountUpdatedOriginalCards(layer);
       tfFillKeepPlaceholders(layer);
-      tfApplyOriginalAnchorUpdates(layer);
+      tfApplyCardLedgers(layer);
+      tfPunchUpdatedCards(layer);
       layer.style.display="block";
       if(appRoot) appRoot.style.display="none";
     }
