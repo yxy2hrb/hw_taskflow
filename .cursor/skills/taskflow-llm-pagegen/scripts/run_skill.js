@@ -241,6 +241,7 @@ async function main() {
     rel(inputDir),
     "--model", model,
     "--state-model", rel(stateOut),
+    "--registry", rel(registryPath),
     "--out-dir", rel(componentOut),
     "--width", width,
     "--height", height,
