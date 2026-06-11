@@ -52,7 +52,16 @@ Update input:
   (the concrete modification plan, usually with before → after values)
 - `component.preserve`: internal parts (child ids, prop paths, `text`, `bbox`,
   `layout`) that must stay exactly as in the previous implementation
+- `component.modifications_applied`: the cumulative ledger — every modification
+  since the component's ORIGINAL implementation, with later entries on the same
+  target winning. Use it when rebuilding from `original_reference` so changes
+  from earlier states are not lost.
 - `original_component`: previous generated React source for the same component id
+- `original_reference`: present instead of `original_component` when the update
+  targets an original captured-page card with no previous React source. Carries
+  the original card's registry data (`anchor`, `component`, `text`, `bbox`) —
+  ground truth for the card's real content; do not invent content beyond it and
+  the patch.
 - `viewport`
 - `state_context`
 
@@ -78,7 +87,11 @@ Update input:
     in `component.preserve` — and any part not named by a modification — must
     keep the previous implementation's structure, classes, and content
     unchanged. Do not regenerate the whole component from scratch when
-    `modifications` is present.
+    `modifications` is present. When there is no `original_component` and
+    `original_reference` is provided instead, rebuild the card from the
+    reference's real content plus the patch, applying
+    `component.modifications_applied` (the cumulative ledger) so earlier
+    states' changes are included.
 13. CSS must use `tf-cg-*` classes, CSS variables, or target `[data-component-id="..."]`. Avoid broad global selectors.
 14. Use visible text only from `component.visible_text`, `component.text`,
     `component.props`, `component.children`, `generated_children`, or explicit

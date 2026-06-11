@@ -293,10 +293,10 @@ function mergeChildCss(parsed, childRecords) {
   };
 }
 
-async function generateComponentRecord({ component, operation, originalComponent, generatedChildren, childRecords, stateContext, viewport, modelName, skill, resourcesDir, componentsDir, maxTokens, useFallback, outDir, rawDir, isTopLevel }) {
+async function generateComponentRecord({ component, operation, originalComponent, originalReference, generatedChildren, childRecords, stateContext, viewport, modelName, skill, resourcesDir, componentsDir, maxTokens, useFallback, outDir, rawDir, isTopLevel }) {
   const id = component.id || component.name;
   const input = operation === "update"
-    ? { operation, viewport, state_context: stateContext, component, generated_children: generatedChildren || [], original_component: reactOnlyComponent(originalComponent), is_top_level: Boolean(isTopLevel) }
+    ? { operation, viewport, state_context: stateContext, component, generated_children: generatedChildren || [], original_component: reactOnlyComponent(originalComponent), original_reference: originalReference || null, is_top_level: Boolean(isTopLevel) }
     : { operation, viewport, state_context: stateContext, component, generated_children: generatedChildren || [], is_top_level: Boolean(isTopLevel) };
   let parsed;
   let raw = "";
@@ -325,7 +325,21 @@ async function generateComponentRecord({ component, operation, originalComponent
   return { state_id: stateContext.id, operation, original_component_id: originalComponent?.id || null, component: parsed, input, issues };
 }
 
-async function generatePatchTree({ patch, operation, depth, generatedById, stateContext, viewport, modelName, skill, resourcesDir, componentsDir, maxTokens, useFallback, outDir, rawDir }) {
+// For a rich update on an original DOM anchor there is no previous React
+// source; the registry entry is passed as original_reference so the LLM knows
+// the original card's real text/size instead of inventing content.
+function registryReferenceFor(registry, id) {
+  const entry = id ? registry?.semantic_dom_registry?.[id] : null;
+  if (!entry) return null;
+  return {
+    anchor: id,
+    component: entry.component || entry.semantic || null,
+    text: typeof entry.text === "string" ? entry.text : "",
+    bbox: Array.isArray(entry.bbox) ? entry.bbox : null,
+  };
+}
+
+async function generatePatchTree({ patch, operation, depth, generatedById, registry, stateContext, viewport, modelName, skill, resourcesDir, componentsDir, maxTokens, useFallback, outDir, rawDir }) {
   const children = patchChildren(patch);
   const directChildResults = [];
   const allRecords = [];
@@ -337,6 +351,7 @@ async function generatePatchTree({ patch, operation, depth, generatedById, state
       operation: childOperation,
       depth: depth + 1,
       generatedById,
+      registry,
       stateContext,
       viewport,
       modelName,
@@ -361,6 +376,7 @@ async function generatePatchTree({ patch, operation, depth, generatedById, state
     component,
     operation,
     originalComponent: operation === "update" ? generatedById[id] || null : null,
+    originalReference: operation === "update" && !generatedById[id] ? registryReferenceFor(registry, id) : null,
     generatedChildren,
     childRecords,
     stateContext,
@@ -393,6 +409,9 @@ async function main() {
   const concurrency = Number(argValue(args, "--concurrency", "8"));
 
   const stateModel = readJson(stateModelPath);
+  const registryPath = path.resolve(ROOT, argValue(args, "--registry", path.join(base, ".preprocess", "semantic_registry.json")));
+  let registry = null;
+  try { registry = readJson(registryPath); } catch (err) { registry = null; }
   const skill = readUtf8(path.resolve(__dirname, "..", "SKILL.md"));
 
   const resourcesDir = path.resolve(__dirname, "../../../resources");
@@ -409,17 +428,30 @@ async function main() {
     const createResults = await mapLimit(
       createPatches,
       concurrency,
-      (patch) => generatePatchTree({ patch, operation: "create", depth: 0, generatedById, stateContext, viewport, modelName, skill, resourcesDir, componentsDir, maxTokens, useFallback, outDir, rawDir })
+      (patch) => generatePatchTree({ patch, operation: "create", depth: 0, generatedById, registry, stateContext, viewport, modelName, skill, resourcesDir, componentsDir, maxTokens, useFallback, outDir, rawDir })
     );
     for (const result of createResults) {
       for (const record of result.allRecords) components.push(record);
     }
 
-    const updatePatches = (state.inheritance?.update || []).filter((component) => component.id || component.name);
+    // Updates on original anchors without structural/rich payload render via
+    // the page-layer clone-and-apply path (previous implementation + ledger);
+    // generating a component for them wastes tokens and produces empty shells.
+    function cloneRenderedUpdate(patch) {
+      const id = patch.id || patch.name;
+      if (!registry?.semantic_dom_registry?.[id] || generatedById[id]) return false;
+      if (Array.isArray(patch.children) && patch.children.length) return false;
+      if (String(patch.content_density || "").toLowerCase() === "rich") return false;
+      const props = patch.props && typeof patch.props === "object" && !Array.isArray(patch.props) ? patch.props : {};
+      return !Object.keys(props).some((key) => !/^(layoutRole|zIndex)$/i.test(key));
+    }
+    const updatePatches = (state.inheritance?.update || [])
+      .filter((component) => component.id || component.name)
+      .filter((patch) => !cloneRenderedUpdate(patch));
     const updateResults = await mapLimit(
       updatePatches,
       concurrency,
-      (patch) => generatePatchTree({ patch, operation: "update", depth: 0, generatedById, stateContext, viewport, modelName, skill, resourcesDir, componentsDir, maxTokens, useFallback, outDir, rawDir })
+      (patch) => generatePatchTree({ patch, operation: "update", depth: 0, generatedById, registry, stateContext, viewport, modelName, skill, resourcesDir, componentsDir, maxTokens, useFallback, outDir, rawDir })
     );
     for (const result of updateResults) {
       for (const record of result.allRecords) components.push(record);
