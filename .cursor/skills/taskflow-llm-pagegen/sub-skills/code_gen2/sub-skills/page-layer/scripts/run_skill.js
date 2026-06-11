@@ -1830,10 +1830,14 @@ async function main() {
   const html = buildHtml({ originalHtml, registry, generated, stateModel, width, height });
   writeUtf8(outHtml, html);
   injectStateKeyNavIntoFile(outHtml);
+  // The path at --out-html is overwritten by every run; keep a permanent copy
+  // of each version inside this run's timestamped output directory.
+  const archivedHtml = path.join(outDir, path.basename(outHtml));
+  fs.copyFileSync(outHtml, archivedHtml);
   const shotsDir = path.join(outDir, "auto_shots");
   const shotReport = await screenshotStates({ htmlPath: outHtml, blueprint, model: stateModel, outDir: shotsDir, width, height });
   const ok = shotReport.summary.issues_found.length === 0;
-  writeJson(path.join(outDir, "run_report.json"), { ok, generation_mode: generationMode, outputs: { html: rel(outHtml), auto_shots: rel(shotsDir), state_layers_report: rel(path.join(shotsDir, "state_layers_report.json")) }, screenshot_summary: shotReport.summary });
+  writeJson(path.join(outDir, "run_report.json"), { ok, generation_mode: generationMode, outputs: { html: rel(outHtml), html_archive: rel(archivedHtml), auto_shots: rel(shotsDir), state_layers_report: rel(path.join(shotsDir, "state_layers_report.json")) }, screenshot_summary: shotReport.summary });
   console.log(`[llm-layer] ok=${ok} out=${rel(outHtml)}`);
   if (!ok) process.exitCode = 2;
 }
