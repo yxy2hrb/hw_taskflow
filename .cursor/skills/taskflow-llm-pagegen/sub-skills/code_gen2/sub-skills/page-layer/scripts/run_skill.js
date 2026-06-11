@@ -1830,9 +1830,13 @@ async function main() {
   const html = buildHtml({ originalHtml, registry, generated, stateModel, width, height });
   writeUtf8(outHtml, html);
   injectStateKeyNavIntoFile(outHtml);
-  // The path at --out-html is overwritten by every run; keep a permanent copy
-  // of each version inside this run's timestamped output directory.
-  const archivedHtml = path.join(outDir, path.basename(outHtml));
+  // The path at --out-html is overwritten by every run; keep a timestamped
+  // copy NEXT TO it (same directory) so relative asset paths keep resolving.
+  // The stamp reuses the run directory's timestamp when present so the copy
+  // correlates with its .run_skill/<ts> artifacts.
+  const runStamp = (outDir.match(/(\d{14})/) || [])[1]
+    || new Date().toISOString().replace(/\D/g, "").slice(0, 14);
+  const archivedHtml = outHtml.replace(/\.html$/i, `.${runStamp}.html`);
   fs.copyFileSync(outHtml, archivedHtml);
   const shotsDir = path.join(outDir, "auto_shots");
   const shotReport = await screenshotStates({ htmlPath: outHtml, blueprint, model: stateModel, outDir: shotsDir, width, height });
