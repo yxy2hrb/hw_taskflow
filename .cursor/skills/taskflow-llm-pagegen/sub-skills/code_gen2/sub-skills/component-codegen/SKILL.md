@@ -114,6 +114,30 @@ Update input:
 19. Do not add prices, stock, service tags, comments, ratings, dates, provider
     names, or action labels unless they are present in the input component tree.
 
+## Layout Context Contract
+
+Nested components may receive `layout_context` from the runner. This is the
+contract between parent containers and child components:
+
+1. If `layout_context` is present, the component is rendered inside a parent
+   container. Its root must stay within that parent content box: use
+   `width: "100%"`, `maxWidth: "100%"`, `minWidth: 0`, and
+   `boxSizing: "border-box"` unless the child has its own explicit `bbox` or
+   explicit width.
+2. Never use hard viewport defaults such as `width: 360`, `minWidth: 328`, or
+   fixed page-level coordinates for a nested child. Those are allowed only for
+   `is_top_level=true` components or components with their own explicit bbox.
+3. Treat `layout_context.available_width` / `available_height` as the maximum
+   usable size for child layout. Child defaults may fill that space, but must
+   not exceed it.
+4. `layout_context.slot` describes the semantic placement (`header`, `body`,
+   `footer`, or `content`). Footer/action children inside `Dialog` or `Modal`
+   should render compact rows that fit the parent width.
+5. For `ButtonBar` inside a `Dialog`/`Modal` footer, pass `width="100%"` when
+   importing the reference component. If the reference component cannot fit the
+   available width, inline an equivalent compact two-button row using `flex: 1`,
+   `minWidth: 0`, and parent-bounded padding.
+
 ## Container Components
 
 Container-like components include names such as `Container`, `Layout`, `Panel`,

@@ -603,6 +603,12 @@ function isBottomSheetSpec(spec) {
     || /(^|_)sheet$|bottom_sheet|bottom-sheet/i.test(String(spec?.id || spec?.name || ""));
 }
 
+function isFloatingPanelSpec(spec) {
+  return isBottomSheetSpec(spec)
+    || /dialog|modal|drawer|popup|popover/i.test(String(spec?.component || ""))
+    || /dialog|modal|drawer|popup|popover/i.test(String(spec?.id || spec?.name || ""));
+}
+
 function isOverlaySpec(spec) {
   return /overlay|mask|scrim/i.test(String(spec?.component || ""))
     || /overlay|mask|scrim/i.test(String(spec?.id || spec?.name || ""));
@@ -614,13 +620,13 @@ function isKeyboardSpec(spec) {
 }
 
 // Components that must be positioned against the viewport (fixed bottom bar,
-// soft keyboard, bottom sheet, overlay/mask). For these the page-layer frame
+// soft keyboard, floating panel, overlay/mask). For these the page-layer frame
 // owns placement; a frame the LLM may have wrapped with `position:absolute`
 // page coordinates must NOT be reused, or the element lands in the scrolling
 // canvas instead of pinned to the screen edge.
 function isViewportFixedSpec(spec) {
   if (!spec) return false;
-  return isBottomActionBarSpec(spec) || isKeyboardSpec(spec) || isBottomSheetSpec(spec) || isOverlaySpec(spec);
+  return isBottomActionBarSpec(spec) || isKeyboardSpec(spec) || isFloatingPanelSpec(spec) || isOverlaySpec(spec);
 }
 
 function componentEverCreated(stateModel, id) {
@@ -646,19 +652,25 @@ function isUnplaceableOrphanComponent(state, stateModel, componentCodegen, regis
   const hasBbox = Array.isArray(spec.bbox) && spec.bbox.length === 4 && spec.bbox.every((v) => Number.isFinite(Number(v)));
   const hasLayout = Boolean(spec?.layout?.group);
   if (hasBbox || hasLayout) return false;
-  if (isBottomActionBarSpec(spec) || isBottomSheetSpec(spec) || isKeyboardSpec(spec) || isOverlaySpec(spec)) return false;
+  if (isViewportFixedSpec(spec)) return false;
   return true;
 }
 
-function componentFrameStyle(spec) {
+function explicitComponentZIndex(spec) {
+  const zIndex = Number(spec?.props?.zIndex ?? spec?.zIndex);
+  return Number.isFinite(zIndex) ? zIndex : null;
+}
+
+function componentFrameStyle(spec, zIndexOverride = null) {
   const bbox = Array.isArray(spec?.bbox) ? spec.bbox.map(Number) : null;
   if (!validBboxArray(bbox)) return "";
-  const zIndex = Number(spec?.props?.zIndex ?? spec?.zIndex);
-  // Fixed stacking hierarchy for viewport-pinned roles, regardless of the
-  // z values the model authored: bottom bar 80 < overlay/mask 90 <
-  // sheet/dialog 100 < keyboard 150. LLMs routinely give sheets z 50-60,
-  // which would otherwise paint below the runner-lifted bottom bar (z 80)
-  // and clip the sheet's confirm button behind it.
+  const forcedZ = Number(zIndexOverride);
+  const zIndex = Number.isFinite(forcedZ) ? forcedZ : explicitComponentZIndex(spec);
+  const zStyle = Number.isFinite(zIndex) ? `z-index:${zIndex}` : "";
+  // Page-layer owns viewport positioning for fixed surfaces, but z-index order
+  // remains authored by state_implementation/component-codegen. The runner only
+  // syncs that authored z-index onto outer frames so nested stacking contexts do
+  // not hide higher inner components.
   if (isKeyboardSpec(spec)) {
     return [
       "position:fixed",
@@ -666,8 +678,8 @@ function componentFrameStyle(spec) {
       "bottom:0px",
       `width:${bbox[2]}px`,
       `height:${bbox[3]}px`,
-      Number.isFinite(zIndex) ? `z-index:${Math.max(zIndex, 150)}` : "z-index:150",
-    ].join(";");
+      zStyle,
+    ].filter(Boolean).join(";");
   }
   if (isBottomActionBarSpec(spec)) {
     return [
@@ -676,8 +688,8 @@ function componentFrameStyle(spec) {
       "bottom:0px",
       `width:${bbox[2]}px`,
       `height:${bbox[3]}px`,
-      Number.isFinite(zIndex) ? `z-index:${Math.max(zIndex, 80)}` : "z-index:80",
-    ].join(";");
+      zStyle,
+    ].filter(Boolean).join(";");
   }
   if (isBottomSheetSpec(spec)) {
     return [
@@ -686,8 +698,8 @@ function componentFrameStyle(spec) {
       "bottom:0px",
       `width:${bbox[2]}px`,
       `height:${bbox[3]}px`,
-      Number.isFinite(zIndex) ? `z-index:${Math.max(zIndex, 100)}` : "z-index:100",
-    ].join(";");
+      zStyle,
+    ].filter(Boolean).join(";");
   }
   if (isOverlaySpec(spec)) {
     return [
@@ -696,8 +708,18 @@ function componentFrameStyle(spec) {
       "top:0px",
       `width:${bbox[2]}px`,
       "height:100vh",
-      Number.isFinite(zIndex) ? `z-index:${Math.max(zIndex, 90)}` : "z-index:90",
-    ].join(";");
+      zStyle,
+    ].filter(Boolean).join(";");
+  }
+  if (isFloatingPanelSpec(spec)) {
+    return [
+      "position:fixed",
+      `left:${bbox[0]}px`,
+      `top:${bbox[1]}px`,
+      `width:${bbox[2]}px`,
+      `height:${bbox[3]}px`,
+      zStyle,
+    ].filter(Boolean).join(";");
   }
   return [
     "position:absolute",
@@ -705,12 +727,37 @@ function componentFrameStyle(spec) {
     `top:${bbox[1]}px`,
     `width:${bbox[2]}px`,
     `height:${bbox[3]}px`,
-    Number.isFinite(zIndex) ? `z-index:${zIndex}` : "",
+    zStyle,
   ].filter(Boolean).join(";");
 }
 
+function parseStyleZIndex(style) {
+  const match = String(style || "").match(/(?:^|;)\s*z-index\s*:\s*([-+]?\d+(?:\.\d+)?)\s*(?:;|$)/i);
+  const value = match ? Number(match[1]) : NaN;
+  return Number.isFinite(value) ? value : null;
+}
+
+function rootHtmlZIndex(html) {
+  const tag = (String(html || "").match(/<[^!][^>]*>/) || [])[0] || "";
+  const style = (tag.match(/\bstyle=["']([^"']*)["']/i) || [])[1] || "";
+  return parseStyleZIndex(style);
+}
+
+function syncedFrameZIndex(spec, html = "") {
+  const candidates = [explicitComponentZIndex(spec), rootHtmlZIndex(html)]
+    .filter((value) => Number.isFinite(value));
+  return candidates.length ? Math.max(...candidates) : null;
+}
+
+function statePatchIds(state, field) {
+  return new Set((state.inheritance?.[field] || [])
+    .map((item) => typeof item === "string" ? item : item?.id || item?.name)
+    .filter(Boolean));
+}
+
 function wrapComponentHtml(html, { id, state, componentCodegen, registry }) {
-  const style = componentFrameStyle(componentLayoutSpec(state, componentCodegen, id, registry));
+  const spec = componentLayoutSpec(state, componentCodegen, id, registry);
+  const style = componentFrameStyle(spec, syncedFrameZIndex(spec, html));
   if (!style) return html;
   return `<div class="tf-component-frame" data-component-frame="${escapeHtmlAttr(id)}" style="${style}">${html}</div>`;
 }
@@ -1023,6 +1070,68 @@ function ensureComponentCodegenCoverage(generated, stateModel, componentCodegen,
       .filter(Boolean)
       .join(" ");
   }
+  return generated;
+}
+
+function importantInlineStyle(style) {
+  return String(style || "")
+    .split(";")
+    .map((part) => part.trim())
+    .filter(Boolean)
+    .map((part) => {
+      const idx = part.indexOf(":");
+      if (idx < 0) return "";
+      const prop = part.slice(0, idx).trim();
+      const value = part.slice(idx + 1).trim().replace(/\s*!important\s*$/i, "");
+      return prop && value ? `${prop}:${value} !important;` : "";
+    })
+    .filter(Boolean)
+    .join("");
+}
+
+function normalizeComponentFrameCss(generated, stateModel, componentCodegen, registry) {
+  if (!generated || typeof generated.html !== "string" || !componentCodegen?.components?.length) return generated;
+  const rules = [];
+  for (const state of stateModel.states || []) {
+    const stateId = stateNum(state.id);
+    const keepIds = statePatchIds(state, "keep");
+    const activeIds = new Set([...statePatchIds(state, "create"), ...statePatchIds(state, "update")]);
+    const activeSurfaceZ = [...activeIds]
+      .map((id) => {
+        const spec = componentLayoutSpec(state, componentCodegen, id, registry);
+        if (!isViewportFixedSpec(spec)) return null;
+        const record = latestComponentRecord(componentCodegen, id, state.id);
+        const html = componentHtmlForState(record, state, id, componentCodegen, registry);
+        return syncedFrameZIndex(spec, html);
+      })
+      .filter((value) => Number.isFinite(value));
+    const backgroundCap = activeSurfaceZ.length ? Math.min(...activeSurfaceZ) - 1 : null;
+    for (const id of stateExpectedComponentIds(state, componentCodegen, registry)) {
+      const spec = componentLayoutSpec(state, componentCodegen, id, registry);
+      const bbox = Array.isArray(spec?.bbox) ? spec.bbox.map(Number) : null;
+      if (!validBboxArray(bbox)) continue;
+      const record = latestComponentRecord(componentCodegen, id, state.id);
+      const html = componentHtmlForState(record, state, id, componentCodegen, registry);
+      let zIndex = syncedFrameZIndex(spec, html);
+      if (keepIds.has(id) && Number.isFinite(backgroundCap) && Number.isFinite(zIndex) && zIndex > backgroundCap) {
+        zIndex = backgroundCap;
+      }
+      const style = importantInlineStyle(componentFrameStyle(spec, zIndex));
+      if (!style) continue;
+      const attr = cssAttr(id);
+      const selectors = [
+        `#tf-state-${stateId} > .tf-component-frame[data-component-frame="${attr}"]`,
+        `#tf-state-${stateId} > .tf-component-frame:has([data-component-frame="${attr}"])`,
+        `#tf-state-${stateId} > .tf-component-frame:has([data-component-id="${attr}"])`,
+      ];
+      rules.push(`${selectors.join(",\n")} { ${style} }`);
+    }
+  }
+  if (!rules.length) return generated;
+  generated.css = `${generated.css || ""}\n/* Normalize component outer frames from authored placement/z-index. */\n${rules.join("\n")}`;
+  generated.validation_notes = [generated.validation_notes, "Runner normalized component outer frames from authored placement/z-index."]
+    .filter(Boolean)
+    .join(" ");
   return generated;
 }
 
@@ -1817,6 +1926,7 @@ async function main() {
   normalizeFlowLayoutPlaceholders(generated, stateModel, componentCodegen, registry);
   fillComponentPlaceholders(generated, stateModel, componentCodegen, registry);
   ensureComponentCodegenCoverage(generated, stateModel, componentCodegen, registry);
+  normalizeComponentFrameCss(generated, stateModel, componentCodegen, registry);
   suppressUnexpectedBottomBars(generated, stateModel, componentCodegen);
   normalizeKeepPlaceholderCss(generated);
   const issues = validateGenerated(generated, stateModel);

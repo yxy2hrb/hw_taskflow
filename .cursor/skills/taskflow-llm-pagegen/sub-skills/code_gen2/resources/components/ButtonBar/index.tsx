@@ -28,8 +28,8 @@ export interface ButtonBarProps {
   inputPlaceholder?: string
   /** 复选框标签文本 */
   checkboxLabel?: string
-  /** 容器宽度（默认 360） */
-  width?: number
+  /** 容器宽度（默认 360；嵌套在弹窗/容器内可传 "100%"） */
+  width?: number | string
   /** 自定义 className */
   className?: string
   /** 点击主按钮回调 */
@@ -138,6 +138,8 @@ const ButtonBar: React.FC<ButtonBarProps> = ({
   onThirdClick,
 }) => {
   const emptyFn = () => {}
+  const fluid = width === '100%'
+  const buttonMinWidth = fluid ? 0 : 120
 
   const renderContent = () => {
     switch (variant) {
@@ -162,7 +164,7 @@ const ButtonBar: React.FC<ButtonBarProps> = ({
         return (
           <div className="flex w-full items-center" style={{ gap: 'var(--spacing-lg)' }}>
             <ActionInput placeholder={inputPlaceholder} />
-            <div className="flex-1" style={{ minWidth: 120 }}>
+            <div className="flex-1" style={{ minWidth: buttonMinWidth }}>
               <CapsuleButton size="large" variant="primary" className="w-full" onClick={onPrimaryClick || emptyFn}>
                 {primaryLabel}
               </CapsuleButton>
@@ -175,7 +177,7 @@ const ButtonBar: React.FC<ButtonBarProps> = ({
         return (
           <div className="flex w-full items-center" style={{ gap: 'var(--spacing-lg)' }}>
             <ActionInput placeholder={inputPlaceholder} />
-            <div className="flex-1" style={{ minWidth: 120 }}>
+            <div className="flex-1" style={{ minWidth: buttonMinWidth }}>
               <CapsuleButton size="large" variant="secondary" className="w-full" onClick={onSecondaryClick || emptyFn}>
                 {secondaryLabel}
               </CapsuleButton>
@@ -187,12 +189,12 @@ const ButtonBar: React.FC<ButtonBarProps> = ({
       case 'dual':
         return (
           <div className="flex w-full" style={{ gap: 'var(--spacing-lg)' }}>
-            <div className="flex-1" style={{ minWidth: 120 }}>
+            <div className="flex-1" style={{ minWidth: buttonMinWidth }}>
               <CapsuleButton size="large" variant="secondary" className="w-full" onClick={onSecondaryClick || emptyFn}>
                 {secondaryLabel}
               </CapsuleButton>
             </div>
-            <div className="flex-1" style={{ minWidth: 120 }}>
+            <div className="flex-1" style={{ minWidth: buttonMinWidth }}>
               <CapsuleButton size="large" variant="primary" className="w-full" onClick={onPrimaryClick || emptyFn}>
                 {primaryLabel}
               </CapsuleButton>
@@ -206,12 +208,12 @@ const ButtonBar: React.FC<ButtonBarProps> = ({
           <div className="flex w-full items-center" style={{ gap: 'var(--spacing-lg)' }}>
             <CheckboxItem label={checkboxLabel} />
             <div className="flex flex-1" style={{ gap: 'var(--spacing-lg)', minWidth: 0 }}>
-              <div className="flex-1" style={{ minWidth: 120 }}>
+              <div className="flex-1" style={{ minWidth: buttonMinWidth }}>
                 <CapsuleButton size="large" variant="secondary" className="w-full" onClick={onSecondaryClick || emptyFn}>
                   {secondaryLabel}
                 </CapsuleButton>
               </div>
-              <div className="flex-1" style={{ minWidth: 120 }}>
+              <div className="flex-1" style={{ minWidth: buttonMinWidth }}>
                 <CapsuleButton size="large" variant="primary" className="w-full" onClick={onPrimaryClick || emptyFn}>
                   {primaryLabel}
                 </CapsuleButton>
@@ -256,7 +258,9 @@ const ButtonBar: React.FC<ButtonBarProps> = ({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        maxWidth: width,
+        maxWidth: fluid ? '100%' : width,
+        minWidth: fluid ? 0 : undefined,
+        boxSizing: 'border-box',
       }}
     >
       <div
@@ -266,9 +270,10 @@ const ButtonBar: React.FC<ButtonBarProps> = ({
           alignItems: 'center',
           justifyContent: 'center',
           width: '100%',
-          maxWidth: 360,
-          minWidth: 328,
+          maxWidth: fluid ? '100%' : 360,
+          minWidth: fluid ? 0 : 328,
           padding: 'var(--spacing-xl) var(--spacing-xl) 0',
+          boxSizing: 'border-box',
         }}
       >
         {/* 按钮内容区 - 40px 高度 */}
