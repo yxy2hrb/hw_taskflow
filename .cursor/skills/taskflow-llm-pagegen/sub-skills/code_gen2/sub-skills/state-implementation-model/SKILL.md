@@ -255,6 +255,12 @@ implementation. Therefore every update patch must carry:
   - `change`: a self-contained modification plan in natural language with
     before → after values when known, for example
     "主按钮文案从「保存」改为「保存中...」，同时 disabled=true 并显示 loading".
+  - Machine-applicable values when the change is simple: `set_text` (the new
+    text string), `set_text_style` (the new style object), `set_bbox` (the new
+    `[x, y, w, h]`), `set_props` (an object of changed prop values). These let
+    the runner apply the change deterministically without regenerating the
+    component. Always include them when the change is a plain text, style,
+    position, or prop value swap.
 - `preserve`: an array of internal parts that must remain byte-stable from the
   previous implementation: child ids, prop paths, `text`, `bbox`, or `layout`.
   List at least the visually important untouched parts.
@@ -287,8 +293,16 @@ Rules:
   mark a newly added child.
 - Removal is still forbidden (no hide/replace). To visually retire an internal
   part, change its content or visibility props and describe that in `change`.
-- For an update on an original DOM anchor (for example a text anchor), `target`
-  is usually `text` or `text_style` and `parent` is the anchor itself.
+- An update on original page content must target the CARD/CONTAINER level, not
+  a leaf: `id` is the semantic unit being versioned (an information row, card,
+  or list item anchor), and the changed leaf (for example a text anchor like
+  "李华-文本") appears as a modification `target` with `set_text` carrying the
+  new value. Never use a bare text anchor as the update patch `id`.
+- The update ledger is card-keyed: after a card is updated once, its id refers
+  to the NEWEST implementation. A later state that needs that card unchanged
+  simply keeps the card id; a later state changing it further writes another
+  update against the same id describing only the new differences. Never
+  restate earlier states' changes.
 
 ## Keep Scope: Replacement vs Overlay
 

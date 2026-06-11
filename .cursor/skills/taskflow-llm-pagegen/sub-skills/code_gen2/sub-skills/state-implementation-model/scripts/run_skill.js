@@ -337,10 +337,27 @@ function mergeVirtualPlacement(patch, virtualPatchById) {
 const MODIFICATION_KEY_ALIASES = ["modifications", "modification_list", "changes", "update_plan", "修改列表"];
 const PRESERVE_KEY_ALIASES = ["preserve", "preserved", "unchanged", "keep_parts", "保留列表"];
 
+// Machine-applicable value fields. `change` stays the human/LLM-facing plan;
+// set_* carry the concrete new values so the deterministic renderer (clone +
+// apply) can execute simple modifications without an LLM call.
+const MODIFICATION_SET_FIELDS = ["set_text", "set_text_style", "set_bbox", "set_props"];
+const MODIFICATION_SET_ALIASES = { new_text: "set_text", to_text: "set_text", new_text_style: "set_text_style", new_bbox: "set_bbox" };
+
 function makeModification(target, targetComponent, parent, change) {
   const entry = { target: String(target || "").trim(), parent: parent || null, change: String(change || "").trim() };
   if (targetComponent) entry.target_component = String(targetComponent).trim();
   return entry.target && entry.change ? entry : null;
+}
+
+function copyModificationSetFields(source, entry) {
+  if (!source || !entry || typeof source !== "object") return entry;
+  for (const field of MODIFICATION_SET_FIELDS) {
+    if (source[field] !== undefined) entry[field] = source[field];
+  }
+  for (const [alias, field] of Object.entries(MODIFICATION_SET_ALIASES)) {
+    if (source[alias] !== undefined && entry[field] === undefined) entry[field] = source[alias];
+  }
+  return entry;
 }
 
 // "子id/子组件名/父组件名" → { target, target_component, parent }
@@ -361,12 +378,12 @@ function normalizeModificationEntry(entry, parentId) {
   const target = entry.target || entry.child || entry.path || entry["目标"] || entry["子组件"];
   if (typeof target === "string" && typeof change === "string") {
     const parsed = parseModificationTarget(target);
-    return makeModification(
+    return copyModificationSetFields(entry, makeModification(
       parsed.target,
       entry.target_component || entry.component || parsed.target_component,
       entry.parent || parsed.parent || parentId,
       change
-    );
+    ));
   }
   const keys = Object.keys(entry);
   if (keys.length === 1 && typeof entry[keys[0]] === "string") {
@@ -408,24 +425,26 @@ function diffUpdateModifications(patch, previousSpec) {
   const prev = previousSpec || {};
   const mods = [];
   if (typeof patch.text === "string" && patch.text.trim() && patch.text !== prev.text) {
-    mods.push(makeModification("text", null, parent,
+    mods.push(copyModificationSetFields({ set_text: patch.text }, makeModification("text", null, parent,
       typeof prev.text === "string" && prev.text.trim()
         ? `文本从${shortValueText(prev.text)}改为${shortValueText(patch.text)}`
-        : `文本设为${shortValueText(patch.text)}`));
+        : `文本设为${shortValueText(patch.text)}`)));
   }
   if (patch.text_style && !sameJson(patch.text_style, prev.text_style) && prev.text_style) {
-    mods.push(makeModification("text_style", null, parent, `文字样式更新为 ${shortValueText(patch.text_style)}`));
+    mods.push(copyModificationSetFields({ set_text_style: patch.text_style },
+      makeModification("text_style", null, parent, `文字样式更新为 ${shortValueText(patch.text_style)}`)));
   }
   const prevProps = prev.props || {};
   for (const [key, value] of Object.entries(patch.props || {})) {
     if (sameJson(prevProps[key], value)) continue;
-    mods.push(makeModification(`props.${key}`, null, parent,
+    mods.push(copyModificationSetFields({ set_props: { [key]: value } }, makeModification(`props.${key}`, null, parent,
       prevProps[key] === undefined
         ? `新增 ${key}=${shortValueText(value)}`
-        : `${key} 从 ${shortValueText(prevProps[key])} 改为 ${shortValueText(value)}`));
+        : `${key} 从 ${shortValueText(prevProps[key])} 改为 ${shortValueText(value)}`)));
   }
   if (Array.isArray(patch.bbox) && Array.isArray(prev.bbox) && !sameJson(patch.bbox, prev.bbox)) {
-    mods.push(makeModification("bbox", null, parent, `位置/尺寸从 ${JSON.stringify(prev.bbox)} 改为 ${JSON.stringify(patch.bbox)}`));
+    mods.push(copyModificationSetFields({ set_bbox: patch.bbox },
+      makeModification("bbox", null, parent, `位置/尺寸从 ${JSON.stringify(prev.bbox)} 改为 ${JSON.stringify(patch.bbox)}`)));
   }
   if (patch.layout && prev.layout && !sameJson(patch.layout, prev.layout)) {
     mods.push(makeModification("layout", null, parent, `布局提示更新为 ${shortValueText(patch.layout)}`));
@@ -499,6 +518,162 @@ function normalizeUpdateModifications(patch, previousSpec, idToAnchor = new Map(
     .filter((item) => typeof item === "string" && item.trim())
     .map((item) => normalizeAnchorValue(item, idToAnchor));
   patch.preserve = [...new Set([...authored, ...derivePreserve(patch, previousSpec, modifications)])];
+}
+
+// --- Card-level update bookkeeping -------------------------------------------
+// Contract: an update is ledgered at the card/container level. `update.id` is
+// the semantic unit being versioned; leaf anchors only appear as modification
+// targets. After a card is updated once, its id refers to the NEWEST
+// implementation; later states keep/update that id directly and never need to
+// replay earlier operations.
+
+function registryTreeInfo(registry) {
+  const parentOf = new Map(); // leaf anchor -> parent anchor
+  const nodes = registry?.semantic_dom_tree?.nodes;
+  if (nodes && typeof nodes === "object" && !Array.isArray(nodes)) {
+    for (const [name, node] of Object.entries(nodes)) {
+      const children = Array.isArray(node?.children) ? node.children : [];
+      if (!children.length && typeof node?.parent === "string" && node.parent) {
+        parentOf.set(name, node.parent);
+      }
+    }
+    return { parentOf };
+  }
+  const roots = registry?.semantic_registry_tree?.roots;
+  if (Array.isArray(roots)) {
+    const walk = (node, parent) => {
+      if (!node || typeof node !== "object") return;
+      const anchor = node.anchor || node.name;
+      const children = Array.isArray(node.children) ? node.children : [];
+      if (anchor && parent && !children.length) parentOf.set(anchor, parent);
+      for (const child of children) walk(child, anchor || parent);
+    };
+    for (const root of roots) walk(root, null);
+  }
+  return { parentOf };
+}
+
+// An update whose id is a LEAF original anchor (e.g. "李华-文本") is folded
+// into an update on its parent semantic unit: the leaf becomes a modification
+// entry carrying machine-applicable set_text/set_text_style, and the card id
+// becomes the ledger key. Multiple leaf updates under the same parent merge
+// into one card update.
+function mergeLeafOriginalUpdates(updateList, registry, idToAnchor, treeInfo) {
+  if (!Array.isArray(updateList) || !updateList.length) return updateList;
+  const out = [];
+  const hostById = new Map();
+  for (const patch of updateList) {
+    if (!patch || typeof patch !== "object" || Array.isArray(patch)) continue;
+    const anchor = normalizeAnchorValue(String(patch.id || patch.name || ""), idToAnchor);
+    const parentAnchor = treeInfo.parentOf.get(anchor);
+    const leafEntry = parentAnchor ? registry.semantic_dom_registry?.[anchor] : null;
+    if (!leafEntry) {
+      out.push(patch);
+      if (anchor) hostById.set(anchor, patch);
+      continue;
+    }
+    const newText = typeof patch.text === "string" && patch.text.trim() ? patch.text : null;
+    const mod = makeModification(
+      anchor,
+      leafEntry.component || null,
+      parentAnchor,
+      newText
+        ? `文本从${shortValueText(leafEntry.text)}改为${shortValueText(newText)}`
+        : `按 patch 更新该子元素`
+    );
+    if (mod) {
+      if (newText) mod.set_text = newText;
+      if (patch.text_style && typeof patch.text_style === "object") mod.set_text_style = patch.text_style;
+    }
+    let host = hostById.get(parentAnchor);
+    if (!host) {
+      const parentEntry = registry.semantic_dom_registry?.[parentAnchor] || {};
+      host = {
+        type: "update",
+        id: parentAnchor,
+        component: parentEntry.component || null,
+        props: {},
+        modifications: [],
+        preserve: [],
+      };
+      out.push(host);
+      hostById.set(parentAnchor, host);
+    }
+    if (!Array.isArray(host.modifications)) host.modifications = [];
+    if (mod) host.modifications.push(mod);
+    // Carry over any modifications the leaf patch itself authored.
+    for (const key of MODIFICATION_KEY_ALIASES) {
+      if (!Array.isArray(patch[key])) continue;
+      for (const entry of patch[key]) {
+        const sub = normalizeModificationEntry(entry, anchor);
+        if (sub) host.modifications.push(sub);
+      }
+    }
+  }
+  return out;
+}
+
+// Cumulative modification ledger per card: each state's update patch carries
+// modifications_applied = all modifications since the original implementation
+// (later entries on the same target win). This makes every state
+// self-contained — the renderer applies one list, never an ancestor chain.
+function mergeModificationLists(previous, current) {
+  const merged = [];
+  const indexByKey = new Map();
+  for (const list of [previous, current]) {
+    for (const mod of list || []) {
+      if (!mod || typeof mod !== "object") continue;
+      const key = `${mod.target || ""}|${mod.parent || ""}`;
+      if (indexByKey.has(key)) merged[indexByKey.get(key)] = mod;
+      else {
+        indexByKey.set(key, merged.length);
+        merged.push(mod);
+      }
+    }
+  }
+  return merged;
+}
+
+// When a later state keeps a region that contains a card updated earlier in
+// its parent chain, the card id is auto-added to keep so the state renders the
+// NEWEST card without restating the update.
+function autoKeepUpdatedCards(model, registry) {
+  const byId = new Map((model.states || []).map((state) => [state.id, state]));
+  for (const state of model.states || []) {
+    const chain = [];
+    const seen = new Set();
+    let cursor = state;
+    while (cursor && cursor.parent_state && !seen.has(cursor.parent_state)) {
+      seen.add(cursor.parent_state);
+      cursor = byId.get(cursor.parent_state);
+      if (cursor) chain.push(cursor);
+    }
+    const updatedCards = new Map();
+    for (const ancestor of chain.reverse()) {
+      for (const patch of ancestor.inheritance?.update || []) {
+        const id = patch?.id || patch?.name;
+        const entry = id ? registry.semantic_dom_registry?.[id] : null;
+        if (entry && Array.isArray(entry.bbox)) updatedCards.set(id, entry.bbox.map(Number));
+      }
+    }
+    if (!updatedCards.size) continue;
+    const keep = state.inheritance?.keep;
+    if (!Array.isArray(keep)) continue;
+    const present = new Set([
+      ...keep.filter((item) => typeof item === "string"),
+      ...(state.inheritance?.update || []).map((patch) => patch?.id || patch?.name),
+      ...(state.inheritance?.create || []).map((patch) => patch?.id || patch?.name),
+    ].filter(Boolean));
+    for (const [id, bbox] of updatedCards) {
+      if (present.has(id)) continue;
+      const coveredByKeep = keep.some((item) => {
+        if (typeof item !== "string" || item === id) return false;
+        const entry = registry.semantic_dom_registry?.[item];
+        return Array.isArray(entry?.bbox) && bboxContains(entry.bbox.map(Number), bbox);
+      });
+      if (coveredByKeep) keep.push(id);
+    }
+  }
 }
 
 function isOverlayLike(patch) {
@@ -797,11 +972,20 @@ function validateStateStacking(state, registry, virtualPatches, issues) {
   for (const patch of state.inheritance?.create || []) addFixed(patch, "create");
   for (const patch of state.inheritance?.update || []) addFixed(patch, "update");
 
+  // An entity placed exactly at its registry bbox reproduces original page
+  // geometry (kept region, or an in-place card update); two such entities
+  // overlapping is the original layout's own business, not a model error.
+  function isOriginalGeometry(item) {
+    if (item.source === "original_keep") return true;
+    const entry = item.id ? registry.semantic_dom_registry?.[item.id] : null;
+    return Array.isArray(entry?.bbox) && sameJson(entry.bbox.map(Number), item.bbox);
+  }
+
   for (let i = 0; i < fixed.length; i++) {
     for (let j = i + 1; j < fixed.length; j++) {
       const a = fixed[i];
       const b = fixed[j];
-      if (a.source === "original_keep" && b.source === "original_keep") continue;
+      if (isOriginalGeometry(a) && isOriginalGeometry(b)) continue;
       if (a.z !== b.z) continue;
       if (isStackingExempt(a.patch) || isStackingExempt(b.patch)) continue;
       if (a.id === b.id) continue;
@@ -852,6 +1036,7 @@ function normalizeModel(model, initialHeight, registry = {}) {
   delete model.semanticAnchors;
   delete model.semantic_registry;
   const idToAnchor = registryIdToAnchorMap(registry);
+  const treeInfo = registryTreeInfo(registry);
 
   const virtualPatchById = new Map();
   for (const state of model.states || []) {
@@ -891,7 +1076,7 @@ function normalizeModel(model, initialHeight, registry = {}) {
       }
     }
 
-    state.inheritance = { keep: [...keep], create, update };
+    state.inheritance = { keep: [...keep], create, update: mergeLeafOriginalUpdates(update, registry, idToAnchor, treeInfo) };
     state.patches = patchList.filter((patch) => patch?.type !== "hide" && patch?.type !== "replace"
       && !(patch?.type === "bind" && isSystemBindAnchor(patchAnchor(patch))));
     for (const patch of state.inheritance.create) {
@@ -916,7 +1101,14 @@ function normalizeModel(model, initialHeight, registry = {}) {
       ensureOriginalUpdateRenderable(patch, state, registry, virtualPatchById);
       if (patch?.id || patch?.name) {
         const id = patch.id || patch.name;
-        virtualPatchById.set(id, { ...(virtualPatchById.get(id) || {}), ...patch, props: { ...((virtualPatchById.get(id) || {}).props || {}), ...(patch.props || {}) } });
+        // Cumulative ledger: this state's patch carries every modification
+        // since the original implementation, so its render is self-contained.
+        const base = virtualPatchById.get(id) || previousSpec || {};
+        patch.modifications_applied = mergeModificationLists(
+          base.modifications_applied || base.modifications,
+          patch.modifications
+        );
+        virtualPatchById.set(id, { ...base, ...patch, props: { ...(base.props || {}), ...(patch.props || {}) } });
       }
     }
     for (const patch of state.patches) {
@@ -936,6 +1128,7 @@ function normalizeModel(model, initialHeight, registry = {}) {
     );
   }
 
+  autoKeepUpdatedCards(model, registry);
   return model;
 }
 
