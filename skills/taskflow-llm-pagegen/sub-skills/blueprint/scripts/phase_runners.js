@@ -21,6 +21,7 @@ const {
   finalizePhase4,
   synthesizePhase1Confirmed,
 } = require('./compose_confirmed');
+const { normalizeOrderedStates, statesToMap } = require('./state_sequence');
 const { validatePhase } = require('./validate_phase');
 
 const SKILL_ROOT = path.resolve(__dirname, '..');
@@ -91,6 +92,238 @@ function normalizePhase3Ask(parsed) {
       rationale: option.rationale || '',
     })),
   };
+}
+
+function clone(value) {
+  return JSON.parse(JSON.stringify(value));
+}
+
+async function phaseContext(paths, phase) {
+  if (phase < 3) return {};
+  const phase2 = await readJson(stageFile(paths, 'phase2_confirmed.json'));
+  return { states: phase2.states };
+}
+
+async function composePhaseOutput(paths, session, phase, feedback = {}, options = {}) {
+  if (phase === 1) {
+    const ask = await readJson(stageFile(paths, 'phase1_ask.json'));
+    return synthesizePhase1Confirmed(ask, feedback, options);
+  }
+  if (phase === 2) {
+    const ask = await readJson(stageFile(paths, 'phase2_ask.json'));
+    return applyPhase2Selection(ask, feedback, options);
+  }
+  if (phase === 3) {
+    const ask = await readJson(stageFile(paths, 'phase3_ask.json'));
+    const phase2 = await readJson(stageFile(paths, 'phase2_confirmed.json'));
+    return applyPhase3Selection(ask, feedback, phase2.states, options);
+  }
+  if (phase === 4) {
+    const preview = await readJson(stageFile(paths, 'phase4_preview.json'));
+    const metadata = {
+      source_dir: session.source_dir,
+      sources: {
+        brief: session.paths.brief,
+        page_dsl: session.paths.page_dsl,
+        phase1_confirmed: relativeToRoot(stageFile(paths, 'phase1_confirmed.json')),
+        phase2_confirmed: relativeToRoot(stageFile(paths, 'phase2_confirmed.json')),
+        phase3_confirmed_by_id: relativeToRoot(stageFile(paths, 'phase3_confirmed_by_id.json')),
+      },
+    };
+    return finalizePhase4(preview, feedback, metadata);
+  }
+  throw new Error(`Invalid phase: ${phase}`);
+}
+
+function normalizePhase1Revision(current, parsed) {
+  const next = {
+    ...current,
+    ...(parsed || {}),
+    action: 'confirmed',
+    phase: 1,
+    selections: clone(current.selections),
+  };
+  const fieldBySelection = {
+    actor: 'actor',
+    trigger: 'trigger',
+    happy_path: 'happy_path',
+    success_criteria: 'success_criteria',
+  };
+  next.custom_overrides = { ...(current.custom_overrides || {}) };
+  for (const [selectionKey, field] of Object.entries(fieldBySelection)) {
+    const previousText = current.selections?.[selectionKey]?.text || '';
+    const revisedText = next[field] || previousText;
+    next.selections[selectionKey] = {
+      ...(current.selections?.[selectionKey] || {}),
+      option_id: revisedText === previousText
+        ? current.selections?.[selectionKey]?.option_id
+        : 'custom',
+      text: revisedText,
+    };
+    if (revisedText !== previousText) next.custom_overrides[selectionKey] = revisedText;
+  }
+  return next;
+}
+
+function normalizePhase2Revision(current, parsed) {
+  const parsedStates = Array.isArray(parsed?.states) ? parsed.states : [];
+  const proposed = normalizeOrderedStates(parsedStates, {
+    initialState: current.states[0],
+  });
+  return {
+    action: 'confirmed',
+    phase: 2,
+    states: proposed.length ? proposed : clone(current.states),
+  };
+}
+
+function normalizePhase3Revision(current, parsed) {
+  const proposed = parsed?.selections_by_state || {};
+  const selections = {};
+  for (const [stateId, selection] of Object.entries(current.selections_by_state || {})) {
+    const revised = proposed[stateId] || {};
+    const implementationPlan = revised.implementation_plan || selection.implementation_plan;
+    selections[stateId] = {
+      option_id: implementationPlan === selection.implementation_plan
+        ? selection.option_id
+        : 'custom',
+      implementation_plan: implementationPlan,
+    };
+  }
+  return {
+    action: 'confirmed',
+    phase: 3,
+    selections_by_state: selections,
+  };
+}
+
+function normalizePhase4Revision(current, parsed) {
+  const parsedStates = Object.values(parsed?.merged_states_by_id || {});
+  const currentInitial = current.merged_states_by_id?.state_1;
+  const normalizedStates = normalizeOrderedStates(parsedStates, {
+    initialState: currentInitial,
+    requireImplementation: true,
+  });
+  const mergedStates = statesToMap(normalizedStates);
+  return {
+    ...current,
+    ...(parsed || {}),
+    action: 'done',
+    phase: 4,
+    source_dir: current.source_dir,
+    sources: current.sources,
+    generated_at: current.generated_at,
+    merged_states_by_id: mergedStates,
+  };
+}
+
+function normalizeRevision(phase, current, parsed) {
+  if (phase === 1) return normalizePhase1Revision(current, parsed);
+  if (phase === 2) return normalizePhase2Revision(current, parsed);
+  if (phase === 3) return normalizePhase3Revision(current, parsed);
+  if (phase === 4) return normalizePhase4Revision(current, parsed);
+  throw new Error(`Invalid phase: ${phase}`);
+}
+
+function revisionContract(phase) {
+  if (phase === 1) {
+    return 'Return the complete Phase 1 confirmed object. Preserve the selected option metadata. Keep a complete user_story and valid acceptance_criteria_steps containing given, when, and then.';
+  }
+  if (phase === 2) {
+    return [
+      'Return the complete Phase 2 confirmed object.',
+      'The user may add, delete, reorder, rename, or revise states.',
+      'The returned states array is authoritative and must contain the entire revised sequence.',
+      'If the user asks to add one state, the returned states length must increase by one; if asked to delete one, it must decrease by one.',
+      'Keep state_1 as the first state and number all states contiguously as state_1 through state_N in flow order.',
+      'Update all state references inside descriptions after insertion, deletion, or reordering.',
+      'Every description must contain 触发条件：, 展示信息：, 继承信息：.',
+    ].join(' ');
+  }
+  if (phase === 3) {
+    return 'Return the complete Phase 3 confirmed object. Preserve exactly the same selections_by_state keys. Each state must have a complete implementation_plan.';
+  }
+  return [
+    'Return the complete Phase 4 done object.',
+    'The user may add, delete, reorder, rename, or revise merged states.',
+    'merged_states_by_id is authoritative and must contain the entire revised state sequence.',
+    'If the user asks to add one state, the state count must increase by one; if asked to delete one, it must decrease by one.',
+    'Keep state_1 first and number all states contiguously as state_1 through state_N in flow order.',
+    'Update all state references after insertion, deletion, or reordering.',
+    'Every non-state_1 state, including newly added states, must include a complete implementation.implementation_plan.',
+    'Preserve sources, source_dir, brief, user_story_confirmed, and page_dsl unless the feedback explicitly asks to revise them.',
+    'state_1 implementation must remain null.',
+  ].join(' ');
+}
+
+function stateCount(value, phase) {
+  if (phase === 2) return Array.isArray(value?.states) ? value.states.length : 0;
+  if (phase === 4) return Object.keys(value?.merged_states_by_id || {}).length;
+  return 0;
+}
+
+function stateCountIssues(phase, current, revised, feedbackText) {
+  if (![2, 4].includes(phase)) return [];
+  const feedback = String(feedbackText || '');
+  const asksToAdd = /(新增|增加|添加|插入|补充|add|insert)/i.test(feedback);
+  const asksToDelete = /(删除|移除|去掉|删掉|remove|delete)/i.test(feedback);
+  if (asksToAdd === asksToDelete) return [];
+  const before = stateCount(current, phase);
+  const after = stateCount(revised, phase);
+  if (asksToAdd && after <= before) {
+    return [`用户要求新增状态，但状态数量未增加：修改前 ${before}，修改后 ${after}`];
+  }
+  if (asksToDelete && after >= before) {
+    return [`用户要求删除状态，但状态数量未减少：修改前 ${before}，修改后 ${after}`];
+  }
+  return [];
+}
+
+async function buildPhaseDraft(sessionDir, phase, selectionFeedback, options = {}) {
+  const paths = await loadSession(sessionDir);
+  assertCanConfirm(paths.session, phase);
+  const output = await composePhaseOutput(paths, paths.session, phase, selectionFeedback, options);
+  const report = validatePhase(phase, 'confirmed', output, await phaseContext(paths, phase));
+  if (!report.valid) {
+    throw new ValidationError(`Phase ${phase} selected content validation failed`, report);
+  }
+  return output;
+}
+
+async function revisePhaseDraft(sessionDir, phase, current, feedbackText) {
+  const paths = await loadSession(sessionDir);
+  assertCanConfirm(paths.session, phase);
+  const context = await phaseContext(paths, phase);
+  let validationIssues = [];
+  for (let attempt = 1; attempt <= 2; attempt += 1) {
+    const system = [
+      `You revise an already composed Phase ${phase} blueprint result from natural-language user feedback.`,
+      'Return ONLY one strict JSON object containing the complete revised Phase result.',
+      'Do not return options, explanations, markdown, patches, diffs, or partial fields.',
+      'Modify the current complete content semantically according to the feedback; do not perform literal string replacement.',
+      'Do not add back options or states that the user did not select.',
+      revisionContract(phase),
+    ].join('\n');
+    const user = JSON.stringify({
+      task: `Revise the complete Phase ${phase} content.`,
+      user_feedback: feedbackText,
+      current_complete_content: current,
+      previous_validation_issues: validationIssues,
+    }, null, 2);
+    const rawText = await callQwen({ system, user, model: paths.session.model });
+    const revised = normalizeRevision(phase, current, extractJSON(rawText));
+    const report = validatePhase(phase, 'confirmed', revised, context);
+    const countIssues = stateCountIssues(phase, current, revised, feedbackText);
+    if (report.valid && countIssues.length === 0) return revised;
+    validationIssues = [...report.issues, ...countIssues];
+  }
+  throw new ValidationError(`Phase ${phase} model revision validation failed`, {
+    phase,
+    kind: 'confirmed',
+    valid: false,
+    issues: validationIssues,
+    checked_at: new Date().toISOString(),
+  });
 }
 
 async function writeValidationOrThrow(sessionDir, paths, phase, kind, payload, context) {
@@ -244,39 +477,8 @@ async function confirmPhase(sessionDir, phase, feedback = {}, options = {}) {
   const paths = await loadSession(sessionDir);
   const { session } = paths;
   assertCanConfirm(session, phase);
-  let output;
-  let report;
-  if (phase === 1) {
-    const ask = await readJson(stageFile(paths, 'phase1_ask.json'));
-    output = synthesizePhase1Confirmed(ask, feedback, options);
-    report = validatePhase(1, 'confirmed', output);
-  } else if (phase === 2) {
-    const ask = await readJson(stageFile(paths, 'phase2_ask.json'));
-    output = applyPhase2Selection(ask, feedback, options);
-    report = validatePhase(2, 'confirmed', output);
-  } else if (phase === 3) {
-    const ask = await readJson(stageFile(paths, 'phase3_ask.json'));
-    const phase2 = await readJson(stageFile(paths, 'phase2_confirmed.json'));
-    output = applyPhase3Selection(ask, feedback, phase2.states, options);
-    report = validatePhase(3, 'confirmed', output, { states: phase2.states });
-  } else if (phase === 4) {
-    const preview = await readJson(stageFile(paths, 'phase4_preview.json'));
-    const phase2 = await readJson(stageFile(paths, 'phase2_confirmed.json'));
-    const metadata = {
-      source_dir: session.source_dir,
-      sources: {
-        brief: session.paths.brief,
-        page_dsl: session.paths.page_dsl,
-        phase1_confirmed: relativeToRoot(stageFile(paths, 'phase1_confirmed.json')),
-        phase2_confirmed: relativeToRoot(stageFile(paths, 'phase2_confirmed.json')),
-        phase3_confirmed_by_id: relativeToRoot(stageFile(paths, 'phase3_confirmed_by_id.json')),
-      },
-    };
-    output = finalizePhase4(preview, feedback, metadata);
-    report = validatePhase(4, 'confirmed', output, { states: phase2.states });
-  } else {
-    throw new Error(`Invalid phase: ${phase}`);
-  }
+  const output = await composePhaseOutput(paths, session, phase, feedback, options);
+  const report = validatePhase(phase, 'confirmed', output, await phaseContext(paths, phase));
 
   await writeJson(validationFile(paths, `phase${phase}_report.json`), report);
   if (!report.valid) {
@@ -311,7 +513,11 @@ function latestStagePayload(paths, session) {
 
 module.exports = {
   ValidationError,
+  buildPhaseDraft,
   confirmPhase,
   generatePhase,
   latestStagePayload,
+  normalizeRevision,
+  revisePhaseDraft,
+  stateCountIssues,
 };

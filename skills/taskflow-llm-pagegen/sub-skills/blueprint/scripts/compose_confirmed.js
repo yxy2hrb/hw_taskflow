@@ -1,4 +1,8 @@
 const { GROUPS, stateIdFromOption } = require('./validate_phase');
+const {
+  normalizeSelectedStates,
+  statesToMap,
+} = require('./state_sequence');
 
 function clone(value) {
   return JSON.parse(JSON.stringify(value));
@@ -116,7 +120,10 @@ function applyPhase2Selection(ask, feedback, { allowDefaults = false } = {}) {
   for (const custom of feedback?.custom_states || []) {
     states.push(normalizeConfirmedState(custom, states.length));
   }
-  return { action: 'confirmed', phase: 2, states };
+  const normalizedStates = normalizeSelectedStates(states, ask.options, {
+    initialState: ask.options.find((state) => state.id === 'state_1'),
+  });
+  return { action: 'confirmed', phase: 2, states: normalizedStates };
 }
 
 function groupPhase3Options(ask) {
@@ -193,9 +200,15 @@ function buildPhase4Preview({ brief, pageDsl, phase1, phase2, phase3 }) {
 }
 
 function finalizePhase4(preview, feedback, metadata = {}) {
+  if (feedback?.action === 'done' && feedback?.phase === 4) return clone(feedback);
   const edits = feedback?.merged_states_by_id || feedback?.preview?.merged_states_by_id || null;
+  const selectedIds = Array.isArray(feedback?.selected_ids) && feedback.selected_ids.length
+    ? new Set(feedback.selected_ids)
+    : null;
+  const sourceStates = Object.entries(preview.merged_states_by_id || {})
+    .filter(([stateId]) => !selectedIds || selectedIds.has(stateId));
   const edited = edits
-    ? Object.fromEntries(Object.entries(preview.merged_states_by_id || {}).map(([stateId, state]) => [
+    ? Object.fromEntries(sourceStates.map(([stateId, state]) => [
       stateId,
       {
         ...state,
@@ -203,7 +216,15 @@ function finalizePhase4(preview, feedback, metadata = {}) {
         implementation: edits[stateId]?.implementation === undefined ? state.implementation : edits[stateId].implementation,
       },
     ]))
-    : preview.merged_states_by_id;
+    : Object.fromEntries(sourceStates);
+  const normalizedStates = normalizeSelectedStates(
+    Object.values(edited),
+    Object.values(preview.merged_states_by_id || {}),
+    {
+      initialState: preview.merged_states_by_id?.state_1,
+      requireImplementation: true,
+    },
+  );
   return {
     action: 'done',
     phase: 4,
@@ -212,7 +233,7 @@ function finalizePhase4(preview, feedback, metadata = {}) {
     sources: metadata.sources || {},
     brief: feedback?.brief || preview.brief,
     user_story_confirmed: feedback?.user_story_confirmed || preview.user_story_confirmed,
-    merged_states_by_id: edited,
+    merged_states_by_id: statesToMap(normalizedStates),
     page_dsl: feedback?.page_dsl ?? preview.page_dsl,
   };
 }

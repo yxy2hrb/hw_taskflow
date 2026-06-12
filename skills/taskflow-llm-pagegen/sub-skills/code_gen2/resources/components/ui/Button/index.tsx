@@ -13,6 +13,8 @@ export interface CapsuleButtonProps {
   disabled?: boolean
   /** 左侧图标 */
   icon?: React.ReactNode
+  /** 紧凑横向内边距，用于三按钮等窄布局 */
+  compact?: boolean
   className?: string
   onClick?: () => void
 }
@@ -83,6 +85,7 @@ export const CapsuleButton: React.FC<CapsuleButtonProps> = ({
   variant = 'primary',
   disabled = false,
   icon,
+  compact = false,
   className,
   onClick,
 }) => {
@@ -92,6 +95,8 @@ export const CapsuleButton: React.FC<CapsuleButtonProps> = ({
       style={{
         ...capsuleSizeStyles[size],
         ...getCapsuleStyle(variant, disabled),
+        boxSizing: 'border-box',
+        ...(compact && size === 'large' ? { paddingLeft: 12, paddingRight: 12 } : {}),
         gap: 'var(--spacing-xs)',
         cursor: disabled ? 'not-allowed' : 'pointer',
       }}

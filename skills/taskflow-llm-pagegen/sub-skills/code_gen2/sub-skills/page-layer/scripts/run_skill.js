@@ -197,6 +197,42 @@ function buildPromptInput({ registry, model, blueprint, componentCodegen, width,
   };
 }
 
+function buildSavedPageLayerInput({
+  modelName,
+  maxTokens,
+  generationMode,
+  system,
+  promptInput,
+  htmlPath,
+  registryPath,
+  stateModelPath,
+  blueprintPath,
+  componentCodegenPath,
+  outHtml,
+}) {
+  return {
+    stage: "page-layer",
+    generation_mode: generationMode,
+    model: modelName,
+    temperature: Number(process.env.MODEL_TEMPERATURE ?? 0.2),
+    max_tokens: maxTokens,
+    response_format: { type: "json_object" },
+    sources: {
+      html: rel(htmlPath),
+      semantic_registry: rel(registryPath),
+      state_implementation_model: rel(stateModelPath),
+      blueprint: blueprintPath && exists(blueprintPath) ? rel(blueprintPath) : null,
+      component_codegen: componentCodegenPath && exists(componentCodegenPath) ? rel(componentCodegenPath) : null,
+      output_html: rel(outHtml),
+    },
+    payload: promptInput,
+    messages: [
+      { role: "system", content: system },
+      { role: "user", content: JSON.stringify(promptInput) },
+    ],
+  };
+}
+
 function hasStateSection(html, stateId) {
   return new RegExp(`<section\\b[^>]*id=["']tf-state-${stateNum(stateId)}["']`).test(String(html || ""));
 }
@@ -580,6 +616,8 @@ ${head}
 <style id="tf-llm-base-style">
 .tf-state-layer{position:fixed!important;left:0!important;top:0!important;width:${width}px!important;min-height:${height}px!important;z-index:9999!important;background:#f5f5f5;color:#1f1f1f;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;overflow-y:auto;overflow-x:hidden}
 .tf-llm-layer *{box-sizing:border-box}
+.tf-llm-flow-item>[data-component-id]{width:100%!important;max-width:100%!important}
+.tf-state-layer>.tf-component.tf-cg-card[style*="position:relative"]{width:calc(100% - 32px)!important;max-width:calc(100% - 32px)!important;margin-left:16px;margin-right:16px}
 .tf-keep-placeholder{position:absolute;overflow:hidden;pointer-events:none;z-index:2147483000!important}
 .tf-keep-placeholder>.tf-keep-crop{position:absolute;pointer-events:none}
 .tf-component-frame{position:absolute;box-sizing:border-box}
@@ -796,15 +834,37 @@ async function main() {
   const width = Number(argValue(args, "--width", "360"));
   const height = Number(argValue(args, "--height", "792"));
   const ruleOnly = args.includes("--rule-only");
+  const saveInputOnly = args.includes("--save-input-only");
   const maxTokens = Number(argValue(args, "--max-tokens", "12000"));
 
+  loadDotEnv(path.join(SKILL_ROOT, ".env"));
+  loadDotEnv(path.join(ROOT, "backend", ".env"));
   const originalHtml = readUtf8(htmlPath);
   const registry = readJson(registryPath);
   const stateModel = readJson(stateModelPath);
   const blueprint = blueprintPath && exists(blueprintPath) ? readJson(blueprintPath) : null;
   const componentCodegen = componentCodegenPath && exists(componentCodegenPath) ? readJson(componentCodegenPath) : null;
   const promptInput = buildPromptInput({ registry, model: stateModel, blueprint, componentCodegen, width, height });
+  const skill = readUtf8(path.resolve(__dirname, "..", "SKILL.md"));
+  const system = `${skill}\n\nReturn JSON only. The JSON must contain placeholder HTML, not rendered component HTML.`;
   writeJson(path.join(outDir, "llm_layer_input.json"), promptInput);
+  writeJson(path.join(outDir, "page_layer_input.json"), buildSavedPageLayerInput({
+    modelName,
+    maxTokens,
+    generationMode: ruleOnly ? "rule-only" : "llm-placeholder",
+    system,
+    promptInput,
+    htmlPath,
+    registryPath,
+    stateModelPath,
+    blueprintPath,
+    componentCodegenPath,
+    outHtml,
+  }));
+  if (saveInputOnly) {
+    console.log(`[llm-layer] saved input=${rel(path.join(outDir, "page_layer_input.json"))}`);
+    return;
+  }
 
   let generated;
   let generationMode = "llm-placeholder";
@@ -812,11 +872,10 @@ async function main() {
     generated = buildRuleGenerated(stateModel, componentCodegen);
     generationMode = "rule-only";
   } else {
-    const skill = readUtf8(path.resolve(__dirname, "..", "SKILL.md"));
     try {
       const raw = await callLLM({
         model: modelName,
-        system: `${skill}\n\nReturn JSON only. The JSON must contain placeholder HTML, not rendered component HTML.`,
+        system,
         user: JSON.stringify(promptInput),
         maxTokens,
       });
@@ -855,7 +914,17 @@ async function main() {
   const shotsDir = path.join(outDir, "auto_shots");
   const shotReport = await screenshotStates({ htmlPath: outHtml, blueprint, model: stateModel, outDir: shotsDir, width, height });
   const ok = shotReport.summary.issues_found.length === 0;
-  writeJson(path.join(outDir, "run_report.json"), { ok, generation_mode: generationMode, outputs: { html: rel(outHtml), auto_shots: rel(shotsDir), state_layers_report: rel(path.join(shotsDir, "state_layers_report.json")) }, screenshot_summary: shotReport.summary });
+  writeJson(path.join(outDir, "run_report.json"), {
+    ok,
+    generation_mode: generationMode,
+    outputs: {
+      input: rel(path.join(outDir, "page_layer_input.json")),
+      html: rel(outHtml),
+      auto_shots: rel(shotsDir),
+      state_layers_report: rel(path.join(shotsDir, "state_layers_report.json")),
+    },
+    screenshot_summary: shotReport.summary,
+  });
   console.log(`[llm-layer] ok=${ok} out=${rel(outHtml)}`);
   if (!ok) process.exitCode = 2;
 }

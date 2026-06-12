@@ -5,8 +5,15 @@ const {
   loadSession,
   stageFile,
 } = require('./session');
-const { confirmPhase, generatePhase, latestStagePayload, ValidationError } = require('./phase_runners');
-const { renderView } = require('./render_view');
+const {
+  buildPhaseDraft,
+  confirmPhase,
+  generatePhase,
+  latestStagePayload,
+  revisePhaseDraft,
+  ValidationError,
+} = require('./phase_runners');
+const { renderConfirmedView, renderView } = require('./render_view');
 const { runAuto } = require('./legacy_auto');
 const { promptForFeedback, readFeedbackFile } = require('./numbered_interaction');
 
@@ -131,9 +138,39 @@ async function main() {
       console.log(renderView(payload));
       console.log('');
     }
-    const feedback = flags.input
+    let feedback = flags.input
       ? await readFeedbackFile(flags.input, payload)
-      : await promptForFeedback(payload);
+      : await promptForFeedback(payload, {
+        createDraft: (selectionFeedback) => buildPhaseDraft(
+          sessionDir,
+          phase,
+          selectionFeedback,
+          { allowDefaults: false },
+        ),
+        reviseDraft: (draft, modification) => revisePhaseDraft(
+          sessionDir,
+          phase,
+          draft,
+          modification,
+        ),
+        renderDraft: renderConfirmedView,
+      });
+    if (feedback?.__model_revision_script) {
+      let draft = await buildPhaseDraft(
+        sessionDir,
+        phase,
+        feedback.selection_feedback,
+        { allowDefaults: false },
+      );
+      console.log('\n--- 根据所选编号生成的完整内容 ---\n');
+      console.log(renderConfirmedView(draft));
+      for (const modification of feedback.modification_feedback || []) {
+        draft = await revisePhaseDraft(sessionDir, phase, draft, modification);
+        console.log('\n--- 模型修改后的完整内容 ---\n');
+        console.log(renderConfirmedView(draft));
+      }
+      feedback = draft;
+    }
     const output = await confirmPhase(sessionDir, phase, feedback, { allowDefaults: false });
     console.log(JSON.stringify({
       status: phase === 4 ? 'completed' : 'idle',

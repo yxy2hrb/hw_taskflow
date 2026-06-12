@@ -12,6 +12,14 @@ const SKILL_ROOT = path.resolve(__dirname, "..");
 const PREPROCESS_DIR = path.join(SKILL_ROOT, "sub-skills", "preprocess");
 const BLUEPRINT_DIR = path.join(SKILL_ROOT, "sub-skills", "blueprint");
 
+function configureWorkspaceNodePath() {
+  const backendNodeModules = path.join(ROOT, "backend", "node_modules");
+  if (!exists(backendNodeModules)) return;
+  const entries = String(process.env.NODE_PATH || "").split(path.delimiter).filter(Boolean);
+  if (!entries.includes(backendNodeModules)) entries.unshift(backendNodeModules);
+  process.env.NODE_PATH = entries.join(path.delimiter);
+}
+
 function rel(file) {
   return path.relative(ROOT, file).replace(/\\/g, "/");
 }
@@ -170,6 +178,7 @@ function writeAwaitingBlueprintReport({
 }
 
 async function main() {
+  configureWorkspaceNodePath();
   const args = process.argv.slice(2);
   const targetArg = args.find((arg) => !arg.startsWith("--"));
   const htmlArg = argValue(args, "--html", "");
@@ -417,6 +426,7 @@ async function main() {
     blueprint: rel(blueprintInputPath),
     state_implementation_model: rel(stateOut),
     component_codegen: rel(componentGenerated),
+    page_layer_input: rel(path.join(llmLayerOut, "page_layer_input.json")),
     llm_layer_html: rel(llmLayerHtml),
     llm_layer_dir: rel(llmLayerOut),
     state_layers_report: rel(path.join(llmLayerOut, "auto_shots", "state_layers_report.json")),

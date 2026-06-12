@@ -180,14 +180,16 @@ function validatePhase4Preview(payload, context = {}) {
   if (payload?.merged_states_by_id?.state_1?.implementation !== null) {
     issues.push('state_1 implementation must be null');
   }
-  const expected = (context.states || []).map((state) => state.id);
-  for (const stateId of expected) {
-    const state = payload?.merged_states_by_id?.[stateId];
-    if (!state) issues.push(`missing merged state ${stateId}`);
-    if (stateId !== 'state_1' && !state?.implementation?.implementation_plan) {
-      issues.push(`missing implementation for ${stateId}`);
+  const states = Object.values(payload?.merged_states_by_id || {});
+  if (states.length < 4) issues.push('merged states length must be >= 4');
+  states.forEach((state, index) => {
+    const expectedId = `state_${index + 1}`;
+    if (state?.id !== expectedId) issues.push(`merged state at index ${index} must be ${expectedId}`);
+    validateState(state, index, issues, true);
+    if (state?.id !== 'state_1' && !state?.implementation?.implementation_plan) {
+      issues.push(`missing implementation for ${state?.id || expectedId}`);
     }
-  }
+  });
   return issues;
 }
 

@@ -78,17 +78,20 @@ function componentText(component) {
   return component.text || component.description || "";
 }
 
-function fallbackComponent({ component, operation, originalComponent, generatedChildren = [] }) {
+function fallbackComponent({ component, operation, originalComponent, generatedChildren = [], isTopLevel = false }) {
   const id = component.id || component.name || "component";
   const bbox = Array.isArray(component.bbox) ? component.bbox : [0, 0, 120, 40];
   const kind = String(component.component || "component").toLowerCase();
   const text = componentText(component) || (operation === "update" && originalComponent?.text) || "";
   const hasBbox = Array.isArray(component.bbox);
-  const width = Number(component.props?.width || component.width || bbox[2] || 120);
+  const explicitWidth = component.props?.width ?? component.width;
+  const width = explicitWidth ?? (isTopLevel ? "100%" : bbox[2] || 120);
   const height = Number(component.props?.height || component.height || bbox[3] || 40);
+  const reactWidth = typeof width === "number" ? String(width) : JSON.stringify(width);
+  const cssWidth = typeof width === "number" ? `${width}px` : String(width);
   const style = hasBbox
     ? `position:absolute;left:${Number(bbox[0] || 0)}px;top:${Number(bbox[1] || 0)}px;width:${Number(bbox[2] || 0)}px;height:${Number(bbox[3] || 0)}px;`
-    : `position:relative;width:${width}px;min-height:${height}px;`;
+    : `position:relative;width:${cssWidth};min-height:${height}px;`;
   const cls = kind.includes("button") ? "tf-cg-button" : kind.includes("input") ? "tf-cg-input" : kind.includes("toast") ? "tf-cg-toast" : "tf-cg-card";
   const childImports = generatedChildren.map((child) => `import ${child.importName} from ${JSON.stringify(child.importPath)};`);
   const childJsx = generatedChildren.map((child) => `        <${child.importName} />`).join("\n");
@@ -98,7 +101,7 @@ function fallbackComponent({ component, operation, originalComponent, generatedC
     "",
     "export default function GeneratedComponent() {",
     "  return (",
-    `    <div data-component-id=${JSON.stringify(id)} className={${JSON.stringify(`tf-component ${cls}`)}} style={${hasBbox ? `{ position: "absolute", left: ${Number(bbox[0] || 0)}, top: ${Number(bbox[1] || 0)}, width: ${Number(bbox[2] || 0)}, height: ${Number(bbox[3] || 0)} }` : `{ position: "relative", width: ${width}, minHeight: ${height} }`}}>`,
+    `    <div data-component-id=${JSON.stringify(id)} className={${JSON.stringify(`tf-component ${cls}`)}} style={${hasBbox ? `{ position: "absolute", left: ${Number(bbox[0] || 0)}, top: ${Number(bbox[1] || 0)}, width: ${Number(bbox[2] || 0)}, height: ${Number(bbox[3] || 0)} }` : `{ position: "relative", width: ${reactWidth}, minHeight: ${height} }`}}>`,
     childJsx || `      {${JSON.stringify(text)}}`,
     "    </div>",
     "  );",
@@ -299,7 +302,7 @@ async function generateComponentRecord({ component, operation, originalComponent
   let raw = "";
   let issues = [];
   if (useFallback) {
-    parsed = fallbackComponent({ component, operation, originalComponent, generatedChildren });
+    parsed = fallbackComponent({ component, operation, originalComponent, generatedChildren, isTopLevel });
   } else {
     const systemPrompt = [
       skill,
@@ -311,12 +314,12 @@ async function generateComponentRecord({ component, operation, originalComponent
   }
   parsed = mergeChildCss(parsed, childRecords || []);
   issues = validateComponent(parsed, id);
-  if (issues.length) parsed = mergeChildCss(fallbackComponent({ component, operation, originalComponent, generatedChildren }), childRecords || []);
+  if (issues.length) parsed = mergeChildCss(fallbackComponent({ component, operation, originalComponent, generatedChildren, isTopLevel }), childRecords || []);
   try {
     parsed = await renderComponentRecord(parsed, { id, outDir });
   } catch (err) {
     issues.push("react render failed: " + err.message);
-    parsed = await renderComponentRecord(mergeChildCss(fallbackComponent({ component, operation, originalComponent, generatedChildren }), childRecords || []), { id, outDir });
+    parsed = await renderComponentRecord(mergeChildCss(fallbackComponent({ component, operation, originalComponent, generatedChildren, isTopLevel }), childRecords || []), { id, outDir });
   }
   if (raw) writeUtf8(path.join(rawDir, `${stateContext.id}_${operation}_${id}.raw.txt`), raw);
   return { state_id: stateContext.id, operation, original_component_id: originalComponent?.id || null, component: parsed, input, issues };

@@ -13,7 +13,8 @@ description: >
 `blueprint_builder_input.json`。蓝图阶段默认不再一口气连跑 4 步，而是每步：
 
 ```text
-generate 结构化草案 -> 展示给用户 -> confirm 用户确认/修改 -> 写入 confirmed -> 下一步
+generate 结构化草案 -> 用户选择保留编号 -> 展示完整内容
+-> 模型按修改意见重新生成完整内容（可多轮） -> 用户确认 -> 写入 confirmed -> 下一步
 ```
 
 最终产物仍是：
@@ -87,19 +88,26 @@ node .cursor/skills/taskflow-llm-pagegen/sub-skills/blueprint/scripts/run_skill.
 请输入要保留的编号：
 > 1,2,3,4
 
-要修改的编号（或 done）：
-> 3
+--- 根据所选编号生成的完整内容 ---
+...
 
-请输入新的内容：
-> 修改后的内容
+请输入修改意见：
+> 第三个状态增加加载反馈，并禁止重复提交
+
+--- 模型修改后的完整内容 ---
+...
+
+请输入修改意见：
+> next
 ```
 
 - Phase 1：四个分组各选择一个编号。
 - Phase 2：编号表示保留的 state。
-- Phase 3：编号表示保持原样的 UI 实现；可逐状态修改。
-- Phase 4：编号表示保持原样的合并状态；可逐状态修改。
-- 输入 `done` 完成修改。
-- `--input feedback.txt` 支持第一行编号、后续 `编号=内容`。
+- Phase 3：编号表示保持原样的 UI 实现；修改意见作用于完整实现方案。
+- Phase 4：编号表示保持原样的合并状态；修改意见作用于完整蓝图。
+- 每轮修改意见都会调用模型重新生成并校验完整内容，不直接修改 confirmed 文件。
+- 输入 `next`、`done` 或 `下一步` 完成当前 Phase。
+- `--input feedback.txt` 支持第一行编号、后续每行一轮自然语言修改意见。
 - 原有 `--input feedback.json` 继续兼容。
 
 ## 阶段状态机
@@ -146,7 +154,7 @@ Phase 4 confirm  -> blueprint_builder_input.json
 ### Phase 3
 
 `phase3_ask.json` 为每个非 `state_1` 生成一份 UI 实现草案。用户可以直接确认全部草案，
-也可以通过 `edits_by_state` 单独修改任意 state。确认后仍写：
+选择后先展示完整实现方案；用户的自然语言修改意见由模型作用于完整内容。确认后仍写：
 
 ```json
 {
@@ -161,13 +169,14 @@ Phase 4 confirm  -> blueprint_builder_input.json
 }
 ```
 
-未修改的 state 沿用生成草案；被修改的 state 使用用户提供的 `implementation_plan`，
+未修改的 state 沿用生成草案；被模型修改的 state 使用重新生成的 `implementation_plan`，
 并将 `option_id` 记为 `custom`。
 
 ### Phase 4
 
-Phase 4 不调用 LLM。脚本读取前三步 confirmed，生成 `phase4_preview.json`。用户可编辑
-`merged_states_by_id` 后确认，最终写入 `blueprint_builder_input.json`。
+Phase 4 初始预览不调用 LLM。脚本读取前三步 confirmed，生成 `phase4_preview.json`。
+若用户提出修改意见，则调用模型基于完整预览重新生成；用户确认后写入
+`blueprint_builder_input.json`。
 
 ## 质量门禁
 
@@ -184,5 +193,5 @@ Phase 4 不调用 LLM。脚本读取前三步 confirmed，生成 `phase4_preview
 
 - `user-story`：生成 Phase 1 ask；confirm 时合成 confirmed。
 - `state-enumeration`：生成 Phase 2 ask；confirm 时写状态清单。
-- `implementation-plan`：为每个状态生成一份实现草案；confirm 时应用逐状态修改并写 `selections_by_state`。
-- `blueprint-builder`：构建 Phase 4 preview；confirm 后写最终输入。
+- `implementation-plan`：为每个状态生成一份实现草案；confirm 时通过模型修改完整方案并写 `selections_by_state`。
+- `blueprint-builder`：构建 Phase 4 preview；修改时调用模型重生成完整蓝图，confirm 后写最终输入。

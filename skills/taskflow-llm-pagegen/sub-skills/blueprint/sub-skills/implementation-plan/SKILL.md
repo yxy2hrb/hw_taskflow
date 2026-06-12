@@ -183,8 +183,8 @@ confirm 规则：
 
 - 执行 confirm 即表示接受所有未修改的实现草案。
 - 终端交互时输入要保持原样的数字编号，直接回车表示全部保留。
-- 修改时输入对应编号和新的完整 `implementation_plan`。
-- 用户可通过 `edits_by_state` 单独覆盖任意 state 的 `implementation_plan`。
+- 选择后展示完整 `selections_by_state`；修改时输入自然语言意见。
+- 每轮修改必须调用模型重新生成完整实现方案，不得直接覆盖 `implementation_plan`。
 - 未修改 state 的 `option_id` 保留 `state_N::implementation`；修改后的 state 记为 `custom`。
 - 每个非 `state_1` 的 state 最终必须有且仅有一条实现方案。
 - `state_1` 不出现在 options 和 `selections_by_state` 中。

@@ -146,13 +146,11 @@ function buildPhase4Feedback(entries, selectedNumbers, edits) {
       };
     }
   }
-  const missing = entries.filter((entry) => !keep.has(entry.number) && !edits.has(entry.number));
-  if (missing.length) {
-    throw new Error(`未保留的编号必须提供修改内容：${missing.map((entry) => entry.number).join(', ')}`);
-  }
-  return Object.keys(merged_states_by_id).length
-    ? { merged_states_by_id }
-    : { confirm: true };
+  return {
+    selected_ids: entries.filter((entry) => keep.has(entry.number)).map((entry) => entry.id),
+    ...(Object.keys(merged_states_by_id).length ? { merged_states_by_id } : {}),
+    confirm: true,
+  };
 }
 
 function buildFeedback(payload, selectedNumbers, edits) {
@@ -176,11 +174,50 @@ function modificationHint(phase) {
   return '输入新的完整内容。';
 }
 
-async function promptForFeedback(payload) {
+function isNextCommand(value) {
+  return /^(next|done|confirm|下一步|进入下一阶段|进入下一phase|确认|完成)$/i.test(String(value || '').trim());
+}
+
+async function promptForModelRevision(payload, {
+  createDraft,
+  reviseDraft,
+  renderDraft,
+}) {
+  const rl = readline.createInterface({ input: stdin, output: stdout });
+  try {
+    const selectedText = await rl.question(`${selectionPrompt(payload.phase)}\n> `);
+    const selectedNumbers = parseNumberList(selectedText);
+    const selectionFeedback = buildFeedback(payload, selectedNumbers, new Map());
+    let draft = await createDraft(selectionFeedback);
+
+    console.log('\n--- 根据所选编号生成的完整内容 ---\n');
+    console.log(renderDraft(draft));
+
+    while (true) {
+      const feedback = (await rl.question(
+        '\n请输入修改意见；输入 next/done/下一步，确认当前内容并进入下一 Phase：\n> ',
+      )).trim();
+      if (!feedback || isNextCommand(feedback)) return draft;
+
+      console.log('\n正在根据修改意见重新生成当前 Phase 的完整内容...');
+      draft = await reviseDraft(draft, feedback);
+      console.log('\n--- 模型修改后的完整内容 ---\n');
+      console.log(renderDraft(draft));
+    }
+  } finally {
+    rl.close();
+  }
+}
+
+async function promptForFeedback(payload, revisionHandlers = null) {
   if (!stdin.isTTY) {
     const chunks = [];
     for await (const chunk of stdin) chunks.push(chunk);
-    return parseNumberedText(payload, Buffer.concat(chunks.map((chunk) => Buffer.from(chunk))).toString('utf8'));
+    const text = Buffer.concat(chunks.map((chunk) => Buffer.from(chunk))).toString('utf8');
+    return revisionHandlers ? parseNumberedRevisionText(payload, text) : parseNumberedText(payload, text);
+  }
+  if (revisionHandlers) {
+    return promptForModelRevision(payload, revisionHandlers);
   }
   const rl = readline.createInterface({ input: stdin, output: stdout });
   try {
@@ -219,12 +256,33 @@ function parseNumberedText(payload, text) {
   return buildFeedback(payload, selectedNumbers, edits);
 }
 
+function parseNumberedRevisionText(payload, text) {
+  const lines = String(text || '')
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter((line) => line && !line.startsWith('#'));
+  const selectedNumbers = parseNumberList(lines.shift() || '');
+  const modificationFeedback = [];
+  for (const line of lines) {
+    if (isNextCommand(line)) break;
+    const legacyEdit = line.match(/^(\d+)\s*(?:=|:|：)\s*(.+)$/);
+    modificationFeedback.push(legacyEdit
+      ? `请重点修改编号 ${legacyEdit[1]} 对应的内容：${legacyEdit[2].trim()}`
+      : line);
+  }
+  return {
+    __model_revision_script: true,
+    selection_feedback: buildFeedback(payload, selectedNumbers, new Map()),
+    modification_feedback: modificationFeedback,
+  };
+}
+
 async function readFeedbackFile(file, payload) {
   const text = await fs.readFile(file, 'utf8');
   try {
     return JSON.parse(text);
   } catch {
-    return parseNumberedText(payload, text);
+    return parseNumberedRevisionText(payload, text);
   }
 }
 
@@ -233,6 +291,8 @@ module.exports = {
   entriesForPayload,
   parseNumberList,
   parseNumberedText,
+  parseNumberedRevisionText,
   promptForFeedback,
+  promptForModelRevision,
   readFeedbackFile,
 };

@@ -5,7 +5,9 @@ const path = require("path");
 
 const CODEGEN_ROOT = path.resolve(__dirname, "..");
 const SKILL_ROOT = path.resolve(CODEGEN_ROOT, "../..");
-const WORKSPACE_ROOT = path.resolve(SKILL_ROOT, "../../../..");
+const WORKSPACE_ROOT = path.resolve(SKILL_ROOT, "../../..");
+const BACKEND_ROOT = path.join(WORKSPACE_ROOT, "backend");
+const BACKEND_NODE_MODULES = path.join(BACKEND_ROOT, "node_modules");
 const COMPONENTS_DIR = path.join(CODEGEN_ROOT, "resources", "components");
 const RENDER_DIR = path.join(CODEGEN_ROOT, ".react_ssr");
 const SHIMS_DIR = path.join(RENDER_DIR, "shims");
@@ -39,6 +41,7 @@ function requireFromCandidates(pkg, extraCandidates = []) {
     CODEGEN_ROOT,
     SKILL_ROOT,
     WORKSPACE_ROOT,
+    BACKEND_ROOT,
     process.cwd(),
     ...extraCandidates,
   ];
@@ -147,6 +150,7 @@ export default html;
     format: "cjs",
     jsx: "automatic",
     external: ["react", "react-dom", "react-dom/server"],
+    nodePaths: fs.existsSync(BACKEND_NODE_MODULES) ? [BACKEND_NODE_MODULES] : [],
     plugins: [aliasPlugin()],
     logLevel: "silent",
   });

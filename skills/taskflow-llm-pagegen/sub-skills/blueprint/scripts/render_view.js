@@ -51,4 +51,48 @@ function renderView(payload) {
   return payload?.action === 'preview' ? renderPreview(payload) : renderAsk(payload);
 }
 
-module.exports = { renderView };
+function renderConfirmedView(payload) {
+  if (payload?.phase === 1) {
+    return [
+      'Phase 1 完整 User Story',
+      '',
+      `主角：${payload.actor || ''}`,
+      `触发点：${payload.trigger || ''}`,
+      `目标与理想路径：${payload.happy_path || ''}`,
+      `成功判定：${payload.success_criteria || ''}`,
+      `User Story：${payload.user_story || ''}`,
+      '验收标准：',
+      ...(payload.acceptance_criteria_steps || []).map((step) => `- ${String(step.type || '').toUpperCase()}：${step.text || ''}`),
+    ].join('\n');
+  }
+  if (payload?.phase === 2) {
+    return [
+      'Phase 2 完整状态序列',
+      ...(payload.states || []).flatMap((state, index) => [
+        '',
+        `[${index + 1}] ${state.id} · ${state.label}`,
+        state.description || '',
+      ]),
+    ].join('\n');
+  }
+  if (payload?.phase === 3) {
+    return [
+      'Phase 3 完整实现方案',
+      ...Object.entries(payload.selections_by_state || {}).flatMap(([stateId, selection], index) => [
+        '',
+        `[${index + 1}] ${stateId}`,
+        selection.implementation_plan || '',
+      ]),
+    ].join('\n');
+  }
+  if (payload?.phase === 4) {
+    return renderPreview({
+      ...payload,
+      action: 'preview',
+      validation_issues: [],
+    }).replace('Phase 4 蓝图预览', 'Phase 4 完整蓝图');
+  }
+  return JSON.stringify(payload, null, 2);
+}
+
+module.exports = { renderConfirmedView, renderView };
