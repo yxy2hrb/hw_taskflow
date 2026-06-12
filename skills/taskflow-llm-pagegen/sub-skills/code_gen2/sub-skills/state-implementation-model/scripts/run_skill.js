@@ -1,0 +1,719 @@
+#!/usr/bin/env node
+"use strict";
+
+const fs = require("fs");
+const path = require("path");
+
+const ROOT = path.resolve(__dirname, "../../../../../../../..");
+const SKILL_ROOT = path.resolve(__dirname, "../../../../..");
+
+function readUtf8(file) {
+  return fs.readFileSync(file, "utf8");
+}
+
+function writeUtf8(file, text) {
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  fs.writeFileSync(file, text, "utf8");
+}
+
+function argValue(args, name, fallback) {
+  const idx = args.indexOf(name);
+  return idx >= 0 ? args[idx + 1] : fallback;
+}
+
+function stateNum(id) {
+  const match = String(id || "").match(/(\d+)/);
+  return match ? Number(match[1]) : 0;
+}
+
+function loadDotEnv(file) {
+  if (!fs.existsSync(file)) return;
+  for (const line of readUtf8(file).split(/\r?\n/)) {
+    const match = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)\s*$/);
+    if (!match) continue;
+    let value = match[2];
+    if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+      value = value.slice(1, -1);
+    }
+    if (process.env[match[1]] == null) process.env[match[1]] = value;
+  }
+}
+
+function stripThink(text) {
+  return String(text || "").replace(/<think>[\s\S]*?<\/think>/gi, "").trim();
+}
+
+function extractJson(text) {
+  let source = stripThink(text);
+  const markdown = source.match(/```(?:json)?\s*([\s\S]*?)\s*```/i);
+  if (markdown) source = markdown[1].trim();
+  const json = source.match(/\{[\s\S]*\}/);
+  if (json) source = json[0];
+  return JSON.parse(source);
+}
+
+function latestBlueprint(base) {
+  const dir = path.join(base, "html");
+  const hits = [];
+  function walk(current) {
+    if (!fs.existsSync(current)) return;
+    for (const name of fs.readdirSync(current)) {
+      const file = path.join(current, name);
+      const stat = fs.statSync(file);
+      if (stat.isDirectory()) walk(file);
+      else if (name === "blueprint_builder_input.json") hits.push(file);
+    }
+  }
+  walk(dir);
+  hits.sort((a, b) => fs.statSync(b).mtimeMs - fs.statSync(a).mtimeMs);
+  return hits[0];
+}
+
+function compactTreeNode(node) {
+  if (!node || typeof node !== "object") return null;
+  return {
+    anchor: node.anchor || node.name || null,
+    selector: node.selector || null,
+    id: node.id || null,
+    area: node.area || null,
+    component: node.component || node.semantic || null,
+    element: node.element || node.range || null,
+    bbox: Array.isArray(node.bbox) ? node.bbox : null,
+    text: node.text || "",
+    policy: node.policy || node.inheritance_policy || null,
+    confidence: node.confidence || null,
+    children: (node.children || []).map(compactTreeNode).filter(Boolean),
+  };
+}
+
+function treeRegistryFromGraph(registry) {
+  const graph = registry.semantic_dom_tree;
+  const graphNodes = graph?.nodes || {};
+  const roots = graph?.roots || [];
+  const build = (name) => {
+    const node = graphNodes[name];
+    if (!node) return null;
+    return compactTreeNode({
+      ...node,
+      anchor: node.anchor || name,
+      children: (node.children || []).map(build).filter(Boolean),
+    });
+  };
+  return { type: "tree", roots: roots.map(build).filter(Boolean) };
+}
+
+function treeRegistryFromFlat(registry) {
+  const roots = Object.entries(registry.semantic_dom_registry || {}).map(([name, entry]) => compactTreeNode({
+    anchor: name,
+    selector: entry.selector,
+    id: entry.id,
+    area: entry.area,
+    component: entry.component || entry.semantic,
+    element: entry.element || entry.range,
+    bbox: entry.bbox,
+    text: entry.text,
+    policy: entry.inheritance_policy,
+    confidence: entry.confidence,
+    children: [],
+  })).filter(Boolean);
+  return { type: "tree", roots };
+}
+
+function semanticRegistryForPrompt(registry) {
+  if (registry.semantic_registry_tree?.type === "tree" && Array.isArray(registry.semantic_registry_tree.roots)) {
+    return {
+      type: "tree",
+      roots: registry.semantic_registry_tree.roots.map(compactTreeNode).filter(Boolean),
+    };
+  }
+  if (registry.semantic_dom_tree?.nodes && Array.isArray(registry.semantic_dom_tree.roots)) {
+    return treeRegistryFromGraph(registry);
+  }
+  return treeRegistryFromFlat(registry);
+}
+
+function layoutConstraints() {
+  return [
+    "Ordinary page cards should use weak layout hints instead of fixed bbox: layout.group, layout.order, layout.flow, layout.widthHint, layout.heightMode:auto, layout.startAnchor, and layout.spacingHint.",
+    "Ordinary page cards should not invent exact x/y/height unless there is a clear visual anchor, fixed start point, two-column grid, sticky/floating behavior, or edge alignment requirement.",
+    "Fixed containers must use bbox: Overlay, mask, BottomSheet, Drawer, Modal, Dialog, Toast, top nav, bottom bar, and floating action bars.",
+    "If a state keeps a top/status anchor, fixed created content must start below that anchor bbox unless it is an intentional transparent/hero background; flow cards should use layout.startAnchor.",
+    "If a state keeps a bottom/nav anchor, fixed created content must end above that anchor bbox; flow cards should use layout.endBeforeAnchor or a scrollable content group.",
+    "If the state is not a modal, drawer, popover, toast, or overlay, every fixed created component bbox must avoid overlap with kept bboxes.",
+    "Fixed body regions at the same z-index must be bbox-mutually exclusive. Status/top/nav/body/bottom regions must not overlap unless one is a higher-z overlay/modal/sheet or an intentional transparent hero background.",
+    "Every modal/sheet/drawer/dialog layer must have its own global overlay/mask. Overlay z-index must be lower than its own surface and higher than content it dims.",
+    "For stacked modals, the second-level overlay z-index must be higher than the first-level sheet/dialog z-index, and the second-level sheet/dialog z-index must be higher than the second-level overlay.",
+    "Do not output hide or replace. The implementation model only contains keep, create, and update.",
+    "Generated UI should support an antd Mobile visual style and Gestalt grouping.",
+    "Prefer component names and props from component_library_reference. Use other component/container names only when no documented component fits the state requirement.",
+    "Only top-level create/update patches need page-coordinate bbox. Children inside containers should describe their own props/text/intrinsic width/height instead of bbox.",
+    "Parent containers own page placement and child layout. Child components are generated first and imported by the parent during codegen.",
+    "Rich cards must be fully populated in state_implementation_model. Component-codegen only renders existing props/children/text and must not invent business data.",
+    "For every state after state_1, first consider the previous state's full visible set: original kept anchors, previous create/update components, and components inherited from earlier ancestors. Keep or update the items that remain visible; create only newly introduced items.",
+    "For modal, drawer, popup, and bottom-sheet states, keep the background state's visible components behind the overlay, including persistent status/system bar anchors when present in semantic_registry.",
+    "If a state jumps back to an earlier page such as home/list, consider that earlier state's full accumulated visible set, not only its direct create patches.",
+  ];
+}
+
+function componentLibraryReference() {
+  const file = path.resolve(__dirname, "../../../resources/components/README.md");
+  if (!fs.existsSync(file)) return "";
+  return readUtf8(file);
+}
+
+function ownString(obj, key) {
+  return obj && Object.prototype.hasOwnProperty.call(obj, key) && typeof obj[key] === "string" ? obj[key] : null;
+}
+
+function patchAnchor(patch) {
+  return ownString(patch, "target_anchor") || ownString(patch, "anchor") || ownString(patch, "target") || ownString(patch, "id") || null;
+}
+
+function registryIdToAnchorMap(registry) {
+  const map = new Map();
+  for (const [anchor, entry] of Object.entries(registry.semantic_dom_registry || {})) {
+    if (entry?.id) map.set(String(entry.id), anchor);
+    if (typeof entry?.selector === "string" && entry.selector.startsWith("#")) {
+      map.set(entry.selector.slice(1), anchor);
+    }
+  }
+  return map;
+}
+
+function normalizeAnchorValue(value, idToAnchor) {
+  if (typeof value !== "string") return value;
+  if (idToAnchor.has(value)) return idToAnchor.get(value);
+  const relation = value.match(/^(below|above|leftOf|rightOf|after|before):(.+)$/);
+  if (relation && idToAnchor.has(relation[2])) return `${relation[1]}:${idToAnchor.get(relation[2])}`;
+  return value;
+}
+
+function normalizePatchAnchorRefs(patch, idToAnchor) {
+  if (!patch || typeof patch !== "object" || Array.isArray(patch)) return;
+  for (const key of ["anchor", "target_anchor"]) {
+    if (typeof patch[key] === "string") patch[key] = normalizeAnchorValue(patch[key], idToAnchor);
+  }
+  if (patch.layout && typeof patch.layout === "object" && !Array.isArray(patch.layout)) {
+    for (const key of ["startAnchor", "endBeforeAnchor"]) {
+      if (typeof patch.layout[key] === "string") patch.layout[key] = normalizeAnchorValue(patch.layout[key], idToAnchor);
+    }
+  }
+  for (const child of patchChildren(patch)) normalizePatchAnchorRefs(child, idToAnchor);
+}
+
+function normalizeRichRequirements(patch) {
+  if (!patch || typeof patch !== "object" || Array.isArray(patch)) return;
+  if (String(patch.content_density || "").toLowerCase() === "rich") {
+    const requirements = Array.isArray(patch.content_requirements) ? patch.content_requirements.filter(Boolean) : [];
+    const fallback = ["primaryContent", "supportingContent", "actionOrMetadata"];
+    for (const item of fallback) {
+      if (requirements.length >= 3) break;
+      if (!requirements.includes(item)) requirements.push(item);
+    }
+    patch.content_requirements = requirements;
+  }
+  for (const child of patchChildren(patch)) normalizeRichRequirements(child);
+}
+
+function patchBottom(patch) {
+  const bbox = Array.isArray(patch?.bbox) ? patch.bbox.map(Number) : [];
+  const y = Number.isFinite(bbox[1]) ? bbox[1] : null;
+  const h = Number.isFinite(bbox[3]) ? bbox[3] : null;
+  return y == null || h == null ? 0 : y + h;
+}
+
+function patchChildren(patch) {
+  return Array.isArray(patch?.children) ? patch.children : [];
+}
+
+function collectPatchIds(patch, out = []) {
+  const id = patch?.id || patch?.name;
+  if (id) out.push(id);
+  for (const child of patchChildren(patch)) collectPatchIds(child, out);
+  return out;
+}
+
+function registerPatchTree(patch, map) {
+  const id = patch?.id || patch?.name;
+  if (id) map.set(id, patch);
+  for (const child of patchChildren(patch)) registerPatchTree(child, map);
+}
+
+function collectPatchRefs(patch, out = []) {
+  const anchor = patchAnchor(patch);
+  if (anchor) out.push(anchor);
+  for (const child of patchChildren(patch)) collectPatchRefs(child, out);
+  return out;
+}
+
+function collectTopLevelPatchIds(patch, out = []) {
+  const id = patch?.id || patch?.name;
+  if (id) out.push(id);
+  return out;
+}
+
+function isContainerLike(patch) {
+  return /sectionlayout|card|list|bottomsheet|drawer|modal|dialog|container|panel|wrapper|shell/i.test(String(patch?.component || patch?.id || ""));
+}
+
+function isFixedPlacementComponent(patch) {
+  const value = `${patch?.component || ""} ${patch?.id || ""}`.toLowerCase();
+  return /bottomsheet|drawer|modal|dialog|toast|popover|overlay|mask|topnav|bottomnav|buttonbar|bottom[_-]?bar|action[_-]?bar|tab[_-]?bar|floating|statusbar/.test(value);
+}
+
+function isOverlayLike(patch) {
+  return /overlay|mask|scrim|遮罩/i.test(`${patch?.component || ""} ${patch?.id || ""}`);
+}
+
+function isModalSurfaceLike(patch) {
+  return /bottomsheet|drawer|modal|dialog|sheet|popup|popover|弹窗|抽屉/i.test(`${patch?.component || ""} ${patch?.id || ""}`);
+}
+
+function isStackingExempt(patch) {
+  return isOverlayLike(patch) || isModalSurfaceLike(patch) || /hero|carousel|transparent/i.test(`${patch?.component || ""} ${patch?.id || ""}`);
+}
+
+function validBbox(patch) {
+  const bbox = Array.isArray(patch?.bbox) ? patch.bbox.map(Number) : [];
+  return bbox.length === 4 && bbox.every(Number.isFinite) && bbox[2] > 0 && bbox[3] > 0;
+}
+
+function bboxOf(patch) {
+  return validBbox(patch) ? patch.bbox.map(Number) : null;
+}
+
+function bboxOverlap(a, b) {
+  if (!a || !b) return false;
+  return a[0] < b[0] + b[2] && a[0] + a[2] > b[0] && a[1] < b[1] + b[3] && a[1] + a[3] > b[1];
+}
+
+function patchZIndex(patch) {
+  const z = Number(patch?.props?.zIndex ?? patch?.zIndex ?? patch?.style?.zIndex ?? 0);
+  return Number.isFinite(z) ? z : 0;
+}
+
+function hasWeakLayoutHints(patch) {
+  const layout = patch?.layout;
+  if (!layout || typeof layout !== "object" || Array.isArray(layout)) return false;
+  return Boolean(layout.heightMode || layout.flow || layout.group || layout.order != null || layout.widthHint || layout.startAnchor);
+}
+
+function collectContentSignals(value, out = []) {
+  if (value == null) return out;
+  if (typeof value === "string" || typeof value === "number") {
+    const text = String(value).trim();
+    if (text) out.push(text);
+    return out;
+  }
+  if (Array.isArray(value)) {
+    for (const item of value) collectContentSignals(item, out);
+    return out;
+  }
+  if (typeof value === "object") {
+    for (const [key, item] of Object.entries(value)) {
+      if (/^(id|type|component|className|fontSize|lineHeight|fontWeight|color|zIndex|width|height|x|y|order|flow|group|heightMode|widthHint|startAnchor|endBeforeAnchor|spacingHint)$/i.test(key)) continue;
+      collectContentSignals(item, out);
+    }
+  }
+  return out;
+}
+
+function richContentStats(patch) {
+  const signals = collectContentSignals({
+    text: patch.text,
+    visible_text: patch.visible_text,
+    props: patch.props,
+    children: patch.children,
+  });
+  const unique = [...new Set(signals.filter((text) => !/^(true|false|null|undefined)$/i.test(text)))];
+  const meaningful = unique.filter((text) => !/示例|内容\.\.\.|待补充|占位|placeholder|lorem/i.test(text));
+  return {
+    uniqueCount: unique.length,
+    meaningfulCount: meaningful.length,
+    totalLength: meaningful.join("").length,
+    childCount: patchChildren(patch).length,
+  };
+}
+
+function componentSchema(name) {
+  const key = String(name || "").toLowerCase();
+  const schemas = {
+    sectionlayout: { required: ["variant"], optional: ["title", "moreText", "onMore", "tabs", "activeTab", "onTabChange", "headerRightAction"] },
+    topnav: { required: [], optional: ["variant", "onBack", "activeTab", "tabs", "onTabChange", "title", "drawerValue", "drawerOptions", "onDrawerChange", "drawerDefaultOpen", "actions", "cartCount", "onSearch", "onCart", "onProfile", "onScan", "onMessage", "onSettings", "onGrid", "transparent", "zIndex"] },
+    capsulebutton: { required: [], optional: ["children", "size", "variant", "disabled", "icon", "className", "onClick", "loading", "block", "zIndex"] },
+    textbutton: { required: [], optional: ["children", "size", "variant", "disabled", "icon", "className", "onClick", "zIndex"] },
+    buttonbar: { required: ["variant"], optional: ["primaryLabel", "secondaryLabel", "thirdLabel", "inputPlaceholder", "checkboxLabel", "width", "className", "disabled", "loading", "onPrimaryClick", "onSecondaryClick", "onThirdClick", "zIndex"] },
+    inputdemo: { required: [], optional: ["label", "placeholder", "errorMessage", "value", "onChange", "validate", "disabled", "showToggle", "className", "zIndex"] },
+    statuspill: { required: ["text"], optional: ["colorMap", "zIndex"] },
+    filterpills: { required: ["filters", "activeId"], optional: ["onChange", "fadeEdges", "zIndex"] },
+    leftsidebar: { required: ["filters", "activeId"], optional: ["onChange", "zIndex"] },
+    productlayout: { required: ["filters", "activeFilter", "subFilters", "activeSubFilter", "products"], optional: ["onFilterChange", "onSubFilterChange", "onProductClick", "onAddToCart", "zIndex"] },
+    productcard: { required: ["product"], optional: ["onClick", "onAddToCart", "zIndex"] },
+    productselectionlistitem: { required: ["item"], optional: ["onForward", "onMore", "onStatusChange", "isLast", "zIndex"] },
+    courselistitem: { required: ["course"], optional: ["onClick", "renderMeta", "zIndex"] },
+    hotvideocard: { required: ["title", "imageGradient"], optional: ["subtitle", "imageHeight", "width", "tag", "action", "onShare", "onClick", "zIndex"] },
+    icongrid: { required: ["cols", "items"], optional: ["title", "variant", "emptyText", "zIndex"] },
+    quickentrygrid: { required: ["items"], optional: ["title", "zIndex"] },
+    entrycard: { required: ["card"], optional: ["width", "height", "zIndex"] },
+    morebutton: { required: [], optional: ["onClick", "text", "zIndex"] },
+    categorytabs: { required: ["categories", "activeId"], optional: ["onChange", "zIndex"] },
+    underlinetabs: { required: ["tabs", "activeId"], optional: ["onChange", "size", "className", "zIndex"] },
+    statusbar: { required: [], optional: ["zIndex"] },
+    bottomnav: { required: [], optional: ["zIndex"] },
+  };
+  return schemas[key] || null;
+}
+
+function validateComponentProps(patch, stateId, issues) {
+  const schema = componentSchema(patch?.component);
+  if (!schema) return;
+  const props = patch.props || {};
+  const allowed = new Set([...schema.required, ...schema.optional]);
+  for (const key of Object.keys(props)) {
+    if (!allowed.has(key)) {
+      issues.push(`${stateId}.${patch.id || patch.name || patch.component} unknown prop "${key}" for ${patch.component}`);
+    }
+  }
+  for (const key of schema.required) {
+    const satisfiedByTopLevelText = key === "text" && typeof patch.text === "string" && patch.text.trim();
+    if (props[key] == null && !satisfiedByTopLevelText) {
+      issues.push(`${stateId}.${patch.id || patch.name || patch.component} missing required prop "${key}" for ${patch.component}`);
+    }
+  }
+}
+
+function hasStructuredContainerContent(patch) {
+  return patchChildren(patch).length > 0;
+}
+
+function normalizeNestedChildLayout(patch, depth = 0) {
+  if (!patch || typeof patch !== "object" || Array.isArray(patch)) return;
+  if (depth > 0 && Array.isArray(patch.bbox)) {
+    const bbox = patch.bbox.map(Number);
+    patch.props = patch.props && typeof patch.props === "object" && !Array.isArray(patch.props) ? patch.props : {};
+    if (patch.props.width == null && Number.isFinite(bbox[2])) patch.props.width = bbox[2];
+    if (patch.props.height == null && Number.isFinite(bbox[3])) patch.props.height = bbox[3];
+    delete patch.bbox;
+  }
+  for (const child of patchChildren(patch)) normalizeNestedChildLayout(child, depth + 1);
+}
+
+function validatePatchShape(patch, stateId, issues, depth = 0) {
+  if (!patch || typeof patch !== "object") return;
+  if (patch.type === "bind" || patch.type === "keep") return;
+  validateComponentProps(patch, stateId, issues);
+  const isUpdatePatch = patch.type === "update";
+  if (depth === 0 && !isUpdatePatch) {
+    if (isFixedPlacementComponent(patch) && !validBbox(patch)) {
+      issues.push(`${stateId}.${patch.id || patch.name || patch.component} fixed component requires valid bbox`);
+    }
+    if (!isFixedPlacementComponent(patch) && !validBbox(patch) && !hasWeakLayoutHints(patch)) {
+      issues.push(`${stateId}.${patch.id || patch.name || patch.component} ordinary top-level component requires bbox or weak layout hints`);
+    }
+  }
+  if (String(patch.content_density || "").toLowerCase() === "rich") {
+    const requirements = Array.isArray(patch.content_requirements) ? patch.content_requirements : [];
+    const stats = richContentStats(patch);
+    if (requirements.length < 3) {
+      issues.push(`${stateId}.${patch.id || patch.name || patch.component} rich card requires at least 3 content_requirements`);
+    }
+    if (stats.meaningfulCount < 4 || stats.totalLength < 32) {
+      issues.push(`${stateId}.${patch.id || patch.name || patch.component} rich card lacks enough concrete business content in state model`);
+    }
+  }
+  if (String(patch.component || "").toLowerCase() === "sectionlayout" && patchChildren(patch).length === 0) {
+    issues.push(`${stateId}.${patch.id || patch.name || "SectionLayout"} SectionLayout requires non-empty children`);
+  }
+  if (isContainerLike(patch) && typeof patch.text === "string" && patch.text.trim() && !hasStructuredContainerContent(patch)) {
+    issues.push(`${stateId}.${patch.id || patch.name || "component"} container must not use top-level text without children`);
+  }
+  for (const child of patchChildren(patch)) validatePatchShape(child, stateId, issues, depth + 1);
+}
+
+function stateContentBottom(state) {
+  let bottom = 0;
+  for (const patch of state.inheritance?.create || []) bottom = Math.max(bottom, patchBottom(patch));
+  for (const patch of state.inheritance?.update || []) bottom = Math.max(bottom, patchBottom(patch));
+  for (const patch of state.patches || []) {
+    if (patch?.type === "create" || patch?.type === "update") bottom = Math.max(bottom, patchBottom(patch));
+  }
+  return bottom;
+}
+
+function validateStateStacking(state, registry, virtualPatches, issues) {
+  const fixed = [];
+  function addFixed(patch, source) {
+    if (!patch || !validBbox(patch)) return;
+    fixed.push({ patch, source, id: patch.id || patch.name || patch.component || source, bbox: bboxOf(patch), z: patchZIndex(patch) });
+  }
+
+  for (const anchor of state.inheritance?.keep || []) {
+    if (typeof anchor !== "string") continue;
+    const virtual = virtualPatches.get(anchor);
+    if (virtual) {
+      addFixed(virtual, "keep");
+      continue;
+    }
+    const entry = registry.semantic_dom_registry?.[anchor];
+    if (entry?.bbox) {
+      addFixed({ id: anchor, component: entry.component || entry.semantic || "kept_anchor", bbox: entry.bbox, props: { zIndex: 0 } }, "original_keep");
+    }
+  }
+  for (const patch of state.inheritance?.create || []) addFixed(patch, "create");
+  for (const patch of state.inheritance?.update || []) addFixed(patch, "update");
+
+  for (let i = 0; i < fixed.length; i++) {
+    for (let j = i + 1; j < fixed.length; j++) {
+      const a = fixed[i];
+      const b = fixed[j];
+      if (a.source === "original_keep" && b.source === "original_keep") continue;
+      if (a.z !== b.z) continue;
+      if (isStackingExempt(a.patch) || isStackingExempt(b.patch)) continue;
+      if (bboxOverlap(a.bbox, b.bbox)) {
+        issues.push(`${state.id} fixed same-z bbox overlap: ${a.id} and ${b.id} at zIndex ${a.z}`);
+      }
+    }
+  }
+
+  const overlays = fixed.filter((item) => isOverlayLike(item.patch));
+  const surfaces = fixed.filter((item) => isModalSurfaceLike(item.patch) && !isOverlayLike(item.patch));
+  for (const surface of surfaces) {
+    const coveringOverlay = overlays
+      .filter((overlay) => overlay.z < surface.z && bboxOverlap(overlay.bbox, surface.bbox))
+      .sort((a, b) => b.z - a.z)[0];
+    if (!coveringOverlay) {
+      issues.push(`${state.id}.${surface.id} modal/sheet surface requires a lower-z global overlay covering it`);
+    }
+  }
+
+  const inheritedSurfaceMaxZ = Math.max(
+    -Infinity,
+    ...fixed.filter((item) => item.source === "keep" && isModalSurfaceLike(item.patch) && !isOverlayLike(item.patch)).map((item) => item.z)
+  );
+  if (Number.isFinite(inheritedSurfaceMaxZ)) {
+    const currentOverlays = overlays.filter((item) => item.source === "create" || item.source === "update");
+    const currentSurfaces = surfaces.filter((item) => item.source === "create" || item.source === "update");
+    if (currentSurfaces.length) {
+      const raisedOverlay = currentOverlays.find((overlay) => overlay.z > inheritedSurfaceMaxZ);
+      if (!raisedOverlay) {
+        issues.push(`${state.id} stacked modal requires a new overlay zIndex greater than inherited modal zIndex ${inheritedSurfaceMaxZ}`);
+      }
+      for (const surface of currentSurfaces) {
+        const overlay = currentOverlays.filter((item) => item.z < surface.z).sort((a, b) => b.z - a.z)[0];
+        if (!overlay) issues.push(`${state.id}.${surface.id} stacked modal surface zIndex must be greater than its current overlay`);
+      }
+    }
+  }
+}
+
+function normalizeModel(model, initialHeight, registry = {}) {
+  delete model.semanticAnchors;
+  delete model.semantic_registry;
+  const idToAnchor = registryIdToAnchorMap(registry);
+
+  for (const state of model.states || []) {
+    if (!state.trigger || typeof state.trigger !== "object" || Array.isArray(state.trigger)) state.trigger = null;
+    if (typeof state.trigger?.anchor === "string") state.trigger.anchor = normalizeAnchorValue(state.trigger.anchor, idToAnchor);
+
+    const patchList = Array.isArray(state.patches) ? state.patches : [];
+    const inheritance = state.inheritance && typeof state.inheritance === "object" && !Array.isArray(state.inheritance) ? state.inheritance : {};
+    const keep = new Set((inheritance.keep || []).map((item) => typeof item === "string" ? normalizeAnchorValue(item, idToAnchor) : item));
+    const create = Array.isArray(inheritance.create) ? inheritance.create.slice() : [];
+    const update = Array.isArray(inheritance.update) ? inheritance.update.slice() : [];
+
+    for (const patch of patchList) {
+      if (!patch || typeof patch !== "object" || Array.isArray(patch)) continue;
+      normalizePatchAnchorRefs(patch, idToAnchor);
+      const anchor = patchAnchor(patch);
+      if (patch.type === "keep" && anchor) keep.add(anchor);
+      if (patch.type === "create") create.push(patch);
+      if (patch.type === "update") update.push(patch);
+      if (patch.type === "bind" && !state.trigger && anchor) {
+        state.trigger = { event: patch.event || "click", anchor, action: patch.action || `goto:${state.id}` };
+      }
+    }
+
+    const bindPatch = patchList.find((patch) => patch.type === "bind" && (patch.goto || patch.action));
+    if (bindPatch && state.trigger) {
+      const gotoAction = bindPatch.action || (bindPatch.goto ? `goto:${bindPatch.goto}` : null);
+      if (gotoAction) state.trigger.action = gotoAction;
+    }
+
+    state.inheritance = { keep: [...keep], create, update };
+    state.patches = patchList.filter((patch) => patch?.type !== "hide" && patch?.type !== "replace");
+    for (const patch of state.inheritance.create) {
+      normalizePatchAnchorRefs(patch, idToAnchor);
+      normalizeRichRequirements(patch);
+      normalizeNestedChildLayout(patch);
+    }
+    for (const patch of state.inheritance.update) {
+      normalizePatchAnchorRefs(patch, idToAnchor);
+      normalizeRichRequirements(patch);
+      normalizeNestedChildLayout(patch);
+    }
+    for (const patch of state.patches) {
+      normalizePatchAnchorRefs(patch, idToAnchor);
+      normalizeRichRequirements(patch);
+      normalizeNestedChildLayout(patch);
+    }
+    const requestedHeight = Number(state.height);
+    const contentHeight = stateContentBottom(state);
+    state.height = Math.max(
+      Number(initialHeight) || 0,
+      Number.isFinite(requestedHeight) ? requestedHeight : 0,
+      contentHeight
+    );
+  }
+
+  return model;
+}
+
+function validateModel(model, registry) {
+  const issues = [];
+  const originalAnchors = new Set(Object.keys(registry.semanticAnchors || {}));
+  const virtualAnchors = new Set();
+  const virtualPatches = new Map();
+
+  if (!Array.isArray(model.states)) issues.push("missing states[]");
+  const sorted = [...(model.states || [])].sort((a, b) => stateNum(a.id) - stateNum(b.id));
+
+  function isSystemTrigger(trigger) {
+    if (!trigger || typeof trigger !== "object") return false;
+    return /timeout|load_complete|submit_success|system|auto|data_loaded|success|完成|系统|自动/i.test(JSON.stringify(trigger));
+  }
+
+  for (const state of sorted) {
+    if (!state.id) issues.push("state missing id");
+    if (!Number.isFinite(Number(state.height)) || Number(state.height) <= 0) issues.push(`${state.id} missing numeric height`);
+    const contentBottom = stateContentBottom(state);
+    if (Number(state.height || 0) < contentBottom) issues.push(`${state.id} height ${state.height} smaller than content bottom ${contentBottom}`);
+    if (stateNum(state.id) > 1 && !state.parent_state) issues.push(`${state.id} missing parent_state`);
+    if (state.inheritance?.hide) issues.push(`${state.id} must not output inheritance.hide`);
+    if (state.inheritance?.replace) issues.push(`${state.id} must not output inheritance.replace`);
+    for (const patch of state.inheritance?.create || []) validatePatchShape(patch, state.id, issues);
+    for (const patch of state.inheritance?.update || []) validatePatchShape(patch, state.id, issues);
+    for (const patch of state.patches || []) validatePatchShape(patch, state.id, issues);
+    validateStateStacking(state, registry, virtualPatches, issues);
+
+    const refs = [];
+    if (state.trigger?.anchor && !isSystemTrigger(state.trigger)) refs.push(state.trigger.anchor);
+    for (const item of state.inheritance?.keep || []) {
+      const anchor = typeof item === "string" ? item : patchAnchor(item);
+      if (anchor) refs.push(anchor);
+    }
+    for (const patch of state.inheritance?.update || []) {
+      const anchor = patchAnchor(patch);
+      if (anchor) refs.push(anchor);
+    }
+    for (const anchor of refs) {
+      if (typeof anchor !== "string" || (!originalAnchors.has(anchor) && !virtualAnchors.has(anchor))) {
+        issues.push(`${state.id} references unknown anchor: ${anchor}`);
+      }
+    }
+    for (const patch of state.inheritance?.create || []) {
+      collectPatchIds(patch).forEach((id) => virtualAnchors.add(id));
+      registerPatchTree(patch, virtualPatches);
+    }
+    for (const patch of state.inheritance?.update || []) {
+      const id = patch?.id || patch?.name;
+      if (id && virtualPatches.has(id)) {
+        virtualPatches.set(id, { ...virtualPatches.get(id), ...patch, props: { ...(virtualPatches.get(id).props || {}), ...(patch.props || {}) } });
+      }
+    }
+    for (const patch of state.patches || []) {
+      if (patch.type === "create") {
+        collectPatchIds(patch).forEach((id) => virtualAnchors.add(id));
+        registerPatchTree(patch, virtualPatches);
+      }
+      if (patch.type === "hide" || patch.type === "replace") issues.push(`${state.id} must not contain ${patch.type} patch`);
+    }
+  }
+
+  return issues;
+}
+
+async function callLLM({ model, system, user, maxTokens }) {
+  loadDotEnv(path.join(SKILL_ROOT, ".env"));
+  loadDotEnv(path.join(ROOT, "backend", ".env"));
+  const apiKey = process.env.DASHSCOPE_API_KEY || process.env.OPENAI_API_KEY;
+  if (!apiKey) throw new Error("Missing DASHSCOPE_API_KEY or OPENAI_API_KEY");
+
+  const base = (process.env.DASHSCOPE_BASE_URL || "https://dashscope.aliyuncs.com/compatible-mode/v1").replace(/\/$/, "");
+  let lastErr;
+  for (let attempt = 1; attempt <= 4; attempt++) {
+    try {
+      const response = await fetch(base + "/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
+        body: JSON.stringify({
+          model,
+          messages: [{ role: "system", content: system }, { role: "user", content: user }],
+          temperature: Number(process.env.MODEL_TEMPERATURE ?? 0.2),
+          max_tokens: maxTokens,
+          response_format: { type: "json_object" },
+        }),
+      });
+
+      const body = await response.text();
+      if (!response.ok) throw new Error(`LLM HTTP ${response.status}: ${body.slice(0, 1000)}`);
+      const json = JSON.parse(body);
+      return json.choices?.[0]?.message?.content || "";
+    } catch (err) {
+      lastErr = err;
+      if (attempt < 4) await new Promise((resolve) => setTimeout(resolve, attempt * 3000));
+    }
+  }
+  throw lastErr;
+}
+
+async function main() {
+  const args = process.argv.slice(2);
+  const base = path.resolve(ROOT, args[0] || "new_test/2");
+  const model = argValue(args, "--model", "qwen3.7-max");
+  const width = Number(argValue(args, "--width", "360"));
+  const height = Number(argValue(args, "--height", "792"));
+  const blueprintPath = path.resolve(ROOT, argValue(args, "--blueprint", latestBlueprint(base)));
+  const registryPath = path.resolve(ROOT, argValue(args, "--registry", path.join(base, ".preprocess", "semantic_registry.json")));
+  const out = path.resolve(ROOT, argValue(args, "--out", path.join(base, ".run_skill", "state_implementation", "state_implementation_model.llm.json")));
+  const skillPath = path.resolve(__dirname, "..", "SKILL.md");
+  const skill = readUtf8(skillPath);
+  const blueprint = JSON.parse(readUtf8(blueprintPath));
+  const registry = JSON.parse(readUtf8(registryPath));
+  const componentReference = componentLibraryReference();
+  const skillInput = {
+    viewport: {
+      width,
+      initial_height: height,
+      width_locked: true,
+      height_may_expand: true,
+    },
+    blueprint,
+    semantic_registry: semanticRegistryForPrompt(registry),
+    layout_constraints: layoutConstraints(),
+    component_library_reference: componentReference,
+  };
+
+  writeUtf8(out.replace(/\.json$/, ".skill_input.json"), JSON.stringify(skillInput, null, 2));
+  const raw = await callLLM({
+    model,
+    system: skill + "\n\nReturn JSON only.",
+    user: JSON.stringify(skillInput),
+    maxTokens: Number(argValue(args, "--max-tokens", "12000")),
+  });
+  writeUtf8(out.replace(/\.json$/, ".raw.txt"), raw);
+
+  const parsed = normalizeModel(extractJson(raw), height, registry);
+  const issues = validateModel(parsed, registry);
+  writeUtf8(out, JSON.stringify(parsed, null, 2));
+  writeUtf8(out.replace(/\.json$/, ".validation.json"), JSON.stringify({ issues }, null, 2));
+  if (issues.length) {
+    console.error("[state-model-llm] validation issues:\n" + issues.join("\n"));
+    process.exit(2);
+  }
+  console.log(`[state-model-llm] out=${out}`);
+}
+
+main().catch((err) => {
+  console.error("[state-model-llm] ERROR:", err.stack || err.message);
+  process.exit(1);
+});
