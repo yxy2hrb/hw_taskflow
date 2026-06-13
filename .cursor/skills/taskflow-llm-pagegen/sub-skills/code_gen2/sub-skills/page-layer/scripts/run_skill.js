@@ -1439,6 +1439,88 @@ function tfFillVirtualKeep(slot, layer, anchor){
   }
   return false;
 }
+// Deleting a card is expressed as dropping its anchor from inheritance.keep.
+// keep slots are absolutely positioned at their ORIGINAL bbox, so a removed
+// middle region leaves a gap — the regions below stay pinned to their original
+// y. This reflows the survivors up to close the gap, deterministically, before
+// the clones are filled. A removed region's vertical footprint is the distance
+// to the next original region (so inter-card spacing collapses too, not just
+// the region height). Runs only when the current layer still keeps original
+// flow regions, so full-screen replacement states (which keep ~nothing
+// original) are naturally a no-op.
+function tfReflowRemovedKeeps(layer){
+  if(!layer) return;
+  const registry=window.__TF_REGISTRY__ || {};
+  const cur=tfStateById("state_"+tfNum(layer.id));
+  if(!cur || !cur.parent_state) return;
+  const parent=tfStateById(cur.parent_state);
+  if(!parent) return;
+  function bboxOf(anchor){
+    const e=registry[anchor]; const b=e && e.bbox;
+    return Array.isArray(b) && b.length===4 && b.every(function(x){ return Number.isFinite(Number(x)); }) ? b.map(Number) : null;
+  }
+  function overlap(a,b){
+    if(!a||!b) return false;
+    return a[0] < b[0]+b[2] && a[0]+a[2] > b[0] && a[1] < b[1]+b[3] && a[1]+a[3] > b[1];
+  }
+  // Viewport-fixed roles (top status bar, any nav bar / bottom system bar)
+  // never reflow. "导航栏" covers both "底部导航栏" and "底部全局导航栏" namings
+  // without matching "导航与标题区".
+  function isFixedRoleAnchor(anchor){
+    const e=registry[anchor]; if(!e) return false;
+    const text=anchor+" "+(e.component||"")+" "+(e.element||"");
+    const b=bboxOf(anchor);
+    if(/状态栏|status|电池|系统图标|信号/.test(text) && b && b[1]<=40 && b[3]<=40) return true;
+    if(/导航栏|底部系统|系统导航条|home[-_ ]?indicator|tab\s*bar|bottom\s*nav/i.test(text)) return true;
+    return false;
+  }
+  // What the current state actually occupies: kept original regions + update
+  // and create bboxes. A parent region missing from the current keep is a real
+  // DELETION only if nothing in the current state occupies its area; otherwise
+  // it was merely re-expressed at a finer granularity (a big container keep
+  // replaced by its child cards) or moved via an update — neither should
+  // trigger reflow.
+  const occupied=[];
+  const curKeepSet={};
+  ((cur.inheritance&&cur.inheritance.keep)||[]).forEach(function(a){
+    if(typeof a!=="string") return;
+    curKeepSet[a]=true;
+    const b=bboxOf(a); if(b) occupied.push(b);
+  });
+  ((cur.inheritance&&cur.inheritance.update)||[]).forEach(function(u){
+    const b=(Array.isArray(u.bbox)&&u.bbox.length===4)?u.bbox.map(Number):bboxOf(u.id||u.name);
+    if(b) occupied.push(b);
+  });
+  ((cur.inheritance&&cur.inheritance.create)||[]).forEach(function(c){
+    if(Array.isArray(c.bbox)&&c.bbox.length===4) occupied.push(c.bbox.map(Number));
+  });
+  // Parent original flow regions, top to bottom, each marked removed or kept.
+  const candidates=[];
+  ((parent.inheritance&&parent.inheritance.keep)||[]).forEach(function(a){
+    if(typeof a!=="string" || isFixedRoleAnchor(a)) return;
+    const b=bboxOf(a); if(!b) return;
+    candidates.push({anchor:a, y:b[1], h:b[3], bbox:b});
+  });
+  if(candidates.length<2) return;
+  candidates.sort(function(p,q){ return p.y-q.y; });
+  for(let i=0;i<candidates.length;i++){
+    const c=candidates[i];
+    const next=candidates[i+1];
+    c.span = next ? Math.max(0, next.y-c.y) : c.h;
+    c.removed = !curKeepSet[c.anchor] && !occupied.some(function(o){ return overlap(c.bbox, o); });
+  }
+  if(!candidates.some(function(c){ return c.removed; })) return;
+  // Shift surviving original keep slots up by the footprint of removed regions
+  // above them, closing the gap (including collapsed inter-card spacing).
+  Array.prototype.slice.call(layer.querySelectorAll(".tf-keep-placeholder[data-keep-anchor]")).forEach(function(slot){
+    const a=slot.getAttribute("data-keep-anchor");
+    if(isFixedRoleAnchor(a) || slot.getAttribute("data-keep-override")) return;
+    const b=bboxOf(a); if(!b) return;
+    let shift=0;
+    candidates.forEach(function(c){ if(c.removed && c.y < b[1]) shift+=c.span; });
+    if(shift>0) slot.setAttribute("data-keep-override", [b[0], b[1]-shift, b[2], b[3]].join(","));
+  });
+}
 function tfFillKeepPlaceholders(layer){
   if(!layer) return;
   const appRoot=document.getElementById("app-root");
@@ -1641,6 +1723,7 @@ function tfInstallGoto(){
     if(layer){
       if(appRoot) appRoot.style.display="";
       tfMountUpdatedOriginalCards(layer);
+      tfReflowRemovedKeeps(layer);
       tfFillKeepPlaceholders(layer);
       tfApplyCardLedgers(layer);
       tfPunchUpdatedCards(layer);
