@@ -13,7 +13,7 @@ description: >
 `blueprint_builder_input.json`。蓝图阶段默认不再一口气连跑 4 步，而是每步：
 
 ```text
-generate 结构化草案 -> 用户选择保留编号 -> 展示完整内容
+generate 结构化草案 -> Phase 1/2/4 选择保留编号，Phase 3 直接展示完整方案
 -> 模型按修改意见重新生成完整内容（可多轮） -> 用户确认 -> 写入 confirmed -> 下一步
 ```
 
@@ -82,7 +82,7 @@ node .cursor/skills/taskflow-llm-pagegen/sub-skills/blueprint/scripts/run_skill.
 
 ## 用户输入
 
-`confirm` 默认进入纯文本编号交互：
+`confirm` 默认进入纯文本交互。Phase 1、2、4 先选择编号：
 
 ```text
 请输入要保留的编号：
@@ -103,11 +103,11 @@ node .cursor/skills/taskflow-llm-pagegen/sub-skills/blueprint/scripts/run_skill.
 
 - Phase 1：四个分组各选择一个编号。
 - Phase 2：编号表示保留的 state。
-- Phase 3：编号表示保持原样的 UI 实现；修改意见作用于完整实现方案。
+- Phase 3：不选择编号，直接展示完整 UI 实现方案；用户输入自然语言修改意见或 `next`。
 - Phase 4：编号表示保持原样的合并状态；修改意见作用于完整蓝图。
 - 每轮修改意见都会调用模型重新生成并校验完整内容，不直接修改 confirmed 文件。
 - 输入 `next`、`done` 或 `下一步` 完成当前 Phase。
-- `--input feedback.txt` 支持第一行编号、后续每行一轮自然语言修改意见。
+- `--input feedback.txt` 在 Phase 1、2、4 使用第一行编号；Phase 3 从第一行开始读取修改意见。
 - 原有 `--input feedback.json` 继续兼容。
 
 ## 阶段状态机
@@ -149,12 +149,12 @@ Phase 4 confirm  -> blueprint_builder_input.json
 - 只保留用户勾选或编辑后的 state。
 - `state_1` 不可删除。
 - `states.length >= 4`。
-- confirmed 中移除 `rationale`。
+- confirmed 中移除 Phase 2 的 `basis` 中间参考字段。
 
 ### Phase 3
 
-`phase3_ask.json` 为每个非 `state_1` 生成一份 UI 实现草案。用户可以直接确认全部草案，
-选择后先展示完整实现方案；用户的自然语言修改意见由模型作用于完整内容。确认后仍写：
+`phase3_ask.json` 为每个非 `state_1` 生成一份 UI 实现草案。CLI 直接将全部草案组成完整实现
+方案展示给用户，不要求选择编号。用户的自然语言修改意见由模型作用于完整内容。确认后仍写：
 
 ```json
 {
@@ -183,7 +183,9 @@ Phase 4 初始预览不调用 LLM。脚本读取前三步 confirmed，生成 `ph
 - Phase 1 ask 四个 group 都存在，每组有且仅有一个 default。
 - Phase 1 confirmed 包含完整 User Story 和顺序 BDD steps。
 - Phase 2 confirmed 保留 `state_1`，状态数不少于 4，description 包含三段。
+- Phase 2 ask 每个 state 包含简短 `basis`，展示为“依据”。
 - Phase 3 ask 不包含 `state_1`，每个非初始 state 有且仅有一份实现草案。
+- Phase 3 ask 每份实现草案包含简短 `basis`，展示为“依据”。
 - Phase 3 confirmed 每个非 `state_1` 都有最终 `implementation_plan`。
 - Phase 4 输出含 `brief / user_story_confirmed / merged_states_by_id / page_dsl`。
 - `merged_states_by_id.state_1.implementation === null`。
@@ -193,5 +195,5 @@ Phase 4 初始预览不调用 LLM。脚本读取前三步 confirmed，生成 `ph
 
 - `user-story`：生成 Phase 1 ask；confirm 时合成 confirmed。
 - `state-enumeration`：生成 Phase 2 ask；confirm 时写状态清单。
-- `implementation-plan`：为每个状态生成一份实现草案；confirm 时通过模型修改完整方案并写 `selections_by_state`。
+- `implementation-plan`：为每个状态生成一份实现草案；直接展示完整方案，confirm 时通过模型修改并写 `selections_by_state`。
 - `blueprint-builder`：构建 Phase 4 preview；修改时调用模型重生成完整蓝图，confirm 后写最终输入。

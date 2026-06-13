@@ -73,11 +73,21 @@ function validatePhase1Confirmed(payload) {
 
 function validateState(state, index, issues, confirmed) {
   validateOption(state, ['id', 'label', 'description'], `states[${index}]`, issues);
-  if (!confirmed && !state?.rationale) issues.push(`states[${index}].rationale is required`);
+  if (!confirmed) validateDesignBasis(state?.basis, `states[${index}].basis`, issues);
   const description = String(state?.description || '');
   for (const section of ['触发条件：', '展示信息：', '继承信息：']) {
     if (!description.includes(section)) issues.push(`states[${index}].description missing ${section}`);
   }
+}
+
+function validateDesignBasis(value, path, issues) {
+  const basis = String(value || '').trim();
+  if (!basis) {
+    issues.push(`${path} is required`);
+    return;
+  }
+  if (basis.length > 120) issues.push(`${path} must be concise and no longer than 120 characters`);
+  if (!/(参考|借鉴)/.test(basis)) issues.push(`${path} must identify a reference`);
 }
 
 function validatePhase2Ask(payload) {
@@ -101,7 +111,9 @@ function validatePhase2Confirmed(payload) {
   if (states[0]?.id !== 'state_1') issues.push('state_1 cannot be removed and must remain first');
   states.forEach((state, index) => {
     validateState(state, index, issues, true);
-    if ('rationale' in (state || {})) issues.push(`states[${index}] must not contain rationale`);
+    if ('rationale' in (state || {}) || 'basis' in (state || {})) {
+      issues.push(`states[${index}] must not contain rationale or basis`);
+    }
   });
   if (new Set(states.map((state) => state.id)).size !== states.length) issues.push('state ids must be unique');
   return issues;
@@ -122,7 +134,8 @@ function validatePhase3Ask(payload, context = {}) {
   const expected = (context.states || []).filter((state) => state.id !== 'state_1').map((state) => state.id);
   const grouped = new Map();
   options.forEach((option, index) => {
-    validateOption(option, ['id', 'group', 'implementation_plan', 'rationale'], `options[${index}]`, issues);
+    validateOption(option, ['id', 'group', 'implementation_plan'], `options[${index}]`, issues);
+    validateDesignBasis(option?.basis, `options[${index}].basis`, issues);
     const stateId = stateIdFromOption(option);
     if (!stateId) issues.push(`options[${index}] has invalid state id`);
     if (stateId === 'state_1') issues.push('state_1 must not appear in phase3 options');

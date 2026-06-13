@@ -1,5 +1,6 @@
 const assert = require('assert');
 const {
+  applyPhase3Selection,
   applyPhase2Selection,
   finalizePhase4,
   synthesizePhase1Confirmed,
@@ -9,6 +10,7 @@ const {
   parseNumberedRevisionText,
 } = require('./numbered_interaction');
 const { normalizeRevision, stateCountIssues } = require('./phase_runners');
+const { renderView } = require('./render_view');
 const { GROUPS, validatePhase } = require('./validate_phase');
 
 function phase1Payload() {
@@ -87,6 +89,117 @@ function implementationState(id, label, previousId) {
       implementation_plan: `${label}的完整 UI 实现方案`,
     },
   };
+}
+
+function testPhase2DisplaysDesignBasis() {
+  const payload = {
+    action: 'ask',
+    phase: 2,
+    options: [
+      state('state_1', '初始态'),
+      state('state_2', '详情态', 'state_1'),
+      state('state_3', '确认态', 'state_2'),
+      state('state_4', '成功态', 'state_3'),
+    ].map((item, index) => ({
+      ...item,
+      basis: index === 1
+        ? '参考 Apple Store 商品详情页的信息分区设计。'
+        : '参考淘宝典型任务页面的流程结构。',
+      default: true,
+    })),
+  };
+  assert.equal(validatePhase(2, 'ask', payload).valid, true);
+  const view = renderView(payload);
+  assert.ok(view.includes('依据：参考 Apple Store 商品详情页的信息分区设计。'));
+  assert.ok(!view.includes('原因：参考 Apple Store'));
+  const invalid = JSON.parse(JSON.stringify(payload));
+  invalid.options[1].basis = '适合当前页面';
+  assert.equal(validatePhase(2, 'ask', invalid).valid, false);
+  const flexible = JSON.parse(JSON.stringify(payload));
+  flexible.options[1].basis = '参考微信的二级半模态表单弹窗。';
+  flexible.options[2].basis = '参考 Google Material Design 与飞书的加载反馈机制。';
+  flexible.options[3].basis = '参考 Notion 导出后的轻量级 Toast 成功反馈。';
+  assert.equal(validatePhase(2, 'ask', flexible).valid, true);
+}
+
+function phase3Payload() {
+  return {
+    action: 'ask',
+    phase: 3,
+    questionText: '完整实现方案',
+    multiSelect: false,
+    allowCustom: true,
+    options: [
+      {
+        id: 'state_2::implementation',
+        group: 'state_2 · 详情态',
+        implementation_plan: '实现详情页。',
+        basis: '参考 Apple Store 商品详情页的信息分区。',
+      },
+      {
+        id: 'state_3::implementation',
+        group: 'state_3 · 确认态',
+        implementation_plan: '实现确认弹窗。',
+        basis: '参考淘宝购物车确认浮层的聚焦操作。',
+      },
+    ],
+  };
+}
+
+function testPhase3SkipsNumberSelection() {
+  const payload = phase3Payload();
+  const script = parseNumberedRevisionText(
+    payload,
+    '把确认弹窗改为底部半模态，并增加取消按钮\nnext\n',
+  );
+  assert.deepEqual(script.selection_feedback, { edits_by_state: {} });
+  assert.deepEqual(script.modification_feedback, [
+    '把确认弹窗改为底部半模态，并增加取消按钮',
+  ]);
+  const legacyScript = parseNumberedRevisionText(
+    payload,
+    '1,2\n把确认弹窗改为底部半模态\nnext\n',
+  );
+  assert.deepEqual(legacyScript.modification_feedback, ['把确认弹窗改为底部半模态']);
+
+  const states = [
+    state('state_1', '初始态'),
+    state('state_2', '详情态', 'state_1'),
+    state('state_3', '确认态', 'state_2'),
+  ];
+  const complete = applyPhase3Selection(payload, script.selection_feedback, states);
+  assert.deepEqual(Object.keys(complete.selections_by_state), ['state_2', 'state_3']);
+  assert.equal(validatePhase(3, 'confirmed', complete, { states }).valid, true);
+
+  const revised = normalizeRevision(3, complete, {
+    ...complete,
+    selections_by_state: {
+      ...complete.selections_by_state,
+      state_3: {
+        implementation_plan: '改为底部半模态，并增加取消按钮。',
+      },
+    },
+  });
+  assert.deepEqual(Object.keys(revised.selections_by_state), ['state_2', 'state_3']);
+  assert.equal(revised.selections_by_state.state_2.option_id, 'state_2::implementation');
+  assert.equal(revised.selections_by_state.state_3.option_id, 'custom');
+
+  const view = renderView(payload);
+  assert.ok(view.includes('Phase 3 完整实现方案'));
+  assert.ok(view.includes('state_2 · 详情态'));
+  assert.ok(view.includes('实现方案：实现详情页。'));
+  assert.ok(view.includes('依据：参考 Apple Store 商品详情页的信息分区。'));
+  assert.ok(view.includes('直接输入修改意见'));
+  assert.ok(!view.includes('[1]'));
+  assert.ok(!view.includes('state_2::implementation'));
+
+  const confirmedView = require('./render_view').renderConfirmedView(complete, {
+    phase3Ask: payload,
+  });
+  assert.ok(confirmedView.includes('state_3 · 确认态'));
+  assert.ok(confirmedView.includes('依据：参考淘宝购物车确认浮层的聚焦操作。'));
+  assert.equal((confirmedView.match(/实现详情页。/g) || []).length, 1);
+  assert.ok(!confirmedView.includes('[1]'));
 }
 
 function testPhase2CanAddAndRenumberStates() {
@@ -259,6 +372,8 @@ function testStateCountIntentValidation() {
 testSelectedOptionsBecomeCompleteContent();
 testRevisionPreservesSelectionMetadata();
 testTextFeedbackUsesModelRevisionScript();
+testPhase2DisplaysDesignBasis();
+testPhase3SkipsNumberSelection();
 testPhase2CanAddAndRenumberStates();
 testPhase2CanDeleteAndRenumberStates();
 testPhase2SelectionDeletesAndRepairsReferences();

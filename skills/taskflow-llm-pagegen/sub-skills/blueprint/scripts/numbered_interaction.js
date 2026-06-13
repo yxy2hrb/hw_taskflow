@@ -23,7 +23,7 @@ function entriesForPayload(payload) {
     label: option.label || '',
     description: option.description || '',
     implementation_plan: option.implementation_plan || '',
-    rationale: option.rationale || '',
+    basis: option.basis || option.rationale || '',
     default: option.default,
     raw: option,
   }));
@@ -185,12 +185,17 @@ async function promptForModelRevision(payload, {
 }) {
   const rl = readline.createInterface({ input: stdin, output: stdout });
   try {
-    const selectedText = await rl.question(`${selectionPrompt(payload.phase)}\n> `);
-    const selectedNumbers = parseNumberList(selectedText);
+    const selectedNumbers = [];
+    if (payload.phase !== 3) {
+      const selectedText = await rl.question(`${selectionPrompt(payload.phase)}\n> `);
+      selectedNumbers.push(...parseNumberList(selectedText));
+    }
     const selectionFeedback = buildFeedback(payload, selectedNumbers, new Map());
     let draft = await createDraft(selectionFeedback);
 
-    console.log('\n--- 根据所选编号生成的完整内容 ---\n');
+    if (payload.phase !== 3) {
+      console.log('\n--- 根据所选编号生成的完整内容 ---\n');
+    }
     console.log(renderDraft(draft));
 
     while (true) {
@@ -201,7 +206,9 @@ async function promptForModelRevision(payload, {
 
       console.log('\n正在根据修改意见重新生成当前 Phase 的完整内容...');
       draft = await reviseDraft(draft, feedback);
-      console.log('\n--- 模型修改后的完整内容 ---\n');
+      console.log(payload.phase === 3
+        ? '\n--- 修改后的 Phase 3 实现方案 ---\n'
+        : '\n--- 模型修改后的完整内容 ---\n');
       console.log(renderDraft(draft));
     }
   } finally {
@@ -261,7 +268,16 @@ function parseNumberedRevisionText(payload, text) {
     .split(/\r?\n/)
     .map((line) => line.trim())
     .filter((line) => line && !line.startsWith('#'));
-  const selectedNumbers = parseNumberList(lines.shift() || '');
+  if (
+    payload.phase === 3
+    && lines.length
+    && (/^(all|全部)$/i.test(lines[0]) || /^\d+(?:\s*[,，\s]\s*\d+)*$/.test(lines[0]))
+  ) {
+    lines.shift();
+  }
+  const selectedNumbers = payload.phase === 3
+    ? []
+    : parseNumberList(lines.shift() || '');
   const modificationFeedback = [];
   for (const line of lines) {
     if (isNextCommand(line)) break;

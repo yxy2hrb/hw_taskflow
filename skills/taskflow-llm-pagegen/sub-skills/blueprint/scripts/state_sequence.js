@@ -49,6 +49,7 @@ function normalizeOrderedStates(states, {
     }, idMap);
     normalized.id = id;
     delete normalized.rationale;
+    delete normalized.basis;
     delete normalized.default;
     delete normalized.group;
     if (id === 'state_1') {

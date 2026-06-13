@@ -2,7 +2,7 @@
 name: taskflow-implementation-plan
 description: >
   任务流蓝图 Sub-skill 3：实现方案具体生成 Agent。
-  为每个非 state_1 的 happy-path state 提供 1 个完整 UI 实现草案，供用户逐项确认或修改。
+  为每个非 state_1 的 happy-path state 提供 1 个完整 UI 实现草案，组成完整方案供用户确认或修改。
   对应 taskflowIntentSkill.js Phase 3。
 ---
 
@@ -10,11 +10,13 @@ description: >
 
 ## 定位
 
-蓝图生成第三步。对 Sub-skill 2 确认的状态清单中每个非 state_1 的 state，生成 1 个完整 UI 实现草案。用户无需在多个候选之间选择，可以直接接受全部草案，也可以单独修改任意 state 的实现内容。
+蓝图生成第三步。对 Sub-skill 2 确认的状态清单中每个非 state_1 的 state，生成 1 个完整 UI
+实现草案。CLI 直接将全部草案组成完整方案展示，不进行编号选择；用户可以直接接受，也可以
+通过自然语言意见修改完整方案。
 
 ## 输入
 
-- `confirmed_states`：Sub-skill 2 用户确认保留的状态清单（含 `id / label / description / rationale`）
+- `confirmed_states`：Sub-skill 2 用户确认保留的状态清单（含 `id / label / description`）
 - `user_story`：Sub-skill 1 确认的 User Story
 - `page_dsl`：页面 DSL（辅助判断设计语言/组件库）
 
@@ -24,7 +26,8 @@ Phase 3 拆成 `generate` 与 `confirm` 两步。
 
 ### generate：写入 `phase3_ask.json`
 
-按 state 分组生成唯一实现草案。每个非 `state_1` 只对应一条 option，用户确认或修改后传入 Sub-skill 4。
+按 state 分组生成唯一实现草案。每个非 `state_1` 只对应一条 option，CLI 将所有 option 直接组成
+完整实现方案展示，不进行编号选择；用户确认或修改后传入 Sub-skill 4。
 
 每个实现草案必须输出 `implementation_plan`，不是 `label`。`implementation_plan` 是服务后续代码生成的具体实现说明，应写清楚组件、形式、布局、文案、继承关系和状态变化，而不是一句短标签。
 
@@ -131,13 +134,14 @@ Phase 3 拆成 `generate` 与 `confirm` 两步。
 {
   "id": "state_2::implementation",
   "implementation_plan": "采用全屏表单页承载创建项目集流程。保留 state_1 的顶部状态栏，主体区域替换为创建项目集表单：顶部放置页面标题“创建项目集”和返回入口；中部从上到下排列项目集名称 Text field（占位符“请输入项目集名称”）、属性单选 Radio buttons（选项“公司”“个人”，默认未选或按业务默认选中）、添加项目 List/入口卡片（文案“添加项目”）；底部固定红色主按钮“确认”。该方案适合字段较多且需要清晰提交路径的状态。",
-  "rationale": "适合需要承载较多字段或业务信息的主路径状态",
+  "basis": "参考 Apple 设置页的清晰分组与淘宝表单页的底部主操作设计。",
   "group": "state_2 · 示例状态"
 }
 ```
 
 - `id` 格式固定为：`state_N::implementation`
 - `implementation_plan` 是实现方案正文，必须是可执行的 UI 实现描述，不得写成短标签
+- `basis` 是简短设计依据，说明参考的知名产品设计思路或典型相关页面
 - `group` 格式：`state_N · {state_name}`
 - 每个非 `state_1` 必须且只能输出 **1 个** option
 - 不输出 `default` 字段
@@ -150,11 +154,11 @@ Phase 3 拆成 `generate` 与 `confirm` 两步。
 {
   "action": "ask",
   "phase": 3,
-  "questionText": "以下是每个状态的 UI 实现草案，请逐项确认或修改。",
+  "questionText": "以下是完整 UI 实现方案，请直接确认或提出修改意见。",
   "options": [ ... ],
   "multiSelect": false,
   "allowCustom": true,
-  "note": "每个非初始状态仅有一份实现草案；可单独修改任意 state 的 implementation_plan。"
+  "note": "无需选择编号；修改意见会作用于完整实现方案。"
 }
 ```
 
@@ -182,8 +186,8 @@ Phase 3 拆成 `generate` 与 `confirm` 两步。
 confirm 规则：
 
 - 执行 confirm 即表示接受所有未修改的实现草案。
-- 终端交互时输入要保持原样的数字编号，直接回车表示全部保留。
-- 选择后展示完整 `selections_by_state`；修改时输入自然语言意见。
+- 终端交互直接展示所有 state 的完整实现方案，不要求用户选择数字编号。
+- 用户直接输入自然语言修改意见；输入 `next`、`done` 或 `下一步` 确认并进入 Phase 4。
 - 每轮修改必须调用模型重新生成完整实现方案，不得直接覆盖 `implementation_plan`。
 - 未修改 state 的 `option_id` 保留 `state_N::implementation`；修改后的 state 记为 `custom`。
 - 每个非 `state_1` 的 state 最终必须有且仅有一条实现方案。
@@ -191,8 +195,12 @@ confirm 规则：
 
 ## 约束
 
-- 每条 rationale 用一句自然语言说明该方案为什么适合当前 state
-- 每条 option 必须包含 `id / implementation_plan / rationale / group`
+- 每条 `basis` 由模型生成，用一句话说明参考对象及可借鉴的设计思路。
+- 可参考 Apple、淘宝、Google、微信、Amazon、京东、支付宝等知名产品或设计体系，但不限于这些。
+- 依据应贴合当前 state 的页面类型，例如商品详情、购物车确认、表单编辑、加载反馈或成功结果页。
+- 内容保持简短，不展开品牌历史或复杂设计分析，不只罗列品牌名称。
+- 使用字段名 `basis`，不要输出 `rationale`。
+- 每条 option 必须包含 `id / implementation_plan / basis / group`
 - `implementation_plan` 建议 80–180 字，必须包含组件、形式、布局和关键文案
 - `implementation_plan` 不能只写“全屏页面：...”这类一句话摘要
 - 禁止 state_1 出现在 options 中（初始态即原始页面，不改造）

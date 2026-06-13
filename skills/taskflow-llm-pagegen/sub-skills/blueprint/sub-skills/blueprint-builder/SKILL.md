@@ -16,7 +16,7 @@ description: >
 
 - `brief`：用户初始任务流描述
 - `user_story_confirmed`：Sub-skill 1 产出的 User Story + platform，后处理会移除 `invest_check`
-- `states_confirmed`：Sub-skill 2 用户确认保留的状态清单（含 `id / label / description / rationale`）
+- `states_confirmed`：Sub-skill 2 用户确认保留的状态清单（含 `id / label / description`）
 - `phase3_confirmed_by_id`：Sub-skill 3 为每个非 `state_1` 确认或单独修改后的实现方案
 - `merged_states_by_id`：脚本按 `state_N` 将确认后的 state 与确认后的 implementation 合并后的对象
 - `page_dsl`：页面 DSL
@@ -95,7 +95,7 @@ description: >
 - `merged_states_by_id` 以 Phase 2 的 `id` 作为 key。
 - `merged_states_by_id[state_N]` 包含 Phase 2 确认后的 `id / label / description`，并合入 Phase 3 确认后的 `implementation`。
 - `implementation` 来自 Phase 3 confirmed；未修改状态使用生成草案，修改状态使用用户覆盖内容。
-- 后处理必须移除 `rationale`、`group`、`default`、`implementation.id`、`implementation.label` 等中间决策字段。
+- 后处理必须移除 `basis`、`rationale`、`group`、`default`、`implementation.id`、`implementation.label` 等中间决策字段。
 - 后处理后的 `implementation` 只保留 `implementation_plan` 等下一阶段执行所需字段。
 - `state_1` 的 `implementation` 必须为 `null`。
 - `page_dsl` 保留原始页面 DSL 内容，用于下一阶段继续理解页面结构。
@@ -104,7 +104,7 @@ description: >
 
 - [ ] `brief / user_story_confirmed / merged_states_by_id / page_dsl` 齐全
 - [ ] 输出不包含 `invest_check`
-- [ ] 输出不包含 `rationale / group / default / implementation.id / implementation.label`
+- [ ] 输出不包含 `basis / rationale / group / default / implementation.id / implementation.label`
 - [ ] `merged_states_by_id.state_1.implementation === null`
 - [ ] 每个非 `state_1` 都有选定 `implementation`
 - [ ] Phase 2 的每个 state 一一对应出现，禁止合并/省略

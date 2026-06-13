@@ -121,8 +121,12 @@ async function main() {
       phase,
       output: path.join(sessionDir, 'stages', phase === 4 ? 'phase4_preview.json' : `phase${phase}_ask.json`),
     }, null, 2));
-    console.log('\n--- view ---\n');
-    console.log(renderView(payload));
+    if (phase !== 3) {
+      console.log('\n--- view ---\n');
+      console.log(renderView(payload));
+    } else {
+      console.log('\nPhase 3 实现方案已生成，请执行 confirm 查看完整方案并输入修改意见。');
+    }
     return;
   }
 
@@ -134,7 +138,7 @@ async function main() {
     if (!payload || payload.phase !== phase) {
       throw new Error(`Missing pending Phase ${phase} ask/preview.`);
     }
-    if (!flags.noView) {
+    if (!flags.noView && phase !== 3) {
       console.log(renderView(payload));
       console.log('');
     }
@@ -153,7 +157,7 @@ async function main() {
           draft,
           modification,
         ),
-        renderDraft: renderConfirmedView,
+        renderDraft: (draft) => renderConfirmedView(draft, { phase3Ask: payload }),
       });
     if (feedback?.__model_revision_script) {
       let draft = await buildPhaseDraft(
@@ -162,12 +166,14 @@ async function main() {
         feedback.selection_feedback,
         { allowDefaults: false },
       );
-      console.log('\n--- 根据所选编号生成的完整内容 ---\n');
-      console.log(renderConfirmedView(draft));
+      if (phase !== 3) console.log('\n--- 根据所选编号生成的完整内容 ---\n');
+      console.log(renderConfirmedView(draft, { phase3Ask: payload }));
       for (const modification of feedback.modification_feedback || []) {
         draft = await revisePhaseDraft(sessionDir, phase, draft, modification);
-        console.log('\n--- 模型修改后的完整内容 ---\n');
-        console.log(renderConfirmedView(draft));
+        console.log(phase === 3
+          ? '\n--- 修改后的 Phase 3 实现方案 ---\n'
+          : '\n--- 模型修改后的完整内容 ---\n');
+        console.log(renderConfirmedView(draft, { phase3Ask: payload }));
       }
       feedback = draft;
     }
@@ -190,8 +196,12 @@ async function main() {
         status: 'awaiting_confirm',
         phase: loaded.session.current_phase,
       }, null, 2));
-      console.log('\n--- view ---\n');
-      console.log(renderView(payload));
+      if (loaded.session.current_phase !== 3) {
+        console.log('\n--- view ---\n');
+        console.log(renderView(payload));
+      } else {
+        console.log('\nPhase 3 实现方案已生成，请执行 confirm 查看完整方案并输入修改意见。');
+      }
       return;
     }
     if (loaded.session.status === 'awaiting_confirm') {

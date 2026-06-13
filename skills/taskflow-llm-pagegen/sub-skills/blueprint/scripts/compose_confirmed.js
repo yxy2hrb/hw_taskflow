@@ -182,7 +182,7 @@ function buildPhase4Preview({ brief, pageDsl, phase1, phase2, phase3 }) {
   for (const state of phase2.states) {
     const selection = phase3.selections_by_state[state.id];
     merged[state.id] = {
-      ...omit(state, ['rationale']),
+      ...omit(state, ['rationale', 'basis']),
       implementation: state.id === 'state_1'
         ? null
         : { implementation_plan: selection?.implementation_plan || '' },

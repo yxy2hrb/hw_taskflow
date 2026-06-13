@@ -71,7 +71,7 @@ function normalizePhase2Ask(parsed) {
       id: option.id || `state_${index + 1}`,
       label: option.label || option.state_name || `状态 ${index + 1}`,
       description: option.description || '',
-      rationale: option.rationale || '',
+      basis: option.basis || option.rationale || '',
       default: option.default !== false,
     })),
   };
@@ -81,15 +81,15 @@ function normalizePhase3Ask(parsed) {
   return {
     action: 'ask',
     phase: 3,
-    questionText: parsed.questionText || '以下是每个状态的 UI 实现草案，请逐项确认或修改。',
+    questionText: parsed.questionText || '以下是完整 UI 实现方案，请直接确认或提出修改意见。',
     multiSelect: false,
     allowCustom: true,
-    note: parsed.note || '每个非初始状态仅有一份实现草案；可单独修改任意 state 的 implementation_plan。',
+    note: parsed.note || '无需选择编号；修改意见会作用于完整实现方案。',
     options: (Array.isArray(parsed.options) ? parsed.options : []).map((option) => ({
       id: option.id || '',
       group: option.group || '',
       implementation_plan: option.implementation_plan || option.implementationPlan || option.plan || option.label || '',
-      rationale: option.rationale || '',
+      basis: option.basis || option.rationale || '',
     })),
   };
 }
@@ -393,6 +393,7 @@ async function runPhase2Generate(sessionDir) {
     'Generate phase2_ask.json with happy-path states only.',
     'Default all states to true, state_1 must be first, and options length must be >= 4.',
     'Every description must contain these exact sections: 触发条件：, 展示信息：, 继承信息：.',
+    'Every state must include a concise basis field. In one short sentence, cite a relevant design pattern or typical page from recognizable products or companies such as Apple, Taobao, Google, WeChat, Amazon, or others, and briefly explain why it informs this state. Do not use a rationale field.',
     skillDoc('sub-skills/state-enumeration/SKILL.md'),
   ].join('\n\n');
   const user = JSON.stringify({
@@ -422,7 +423,8 @@ async function runPhase3Generate(sessionDir) {
     'Do not include state_1 in options.',
     'Use exactly one option per state, with id format state_N::implementation.',
     'The ask payload must set multiSelect:false and allowCustom:true.',
-    'Do not output default fields. The user reviews the single plan and may edit each state independently.',
+    'Do not output default fields. The user reviews the complete plan directly and revises it through natural-language feedback without selecting option numbers.',
+    'Every option must include a concise basis field. In one short sentence, cite a relevant design idea or typical page from recognizable products or companies such as Apple, Taobao, Google, WeChat, Amazon, or others, and explain how it supports the proposed UI. Do not use a rationale field.',
     skillDoc('sub-skills/implementation-plan/SKILL.md'),
   ].join('\n\n');
   const user = JSON.stringify({
