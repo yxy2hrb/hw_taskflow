@@ -614,6 +614,16 @@ function bboxContains(parent, child) {
   return cx >= px - 1 && cy >= py - 1 && cx + cw <= px + pw + 1 && cy + ch <= py + ph + 1;
 }
 
+function bboxArea(bbox) {
+  return Array.isArray(bbox) && bbox.length === 4 ? Number(bbox[2]) * Number(bbox[3]) : Infinity;
+}
+
+// Array-form geometric containment, same ±1 tolerance as bboxContains.
+function bboxContainsBbox(outer, inner) {
+  if (!Array.isArray(outer) || !Array.isArray(inner) || inner.length < 4) return false;
+  return bboxContains(outer, { x: inner[0], y: inner[1], w: inner[2], h: inner[3] });
+}
+
 function inferTextParentSemanticFromBbox(bbox, semanticEntries) {
   if (!bbox) return null;
   const matches = semanticEntries
@@ -758,16 +768,41 @@ function buildSemanticTree(registry, html) {
       children: [],
     };
   }
+  // Parent/child by GEOMETRY, not DOM nesting. D2C output nests tags in an
+  // order that does not match the rendered layout — absolutely-positioned
+  // children escape their DOM parent's box — so DOM nesting produced trees
+  // where a parent's bbox did not contain its children. A node's parent is the
+  // smallest-area region that geometrically contains it. Nodes without a bbox
+  // fall back to the nearest DOM-nesting ancestor.
+  const entries = Object.values(registry);
   const roots = [];
-  for (const entry of Object.values(registry)) {
-    let parentId = parentById[entry.id];
+  for (const entry of entries) {
+    const childBbox = Array.isArray(entry.bbox) ? entry.bbox : null;
     let parentEntry = null;
-    while (parentId) {
-      if (byId[parentId]) {
-        parentEntry = byId[parentId];
-        break;
+    if (childBbox) {
+      const childArea = bboxArea(childBbox);
+      const containers = entries.filter((cand) => {
+        if (cand === entry || !Array.isArray(cand.bbox)) return false;
+        if (!bboxContainsBbox(cand.bbox, childBbox)) return false;
+        const candArea = bboxArea(cand.bbox);
+        if (candArea < childArea) return false;
+        // Equal-area mutual containment: keep only one direction to avoid a cycle.
+        if (candArea === childArea && String(cand.id) >= String(entry.id)) return false;
+        return true;
+      });
+      containers.sort((a, b) => {
+        const da = bboxArea(a.bbox);
+        const db = bboxArea(b.bbox);
+        if (da !== db) return da - db;
+        return String(a.id) < String(b.id) ? -1 : 1;
+      });
+      parentEntry = containers[0] || null;
+    } else {
+      let parentId = parentById[entry.id];
+      while (parentId) {
+        if (byId[parentId]) { parentEntry = byId[parentId]; break; }
+        parentId = parentById[parentId];
       }
-      parentId = parentById[parentId];
     }
     if (parentEntry && nodes[parentEntry.name]) {
       nodes[entry.name].parent = parentEntry.name;
@@ -879,21 +914,15 @@ function main() {
 
 
 
-try {
-
-
-  main();
-
-
-} catch (err) {
-
-
-  console.error("[semantic-registry] ERROR:", err.message);
-
-
-  process.exit(1);
-
-
+if (require.main === module) {
+  try {
+    main();
+  } catch (err) {
+    console.error("[semantic-registry] ERROR:", err.message);
+    process.exit(1);
+  }
 }
+
+module.exports = { buildSemanticTree, buildNestedSemanticRegistry, bboxContains, bboxContainsBbox, bboxArea };
 
 
