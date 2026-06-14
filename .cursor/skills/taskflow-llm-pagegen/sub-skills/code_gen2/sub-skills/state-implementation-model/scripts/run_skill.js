@@ -268,6 +268,83 @@ function registerPatchTree(patch, map) {
   for (const child of patchChildren(patch)) registerPatchTree(child, map);
 }
 
+// Record each nested component's owning container (childId -> containerId) at
+// create time, so a later `update` on that child (e.g. enabling a button
+// inside a sheet) can be routed back into its container instead of being
+// treated as a stray top-level component and mis-placed.
+function registerContainerOf(patch, containerOf) {
+  const id = patch?.id || patch?.name;
+  for (const child of patchChildren(patch)) {
+    const childId = child?.id || child?.name;
+    if (childId && id) containerOf.set(childId, id);
+    registerContainerOf(child, containerOf);
+  }
+}
+
+// An update whose target was created as a CHILD of a container (tracked in
+// containerOf) must not be rendered as an independent top-level component. We
+// fold it into an update of its container: the container leaves `keep` and
+// becomes an update whose modifications describe the child changes, so the
+// container re-renders with the child's new props (e.g. button enabled) and the
+// child is never emitted as a stray top-level patch.
+function routeChildUpdatesToContainer(state, containerOf, virtualPatchById) {
+  const inh = state.inheritance;
+  if (!inh || !Array.isArray(inh.update) || !inh.update.length) return;
+  const keepArr = Array.isArray(inh.keep) ? inh.keep : [];
+  const keepSet = new Set(keepArr.filter((x) => typeof x === "string"));
+  const present = new Set([
+    ...keepSet,
+    ...(inh.create || []).map((p) => p?.id || p?.name),
+    ...inh.update.map((p) => p?.id || p?.name),
+  ].filter(Boolean));
+
+  const remaining = [];
+  const grouped = new Map();
+  for (const patch of inh.update) {
+    const id = patch?.id || patch?.name;
+    const container = id ? containerOf.get(id) : null;
+    // Only fold LEAF children (no children of their own). A child that is itself
+    // a container with children must stay a top-level update so its own
+    // children keep their identity/registration; folding it into a modification
+    // would drop that subtree.
+    if (container && container !== id && present.has(container) && !patchChildren(patch).length) {
+      if (!grouped.has(container)) grouped.set(container, []);
+      grouped.get(container).push(patch);
+    } else {
+      remaining.push(patch);
+    }
+  }
+  if (!grouped.size) return;
+
+  for (const [containerId, children] of grouped) {
+    let containerPatch = remaining.find((p) => (p?.id || p?.name) === containerId);
+    if (!containerPatch) {
+      if (keepSet.has(containerId)) inh.keep = keepArr.filter((a) => a !== containerId);
+      const prev = virtualPatchById.get(containerId) || {};
+      containerPatch = { type: "update", id: containerId, component: prev.component || null, props: {}, modifications: [], preserve: [] };
+      remaining.push(containerPatch);
+    }
+    if (!Array.isArray(containerPatch.modifications)) containerPatch.modifications = [];
+    for (const child of children) {
+      const childId = child.id || child.name;
+      const childProps = child.props && typeof child.props === "object" && !Array.isArray(child.props) ? child.props : {};
+      const changedKeys = Object.keys(childProps);
+      const parts = changedKeys.map((k) => `${k}=${shortValueText(childProps[k])}`);
+      const mod = {
+        target: childId,
+        target_component: child.component || null,
+        parent: containerId,
+        change: `容器内子组件「${childId}」更新${parts.length ? ":" + parts.join(", ") : ""}`,
+      };
+      if (changedKeys.length) mod.set_props = { ...childProps };
+      if (typeof child.text === "string" && child.text.trim()) mod.set_text = child.text;
+      if (child.text_style && typeof child.text_style === "object") mod.set_text_style = child.text_style;
+      containerPatch.modifications.push(mod);
+    }
+  }
+  inh.update = remaining;
+}
+
 function collectPatchRefs(patch, out = []) {
   const anchor = patchAnchor(patch);
   if (anchor) out.push(anchor);
@@ -1039,6 +1116,7 @@ function normalizeModel(model, initialHeight, registry = {}) {
   const treeInfo = registryTreeInfo(registry);
 
   const virtualPatchById = new Map();
+  const containerOf = new Map();
   for (const state of model.states || []) {
     if (!state.trigger || typeof state.trigger !== "object" || Array.isArray(state.trigger)) state.trigger = null;
     if (stateNum(state.id) === 1 && !state.parent_state) state.trigger = null;
@@ -1087,7 +1165,12 @@ function normalizeModel(model, initialHeight, registry = {}) {
       normalizeRichRequirements(patch);
       normalizeFixedViewportPatch(patch, initialHeight);
       registerPatchTree(patch, virtualPatchById);
+      registerContainerOf(patch, containerOf);
     }
+    // Fold child-component updates back into their container before per-patch
+    // normalization, so a child never reaches normalizeFixedViewportPatch as a
+    // stray top-level component.
+    routeChildUpdatesToContainer(state, containerOf, virtualPatchById);
     for (const patch of state.inheritance.update) {
       const previousSpec = previousSpecForUpdate(patch, virtualPatchById, registry, idToAnchor);
       mergeVirtualPlacement(patch, virtualPatchById);
@@ -1264,6 +1347,13 @@ function validateModel(model, registry) {
       // Children introduced by an update patch are rendered into the DOM with
       // their own component ids, so later states may keep/bind them.
       collectPatchIds(patch).forEach((id) => virtualAnchors.add(id));
+      // A modification target that names a component (not a prop path / literal)
+      // is a real child id — e.g. a child folded into its container by
+      // routeChildUpdatesToContainer — and may be referenced by later states.
+      for (const mod of patch.modifications || []) {
+        const t = mod && typeof mod.target === "string" ? mod.target : "";
+        if (t && !/^(props\.|text$|text_style$|bbox$|layout$|self$)/.test(t)) virtualAnchors.add(t);
+      }
       const id = patch?.id || patch?.name;
       if (id && virtualPatches.has(id)) {
         virtualPatches.set(id, { ...virtualPatches.get(id), ...patch, props: { ...(virtualPatches.get(id).props || {}), ...(patch.props || {}) } });
