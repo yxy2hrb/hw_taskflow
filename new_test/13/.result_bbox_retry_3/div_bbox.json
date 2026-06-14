@@ -7,7 +7,7 @@
         "x": 0,
         "y": 0,
         "w": 360,
-        "h": 792
+        "h": 936
       },
       "text_snippet": "首页 商城 工作台 服务 我的 08:08 产品 配单 门店 我的自定义 光接入 存储 协作平板 视频会议 智能安防 广场屏 昇腾APN 计算 全部 协作平板 其他 IdeaHub S2系列 Idea",
       "total_child_count": 1,
@@ -24,7 +24,7 @@
         "x": 0,
         "y": 0,
         "w": 360,
-        "h": 792
+        "h": 936
       },
       "text_snippet": "首页 商城 工作台 服务 我的 08:08 产品 配单 门店 我的自定义 光接入 存储 协作平板 视频会议 智能安防 广场屏 昇腾APN 计算 全部 协作平板 其他 IdeaHub S2系列 Idea",
       "total_child_count": 1,
@@ -3112,6 +3112,57 @@
       }
     },
     {
+      "key": "auto:57",
+      "id": null,
+      "bbox": {
+        "x": 164,
+        "y": 296,
+        "w": 168,
+        "h": 16
+      },
+      "text_snippet": "EOS 非现货",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2057",
+      "id": "5_2057",
+      "bbox": {
+        "x": 164,
+        "y": 296,
+        "w": 36,
+        "h": 16
+      },
+      "text_snippet": "EOS",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2060",
+      "id": "5_2060",
+      "bbox": {
+        "x": 208,
+        "y": 296,
+        "w": 46,
+        "h": 16
+      },
+      "text_snippet": "非现货",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
       "key": "id:2_112967",
       "id": "2_112967",
       "bbox": {
@@ -3121,6 +3172,57 @@
         "h": 22
       },
       "text_snippet": "￥21,999.00 1",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:58",
+      "id": null,
+      "bbox": {
+        "x": 164,
+        "y": 334,
+        "w": 168,
+        "h": 22
+      },
+      "text_snippet": "￥21,999.00 1",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112968",
+      "id": "2_112968",
+      "bbox": {
+        "x": 164,
+        "y": 337,
+        "w": 86,
+        "h": 16
+      },
+      "text_snippet": "￥21,999.00",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112969",
+      "id": "2_112969",
+      "bbox": {
+        "x": 258,
+        "y": 334,
+        "w": 74,
+        "h": 22
+      },
+      "text_snippet": "1",
       "total_child_count": 1,
       "style_summary": {
         "background": "rgba(0, 0, 0, 0)",
@@ -3299,6 +3401,57 @@
       }
     },
     {
+      "key": "auto:72",
+      "id": null,
+      "bbox": {
+        "x": 164,
+        "y": 400,
+        "w": 168,
+        "h": 16
+      },
+      "text_snippet": "EOS 非现货",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2072",
+      "id": "5_2072",
+      "bbox": {
+        "x": 164,
+        "y": 400,
+        "w": 36,
+        "h": 16
+      },
+      "text_snippet": "EOS",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2075",
+      "id": "5_2075",
+      "bbox": {
+        "x": 208,
+        "y": 400,
+        "w": 46,
+        "h": 16
+      },
+      "text_snippet": "非现货",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
       "key": "id:2_112977",
       "id": "2_112977",
       "bbox": {
@@ -3316,6 +3469,40 @@
       }
     },
     {
+      "key": "auto:73",
+      "id": null,
+      "bbox": {
+        "x": 164,
+        "y": 438,
+        "w": 168,
+        "h": 14
+      },
+      "text_snippet": "金牌价 ¥32,900.00",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112978",
+      "id": "2_112978",
+      "bbox": {
+        "x": 164,
+        "y": 438,
+        "w": 34,
+        "h": 14
+      },
+      "text_snippet": "金牌价",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgb(255, 235, 178)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
       "key": "id:2_112980",
       "id": "2_112980",
       "bbox": {
@@ -3325,6 +3512,57 @@
         "h": 22
       },
       "text_snippet": "￥21,999.00 1",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:75",
+      "id": null,
+      "bbox": {
+        "x": 164,
+        "y": 456,
+        "w": 168,
+        "h": 22
+      },
+      "text_snippet": "￥21,999.00 1",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112981",
+      "id": "2_112981",
+      "bbox": {
+        "x": 164,
+        "y": 459,
+        "w": 86,
+        "h": 16
+      },
+      "text_snippet": "￥21,999.00",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112982",
+      "id": "2_112982",
+      "bbox": {
+        "x": 258,
+        "y": 456,
+        "w": 74,
+        "h": 22
+      },
+      "text_snippet": "1",
       "total_child_count": 1,
       "style_summary": {
         "background": "rgba(0, 0, 0, 0)",
@@ -3503,12 +3741,80 @@
       }
     },
     {
+      "key": "auto:89",
+      "id": null,
+      "bbox": {
+        "x": 164,
+        "y": 502,
+        "w": 12,
+        "h": 12
+      },
+      "text_snippet": "IdeaHub B2 Base-75 寸",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112988",
+      "id": "2_112988",
+      "bbox": {
+        "x": 164,
+        "y": 502,
+        "w": 12,
+        "h": 12
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgb(199, 0, 11)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
       "key": "id:2_112993",
       "id": "2_112993",
       "bbox": {
         "x": 164,
         "y": 550,
         "w": 168,
+        "h": 22
+      },
+      "text_snippet": "1",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:91",
+      "id": null,
+      "bbox": {
+        "x": 164,
+        "y": 550,
+        "w": 168,
+        "h": 22
+      },
+      "text_snippet": "1",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112995",
+      "id": "2_112995",
+      "bbox": {
+        "x": 258,
+        "y": 550,
+        "w": 74,
         "h": 22
       },
       "text_snippet": "1",
@@ -3629,6 +3935,40 @@
         "y": 648,
         "w": 168,
         "h": 22
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:103",
+      "id": null,
+      "bbox": {
+        "x": 164,
+        "y": 648,
+        "w": 168,
+        "h": 22
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_113004",
+      "id": "2_113004",
+      "bbox": {
+        "x": 312,
+        "y": 649,
+        "w": 20,
+        "h": 20
       },
       "text_snippet": "",
       "total_child_count": 1,
@@ -3809,6 +4149,40 @@
       }
     },
     {
+      "key": "auto:108",
+      "id": null,
+      "bbox": {
+        "x": 164,
+        "y": 742,
+        "w": 168,
+        "h": 22
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_113013",
+      "id": "2_113013",
+      "bbox": {
+        "x": 312,
+        "y": 743,
+        "w": 20,
+        "h": 20
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
       "key": "id:2_113014",
       "id": "2_113014",
       "bbox": {
@@ -3979,6 +4353,57 @@
       }
     },
     {
+      "key": "auto:113",
+      "id": null,
+      "bbox": {
+        "x": 164,
+        "y": 808,
+        "w": 168,
+        "h": 16
+      },
+      "text_snippet": "EOS 非现货",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2042",
+      "id": "5_2042",
+      "bbox": {
+        "x": 164,
+        "y": 808,
+        "w": 36,
+        "h": 16
+      },
+      "text_snippet": "EOS",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2045",
+      "id": "5_2045",
+      "bbox": {
+        "x": 208,
+        "y": 808,
+        "w": 46,
+        "h": 16
+      },
+      "text_snippet": "非现货",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
       "key": "id:2_113021",
       "id": "2_113021",
       "bbox": {
@@ -3988,6 +4413,57 @@
         "h": 22
       },
       "text_snippet": "￥21,999.00 1",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:114",
+      "id": null,
+      "bbox": {
+        "x": 164,
+        "y": 846,
+        "w": 168,
+        "h": 22
+      },
+      "text_snippet": "￥21,999.00 1",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_113022",
+      "id": "2_113022",
+      "bbox": {
+        "x": 164,
+        "y": 849,
+        "w": 86,
+        "h": 16
+      },
+      "text_snippet": "￥21,999.00",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_113023",
+      "id": "2_113023",
+      "bbox": {
+        "x": 258,
+        "y": 846,
+        "w": 74,
+        "h": 22
+      },
+      "text_snippet": "1",
       "total_child_count": 1,
       "style_summary": {
         "background": "rgba(0, 0, 0, 0)",
