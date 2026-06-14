@@ -741,13 +741,19 @@ function buildSemanticTree(registry, html) {
   for (const entry of Object.values(registry)) {
     nodes[entry.name] = {
       name: entry.name,
+      anchor: entry.name,
       selector: entry.selector,
       id: entry.id,
       area: entry.area,
+      component: entry.component,
       semantic: entry.component,
+      element: entry.element,
       range: entry.element,
+      bbox: entry.bbox || null,
       text: entry.text,
       confidence: entry.confidence,
+      policy: entry.inheritance_policy,
+      inheritance_policy: entry.inheritance_policy,
       parent: null,
       children: [],
     };
@@ -771,6 +777,36 @@ function buildSemanticTree(registry, html) {
     }
   }
   return { roots, nodes };
+}
+
+function buildNestedSemanticRegistry(registry, html) {
+  const tree = buildSemanticTree(registry, html);
+  const nodes = {};
+  for (const [name, node] of Object.entries(tree.nodes || {})) {
+    nodes[name] = {
+      anchor: node.anchor || name,
+      selector: node.selector,
+      id: node.id,
+      area: node.area,
+      component: node.component || node.semantic,
+      element: node.element || node.range,
+      bbox: node.bbox || null,
+      text: node.text || "",
+      policy: node.policy || node.inheritance_policy,
+      confidence: node.confidence,
+      children: [],
+    };
+  }
+  for (const [name, node] of Object.entries(tree.nodes || {})) {
+    if (!nodes[name]) continue;
+    nodes[name].children = (node.children || [])
+      .map((childName) => nodes[childName])
+      .filter(Boolean);
+  }
+  return {
+    type: "tree",
+    roots: (tree.roots || []).map((name) => nodes[name]).filter(Boolean),
+  };
 }
 
 
@@ -803,6 +839,7 @@ function main() {
 
   const semanticAnchors = buildSemanticAnchors(registry);
   const semanticTree = buildSemanticTree(registry, html);
+  const semanticRegistryTree = buildNestedSemanticRegistry(registry, html);
 
 
   const result = {
@@ -820,6 +857,8 @@ function main() {
     semanticAnchors,
 
     semantic_dom_tree: semanticTree,
+
+    semantic_registry_tree: semanticRegistryTree,
 
 
   };
