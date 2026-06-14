@@ -210,11 +210,16 @@ Props:
 - `thirdLabel?: string`：第三按钮文案，仅 `triple` 有效。
 - `inputPlaceholder?: string`：输入框占位文案。
 - `checkboxLabel?: string`：复选框文案。
-- `width?: number`：容器宽度，默认 360。
+- `width?: number | "100%"`：容器宽度，默认 360；`360` 适用于顶层底部操作栏，嵌套在弹窗/卡片/footer 内时传 `"100%"` 以服从父容器宽度。
 - `className?: string`：扩展类。
 - `onPrimaryClick?: () => void`：主按钮回调。
 - `onSecondaryClick?: () => void`：次按钮回调。
 - `onThirdClick?: () => void`：第三按钮回调。
+
+使用约束:
+
+- 顶层底部操作区可使用默认 `width=360`。
+- 作为 `Dialog`/`Modal`/卡片 footer 的子组件时，必须传 `width="100%"` 或生成等价的紧凑按钮行；不要让默认 360 宽度突破父容器。
 
 使用场景:
 
@@ -522,4 +527,3 @@ Props:
 - 如果卡片、列表或详情内容过多，允许 `height` 大于初始视口；bbox 可以继续向下排列，避免压缩内容导致空卡片或信息缺失。
 - page-layer 会把 `height` 用作对应 state layer 的 `min-height`，截图时也会按该 state 的 `height` 设置 Playwright viewport。
 - 生成 bbox 时，所有可见组件的 `bbox[1] + bbox[3]` 不应超过该 state 的 `height`。
-

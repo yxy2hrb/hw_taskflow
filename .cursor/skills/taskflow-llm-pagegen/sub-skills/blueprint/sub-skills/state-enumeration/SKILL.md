@@ -18,14 +18,77 @@ description: >
 - `brief`：原始任务流描述
 - `page_dsl`：页面 DSL（辅助判断现有页面结构）
 
-## 输出
+## 输出协议
 
-按任务流顺序排列的状态清单，每条含：
+Phase 2 拆成 `generate` 与 `confirm` 两步。
+
+### generate：写入 `phase2_ask.json`
+
+按任务流顺序排列的候选状态清单，每条含：
 
 - `id`：`state_1 / state_2 / ...`（后续 Phase 3 引用）
 - `label`：状态简称（6–14 字），只写状态名，不写长描述
 - `description`：该状态的具体细节，必须包含「触发条件 / 展示信息 / 继承信息」三段
-- `rationale`：为什么这个状态值得单独建
+- `basis`：该状态设计所参考的知名产品设计思路或典型页面，用一句话简要说明
+
+`phase2_ask.json` 示例：
+
+```json
+{
+  "action": "ask",
+  "phase": 2,
+  "questionText": "以下是 happy-path 状态清单，请确认保留哪些、是否需要补充。",
+  "multiSelect": true,
+  "allowCustom": true,
+  "note": "默认全部保留；取消不需要的状态；补充栏可写新状态。",
+  "options": [
+    {
+      "id": "state_1",
+      "label": "初始页面状态",
+      "description": "触发条件：无，任务流起点。\n展示信息：...\n继承信息：无。",
+      "basis": "参考 Apple Store 与淘宝首页的商品浏览起始结构，作为任务流入口。",
+      "default": true
+    }
+  ]
+}
+```
+
+### confirm：写入 `phase2_confirmed.json`
+
+```json
+{
+  "action": "confirmed",
+  "phase": 2,
+  "states": [
+    {
+      "id": "state_1",
+      "label": "初始页面状态",
+      "description": "触发条件：...\n展示信息：...\n继承信息：无。"
+    }
+  ]
+}
+```
+
+confirm 规则：
+
+- 只保留用户勾选或编辑后的 state。
+- 终端交互时只需输入保留状态的数字编号，多个编号使用逗号分隔。
+- 选择后先展示完整状态序列；修改时输入自然语言意见，由模型重新生成完整状态序列。
+- 用户未选择的原候选状态不会自动恢复，但用户可以通过修改意见新增、删除或调整状态顺序。
+- 修改后必须按流程顺序连续编号为 `state_1...state_N`，并同步更新描述中的状态引用。
+- `state_1` 不可删除，且必须保持第一项。
+- `states.length >= 4`。
+- confirmed 中移除 `basis`。
+
+`basis` 规则：
+
+- 由模型生成，一句话简要说明即可，不写复杂分析。
+- 参考与当前 state 相关的知名产品、公司设计体系或典型页面，例如 Apple、淘宝、Google、
+  微信、Amazon、京东、支付宝等，但不限于这些产品。
+- 同时写清参考对象和可借鉴的设计思路，例如：
+  `参考 Apple Store 商品详情页的信息分区与淘宝详情页的固定操作栏。`
+- 参考必须贴合当前状态，避免只罗列品牌名称。
+- 使用字段名 `basis`，不要输出 `rationale`。
 
 `label` 约束：
 
@@ -66,18 +129,6 @@ description: >
 3. **必要进行中/过渡态**：若 brief 明确包含提交、创建、加载、等待结果，必须独立建 loading / progress / spinner 态
 4. **已提交/提交完成态**：表单或创建动作完成提交后的稳定反馈态，例如 Toast、Snackbar、成功页、回到来源页并展示成功提示
 5. **成功终态**：至少一个 happy-path 终态
-
-### state_1 原始页面锚定规则
-
-`state_1` 必须严格等于 `page_dsl` 描述的输入 HTML / 原始截图页面，不得等于首次点击、跳转或选择之后出现的新页面。
-
-- `state_1.description.展示信息` 必须能被 `page_dsl.页面构成` 和 `page_dsl.各个区域组件信息分述` 支撑。
-- 如果 `brief` 写的是“在 A 页点击/选择 X 后进入 B 页”，且 `page_dsl` 描述的是 A 页，则必须枚举为：
-  1. `state_1`：A 页原始页面状态，包含 X 入口；
-  2. `state_2`：点击/选择 X 后进入的 B 页；
-  3. 后续弹窗、表单、提交中、成功态继续按真实顺序展开。
-- 禁止把 B 页写成 `state_1`，即使 User Story 的 `Given` 中误写了“已经进入 B 页”，也必须以 `page_dsl` 为准纠正。
-- `state_1` 的触发条件固定为“无，任务流起点”，继承信息固定为“无”，不得描述为“点击后进入”的结果页。
 
 ### 基于 Acceptance Criteria Steps 枚举
 
@@ -150,13 +201,13 @@ happy-path 至少需要四态：① 列表初始态 ② 筛选面板展开态 �
       "id": "state_1",
       "label": "初始页面状态",
       "description": "触发条件：无，任务流起点。\n展示信息：我的工作台页面，包含任务入口和原始页面骨架。\n继承信息：无。",
-      "rationale": "任务流起点"
+      "basis": "参考 Apple Store 与淘宝首页的商品浏览起始结构。"
     },
     {
       "id": "state_2",
       "label": "主路径中间状态",
       "description": "触发条件：用户执行对应操作。\n展示信息：展示当前步骤要求的表单、弹窗、列表或详情内容。\n继承信息：继承 state_1 的状态栏、导航栏或底部 Tab；主体区域切换为当前步骤内容。",
-      "rationale": "主路径必要中间态"
+      "basis": "参考淘宝购物车确认浮层的清单核对模式。"
     },
     ...
   ],
@@ -169,7 +220,7 @@ happy-path 至少需要四态：① 列表初始态 ② 筛选面板展开态 �
 
 - `options >= 4` 条
 - 按时间先后排序，`state_1` 一定是初始态
-- 每个 option 必须包含 `id / label / description / rationale`
+- 每个 option 必须包含 `id / label / description / basis`
 - `label` 只写简称，不得包含长描述
 - `description` 必须包含「触发条件：」「展示信息：」「继承信息：」三段
 - 只列 happy-path 状态；不主动列失败态、异常态、取消态、返回态

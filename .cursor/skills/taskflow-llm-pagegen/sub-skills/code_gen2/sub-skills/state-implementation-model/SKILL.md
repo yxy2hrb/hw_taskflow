@@ -63,6 +63,9 @@ Return strict JSON only:
 - `inheritance.keep` must be an array of anchor/component ids.
 - `inheritance.create` must be an array of create patch objects, not strings.
 - `inheritance.update` must be an array of update patch objects, not strings.
+- Every update patch must include a non-empty `modifications` array and a
+  `preserve` array describing which internal parts change and which stay
+  exactly as the previous implementation. See "Update Patch Modification List".
 - `height` must be a number for every state.
 - Do not output `inheritance.hide`.
 - Do not output `inheritance.replace`.
@@ -81,7 +84,13 @@ Return strict JSON only:
   to express relative layout instead.
 - Fixed containers must output `bbox`: `BottomSheet`, `Drawer`, `Modal`,
   `Dialog`, `Toast`, `Overlay`, masks, top navigation, bottom bars, floating
-  action bars, and any component that must align to a viewport edge.
+  action bars, soft keyboards, and any component that must align to a viewport
+  edge.
+- Fixed bottom components must be authored against the viewport, not the long
+  document canvas. For `viewport.initial_height = H`, a 64px bottom action bar
+  must use `bbox: [0, H - 64, width, 64]` and a soft keyboard must use
+  `bbox: [0, H - keyboardHeight, width, keyboardHeight]`. Also set
+  `props.layoutRole` to `fixed-bottom-action` or `fixed-bottom-keyboard`.
 - Container-like create patches may include `children`. Each child must follow
   the same semantic patch shape as a normal create patch: `type`, `id`,
   `component`, `props`, `text` / `visible_text`, `text_style`, and optional
@@ -93,6 +102,13 @@ Return strict JSON only:
   child layout.
 - A later state may `keep` or `update` a virtual component id created by an
   earlier state. Do not reference a virtual id before it has been created.
+- When updating a virtual component that was previously placed with `layout` or
+  fixed `bbox`, preserve that placement. If the placement is unchanged, do NOT
+  repeat `layout`/`bbox` in the update patch — omit them and list them in
+  `preserve`; the runner deterministically inherits the previous placement.
+  Only output `layout`/`bbox` on an update patch when the placement actually
+  changes in this state, and record that change in `modifications`. Never let
+  an updated input/card/button fall back to the top-left of the page.
 - IDs embedded inside structured props, such as `props.footer.primaryId`,
   `props.body[].id`, or an input descriptor inside `BottomSheet.props.body`, do
   not create standalone virtual components. A later state must not `trigger`,
@@ -114,6 +130,23 @@ anchor, it must have been created by an earlier state.
 
 - `trigger` describes how the user or system enters the current state from the
   previous state.
+- `state_1` is the initial state and its `trigger` must be `null` unless the
+  blueprint explicitly models an external return entry. Do not put the first
+  visible user action, such as tapping a search/filter/card button, on
+  `state_1.trigger`; put that outbound interaction in `state_1.patches` as a
+  `bind` patch.
+- `state_1` MUST NOT create or update components. It is the original captured
+  page rendered from app-root, and page-layer does not render its create/update
+  patches — so any bind to a state_1-created component is dead and the
+  transition will not work. A `state_1.patches[].bind` anchor must be an
+  ORIGINAL DOM anchor from `semantic_registry` (e.g. the real "搜索图标-…"
+  anchor that already exists on the page), never a newly created virtual id.
+  Do not create a new IconButton/etc. on state_1 just to bind it.
+- For every non-`state_1` click/tap trigger, make the inbound destination
+  explicit with `goto` equal to the current state's own `id`, for example
+  `{ "action": "click", "anchor": "搜索图标", "goto": "state_2" }`.
+- If `trigger.action` uses `goto:state_N`, `state_N` must equal the current
+  state's own `id`. A state's inbound trigger must not point to the next state.
 - A state's `trigger.anchor` must be an original DOM anchor or a virtual anchor
   created by an earlier state.
 - Do not set `trigger.anchor` to a component first created inside the current
@@ -126,8 +159,9 @@ anchor, it must have been created by an earlier state.
   `{ "anchor": "edit_sheet", "target": "footer.primary" }`. Do not set
   `trigger.anchor` to `btn_confirm_edit` unless `btn_confirm_edit` is a real
   child patch created in a previous state.
-- For `state_1`, `trigger` should be `null` unless the blueprint explicitly
-  models a return transition as a separate state.
+- `patches[].bind` describes outbound interactions available after the current
+  state is rendered. It must use an explicit `goto: "state_N"` target. Do not
+  rely on `action: "click"` alone to imply a target.
 
 ## Core Rules
 
@@ -158,10 +192,14 @@ anchor, it must have been created by an earlier state.
     overlap when they share the same z-index. If overlap is intentional, it must
     be modeled as a higher-z overlay, modal, drawer, toast, or transparent hero
     background.
-12. Generated component descriptions should support an antd Mobile style output:
+12. Soft keyboard states are special fixed-bottom states. The keyboard must be
+    placed at the viewport bottom, and normal bottom action bars should either be
+    moved above the keyboard, hidden, or represented by the keyboard return key.
+    Do not place the keyboard in the top content flow.
+13. Generated component descriptions should support an antd Mobile style output:
     clean cards, primary buttons, rounded inputs, light dividers, and restrained
     elevation.
-13. Preserve Gestalt design principles: related elements should be close,
+14. Preserve Gestalt design principles: related elements should be close,
     aligned, visually similar, and grouped with clear hierarchy.
 
 ## State Inheritance Reasoning
@@ -195,6 +233,101 @@ If an original status/system bar anchor exists in `semantic_registry` and the ne
 state is not a full-screen replacement that intentionally redraws the entire top
 system area, keep the status/system bar anchor explicitly. Do not rely on
 page-layer fallback to restore it.
+
+## Update Patch Modification List
+
+An update patch re-states the component's new full spec, but codegen also needs
+an explicit, expanded change plan: which internal parts of the updated parent
+component are modified, and which must stay exactly as the previous
+implementation. Therefore every update patch must carry:
+
+- `modifications`: a non-empty array. Each entry is one concrete change inside
+  the updated component:
+  - `target`: the changed part. Use a child patch id, a documented prop path
+    such as `props.primaryLabel`, a structured slot path such as
+    `footer.primary` or `body[1].quantity`, or the literal `text`,
+    `text_style`, `bbox`, or `layout`.
+  - `target_component`: the component name of the changed child/slot when the
+    target is itself a component; omit for plain prop/text targets.
+  - `parent`: the id of the component that directly owns the changed part.
+    For top-level prop/text changes this is the update patch's own `id`; for a
+    nested child it is that child's direct parent id.
+  - `change`: a self-contained modification plan in natural language with
+    before → after values when known, for example
+    "主按钮文案从「保存」改为「保存中...」，同时 disabled=true 并显示 loading".
+  - Machine-applicable values when the change is simple: `set_text` (the new
+    text string), `set_text_style` (the new style object), `set_bbox` (the new
+    `[x, y, w, h]`), `set_props` (an object of changed prop values). These let
+    the runner apply the change deterministically without regenerating the
+    component. Always include them when the change is a plain text, style,
+    position, or prop value swap.
+- `preserve`: an array of internal parts that must remain byte-stable from the
+  previous implementation: child ids, prop paths, `text`, `bbox`, or `layout`.
+  List at least the visually important untouched parts.
+
+Example:
+
+```json
+{
+  "type": "update",
+  "id": "btn_save",
+  "component": "ButtonBar",
+  "bbox": [0, 872, 360, 64],
+  "props": { "variant": "single-primary", "primaryLabel": "保存中...", "disabled": true, "loading": true },
+  "modifications": [
+    { "target": "props.primaryLabel", "parent": "btn_save", "change": "主按钮文案从「保存」改为「保存中...」" },
+    { "target": "props.disabled", "parent": "btn_save", "change": "disabled 从 false 改为 true，提交中不可重复点击" },
+    { "target": "props.loading", "parent": "btn_save", "change": "新增 loading=true，按钮内显示加载圈" }
+  ],
+  "preserve": ["bbox", "props.variant", "props.zIndex", "text_style"]
+}
+```
+
+Rules:
+
+- `modifications` must cover every difference between the previous visible spec
+  of this component and the current update patch. Anything not listed is
+  implicitly preserved; do not change unlisted parts.
+- A `target` naming a child must reference a child that already exists in the
+  previous spec, unless the entry's `change` explicitly starts with "新增" to
+  mark a newly added child.
+- Removal is still forbidden (no hide/replace). To visually retire an internal
+  part, change its content or visibility props and describe that in `change`.
+- An update on original page content must target the CARD/CONTAINER level, not
+  a leaf: `id` is the semantic unit being versioned (an information row, card,
+  or list item anchor), and the changed leaf (for example a text anchor like
+  "李华-文本") appears as a modification `target` with `set_text` carrying the
+  new value. Never use a bare text anchor as the update patch `id`.
+- The update ledger is card-keyed: after a card is updated once, its id refers
+  to the NEWEST implementation. A later state that needs that card unchanged
+  simply keeps the card id; a later state changing it further writes another
+  update against the same id describing only the new differences. Never
+  restate earlier states' changes.
+
+## Keep Scope: Replacement vs Overlay
+
+Choose `inheritance.keep` based on whether the state replaces the page or floats
+over it. This decision owns whether the previous page stays visible underneath.
+
+- A full-screen replacement state (detail page, edit form, settings page, result
+  or confirmation page) builds its own header and body. It MUST keep only
+  system-resident areas — the system status bar (time/battery/signal) and, if
+  present, the system home indicator. It MUST NOT keep the previous or initial
+  page's content anchors (cards, lists, banners, tab bars, content sections, the
+  old title/nav bar). Re-create whatever header and content it needs via
+  `create`; never inherit the old page as a background.
+- An overlay state (modal, dialog, bottom sheet, drawer, popover, context menu,
+  filter panel, action menu, toast over content) floats above the page that
+  triggered it. It SHOULD keep that background page's anchors so the dimmed page
+  stays visible, and it MUST also `create` an overlay/mask plus the floating
+  surface.
+- Never put the full set of initial-page content anchors into a non-overlay
+  state's `keep`. Keeping the whole initial page inside a replacement state makes
+  the old page show through as a ghost background, which is a defect.
+- Rule of thumb: if the state creates its own `TopNav`/title bar and fills the
+  screen with new content, it is a replacement state → keep status bar only.
+  If the state creates an `Overlay`/`BottomSheet`/`Dialog`/`Popover`, it is an
+  overlay → keep the background page.
 
 ## State Height
 
@@ -355,6 +488,10 @@ Required z-index convention:
 - Sheet/dialog/popup: `props.zIndex: 60` or higher
 - Floating toast above sheet: `props.zIndex: 70` or higher
 
+Toast/Snackbar feedback is fixed non-blocking feedback and does not require a
+global mask/overlay unless the blueprint explicitly asks for a blocking
+confirmation dialog.
+
 The overlay must never visually cover the sheet. Put z-index values in `props`
 so component-codegen can render them as inline `zIndex`.
 
@@ -479,16 +616,24 @@ Use these defaults unless the component library reference says otherwise:
 - `keep`: do not use as a patch; put anchors in `inheritance.keep`
 - `create`: describe new UI to create; put patches in `inheritance.create`
 - `update`: update content/state of an anchor; put patches in
-  `inheritance.update`
+  `inheritance.update`, each with an expanded `modifications` / `preserve`
+  change plan
 
 ## Validation Checklist
 
 - Every non-`state_1` state has `parent_state`.
+- `state_1.trigger` is `null`; first-screen outbound clicks are represented by
+  `state_1.patches[].bind`.
+- Every click/tap trigger on a non-initial state has `goto` equal to that
+  state's own `id`.
+- Every `bind` patch has an explicit `goto: "state_N"` target.
 - Every trigger anchor exists in original anchors or previous virtual anchors,
   unless it is a system trigger such as `timeout`, `data_loaded`, or
   `submit_success`.
 - Every keep/update target exists in original anchors or previous virtual
   anchors.
+- Every update patch has a non-empty `modifications` array whose entries all
+  include `target` and `change`, plus a `preserve` array for untouched parts.
 - Every non-modal create/update bbox avoids all kept bboxes for the state.
 - No `hide`, `replace`, `inheritance.hide`, or `inheritance.replace` is present.
 - No create visible text equals internal labels such as `state_2` or an internal

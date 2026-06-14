@@ -179,7 +179,8 @@ async function generateSpecWithQwenVl(apiKey, imagePath) {
         ],
       },
     ],
-    temperature: 0.2,
+    temperature: Number(process.env.MODEL_TEMPERATURE ?? 0),
+    seed: Number(process.env.MODEL_SEED ?? 42),
     max_tokens: 2400,
     response_format: { type: "json_object" },
   };
@@ -314,7 +315,8 @@ async function callQwen(apiKey, model, prompt) {
   const payload = {
     model: model,
     messages: [{ role: "user", content: prompt }],
-    temperature: 0.1,
+    temperature: Number(process.env.MODEL_TEMPERATURE ?? 0),
+    seed: Number(process.env.MODEL_SEED ?? 42),
     max_tokens: 12000,
     response_format: { type: "json_object" },
   };

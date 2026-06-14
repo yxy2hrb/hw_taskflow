@@ -54,7 +54,8 @@ async function callLLM({ model, system, user, maxTokens }) {
         body: JSON.stringify({
           model,
           messages: [{ role: "system", content: system }, { role: "user", content: user }],
-          temperature: 0.15,
+          temperature: Number(process.env.MODEL_TEMPERATURE ?? 0),
+          seed: Number(process.env.MODEL_SEED ?? 42),
           max_tokens: maxTokens,
           response_format: { type: "json_object" },
         }),
@@ -75,30 +76,36 @@ function componentText(component) {
   const visible = component.visible_text;
   if (typeof visible === "string") return visible;
   if (visible && typeof visible === "object") return Object.values(visible).flat().join(" ");
+  if (Array.isArray(component.props?.sections)) {
+    return component.props.sections.map((section) => section?.text || section?.caption || "").filter(Boolean).join("\n");
+  }
   return component.text || component.description || "";
 }
 
-function fallbackComponent({ component, operation, originalComponent, generatedChildren = [] }) {
+function fallbackComponent({ component, operation, originalComponent, generatedChildren = [], layoutContext = null }) {
   const id = component.id || component.name || "component";
   const bbox = Array.isArray(component.bbox) ? component.bbox : [0, 0, 120, 40];
   const kind = String(component.component || "component").toLowerCase();
   const text = componentText(component) || (operation === "update" && originalComponent?.text) || "";
   const hasBbox = Array.isArray(component.bbox);
-  const width = Number(component.props?.width || component.width || bbox[2] || 120);
+  const rawWidth = component.props?.width || component.width || (layoutContext?.available_width ? "100%" : bbox[2]) || 120;
   const height = Number(component.props?.height || component.height || bbox[3] || 40);
   const style = hasBbox
     ? `position:absolute;left:${Number(bbox[0] || 0)}px;top:${Number(bbox[1] || 0)}px;width:${Number(bbox[2] || 0)}px;height:${Number(bbox[3] || 0)}px;`
-    : `position:relative;width:${width}px;min-height:${height}px;`;
+    : `position:relative;width:${typeof rawWidth === "string" ? rawWidth : `${Number(rawWidth)}px`};max-width:100%;min-width:0;min-height:${height}px;`;
   const cls = kind.includes("button") ? "tf-cg-button" : kind.includes("input") ? "tf-cg-input" : kind.includes("toast") ? "tf-cg-toast" : "tf-cg-card";
   const childImports = generatedChildren.map((child) => `import ${child.importName} from ${JSON.stringify(child.importPath)};`);
   const childJsx = generatedChildren.map((child) => `        <${child.importName} />`).join("\n");
+  const fallbackStyle = hasBbox
+    ? `{ position: "absolute", left: ${Number(bbox[0] || 0)}, top: ${Number(bbox[1] || 0)}, width: ${Number(bbox[2] || 0)}, height: ${Number(bbox[3] || 0)} }`
+    : `{ position: "relative", width: ${JSON.stringify(rawWidth)}, maxWidth: "100%", minWidth: 0, minHeight: ${height}, boxSizing: "border-box" }`;
   const reactCode = [
     "import React from \"react\";",
     ...childImports,
     "",
     "export default function GeneratedComponent() {",
     "  return (",
-    `    <div data-component-id=${JSON.stringify(id)} className={${JSON.stringify(`tf-component ${cls}`)}} style={${hasBbox ? `{ position: "absolute", left: ${Number(bbox[0] || 0)}, top: ${Number(bbox[1] || 0)}, width: ${Number(bbox[2] || 0)}, height: ${Number(bbox[3] || 0)} }` : `{ position: "relative", width: ${width}, minHeight: ${height} }`}}>`,
+    `    <div data-component-id=${JSON.stringify(id)} className={${JSON.stringify(`tf-component ${cls}`)}} style={${fallbackStyle}}>`,
     childJsx || `      {${JSON.stringify(text)}}`,
     "    </div>",
     "  );",
@@ -168,6 +175,7 @@ function childImportMeta(record, child, index) {
     props: child?.props || {},
     text: child?.text || child?.visible_text || null,
     description: child?.description || null,
+    layout_context: record?.input?.layout_context || null,
   };
 }
 
@@ -246,6 +254,80 @@ function buildComponentLibSection({ resourcesDir, componentsDir, component }) {
   return sections.join("\n");
 }
 
+function validBboxArray(value) {
+  return Array.isArray(value) && value.length === 4 && value.every((item) => Number.isFinite(Number(item)));
+}
+
+function inferSlot(child) {
+  const haystack = [
+    child?.id,
+    child?.name,
+    child?.component,
+    child?.props?.slot,
+    child?.props?.role,
+    child?.layout?.slot,
+    child?.mount,
+  ].filter(Boolean).join("_").toLowerCase();
+  if (/footer|action|button[_-]?bar|bottom[_-]?bar|submit|confirm/.test(haystack)) return "footer";
+  if (/header|title|nav/.test(haystack)) return "header";
+  if (/body|content|main/.test(haystack)) return "body";
+  return "content";
+}
+
+function isContainerComponent(component) {
+  return /container|layout|panel|section|wrapper|root|shell|dialog|modal|bottomsheet|bottom_sheet|drawer|popup/i.test(String(component?.component || ""));
+}
+
+function isPaddedFloatingContainer(component) {
+  return /dialog|modal|bottomsheet|bottom_sheet|drawer|popup/i.test(String(component?.component || ""));
+}
+
+function layoutPaddingFor(parent, slot) {
+  if (!isPaddedFloatingContainer(parent)) return 0;
+  // Floating surfaces in the reference library use compact horizontal padding;
+  // this is only a codegen hint, not page-layer geometry.
+  if (slot === "footer" || slot === "body" || slot === "content") return 32;
+  return 0;
+}
+
+function childLayoutContext({ parent, child, parentLayoutContext = null }) {
+  if (!parent || !isContainerComponent(parent)) return null;
+  const slot = inferSlot(child);
+  const parentBbox = validBboxArray(parent.bbox) ? parent.bbox.map(Number) : null;
+  const childBbox = validBboxArray(child?.bbox) ? child.bbox.map(Number) : null;
+  const padding = layoutPaddingFor(parent, slot);
+  const inheritedWidth = Number(parentLayoutContext?.available_width || parentLayoutContext?.parent_available_width || 0);
+  const inheritedHeight = Number(parentLayoutContext?.available_height || parentLayoutContext?.parent_available_height || 0);
+  const parentWidth = parentBbox ? parentBbox[2] : inheritedWidth || null;
+  const parentHeight = parentBbox ? parentBbox[3] : inheritedHeight || null;
+  const availableWidth = childBbox ? childBbox[2] : parentWidth ? Math.max(0, parentWidth - padding) : null;
+  const availableHeight = childBbox ? childBbox[3] : parentHeight || null;
+  return {
+    parent_id: parent.id || parent.name || null,
+    parent_component: parent.component || null,
+    parent_bbox: parentBbox,
+    parent_available_width: parentWidth,
+    parent_available_height: parentHeight,
+    slot,
+    available_width: availableWidth,
+    available_height: availableHeight,
+    child_has_bbox: Boolean(childBbox),
+    child_should_fill_parent: !childBbox,
+  };
+}
+
+function applyLayoutDefaults(component, layoutContext, isTopLevel) {
+  const next = cloneJson(component);
+  if (!layoutContext || isTopLevel) return next;
+  const props = next.props && typeof next.props === "object" && !Array.isArray(next.props) ? { ...next.props } : {};
+  const hasExplicitWidth = props.width != null || next.width != null || validBboxArray(next.bbox);
+  if (!hasExplicitWidth && layoutContext.child_should_fill_parent) {
+    next.props = props;
+    props.width = "100%";
+  }
+  return next;
+}
+
 async function mapLimit(items, limit, worker) {
   const results = new Array(items.length);
   let index = 0;
@@ -290,16 +372,17 @@ function mergeChildCss(parsed, childRecords) {
   };
 }
 
-async function generateComponentRecord({ component, operation, originalComponent, generatedChildren, childRecords, stateContext, viewport, modelName, skill, resourcesDir, componentsDir, maxTokens, useFallback, outDir, rawDir, isTopLevel }) {
-  const id = component.id || component.name;
+async function generateComponentRecord({ component, operation, originalComponent, originalReference, generatedChildren, childRecords, stateContext, viewport, modelName, skill, resourcesDir, componentsDir, maxTokens, useFallback, outDir, rawDir, isTopLevel, layoutContext }) {
+  const componentForInput = applyLayoutDefaults(component, layoutContext, isTopLevel);
+  const id = componentForInput.id || componentForInput.name;
   const input = operation === "update"
-    ? { operation, viewport, state_context: stateContext, component, generated_children: generatedChildren || [], original_component: reactOnlyComponent(originalComponent), is_top_level: Boolean(isTopLevel) }
-    : { operation, viewport, state_context: stateContext, component, generated_children: generatedChildren || [], is_top_level: Boolean(isTopLevel) };
+    ? { operation, viewport, state_context: stateContext, component: componentForInput, generated_children: generatedChildren || [], original_component: reactOnlyComponent(originalComponent), original_reference: originalReference || null, is_top_level: Boolean(isTopLevel), layout_context: layoutContext || null }
+    : { operation, viewport, state_context: stateContext, component: componentForInput, generated_children: generatedChildren || [], is_top_level: Boolean(isTopLevel), layout_context: layoutContext || null };
   let parsed;
   let raw = "";
   let issues = [];
   if (useFallback) {
-    parsed = fallbackComponent({ component, operation, originalComponent, generatedChildren });
+    parsed = fallbackComponent({ component: componentForInput, operation, originalComponent, generatedChildren, layoutContext });
   } else {
     const systemPrompt = [
       skill,
@@ -311,29 +394,45 @@ async function generateComponentRecord({ component, operation, originalComponent
   }
   parsed = mergeChildCss(parsed, childRecords || []);
   issues = validateComponent(parsed, id);
-  if (issues.length) parsed = mergeChildCss(fallbackComponent({ component, operation, originalComponent, generatedChildren }), childRecords || []);
+  if (issues.length) parsed = mergeChildCss(fallbackComponent({ component: componentForInput, operation, originalComponent, generatedChildren, layoutContext }), childRecords || []);
   try {
     parsed = await renderComponentRecord(parsed, { id, outDir });
   } catch (err) {
     issues.push("react render failed: " + err.message);
-    parsed = await renderComponentRecord(mergeChildCss(fallbackComponent({ component, operation, originalComponent, generatedChildren }), childRecords || []), { id, outDir });
+    parsed = await renderComponentRecord(mergeChildCss(fallbackComponent({ component: componentForInput, operation, originalComponent, generatedChildren, layoutContext }), childRecords || []), { id, outDir });
   }
   if (raw) writeUtf8(path.join(rawDir, `${stateContext.id}_${operation}_${id}.raw.txt`), raw);
   return { state_id: stateContext.id, operation, original_component_id: originalComponent?.id || null, component: parsed, input, issues };
 }
 
-async function generatePatchTree({ patch, operation, depth, generatedById, stateContext, viewport, modelName, skill, resourcesDir, componentsDir, maxTokens, useFallback, outDir, rawDir }) {
+// For a rich update on an original DOM anchor there is no previous React
+// source; the registry entry is passed as original_reference so the LLM knows
+// the original card's real text/size instead of inventing content.
+function registryReferenceFor(registry, id) {
+  const entry = id ? registry?.semantic_dom_registry?.[id] : null;
+  if (!entry) return null;
+  return {
+    anchor: id,
+    component: entry.component || entry.semantic || null,
+    text: typeof entry.text === "string" ? entry.text : "",
+    bbox: Array.isArray(entry.bbox) ? entry.bbox : null,
+  };
+}
+
+async function generatePatchTree({ patch, operation, depth, generatedById, registry, stateContext, viewport, modelName, skill, resourcesDir, componentsDir, maxTokens, useFallback, outDir, rawDir, layoutContext = null }) {
   const children = patchChildren(patch);
   const directChildResults = [];
   const allRecords = [];
   for (const child of children) {
     const childOperation = child.type === "update" ? "update" : "create";
     const childId = child.id || child.name;
+    const nextLayoutContext = childLayoutContext({ parent: patch, child, parentLayoutContext: layoutContext });
     const childResult = await generatePatchTree({
       patch: child,
       operation: childOperation,
       depth: depth + 1,
       generatedById,
+      registry,
       stateContext,
       viewport,
       modelName,
@@ -344,6 +443,7 @@ async function generatePatchTree({ patch, operation, depth, generatedById, state
       useFallback,
       outDir,
       rawDir,
+      layoutContext: nextLayoutContext,
     });
     directChildResults.push(childResult);
     for (const record of childResult.allRecords) allRecords.push(record);
@@ -358,6 +458,7 @@ async function generatePatchTree({ patch, operation, depth, generatedById, state
     component,
     operation,
     originalComponent: operation === "update" ? generatedById[id] || null : null,
+    originalReference: operation === "update" && !generatedById[id] ? registryReferenceFor(registry, id) : null,
     generatedChildren,
     childRecords,
     stateContext,
@@ -371,6 +472,7 @@ async function generatePatchTree({ patch, operation, depth, generatedById, state
     outDir,
     rawDir,
     isTopLevel: depth === 0,
+    layoutContext,
   });
   allRecords.push(record);
   if (id) generatedById[id] = record.component;
@@ -390,6 +492,9 @@ async function main() {
   const concurrency = Number(argValue(args, "--concurrency", "8"));
 
   const stateModel = readJson(stateModelPath);
+  const registryPath = path.resolve(ROOT, argValue(args, "--registry", path.join(base, ".preprocess", "semantic_registry.json")));
+  let registry = null;
+  try { registry = readJson(registryPath); } catch (err) { registry = null; }
   const skill = readUtf8(path.resolve(__dirname, "..", "SKILL.md"));
 
   const resourcesDir = path.resolve(__dirname, "../../../resources");
@@ -406,17 +511,30 @@ async function main() {
     const createResults = await mapLimit(
       createPatches,
       concurrency,
-      (patch) => generatePatchTree({ patch, operation: "create", depth: 0, generatedById, stateContext, viewport, modelName, skill, resourcesDir, componentsDir, maxTokens, useFallback, outDir, rawDir })
+      (patch) => generatePatchTree({ patch, operation: "create", depth: 0, generatedById, registry, stateContext, viewport, modelName, skill, resourcesDir, componentsDir, maxTokens, useFallback, outDir, rawDir })
     );
     for (const result of createResults) {
       for (const record of result.allRecords) components.push(record);
     }
 
-    const updatePatches = (state.inheritance?.update || []).filter((component) => component.id || component.name);
+    // Updates on original anchors without structural/rich payload render via
+    // the page-layer clone-and-apply path (previous implementation + ledger);
+    // generating a component for them wastes tokens and produces empty shells.
+    function cloneRenderedUpdate(patch) {
+      const id = patch.id || patch.name;
+      if (!registry?.semantic_dom_registry?.[id] || generatedById[id]) return false;
+      if (Array.isArray(patch.children) && patch.children.length) return false;
+      if (String(patch.content_density || "").toLowerCase() === "rich") return false;
+      const props = patch.props && typeof patch.props === "object" && !Array.isArray(patch.props) ? patch.props : {};
+      return !Object.keys(props).some((key) => !/^(layoutRole|zIndex)$/i.test(key));
+    }
+    const updatePatches = (state.inheritance?.update || [])
+      .filter((component) => component.id || component.name)
+      .filter((patch) => !cloneRenderedUpdate(patch));
     const updateResults = await mapLimit(
       updatePatches,
       concurrency,
-      (patch) => generatePatchTree({ patch, operation: "update", depth: 0, generatedById, stateContext, viewport, modelName, skill, resourcesDir, componentsDir, maxTokens, useFallback, outDir, rawDir })
+      (patch) => generatePatchTree({ patch, operation: "update", depth: 0, generatedById, registry, stateContext, viewport, modelName, skill, resourcesDir, componentsDir, maxTokens, useFallback, outDir, rawDir })
     );
     for (const result of updateResults) {
       for (const record of result.allRecords) components.push(record);

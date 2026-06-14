@@ -44,7 +44,24 @@ Update input:
 
 - `operation: "update"`
 - `component`: the update patch from `state_implementation_model`
+- `component.modifications`: the expanded change plan. Each entry pinpoints one
+  changed internal part — `target` (child id, prop path such as
+  `props.primaryLabel`, slot path such as `footer.primary`, or literal `text` /
+  `text_style` / `bbox` / `layout`), optional `target_component` (the child's
+  component name), `parent` (the id owning the changed part), and `change`
+  (the concrete modification plan, usually with before → after values)
+- `component.preserve`: internal parts (child ids, prop paths, `text`, `bbox`,
+  `layout`) that must stay exactly as in the previous implementation
+- `component.modifications_applied`: the cumulative ledger — every modification
+  since the component's ORIGINAL implementation, with later entries on the same
+  target winning. Use it when rebuilding from `original_reference` so changes
+  from earlier states are not lost.
 - `original_component`: previous generated React source for the same component id
+- `original_reference`: present instead of `original_component` when the update
+  targets an original captured-page card with no previous React source. Carries
+  the original card's registry data (`anchor`, `component`, `text`, `bbox`) —
+  ground truth for the card's real content; do not invent content beyond it and
+  the patch.
 - `viewport`
 - `state_context`
 
@@ -64,7 +81,17 @@ Update input:
    documented component props.
 10. Preserve `component.id` as an internal attribute only. Never show ids, debug names, or state labels as visible UI text.
 11. For create, render the component from the patch.
-12. For update, start from `original_component.reactCode` and apply only the requested changes. Keep unchanged visual structure stable.
+12. For update, start from `original_component.reactCode` and apply only the
+    changes listed in `component.modifications`: locate each entry's `target`
+    inside the previous implementation and apply its `change`. Every part named
+    in `component.preserve` — and any part not named by a modification — must
+    keep the previous implementation's structure, classes, and content
+    unchanged. Do not regenerate the whole component from scratch when
+    `modifications` is present. When there is no `original_component` and
+    `original_reference` is provided instead, rebuild the card from the
+    reference's real content plus the patch, applying
+    `component.modifications_applied` (the cumulative ledger) so earlier
+    states' changes are included.
 13. CSS must use `tf-cg-*` classes, CSS variables, or target `[data-component-id="..."]`. Avoid broad global selectors.
 14. Use visible text only from `component.visible_text`, `component.text`,
     `component.props`, `component.children`, `generated_children`, or explicit
@@ -86,6 +113,30 @@ Update input:
     graceful and mention the missing field in `notes`.
 19. Do not add prices, stock, service tags, comments, ratings, dates, provider
     names, or action labels unless they are present in the input component tree.
+
+## Layout Context Contract
+
+Nested components may receive `layout_context` from the runner. This is the
+contract between parent containers and child components:
+
+1. If `layout_context` is present, the component is rendered inside a parent
+   container. Its root must stay within that parent content box: use
+   `width: "100%"`, `maxWidth: "100%"`, `minWidth: 0`, and
+   `boxSizing: "border-box"` unless the child has its own explicit `bbox` or
+   explicit width.
+2. Never use hard viewport defaults such as `width: 360`, `minWidth: 328`, or
+   fixed page-level coordinates for a nested child. Those are allowed only for
+   `is_top_level=true` components or components with their own explicit bbox.
+3. Treat `layout_context.available_width` / `available_height` as the maximum
+   usable size for child layout. Child defaults may fill that space, but must
+   not exceed it.
+4. `layout_context.slot` describes the semantic placement (`header`, `body`,
+   `footer`, or `content`). Footer/action children inside `Dialog` or `Modal`
+   should render compact rows that fit the parent width.
+5. For `ButtonBar` inside a `Dialog`/`Modal` footer, pass `width="100%"` when
+   importing the reference component. If the reference component cannot fit the
+   available width, inline an equivalent compact two-button row using `flex: 1`,
+   `minWidth: 0`, and parent-bounded padding.
 
 ## Container Components
 
@@ -123,6 +174,26 @@ For these components:
 9. For content-driven cards with `layout.heightMode: "auto"`, do not force a
    fixed page-positioned height. Render the natural content height. Page-layer
    will place the component.
+
+## Floating Surface Output Contract
+
+For floating-surface components — `BottomSheet`, `Drawer`, `Modal`, `Dialog`,
+`Popover` — render only the surface (panel) itself. Positioning and the dim
+backdrop are owned by other stages, not by this component:
+
+1. Do NOT render a full-screen backdrop/mask inside the component. The dim layer
+   is a separate `Overlay`/mask component created by the state model and placed
+   by page-layer. A self-rendered mask produces a double overlay.
+2. Do NOT self-position with page coordinates. Never emit a full-viewport root
+   (e.g. `top:0;height:936`) or an absolute page-coordinate panel
+   (e.g. `top:336px`). Render the panel so it fills its parent container
+   (`width:100%`, intrinsic or `height:100%`); page-layer's component frame
+   provides the actual on-screen placement via the state model `bbox`.
+3. Use the page-layer surface class convention so layout fixups apply: the panel
+   root should be `tf-cg-sheet` (not a private alias such as `tf-cg-bottom-sheet`),
+   the scrollable body `tf-cg-sheet-body`, and the action row `tf-cg-sheet-footer`.
+4. Keep the footer/primary action (`确定`/`确认`/`应用`) inside the panel and
+   within its natural height so it is not pushed below the viewport.
 
 ## Recursive Composition Contract
 
