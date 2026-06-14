@@ -1,0 +1,3999 @@
+{
+  "div_bbox": [
+    {
+      "key": "auto:1",
+      "id": null,
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "w": 360,
+        "h": 792
+      },
+      "text_snippet": "首页 商城 工作台 服务 我的 08:08 产品 配单 门店 我的自定义 光接入 存储 协作平板 视频会议 智能安防 广场屏 昇腾APN 计算 全部 协作平板 其他 IdeaHub S2系列 Idea",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:0_1",
+      "id": "0_1",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "w": 360,
+        "h": 792
+      },
+      "text_snippet": "首页 商城 工作台 服务 我的 08:08 产品 配单 门店 我的自定义 光接入 存储 协作平板 视频会议 智能安防 广场屏 昇腾APN 计算 全部 协作平板 其他 IdeaHub S2系列 Idea",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112931",
+      "id": "2_112931",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "w": 360,
+        "h": 936
+      },
+      "text_snippet": "首页 商城 工作台 服务 我的 08:08 产品 配单 门店 我的自定义 光接入 存储 协作平板 视频会议 智能安防 广场屏 昇腾APN 计算 全部 协作平板 其他 IdeaHub S2系列 Idea",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgb(242, 243, 245)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:2",
+      "id": null,
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "w": 360,
+        "h": 936
+      },
+      "text_snippet": "首页 商城 工作台 服务 我的 08:08 产品 配单 门店 我的自定义 光接入 存储 协作平板 视频会议 智能安防 广场屏 昇腾APN 计算 全部 协作平板 其他 IdeaHub S2系列 Idea",
+      "total_child_count": 5,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2727",
+      "id": "5_2727",
+      "bbox": {
+        "x": 8,
+        "y": 796,
+        "w": 60,
+        "h": 60
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2728",
+      "id": "5_2728",
+      "bbox": {
+        "x": 18,
+        "y": 806,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "rgba(0, 0, 0, 0.05) 0px 0px 10px 0px",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:3",
+      "id": null,
+      "bbox": {
+        "x": 18,
+        "y": 806,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2731",
+      "id": "5_2731",
+      "bbox": {
+        "x": 28,
+        "y": 816,
+        "w": 20,
+        "h": 20
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2732",
+      "id": "5_2732",
+      "bbox": {
+        "x": 28,
+        "y": 816,
+        "w": 20,
+        "h": 20
+      },
+      "text_snippet": "",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2733",
+      "id": "5_2733",
+      "bbox": {
+        "x": 28,
+        "y": 816,
+        "w": 20,
+        "h": 20
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2734",
+      "id": "5_2734",
+      "bbox": {
+        "x": 31,
+        "y": 817,
+        "w": 14,
+        "h": 17
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112933",
+      "id": "2_112933",
+      "bbox": {
+        "x": 0,
+        "y": 872,
+        "w": 360,
+        "h": 64
+      },
+      "text_snippet": "首页 商城 工作台 服务 我的",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgb(255, 255, 255)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:4",
+      "id": null,
+      "bbox": {
+        "x": 0,
+        "y": 872,
+        "w": 360,
+        "h": 64
+      },
+      "text_snippet": "首页 商城 工作台 服务 我的",
+      "total_child_count": 5,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2341",
+      "id": "5_2341",
+      "bbox": {
+        "x": 0,
+        "y": 882,
+        "w": 72,
+        "h": 44
+      },
+      "text_snippet": "首页",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:5",
+      "id": null,
+      "bbox": {
+        "x": 0,
+        "y": 882,
+        "w": 72,
+        "h": 44
+      },
+      "text_snippet": "首页",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2342",
+      "id": "5_2342",
+      "bbox": {
+        "x": 21,
+        "y": 882,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:6",
+      "id": null,
+      "bbox": {
+        "x": 21,
+        "y": 882,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2343",
+      "id": "5_2343",
+      "bbox": {
+        "x": 21,
+        "y": 882,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2348",
+      "id": "5_2348",
+      "bbox": {
+        "x": 72,
+        "y": 882,
+        "w": 72,
+        "h": 44
+      },
+      "text_snippet": "商城",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:7",
+      "id": null,
+      "bbox": {
+        "x": 72,
+        "y": 882,
+        "w": 72,
+        "h": 44
+      },
+      "text_snippet": "商城",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2349",
+      "id": "5_2349",
+      "bbox": {
+        "x": 93,
+        "y": 882,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:8",
+      "id": null,
+      "bbox": {
+        "x": 93,
+        "y": 882,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2350",
+      "id": "5_2350",
+      "bbox": {
+        "x": 93,
+        "y": 882,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2350",
+      "id": "5_2350",
+      "bbox": {
+        "x": 93,
+        "y": 882,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2355",
+      "id": "5_2355",
+      "bbox": {
+        "x": 144,
+        "y": 882,
+        "w": 72,
+        "h": 44
+      },
+      "text_snippet": "工作台",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:9",
+      "id": null,
+      "bbox": {
+        "x": 144,
+        "y": 882,
+        "w": 72,
+        "h": 44
+      },
+      "text_snippet": "工作台",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2356",
+      "id": "5_2356",
+      "bbox": {
+        "x": 165,
+        "y": 882,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:10",
+      "id": null,
+      "bbox": {
+        "x": 165,
+        "y": 882,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2357",
+      "id": "5_2357",
+      "bbox": {
+        "x": 165,
+        "y": 882,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2364",
+      "id": "5_2364",
+      "bbox": {
+        "x": 216,
+        "y": 882,
+        "w": 72,
+        "h": 44
+      },
+      "text_snippet": "服务",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:11",
+      "id": null,
+      "bbox": {
+        "x": 216,
+        "y": 882,
+        "w": 72,
+        "h": 44
+      },
+      "text_snippet": "服务",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2365",
+      "id": "5_2365",
+      "bbox": {
+        "x": 237,
+        "y": 882,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:12",
+      "id": null,
+      "bbox": {
+        "x": 237,
+        "y": 882,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2366",
+      "id": "5_2366",
+      "bbox": {
+        "x": 237,
+        "y": 882,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2371",
+      "id": "5_2371",
+      "bbox": {
+        "x": 288,
+        "y": 882,
+        "w": 72,
+        "h": 44
+      },
+      "text_snippet": "我的",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:13",
+      "id": null,
+      "bbox": {
+        "x": 288,
+        "y": 882,
+        "w": 72,
+        "h": 44
+      },
+      "text_snippet": "我的",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2372",
+      "id": "5_2372",
+      "bbox": {
+        "x": 309,
+        "y": 882,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:14",
+      "id": null,
+      "bbox": {
+        "x": 309,
+        "y": 882,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2373",
+      "id": "5_2373",
+      "bbox": {
+        "x": 309,
+        "y": 882,
+        "w": 30,
+        "h": 30
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112934",
+      "id": "2_112934",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "w": 360,
+        "h": 92
+      },
+      "text_snippet": "08:08 产品 配单 门店 我的自定义",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112935",
+      "id": "2_112935",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "w": 360,
+        "h": 36
+      },
+      "text_snippet": "08:08",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112936",
+      "id": "2_112936",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "w": 360,
+        "h": 36
+      },
+      "text_snippet": "08:08",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:15",
+      "id": null,
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "w": 360,
+        "h": 36
+      },
+      "text_snippet": "08:08",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_1478",
+      "id": "5_1478",
+      "bbox": {
+        "x": 240,
+        "y": 12,
+        "w": 96,
+        "h": 13
+      },
+      "text_snippet": "",
+      "total_child_count": 4,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_1479",
+      "id": "5_1479",
+      "bbox": {
+        "x": 310,
+        "y": 12,
+        "w": 26,
+        "h": 13
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_1491",
+      "id": "5_1491",
+      "bbox": {
+        "x": 287,
+        "y": 12,
+        "w": 18,
+        "h": 12
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_1498",
+      "id": "5_1498",
+      "bbox": {
+        "x": 240,
+        "y": 12,
+        "w": 15,
+        "h": 12
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_1525",
+      "id": "5_1525",
+      "bbox": {
+        "x": 261,
+        "y": 12,
+        "w": 22,
+        "h": 12
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112937",
+      "id": "2_112937",
+      "bbox": {
+        "x": 0,
+        "y": 36,
+        "w": 360,
+        "h": 56
+      },
+      "text_snippet": "产品 配单 门店 我的自定义",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:16",
+      "id": null,
+      "bbox": {
+        "x": 0,
+        "y": 36,
+        "w": 360,
+        "h": 56
+      },
+      "text_snippet": "产品 配单 门店 我的自定义",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112938",
+      "id": "2_112938",
+      "bbox": {
+        "x": 20,
+        "y": 48,
+        "w": 176,
+        "h": 32
+      },
+      "text_snippet": "产品 配单 门店",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:17",
+      "id": null,
+      "bbox": {
+        "x": 20,
+        "y": 48,
+        "w": 176,
+        "h": 32
+      },
+      "text_snippet": "产品 配单 门店",
+      "total_child_count": 3,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112939",
+      "id": "2_112939",
+      "bbox": {
+        "x": 20,
+        "y": 48,
+        "w": 48,
+        "h": 32
+      },
+      "text_snippet": "产品",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:18",
+      "id": null,
+      "bbox": {
+        "x": 20,
+        "y": 48,
+        "w": 48,
+        "h": 32
+      },
+      "text_snippet": "产品",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112940",
+      "id": "2_112940",
+      "bbox": {
+        "x": 84,
+        "y": 52,
+        "w": 36,
+        "h": 24
+      },
+      "text_snippet": "配单",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:19",
+      "id": null,
+      "bbox": {
+        "x": 84,
+        "y": 52,
+        "w": 36,
+        "h": 24
+      },
+      "text_snippet": "配单",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112941",
+      "id": "2_112941",
+      "bbox": {
+        "x": 136,
+        "y": 52,
+        "w": 36,
+        "h": 24
+      },
+      "text_snippet": "门店",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:20",
+      "id": null,
+      "bbox": {
+        "x": 136,
+        "y": 52,
+        "w": 36,
+        "h": 24
+      },
+      "text_snippet": "门店",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112943",
+      "id": "2_112943",
+      "bbox": {
+        "x": 212,
+        "y": 44,
+        "w": 136,
+        "h": 40
+      },
+      "text_snippet": "我的自定义",
+      "total_child_count": 3,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112944",
+      "id": "2_112944",
+      "bbox": {
+        "x": 212,
+        "y": 44,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:21",
+      "id": null,
+      "bbox": {
+        "x": 212,
+        "y": 44,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_1413",
+      "id": "5_1413",
+      "bbox": {
+        "x": 220,
+        "y": 52,
+        "w": 24,
+        "h": 24
+      },
+      "text_snippet": "",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_1414",
+      "id": "5_1414",
+      "bbox": {
+        "x": 220,
+        "y": 52,
+        "w": 24,
+        "h": 24
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_1415",
+      "id": "5_1415",
+      "bbox": {
+        "x": 222,
+        "y": 54,
+        "w": 19,
+        "h": 19
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112945",
+      "id": "2_112945",
+      "bbox": {
+        "x": 260,
+        "y": 44,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:22",
+      "id": null,
+      "bbox": {
+        "x": 260,
+        "y": 44,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112947",
+      "id": "2_112947",
+      "bbox": {
+        "x": 268,
+        "y": 52,
+        "w": 24,
+        "h": 24
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112948",
+      "id": "2_112948",
+      "bbox": {
+        "x": 268,
+        "y": 52,
+        "w": 24,
+        "h": 24
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112949",
+      "id": "2_112949",
+      "bbox": {
+        "x": 268,
+        "y": 52,
+        "w": 24,
+        "h": 24
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112951",
+      "id": "2_112951",
+      "bbox": {
+        "x": 270,
+        "y": 54,
+        "w": 20,
+        "h": 19
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112952",
+      "id": "2_112952",
+      "bbox": {
+        "x": 308,
+        "y": 44,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "我的自定义",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:23",
+      "id": null,
+      "bbox": {
+        "x": 308,
+        "y": 44,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "我的自定义",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2329",
+      "id": "5_2329",
+      "bbox": {
+        "x": 318,
+        "y": 43,
+        "w": 20,
+        "h": 20
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2330",
+      "id": "5_2330",
+      "bbox": {
+        "x": 318,
+        "y": 43,
+        "w": 20,
+        "h": 20
+      },
+      "text_snippet": "",
+      "total_child_count": 3,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2331",
+      "id": "5_2331",
+      "bbox": {
+        "x": 318,
+        "y": 43,
+        "w": 20,
+        "h": 20
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2332",
+      "id": "5_2332",
+      "bbox": {
+        "x": 319,
+        "y": 44,
+        "w": 18,
+        "h": 18
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2337",
+      "id": "5_2337",
+      "bbox": {
+        "x": 331,
+        "y": 55,
+        "w": 4,
+        "h": 4
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112953",
+      "id": "2_112953",
+      "bbox": {
+        "x": 0,
+        "y": 92,
+        "w": 360,
+        "h": 92
+      },
+      "text_snippet": "光接入 存储 协作平板 视频会议 智能安防 广场屏 昇腾APN 计算 全部",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:24",
+      "id": null,
+      "bbox": {
+        "x": 0,
+        "y": 92,
+        "w": 360,
+        "h": 92
+      },
+      "text_snippet": "光接入 存储 协作平板 视频会议 智能安防 广场屏 昇腾APN 计算 全部",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:25",
+      "id": null,
+      "bbox": {
+        "x": 0,
+        "y": 92,
+        "w": 360,
+        "h": 92
+      },
+      "text_snippet": "光接入 存储 协作平板 视频会议 智能安防 广场屏 昇腾APN 计算 全部",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2081",
+      "id": "5_2081",
+      "bbox": {
+        "x": 0,
+        "y": 101,
+        "w": 316,
+        "h": 66
+      },
+      "text_snippet": "光接入 存储 协作平板 视频会议 智能安防 广场屏 昇腾APN 计算",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:26",
+      "id": null,
+      "bbox": {
+        "x": 0,
+        "y": 101,
+        "w": 316,
+        "h": 66
+      },
+      "text_snippet": "光接入 存储 协作平板 视频会议 智能安防 广场屏 昇腾APN 计算",
+      "total_child_count": 8,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2139",
+      "id": "5_2139",
+      "bbox": {
+        "x": 8,
+        "y": 101,
+        "w": 64,
+        "h": 66
+      },
+      "text_snippet": "光接入",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:27",
+      "id": null,
+      "bbox": {
+        "x": 8,
+        "y": 101,
+        "w": 64,
+        "h": 66
+      },
+      "text_snippet": "光接入",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2140",
+      "id": "5_2140",
+      "bbox": {
+        "x": 16,
+        "y": 101,
+        "w": 48,
+        "h": 48
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgb(255, 255, 255)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2141",
+      "id": "5_2141",
+      "bbox": {
+        "x": 20,
+        "y": 105,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2156",
+      "id": "5_2156",
+      "bbox": {
+        "x": 21,
+        "y": 119,
+        "w": 39,
+        "h": 12
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2158",
+      "id": "5_2158",
+      "bbox": {
+        "x": 76,
+        "y": 101,
+        "w": 64,
+        "h": 66
+      },
+      "text_snippet": "存储",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:28",
+      "id": null,
+      "bbox": {
+        "x": 76,
+        "y": 101,
+        "w": 64,
+        "h": 66
+      },
+      "text_snippet": "存储",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2159",
+      "id": "5_2159",
+      "bbox": {
+        "x": 84,
+        "y": 101,
+        "w": 48,
+        "h": 48
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgb(255, 255, 255)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2160",
+      "id": "5_2160",
+      "bbox": {
+        "x": 88,
+        "y": 105,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2175",
+      "id": "5_2175",
+      "bbox": {
+        "x": 88,
+        "y": 105,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2177",
+      "id": "5_2177",
+      "bbox": {
+        "x": 144,
+        "y": 101,
+        "w": 64,
+        "h": 66
+      },
+      "text_snippet": "协作平板",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:29",
+      "id": null,
+      "bbox": {
+        "x": 144,
+        "y": 101,
+        "w": 64,
+        "h": 66
+      },
+      "text_snippet": "协作平板",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2178",
+      "id": "5_2178",
+      "bbox": {
+        "x": 152,
+        "y": 101,
+        "w": 48,
+        "h": 48
+      },
+      "text_snippet": "",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:30",
+      "id": null,
+      "bbox": {
+        "x": 152,
+        "y": 101,
+        "w": 48,
+        "h": 48
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgb(255, 255, 255)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2179",
+      "id": "5_2179",
+      "bbox": {
+        "x": 156,
+        "y": 105,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2194",
+      "id": "5_2194",
+      "bbox": {
+        "x": 159,
+        "y": 113,
+        "w": 33,
+        "h": 24
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:31",
+      "id": null,
+      "bbox": {
+        "x": 152,
+        "y": 101,
+        "w": 48,
+        "h": 48
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2196",
+      "id": "5_2196",
+      "bbox": {
+        "x": 212,
+        "y": 101,
+        "w": 64,
+        "h": 66
+      },
+      "text_snippet": "视频会议",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:32",
+      "id": null,
+      "bbox": {
+        "x": 212,
+        "y": 101,
+        "w": 64,
+        "h": 66
+      },
+      "text_snippet": "视频会议",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2197",
+      "id": "5_2197",
+      "bbox": {
+        "x": 220,
+        "y": 101,
+        "w": 48,
+        "h": 48
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgb(255, 255, 255)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2198",
+      "id": "5_2198",
+      "bbox": {
+        "x": 224,
+        "y": 105,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2213",
+      "id": "5_2213",
+      "bbox": {
+        "x": 227,
+        "y": 114,
+        "w": 33,
+        "h": 19
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2215",
+      "id": "5_2215",
+      "bbox": {
+        "x": 280,
+        "y": 101,
+        "w": 64,
+        "h": 66
+      },
+      "text_snippet": "智能安防",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:33",
+      "id": null,
+      "bbox": {
+        "x": 280,
+        "y": 101,
+        "w": 64,
+        "h": 66
+      },
+      "text_snippet": "智能安防",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2216",
+      "id": "5_2216",
+      "bbox": {
+        "x": 288,
+        "y": 101,
+        "w": 48,
+        "h": 48
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgb(255, 255, 255)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2217",
+      "id": "5_2217",
+      "bbox": {
+        "x": 292,
+        "y": 105,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2232",
+      "id": "5_2232",
+      "bbox": {
+        "x": 295,
+        "y": 115,
+        "w": 33,
+        "h": 21
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2234",
+      "id": "5_2234",
+      "bbox": {
+        "x": 348,
+        "y": 101,
+        "w": 64,
+        "h": 66
+      },
+      "text_snippet": "广场屏",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:34",
+      "id": null,
+      "bbox": {
+        "x": 348,
+        "y": 101,
+        "w": 64,
+        "h": 66
+      },
+      "text_snippet": "广场屏",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2235",
+      "id": "5_2235",
+      "bbox": {
+        "x": 356,
+        "y": 101,
+        "w": 48,
+        "h": 48
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgb(255, 255, 255)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2236",
+      "id": "5_2236",
+      "bbox": {
+        "x": 360,
+        "y": 105,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2251",
+      "id": "5_2251",
+      "bbox": {
+        "x": 363,
+        "y": 111,
+        "w": 33,
+        "h": 28
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2253",
+      "id": "5_2253",
+      "bbox": {
+        "x": 416,
+        "y": 101,
+        "w": 64,
+        "h": 66
+      },
+      "text_snippet": "昇腾APN",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:35",
+      "id": null,
+      "bbox": {
+        "x": 416,
+        "y": 101,
+        "w": 64,
+        "h": 66
+      },
+      "text_snippet": "昇腾APN",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2254",
+      "id": "5_2254",
+      "bbox": {
+        "x": 424,
+        "y": 101,
+        "w": 48,
+        "h": 48
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgb(255, 255, 255)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2255",
+      "id": "5_2255",
+      "bbox": {
+        "x": 428,
+        "y": 105,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2270",
+      "id": "5_2270",
+      "bbox": {
+        "x": 431,
+        "y": 113,
+        "w": 33,
+        "h": 24
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2272",
+      "id": "5_2272",
+      "bbox": {
+        "x": 484,
+        "y": 101,
+        "w": 64,
+        "h": 66
+      },
+      "text_snippet": "计算",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:36",
+      "id": null,
+      "bbox": {
+        "x": 484,
+        "y": 101,
+        "w": 64,
+        "h": 66
+      },
+      "text_snippet": "计算",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2273",
+      "id": "5_2273",
+      "bbox": {
+        "x": 492,
+        "y": 101,
+        "w": 48,
+        "h": 48
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgb(255, 255, 255)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2274",
+      "id": "5_2274",
+      "bbox": {
+        "x": 496,
+        "y": 105,
+        "w": 40,
+        "h": 40
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2289",
+      "id": "5_2289",
+      "bbox": {
+        "x": 499,
+        "y": 113,
+        "w": 33,
+        "h": 24
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2291",
+      "id": "5_2291",
+      "bbox": {
+        "x": 316,
+        "y": 100,
+        "w": 44,
+        "h": 68
+      },
+      "text_snippet": "全部",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:37",
+      "id": null,
+      "bbox": {
+        "x": 316,
+        "y": 100,
+        "w": 44,
+        "h": 68
+      },
+      "text_snippet": "全部",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2293",
+      "id": "5_2293",
+      "bbox": {
+        "x": 332,
+        "y": 146,
+        "w": 12,
+        "h": 12
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2294",
+      "id": "5_2294",
+      "bbox": {
+        "x": 332,
+        "y": 146,
+        "w": 12,
+        "h": 12
+      },
+      "text_snippet": "",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2295",
+      "id": "5_2295",
+      "bbox": {
+        "x": 332,
+        "y": 146,
+        "w": 12,
+        "h": 12
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2296",
+      "id": "5_2296",
+      "bbox": {
+        "x": 334,
+        "y": 148,
+        "w": 9,
+        "h": 9
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:38",
+      "id": null,
+      "bbox": {
+        "x": 0,
+        "y": 92,
+        "w": 360,
+        "h": 92
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112954",
+      "id": "2_112954",
+      "bbox": {
+        "x": 0,
+        "y": 184,
+        "w": 360,
+        "h": 752
+      },
+      "text_snippet": "协作平板 其他 IdeaHub S2系列 IdeaHub B系列 筛选项3 筛选项4 筛选项5 筛选项6 筛选 售罄 IdeaHub B3 Base-75 寸 EOS 非现货 提供1080P的高清云会",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:39",
+      "id": null,
+      "bbox": {
+        "x": 0,
+        "y": 184,
+        "w": 360,
+        "h": 752
+      },
+      "text_snippet": "协作平板 其他 IdeaHub S2系列 IdeaHub B系列 筛选项3 筛选项4 筛选项5 筛选项6 筛选 售罄 IdeaHub B3 Base-75 寸 EOS 非现货 提供1080P的高清云会",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112955",
+      "id": "2_112955",
+      "bbox": {
+        "x": 0,
+        "y": 184,
+        "w": 72,
+        "h": 752
+      },
+      "text_snippet": "协作平板 其他",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:40",
+      "id": null,
+      "bbox": {
+        "x": 0,
+        "y": 184,
+        "w": 72,
+        "h": 752
+      },
+      "text_snippet": "协作平板 其他",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_1472",
+      "id": "5_1472",
+      "bbox": {
+        "x": 0,
+        "y": 184,
+        "w": 72,
+        "h": 46
+      },
+      "text_snippet": "协作平板",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:41",
+      "id": null,
+      "bbox": {
+        "x": 0,
+        "y": 184,
+        "w": 72,
+        "h": 46
+      },
+      "text_snippet": "协作平板",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_1473",
+      "id": "5_1473",
+      "bbox": {
+        "x": 0,
+        "y": 199,
+        "w": 2,
+        "h": 16
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgb(199, 0, 11)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_1475",
+      "id": "5_1475",
+      "bbox": {
+        "x": 0,
+        "y": 230,
+        "w": 72,
+        "h": 46
+      },
+      "text_snippet": "其他",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:42",
+      "id": null,
+      "bbox": {
+        "x": 0,
+        "y": 230,
+        "w": 72,
+        "h": 46
+      },
+      "text_snippet": "其他",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112956",
+      "id": "2_112956",
+      "bbox": {
+        "x": 80,
+        "y": 184,
+        "w": 280,
+        "h": 692
+      },
+      "text_snippet": "IdeaHub S2系列 IdeaHub B系列 筛选项3 筛选项4 筛选项5 筛选项6 筛选 售罄 IdeaHub B3 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:43",
+      "id": null,
+      "bbox": {
+        "x": 80,
+        "y": 184,
+        "w": 280,
+        "h": 692
+      },
+      "text_snippet": "IdeaHub S2系列 IdeaHub B系列 筛选项3 筛选项4 筛选项5 筛选项6 筛选 售罄 IdeaHub B3 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝",
+      "total_child_count": 3,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112957",
+      "id": "2_112957",
+      "bbox": {
+        "x": 80,
+        "y": 184,
+        "w": 264,
+        "h": 48
+      },
+      "text_snippet": "IdeaHub S2系列 IdeaHub B系列 筛选项3 筛选项4 筛选项5 筛选项6",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:44",
+      "id": null,
+      "bbox": {
+        "x": 80,
+        "y": 184,
+        "w": 264,
+        "h": 48
+      },
+      "text_snippet": "IdeaHub S2系列 IdeaHub B系列 筛选项3 筛选项4 筛选项5 筛选项6",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2636",
+      "id": "5_2636",
+      "bbox": {
+        "x": 316,
+        "y": 202,
+        "w": 12,
+        "h": 12
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2637",
+      "id": "5_2637",
+      "bbox": {
+        "x": 316,
+        "y": 202,
+        "w": 12,
+        "h": 12
+      },
+      "text_snippet": "",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2638",
+      "id": "5_2638",
+      "bbox": {
+        "x": 316,
+        "y": 202,
+        "w": 12,
+        "h": 12
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2639",
+      "id": "5_2639",
+      "bbox": {
+        "x": 318,
+        "y": 205,
+        "w": 8,
+        "h": 6
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2640",
+      "id": "5_2640",
+      "bbox": {
+        "x": 80,
+        "y": 194,
+        "w": 264,
+        "h": 28
+      },
+      "text_snippet": "IdeaHub S2系列 IdeaHub B系列 筛选项3 筛选项4 筛选项5 筛选项6",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:45",
+      "id": null,
+      "bbox": {
+        "x": 80,
+        "y": 194,
+        "w": 264,
+        "h": 28
+      },
+      "text_snippet": "IdeaHub S2系列 IdeaHub B系列 筛选项3 筛选项4 筛选项5 筛选项6",
+      "total_child_count": 7,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2641",
+      "id": "5_2641",
+      "bbox": {
+        "x": 296,
+        "y": 194,
+        "w": 48,
+        "h": 28
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2642",
+      "id": "5_2642",
+      "bbox": {
+        "x": 80,
+        "y": 194,
+        "w": 115,
+        "h": 28
+      },
+      "text_snippet": "IdeaHub S2系列",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(199, 0, 11, 0.05)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:46",
+      "id": null,
+      "bbox": {
+        "x": 80,
+        "y": 194,
+        "w": 115,
+        "h": 28
+      },
+      "text_snippet": "IdeaHub S2系列",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2654",
+      "id": "5_2654",
+      "bbox": {
+        "x": 203,
+        "y": 194,
+        "w": 108,
+        "h": 28
+      },
+      "text_snippet": "IdeaHub B系列",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0.05)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:47",
+      "id": null,
+      "bbox": {
+        "x": 203,
+        "y": 194,
+        "w": 108,
+        "h": 28
+      },
+      "text_snippet": "IdeaHub B系列",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2666",
+      "id": "5_2666",
+      "bbox": {
+        "x": 319,
+        "y": 194,
+        "w": 67,
+        "h": 28
+      },
+      "text_snippet": "筛选项3",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0.05)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:48",
+      "id": null,
+      "bbox": {
+        "x": 319,
+        "y": 194,
+        "w": 67,
+        "h": 28
+      },
+      "text_snippet": "筛选项3",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2678",
+      "id": "5_2678",
+      "bbox": {
+        "x": 394,
+        "y": 194,
+        "w": 67,
+        "h": 28
+      },
+      "text_snippet": "筛选项4",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0.05)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:49",
+      "id": null,
+      "bbox": {
+        "x": 394,
+        "y": 194,
+        "w": 67,
+        "h": 28
+      },
+      "text_snippet": "筛选项4",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2690",
+      "id": "5_2690",
+      "bbox": {
+        "x": 469,
+        "y": 194,
+        "w": 67,
+        "h": 28
+      },
+      "text_snippet": "筛选项5",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0.05)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:50",
+      "id": null,
+      "bbox": {
+        "x": 469,
+        "y": 194,
+        "w": 67,
+        "h": 28
+      },
+      "text_snippet": "筛选项5",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2702",
+      "id": "5_2702",
+      "bbox": {
+        "x": 544,
+        "y": 194,
+        "w": 67,
+        "h": 28
+      },
+      "text_snippet": "筛选项6",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0.05)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:51",
+      "id": null,
+      "bbox": {
+        "x": 544,
+        "y": 194,
+        "w": 67,
+        "h": 28
+      },
+      "text_snippet": "筛选项6",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112958",
+      "id": "2_112958",
+      "bbox": {
+        "x": 80,
+        "y": 232,
+        "w": 264,
+        "h": 28
+      },
+      "text_snippet": "筛选",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:52",
+      "id": null,
+      "bbox": {
+        "x": 80,
+        "y": 232,
+        "w": 264,
+        "h": 28
+      },
+      "text_snippet": "筛选",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2720",
+      "id": "5_2720",
+      "bbox": {
+        "x": 296,
+        "y": 237,
+        "w": 48,
+        "h": 18
+      },
+      "text_snippet": "筛选",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2722",
+      "id": "5_2722",
+      "bbox": {
+        "x": 328,
+        "y": 238,
+        "w": 16,
+        "h": 16
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2723",
+      "id": "5_2723",
+      "bbox": {
+        "x": 328,
+        "y": 238,
+        "w": 16,
+        "h": 16
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2724",
+      "id": "5_2724",
+      "bbox": {
+        "x": 328,
+        "y": 238,
+        "w": 16,
+        "h": 16
+      },
+      "text_snippet": "",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2725",
+      "id": "5_2725",
+      "bbox": {
+        "x": 328,
+        "y": 238,
+        "w": 16,
+        "h": 16
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2726",
+      "id": "5_2726",
+      "bbox": {
+        "x": 330,
+        "y": 240,
+        "w": 12,
+        "h": 12
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112959",
+      "id": "2_112959",
+      "bbox": {
+        "x": 80,
+        "y": 260,
+        "w": 264,
+        "h": 616
+      },
+      "text_snippet": "售罄 IdeaHub B3 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 ",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:53",
+      "id": null,
+      "bbox": {
+        "x": 80,
+        "y": 260,
+        "w": 264,
+        "h": 616
+      },
+      "text_snippet": "售罄 IdeaHub B3 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 ",
+      "total_child_count": 6,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112960",
+      "id": "2_112960",
+      "bbox": {
+        "x": 80,
+        "y": 268,
+        "w": 264,
+        "h": 96
+      },
+      "text_snippet": "售罄 IdeaHub B3 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 ",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgb(255, 255, 255)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:54",
+      "id": null,
+      "bbox": {
+        "x": 80,
+        "y": 268,
+        "w": 264,
+        "h": 96
+      },
+      "text_snippet": "售罄 IdeaHub B3 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 ",
+      "total_child_count": 3,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112961",
+      "id": "2_112961",
+      "bbox": {
+        "x": 80,
+        "y": 268,
+        "w": 36,
+        "h": 20
+      },
+      "text_snippet": "售罄",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_1430",
+      "id": "5_1430",
+      "bbox": {
+        "x": 80,
+        "y": 268,
+        "w": 36,
+        "h": 20
+      },
+      "text_snippet": "售罄",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgb(147, 147, 147)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:55",
+      "id": null,
+      "bbox": {
+        "x": 80,
+        "y": 268,
+        "w": 36,
+        "h": 20
+      },
+      "text_snippet": "售罄",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112962",
+      "id": "2_112962",
+      "bbox": {
+        "x": 88,
+        "y": 284,
+        "w": 64,
+        "h": 64
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2411",
+      "id": "5_2411",
+      "bbox": {
+        "x": 88,
+        "y": 284,
+        "w": 64,
+        "h": 64
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112963",
+      "id": "2_112963",
+      "bbox": {
+        "x": 164,
+        "y": 276,
+        "w": 168,
+        "h": 80
+      },
+      "text_snippet": "IdeaHub B3 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:56",
+      "id": null,
+      "bbox": {
+        "x": 164,
+        "y": 276,
+        "w": 168,
+        "h": 80
+      },
+      "text_snippet": "IdeaHub B3 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、",
+      "total_child_count": 4,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112965",
+      "id": "2_112965",
+      "bbox": {
+        "x": 164,
+        "y": 296,
+        "w": 168,
+        "h": 16
+      },
+      "text_snippet": "EOS 非现货",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112967",
+      "id": "2_112967",
+      "bbox": {
+        "x": 164,
+        "y": 334,
+        "w": 168,
+        "h": 22
+      },
+      "text_snippet": "￥21,999.00 1",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112970",
+      "id": "2_112970",
+      "bbox": {
+        "x": 80,
+        "y": 372,
+        "w": 264,
+        "h": 114
+      },
+      "text_snippet": "热销 IdeaHub B2 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 ",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgb(255, 255, 255)",
+        "boxShadow": "rgba(0, 0, 0, 0.05) 0px 0px 10px 0px",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:69",
+      "id": null,
+      "bbox": {
+        "x": 80,
+        "y": 372,
+        "w": 264,
+        "h": 114
+      },
+      "text_snippet": "热销 IdeaHub B2 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 ",
+      "total_child_count": 3,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112971",
+      "id": "2_112971",
+      "bbox": {
+        "x": 80,
+        "y": 372,
+        "w": 36,
+        "h": 20
+      },
+      "text_snippet": "热销",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_1422",
+      "id": "5_1422",
+      "bbox": {
+        "x": 80,
+        "y": 372,
+        "w": 36,
+        "h": 20
+      },
+      "text_snippet": "热销",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgb(244, 132, 12)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:70",
+      "id": null,
+      "bbox": {
+        "x": 80,
+        "y": 372,
+        "w": 36,
+        "h": 20
+      },
+      "text_snippet": "热销",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112972",
+      "id": "2_112972",
+      "bbox": {
+        "x": 88,
+        "y": 397,
+        "w": 64,
+        "h": 64
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2427",
+      "id": "5_2427",
+      "bbox": {
+        "x": 88,
+        "y": 397,
+        "w": 64,
+        "h": 64
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112973",
+      "id": "2_112973",
+      "bbox": {
+        "x": 164,
+        "y": 380,
+        "w": 168,
+        "h": 98
+      },
+      "text_snippet": "IdeaHub B2 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:71",
+      "id": null,
+      "bbox": {
+        "x": 164,
+        "y": 380,
+        "w": 168,
+        "h": 98
+      },
+      "text_snippet": "IdeaHub B2 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、",
+      "total_child_count": 5,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112975",
+      "id": "2_112975",
+      "bbox": {
+        "x": 164,
+        "y": 400,
+        "w": 168,
+        "h": 16
+      },
+      "text_snippet": "EOS 非现货",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112977",
+      "id": "2_112977",
+      "bbox": {
+        "x": 164,
+        "y": 438,
+        "w": 168,
+        "h": 14
+      },
+      "text_snippet": "金牌价 ¥32,900.00",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112980",
+      "id": "2_112980",
+      "bbox": {
+        "x": 164,
+        "y": 456,
+        "w": 168,
+        "h": 22
+      },
+      "text_snippet": "￥21,999.00 1",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112983",
+      "id": "2_112983",
+      "bbox": {
+        "x": 80,
+        "y": 494,
+        "w": 264,
+        "h": 86
+      },
+      "text_snippet": "新品 IdeaHub B2 Base-75 寸 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、经理室、开",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgb(255, 255, 255)",
+        "boxShadow": "rgba(0, 0, 0, 0.05) 0px 0px 10px 0px",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:86",
+      "id": null,
+      "bbox": {
+        "x": 80,
+        "y": 494,
+        "w": 264,
+        "h": 86
+      },
+      "text_snippet": "新品 IdeaHub B2 Base-75 寸 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、经理室、开",
+      "total_child_count": 3,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112984",
+      "id": "2_112984",
+      "bbox": {
+        "x": 80,
+        "y": 494,
+        "w": 36,
+        "h": 20
+      },
+      "text_snippet": "新品",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_1436",
+      "id": "5_1436",
+      "bbox": {
+        "x": 80,
+        "y": 494,
+        "w": 36,
+        "h": 20
+      },
+      "text_snippet": "新品",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgb(98, 180, 46)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:87",
+      "id": null,
+      "bbox": {
+        "x": 80,
+        "y": 494,
+        "w": 36,
+        "h": 20
+      },
+      "text_snippet": "新品",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112985",
+      "id": "2_112985",
+      "bbox": {
+        "x": 88,
+        "y": 505,
+        "w": 64,
+        "h": 64
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2423",
+      "id": "5_2423",
+      "bbox": {
+        "x": 88,
+        "y": 505,
+        "w": 64,
+        "h": 64
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112986",
+      "id": "2_112986",
+      "bbox": {
+        "x": 164,
+        "y": 502,
+        "w": 168,
+        "h": 70
+      },
+      "text_snippet": "IdeaHub B2 Base-75 寸 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、经理室、开放办公",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:88",
+      "id": null,
+      "bbox": {
+        "x": 164,
+        "y": 502,
+        "w": 168,
+        "h": 70
+      },
+      "text_snippet": "IdeaHub B2 Base-75 寸 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、经理室、开放办公",
+      "total_child_count": 3,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112987",
+      "id": "2_112987",
+      "bbox": {
+        "x": 164,
+        "y": 502,
+        "w": 12,
+        "h": 12
+      },
+      "text_snippet": "IdeaHub B2 Base-75 寸",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112993",
+      "id": "2_112993",
+      "bbox": {
+        "x": 164,
+        "y": 550,
+        "w": 168,
+        "h": 22
+      },
+      "text_snippet": "1",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112996",
+      "id": "2_112996",
+      "bbox": {
+        "x": 80,
+        "y": 588,
+        "w": 264,
+        "h": 90
+      },
+      "text_snippet": "IdeaShare KEY （Type-A） 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、经理室、开放",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgb(255, 255, 255)",
+        "boxShadow": "rgba(0, 0, 0, 0.05) 0px 0px 10px 0px",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:101",
+      "id": null,
+      "bbox": {
+        "x": 80,
+        "y": 588,
+        "w": 264,
+        "h": 90
+      },
+      "text_snippet": "IdeaShare KEY （Type-A） 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、经理室、开放",
+      "total_child_count": 2,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112998",
+      "id": "2_112998",
+      "bbox": {
+        "x": 88,
+        "y": 601,
+        "w": 64,
+        "h": 64
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2415",
+      "id": "5_2415",
+      "bbox": {
+        "x": 88,
+        "y": 601,
+        "w": 64,
+        "h": 64
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_112999",
+      "id": "2_112999",
+      "bbox": {
+        "x": 164,
+        "y": 596,
+        "w": 168,
+        "h": 74
+      },
+      "text_snippet": "IdeaShare KEY （Type-A） 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、经理室、开放",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:102",
+      "id": null,
+      "bbox": {
+        "x": 164,
+        "y": 596,
+        "w": 168,
+        "h": 74
+      },
+      "text_snippet": "IdeaShare KEY （Type-A） 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、经理室、开放",
+      "total_child_count": 3,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_113002",
+      "id": "2_113002",
+      "bbox": {
+        "x": 164,
+        "y": 648,
+        "w": 168,
+        "h": 22
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_113005",
+      "id": "2_113005",
+      "bbox": {
+        "x": 80,
+        "y": 686,
+        "w": 264,
+        "h": 86
+      },
+      "text_snippet": "即将上市 IdeaHub S2 - 86寸 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、经理室、开放办",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgb(255, 255, 255)",
+        "boxShadow": "rgba(0, 0, 0, 0.05) 0px 0px 10px 0px",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:105",
+      "id": null,
+      "bbox": {
+        "x": 80,
+        "y": 686,
+        "w": 264,
+        "h": 86
+      },
+      "text_snippet": "即将上市 IdeaHub S2 - 86寸 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、经理室、开放办",
+      "total_child_count": 3,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_113006",
+      "id": "2_113006",
+      "bbox": {
+        "x": 80,
+        "y": 686,
+        "w": 56,
+        "h": 20
+      },
+      "text_snippet": "即将上市",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_1434",
+      "id": "5_1434",
+      "bbox": {
+        "x": 80,
+        "y": 686,
+        "w": 56,
+        "h": 20
+      },
+      "text_snippet": "即将上市",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgb(237, 68, 138)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:106",
+      "id": null,
+      "bbox": {
+        "x": 80,
+        "y": 686,
+        "w": 56,
+        "h": 20
+      },
+      "text_snippet": "即将上市",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_113007",
+      "id": "2_113007",
+      "bbox": {
+        "x": 88,
+        "y": 697,
+        "w": 64,
+        "h": 64
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2407",
+      "id": "5_2407",
+      "bbox": {
+        "x": 88,
+        "y": 697,
+        "w": 64,
+        "h": 64
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_113008",
+      "id": "2_113008",
+      "bbox": {
+        "x": 164,
+        "y": 694,
+        "w": 168,
+        "h": 70
+      },
+      "text_snippet": "IdeaHub S2 - 86寸 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、经理室、开放办公区等多场",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:107",
+      "id": null,
+      "bbox": {
+        "x": 164,
+        "y": 694,
+        "w": 168,
+        "h": 70
+      },
+      "text_snippet": "IdeaHub S2 - 86寸 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、经理室、开放办公区等多场",
+      "total_child_count": 3,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_113011",
+      "id": "2_113011",
+      "bbox": {
+        "x": 164,
+        "y": 742,
+        "w": 168,
+        "h": 22
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_113014",
+      "id": "2_113014",
+      "bbox": {
+        "x": 80,
+        "y": 780,
+        "w": 264,
+        "h": 96
+      },
+      "text_snippet": "清库 IdeaHub B2 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 ",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgb(255, 255, 255)",
+        "boxShadow": "rgba(0, 0, 0, 0.05) 0px 0px 10px 0px",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:110",
+      "id": null,
+      "bbox": {
+        "x": 80,
+        "y": 780,
+        "w": 264,
+        "h": 96
+      },
+      "text_snippet": "清库 IdeaHub B2 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 ",
+      "total_child_count": 3,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_113015",
+      "id": "2_113015",
+      "bbox": {
+        "x": 80,
+        "y": 780,
+        "w": 36,
+        "h": 20
+      },
+      "text_snippet": "清库",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_1432",
+      "id": "5_1432",
+      "bbox": {
+        "x": 80,
+        "y": 780,
+        "w": 36,
+        "h": 20
+      },
+      "text_snippet": "清库",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgb(252, 200, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:111",
+      "id": null,
+      "bbox": {
+        "x": 80,
+        "y": 780,
+        "w": 36,
+        "h": 20
+      },
+      "text_snippet": "清库",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_113016",
+      "id": "2_113016",
+      "bbox": {
+        "x": 88,
+        "y": 796,
+        "w": 64,
+        "h": 64
+      },
+      "text_snippet": "",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:5_2419",
+      "id": "5_2419",
+      "bbox": {
+        "x": 88,
+        "y": 796,
+        "w": 64,
+        "h": 64
+      },
+      "text_snippet": "",
+      "total_child_count": 0,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_113017",
+      "id": "2_113017",
+      "bbox": {
+        "x": 164,
+        "y": 788,
+        "w": 168,
+        "h": 80
+      },
+      "text_snippet": "IdeaHub B2 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "auto:112",
+      "id": null,
+      "bbox": {
+        "x": 164,
+        "y": 788,
+        "w": 168,
+        "h": 80
+      },
+      "text_snippet": "IdeaHub B2 Base-75 寸 EOS 非现货 提供1080P的高清云会议体验，光学防蓝光，健康护眼，面向 中小企业数字化办公，投屏、书写全面升级，双Wi-Fi投屏更稳定，可以满足会 议室、",
+      "total_child_count": 4,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_113019",
+      "id": "2_113019",
+      "bbox": {
+        "x": 164,
+        "y": 808,
+        "w": 168,
+        "h": 16
+      },
+      "text_snippet": "EOS 非现货",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    },
+    {
+      "key": "id:2_113021",
+      "id": "2_113021",
+      "bbox": {
+        "x": 164,
+        "y": 846,
+        "w": 168,
+        "h": 22
+      },
+      "text_snippet": "￥21,999.00 1",
+      "total_child_count": 1,
+      "style_summary": {
+        "background": "rgba(0, 0, 0, 0)",
+        "boxShadow": "",
+        "opacity": "1"
+      }
+    }
+  ]
+}

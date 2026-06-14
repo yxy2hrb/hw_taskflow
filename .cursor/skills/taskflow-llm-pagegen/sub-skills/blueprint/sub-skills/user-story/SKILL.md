@@ -19,7 +19,50 @@ description: >
 - `brief`：任务流简要描述
 - `page_dsl`：页面结构 DSL（用于判断平台类型 mobile/desktop）
 
-## 输出
+## 输出协议
+
+Phase 1 拆成 `generate` 和 `confirm` 两步。
+
+### generate：写入 `phase1_ask.json`
+
+LLM 只返回四维度候选，不直接返回 confirmed：
+
+```json
+{
+  "action": "ask",
+  "phase": 1,
+  "questionText": "请从下面四个维度各选一项，我会合成完整 User Story。",
+  "multiSelect": true,
+  "allowCustom": true,
+  "note": "四个维度各选一项；也可在补充栏直接写覆盖内容。",
+  "options": [
+    {
+      "id": "actor_1",
+      "group": "① Actor · 主角",
+      "label": "已登录的普通用户",
+      "rationale": "与页面已有入口和权限假设最匹配",
+      "default": true
+    }
+  ]
+}
+```
+
+四个 group 必须齐全：
+
+- `① Actor · 主角`
+- `② Trigger · 触发点`
+- `③ Goal & Happy Path · 核心目标与理想路径`
+- `④ Success Criteria · 成功判定`
+
+每组 2-4 个候选，成功判定组 2-3 个候选；每组有且仅有一个 `default: true`。
+
+### confirm：写入 `phase1_confirmed.json`
+
+用户可以提交选项 ID，也可以直接提交完整 confirmed JSON。脚本根据四维度选择合成：
+
+终端交互时，四组候选使用连续数字编号；用户只需每组输入一个编号。脚本先将四项选择
+合成为完整 User Story 并展示。若用户提出自然语言修改意见，必须调用模型基于完整内容
+重新生成，不得把用户文本直接覆盖到 confirmed 字段。
 
 ### User Story 范式
 
@@ -198,6 +241,13 @@ Feature: 创建项目集
 - 禁止默认生成失败、取消、重试、返回场景；只在用户目标明确要求时才写入
 - 禁止 Markdown 包裹、禁止 `<think>` 标签
 - 输出严格 JSON，无自然语言解释
+
+## confirm 规则
+
+- `selections.actor / trigger / happy_path / success_criteria` 必须各有一项。
+- `custom_overrides` 可覆盖任一维度文本。
+- `acceptance_criteria_steps` 缺省时由脚本根据四维度合成，但用户可提供完整顺序数组。
+- confirmed 结果必须保留 `action: "confirmed"` 和 `phase: 1`。
 
 ## Story Quality Checklist
 

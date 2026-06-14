@@ -2,8 +2,13 @@
 
 const fs = require("fs");
 const path = require("path");
+const Module = require("module");
 
 const CODEGEN_ROOT = path.resolve(__dirname, "..");
+const SKILL_ROOT = path.resolve(CODEGEN_ROOT, "../..");
+const WORKSPACE_ROOT = path.resolve(SKILL_ROOT, "../../..");
+const BACKEND_ROOT = path.join(WORKSPACE_ROOT, "backend");
+const BACKEND_NODE_MODULES = path.join(BACKEND_ROOT, "node_modules");
 const COMPONENTS_DIR = path.join(CODEGEN_ROOT, "resources", "components");
 const RENDER_DIR = path.join(CODEGEN_ROOT, ".react_ssr");
 const SHIMS_DIR = path.join(RENDER_DIR, "shims");
@@ -35,9 +40,10 @@ function requireFromCandidates(pkg, extraCandidates = []) {
   const candidates = [
     RENDER_DIR,
     CODEGEN_ROOT,
+    SKILL_ROOT,
+    WORKSPACE_ROOT,
+    BACKEND_ROOT,
     process.cwd(),
-    path.resolve(CODEGEN_ROOT, "../../../../../../../my-app"),
-    path.resolve(CODEGEN_ROOT, "../../../../../../../my-app2"),
     ...extraCandidates,
   ];
   for (const candidate of candidates) {
@@ -48,6 +54,17 @@ function requireFromCandidates(pkg, extraCandidates = []) {
     }
   }
   throw new Error(`Missing dependency: ${pkg}`);
+}
+
+function ensureBackendNodePath() {
+  if (!fs.existsSync(BACKEND_NODE_MODULES)) return;
+  const parts = String(process.env.NODE_PATH || "")
+    .split(path.delimiter)
+    .filter(Boolean);
+  if (!parts.includes(BACKEND_NODE_MODULES)) {
+    process.env.NODE_PATH = [BACKEND_NODE_MODULES, ...parts].join(path.delimiter);
+    Module._initPaths();
+  }
 }
 
 function writeShims() {
@@ -118,6 +135,7 @@ async function renderReactCode({ id, reactCode, outDir, css = "" }) {
     throw new Error("reactCode must be a non-empty string");
   }
   writeShims();
+  ensureBackendNodePath();
   ensureDir(ENTRIES_DIR);
   ensureDir(BUNDLES_DIR);
   const esbuild = requireFromCandidates("esbuild");
@@ -144,6 +162,7 @@ export default html;
     platform: "node",
     format: "cjs",
     jsx: "automatic",
+    nodePaths: [BACKEND_NODE_MODULES].filter((dir) => fs.existsSync(dir)),
     external: ["react", "react-dom", "react-dom/server"],
     plugins: [aliasPlugin()],
     logLevel: "silent",

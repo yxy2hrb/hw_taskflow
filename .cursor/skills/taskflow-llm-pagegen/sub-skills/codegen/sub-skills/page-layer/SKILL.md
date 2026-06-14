@@ -56,6 +56,7 @@ Optional fields:
 8. `viewport.initial_height` is the original capture viewport height, not a hard maximum.
 9. If a state has more content than fits in `viewport.initial_height`, the layer may be taller and scroll vertically.
 10. Never increase page width.
+11. Never override `.tf-state-layer` or `.tf-llm-layer` positioning, display, z-index, width, height, overflow, or background in generated CSS.
 
 ## Keep Placeholder Contract
 
@@ -71,6 +72,8 @@ Rules:
 2. Do not duplicate original status bar, nav bar, workbench card, tab bar, or kept D2C content manually.
 3. The runner will fill each placeholder by cropping original D2C content from `semantic_registry` bbox.
 4. If a state is a full-screen replacement page, keep only required persistent areas.
+5. Never hide, remove, cover, or restyle `.tf-keep-placeholder` in generated CSS.
+6. Do not add CSS such as `.tf-keep-placeholder{display:none}` or `.tf-llm-layer .tf-keep-placeholder{display:none}`.
 
 ## Create And Update Contract
 
@@ -111,12 +114,16 @@ Use Ant Design Mobile style as the visual reference:
 
 Visual requirements:
 
+Inheritance and semantic continuity are higher priority than visual polish. Apply the rules below only after the keep/create/update contract is satisfied.
+
 1. Prefer clean white cards over noisy borders.
-2. Use consistent 8px/12px/16px spacing.
+2. **Spacing system — only use: 4, 8, 12, 16, 24, 32, 48px.** Never write arbitrary values like 5px, 7px, 13px, 15px.
 3. Use rounded corners, subtle shadows, and light neutral backgrounds.
-4. Keep typography hierarchy clear.
-5. Follow Gestalt grouping: related controls should be visually grouped, unrelated controls separated.
-6. Preserve the given mobile viewport width. Use `viewport.initial_height` as the initial screen height, but allow taller scrollable content when needed.
+4. **De-emphasize to Emphasize**: When a primary element needs to stand out, weaken the competing elements — not louder primary, but softer secondary. Unselected/inactive options must use soft grey (#f5f5f5 bg, #9ca3af text), never black.
+5. **Typography hierarchy via weight + color**: primary = 600 + #1a1a1a, secondary = 400 + #6b7280, labels = 400 + #9ca3af 11–12px. Do not rely on font size alone.
+6. **Button hierarchy**: primary action = solid high-contrast fill; secondary = outline or low-contrast; tertiary = link style. Never make a non-primary action visually compete with the primary.
+7. Follow Gestalt grouping: related controls should be visually grouped, unrelated controls separated.
+8. Preserve the given mobile viewport width. Use `viewport.initial_height` as the initial screen height, but allow taller scrollable content when needed.
 
 ## Floating Components
 
